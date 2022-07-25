@@ -27,7 +27,7 @@
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include "definitions.h"                // SYS function prototypes
 
-uint8_t spidummy = 0b01010101;
+uint8_t spidummy[3] = {0b01010101,0b11111111,0b00000000};
 uint16_t spinner = 0;
 
 // *****************************************************************************
@@ -48,7 +48,7 @@ int main(void)
 		SYS_Tasks();
 
 		if (!SPI2_IsTransmitterBusy()) {
-			SPI2_Write(& spidummy, 1);
+			SPI2_Write(& spidummy, 3);
 			if (!++spinner) {
 				LED_RED_Toggle();
 				LED_GREEN_Toggle();
