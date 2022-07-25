@@ -41,16 +41,17 @@ int main(void)
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
 
+	LED_GREEN_Off();
+	LED_RED_On();
 	while (true) {
 		/* Maintain state machines of all polled MPLAB Harmony modules. */
 		SYS_Tasks();
 
-		LED_GREEN_Off();
 		if (!SPI2_IsTransmitterBusy()) {
 			SPI2_Write(& spidummy, 1);
 			if (!++spinner) {
 				LED_RED_Toggle();
-				LED_GREEN_On();
+				LED_GREEN_Toggle();
 			}
 		}
 	}
