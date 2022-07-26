@@ -60,12 +60,18 @@
 // *****************************************************************************
 
 
+void CHANGE_NOTICE_A_InterruptHandler( void );
 void SPI2_RX_InterruptHandler( void );
 void SPI2_TX_InterruptHandler( void );
 
 
 
 /* All the handlers are defined here.  Each will call its PLIB-specific function. */
+void __ISR(_CHANGE_NOTICE_A_VECTOR, ipl1SRS) CHANGE_NOTICE_A_Handler (void)
+{
+    CHANGE_NOTICE_A_InterruptHandler();
+}
+
 void __ISR(_SPI2_RX_VECTOR, ipl1SRS) SPI2_RX_Handler (void)
 {
     SPI2_RX_InterruptHandler();
