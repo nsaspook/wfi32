@@ -32,6 +32,7 @@
           <itemPath>../src/config/default/interrupts.h</itemPath>
         </logicalFolder>
       </logicalFolder>
+      <itemPath>../src/bma490.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -76,6 +77,7 @@
         </logicalFolder>
       </logicalFolder>
       <itemPath>../src/main.c</itemPath>
+      <itemPath>../src/bma490l.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

@@ -27,8 +27,10 @@
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include "definitions.h"                // SYS function prototypes
 
-uint8_t spidummy[3] = {0b01010101,0b11111111,0b00000000};
-uint16_t spinner = 0;
+#include "bma490.h"
+
+uint8_t rbuf[32], tbuf[32];
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -41,19 +43,13 @@ int main(void)
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
 
-	LED_GREEN_Off();
-	LED_RED_On();
+	imu_set_spimode(); // init BMA490L chip
+
 	while (true) {
 		/* Maintain state machines of all polled MPLAB Harmony modules. */
 		SYS_Tasks();
 
-		if (!SPI2_IsTransmitterBusy()) {
-			SPI2_Write(& spidummy, 3);
-			if (!++spinner) {
-				LED_RED_Toggle();
-				LED_GREEN_Toggle();
-			}
-		}
+		imu_getid(); // check BMA490L comm status by reading ID
 	}
 
 	/* Execution should not come here during normal operation */
