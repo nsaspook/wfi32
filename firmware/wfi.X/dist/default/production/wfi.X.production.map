@@ -3,25 +3,25 @@ Optional file vector_offset_init.o not found
 Archive member included to satisfy reference by file (symbol)
 
 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
-                              C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o (_on_reset)
+                              C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o (_on_reset)
 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
-                              C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o (_on_bootstrap)
+                              C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o (_on_bootstrap)
 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
-                              C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o (_nmi_handler)
+                              C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o (_nmi_handler)
 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(pic32_data_init.o)
-                              C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o (__pic32_data_init)
+                              C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o (__pic32_data_init)
 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(pic32_init_cache.o)
-                              C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o (__pic32_init_cache)
+                              C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o (__pic32_init_cache)
 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(pic32_init_tlb_ebi_sqi.o)
-                              C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o (__pic32_tlb_init_ebi_sqi)
+                              C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o (__pic32_tlb_init_ebi_sqi)
 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(general-exception.o)
-                              C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o (_general_exception_context)
+                              C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o (_general_exception_context)
 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(cache-err-exception.o)
-                              C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o (_cache_err_exception_context)
+                              C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o (_cache_err_exception_context)
 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(simple-tlb-refill-exception.o)
-                              C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o (_simple_tlb_refill_exception_context)
+                              C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o (_simple_tlb_refill_exception_context)
 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
-                              C:\Users\nsasp\AppData\Local\Temp\cc0L77uQ.o (_DefaultInterrupt)
+                              C:\Users\nsasp\AppData\Local\Temp\cc5IZjeW.o (_DefaultInterrupt)
 
 Microchip PIC32 Memory-Usage Report
 
@@ -35,40 +35,41 @@ section                    address  length [bytes]      (dec)  Description
 .text._on_reset         0x90000174            0x8           8   
 .app_excpt              0x90000180           0x10          16  General-Exception 
 .text.CHANGE_NOTICE_A_I 0x90000190           0x5c          92   
-.text.SPI2_IsTransmitte 0x900001ec           0x14          20   
+.text.SPI2_CallbackRegi 0x900001ec           0x14          20   
 .vectors                0x90000200           0x60          96   
 .text.PMU_Initialize    0x90000260          0x744        1860   
 .text.CLK_Initialize    0x900009a4          0x4f0        1264   
-.dinit                  0x90000e94          0x360         864   
-.text.SPI2_RX_Interrupt 0x900011f4          0x21c         540   
-.text.SPI2_WriteRead.pa 0x90001410          0x218         536   
-.text.SPI2_TX_Interrupt 0x90001628          0x110         272   
-.text.SPI2_RX_Handler   0x90001738           0xf0         240   
-.text.SPI2_TX_Handler   0x90001828           0xf0         240   
-.text.general_exception 0x90001918           0xdc         220   
-.text._cache_err_except 0x900019f4           0xd8         216   
-.text.simple_tlb_refill 0x90001acc           0xd8         216   
-.tlb.__pic32_tlb_init_e 0x90001ba4           0xbc         188   
-.text.imu_getid         0x90001c60           0xa4         164   
-.text.GPIO_Initialize   0x90001d04           0x94         148   
-.text                   0x90001d98           0x8c         140  App's exec code 
-.text.SPI2_Initialize   0x90001e24           0x78         120   
-.text.imu_set_spimode   0x90001e9c           0x58          88   
-.text.SPI2_WriteRead    0x90001ef4           0x54          84   
-.text.main_entry        0x90001f48           0x54          84   
-.text.EVIC_Initialize   0x90001f9c           0x48          72   
-.text.SPI2_Write        0x90001fe4           0x30          48   
-.text.main              0x90002014           0x30          48   
-.text.BSP_Initialize    0x90002044           0x1c          28   
-.MIPS.abiflags          0x90002060           0x18          24   
-.text._general_exceptio 0x90002078           0x18          24   
-.text                   0x90002090           0x18          24  App's exec code 
-.text.wifi_spi_write    0x900020a8           0x10          16   
-.text._bootstrap_except 0x900020b8           0x10          16   
-.text._cache_err_except 0x900020c8           0x10          16   
-.text._simple_tlb_refil 0x900020d8           0x10          16   
-.text._on_bootstrap     0x900020e8            0x8           8   
-      Total kseg0_program_mem used  :      0x20ec        8428  0.8% of 0x100000
+.dinit                  0x90000e94          0x3a0         928   
+.text.SPI2_RX_Interrupt 0x90001234          0x21c         540   
+.text.SPI2_WriteRead.pa 0x90001450          0x218         536   
+.text.SPI2_TX_Interrupt 0x90001668          0x110         272   
+.text.imu_getid         0x90001778          0x10c         268   
+.text.SPI2_RX_Handler   0x90001884           0xf0         240   
+.text.SPI2_TX_Handler   0x90001974           0xf0         240   
+.text.general_exception 0x90001a64           0xdc         220   
+.text._cache_err_except 0x90001b40           0xd8         216   
+.text.simple_tlb_refill 0x90001c18           0xd8         216   
+.tlb.__pic32_tlb_init_e 0x90001cf0           0xbc         188   
+.text.imu_set_spimode   0x90001dac           0x9c         156   
+.text.GPIO_Initialize   0x90001e48           0x94         148   
+.text                   0x90001edc           0x8c         140  App's exec code 
+.text.SPI2_Initialize   0x90001f68           0x78         120   
+.text.SPI2_WriteRead    0x90001fe0           0x54          84   
+.text.main_entry        0x90002034           0x54          84   
+.text.EVIC_Initialize   0x90002088           0x48          72   
+.text.main              0x900020d0           0x34          52   
+.text.SPI2_Write        0x90002104           0x30          48   
+.text.BSP_Initialize    0x90002134           0x1c          28   
+.MIPS.abiflags          0x90002150           0x18          24   
+.text._general_exceptio 0x90002168           0x18          24   
+.text                   0x90002180           0x18          24  App's exec code 
+.text.imu_cs_cb         0x90002198           0x14          20   
+.text.wifi_spi_write    0x900021ac           0x10          16   
+.text._bootstrap_except 0x900021bc           0x10          16   
+.text._cache_err_except 0x900021cc           0x10          16   
+.text._simple_tlb_refil 0x900021dc           0x10          16   
+.text._on_bootstrap     0x900021ec            0x8           8   
+      Total kseg0_program_mem used  :      0x21f0        8688  0.8% of 0x100000
 
 kseg0 Boot-Memory Usage
 section                    address  length [bytes]      (dec)  Description
@@ -82,7 +83,7 @@ section                    address  length [bytes]      (dec)  Description
 .bev_excpt              0xbfc00380           0x10          16  BEV-Exception 
          Total kseg1_boot_mem used  :       0x1c4         452  39.2% of 0x480
         --------------------------------------------------------------------------
-         Total Program Memory used  :      0x22b0        8880  0.8% of 0x100480
+         Total Program Memory used  :      0x23b4        9140  0.9% of 0x100480
         --------------------------------------------------------------------------
 
 
@@ -91,19 +92,19 @@ section                    address  length [bytes]      (dec)  Description
 -------                 ----------  -------------------------  -----------
 .sdata                  0x80000000           0x54          84  Small init data 
 .sbss                   0x80000054           0x2c          44  Small uninit data 
-.bss                    0x80000080           0x68         104  Uninitialized data 
-.bss                    0x800000e8            0xc          12  Uninitialized data 
-         Total kseg0_data_mem used  :        0xf4         244  0.1% of 0x40000
+.data                   0x80000080           0x43          67  Initialized data 
+.bss                    0x800000c4           0x34          52  Uninitialized data 
+         Total kseg0_data_mem used  :        0xf7         247  0.1% of 0x40000
         --------------------------------------------------------------------------
-            Total Data Memory used  :        0xf4         244  0.1% of 0x40000
+            Total Data Memory used  :        0xf7         247  0.1% of 0x40000
         --------------------------------------------------------------------------
 
 
 Dynamic Data-Memory Reservation
 section                    address  length [bytes]      (dec)  Description
 -------                 ----------  -------------------------  -----------
-heap                    0x800000f8          0x200         512  Reserved for heap 
-stack                   0x80000310        0x3fce0      261344  Reserved for stack 
+heap                    0x80000100          0x200         512  Reserved for heap 
+stack                   0x80000318        0x3fce0      261344  Reserved for stack 
 
         --------------------------------------------------------------------------
 
@@ -241,10 +242,10 @@ Discarded input sections
                 0x0000000000000000       0xb4 build/default/production/_ext/298189674/plib_spi2_master.o
  .text.SPI2_Read
                 0x0000000000000000       0x38 build/default/production/_ext/298189674/plib_spi2_master.o
+ .text.SPI2_IsTransmitterBusy
+                0x0000000000000000       0x14 build/default/production/_ext/298189674/plib_spi2_master.o
  .text.SPI2_IsBusy
                 0x0000000000000000       0x28 build/default/production/_ext/298189674/plib_spi2_master.o
- .text.SPI2_CallbackRegister
-                0x0000000000000000       0x14 build/default/production/_ext/298189674/plib_spi2_master.o
  .text          0x0000000000000000        0x0 build/default/production/_ext/163028504/xc32_monitor.o
  .data          0x0000000000000000        0x0 build/default/production/_ext/163028504/xc32_monitor.o
  .bss           0x0000000000000000        0x0 build/default/production/_ext/163028504/xc32_monitor.o
@@ -302,7 +303,7 @@ Discarded input sections
  __memory__wcmDataMem
                 0x0000000000000000        0x0 build/default/production/_ext/1171490990/pmu_init.o
  .text          0x0000000000000000        0x0 build/default/production/_ext/1360937237/main.o
- .data          0x0000000000000000        0x0 build/default/production/_ext/1360937237/main.o
+ .bss           0x0000000000000000        0x0 build/default/production/_ext/1360937237/main.o
  .reginfo       0x0000000000000000       0x18 build/default/production/_ext/1360937237/main.o
  .MIPS.abiflags
                 0x0000000000000000       0x18 build/default/production/_ext/1360937237/main.o
@@ -324,31 +325,33 @@ Discarded input sections
                 0x0000000000000000        0x0 build/default/production/_ext/1360937237/bma490l.o
  __memory__wcmDataMem
                 0x0000000000000000        0x0 build/default/production/_ext/1360937237/bma490l.o
- .text          0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o
- .data          0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o
- .bss           0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o
- .reginfo       0x0000000000000000       0x18 C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o
+ .text.delay_us
+                0x0000000000000000       0x40 build/default/production/_ext/1360937237/bma490l.o
+ .text          0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o
+ .data          0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o
+ .bss           0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o
+ .reginfo       0x0000000000000000       0x18 C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o
  .MIPS.abiflags
-                0x0000000000000000       0x18 C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o
- .text          0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\cc6ytrXI.o
- .data          0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\cc6ytrXI.o
- .bss           0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\cc6ytrXI.o
- .reginfo       0x0000000000000000       0x18 C:\Users\nsasp\AppData\Local\Temp\cc6ytrXI.o
+                0x0000000000000000       0x18 C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o
+ .text          0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\ccIGfbI3.o
+ .data          0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\ccIGfbI3.o
+ .bss           0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\ccIGfbI3.o
+ .reginfo       0x0000000000000000       0x18 C:\Users\nsasp\AppData\Local\Temp\ccIGfbI3.o
  .MIPS.abiflags
-                0x0000000000000000       0x18 C:\Users\nsasp\AppData\Local\Temp\cc6ytrXI.o
- .text          0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
- .data          0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
- .bss           0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
- .reginfo       0x0000000000000000       0x18 C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
+                0x0000000000000000       0x18 C:\Users\nsasp\AppData\Local\Temp\ccIGfbI3.o
+ .text          0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
+ .data          0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
+ .bss           0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
+ .reginfo       0x0000000000000000       0x18 C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
  .MIPS.abiflags
-                0x0000000000000000       0x18 C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
- .text          0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\cc0L77uQ.o
- .data          0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\cc0L77uQ.o
- .bss           0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\cc0L77uQ.o
- .reginfo       0x0000000000000000       0x18 C:\Users\nsasp\AppData\Local\Temp\cc0L77uQ.o
+                0x0000000000000000       0x18 C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
+ .text          0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\cc5IZjeW.o
+ .data          0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\cc5IZjeW.o
+ .bss           0x0000000000000000        0x0 C:\Users\nsasp\AppData\Local\Temp\cc5IZjeW.o
+ .reginfo       0x0000000000000000       0x18 C:\Users\nsasp\AppData\Local\Temp\cc5IZjeW.o
  .MIPS.abiflags
-                0x0000000000000000       0x18 C:\Users\nsasp\AppData\Local\Temp\cc0L77uQ.o
- .discard       0x0000000000000000        0x4 C:\Users\nsasp\AppData\Local\Temp\cc0L77uQ.o
+                0x0000000000000000       0x18 C:\Users\nsasp\AppData\Local\Temp\cc5IZjeW.o
+ .discard       0x0000000000000000        0x4 C:\Users\nsasp\AppData\Local\Temp\cc5IZjeW.o
  .text          0x0000000000000000        0x0 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
  .data          0x0000000000000000        0x0 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
  .bss           0x0000000000000000        0x0 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
@@ -580,16 +583,16 @@ END GROUP
 
 .reset          0x00000000bfc00000      0x1b4
  *(.reset)
- .reset         0x00000000bfc00000       0x18 C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o
+ .reset         0x00000000bfc00000       0x18 C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o
                 0x00000000bfc00000                _reset
  *(.reset.startup)
  .reset.startup
-                0x00000000bfc00018      0x19c C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o
+                0x00000000bfc00018      0x19c C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o
                 0x00000000bfc00018                _startup
 
 .bev_excpt      0x00000000bfc00380       0x10
  *(.bev_handler)
- .bev_handler   0x00000000bfc00380       0x10 C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o
+ .bev_handler   0x00000000bfc00380       0x10 C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o
 
 .cache_init     0x00000000bfc004b0      0x1c0
  *(.cache_init)
@@ -604,17 +607,17 @@ END GROUP
                 0x0000000090000000       0x10
  *(.simple_tlb_refill_vector)
  .simple_tlb_refill_vector
-                0x0000000090000000       0x10 C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o
+                0x0000000090000000       0x10 C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o
 
 .cache_err_excpt
                 0x0000000090000100       0x10
  *(.cache_err_vector)
  .cache_err_vector
-                0x0000000090000100       0x10 C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o
+                0x0000000090000100       0x10 C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o
 
 .app_excpt      0x0000000090000180       0x10
  *(.gen_handler)
- .gen_handler   0x0000000090000180       0x10 C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o
+ .gen_handler   0x0000000090000180       0x10 C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o
 
 .vectors        0x0000000090000200       0x60
                 0x0000000090000200                . = ALIGN (0x4)
@@ -1696,7 +1699,7 @@ END GROUP
  *.elf(.debug_sfnames)
  *(.debug_sfnames)
 
-.debug_aranges  0x0000000000000000      0x310
+.debug_aranges  0x0000000000000000      0x320
  *.elf(.debug_aranges)
  *(.debug_aranges)
  .debug_aranges
@@ -1722,19 +1725,19 @@ END GROUP
  .debug_aranges
                 0x0000000000000268       0x20 build/default/production/_ext/1360937237/main.o
  .debug_aranges
-                0x0000000000000288       0x28 build/default/production/_ext/1360937237/bma490l.o
+                0x0000000000000288       0x38 build/default/production/_ext/1360937237/bma490l.o
  .debug_aranges
-                0x00000000000002b0       0x20 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+                0x00000000000002c0       0x20 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
  .debug_aranges
-                0x00000000000002d0       0x20 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+                0x00000000000002e0       0x20 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
  .debug_aranges
-                0x00000000000002f0       0x20 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+                0x0000000000000300       0x20 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
 
 .debug_pubnames
  *.elf(.debug_pubnames)
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x3f07
+.debug_info     0x0000000000000000     0x415e
  *.elf(.debug_info .gnu.linkonce.wi.*)
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000       0xb4 build/default/production/_ext/1434821282/bsp.o
@@ -1747,13 +1750,13 @@ END GROUP
  .debug_info    0x000000000000277f      0x11f build/default/production/_ext/1171490990/interrupts.o
  .debug_info    0x000000000000289e      0x14a build/default/production/_ext/1171490990/exceptions.o
  .debug_info    0x00000000000029e8     0x1112 build/default/production/_ext/1171490990/pmu_init.o
- .debug_info    0x0000000000003afa      0x156 build/default/production/_ext/1360937237/main.o
- .debug_info    0x0000000000003c50      0x1f9 build/default/production/_ext/1360937237/bma490l.o
- .debug_info    0x0000000000003e49       0x3f c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
- .debug_info    0x0000000000003e88       0x3f c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
- .debug_info    0x0000000000003ec7       0x40 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_info    0x0000000000003afa      0x1ab build/default/production/_ext/1360937237/main.o
+ .debug_info    0x0000000000003ca5      0x3fb build/default/production/_ext/1360937237/bma490l.o
+ .debug_info    0x00000000000040a0       0x3f c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_info    0x00000000000040df       0x3f c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_info    0x000000000000411e       0x40 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
 
-.debug_abbrev   0x0000000000000000     0x1012
+.debug_abbrev   0x0000000000000000     0x114e
  *.elf(.debug_abbrev)
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000       0x6f build/default/production/_ext/1434821282/bsp.o
@@ -1766,13 +1769,13 @@ END GROUP
  .debug_abbrev  0x0000000000000a9e       0x67 build/default/production/_ext/1171490990/interrupts.o
  .debug_abbrev  0x0000000000000b05       0x97 build/default/production/_ext/1171490990/exceptions.o
  .debug_abbrev  0x0000000000000b9c      0x21a build/default/production/_ext/1171490990/pmu_init.o
- .debug_abbrev  0x0000000000000db6       0xc5 build/default/production/_ext/1360937237/main.o
- .debug_abbrev  0x0000000000000e7b      0x10a build/default/production/_ext/1360937237/bma490l.o
- .debug_abbrev  0x0000000000000f85       0x2e c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
- .debug_abbrev  0x0000000000000fb3       0x2e c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
- .debug_abbrev  0x0000000000000fe1       0x31 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_abbrev  0x0000000000000db6       0xf8 build/default/production/_ext/1360937237/main.o
+ .debug_abbrev  0x0000000000000eae      0x213 build/default/production/_ext/1360937237/bma490l.o
+ .debug_abbrev  0x00000000000010c1       0x2e c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_abbrev  0x00000000000010ef       0x2e c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_abbrev  0x000000000000111d       0x31 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
 
-.debug_line     0x0000000000000000     0x2b12
+.debug_line     0x0000000000000000     0x2c07
  *.elf(.debug_line)
  *(.debug_line)
  .debug_line    0x0000000000000000      0x12d build/default/production/_ext/1434821282/bsp.o
@@ -1785,13 +1788,13 @@ END GROUP
  .debug_line    0x0000000000001bae       0xaf build/default/production/_ext/1171490990/interrupts.o
  .debug_line    0x0000000000001c5d       0x89 build/default/production/_ext/1171490990/exceptions.o
  .debug_line    0x0000000000001ce6      0x8ea build/default/production/_ext/1171490990/pmu_init.o
- .debug_line    0x00000000000025d0      0x112 build/default/production/_ext/1360937237/main.o
- .debug_line    0x00000000000026e2      0x211 build/default/production/_ext/1360937237/bma490l.o
- .debug_line    0x00000000000028f3       0xa8 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
- .debug_line    0x000000000000299b       0xac c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
- .debug_line    0x0000000000002a47       0xcb c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_line    0x00000000000025d0      0x116 build/default/production/_ext/1360937237/main.o
+ .debug_line    0x00000000000026e6      0x302 build/default/production/_ext/1360937237/bma490l.o
+ .debug_line    0x00000000000029e8       0xa8 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_line    0x0000000000002a90       0xac c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_line    0x0000000000002b3c       0xcb c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
 
-.debug_frame    0x0000000000000000      0x608
+.debug_frame    0x0000000000000000      0x640
  *.elf(.debug_frame)
  *(.debug_frame)
  .debug_frame   0x0000000000000000       0x20 build/default/production/_ext/1434821282/bsp.o
@@ -1805,12 +1808,12 @@ END GROUP
  .debug_frame   0x0000000000000488       0x70 build/default/production/_ext/1171490990/exceptions.o
  .debug_frame   0x00000000000004f8       0x34 build/default/production/_ext/1171490990/pmu_init.o
  .debug_frame   0x000000000000052c       0x28 build/default/production/_ext/1360937237/main.o
- .debug_frame   0x0000000000000554       0x54 build/default/production/_ext/1360937237/bma490l.o
- .debug_frame   0x00000000000005a8       0x20 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
- .debug_frame   0x00000000000005c8       0x20 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
- .debug_frame   0x00000000000005e8       0x20 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_frame   0x0000000000000554       0x8c build/default/production/_ext/1360937237/bma490l.o
+ .debug_frame   0x00000000000005e0       0x20 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_frame   0x0000000000000600       0x20 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_frame   0x0000000000000620       0x20 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
 
-.debug_str      0x0000000000000000     0x4a56
+.debug_str      0x0000000000000000     0x4adb
  *.elf(.debug_str)
  *(.debug_str)
  .debug_str     0x0000000000000000      0x2e5 build/default/production/_ext/1434821282/bsp.o
@@ -1823,13 +1826,13 @@ END GROUP
  .debug_str     0x0000000000002c23      0x365 build/default/production/_ext/1171490990/interrupts.o
  .debug_str     0x0000000000002f88      0x409 build/default/production/_ext/1171490990/exceptions.o
  .debug_str     0x0000000000003391      0x635 build/default/production/_ext/1171490990/pmu_init.o
- .debug_str     0x00000000000039c6      0x305 build/default/production/_ext/1360937237/main.o
- .debug_str     0x0000000000003ccb      0x370 build/default/production/_ext/1360937237/bma490l.o
- .debug_str     0x000000000000403b      0x353 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
- .debug_str     0x000000000000438e      0x35b c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
- .debug_str     0x00000000000046e9      0x36d c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_str     0x00000000000039c6      0x32d build/default/production/_ext/1360937237/main.o
+ .debug_str     0x0000000000003cf3      0x3cd build/default/production/_ext/1360937237/bma490l.o
+ .debug_str     0x00000000000040c0      0x353 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_str     0x0000000000004413      0x35b c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_str     0x000000000000476e      0x36d c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
 
-.debug_loc      0x0000000000000000     0x1f30
+.debug_loc      0x0000000000000000     0x20e9
  *.elf(.debug_loc)
  *(.debug_loc)
  .debug_loc     0x0000000000000000      0x375 build/default/production/_ext/60165520/plib_clk.o
@@ -1838,6 +1841,7 @@ END GROUP
  .debug_loc     0x000000000000086a      0x5f2 build/default/production/_ext/298189674/plib_spi2_master.o
  .debug_loc     0x0000000000000e5c       0x25 build/default/production/_ext/1171490990/initialization.o
  .debug_loc     0x0000000000000e81     0x10af build/default/production/_ext/1171490990/pmu_init.o
+ .debug_loc     0x0000000000001f30      0x1b9 build/default/production/_ext/1360937237/bma490l.o
 
 .debug_macinfo
  *.elf(.debug_macinfo)
@@ -1863,7 +1867,7 @@ END GROUP
  *.elf(.debug_pubtypes)
  *(.debug_pubtypes)
 
-.debug_ranges   0x0000000000000000      0x2c8
+.debug_ranges   0x0000000000000000      0x2f8
  *.elf(.debug_ranges)
  *(.debug_ranges)
  .debug_ranges  0x0000000000000000       0x10 build/default/production/_ext/1434821282/bsp.o
@@ -1877,10 +1881,10 @@ END GROUP
  .debug_ranges  0x00000000000001a8       0x10 build/default/production/_ext/1171490990/exceptions.o
  .debug_ranges  0x00000000000001b8       0xb8 build/default/production/_ext/1171490990/pmu_init.o
  .debug_ranges  0x0000000000000270       0x10 build/default/production/_ext/1360937237/main.o
- .debug_ranges  0x0000000000000280       0x18 build/default/production/_ext/1360937237/bma490l.o
- .debug_ranges  0x0000000000000298       0x10 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
- .debug_ranges  0x00000000000002a8       0x10 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
- .debug_ranges  0x00000000000002b8       0x10 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_ranges  0x0000000000000280       0x48 build/default/production/_ext/1360937237/bma490l.o
+ .debug_ranges  0x00000000000002c8       0x10 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_ranges  0x00000000000002d8       0x10 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_ranges  0x00000000000002e8       0x10 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
 
 .gnu.attributes
                 0x0000000000000000       0x10
@@ -1910,13 +1914,13 @@ END GROUP
  .gnu.attributes
                 0x00000000000000b0       0x10 build/default/production/_ext/1360937237/bma490l.o
  .gnu.attributes
-                0x00000000000000c0       0x10 C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o
+                0x00000000000000c0       0x10 C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o
  .gnu.attributes
-                0x00000000000000d0       0x10 C:\Users\nsasp\AppData\Local\Temp\cc6ytrXI.o
+                0x00000000000000d0       0x10 C:\Users\nsasp\AppData\Local\Temp\ccIGfbI3.o
  .gnu.attributes
-                0x00000000000000e0       0x10 C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
+                0x00000000000000e0       0x10 C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
  .gnu.attributes
-                0x00000000000000f0       0x10 C:\Users\nsasp\AppData\Local\Temp\cc0L77uQ.o
+                0x00000000000000f0       0x10 C:\Users\nsasp\AppData\Local\Temp\cc5IZjeW.o
  .gnu.attributes
                 0x0000000000000100       0x10 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
  .gnu.attributes
@@ -1940,10 +1944,10 @@ END GROUP
                 0x0000000090000000                PROVIDE (__pic32_init_cache_program_base_addr = 0x90000000)
                 0x0000000080000000                PROVIDE (__pic32_init_cache_data_base_addr = 0x80000000)
                 0x0000000000000200                _min_heap_size = 0x200
-LOAD C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o
-LOAD C:\Users\nsasp\AppData\Local\Temp\cc6ytrXI.o
-LOAD C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
-LOAD C:\Users\nsasp\AppData\Local\Temp\cc0L77uQ.o
+LOAD C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o
+LOAD C:\Users\nsasp\AppData\Local\Temp\ccIGfbI3.o
+LOAD C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
+LOAD C:\Users\nsasp\AppData\Local\Temp\cc5IZjeW.o
 LOAD c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1\libgcc.a
 START GROUP
 LOAD c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a
@@ -1964,84 +1968,83 @@ LOAD data_init
 .reginfo        0x0000000000000000       0x18
  .reginfo       0x0000000000000000       0x18 build/default/production/_ext/1434821282/bsp.o
 
-.stack          0x0000000080000310      0x400
- .stack         0x0000000080000310      0x400 stack
+.stack          0x0000000080000318      0x400
+ .stack         0x0000000080000318      0x400 stack
 
 .__vector_offset_BF810540_data
                 0x00000000bf810540       0x64
  .__vector_offset_BF810540_data
-                0x00000000bf810540       0x64 C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
+                0x00000000bf810540       0x64 C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
 
 .__vector_offset_BF8106E8_data
                 0x00000000bf8106e8       0x60
  .__vector_offset_BF8106E8_data
-                0x00000000bf8106e8       0x60 C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
+                0x00000000bf8106e8       0x60 C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
 
 .__vector_offset_BF8105B8_data
                 0x00000000bf8105b8       0x48
  .__vector_offset_BF8105B8_data
-                0x00000000bf8105b8       0x48 C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
+                0x00000000bf8105b8       0x48 C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
 
 .__vector_offset_BF810614_data
                 0x00000000bf810614       0x30
  .__vector_offset_BF810614_data
-                0x00000000bf810614       0x30 C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
+                0x00000000bf810614       0x30 C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
 
 .__vector_offset_BF81068C_data
                 0x00000000bf81068c       0x28
  .__vector_offset_BF81068C_data
-                0x00000000bf81068c       0x28 C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
+                0x00000000bf81068c       0x28 C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
 
 .__vector_offset_BF810650_data
                 0x00000000bf810650       0x24
  .__vector_offset_BF810650_data
-                0x00000000bf810650       0x24 C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
+                0x00000000bf810650       0x24 C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
 
 .__vector_offset_BF8107C8_data
                 0x00000000bf8107c8       0x1c
  .__vector_offset_BF8107C8_data
-                0x00000000bf8107c8       0x1c C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
+                0x00000000bf8107c8       0x1c C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
 
 .__vector_offset_BF8107A0_data
                 0x00000000bf8107a0       0x18
  .__vector_offset_BF8107A0_data
-                0x00000000bf8107a0       0x18 C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
+                0x00000000bf8107a0       0x18 C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
 
 .__vector_offset_BF8106D0_data
                 0x00000000bf8106d0       0x14
  .__vector_offset_BF8106D0_data
-                0x00000000bf8106d0       0x14 C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
+                0x00000000bf8106d0       0x14 C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
 
 .__vector_offset_BF8106B8_data
                 0x00000000bf8106b8       0x10
  .__vector_offset_BF8106B8_data
-                0x00000000bf8106b8       0x10 C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
+                0x00000000bf8106b8       0x10 C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
 
 .__vector_offset_BF810778_data
                 0x00000000bf810778       0x10
  .__vector_offset_BF810778_data
-                0x00000000bf810778       0x10 C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
+                0x00000000bf810778       0x10 C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
 
 .__vector_offset_BF810680_data
                 0x00000000bf810680        0x4
  .__vector_offset_BF810680_data
-                0x00000000bf810680        0x4 C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
+                0x00000000bf810680        0x4 C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
 
 .__vector_offset_BF810798_data
                 0x00000000bf810798        0x4
  .__vector_offset_BF810798_data
-                0x00000000bf810798        0x4 C:\Users\nsasp\AppData\Local\Temp\ccyZNYj8.o
+                0x00000000bf810798        0x4 C:\Users\nsasp\AppData\Local\Temp\ccFg8u9T.o
 
-.bss            0x0000000080000080       0x68
- .bss           0x0000000080000080       0x40 build/default/production/_ext/1360937237/main.o
-                0x0000000080000080                tbuf
-                0x00000000800000a0                rbuf
- .bss           0x00000000800000c0       0x28 build/default/production/_ext/298189674/plib_spi2_master.o
-                0x00000000800000c0                spi2Obj
+.data           0x0000000080000080       0x43
+ .data          0x0000000080000080       0x43 build/default/production/_ext/1360937237/main.o
+                0x0000000080000080                imu0
 
-.bss            0x00000000800000e8        0xc
- .bss           0x00000000800000e8        0xc build/default/production/_ext/1865254177/plib_gpio.o
-                0x00000000800000e8                portPinCbObj
+.bss            0x00000000800000c4       0x34
+ .bss           0x00000000800000c4       0x28 build/default/production/_ext/298189674/plib_spi2_master.o
+                0x00000000800000c4                spi2Obj
+ .bss           0x00000000800000ec        0xc build/default/production/_ext/1865254177/plib_gpio.o
+                0x00000000800000ec                portPinCbObj
 
 .text.PMU_Initialize
                 0x0000000090000260      0x744
@@ -2055,25 +2058,31 @@ LOAD data_init
                 0x00000000900009a4      0x4f0 build/default/production/_ext/60165520/plib_clk.o
                 0x00000000900009a4                CLK_Initialize
 
-.dinit          0x0000000090000e94      0x360
- .dinit         0x0000000090000e94      0x360 data_init
+.dinit          0x0000000090000e94      0x3a0
+ .dinit         0x0000000090000e94      0x3a0 data_init
 
 .text.SPI2_RX_InterruptHandler
-                0x00000000900011f4      0x21c
+                0x0000000090001234      0x21c
  .text.SPI2_RX_InterruptHandler
-                0x00000000900011f4      0x21c build/default/production/_ext/298189674/plib_spi2_master.o
-                0x00000000900011f4                SPI2_RX_InterruptHandler
+                0x0000000090001234      0x21c build/default/production/_ext/298189674/plib_spi2_master.o
+                0x0000000090001234                SPI2_RX_InterruptHandler
 
 .text.SPI2_WriteRead.part.0
-                0x0000000090001410      0x218
+                0x0000000090001450      0x218
  .text.SPI2_WriteRead.part.0
-                0x0000000090001410      0x218 build/default/production/_ext/298189674/plib_spi2_master.o
+                0x0000000090001450      0x218 build/default/production/_ext/298189674/plib_spi2_master.o
 
 .text.SPI2_TX_InterruptHandler
-                0x0000000090001628      0x110
+                0x0000000090001668      0x110
  .text.SPI2_TX_InterruptHandler
-                0x0000000090001628      0x110 build/default/production/_ext/298189674/plib_spi2_master.o
-                0x0000000090001628                SPI2_TX_InterruptHandler
+                0x0000000090001668      0x110 build/default/production/_ext/298189674/plib_spi2_master.o
+                0x0000000090001668                SPI2_TX_InterruptHandler
+
+.text.imu_getid
+                0x0000000090001778      0x10c
+ .text.imu_getid
+                0x0000000090001778      0x10c build/default/production/_ext/1360937237/bma490l.o
+                0x0000000090001778                imu_getid
 
 .text.CHANGE_NOTICE_A_Handler
                 0x0000000090000010       0xf0
@@ -2082,62 +2091,62 @@ LOAD data_init
                 0x0000000090000010                CHANGE_NOTICE_A_Handler
 
 .text.SPI2_RX_Handler
-                0x0000000090001738       0xf0
+                0x0000000090001884       0xf0
  .text.SPI2_RX_Handler
-                0x0000000090001738       0xf0 build/default/production/_ext/1171490990/interrupts.o
-                0x0000000090001738                SPI2_RX_Handler
+                0x0000000090001884       0xf0 build/default/production/_ext/1171490990/interrupts.o
+                0x0000000090001884                SPI2_RX_Handler
 
 .text.SPI2_TX_Handler
-                0x0000000090001828       0xf0
+                0x0000000090001974       0xf0
  .text.SPI2_TX_Handler
-                0x0000000090001828       0xf0 build/default/production/_ext/1171490990/interrupts.o
-                0x0000000090001828                SPI2_TX_Handler
+                0x0000000090001974       0xf0 build/default/production/_ext/1171490990/interrupts.o
+                0x0000000090001974                SPI2_TX_Handler
 
 .text.general_exception
-                0x0000000090001918       0xdc
+                0x0000000090001a64       0xdc
  .text.general_exception
-                0x0000000090001918       0xdc c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(general-exception.o)
-                0x0000000090001918                _general_exception_context
+                0x0000000090001a64       0xdc c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(general-exception.o)
+                0x0000000090001a64                _general_exception_context
 
 .text._cache_err_exception_context
-                0x00000000900019f4       0xd8
+                0x0000000090001b40       0xd8
  .text._cache_err_exception_context
-                0x00000000900019f4       0xd8 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(cache-err-exception.o)
-                0x00000000900019f4                _cache_err_exception_context
+                0x0000000090001b40       0xd8 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(cache-err-exception.o)
+                0x0000000090001b40                _cache_err_exception_context
 
 .text.simple_tlb_refill_context
-                0x0000000090001acc       0xd8
+                0x0000000090001c18       0xd8
  .text.simple_tlb_refill_context
-                0x0000000090001acc       0xd8 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(simple-tlb-refill-exception.o)
-                0x0000000090001acc                _simple_tlb_refill_exception_context
+                0x0000000090001c18       0xd8 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(simple-tlb-refill-exception.o)
+                0x0000000090001c18                _simple_tlb_refill_exception_context
 
 .tlb.__pic32_tlb_init_ebi_sqi
-                0x0000000090001ba4       0xbc
+                0x0000000090001cf0       0xbc
  .tlb.__pic32_tlb_init_ebi_sqi
-                0x0000000090001ba4       0xbc c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(pic32_init_tlb_ebi_sqi.o)
-                0x0000000090001ba4                __pic32_tlb_init_ebi_sqi
+                0x0000000090001cf0       0xbc c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(pic32_init_tlb_ebi_sqi.o)
+                0x0000000090001cf0                __pic32_tlb_init_ebi_sqi
 
-.text.imu_getid
-                0x0000000090001c60       0xa4
- .text.imu_getid
-                0x0000000090001c60       0xa4 build/default/production/_ext/1360937237/bma490l.o
-                0x0000000090001c60                imu_getid
+.text.imu_set_spimode
+                0x0000000090001dac       0x9c
+ .text.imu_set_spimode
+                0x0000000090001dac       0x9c build/default/production/_ext/1360937237/bma490l.o
+                0x0000000090001dac                imu_set_spimode
 
 .text.GPIO_Initialize
-                0x0000000090001d04       0x94
+                0x0000000090001e48       0x94
  .text.GPIO_Initialize
-                0x0000000090001d04       0x94 build/default/production/_ext/1865254177/plib_gpio.o
-                0x0000000090001d04                GPIO_Initialize
+                0x0000000090001e48       0x94 build/default/production/_ext/1865254177/plib_gpio.o
+                0x0000000090001e48                GPIO_Initialize
 
-.text           0x0000000090001d98       0x8c
- .text          0x0000000090001d98       0x8c c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(pic32_data_init.o)
-                0x0000000090001d98                __pic32_data_init
+.text           0x0000000090001edc       0x8c
+ .text          0x0000000090001edc       0x8c c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(pic32_data_init.o)
+                0x0000000090001edc                __pic32_data_init
 
 .text.SPI2_Initialize
-                0x0000000090001e24       0x78
+                0x0000000090001f68       0x78
  .text.SPI2_Initialize
-                0x0000000090001e24       0x78 build/default/production/_ext/298189674/plib_spi2_master.o
-                0x0000000090001e24                SPI2_Initialize
+                0x0000000090001f68       0x78 build/default/production/_ext/298189674/plib_spi2_master.o
+                0x0000000090001f68                SPI2_Initialize
 
 .text.SYS_Initialize
                 0x0000000090000110       0x64
@@ -2151,89 +2160,88 @@ LOAD data_init
                 0x0000000090000190       0x5c build/default/production/_ext/1865254177/plib_gpio.o
                 0x0000000090000190                CHANGE_NOTICE_A_InterruptHandler
 
-.text.imu_set_spimode
-                0x0000000090001e9c       0x58
- .text.imu_set_spimode
-                0x0000000090001e9c       0x58 build/default/production/_ext/1360937237/bma490l.o
-                0x0000000090001e9c                imu_set_spimode
-
 .text.SPI2_WriteRead
-                0x0000000090001ef4       0x54
+                0x0000000090001fe0       0x54
  .text.SPI2_WriteRead
-                0x0000000090001ef4       0x54 build/default/production/_ext/298189674/plib_spi2_master.o
-                0x0000000090001ef4                SPI2_WriteRead
+                0x0000000090001fe0       0x54 build/default/production/_ext/298189674/plib_spi2_master.o
+                0x0000000090001fe0                SPI2_WriteRead
 
 .text.main_entry
-                0x0000000090001f48       0x54
+                0x0000000090002034       0x54
  .text.main_entry
-                0x0000000090001f48       0x54 C:\Users\nsasp\AppData\Local\Temp\ccyDWoeG.o
-                0x0000000090001f7c                __crt0_exit
+                0x0000000090002034       0x54 C:\Users\nsasp\AppData\Local\Temp\ccX40Lgw.o
+                0x0000000090002068                __crt0_exit
 
 .text.EVIC_Initialize
-                0x0000000090001f9c       0x48
+                0x0000000090002088       0x48
  .text.EVIC_Initialize
-                0x0000000090001f9c       0x48 build/default/production/_ext/1865200349/plib_evic.o
-                0x0000000090001f9c                EVIC_Initialize
+                0x0000000090002088       0x48 build/default/production/_ext/1865200349/plib_evic.o
+                0x0000000090002088                EVIC_Initialize
+
+.text.main      0x00000000900020d0       0x34
+ .text.main     0x00000000900020d0       0x34 build/default/production/_ext/1360937237/main.o
+                0x00000000900020d0                main
 
 .text.SPI2_Write
-                0x0000000090001fe4       0x30
+                0x0000000090002104       0x30
  .text.SPI2_Write
-                0x0000000090001fe4       0x30 build/default/production/_ext/298189674/plib_spi2_master.o
-                0x0000000090001fe4                SPI2_Write
-
-.text.main      0x0000000090002014       0x30
- .text.main     0x0000000090002014       0x30 build/default/production/_ext/1360937237/main.o
-                0x0000000090002014                main
+                0x0000000090002104       0x30 build/default/production/_ext/298189674/plib_spi2_master.o
+                0x0000000090002104                SPI2_Write
 
 .text.BSP_Initialize
-                0x0000000090002044       0x1c
+                0x0000000090002134       0x1c
  .text.BSP_Initialize
-                0x0000000090002044       0x1c build/default/production/_ext/1434821282/bsp.o
-                0x0000000090002044                BSP_Initialize
+                0x0000000090002134       0x1c build/default/production/_ext/1434821282/bsp.o
+                0x0000000090002134                BSP_Initialize
 
-.MIPS.abiflags  0x0000000090002060       0x18
+.MIPS.abiflags  0x0000000090002150       0x18
  .MIPS.abiflags
-                0x0000000090002060       0x18 build/default/production/_ext/1434821282/bsp.o
+                0x0000000090002150       0x18 build/default/production/_ext/1434821282/bsp.o
 
 .text._general_exception_handler
-                0x0000000090002078       0x18
+                0x0000000090002168       0x18
  .text._general_exception_handler
-                0x0000000090002078       0x18 build/default/production/_ext/1171490990/exceptions.o
-                0x0000000090002078                _general_exception_handler
+                0x0000000090002168       0x18 build/default/production/_ext/1171490990/exceptions.o
+                0x0000000090002168                _general_exception_handler
 
-.text           0x0000000090002090       0x18
- .text          0x0000000090002090       0x18 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
-                0x0000000090002090                _nmi_handler
+.text           0x0000000090002180       0x18
+ .text          0x0000000090002180       0x18 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
+                0x0000000090002180                _nmi_handler
 
-.text.SPI2_IsTransmitterBusy
+.text.SPI2_CallbackRegister
                 0x00000000900001ec       0x14
- .text.SPI2_IsTransmitterBusy
+ .text.SPI2_CallbackRegister
                 0x00000000900001ec       0x14 build/default/production/_ext/298189674/plib_spi2_master.o
-                0x00000000900001ec                SPI2_IsTransmitterBusy
+                0x00000000900001ec                SPI2_CallbackRegister
+
+.text.imu_cs_cb
+                0x0000000090002198       0x14
+ .text.imu_cs_cb
+                0x0000000090002198       0x14 build/default/production/_ext/1360937237/bma490l.o
 
 .text.wifi_spi_write
-                0x00000000900020a8       0x10
+                0x00000000900021ac       0x10
  .text.wifi_spi_write
-                0x00000000900020a8       0x10 build/default/production/_ext/60165520/plib_clk.o
-                0x00000000900020a8                wifi_spi_write
+                0x00000000900021ac       0x10 build/default/production/_ext/60165520/plib_clk.o
+                0x00000000900021ac                wifi_spi_write
 
 .text._bootstrap_exception_handler
-                0x00000000900020b8       0x10
+                0x00000000900021bc       0x10
  .text._bootstrap_exception_handler
-                0x00000000900020b8       0x10 build/default/production/_ext/1171490990/exceptions.o
-                0x00000000900020b8                _bootstrap_exception_handler
+                0x00000000900021bc       0x10 build/default/production/_ext/1171490990/exceptions.o
+                0x00000000900021bc                _bootstrap_exception_handler
 
 .text._cache_err_exception_handler
-                0x00000000900020c8       0x10
+                0x00000000900021cc       0x10
  .text._cache_err_exception_handler
-                0x00000000900020c8       0x10 build/default/production/_ext/1171490990/exceptions.o
-                0x00000000900020c8                _cache_err_exception_handler
+                0x00000000900021cc       0x10 build/default/production/_ext/1171490990/exceptions.o
+                0x00000000900021cc                _cache_err_exception_handler
 
 .text._simple_tlb_refill_exception_handler
-                0x00000000900020d8       0x10
+                0x00000000900021dc       0x10
  .text._simple_tlb_refill_exception_handler
-                0x00000000900020d8       0x10 build/default/production/_ext/1171490990/exceptions.o
-                0x00000000900020d8                _simple_tlb_refill_exception_handler
+                0x00000000900021dc       0x10 build/default/production/_ext/1171490990/exceptions.o
+                0x00000000900021dc                _simple_tlb_refill_exception_handler
 
 .text._on_reset
                 0x0000000090000174        0x8
@@ -2242,7 +2250,7 @@ LOAD data_init
                 0x0000000090000174                _on_reset
 
 .text._on_bootstrap
-                0x00000000900020e8        0x8
+                0x00000000900021ec        0x8
  .text._on_bootstrap
-                0x00000000900020e8        0x8 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
-                0x00000000900020e8                _on_bootstrap
+                0x00000000900021ec        0x8 c:/program files/microchip/xc32/v4.10/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+                0x00000000900021ec                _on_bootstrap

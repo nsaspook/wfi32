@@ -22,11 +22,19 @@ extern "C" {
 #define CHIP_ID_INDEX	1
 #define BMA490L_ID	0x1A
 
-	
-	extern uint8_t rbuf[32], tbuf[32];
-	
-	void imu_set_spimode(void);
-	bool imu_getid(void);
+#define SYS_FREQ	200000000 // Running at 200MHz
+
+	typedef struct _imu_cmd_t {
+		uint8_t device;
+		uint8_t rbuf[32], tbuf[32];
+		bool online, run;
+	} imu_cmd_t;
+
+	void imu_set_spimode(imu_cmd_t *);
+	bool imu_getid(imu_cmd_t *);
+	void delay_us(uint32_t);
+
+	extern imu_cmd_t imu0;
 
 #ifdef	__cplusplus
 }
