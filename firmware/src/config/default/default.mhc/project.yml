@@ -55,13 +55,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: F9FDAD4DF038F22A9545C0624CB209B1
-- generatedChecksum: D029AA18F10FBE5F1123938F6282A46C
+- generatedChecksum: 726354D31BF637D9548833482C047278
   logicalPath: config/default/peripheral/spi/spi_master
   name: plib_spi2_master.c
   physicalPath: peripheral/spi/spi_master
   security: NON_SECURE
   type: SOURCE
-  userChecksum: D029AA18F10FBE5F1123938F6282A46C
+  userChecksum: 726354D31BF637D9548833482C047278
 - generatedChecksum: 290251D6FF0845DC4259E0EF74DCB657
   logicalPath: config/default
   name: pmu_init.c

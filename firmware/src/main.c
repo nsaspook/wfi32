@@ -49,12 +49,15 @@ int main(void)
 	SYS_Initialize(NULL);
 
 	imu_set_spimode(&imu0); // init BMA490L chip
+	while (!imu_getid(&imu0)) {
+	};
 
 	while (true) {
 		/* Maintain state machines of all polled MPLAB Harmony modules. */
 		SYS_Tasks();
 
-		imu_getid(&imu0); // check BMA490L comm status by reading ID
+		imu_getdata(&imu0); // read data from the chip
+		delay_us(500);
 	}
 
 	/* Execution should not come here during normal operation */
