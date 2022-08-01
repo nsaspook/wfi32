@@ -25,7 +25,7 @@ extern "C" {
 #define CHIP_ID_DATA	1
 #define BMA490L_ID	0x1A
 
-#define BMA490_DATA_LEN                 17
+#define BMA490_DATA_LEN                 11
 #define BMA490_DATA_INDEX		0x12
 
 #define ACCEL15_RD_WR_MAX_LEN		0x0514

@@ -70,4 +70,4 @@ children:
       - type: User
         attributes: {value: '1'}
 - type: ElementPosition
-  attributes: {x: '340', y: '20', id: spi2}
+  attributes: {x: '139', y: '271', id: spi2}

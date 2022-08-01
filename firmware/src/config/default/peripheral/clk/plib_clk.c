@@ -201,7 +201,7 @@ void CLK_Initialize( void )
 			/*Configure SPLL*/
 			CFGCON3 = 10;
 			CFGCON0bits.SPLLHWMD = 1;
-			
+
 			/* SPLLCON = 0x01496869 */
 			/* SPLLBSWSEL   = 1   */
 			/* SPLLPWDN     = PLL_ON     */
@@ -480,7 +480,7 @@ void CLK_Initialize( void )
 
     PMD1 = 0x25818981;
     PMD2 = 0x7f0f0f;
-    PMD3 = 0x19031117;
+    PMD3 = 0x19031116;
 
 
     /* Lock system since done with clock configuration */
