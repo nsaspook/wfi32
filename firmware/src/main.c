@@ -25,6 +25,8 @@
 #include <stddef.h>                     // Defines NULL
 #include <stdbool.h>                    // Defines true
 #include <stdlib.h>                     // Defines EXIT_FAILURE
+#include <stdio.h>
+#include <string.h>
 #include "definitions.h"                // SYS function prototypes
 
 #include "bma490.h"
@@ -48,6 +50,7 @@ int main(void)
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
 
+	bma490_version();
 	imu_set_spimode(&imu0); // init BMA490L chip
 	while (!imu_getid(&imu0)) {
 	};

@@ -18,6 +18,8 @@ extern "C" {
 #include <math.h>
 #include "definitions.h"                // SYS function prototypes
 
+#define BMA490_DRIVER "V0.1"      
+	
 #define RBIT		0b10000000
 #define WBIT            0b00000000
 #define CHIP_ID		0
@@ -55,6 +57,7 @@ extern "C" {
 	void delay_us(uint32_t);
 	void getAllData(sBma490SensorData_t *, imu_cmd_t *);
 	bool imu_getdata(imu_cmd_t *);
+	void bma490_version(void);
 
 	extern imu_cmd_t imu0;
 

@@ -11,6 +11,8 @@ static void move_bma490_transfer_data(uint8_t *, imu_cmd_t *);
 static uint32_t sensortime;
 float accelRange = BMA490_ACCEL_MG_LSB_2G * 9.8;
 
+static const char *build_date = __DATE__, *build_time = __TIME__;
+
 uint8_t bma490l_config_file[ 1301 ] = {
 	0x5e,
 	0xc8, 0x2e, 0x00, 0x2e, 0xc8, 0x2e, 0x00, 0x2e, 0xc8, 0x2e, 0x00, 0x2e, 0xc8, 0x2e, 0x00, 0x2e, 0xc8, 0x2e, 0x00,
@@ -259,4 +261,9 @@ void delay_us(uint32_t us)
 
 	while (us > _CP0_GET_COUNT()) {
 	}; // Wait until Core Timer count reaches the number we calculated earlier
+}
+
+void bma490_version(void)
+{
+	printf("\r--- BMA490L Driver Version  %s %s %s ---\r\n", BMA490_DRIVER, build_date, build_time);
 }
