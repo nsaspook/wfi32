@@ -38,6 +38,9 @@ imu_cmd_t imu0 = {
 	.run = false,
 };
 
+sBma490SensorData_t accel;
+
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -60,7 +63,10 @@ int main(void)
 		SYS_Tasks();
 
 		imu_getdata(&imu0); // read data from the chip
-		delay_us(500);
+		getAllData(&accel, &imu0);
+		printf(" %8.6f %8.6f %8.6f   %u \r\n", accel.x, accel.y, accel.z, accel.sensortime);
+
+		delay_us(10000);
 	}
 
 	/* Execution should not come here during normal operation */
@@ -68,6 +74,17 @@ int main(void)
 	return( EXIT_FAILURE);
 }
 
+/*
+ * int1 from IMU ISR
+ */
+void update_imu_int1(uint32_t a, uintptr_t b)
+{
+	static int8_t i = 0;
+
+	if (!i++) {
+		LED_GREEN_Toggle();
+	}
+}
 
 /*******************************************************************************
  End of File

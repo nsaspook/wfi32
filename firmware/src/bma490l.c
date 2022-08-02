@@ -8,6 +8,8 @@ static bool imu_cs(imu_cmd_t *);
 static void imu_cs_cb(uintptr_t);
 static void imu_cs_disable(imu_cmd_t *);
 static void move_bma490_transfer_data(uint8_t *, imu_cmd_t *);
+static void init_imu_int(void);
+
 static uint32_t sensortime;
 float accelRange = BMA490_ACCEL_MG_LSB_2G * 9.8;
 
@@ -106,25 +108,24 @@ bool imu_getdata(imu_cmd_t * imu)
 void move_bma490_transfer_data(uint8_t *pBuf, imu_cmd_t * imu)
 {
 	if (pBuf) {
-		for (int i = 5; i < 28; i++) {
-			pBuf[i - 5] = imu->rbuf[i];
+		for (int i = 1; i < 30; i++) {
+			pBuf[i - 1] = imu->rbuf[i];
 		}
 	}
 }
 
 void getAllData(sBma490SensorData_t *accel, imu_cmd_t * imu)
 {
-	uint8_t data[23] = {0};
+	uint8_t data[32] = {0};
 	int16_t x = 0, y = 0, z = 0;
 
 	// put your main code here, to run repeatedly:
 	move_bma490_transfer_data(data, imu);
-	//    readReg(BMX160_MAG_DATA_ADDR, data, 23);
-	sensortime = (data[22] << 16) | (data[21] << 8) | data[20];
+	sensortime = (data[9] << 16) | (data[8] << 8) | data[7];
 	if (accel) {
-		x = (int16_t) (((uint16_t) data[15] << 8) | data[14]);
-		y = (int16_t) (((uint16_t) data[17] << 8) | data[16]);
-		z = (int16_t) (((uint16_t) data[19] << 8) | data[18]);
+		x = (int16_t) (((uint16_t) data[2] << 8) | data[1]);
+		y = (int16_t) (((uint16_t) data[4] << 8) | data[3]);
+		z = (int16_t) (((uint16_t) data[6] << 8) | data[5]);
 		accel->x = x * accelRange;
 		accel->y = y * accelRange;
 		accel->z = z * accelRange;
@@ -168,7 +169,21 @@ void imu_set_spimode(imu_cmd_t * imu)
 	imu_cs_disable(imu);
 
 	imu_cs(imu);
-	imu->tbuf[0] = 0x7C;
+	imu->tbuf[0] = 0x7C; // PWR_CONF
+	imu->tbuf[1] = 0x00;
+	SPI2_Write(imu->tbuf, 2);
+	delay_us(1000);
+	imu_cs_disable(imu);
+
+	imu_cs(imu);
+	imu->tbuf[0] = 0x40; // ACC_CONF
+	imu->tbuf[1] = 0xAC;
+	SPI2_Write(imu->tbuf, 2);
+	delay_us(1000);
+	imu_cs_disable(imu);
+
+	imu_cs(imu);
+	imu->tbuf[0] = 0x41; // ACC_RANGE
 	imu->tbuf[1] = 0x00;
 	SPI2_Write(imu->tbuf, 2);
 	delay_us(1000);
@@ -182,7 +197,7 @@ void imu_set_spimode(imu_cmd_t * imu)
 	imu_cs_disable(imu);
 
 	imu_cs(imu);
-	SPI2_Write(bma490l_config_file, ACCEL15_RD_WR_MAX_LEN);
+	//	SPI2_Write(bma490l_config_file, ACCEL15_RD_WR_MAX_LEN);
 	delay_us(1000);
 	imu_cs_disable(imu);
 
@@ -194,11 +209,27 @@ void imu_set_spimode(imu_cmd_t * imu)
 	imu_cs_disable(imu);
 
 	imu_cs(imu);
-	imu->tbuf[0] = 0x7D;
+	imu->tbuf[0] = 0x58; // INT_MAP_DATA
 	imu->tbuf[1] = 0x04;
 	SPI2_Write(imu->tbuf, 2);
 	delay_us(1000);
 	imu_cs_disable(imu);
+
+	imu_cs(imu);
+	imu->tbuf[0] = 0x53; // INT1_IO_CTRL
+	imu->tbuf[1] = 0x08;
+	SPI2_Write(imu->tbuf, 2);
+	delay_us(1000);
+	imu_cs_disable(imu);
+
+	imu_cs(imu);
+	imu->tbuf[0] = 0x7D; // PWR_CTRL
+	imu->tbuf[1] = 0x04;
+	SPI2_Write(imu->tbuf, 2);
+	delay_us(1000);
+	imu_cs_disable(imu);
+	
+	init_imu_int();
 }
 
 /*
@@ -267,3 +298,15 @@ void bma490_version(void)
 {
 	printf("\r--- BMA490L Driver Version  %s %s %s ---\r\n", BMA490_DRIVER, build_date, build_time);
 }
+
+/*
+ * setup external interrupt for IMU data update interrupt trigger output
+ */
+void init_imu_int(void)
+{
+	INTCONCLR = _INTCON_INT2EP_MASK; //External interrupt on falling edge
+	IFS0CLR = _IFS0_INT2IF_MASK; // Clear the external interrupt flag
+	EVIC_ExternalInterruptCallbackRegister(EXTERNAL_INT_2, update_imu_int1, 0);
+	EVIC_ExternalInterruptEnable(EXTERNAL_INT_2);
+}
+
