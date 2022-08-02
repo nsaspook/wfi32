@@ -177,7 +177,7 @@ void imu_set_spimode(imu_cmd_t * imu)
 
 	imu_cs(imu);
 	imu->tbuf[0] = 0x40; // ACC_CONF
-	imu->tbuf[1] = 0xAC;
+	imu->tbuf[1] = 0xA9;
 	SPI2_Write(imu->tbuf, 2);
 	delay_us(1000);
 	imu_cs_disable(imu);

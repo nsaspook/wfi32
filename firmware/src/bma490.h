@@ -42,7 +42,7 @@ extern "C" {
 	typedef struct _imu_cmd_t {
 		uint8_t device;
 		uint8_t rbuf[64], tbuf[64];
-		volatile bool online, run;
+		volatile bool online, run, update;
 	} imu_cmd_t;
 
 	typedef struct {

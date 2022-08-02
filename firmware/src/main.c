@@ -36,6 +36,7 @@ imu_cmd_t imu0 = {
 	.online = false,
 	.device = 0,
 	.run = false,
+	.update = true,
 };
 
 sBma490SensorData_t accel;
@@ -62,11 +63,13 @@ int main(void)
 		/* Maintain state machines of all polled MPLAB Harmony modules. */
 		SYS_Tasks();
 
-		imu_getdata(&imu0); // read data from the chip
-		getAllData(&accel, &imu0);
-		printf(" %8.6f %8.6f %8.6f   %u \r\n", accel.x, accel.y, accel.z, accel.sensortime);
-
-		delay_us(10000);
+		if (imu0.update) {
+			imu_getdata(&imu0); // read data from the chip
+			imu0.update = false;
+			getAllData(&accel, &imu0);
+			printf(" %8.6f %8.6f %8.6f   %u \r\n", accel.x, accel.y, accel.z, accel.sensortime);
+		}
+		delay_us(100);
 	}
 
 	/* Execution should not come here during normal operation */
@@ -84,6 +87,7 @@ void update_imu_int1(uint32_t a, uintptr_t b)
 	if (!i++) {
 		LED_GREEN_Toggle();
 	}
+	imu0.update = true;
 }
 
 /*******************************************************************************
