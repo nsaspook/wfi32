@@ -1,26 +1,26 @@
 /*******************************************************************************
- System Interrupts File
-
-  Company:
-    Microchip Technology Inc.
+  PIC32MZ L1 Cache Header
 
   File Name:
-    interrupt.c
+    device_cache.h
 
   Summary:
-    Interrupt vectors mapping
+    Preprocessor definitions to provide L1 Cache control.
 
   Description:
-    This file maps all the interrupt vectors to their corresponding
-    implementations. If a particular module interrupt is used, then its ISR
-    definition can be found in corresponding PLIB source file. If a module
-    interrupt is not used, then its ISR implementation is mapped to dummy
-    handler.
- *******************************************************************************/
+    An MPLAB PLIB or Project can include this header to perform cache cleans,
+    invalidates etc. For the DCache and ICache.
+
+  Remarks:
+    This header should not define any prototypes or data definitions, or
+    include any files that do.  The file only provides macro definitions for
+    build-time.
+
+*******************************************************************************/
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2019 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -40,57 +40,53 @@
 * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
- *******************************************************************************/
+*******************************************************************************/
 // DOM-IGNORE-END
+
+#ifndef DEVICE_CACHE_H
+#define DEVICE_CACHE_H
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
-
-#include "interrupts.h"
-#include "definitions.h"
-
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: System Interrupt Vector Functions
-// *****************************************************************************
-// *****************************************************************************
-
-
-void EXTERNAL_2_InterruptHandler( void );
-void CHANGE_NOTICE_A_InterruptHandler( void );
-void SPI2_RX_InterruptHandler( void );
-void SPI2_TX_InterruptHandler( void );
-
-
-
-/* All the handlers are defined here.  Each will call its PLIB-specific function. */
-void __ISR(_EXTERNAL_2_VECTOR, ipl3SRS) EXTERNAL_2_Handler (void)
-{
-    EXTERNAL_2_InterruptHandler();
-}
-
-void __ISR(_CHANGE_NOTICE_A_VECTOR, ipl1SRS) CHANGE_NOTICE_A_Handler (void)
-{
-    CHANGE_NOTICE_A_InterruptHandler();
-}
-
-void __ISR(_SPI2_RX_VECTOR, ipl2SRS) SPI2_RX_Handler (void)
-{
-    SPI2_RX_InterruptHandler();
-}
-
-void __ISR(_SPI2_TX_VECTOR, ipl2SRS) SPI2_TX_Handler (void)
-{
-    SPI2_TX_InterruptHandler();
-}
-
-
-
-
-/*******************************************************************************
- End of File
+/*  This section Includes other configuration headers necessary to completely
+    define this configuration.
 */
+
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+// DOM-IGNORE-END
+
+// *****************************************************************************
+// *****************************************************************************
+// Section: L1 Cache Configuration
+// *****************************************************************************
+// *****************************************************************************
+#define ICACHE_ENABLE()
+#define ICACHE_DISABLE()
+#define ICACHE_INVALIDATE()                            CACHE_InstructionCacheFlush()
+#define INSTRUCTION_CACHE_ENABLED                      true
+
+#define DCACHE_ENABLE()
+#define DCACHE_DISABLE()
+#define DCACHE_CLEAN()
+#define DCACHE_CLEAN_INVALIDATE()
+#define DCACHE_INVALIDATE()                            CACHE_DataCacheFlush()
+#define DCACHE_CLEAN_BY_ADDR(addr,sz)                  CACHE_DataCacheClean(addr,sz)
+#define DCACHE_INVALIDATE_BY_ADDR(addr,sz)             CACHE_DataCacheInvalidate(addr,sz)
+#define DCACHE_CLEAN_INVALIDATE_BY_ADDR(addr,sz)       CACHE_DataCacheClean(addr,sz)
+#define DATA_CACHE_ENABLED                             true
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
+#endif
+//DOM-IGNORE-END
+
+#endif // #ifndef DEVICE_CACHE_H

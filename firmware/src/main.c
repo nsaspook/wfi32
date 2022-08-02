@@ -67,7 +67,7 @@ int main(void)
 			imu_getdata(&imu0); // read data from the chip
 			imu0.update = false;
 			getAllData(&accel, &imu0);
-			printf(" %8.6f %8.6f %8.6f   %u \r\n", accel.x, accel.y, accel.z, accel.sensortime);
+			printf(" %5.3f %5.3f %5.3f   %u \r\n", accel.x, accel.y, accel.z, accel.sensortime);
 		}
 		delay_us(100);
 	}

@@ -12,6 +12,13 @@ children:
       - type: Dynamic
         attributes: {id: stdio, value: uart1}
   - type: Boolean
+    attributes: {id: STDIN_BUFF_MODE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
+  - type: Boolean
     attributes: {id: STDOUT_BUFF_MODE}
     children:
     - type: Values

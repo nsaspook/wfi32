@@ -10,6 +10,10 @@
             <itemPath>../src/config/default/bsp/bsp.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="peripheral" projectFiles="true">
+            <logicalFolder name="f6" displayName="cache" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/cache/plib_cache.h</itemPath>
+              <itemPath>../src/config/default/peripheral/cache/plib_cache_pic32mz.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="f1" displayName="clk" projectFiles="true">
               <itemPath>../src/config/default/peripheral/clk/plib_clk.h</itemPath>
             </logicalFolder>
@@ -34,6 +38,7 @@
           <itemPath>../src/config/default/toolchain_specifics.h</itemPath>
           <itemPath>../src/config/default/definitions.h</itemPath>
           <itemPath>../src/config/default/interrupts.h</itemPath>
+          <itemPath>../src/config/default/device_cache.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <itemPath>../src/bma490.h</itemPath>
@@ -56,6 +61,11 @@
             <itemPath>../src/config/default/bsp/bsp.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f3" displayName="peripheral" projectFiles="true">
+            <logicalFolder name="f6" displayName="cache" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/cache/plib_cache_local.h</itemPath>
+              <itemPath>../src/config/default/peripheral/cache/plib_cache.c</itemPath>
+              <itemPath>../src/config/default/peripheral/cache/plib_cache_pic32mz.S</itemPath>
+            </logicalFolder>
             <logicalFolder name="f1" displayName="clk" projectFiles="true">
               <itemPath>../src/config/default/peripheral/clk/plib_clk.c</itemPath>
             </logicalFolder>
@@ -118,7 +128,7 @@
         <platformTool>PKOBSKDEPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.10</languageToolchainVersion>
-        <platform>3</platform>
+        <platform>2</platform>
       </toolsSet>
       <packs>
         <pack name="PIC32MZ-W_DFP" vendor="Microchip" version="1.5.203"/>

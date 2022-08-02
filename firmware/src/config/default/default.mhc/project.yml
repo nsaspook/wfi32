@@ -13,20 +13,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: AB67D8A7D0606ADFF3E9184E6CB5B5F9
-- generatedChecksum: 81F70AB4078677AE474229E24255757D
+- generatedChecksum: 9058A9BFED8F5705E116E532E69DFC95
   logicalPath: config/default
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 81F70AB4078677AE474229E24255757D
-- generatedChecksum: 3D107F49045A17366FC514FAEA9BFF3D
+  userChecksum: 9058A9BFED8F5705E116E532E69DFC95
+- generatedChecksum: DA1D42D624E1177F3FE282D726C9F8BA
   logicalPath: config/default
   name: interrupts.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 3D107F49045A17366FC514FAEA9BFF3D
+  userChecksum: DA1D42D624E1177F3FE282D726C9F8BA
 - generatedChecksum: null
   logicalPath: ''
   name: main.c
@@ -34,6 +34,27 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
+- generatedChecksum: 65A7BD3CB0B8FE05768B2EC9A503C3AB
+  logicalPath: config/default/peripheral/cache
+  name: plib_cache.c
+  physicalPath: peripheral/cache
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 65A7BD3CB0B8FE05768B2EC9A503C3AB
+- generatedChecksum: 4FD2B20C75E8ABCE5AFD77297FA520F4
+  logicalPath: config/default/peripheral/cache
+  name: plib_cache_local.h
+  physicalPath: peripheral/cache
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 4FD2B20C75E8ABCE5AFD77297FA520F4
+- generatedChecksum: 0DA10C8889278A796D0EE4C6096B57C3
+  logicalPath: config/default/peripheral/cache
+  name: plib_cache_pic32mz.S
+  physicalPath: peripheral/cache
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 0DA10C8889278A796D0EE4C6096B57C3
 - generatedChecksum: BA841A0CA2CC3E42E13BED0665135F07
   logicalPath: config/default/peripheral/clk
   name: plib_clk.c
@@ -41,13 +62,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: BA841A0CA2CC3E42E13BED0665135F07
-- generatedChecksum: F5E844D7FB8453C545F7FE3D3C8D8A20
+- generatedChecksum: 31939EE66AAD6C7BB4B9C070E18F8187
   logicalPath: config/default/peripheral/evic
   name: plib_evic.c
   physicalPath: peripheral/evic
   security: NON_SECURE
   type: SOURCE
-  userChecksum: F5E844D7FB8453C545F7FE3D3C8D8A20
+  userChecksum: 31939EE66AAD6C7BB4B9C070E18F8187
 - generatedChecksum: F9FDAD4DF038F22A9545C0624CB209B1
   logicalPath: config/default/peripheral/gpio
   name: plib_gpio.c
@@ -90,13 +111,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 1FF2DDF3EFAEA5BC38D5BAF24BB952F4
-- generatedChecksum: 5B306C4539A93A426862D81B658CFBED
+- generatedChecksum: 76C14E3014A2A330909C75C28B0AC1C0
   logicalPath: config/default
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 5B306C4539A93A426862D81B658CFBED
+  userChecksum: 76C14E3014A2A330909C75C28B0AC1C0
 - generatedChecksum: E189C26B2269F8DE46033CCD0621958D
   logicalPath: config/default
   name: device.h
@@ -104,6 +125,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: E189C26B2269F8DE46033CCD0621958D
+- generatedChecksum: 1CA1C2C02834207DCB4B0E3C00338FCC
+  logicalPath: config/default
+  name: device_cache.h
+  physicalPath: ''
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 1CA1C2C02834207DCB4B0E3C00338FCC
 - generatedChecksum: 4CF4A86296482D5331331BA301C20BB2
   logicalPath: config/default
   name: interrupts.h
@@ -111,6 +139,20 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 4CF4A86296482D5331331BA301C20BB2
+- generatedChecksum: 37885E3505BF5B0FD6AFE768807361C1
+  logicalPath: config/default/peripheral/cache
+  name: plib_cache.h
+  physicalPath: peripheral/cache
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 37885E3505BF5B0FD6AFE768807361C1
+- generatedChecksum: 3D2558D7758EF020BBF792820203C0A2
+  logicalPath: config/default/peripheral/cache
+  name: plib_cache_pic32mz.h
+  physicalPath: peripheral/cache
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 3D2558D7758EF020BBF792820203C0A2
 - generatedChecksum: F4C7B8A950B1D12FF6EC959D0A996B5B
   logicalPath: config/default/peripheral/clk
   name: plib_clk.h
