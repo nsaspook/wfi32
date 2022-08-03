@@ -64,14 +64,11 @@ void EXTERNAL_2_InterruptHandler( void );
 void CHANGE_NOTICE_A_InterruptHandler( void );
 void SPI2_RX_InterruptHandler( void );
 void SPI2_TX_InterruptHandler( void );
+void TIMER_6_InterruptHandler( void );
 
 
 
 /* All the handlers are defined here.  Each will call its PLIB-specific function. */
-void __ISR(_TIMER_1_VECTOR, ipl1SRS) TIMER_1_Handler (void)
-{
-}
-
 void __ISR(_EXTERNAL_2_VECTOR, ipl3SRS) EXTERNAL_2_Handler (void)
 {
     EXTERNAL_2_InterruptHandler();
@@ -90,6 +87,11 @@ void __ISR(_SPI2_RX_VECTOR, ipl2SRS) SPI2_RX_Handler (void)
 void __ISR(_SPI2_TX_VECTOR, ipl2SRS) SPI2_TX_Handler (void)
 {
     SPI2_TX_InterruptHandler();
+}
+
+void __ISR(_TIMER_6_VECTOR, ipl1SRS) TIMER_6_Handler (void)
+{
+    TIMER_6_InterruptHandler();
 }
 
 

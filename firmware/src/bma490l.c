@@ -2,7 +2,6 @@
 
 static uint8_t R_ID_CMD[2] = {CHIP_ID | RBIT};
 static uint8_t R_DATA_CMD[64] = {BMA490_DATA_INDEX | RBIT, BMA490_DATA_LEN};
-//static uint8_t R_DATA_CMD[64] = {0xff,0x00,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,};
 
 static bool imu_cs(imu_cmd_t *);
 static void imu_cs_cb(uintptr_t);
@@ -11,7 +10,6 @@ static void move_bma490_transfer_data(uint8_t *, imu_cmd_t *);
 static void init_imu_int(void);
 
 static uint32_t sensortime;
-float accelRange = BMA490_ACCEL_MG_LSB_2G * 9.8;
 
 static const char *build_date = __DATE__, *build_time = __TIME__;
 
@@ -118,6 +116,23 @@ void getAllData(sBma490SensorData_t *accel, imu_cmd_t * imu)
 {
 	uint8_t data[32] = {0};
 	int16_t x = 0, y = 0, z = 0;
+	float accelRange;
+
+	switch (acc_range) {
+	case range_16g:
+		accelRange = BMA490_ACCEL_MG_LSB_16G * 9.8 * BMA490_ACCEL_MG_SCALE;
+		break;
+	case range_8g:
+		accelRange = BMA490_ACCEL_MG_LSB_8G * 9.8 * BMA490_ACCEL_MG_SCALE;
+		break;
+	case range_4g:
+		accelRange = BMA490_ACCEL_MG_LSB_4G * 9.8 * BMA490_ACCEL_MG_SCALE;
+		break;
+	case range_2g:
+	default:
+		accelRange = BMA490_ACCEL_MG_LSB_2G * 9.8 * BMA490_ACCEL_MG_SCALE;
+		break;
+	}
 
 	// put your main code here, to run repeatedly:
 	move_bma490_transfer_data(data, imu);
@@ -184,7 +199,7 @@ void imu_set_spimode(imu_cmd_t * imu)
 
 	imu_cs(imu);
 	imu->tbuf[0] = 0x41; // ACC_RANGE
-	imu->tbuf[1] = 0x00;
+	imu->tbuf[1] = acc_range;
 	SPI2_Write(imu->tbuf, 2);
 	delay_us(1000);
 	imu_cs_disable(imu);
@@ -228,7 +243,7 @@ void imu_set_spimode(imu_cmd_t * imu)
 	SPI2_Write(imu->tbuf, 2);
 	delay_us(1000);
 	imu_cs_disable(imu);
-	
+
 	init_imu_int();
 }
 

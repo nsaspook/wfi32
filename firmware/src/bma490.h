@@ -18,8 +18,8 @@ extern "C" {
 #include <math.h>
 #include "definitions.h"                // SYS function prototypes
 
-#define BMA490_DRIVER "V0.110"      
-	
+#define BMA490_DRIVER "V0.120"      
+
 #define RBIT		0b10000000
 #define WBIT            0b00000000
 #define CHIP_ID		0
@@ -34,10 +34,24 @@ extern "C" {
 
 #define SYS_FREQ	200000000 // Running at 200MHz
 
-#define BMA490_ACCEL_MG_LSB_2G      0.000061035F   ///< Macro for mg per LSB at +/- 2g sensitivity (1 LSB = 0.000061035mg) */
-#define BMA490_ACCEL_MG_LSB_4G      0.000122070F   ///< Macro for mg per LSB at +/- 4g sensitivity (1 LSB = 0.000122070mg) */
-#define BMA490_ACCEL_MG_LSB_8G      0.000244141F   ///< Macro for mg per LSB at +/- 8g sensitivity (1 LSB = 0.000244141mg) */
-#define BMA490_ACCEL_MG_LSB_16G     0.000488281F   ///< Macro for mg per LSB at +/- 16g sensitivity (1 LSB = 0.000488281mg) */
+#define imu_timeout	2000	// timeout for IMU ID data from query
+#define log_timeout	50	// timeout for IMU interrupts
+
+	enum accel_g {
+		range_2g = 0x00,
+		range_4g = 0x01,
+		range_8g = 0x02,
+		range_16g = 0x03,
+	};
+
+#define BMA490_ACCEL_MG_LSB_2G		0.000061035F   ///< Macro for mg per LSB at +/- 2g sensitivity (1 LSB = 0.000061035mg) */
+#define BMA490_ACCEL_MG_LSB_4G		0.000122070F   ///< Macro for mg per LSB at +/- 4g sensitivity (1 LSB = 0.000122070mg) */
+#define BMA490_ACCEL_MG_LSB_8G		0.000244141F   ///< Macro for mg per LSB at +/- 8g sensitivity (1 LSB = 0.000244141mg) */
+#define BMA490_ACCEL_MG_LSB_16G		0.000488281F   ///< Macro for mg per LSB at +/- 16g sensitivity (1 LSB = 0.000488281mg) */
+
+#define BMA490_ACCEL_MG_SCALE		1.000000000F
+
+#define acc_range	range_4g // set IMU for the desired G range
 
 	typedef struct _imu_cmd_t {
 		uint8_t device;
@@ -61,7 +75,6 @@ extern "C" {
 
 	extern imu_cmd_t imu0;
 	void update_imu_int1(uint32_t, uintptr_t);
-	
 
 #ifdef	__cplusplus
 }

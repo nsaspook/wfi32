@@ -29,9 +29,9 @@
                 <itemPath>../src/config/default/peripheral/spi/spi_master/plib_spi2_master.h</itemPath>
               </logicalFolder>
             </logicalFolder>
-            <logicalFolder name="f7" displayName="tmr1" projectFiles="true">
-              <itemPath>../src/config/default/peripheral/tmr1/plib_tmr1_common.h</itemPath>
-              <itemPath>../src/config/default/peripheral/tmr1/plib_tmr1.h</itemPath>
+            <logicalFolder name="f7" displayName="tmr" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/tmr/plib_tmr_common.h</itemPath>
+              <itemPath>../src/config/default/peripheral/tmr/plib_tmr6.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f4" displayName="uart" projectFiles="true">
               <itemPath>../src/config/default/peripheral/uart/plib_uart_common.h</itemPath>
@@ -46,6 +46,7 @@
         </logicalFolder>
       </logicalFolder>
       <itemPath>../src/bma490.h</itemPath>
+      <itemPath>../src/timers.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -84,8 +85,8 @@
                 <itemPath>../src/config/default/peripheral/spi/spi_master/plib_spi2_master.c</itemPath>
               </logicalFolder>
             </logicalFolder>
-            <logicalFolder name="f7" displayName="tmr1" projectFiles="true">
-              <itemPath>../src/config/default/peripheral/tmr1/plib_tmr1.c</itemPath>
+            <logicalFolder name="f7" displayName="tmr" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/tmr/plib_tmr6.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f4" displayName="uart" projectFiles="true">
               <itemPath>../src/config/default/peripheral/uart/plib_uart1.c</itemPath>
@@ -102,6 +103,7 @@
       </logicalFolder>
       <itemPath>../src/main.c</itemPath>
       <itemPath>../src/bma490l.c</itemPath>
+      <itemPath>../src/timers.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -110,13 +112,13 @@
         <itemPath>../src/config/default/default.mhc/BSP_PIC32MZ_W1_Curiosity.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/core.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/dfp.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/GraphSettings.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/project.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/settings.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/spi2.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/stdio.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/tmr1.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/tmr6.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/uart1.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/GraphSettings.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/settings.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/project.yml</itemPath>
       </logicalFolder>
       <itemPath>Makefile</itemPath>
       <itemPath>../src/config/default/harmony-manifest-success.yml</itemPath>
@@ -136,7 +138,7 @@
         <platformTool>PKOBSKDEPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.10</languageToolchainVersion>
-        <platform>2</platform>
+        <platform>3</platform>
       </toolsSet>
       <packs>
         <pack name="PIC32MZ-W_DFP" vendor="Microchip" version="1.5.203"/>

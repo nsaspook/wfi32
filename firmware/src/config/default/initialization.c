@@ -205,11 +205,11 @@ void SYS_Initialize ( void* data )
 
 	GPIO_Initialize();
 
+    TMR6_Initialize();
+
 	UART1_Initialize();
 
 	BSP_Initialize();
-    TMR1_Initialize();
-
 	SPI2_Initialize();
 
 
