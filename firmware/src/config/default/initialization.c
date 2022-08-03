@@ -208,6 +208,8 @@ void SYS_Initialize ( void* data )
 	UART1_Initialize();
 
 	BSP_Initialize();
+    TMR1_Initialize();
+
 	SPI2_Initialize();
 
 

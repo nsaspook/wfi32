@@ -69,7 +69,7 @@ int main(void)
 			getAllData(&accel, &imu0);
 			printf(" %5.3f %5.3f %5.3f   %u \r\n", accel.x, accel.y, accel.z, accel.sensortime);
 		}
-		delay_us(100);
+//		delay_us(100);
 	}
 
 	/* Execution should not come here during normal operation */
