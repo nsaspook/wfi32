@@ -23,14 +23,27 @@ extern "C" {
 #define RBIT		0b10000000
 #define WBIT            0b00000000
 #define CHIP_ID		0
+#define CHIP_IS		0x2A
 #define CHIP_ID_INDEX	1
 #define CHIP_ID_DATA	1
 #define BMA490L_ID	0x1A
+#define CHIP_ID_DELAY	100000
 
+#define BMA490_ID_LEN			2
+#define BMA490_REG_LEN			2
 #define BMA490_DATA_LEN                 11
+#define BMA490_DATA_BUFFER_LEN		64
+#define BMA490_DATA_RAW_LEN		30
+#define BMA490_DATA_BUFFER_INDEX	1	
 #define BMA490_DATA_INDEX		0x12
 
-#define ACCEL15_RD_WR_MAX_LEN		0x0514
+#define BMA490_RD_WR_MAX_LEN		0x0514
+	
+/**\name FEATURE CONFIG RELATED */
+#define BMA490L_RESERVED_REG_5B_ADDR                 UINT8_C(0x5B)
+#define BMA490L_RESERVED_REG_5C_ADDR                 UINT8_C(0x5C)
+#define BMA490L_FEATURE_CONFIG_ADDR                  UINT8_C(0x5E)
+#define BMA490L_INTERNAL_ERROR                       UINT8_C(0x5F)
 
 #define SYS_FREQ	200000000 // Running at 200MHz
 
@@ -44,6 +57,9 @@ extern "C" {
 		range_16g = 0x03,
 	};
 
+/*! Earth's gravity in m/s^2 */
+#define GRAVITY_EARTH      (9.80665f)	
+	
 #define BMA490_ACCEL_MG_LSB_2G		0.000061035F   ///< Macro for mg per LSB at +/- 2g sensitivity (1 LSB = 0.000061035mg) */
 #define BMA490_ACCEL_MG_LSB_4G		0.000122070F   ///< Macro for mg per LSB at +/- 4g sensitivity (1 LSB = 0.000122070mg) */
 #define BMA490_ACCEL_MG_LSB_8G		0.000244141F   ///< Macro for mg per LSB at +/- 8g sensitivity (1 LSB = 0.000244141mg) */
@@ -56,7 +72,7 @@ extern "C" {
 	typedef struct _imu_cmd_t {
 		uint8_t device;
 		uint8_t rbuf[64], tbuf[64];
-		volatile bool online, run, update;
+		volatile bool online, run, update, features;
 	} imu_cmd_t;
 
 	typedef struct {
@@ -68,10 +84,12 @@ extern "C" {
 
 	void imu_set_spimode(imu_cmd_t *);
 	bool imu_getid(imu_cmd_t *);
+	bool imu_getis(imu_cmd_t *);
 	void delay_us(uint32_t);
 	void getAllData(sBma490SensorData_t *, imu_cmd_t *);
 	bool imu_getdata(imu_cmd_t *);
 	void bma490_version(void);
+	void imu_set_reg(imu_cmd_t *, const uint8_t, const uint8_t, const bool);
 
 	extern imu_cmd_t imu0;
 	void update_imu_int1(uint32_t, uintptr_t);

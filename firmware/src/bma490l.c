@@ -1,20 +1,24 @@
 #include "bma490.h"
 
-static uint8_t R_ID_CMD[2] = {CHIP_ID | RBIT};
-static uint8_t R_DATA_CMD[64] = {BMA490_DATA_INDEX | RBIT, BMA490_DATA_LEN};
+static uint8_t R_ID_CMD[BMA490_ID_LEN] = {CHIP_ID | RBIT};
+static uint8_t R_IS_CMD[BMA490_ID_LEN] = {CHIP_IS | RBIT};
+static uint8_t R_DATA_CMD[BMA490_DATA_BUFFER_LEN] = {BMA490_DATA_INDEX | RBIT, BMA490_DATA_LEN};
 
 static bool imu_cs(imu_cmd_t *);
 static void imu_cs_cb(uintptr_t);
 static void imu_cs_disable(imu_cmd_t *);
 static void move_bma490_transfer_data(uint8_t *, imu_cmd_t *);
-static void init_imu_int(void);
+static void init_imu_int(imu_cmd_t * imu);
 
 static uint32_t sensortime;
 
 static const char *build_date = __DATE__, *build_time = __TIME__;
 
-uint8_t bma490l_config_file[ 1301 ] = {
-	0x5e,
+/*
+ * for any/no motion interrupt IMU features
+ */
+uint8_t bma490l_config_file[] = {
+	BMA490L_FEATURE_CONFIG_ADDR,
 	0xc8, 0x2e, 0x00, 0x2e, 0xc8, 0x2e, 0x00, 0x2e, 0xc8, 0x2e, 0x00, 0x2e, 0xc8, 0x2e, 0x00, 0x2e, 0xc8, 0x2e, 0x00,
 	0x2e, 0xc8, 0x2e, 0x00, 0x2e, 0xc8, 0x2e, 0x00, 0x2e, 0x80, 0x2e, 0x58, 0x01, 0x80, 0x2e, 0x74, 0x02, 0xb0, 0xf0,
 	0x10, 0x30, 0x21, 0x2e, 0x16, 0xf0, 0x80, 0x2e, 0xeb, 0x00, 0x19, 0x50, 0x17, 0x52, 0x01, 0x42, 0x3b, 0x80, 0x41,
@@ -87,7 +91,7 @@ uint8_t bma490l_config_file[ 1301 ] = {
 };
 
 /*
- * see if we can get the correct ID response
+ * Read raw ACCEL data from the chip using SPI
  */
 bool imu_getdata(imu_cmd_t * imu)
 {
@@ -101,67 +105,70 @@ bool imu_getdata(imu_cmd_t * imu)
 }
 
 /*
- * get raw sensor data from IMU and transfer to buffer
+ * load raw SPI sensor data from IMU and transfer to the logging processing buffer
  */
 void move_bma490_transfer_data(uint8_t *pBuf, imu_cmd_t * imu)
 {
 	if (pBuf) {
-		for (int i = 1; i < 30; i++) {
-			pBuf[i - 1] = imu->rbuf[i];
+		for (uint32_t i = BMA490_DATA_BUFFER_INDEX; i < BMA490_DATA_RAW_LEN; i++) {
+			pBuf[i - BMA490_DATA_BUFFER_INDEX] = imu->rbuf[i];
 		}
 	}
 }
 
 void getAllData(sBma490SensorData_t *accel, imu_cmd_t * imu)
 {
-	uint8_t data[32] = {0};
+	uint8_t data[BMA490_DATA_RAW_LEN + 2] = {0}; // add space for dummy data
 	int16_t x = 0, y = 0, z = 0;
 	float accelRange;
 
+	/*
+	 * load the proper scaling constants
+	 */
 	switch (acc_range) {
 	case range_16g:
-		accelRange = BMA490_ACCEL_MG_LSB_16G * 9.8 * BMA490_ACCEL_MG_SCALE;
+		accelRange = BMA490_ACCEL_MG_LSB_16G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
 		break;
 	case range_8g:
-		accelRange = BMA490_ACCEL_MG_LSB_8G * 9.8 * BMA490_ACCEL_MG_SCALE;
+		accelRange = BMA490_ACCEL_MG_LSB_8G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
 		break;
 	case range_4g:
-		accelRange = BMA490_ACCEL_MG_LSB_4G * 9.8 * BMA490_ACCEL_MG_SCALE;
+		accelRange = BMA490_ACCEL_MG_LSB_4G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
 		break;
 	case range_2g:
 	default:
-		accelRange = BMA490_ACCEL_MG_LSB_2G * 9.8 * BMA490_ACCEL_MG_SCALE;
+		accelRange = BMA490_ACCEL_MG_LSB_2G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
 		break;
 	}
 
-	// put your main code here, to run repeatedly:
+	// munge data to proper format for logging
 	move_bma490_transfer_data(data, imu);
-	sensortime = (data[9] << 16) | (data[8] << 8) | data[7];
-	if (accel) {
-		x = (int16_t) (((uint16_t) data[2] << 8) | data[1]);
+	sensortime = (data[9] << 16) | (data[8] << 8) | data[7]; // 24-bit sensor time
+	if (accel) { // null pointer check
+		x = (int16_t) (((uint16_t) data[2] << 8) | data[1]); // 16-bit xyz data
 		y = (int16_t) (((uint16_t) data[4] << 8) | data[3]);
 		z = (int16_t) (((uint16_t) data[6] << 8) | data[5]);
-		accel->x = x * accelRange;
+		accel->x = x * accelRange; // scale to the correct units
 		accel->y = y * accelRange;
 		accel->z = z * accelRange;
-		accel->sensortime = sensortime;
+		accel->sensortime = sensortime; // time log each accel measurement
 	}
 }
 
 /*
- * see if we can get the correct ID response
+ * see if we can get the correct ID response in rbuf
  */
 bool imu_getid(imu_cmd_t * imu)
 {
 	if (!imu->run) {
 		imu_cs(imu);
 		SPI2_WriteRead(R_ID_CMD, sizeof(R_ID_CMD), imu->rbuf, sizeof(R_ID_CMD));
-		delay_us(100000);
+		delay_us(CHIP_ID_DELAY);
 		if (imu->rbuf[CHIP_ID_DATA] == BMA490L_ID) {
 			imu->online = true;
 			LED_GREEN_On();
 			LED_RED_Off();
-			imu->rbuf[1] = 0;
+			imu->rbuf[CHIP_ID_DATA] = 0;
 		} else {
 			LED_RED_On();
 			LED_GREEN_Off();
@@ -172,79 +179,88 @@ bool imu_getid(imu_cmd_t * imu)
 }
 
 /*
+ * see if we can get the correct internal status from features file
+ */
+bool imu_getis(imu_cmd_t * imu)
+{
+	if (!imu->run) {
+		imu_cs(imu);
+		SPI2_WriteRead(R_IS_CMD, sizeof(R_IS_CMD), imu->rbuf, sizeof(R_IS_CMD));
+		delay_us(CHIP_ID_DELAY);
+		if (imu->rbuf[CHIP_ID_DATA] == 0x01) {
+			imu->features = true;
+			LED_GREEN_On();
+			LED_RED_Off();
+		} else {
+			LED_RED_On();
+			LED_GREEN_Off();
+			imu->features = false;
+			delay_us(500000);
+		}
+	}
+	return imu->online;
+}
+
+/*
+ * read or write IMU register without read data returned
+ */
+void imu_set_reg(imu_cmd_t * imu, const uint8_t reg, const uint8_t data, const bool fast)
+{
+	imu_cs(imu);
+	imu->tbuf[0] = reg; // PWR_CONF
+	imu->tbuf[1] = data;
+	SPI2_Write(imu->tbuf, BMA490_REG_LEN);
+	if (!fast) {
+		delay_us(998);
+	}
+	delay_us(2);
+	imu_cs_disable(imu);
+}
+
+/*
  * toggle the chip CS to set SPI mode
  */
 void imu_set_spimode(imu_cmd_t * imu)
 {
-	imu_cs(imu);
+	// set SPI MODE on BMA490L by reading ID register
 	LED_GREEN_Off();
-	SPI2_Write(imu->tbuf, 2); // set SPI MODE on BMA490L
+	imu_set_reg(imu, CHIP_ID | RBIT, 0x00, false); // set read bit
 	LED_RED_On();
-	delay_us(1000); // long wait for init process
-	imu_cs_disable(imu);
+	// soft-reset IMU chip
+	imu_set_reg(imu, 0x7E, 0xB6, false);
+	imu_set_reg(imu, CHIP_ID | RBIT, 0x00, false); // set read bit
+	// PWR_CONF
+	imu_set_reg(imu, 0x7c, 0x00, false);
 
+	// INIT_CTRL,  init feature engine
+	imu_set_reg(imu, 0x59, 0x00, false);
+	/*
+	 * burst write any/no motion features array, not used
+	 */
 	imu_cs(imu);
-	imu->tbuf[0] = 0x7C; // PWR_CONF
-	imu->tbuf[1] = 0x00;
-	SPI2_Write(imu->tbuf, 2);
-	delay_us(1000);
-	imu_cs_disable(imu);
+	SPI2_Write(bma490l_config_file, sizeof(bma490l_config_file));
+	while (imu->run) {
+	};
 
-	imu_cs(imu);
-	imu->tbuf[0] = 0x40; // ACC_CONF
-	imu->tbuf[1] = 0xA9;
-	SPI2_Write(imu->tbuf, 2);
-	delay_us(1000);
-	imu_cs_disable(imu);
+	// INIT_CTRL, enable sensor features
+	imu_set_reg(imu, 0x59, 0x01, false);
+	delay_us(200000);
+	imu_getis(imu);
 
-	imu_cs(imu);
-	imu->tbuf[0] = 0x41; // ACC_RANGE
-	imu->tbuf[1] = acc_range;
-	SPI2_Write(imu->tbuf, 2);
-	delay_us(1000);
-	imu_cs_disable(imu);
-
-	imu_cs(imu);
-	imu->tbuf[0] = 0x59;
-	imu->tbuf[1] = 0x00;
-	SPI2_Write(imu->tbuf, 2);
-	delay_us(1000);
-	imu_cs_disable(imu);
-
-	imu_cs(imu);
-	//	SPI2_Write(bma490l_config_file, ACCEL15_RD_WR_MAX_LEN);
-	delay_us(1000);
-	imu_cs_disable(imu);
-
-	imu_cs(imu);
-	imu->tbuf[0] = 0x59;
-	imu->tbuf[1] = 0x01;
-	SPI2_Write(imu->tbuf, 2);
-	delay_us(1000);
-	imu_cs_disable(imu);
-
-	imu_cs(imu);
-	imu->tbuf[0] = 0x58; // INT_MAP_DATA
-	imu->tbuf[1] = 0x04;
-	SPI2_Write(imu->tbuf, 2);
-	delay_us(1000);
-	imu_cs_disable(imu);
-
-	imu_cs(imu);
-	imu->tbuf[0] = 0x53; // INT1_IO_CTRL
-	imu->tbuf[1] = 0x08;
-	SPI2_Write(imu->tbuf, 2);
-	delay_us(1000);
-	imu_cs_disable(imu);
-
-	imu_cs(imu);
-	imu->tbuf[0] = 0x7D; // PWR_CTRL
-	imu->tbuf[1] = 0x04;
-	SPI2_Write(imu->tbuf, 2);
-	delay_us(1000);
-	imu_cs_disable(imu);
-
-	init_imu_int();
+	// ACC_CONF
+	imu_set_reg(imu, 0x40, 0xa9, false);
+	// ACC_RANGE
+	imu_set_reg(imu, 0x41, acc_range, false);
+	// INT_MAP_DATA
+	imu_set_reg(imu, 0x58, 0x04, false);
+	// INT1_IO_CTRL
+	imu_set_reg(imu, 0x53, 0x08, false);
+	// PWR_CTRL
+	imu_set_reg(imu, 0x7d, 0x04, false);
+	/*
+	 * trigger ISR on IMU data updates
+	 */
+	init_imu_int(imu);
 }
 
 /*
@@ -257,6 +273,7 @@ bool imu_cs(imu_cmd_t * imu)
 	default:
 		imu->run = true;
 		IMU_CS_Clear();
+		// set SPI receive complete callback
 		SPI2_CallbackRegister(imu_cs_cb, (uintptr_t) imu);
 		break;
 	}
@@ -302,9 +319,7 @@ void delay_us(uint32_t us)
 {
 	// Convert microseconds us into how many clock ticks it will take
 	us *= SYS_FREQ / 1000000 / 2; // Core Timer updates every 2 ticks
-
 	_CP0_SET_COUNT(0); // Set Core Timer count to 0
-
 	while (us > _CP0_GET_COUNT()) {
 	}; // Wait until Core Timer count reaches the number we calculated earlier
 }
@@ -317,11 +332,11 @@ void bma490_version(void)
 /*
  * setup external interrupt for IMU data update interrupt trigger output
  */
-void init_imu_int(void)
+void init_imu_int(imu_cmd_t * imu)
 {
 	INTCONCLR = _INTCON_INT2EP_MASK; //External interrupt on falling edge
 	IFS0CLR = _IFS0_INT2IF_MASK; // Clear the external interrupt flag
-	EVIC_ExternalInterruptCallbackRegister(EXTERNAL_INT_2, update_imu_int1, 0);
+	EVIC_ExternalInterruptCallbackRegister(EXTERNAL_INT_2, update_imu_int1, (uintptr_t) imu);
 	EVIC_ExternalInterruptEnable(EXTERNAL_INT_2);
 }
 

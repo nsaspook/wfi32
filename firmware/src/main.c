@@ -38,6 +38,7 @@ imu_cmd_t imu0 = {
 	.device = 0,
 	.run = false,
 	.update = true,
+	.features = false,
 };
 
 sBma490SensorData_t accel;
@@ -79,7 +80,7 @@ int main(void)
 			imu_getdata(&imu0); // read data from the chip
 			imu0.update = false;
 			getAllData(&accel, &imu0);
-			printf(" %5.3f %5.3f %5.3f   %u \r\n", accel.x, accel.y, accel.z, accel.sensortime);
+			printf(" %6.3f %6.3f %6.3f   %u \r\n", accel.x, accel.y, accel.z, accel.sensortime);
 			if (TimerDone(TMR_LOG)) {
 				printf(" IMU data timeout \r\n");
 			}
@@ -93,16 +94,17 @@ int main(void)
 }
 
 /*
- * int1 from IMU ISR
+ * update pacing flag from IMU ISR
  */
-void update_imu_int1(uint32_t a, uintptr_t b)
+void update_imu_int1(uint32_t a, uintptr_t context)
 {
+	imu_cmd_t * imu = (void*) context;
 	static int8_t i = 0;
 
 	if (!i++) {
 		LED_GREEN_Toggle();
 	}
-	imu0.update = true;
+	imu->update = true;
 }
 
 /*******************************************************************************
