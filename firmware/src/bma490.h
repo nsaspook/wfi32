@@ -17,8 +17,9 @@ extern "C" {
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include <math.h>
 #include "definitions.h"                // SYS function prototypes
+#include "bma490l_reg.h"
 
-#define BMA490_DRIVER "V0.120"      
+#define BMA490_DRIVER "V0.130"      
 
 #define RBIT		0b10000000
 #define WBIT            0b00000000
@@ -37,9 +38,14 @@ extern "C" {
 #define BMA490_DATA_BUFFER_INDEX	1	
 #define BMA490_DATA_INDEX		0x12
 
-#define BMA490_RD_WR_MAX_LEN		0x0514
-	
-/**\name FEATURE CONFIG RELATED */
+#define BMA490_RD_WR_MAX_LEN		0x0514 // IMU ASIC firmware file size
+
+#define ACCEL_CONFIG			0xa9
+#define INT_MAP_DATA			0x04
+#define INT1_IO_CTRL			0x08
+#define REG_POWER_CTRL			0x04
+
+	/**\name FEATURE CONFIG RELATED */
 #define BMA490L_RESERVED_REG_5B_ADDR                 UINT8_C(0x5B)
 #define BMA490L_RESERVED_REG_5C_ADDR                 UINT8_C(0x5C)
 #define BMA490L_FEATURE_CONFIG_ADDR                  UINT8_C(0x5E)
@@ -57,9 +63,9 @@ extern "C" {
 		range_16g = 0x03,
 	};
 
-/*! Earth's gravity in m/s^2 */
+	/*! Earth's gravity in m/s^2 */
 #define GRAVITY_EARTH      (9.80665f)	
-	
+
 #define BMA490_ACCEL_MG_LSB_2G		0.000061035F   ///< Macro for mg per LSB at +/- 2g sensitivity (1 LSB = 0.000061035mg) */
 #define BMA490_ACCEL_MG_LSB_4G		0.000122070F   ///< Macro for mg per LSB at +/- 4g sensitivity (1 LSB = 0.000122070mg) */
 #define BMA490_ACCEL_MG_LSB_8G		0.000244141F   ///< Macro for mg per LSB at +/- 8g sensitivity (1 LSB = 0.000244141mg) */

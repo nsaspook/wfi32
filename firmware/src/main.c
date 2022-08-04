@@ -56,12 +56,21 @@ int main(void)
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
 
+	/*
+	 * software timers interrupt setup
+	 */
 	TMR6_CallbackRegister(timer_ms_tick, 0);
 	TMR6_Start();
 
+	/*
+	 * print the driver version
+	 */
 	bma490_version();
-	imu_set_spimode(&imu0); // init BMA490L chip
+	imu_set_spimode(&imu0); // setup the BMA490L chip for SPI comms, 200 value updates per second @2G
 
+	/*
+	 * check to see if we actually have a working BMA490L
+	 */
 	StartTimer(TMR_IMU, imu_timeout);
 	while (!imu_getid(&imu0)) {
 		if (TimerDone(TMR_IMU)) {
@@ -71,16 +80,21 @@ int main(void)
 		}
 	};
 
+	// loop collecting data
 	while (true) {
 		/* Maintain state machines of all polled MPLAB Harmony modules. */
 		SYS_Tasks();
 
+		/*
+		 * data logging routine
+		 * convert the SPI XYZ response to standard floating point acceleration values and rolling integer time-stamps per measurement
+		 */
 		StartTimer(TMR_LOG, log_timeout);
 		if (imu0.update || TimerDone(TMR_LOG)) {
 			imu_getdata(&imu0); // read data from the chip
 			imu0.update = false;
-			getAllData(&accel, &imu0);
-			printf(" %6.3f %6.3f %6.3f   %u \r\n", accel.x, accel.y, accel.z, accel.sensortime);
+			getAllData(&accel, &imu0); // convert data from the chip
+			printf(" %6.3f, %6.3f, %6.3f,   %u \r\n", accel.x, accel.y, accel.z, accel.sensortime);
 			if (TimerDone(TMR_LOG)) {
 				printf(" IMU data timeout \r\n");
 			}

@@ -13,7 +13,7 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/config/default/peripheral/evic/plib_evic.h \
  ../src/config/default/peripheral/spi/spi_master/plib_spi2_master.h \
  ../src/config/default/peripheral/spi/spi_master/plib_spi_master_common.h \
- ../src/bma490.h ../src/timers.h
+ ../src/bma490.h ../src/bma490l_reg.h ../src/timers.h
 
 ../src/config/default/definitions.h:
 
@@ -44,5 +44,7 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
 ../src/config/default/peripheral/spi/spi_master/plib_spi_master_common.h:
 
 ../src/bma490.h:
+
+../src/bma490l_reg.h:
 
 ../src/timers.h:

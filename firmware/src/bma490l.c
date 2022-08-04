@@ -3,12 +3,14 @@
 static uint8_t R_ID_CMD[BMA490_ID_LEN] = {CHIP_ID | RBIT};
 static uint8_t R_IS_CMD[BMA490_ID_LEN] = {CHIP_IS | RBIT};
 static uint8_t R_DATA_CMD[BMA490_DATA_BUFFER_LEN] = {BMA490_DATA_INDEX | RBIT, BMA490_DATA_LEN};
+static uint8_t dummy = 0x00;
 
 static bool imu_cs(imu_cmd_t *);
 static void imu_cs_cb(uintptr_t);
 static void imu_cs_disable(imu_cmd_t *);
 static void move_bma490_transfer_data(uint8_t *, imu_cmd_t *);
 static void init_imu_int(imu_cmd_t * imu);
+static void imu_gen_write(imu_cmd_t *, void*, size_t, const bool);
 
 static uint32_t sensortime;
 
@@ -17,7 +19,8 @@ static const char *build_date = __DATE__, *build_time = __TIME__;
 /*
  * for any/no motion interrupt IMU features
  */
-uint8_t bma490l_config_file[] = {
+
+static const uint8_t bma490l_config_file[] = {
 	BMA490L_FEATURE_CONFIG_ADDR,
 	0xc8, 0x2e, 0x00, 0x2e, 0xc8, 0x2e, 0x00, 0x2e, 0xc8, 0x2e, 0x00, 0x2e, 0xc8, 0x2e, 0x00, 0x2e, 0xc8, 0x2e, 0x00,
 	0x2e, 0xc8, 0x2e, 0x00, 0x2e, 0xc8, 0x2e, 0x00, 0x2e, 0x80, 0x2e, 0x58, 0x01, 0x80, 0x2e, 0x74, 0x02, 0xb0, 0xf0,
@@ -195,7 +198,7 @@ bool imu_getis(imu_cmd_t * imu)
 			LED_RED_On();
 			LED_GREEN_Off();
 			imu->features = false;
-			delay_us(500000);
+			delay_us(750000);
 		}
 	}
 	return imu->online;
@@ -211,7 +214,18 @@ void imu_set_reg(imu_cmd_t * imu, const uint8_t reg, const uint8_t data, const b
 	imu->tbuf[1] = data;
 	SPI2_Write(imu->tbuf, BMA490_REG_LEN);
 	if (!fast) {
-		delay_us(998);
+		delay_us(100000); // 100ms for configuration delays
+	}
+	delay_us(2);
+	imu_cs_disable(imu);
+}
+
+void imu_gen_write(imu_cmd_t * imu, void* pTransmitData, size_t txSize, const bool fast)
+{
+	imu_cs(imu);
+	SPI2_Write(pTransmitData, txSize);
+	if (!fast) {
+		delay_us(100000); // 100ms for configuration delays
 	}
 	delay_us(2);
 	imu_cs_disable(imu);
@@ -224,41 +238,40 @@ void imu_set_spimode(imu_cmd_t * imu)
 {
 	// set SPI MODE on BMA490L by reading ID register
 	LED_GREEN_Off();
-	imu_set_reg(imu, CHIP_ID | RBIT, 0x00, false); // set read bit
 	LED_RED_On();
+	// use SPI interface on reboots
+	imu_set_reg(imu, BMA490L_REG_NV_CONFIG, BMA490L_NV_DISABLE_I2C, false);
 	// soft-reset IMU chip
-	imu_set_reg(imu, 0x7E, 0xB6, false);
-	imu_set_reg(imu, CHIP_ID | RBIT, 0x00, false); // set read bit
+	imu_set_reg(imu, BMA490L_REG_CMD, BMA490L_SOFT_RESET, false);
+	imu_set_reg(imu, CHIP_ID | RBIT, dummy, false); // set read bit
 	// PWR_CONF
-	imu_set_reg(imu, 0x7c, 0x00, false);
+	imu_set_reg(imu, BMA490L_REG_POWER_CONF, BMA490L_APS_OFF | BMA490L_FSW_ON, false);
 
 	// INIT_CTRL,  init feature engine
-	imu_set_reg(imu, 0x59, 0x00, false);
+	imu_set_reg(imu, BMA490L_REG_INIT_CTRL, BMA490L_INIT_START, false);
 	/*
-	 * burst write any/no motion features array, not used
+	 * burst write any/no motion features array, not working
 	 */
-	imu_cs(imu);
-	SPI2_Write(bma490l_config_file, sizeof(bma490l_config_file));
+	imu_gen_write(imu, (void *) bma490l_config_file, sizeof(bma490l_config_file), false);
 	while (imu->run) {
 	};
-
 	// INIT_CTRL, enable sensor features
-	imu_set_reg(imu, 0x59, 0x01, false);
+	imu_set_reg(imu, BMA490L_REG_INIT_CTRL, BMA490L_INIT_STOP, false);
 	delay_us(200000);
 	imu_getis(imu);
 
 	// ACC_CONF
-	imu_set_reg(imu, 0x40, 0xa9, false);
+	imu_set_reg(imu, BMA490L_REG_ACCEL_CONFIG, ACCEL_CONFIG, false);
 	// ACC_RANGE
-	imu_set_reg(imu, 0x41, acc_range, false);
+	imu_set_reg(imu, BMA490L_REG_ACCEL_RANGE, acc_range, false);
 	// INT_MAP_DATA
-	imu_set_reg(imu, 0x58, 0x04, false);
+	imu_set_reg(imu, BMA490L_REG_INT_MAP_DATA, INT_MAP_DATA, false);
 	// INT1_IO_CTRL
-	imu_set_reg(imu, 0x53, 0x08, false);
+	imu_set_reg(imu, BMA490L_REG_INT1_IO_CTRL, INT1_IO_CTRL, false);
 	// PWR_CTRL
-	imu_set_reg(imu, 0x7d, 0x04, false);
+	imu_set_reg(imu, BMA490L_REG_POWER_CTRL, REG_POWER_CTRL, false);
 	/*
-	 * trigger ISR on IMU data updates
+	 * trigger ISR on IMU data update interrupts
 	 */
 	init_imu_int(imu);
 }
