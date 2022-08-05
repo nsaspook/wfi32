@@ -9,7 +9,7 @@ static bool imu_cs(imu_cmd_t *);
 static void imu_cs_cb(uintptr_t);
 static void imu_cs_disable(imu_cmd_t *);
 static void move_bma490_transfer_data(uint8_t *, imu_cmd_t *);
-static void init_imu_int(imu_cmd_t * imu);
+static void init_imu_int(const imu_cmd_t * imu);
 static void imu_gen_write(imu_cmd_t *, void*, size_t, const bool);
 
 static uint32_t sensortime;
@@ -98,13 +98,17 @@ static const uint8_t bma490l_config_file[] = {
  */
 bool imu_getdata(imu_cmd_t * imu)
 {
-	if (!imu->run) {
-		imu_cs(imu);
-		SPI2_WriteRead(R_DATA_CMD, BMA490_DATA_LEN, imu->rbuf, BMA490_DATA_LEN);
-		while (imu->run) {
-		};
+	if (imu) {
+		if (!imu->run) {
+			imu_cs(imu);
+			SPI2_WriteRead(R_DATA_CMD, BMA490_DATA_LEN, imu->rbuf, BMA490_DATA_LEN);
+			while (imu->run) {
+			};
+		}
+		return imu->online;
+	} else {
+		return false;
 	}
-	return imu->online;
 }
 
 /*
@@ -112,7 +116,7 @@ bool imu_getdata(imu_cmd_t * imu)
  */
 void move_bma490_transfer_data(uint8_t *pBuf, imu_cmd_t * imu)
 {
-	if (pBuf) {
+	if (pBuf && imu) {
 		for (uint32_t i = BMA490_DATA_BUFFER_INDEX; i < BMA490_DATA_RAW_LEN; i++) {
 			pBuf[i - BMA490_DATA_BUFFER_INDEX] = imu->rbuf[i];
 		}
@@ -145,16 +149,18 @@ void getAllData(sBma490SensorData_t *accel, imu_cmd_t * imu)
 	}
 
 	// munge data to proper format for logging
-	move_bma490_transfer_data(data, imu);
-	sensortime = (data[9] << 16) | (data[8] << 8) | data[7]; // 24-bit sensor time
-	if (accel) { // null pointer check
-		x = (int16_t) (((uint16_t) data[2] << 8) | data[1]); // 16-bit xyz data
-		y = (int16_t) (((uint16_t) data[4] << 8) | data[3]);
-		z = (int16_t) (((uint16_t) data[6] << 8) | data[5]);
-		accel->x = x * accelRange; // scale to the correct units
-		accel->y = y * accelRange;
-		accel->z = z * accelRange;
-		accel->sensortime = sensortime; // time log each accel measurement
+	if (imu) {
+		move_bma490_transfer_data(data, imu);
+		sensortime = (data[9] << 16) | (data[8] << 8) | data[7]; // 24-bit sensor time
+		if (accel) { // null pointer check
+			x = (int16_t) (((uint16_t) data[2] << 8) | data[1]); // 16-bit xyz data
+			y = (int16_t) (((uint16_t) data[4] << 8) | data[3]);
+			z = (int16_t) (((uint16_t) data[6] << 8) | data[5]);
+			accel->x = x * accelRange; // scale to the correct units
+			accel->y = y * accelRange;
+			accel->z = z * accelRange;
+			accel->sensortime = sensortime; // time log each accel measurement
+		}
 	}
 }
 
@@ -163,22 +169,26 @@ void getAllData(sBma490SensorData_t *accel, imu_cmd_t * imu)
  */
 bool imu_getid(imu_cmd_t * imu)
 {
-	if (!imu->run) {
-		imu_cs(imu);
-		SPI2_WriteRead(R_ID_CMD, sizeof(R_ID_CMD), imu->rbuf, sizeof(R_ID_CMD));
-		delay_us(CHIP_ID_DELAY);
-		if (imu->rbuf[CHIP_ID_DATA] == BMA490L_ID) {
-			imu->online = true;
-			LED_GREEN_On();
-			LED_RED_Off();
-			imu->rbuf[CHIP_ID_DATA] = 0;
-		} else {
-			LED_RED_On();
-			LED_GREEN_Off();
-			imu->online = false;
+	if (imu) {
+		if (!imu->run) {
+			imu_cs(imu);
+			SPI2_WriteRead(R_ID_CMD, sizeof(R_ID_CMD), imu->rbuf, sizeof(R_ID_CMD));
+			delay_us(CHIP_ID_DELAY);
+			if (imu->rbuf[CHIP_ID_DATA] == BMA490L_ID) {
+				imu->online = true;
+				LED_GREEN_On();
+				LED_RED_Off();
+				imu->rbuf[CHIP_ID_DATA] = 0;
+			} else {
+				LED_RED_On();
+				LED_GREEN_Off();
+				imu->online = false;
+			}
 		}
+		return imu->online;
+	} else {
+		return false;
 	}
-	return imu->online;
 }
 
 /*
@@ -186,22 +196,26 @@ bool imu_getid(imu_cmd_t * imu)
  */
 bool imu_getis(imu_cmd_t * imu)
 {
-	if (!imu->run) {
-		imu_cs(imu);
-		SPI2_WriteRead(R_IS_CMD, sizeof(R_IS_CMD), imu->rbuf, sizeof(R_IS_CMD));
-		delay_us(CHIP_ID_DELAY);
-		if (imu->rbuf[CHIP_ID_DATA] == 0x01) {
-			imu->features = true;
-			LED_GREEN_On();
-			LED_RED_Off();
-		} else {
-			LED_RED_On();
-			LED_GREEN_Off();
-			imu->features = false;
-			delay_us(750000);
+	if (imu) {
+		if (!imu->run) {
+			imu_cs(imu);
+			SPI2_WriteRead(R_IS_CMD, sizeof(R_IS_CMD), imu->rbuf, sizeof(R_IS_CMD));
+			delay_us(CHIP_ID_DELAY);
+			if (imu->rbuf[CHIP_ID_DATA] == 0x01) {
+				imu->features = true;
+				LED_GREEN_On();
+				LED_RED_Off();
+			} else {
+				LED_RED_On();
+				LED_GREEN_Off();
+				imu->features = false;
+				delay_us(750000);
+			}
 		}
+		return imu->online;
+	} else {
+		return false;
 	}
-	return imu->online;
 }
 
 /*
@@ -209,26 +223,30 @@ bool imu_getis(imu_cmd_t * imu)
  */
 void imu_set_reg(imu_cmd_t * imu, const uint8_t reg, const uint8_t data, const bool fast)
 {
-	imu_cs(imu);
-	imu->tbuf[0] = reg; // PWR_CONF
-	imu->tbuf[1] = data;
-	SPI2_Write(imu->tbuf, BMA490_REG_LEN);
-	if (!fast) {
-		delay_us(100000); // 100ms for configuration delays
+	if (imu) {
+		imu_cs(imu);
+		imu->tbuf[0] = reg; // PWR_CONF
+		imu->tbuf[1] = data;
+		SPI2_Write(imu->tbuf, BMA490_REG_LEN);
+		if (!fast) {
+			delay_us(100000); // 100ms for configuration delays
+		}
+		delay_us(2);
+		imu_cs_disable(imu);
 	}
-	delay_us(2);
-	imu_cs_disable(imu);
 }
 
 void imu_gen_write(imu_cmd_t * imu, void* pTransmitData, size_t txSize, const bool fast)
 {
-	imu_cs(imu);
-	SPI2_Write(pTransmitData, txSize);
-	if (!fast) {
-		delay_us(100000); // 100ms for configuration delays
+	if (imu && pTransmitData) {
+		imu_cs(imu);
+		SPI2_Write(pTransmitData, txSize);
+		if (!fast) {
+			delay_us(100000); // 100ms for configuration delays
+		}
+		delay_us(2);
+		imu_cs_disable(imu);
 	}
-	delay_us(2);
-	imu_cs_disable(imu);
 }
 
 /*
@@ -239,41 +257,43 @@ void imu_set_spimode(imu_cmd_t * imu)
 	// set SPI MODE on BMA490L by reading ID register
 	LED_GREEN_Off();
 	LED_RED_On();
-	// use SPI interface on reboots
-	imu_set_reg(imu, BMA490L_REG_NV_CONFIG, BMA490L_NV_DISABLE_I2C, false);
-	// soft-reset IMU chip
-	imu_set_reg(imu, BMA490L_REG_CMD, BMA490L_SOFT_RESET, false);
-	imu_set_reg(imu, CHIP_ID | RBIT, dummy, false); // set read bit
-	// PWR_CONF
-	imu_set_reg(imu, BMA490L_REG_POWER_CONF, BMA490L_APS_OFF | BMA490L_FSW_ON, false);
+	if (imu) {
+		// use SPI interface on reboots
+		imu_set_reg(imu, BMA490L_REG_NV_CONFIG, BMA490L_NV_DISABLE_I2C, false);
+		// soft-reset IMU chip
+		imu_set_reg(imu, BMA490L_REG_CMD, BMA490L_SOFT_RESET, false);
+		imu_set_reg(imu, CHIP_ID | RBIT, dummy, false); // set read bit
+		// PWR_CONF
+		imu_set_reg(imu, BMA490L_REG_POWER_CONF, BMA490L_APS_OFF | BMA490L_FSW_ON, false);
 
-	// INIT_CTRL,  init feature engine
-	imu_set_reg(imu, BMA490L_REG_INIT_CTRL, BMA490L_INIT_START, false);
-	/*
-	 * burst write any/no motion features array, not working
-	 */
-	imu_gen_write(imu, (void *) bma490l_config_file, sizeof(bma490l_config_file), false);
-	while (imu->run) {
-	};
-	// INIT_CTRL, enable sensor features
-	imu_set_reg(imu, BMA490L_REG_INIT_CTRL, BMA490L_INIT_STOP, false);
-	delay_us(200000);
-	imu_getis(imu);
+		// INIT_CTRL,  init feature engine
+		imu_set_reg(imu, BMA490L_REG_INIT_CTRL, BMA490L_INIT_START, false);
+		/*
+		 * burst write any/no motion features array, not working
+		 */
+		imu_gen_write(imu, (void *) bma490l_config_file, sizeof(bma490l_config_file), false);
+		while (imu->run) {
+		};
+		// INIT_CTRL, enable sensor features
+		imu_set_reg(imu, BMA490L_REG_INIT_CTRL, BMA490L_INIT_STOP, false);
+		delay_us(200000);
+		imu_getis(imu);
 
-	// ACC_CONF
-	imu_set_reg(imu, BMA490L_REG_ACCEL_CONFIG, ACCEL_CONFIG, false);
-	// ACC_RANGE
-	imu_set_reg(imu, BMA490L_REG_ACCEL_RANGE, acc_range, false);
-	// INT_MAP_DATA
-	imu_set_reg(imu, BMA490L_REG_INT_MAP_DATA, INT_MAP_DATA, false);
-	// INT1_IO_CTRL
-	imu_set_reg(imu, BMA490L_REG_INT1_IO_CTRL, INT1_IO_CTRL, false);
-	// PWR_CTRL
-	imu_set_reg(imu, BMA490L_REG_POWER_CTRL, REG_POWER_CTRL, false);
-	/*
-	 * trigger ISR on IMU data update interrupts
-	 */
-	init_imu_int(imu);
+		// ACC_CONF
+		imu_set_reg(imu, BMA490L_REG_ACCEL_CONFIG, ACCEL_CONFIG, false);
+		// ACC_RANGE
+		imu_set_reg(imu, BMA490L_REG_ACCEL_RANGE, acc_range, false);
+		// INT_MAP_DATA
+		imu_set_reg(imu, BMA490L_REG_INT_MAP_DATA, INT_MAP_DATA, false);
+		// INT1_IO_CTRL
+		imu_set_reg(imu, BMA490L_REG_INT1_IO_CTRL, INT1_IO_CTRL, false);
+		// PWR_CTRL
+		imu_set_reg(imu, BMA490L_REG_POWER_CTRL, REG_POWER_CTRL, false);
+		/*
+		 * trigger ISR on IMU data update interrupts
+		 */
+		init_imu_int(imu);
+	}
 }
 
 /*
@@ -281,16 +301,20 @@ void imu_set_spimode(imu_cmd_t * imu)
  */
 bool imu_cs(imu_cmd_t * imu)
 {
-	switch (imu->device) {
-	case 0:
-	default:
-		imu->run = true;
-		IMU_CS_Clear();
-		// set SPI receive complete callback
-		SPI2_CallbackRegister(imu_cs_cb, (uintptr_t) imu);
-		break;
+	if (imu) {
+		switch (imu->device) {
+		case 0:
+		default:
+			imu->run = true;
+			IMU_CS_Clear();
+			// set SPI receive complete callback
+			SPI2_CallbackRegister(imu_cs_cb, (uintptr_t) imu);
+			break;
+		}
+		return true;
+	} else {
+		return false;
 	}
-	return true;
 }
 
 /*
@@ -298,12 +322,14 @@ bool imu_cs(imu_cmd_t * imu)
  */
 void imu_cs_disable(imu_cmd_t * imu)
 {
-	switch (imu->device) {
-	case 0:
-	default:
-		imu->run = false;
-		IMU_CS_Set();
-		break;
+	if (imu) {
+		switch (imu->device) {
+		case 0:
+		default:
+			imu->run = false;
+			IMU_CS_Set();
+			break;
+		}
 	}
 }
 
@@ -315,12 +341,14 @@ void imu_cs_cb(uintptr_t context)
 {
 	imu_cmd_t * imu = (void*) context;
 
-	switch (imu->device) {
-	case 0:
-	default:
-		IMU_CS_Set();
-		imu->run = false;
-		break;
+	if (imu) {
+		switch (imu->device) {
+		case 0:
+		default:
+			IMU_CS_Set();
+			imu->run = false;
+			break;
+		}
 	}
 }
 
@@ -345,11 +373,13 @@ void bma490_version(void)
 /*
  * setup external interrupt for IMU data update interrupt trigger output
  */
-void init_imu_int(imu_cmd_t * imu)
+void init_imu_int(const imu_cmd_t * imu)
 {
-	INTCONCLR = _INTCON_INT2EP_MASK; //External interrupt on falling edge
-	IFS0CLR = _IFS0_INT2IF_MASK; // Clear the external interrupt flag
-	EVIC_ExternalInterruptCallbackRegister(EXTERNAL_INT_2, update_imu_int1, (uintptr_t) imu);
-	EVIC_ExternalInterruptEnable(EXTERNAL_INT_2);
+	if (imu) {
+		INTCONCLR = _INTCON_INT2EP_MASK; //External interrupt on falling edge
+		IFS0CLR = _IFS0_INT2IF_MASK; // Clear the external interrupt flag
+		EVIC_ExternalInterruptCallbackRegister(EXTERNAL_INT_2, update_imu_int1, (uintptr_t) imu);
+		EVIC_ExternalInterruptEnable(EXTERNAL_INT_2);
+	}
 }
 

@@ -19,7 +19,7 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "bma490l_reg.h"
 
-#define BMA490_DRIVER "V0.130"      
+#define BMA490_DRIVER "V0.140"      
 
 #define RBIT		0b10000000
 #define WBIT            0b00000000
