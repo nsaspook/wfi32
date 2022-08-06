@@ -1,4 +1,4 @@
-#include "bma490.h"
+#include "bma490l.h"
 
 static uint8_t R_ID_CMD[BMA490_ID_LEN] = {CHIP_ID | RBIT};
 static uint8_t R_IS_CMD[BMA490_ID_LEN] = {CHIP_IS | RBIT};
@@ -297,7 +297,7 @@ void imu_set_spimode(imu_cmd_t * imu)
 }
 
 /*
- * enable CS and set flags
+ * enable BMA490L CS and set flags
  */
 bool imu_cs(imu_cmd_t * imu)
 {
@@ -318,7 +318,7 @@ bool imu_cs(imu_cmd_t * imu)
 }
 
 /*
- * force CS disabled
+ * force BMA490L CS disabled
  */
 void imu_cs_disable(imu_cmd_t * imu)
 {
@@ -335,7 +335,7 @@ void imu_cs_disable(imu_cmd_t * imu)
 
 /*
  * SPI interrupt completed callback
- * disables CS and sets flags
+ * disables BMA490L CS and sets flags
  */
 void imu_cs_cb(uintptr_t context)
 {
@@ -371,7 +371,7 @@ void bma490_version(void)
 }
 
 /*
- * setup external interrupt for IMU data update interrupt trigger output
+ * setup external interrupt #2 for IMU BMA490L data update interrupt trigger output
  */
 void init_imu_int(const imu_cmd_t * imu)
 {

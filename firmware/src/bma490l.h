@@ -1,179 +1,115 @@
-/* ************************************************************************** */
-/** Descriptive File Name
-
-  @Company
-    Company Name
-
-  @File Name
-    filename.h
-
-  @Summary
-    Brief description of the file.
-
-  @Description
-    Describe the purpose of this file.
- */
-/* ************************************************************************** */
-
-#ifndef _EXAMPLE_FILE_NAME_H    /* Guard against multiple inclusion */
-#define _EXAMPLE_FILE_NAME_H
-
-
-/* ************************************************************************** */
-/* ************************************************************************** */
-/* Section: Included Files                                                    */
-/* ************************************************************************** */
-/* ************************************************************************** */
-
-/* This section lists the other files that are included in this file.
+/* 
+ * File:   bma490.h
+ * Author: nsasp
+ *
+ * Created on July 29, 2022, 12:37 PM
  */
 
-/* TODO:  Include other files here if needed. */
+#ifndef BMA490L_H
+#define	BMA490L_H
 
-
-/* Provide C++ Compatibility */
-#ifdef __cplusplus
+#ifdef	__cplusplus
 extern "C" {
 #endif
 
+#include <stddef.h>                     // Defines NULL
+#include <stdbool.h>                    // Defines true
+#include <stdlib.h>                     // Defines EXIT_FAILURE
+#include <math.h>
+#include "definitions.h"                // SYS function prototypes
+#include "bma490l_reg.h"
 
-    /* ************************************************************************** */
-    /* ************************************************************************** */
-    /* Section: Constants                                                         */
-    /* ************************************************************************** */
-    /* ************************************************************************** */
+#define BMA490_DRIVER "V0.150"      
 
-    /*  A brief description of a section can be given directly below the section
-        banner.
-     */
+#define RBIT		0b10000000
+#define WBIT            0b00000000
+#define CHIP_ID		0
+#define CHIP_IS		0x2A
+#define CHIP_ID_INDEX	1
+#define CHIP_ID_DATA	1
+#define BMA490L_ID	0x1A
+#define CHIP_ID_DELAY	100000
 
+#define BMA490_ID_LEN			2
+#define BMA490_REG_LEN			2
+#define BMA490_DATA_LEN                 11
+#define BMA490_DATA_BUFFER_LEN		64
+#define BMA490_DATA_RAW_LEN		30
+#define BMA490_DATA_BUFFER_INDEX	1	
+#define BMA490_DATA_INDEX		0x12
 
-    /* ************************************************************************** */
-    /** Descriptive Constant Name
+#define BMA490_RD_WR_MAX_LEN		0x0514 // IMU ASIC firmware file size
 
-      @Summary
-        Brief one-line summary of the constant.
-    
-      @Description
-        Full description, explaining the purpose and usage of the constant.
-        <p>
-        Additional description in consecutive paragraphs separated by HTML 
-        paragraph breaks, as necessary.
-        <p>
-        Type "JavaDoc" in the "How Do I?" IDE toolbar for more information on tags.
-    
-      @Remarks
-        Any additional remarks
-     */
-#define EXAMPLE_CONSTANT 0
+#define ACCEL_CONFIG			0xa9
+#define INT_MAP_DATA			0x04
+#define INT1_IO_CTRL			0x08
+#define REG_POWER_CTRL			0x04
 
+	/**\name FEATURE CONFIG RELATED */
+#define BMA490L_RESERVED_REG_5B_ADDR                 UINT8_C(0x5B)
+#define BMA490L_RESERVED_REG_5C_ADDR                 UINT8_C(0x5C)
+#define BMA490L_FEATURE_CONFIG_ADDR                  UINT8_C(0x5E)
+#define BMA490L_INTERNAL_ERROR                       UINT8_C(0x5F)
 
-    // *****************************************************************************
-    // *****************************************************************************
-    // Section: Data Types
-    // *****************************************************************************
-    // *****************************************************************************
+#define SYS_FREQ	200000000 // Running at 200MHz
 
-    /*  A brief description of a section can be given directly below the section
-        banner.
-     */
+#define imu_timeout	2000	// timeout for IMU ID data from query
+#define log_timeout	50	// timeout for IMU interrupts
 
+	enum accel_g {
+		range_2g = 0x00,
+		range_4g = 0x01,
+		range_8g = 0x02,
+		range_16g = 0x03,
+	};
 
-    // *****************************************************************************
+	/*! Earth's gravity in m/s^2 */
+#define GRAVITY_EARTH			(9.80665f)	
+#define BMA490_ACCEL_MG_LSB_2G		0.000061035F   ///< Macro for mg per LSB at +/- 2g sensitivity (1 LSB = 0.000061035mg) */
+#define BMA490_ACCEL_MG_LSB_4G		0.000122070F   ///< Macro for mg per LSB at +/- 4g sensitivity (1 LSB = 0.000122070mg) */
+#define BMA490_ACCEL_MG_LSB_8G		0.000244141F   ///< Macro for mg per LSB at +/- 8g sensitivity (1 LSB = 0.000244141mg) */
+#define BMA490_ACCEL_MG_LSB_16G		0.000488281F   ///< Macro for mg per LSB at +/- 16g sensitivity (1 LSB = 0.000488281mg) */
+#define BMA490_ACCEL_MG_SCALE		1.000000000F
 
-    /** Descriptive Data Type Name
+	typedef struct _imu_cmd_t {
+		uint8_t device;
+		uint8_t rbuf[64], tbuf[64];
+		volatile bool online, run, update, features;
+	} imu_cmd_t;
 
-      @Summary
-        Brief one-line summary of the data type.
-    
-      @Description
-        Full description, explaining the purpose and usage of the data type.
-        <p>
-        Additional description in consecutive paragraphs separated by HTML 
-        paragraph breaks, as necessary.
-        <p>
-        Type "JavaDoc" in the "How Do I?" IDE toolbar for more information on tags.
+	typedef struct {
+		float x; /**< X-axis sensor data */
+		float y; /**< Y-axis sensor data */
+		float z; /**< Z-axis sensor data */
+		uint32_t sensortime; /**< sensor time */
+	} sBma490SensorData_t;
 
-      @Remarks
-        Any additional remarks
-        <p>
-        Describe enumeration elements and structure and union members above each 
-        element or member.
-     */
-    typedef struct _example_struct_t {
-        /* Describe structure member. */
-        int some_number;
+	void imu_set_spimode(imu_cmd_t *);
+	bool imu_getid(imu_cmd_t *);
+	bool imu_getis(imu_cmd_t *);
+	void delay_us(uint32_t);
+	void getAllData(sBma490SensorData_t *, imu_cmd_t *);
+	bool imu_getdata(imu_cmd_t *);
+	void bma490_version(void);
+	void imu_set_reg(imu_cmd_t *, const uint8_t, const uint8_t, const bool);
+	/*
+	 * user callback function per BMA490L data interrupt
+	 */
+	void update_imu_int1(uint32_t, uintptr_t);
 
-        /* Describe structure member. */
-        bool some_flag;
+	/*
+	 * BMA490L chip instance
+	 */
+	extern imu_cmd_t imu0;
 
-    } example_struct_t;
+	/*
+	 * User configuration
+	 */
+	#define acc_range	range_4g // set IMU for the desired G range
 
-
-    // *****************************************************************************
-    // *****************************************************************************
-    // Section: Interface Functions
-    // *****************************************************************************
-    // *****************************************************************************
-
-    /*  A brief description of a section can be given directly below the section
-        banner.
-     */
-
-    // *****************************************************************************
-    /**
-      @Function
-        int ExampleFunctionName ( int param1, int param2 ) 
-
-      @Summary
-        Brief one-line description of the function.
-
-      @Description
-        Full description, explaining the purpose and usage of the function.
-        <p>
-        Additional description in consecutive paragraphs separated by HTML 
-        paragraph breaks, as necessary.
-        <p>
-        Type "JavaDoc" in the "How Do I?" IDE toolbar for more information on tags.
-
-      @Precondition
-        List and describe any required preconditions. If there are no preconditions,
-        enter "None."
-
-      @Parameters
-        @param param1 Describe the first parameter to the function.
-    
-        @param param2 Describe the second parameter to the function.
-
-      @Returns
-        List (if feasible) and describe the return values of the function.
-        <ul>
-          <li>1   Indicates an error occurred
-          <li>0   Indicates an error did not occur
-        </ul>
-
-      @Remarks
-        Describe any special behavior not described above.
-        <p>
-        Any additional remarks.
-
-      @Example
-        @code
-        if(ExampleFunctionName(1, 2) == 0)
-        {
-            return 3;
-        }
-     */
-    int ExampleFunction(int param1, int param2);
-
-
-    /* Provide C++ Compatibility */
-#ifdef __cplusplus
+#ifdef	__cplusplus
 }
 #endif
 
-#endif /* _EXAMPLE_FILE_NAME_H */
+#endif	/* BMA490L_H */
 
-/* *****************************************************************************
- End of File
- */

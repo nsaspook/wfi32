@@ -22,6 +22,17 @@
 // *****************************************************************************
 // *****************************************************************************
 
+/*
+ * BMA490L high-performance 16-bit digital triaxial acceleration sensor DEMO
+ * http://download.mikroe.com/documents/datasheets/BMA490L%20Datasheet.pdf
+ * for logging XYZ force values @ 115200 via a serial comm port
+ * Original test configuration: 
+ * Accel 15 Click: https://www.mikroe.com/accel-15-click
+ * PIC32 Wi-Fi MCU module eval board: https://www.microchip.com/en-us/development-tool/EV12F11A
+ * USB to TTL serial adapter: http://www.dsdtech-global.com/2017/07/dsd-tech-usb-to-ttl-serial-converter.html
+ * 
+ */
+
 #include <stddef.h>                     // Defines NULL
 #include <stdbool.h>                    // Defines true
 #include <stdlib.h>                     // Defines EXIT_FAILURE
@@ -29,18 +40,24 @@
 #include <string.h>
 #include "definitions.h"                // SYS function prototypes
 
-#include "bma490.h"
+#include "bma490l.h"
 #include "timers.h"
 
+/*
+ * BMA490L instance
+ */
 imu_cmd_t imu0 = {
 	.tbuf[0] = CHIP_ID | RBIT,
 	.online = false,
-	.device = 0,
+	.device = 0, // chip select
 	.run = false,
 	.update = true,
 	.features = false,
 };
 
+/*
+ * Logging data structure
+ */
 sBma490SensorData_t accel;
 
 volatile uint16_t tickCount[TMR_COUNT];
@@ -58,6 +75,7 @@ int main(void)
 
 	/*
 	 * software timers interrupt setup
+	 * using tickCount
 	 */
 	TMR6_CallbackRegister(timer_ms_tick, 0);
 	TMR6_Start();
@@ -66,7 +84,7 @@ int main(void)
 	 * print the driver version
 	 */
 	bma490_version();
-	imu_set_spimode(&imu0); // setup the BMA490L chip for SPI comms, 200 value updates per second @2G
+	imu_set_spimode(&imu0); // setup the BMA490L chip for SPI comms, 200 value updates per second @ selected G range
 
 	/*
 	 * check to see if we actually have a working BMA490L
@@ -108,6 +126,7 @@ int main(void)
 }
 
 /*
+ * user callback function per BMA490L data interrupt
  * update pacing flag from IMU ISR
  */
 void update_imu_int1(uint32_t a, uintptr_t context)

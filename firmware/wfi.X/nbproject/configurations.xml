@@ -45,9 +45,9 @@
           <itemPath>../src/config/default/device_cache.h</itemPath>
         </logicalFolder>
       </logicalFolder>
-      <itemPath>../src/bma490.h</itemPath>
       <itemPath>../src/timers.h</itemPath>
       <itemPath>../src/bma490l_reg.h</itemPath>
+      <itemPath>../src/bma490l.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
