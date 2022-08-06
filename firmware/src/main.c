@@ -49,7 +49,7 @@
 imu_cmd_t imu0 = {
 	.tbuf[0] = CHIP_ID | RBIT,
 	.online = false,
-	.device = 0, // chip select
+	.device = 0, // chip select number and device type
 	.run = false,
 	.update = true,
 	.features = false,
