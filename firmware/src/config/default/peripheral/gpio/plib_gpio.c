@@ -66,7 +66,10 @@ void GPIO_Initialize ( void )
     CFGCON0bits.JTAGEN = 0U;
 
     /* PORTA Initialization */
+    LATA = 0x2U; /* Initial Latch Value */
+    TRISACLR = 0x2U; /* Direction Control */
     ANSELACLR = 0x4400U; /* Digital Mode Enable */
+    CNPUASET = 0x2U; /* Pull-Up Enable */
 
     /* Change Notice Enable */
     CNCONASET = _CNCONA_ON_MASK;
@@ -76,6 +79,7 @@ void GPIO_Initialize ( void )
     LATB = 0x80U; /* Initial Latch Value */
     TRISBCLR = 0x80U; /* Direction Control */
     ANSELBCLR = 0x80U; /* Digital Mode Enable */
+    CNPUBSET = 0x80U; /* Pull-Up Enable */
     /* PORTC Initialization */
     ODCCSET = 0x200U; /* Open Drain Enable */
     /* PORTK Initialization */

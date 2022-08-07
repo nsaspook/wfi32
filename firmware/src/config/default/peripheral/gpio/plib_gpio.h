@@ -62,6 +62,15 @@
 // *****************************************************************************
 
 
+/*** Macros for SST26_CS pin ***/
+#define SST26_CS_Set()               (LATASET = (1U<<1))
+#define SST26_CS_Clear()             (LATACLR = (1U<<1))
+#define SST26_CS_Toggle()            (LATAINV= (1U<<1))
+#define SST26_CS_OutputEnable()      (TRISACLR = (1U<<1))
+#define SST26_CS_InputEnable()       (TRISASET = (1U<<1))
+#define SST26_CS_Get()               ((PORTA >> 1) & 0x1U)
+#define SST26_CS_PIN                  GPIO_PIN_RA1
+
 /*** Macros for IMU_INT1 pin ***/
 #define IMU_INT1_Get()               ((PORTK >> 6) & 0x1U)
 #define IMU_INT1_PIN                  GPIO_PIN_RK6

@@ -49,6 +49,7 @@
 // *****************************************************************************
 // *****************************************************************************
 
+#include "configuration.h"
 #include "interrupts.h"
 #include "definitions.h"
 
@@ -61,6 +62,9 @@
 
 
 void EXTERNAL_2_InterruptHandler( void );
+void TIMER_5_InterruptHandler( void );
+void SPI1_RX_InterruptHandler( void );
+void SPI1_TX_InterruptHandler( void );
 void CHANGE_NOTICE_A_InterruptHandler( void );
 void SPI2_RX_InterruptHandler( void );
 void SPI2_TX_InterruptHandler( void );
@@ -72,6 +76,21 @@ void TIMER_6_InterruptHandler( void );
 void __ISR(_EXTERNAL_2_VECTOR, ipl3SRS) EXTERNAL_2_Handler (void)
 {
     EXTERNAL_2_InterruptHandler();
+}
+
+void __ISR(_TIMER_5_VECTOR, ipl1SRS) TIMER_5_Handler (void)
+{
+    TIMER_5_InterruptHandler();
+}
+
+void __ISR(_SPI1_RX_VECTOR, ipl1SRS) SPI1_RX_Handler (void)
+{
+    SPI1_RX_InterruptHandler();
+}
+
+void __ISR(_SPI1_TX_VECTOR, ipl1SRS) SPI1_TX_Handler (void)
+{
+    SPI1_TX_InterruptHandler();
 }
 
 void __ISR(_CHANGE_NOTICE_A_VECTOR, ipl1SRS) CHANGE_NOTICE_A_Handler (void)
