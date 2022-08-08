@@ -8468,15 +8468,15 @@ Source: www.bourns.com .. 6000_series.pdf</description>
 <parts>
 <part name="U1" library="2022-08-07_22-50-41_Library" deviceset="PIC32MK0512MCJ048T-I/Y8X" device="TQFP48_Y8X_MCH-M"/>
 <part name="IC1" library="SamacSys_Parts" deviceset="BMA490L" device=""/>
-<part name="C1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
-<part name="C2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
+<part name="C1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.1uf"/>
+<part name="C2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="10uf"/>
 <part name="VDD1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VDD" device=""/>
 <part name="VSS1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
-<part name="L1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="L-US" device="L3216C" package3d_urn="urn:adsk.eagle:package:23476/2"/>
-<part name="C3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
+<part name="L1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="L-US" device="L3216C" package3d_urn="urn:adsk.eagle:package:23476/2" value="100uh"/>
+<part name="C3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.1uf"/>
 <part name="VSS2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
-<part name="C4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
-<part name="C5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
+<part name="C4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.1uf"/>
+<part name="C5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.1uf"/>
 <part name="VSS3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 <part name="VSS4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 </parts>
@@ -8549,12 +8549,14 @@ Source: www.bourns.com .. 6000_series.pdf</description>
 <label x="27.94" y="129.54" size="1.778" layer="95"/>
 <pinref part="VDD1" gate="G$1" pin="VDD"/>
 <pinref part="L1" gate="G$1" pin="2"/>
+<junction x="5.08" y="132.08"/>
 </segment>
 <segment>
 <wire x1="99.06" y1="132.08" x2="99.06" y2="144.78" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="VDD"/>
 <junction x="99.06" y="132.08"/>
 <pinref part="C5" gate="G$1" pin="1"/>
+<junction x="99.06" y="144.78"/>
 </segment>
 <segment>
 <wire x1="96.52" y1="83.82" x2="96.52" y2="93.98" width="0.1524" layer="91"/>
@@ -8562,22 +8564,35 @@ Source: www.bourns.com .. 6000_series.pdf</description>
 <wire x1="96.52" y1="93.98" x2="96.52" y2="96.52" width="0.1524" layer="91"/>
 <junction x="96.52" y="93.98"/>
 <pinref part="C4" gate="G$1" pin="1"/>
+<junction x="96.52" y="83.82"/>
 </segment>
 <segment>
 <wire x1="200.66" y1="58.42" x2="213.36" y2="58.42" width="0.1524" layer="91"/>
 <pinref part="U1" gate="A" pin="VDD"/>
+<junction x="200.66" y="58.42"/>
+<junction x="213.36" y="58.42"/>
+<label x="205.74" y="58.42" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="-30.48" y1="58.42" x2="-17.78" y2="58.42" width="0.1524" layer="91"/>
 <pinref part="U1" gate="A" pin="VDD_2"/>
+<junction x="-17.78" y="58.42"/>
+<junction x="-30.48" y="58.42"/>
+<label x="-27.94" y="58.42" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="-30.48" y1="17.78" x2="-17.78" y2="17.78" width="0.1524" layer="91"/>
 <pinref part="U1" gate="A" pin="VDD_3"/>
+<junction x="-17.78" y="17.78"/>
+<junction x="-30.48" y="17.78"/>
+<label x="-27.94" y="17.78" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="200.66" y1="15.24" x2="213.36" y2="15.24" width="0.1524" layer="91"/>
 <pinref part="U1" gate="A" pin="VDD_4"/>
+<junction x="200.66" y="15.24"/>
+<junction x="213.36" y="15.24"/>
+<label x="205.74" y="15.24" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="VSS" class="0">
@@ -8592,36 +8607,56 @@ Source: www.bourns.com .. 6000_series.pdf</description>
 <junction x="30.48" y="124.46"/>
 <label x="27.94" y="121.92" size="1.778" layer="95"/>
 <pinref part="VSS1" gate="G$1" pin="VSS"/>
+<junction x="5.08" y="124.46"/>
 </segment>
 <segment>
 <wire x1="93.98" y1="132.08" x2="93.98" y2="144.78" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="GND"/>
 <junction x="93.98" y="132.08"/>
+<junction x="93.98" y="144.78"/>
 </segment>
 <segment>
 <wire x1="96.52" y1="132.08" x2="96.52" y2="144.78" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="GNDIO"/>
 <junction x="96.52" y="132.08"/>
+<junction x="96.52" y="144.78"/>
 </segment>
 <segment>
 <wire x1="-30.48" y1="60.96" x2="-17.78" y2="60.96" width="0.1524" layer="91"/>
 <pinref part="U1" gate="A" pin="VSS_2"/>
+<junction x="-17.78" y="60.96"/>
+<junction x="-30.48" y="60.96"/>
+<label x="-27.94" y="60.96" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="-30.48" y1="20.32" x2="-17.78" y2="20.32" width="0.1524" layer="91"/>
 <pinref part="U1" gate="A" pin="VSS_3"/>
+<junction x="-17.78" y="20.32"/>
+<junction x="-30.48" y="20.32"/>
+<label x="-27.94" y="20.32" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="200.66" y1="55.88" x2="213.36" y2="55.88" width="0.1524" layer="91"/>
 <pinref part="U1" gate="A" pin="VSS"/>
+<junction x="200.66" y="55.88"/>
+<junction x="213.36" y="55.88"/>
+<label x="208.28" y="55.88" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="200.66" y1="22.86" x2="213.36" y2="22.86" width="0.1524" layer="91"/>
 <pinref part="U1" gate="A" pin="VSS_4"/>
+<junction x="200.66" y="22.86"/>
+<junction x="213.36" y="22.86"/>
+<label x="205.74" y="22.86" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="-30.48" y1="33.02" x2="-17.78" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="33.02" x2="-27.94" y2="33.02" width="0.1524" layer="91"/>
 <pinref part="U1" gate="A" pin="AVSS"/>
+<junction x="-17.78" y="33.02"/>
+<junction x="-27.94" y="33.02"/>
+<wire x1="-27.94" y1="33.02" x2="-17.78" y2="33.02" width="0.1524" layer="91"/>
+<junction x="-30.48" y="33.02"/>
+<label x="-25.4" y="33.02" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="C3" gate="G$1" pin="2"/>
@@ -8630,10 +8665,12 @@ Source: www.bourns.com .. 6000_series.pdf</description>
 <segment>
 <pinref part="C4" gate="G$1" pin="2"/>
 <pinref part="VSS3" gate="G$1" pin="VSS"/>
+<junction x="104.14" y="83.82"/>
 </segment>
 <segment>
 <pinref part="C5" gate="G$1" pin="2"/>
 <pinref part="VSS4" gate="G$1" pin="VSS"/>
+<junction x="106.68" y="144.78"/>
 </segment>
 </net>
 <net name="AVDD" class="0">
@@ -8651,6 +8688,9 @@ Source: www.bourns.com .. 6000_series.pdf</description>
 <segment>
 <wire x1="-25.4" y1="35.56" x2="-17.78" y2="35.56" width="0.1524" layer="91"/>
 <pinref part="U1" gate="A" pin="AVDD"/>
+<junction x="-17.78" y="35.56"/>
+<junction x="-25.4" y="35.56"/>
+<label x="-22.86" y="35.56" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
