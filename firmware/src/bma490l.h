@@ -19,7 +19,17 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "bma490l_reg.h"
 
-#define BMA490_DRIVER "V0.151"      
+#ifndef  LED_GREEN_On
+#define LED_GREEN_On() LED_GREEN_Set()
+#define LED_GREEN_Off() LED_GREEN_Clear()
+#endif
+#ifndef  LED_RED_On
+#define LED_RED_On() LED_RED_Set()
+#define LED_RED_Off() LED_RED_Clear()
+#endif	
+
+#define BMA490_DRIVER "V0.200" 
+	// version 0.200	PIC32MK MCJ 48 pin version
 
 #define RBIT		0b10000000
 #define WBIT            0b00000000
@@ -105,7 +115,7 @@ extern "C" {
 	/*
 	 * User configuration
 	 */
-	#define acc_range	range_4g // set IMU for the desired G range
+#define acc_range	range_4g // set IMU for the desired G range
 
 #ifdef	__cplusplus
 }

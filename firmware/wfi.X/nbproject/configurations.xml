@@ -75,8 +75,8 @@
         </logicalFolder>
       </logicalFolder>
       <itemPath>../src/timers.h</itemPath>
-      <itemPath>../src/bma490l_reg.h</itemPath>
       <itemPath>../src/bma490l.h</itemPath>
+      <itemPath>../src/bma490l_reg.h</itemPath>
       <itemPath>../src/app.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -189,7 +189,7 @@
         <platformTool>PKOBSKDEPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.10</languageToolchainVersion>
-        <platform>2</platform>
+        <platform>3</platform>
       </toolsSet>
       <packs>
         <pack name="PIC32MZ-W_DFP" vendor="Microchip" version="1.5.203"/>
@@ -426,6 +426,7 @@
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
         <property key="debugoptions.debug-startup" value="Use system settings"/>
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="lastid" value=""/>
         <property key="memories.configurationmemory" value="true"/>
         <property key="memories.dataflash" value="true"/>
