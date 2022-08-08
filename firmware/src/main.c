@@ -112,7 +112,7 @@ int main(void)
 			imu_getdata(&imu0); // read data from the chip
 			imu0.update = false;
 			getAllData(&accel, &imu0); // convert data from the chip
-			printf(" %6.3f, %6.3f, %6.3f,   %u \r\n", accel.x, accel.y, accel.z, accel.sensortime);
+			printf("%6.3f,%6.3f,%6.3f,%u\r\n", accel.x, accel.y, accel.z, accel.sensortime);
 			if (TimerDone(TMR_LOG)) {
 				printf(" IMU data timeout \r\n");
 			}
