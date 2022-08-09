@@ -13938,6 +13938,8 @@ Source: www.kingbright.com</description>
 <wire x1="78.74" y1="132.08" x2="91.44" y2="132.08" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="CSB"/>
 <label x="78.74" y="132.08" size="1.778" layer="95"/>
+<junction x="91.44" y="132.08"/>
+<junction x="78.74" y="132.08"/>
 </segment>
 </net>
 </nets>

@@ -62,6 +62,24 @@
 // *****************************************************************************
 
 
+/*** Macros for EXT_SW2 pin ***/
+#define EXT_SW2_Set()               (LATASET = (1U<<12))
+#define EXT_SW2_Clear()             (LATACLR = (1U<<12))
+#define EXT_SW2_Toggle()            (LATAINV= (1U<<12))
+#define EXT_SW2_OutputEnable()      (TRISACLR = (1U<<12))
+#define EXT_SW2_InputEnable()       (TRISASET = (1U<<12))
+#define EXT_SW2_Get()               ((PORTA >> 12) & 0x1U)
+#define EXT_SW2_PIN                  GPIO_PIN_RA12
+
+/*** Macros for EXT_SW1 pin ***/
+#define EXT_SW1_Set()               (LATASET = (1U<<11))
+#define EXT_SW1_Clear()             (LATACLR = (1U<<11))
+#define EXT_SW1_Toggle()            (LATAINV= (1U<<11))
+#define EXT_SW1_OutputEnable()      (TRISACLR = (1U<<11))
+#define EXT_SW1_InputEnable()       (TRISASET = (1U<<11))
+#define EXT_SW1_Get()               ((PORTA >> 11) & 0x1U)
+#define EXT_SW1_PIN                  GPIO_PIN_RA11
+
 /*** Macros for LED_GREEN pin ***/
 #define LED_GREEN_Set()               (LATCSET = (1U<<12))
 #define LED_GREEN_Clear()             (LATCCLR = (1U<<12))
@@ -79,6 +97,15 @@
 #define LED_RED_InputEnable()       (TRISCSET = (1U<<15))
 #define LED_RED_Get()               ((PORTC >> 15) & 0x1U)
 #define LED_RED_PIN                  GPIO_PIN_RC15
+
+/*** Macros for SDI1_MODE pin ***/
+#define SDI1_MODE_Set()               (LATBSET = (1U<<9))
+#define SDI1_MODE_Clear()             (LATBCLR = (1U<<9))
+#define SDI1_MODE_Toggle()            (LATBINV= (1U<<9))
+#define SDI1_MODE_OutputEnable()      (TRISBCLR = (1U<<9))
+#define SDI1_MODE_InputEnable()       (TRISBSET = (1U<<9))
+#define SDI1_MODE_Get()               ((PORTB >> 9) & 0x1U)
+#define SDI1_MODE_PIN                  GPIO_PIN_RB9
 
 /*** Macros for IMU_CS pin ***/
 #define IMU_CS_Set()               (LATCSET = (1U<<9))

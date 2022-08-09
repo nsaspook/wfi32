@@ -180,11 +180,15 @@ void SYS_Initialize ( void* data )
 
     TMR6_Initialize();
 
+    ADCHS_Initialize();
+
 	UART1_Initialize();
 
     TMR5_Initialize();
 
 	SPI2_Initialize();
+
+	SPI1_Initialize();
 
 
 
