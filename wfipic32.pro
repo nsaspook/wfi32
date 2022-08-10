@@ -1,25 +1,25 @@
 EAGLE AutoRouter Statistics:
 
-Job           : C:/Users/nsasp/wfi32/wfipic32.brd
+Job           : /fred/iot/wfipic32.brd
 
-Start at      : 19:39:56 (8/9/2022)
-End at        : 19:40:17 (8/9/2022)
-Elapsed time  : 00:00:19
+Start at      : 07:38:42 (8/10/22)
+End at        : 07:39:09 (8/10/22)
+Elapsed time  : 00:00:24
 
-Signals       :    45   RoutingGrid: 6 mil  Layers: 4
-Connections   :    95   predefined:  1 ( 0 Vias )
+Signals       :    45   RoutingGrid: 6.25 mil  Layers: 4
+Connections   :    96   predefined:  1 ( 0 Vias )
 
-Router memory :   755424
+Router memory :   646696
 
-Passname          : TopRouter     Route Optimize1 Optimize2 Optimize3 Optimize4 Optimize5 Optimize6 Optimize7 Optimize8 Optimize9Optimize10Optimize11Optimize12
+Passname          :     Route Optimize1 Optimize2 Optimize3 Optimize4 Optimize5 Optimize6 Optimize7 Optimize8 Optimize9Optimize10Optimize11Optimize12
 
-Time per pass     :  00:00:03  00:00:07  00:00:01  00:00:01  00:00:00  00:00:01  00:00:01  00:00:01  00:00:00  00:00:01  00:00:01  00:00:00  00:00:01  00:00:01
-Number of Ripups  :         0        63         0         0         0         0         0         0         0         0         0         0         0         0
-max. Level        :         0         4         0         0         0         0         0         0         0         0         0         0         0         0
-max. Total        :         0        34         0         0         0         0         0         0         0         0         0         0         0         0
+Time per pass     :  00:00:10  00:00:01  00:00:01  00:00:01  00:00:01  00:00:02  00:00:01  00:00:01  00:00:01  00:00:02  00:00:01  00:00:01  00:00:01
+Number of Ripups  :        62         0         0         0         0         0         0         0         0         0         0         0         0
+max. Level        :         3         0         0         0         0         0         0         0         0         0         0         0         0
+max. Total        :        27         0         0         0         0         0         0         0         0         0         0         0         0
 
-Routed            :        20        93        93        93        93        93        93        93        93        93        93        93        93        93
-Vias              :         0        78        76        74        72        69        69        69        66        66        66        67        67        67
-Resolution        :    22.1 %    98.9 %    98.9 %    98.9 %    98.9 %    98.9 %    98.9 %    98.9 %    98.9 %    98.9 %    98.9 %    98.9 %    98.9 %    98.9 %
+Routed            :        95        95        95        95        95        95        95        95        95        95        95        95        95
+Vias              :        74        74        72        72        72        70        66        66        63        62        62        62        62
+Resolution        :   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %
 
-Final             : 98.9% finished
+Final             : 100.0% finished
