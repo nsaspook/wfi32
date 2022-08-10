@@ -1796,6 +1796,31 @@ Source: http://www.osram.convergy.de/ ... LG_LY Q971.pdf</description>
 </package>
 </packages>
 </library>
+<library name="testpad" urn="urn:adsk.eagle:library:385">
+<description>&lt;b&gt;Test Pins/Pads&lt;/b&gt;&lt;p&gt;
+Cream on SMD OFF.&lt;br&gt;
+new: Attribute TP_SIGNAL_NAME&lt;br&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="P1-13" urn="urn:adsk.eagle:footprint:27902/1" library_version="3">
+<description>&lt;b&gt;TEST PAD&lt;/b&gt;</description>
+<circle x="0" y="0" radius="0.762" width="0.1524" layer="51"/>
+<pad name="TP" x="0" y="0" drill="1.3208" diameter="2.159" shape="octagon"/>
+<text x="-1.016" y="1.27" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="0" y="0" size="0.0254" layer="27">&gt;VALUE</text>
+<text x="-1.27" y="-2.54" size="1" layer="37">&gt;TP_SIGNAL_NAME</text>
+<rectangle x1="-0.3302" y1="-0.3302" x2="0.3302" y2="0.3302" layer="51"/>
+</package>
+</packages>
+<packages3d>
+<package3d name="P1-13" urn="urn:adsk.eagle:package:27946/1" type="box" library_version="3">
+<description>TEST PAD</description>
+<packageinstances>
+<packageinstance name="P1-13"/>
+</packageinstances>
+</package3d>
+</packages3d>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -2170,6 +2195,30 @@ design rules under a new name.</description>
 <attribute name="POPULARITY" value="63" x="2.54" y="44.45" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="SPICEPREFIX" value="C" x="2.54" y="44.45" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="VALUE" x="0" y="43.18" size="1.27" layer="28" rot="MR90"/>
+</element>
+<element name="TP1" library="testpad" library_urn="urn:adsk.eagle:library:385" package="P1-13" package3d_urn="urn:adsk.eagle:package:27946/1" value="PTR1PAD1-13" x="-6.35" y="17.78" smashed="yes">
+<attribute name="NAME" x="-7.366" y="19.05" size="1.27" layer="25" ratio="10"/>
+<attribute name="POPULARITY" value="2" x="-6.35" y="17.78" size="1.778" layer="27" display="off"/>
+<attribute name="TP_SIGNAL_NAME" value="" x="-6.35" y="17.78" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="-6.35" y="17.78" size="0.0254" layer="27"/>
+</element>
+<element name="TP3" library="testpad" library_urn="urn:adsk.eagle:library:385" package="P1-13" package3d_urn="urn:adsk.eagle:package:27946/1" value="PTR1PAD1-13" x="-6.35" y="7.62" smashed="yes">
+<attribute name="NAME" x="-7.366" y="8.89" size="1.27" layer="25" ratio="10"/>
+<attribute name="POPULARITY" value="2" x="-6.35" y="7.62" size="1.778" layer="27" display="off"/>
+<attribute name="TP_SIGNAL_NAME" value="" x="-6.35" y="7.62" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="-6.35" y="7.62" size="0.0254" layer="27"/>
+</element>
+<element name="TP2" library="testpad" library_urn="urn:adsk.eagle:library:385" package="P1-13" package3d_urn="urn:adsk.eagle:package:27946/1" value="PTR1PAD1-13" x="-6.35" y="2.54" smashed="yes">
+<attribute name="NAME" x="-7.366" y="3.81" size="1.27" layer="25" ratio="10"/>
+<attribute name="POPULARITY" value="2" x="-6.35" y="2.54" size="1.778" layer="27" display="off"/>
+<attribute name="TP_SIGNAL_NAME" value="" x="-6.35" y="2.54" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="-6.35" y="2.54" size="0.0254" layer="27"/>
+</element>
+<element name="REFCLK2" library="testpad" library_urn="urn:adsk.eagle:library:385" package="P1-13" package3d_urn="urn:adsk.eagle:package:27946/1" value="PTR1PAD1-13" x="-6.35" y="-2.54" smashed="yes">
+<attribute name="NAME" x="-7.366" y="-1.27" size="1.27" layer="25" ratio="10"/>
+<attribute name="POPULARITY" value="2" x="-6.35" y="-2.54" size="1.778" layer="27" display="off"/>
+<attribute name="TP_SIGNAL_NAME" value="" x="-6.35" y="-2.54" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="-6.35" y="-2.54" size="0.0254" layer="27"/>
 </element>
 </elements>
 <signals>
@@ -2689,7 +2738,6 @@ design rules under a new name.</description>
 <via x="22.4028" y="37.4904" extent="1-16" drill="0.35"/>
 </signal>
 <signal name="U1TX">
-<contactref element="U1" pad="19"/>
 <contactref element="J1" pad="3"/>
 <wire x1="10.5156" y1="37.338" x2="10.5156" y2="36.4236" width="0.1524" layer="1"/>
 <wire x1="10.9728" y1="37.7952" x2="10.5156" y2="37.338" width="0.1524" layer="1"/>
@@ -2705,10 +2753,11 @@ design rules under a new name.</description>
 <wire x1="20.7264" y1="33.8328" x2="17.9832" y2="33.8328" width="0.1524" layer="1"/>
 <wire x1="21.1836" y1="33.3756" x2="20.7264" y2="33.8328" width="0.1524" layer="1"/>
 <wire x1="21.1836" y1="32.6136" x2="21.1836" y2="33.3756" width="0.1524" layer="1"/>
-<wire x1="10.5156" y1="36.4236" x2="10.41" y2="36.3601" width="0.1524" layer="1"/>
 <wire x1="21.1836" y1="32.6136" x2="21.32" y2="32.6045" width="0.1524" layer="1"/>
 <via x="11.1252" y="37.7952" extent="1-16" drill="0.35"/>
 <via x="15.24" y="35.5092" extent="1-16" drill="0.35"/>
+<contactref element="U1" pad="17"/>
+<wire x1="9.41" y1="36.3601" x2="10.5156" y2="36.4236" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="SDI1_MODE">
 <contactref element="U1" pad="37"/>
@@ -2790,7 +2839,6 @@ design rules under a new name.</description>
 </signal>
 <signal name="EXT_SW2">
 <contactref element="U1" pad="7"/>
-<contactref element="J1" pad="8"/>
 <wire x1="6.7056" y1="40.386" x2="5.9436" y2="40.386" width="0.1524" layer="1"/>
 <wire x1="7.4676" y1="39.624" x2="6.7056" y2="40.386" width="0.1524" layer="1"/>
 <wire x1="7.9248" y1="39.624" x2="7.4676" y2="39.624" width="0.1524" layer="15"/>
@@ -2802,9 +2850,10 @@ design rules under a new name.</description>
 <wire x1="19.2024" y1="35.3568" x2="18.5928" y2="34.7472" width="0.1524" layer="1"/>
 <wire x1="19.2024" y1="35.9664" x2="19.2024" y2="35.3568" width="0.1524" layer="1"/>
 <wire x1="5.9436" y1="40.386" x2="5.8801" y2="40.39" width="0.1524" layer="1"/>
-<wire x1="19.2024" y1="35.9664" x2="19.32" y2="35.9755" width="0.1524" layer="1"/>
 <via x="7.4676" y="39.624" extent="1-16" drill="0.35"/>
 <via x="14.9352" y="36.8808" extent="1-16" drill="0.35"/>
+<contactref element="J2" pad="8"/>
+<wire x1="19.2024" y1="35.9664" x2="19.32" y2="43.5955" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="AN0">
 <contactref element="U1" pad="9"/>
@@ -2892,7 +2941,6 @@ design rules under a new name.</description>
 <wire x1="18.288" y1="40.2336" x2="18.32" y2="40.2245" width="0.1524" layer="1"/>
 </signal>
 <signal name="QEA2">
-<contactref element="U1" pad="45"/>
 <contactref element="J2" pad="2"/>
 <wire x1="8.8392" y1="44.0436" x2="8.8392" y2="44.8056" width="0.1524" layer="1"/>
 <wire x1="8.6868" y1="43.8912" x2="8.8392" y2="44.0436" width="0.1524" layer="1"/>
@@ -2907,10 +2955,11 @@ design rules under a new name.</description>
 <wire x1="21.336" y1="45.1104" x2="20.8788" y2="44.6532" width="0.1524" layer="15"/>
 <wire x1="22.2504" y1="44.196" x2="21.336" y2="45.1104" width="0.1524" layer="1"/>
 <wire x1="22.2504" y1="43.7388" x2="22.2504" y2="44.196" width="0.1524" layer="1"/>
-<wire x1="8.8392" y1="44.8056" x2="8.91" y2="44.9199" width="0.1524" layer="1"/>
 <wire x1="22.2504" y1="43.7388" x2="22.32" y2="43.5955" width="0.1524" layer="1"/>
 <via x="6.7056" y="44.5008" extent="1-16" drill="0.35"/>
 <via x="21.336" y="45.1104" extent="1-16" drill="0.35"/>
+<contactref element="U1" pad="44"/>
+<wire x1="8.8392" y1="44.8056" x2="9.41" y2="44.9199" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="QEB2">
 <contactref element="U1" pad="47"/>
@@ -3013,6 +3062,51 @@ design rules under a new name.</description>
 <wire x1="12.3444" y1="33.0708" x2="11.2776" y2="34.1376" width="0.1524" layer="16"/>
 <wire x1="7.3152" y1="34.1376" x2="7.245" y2="33.995" width="0.1524" layer="16"/>
 <wire x1="12.3444" y1="33.0708" x2="12.38" y2="33.02" width="0.1524" layer="16"/>
+</signal>
+<signal name="PWM1EN">
+<contactref element="U1" pad="30"/>
+<contactref element="J3" pad="5"/>
+<wire x1="14.4399" y1="40.39" x2="20.32" y2="47.8445" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="SCK1">
+<contactref element="U1" pad="34"/>
+<contactref element="J1" pad="8"/>
+<wire x1="19.32" y1="35.9755" x2="14.4399" y2="42.39" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="PWM1ER">
+<contactref element="U1" pad="36"/>
+<contactref element="J3" pad="3"/>
+<wire x1="14.4399" y1="43.39" x2="21.32" y2="47.8445" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="PWM4EN">
+<contactref element="U1" pad="45"/>
+<contactref element="J3" pad="6"/>
+<wire x1="8.91" y1="44.9199" x2="20.32" y2="51.2155" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="PWM4ER">
+<contactref element="U1" pad="23"/>
+<contactref element="J3" pad="4"/>
+<wire x1="12.41" y1="36.3601" x2="21.32" y2="51.2155" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$5">
+<contactref element="U1" pad="20"/>
+<contactref element="TP1" pad="TP"/>
+<wire x1="-6.35" y1="17.78" x2="10.91" y2="36.3601" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$7">
+<contactref element="U1" pad="11"/>
+<contactref element="TP3" pad="TP"/>
+<wire x1="-6.35" y1="7.62" x2="5.8801" y2="38.39" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$6">
+<contactref element="U1" pad="19"/>
+<contactref element="TP2" pad="TP"/>
+<wire x1="-6.35" y1="2.54" x2="10.41" y2="36.3601" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$8">
+<contactref element="U1" pad="25"/>
+<contactref element="REFCLK2" pad="TP"/>
+<wire x1="-6.35" y1="-2.54" x2="14.4399" y2="37.89" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
 <mfgpreviewcolors>
