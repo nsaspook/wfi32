@@ -59,17 +59,20 @@ void GPIO_Initialize ( void )
 {
 
     /* PORTA Initialization */
-    ANSELACLR = 0x1801U; /* Digital Mode Enable */
+    ANSELACLR = 0x1911U; /* Digital Mode Enable */
     CNPUASET = 0x1800U; /* Pull-Up Enable */
     /* PORTB Initialization */
-    LATB = 0x200U; /* Initial Latch Value */
-    TRISBCLR = 0x200U; /* Direction Control */
-    ANSELBCLR = 0x284U; /* Digital Mode Enable */
+    LATB = 0xa01U; /* Initial Latch Value */
+    TRISBCLR = 0xa01U; /* Direction Control */
+    ANSELBCLR = 0x285U; /* Digital Mode Enable */
     /* PORTC Initialization */
+    ODCCSET = 0x804U; /* Open Drain Enable */
     LATC = 0x9200U; /* Initial Latch Value */
-    TRISCCLR = 0x9200U; /* Direction Control */
-    ANSELCCLR = 0x1003U; /* Digital Mode Enable */
+    TRISCCLR = 0x9a04U; /* Direction Control */
+    ANSELCCLR = 0x1807U; /* Digital Mode Enable */
     /* PORTD Initialization */
+    LATD = 0x100U; /* Initial Latch Value */
+    TRISDCLR = 0x100U; /* Direction Control */
 
     /* Unlock system for PPS configuration */
     SYSKEY = 0x00000000U;
@@ -93,6 +96,7 @@ void GPIO_Initialize ( void )
     RPC0R = 1;
     RPB5R = 3;
     RPB6R = 3;
+    RPA4R = 18;
 
         /* Lock back the system after PPS configuration */
     CFGCONbits.IOLOCK = 1U;

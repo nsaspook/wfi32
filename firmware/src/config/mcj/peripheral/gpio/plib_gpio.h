@@ -80,6 +80,46 @@
 #define EXT_SW1_Get()               ((PORTA >> 11) & 0x1U)
 #define EXT_SW1_PIN                  GPIO_PIN_RA11
 
+/*** Macros for TP3 pin ***/
+#define TP3_Set()               (LATBSET = (1U<<0))
+#define TP3_Clear()             (LATBCLR = (1U<<0))
+#define TP3_Toggle()            (LATBINV= (1U<<0))
+#define TP3_OutputEnable()      (TRISBCLR = (1U<<0))
+#define TP3_InputEnable()       (TRISBSET = (1U<<0))
+#define TP3_Get()               ((PORTB >> 0) & 0x1U)
+#define TP3_PIN                  GPIO_PIN_RB0
+
+/*** Macros for TP2 pin ***/
+#define TP2_Set()               (LATCSET = (1U<<2))
+#define TP2_Clear()             (LATCCLR = (1U<<2))
+#define TP2_Toggle()            (LATCINV= (1U<<2))
+#define TP2_OutputEnable()      (TRISCCLR = (1U<<2))
+#define TP2_InputEnable()       (TRISCSET = (1U<<2))
+#define TP2_Get()               ((PORTC >> 2) & 0x1U)
+#define TP2_PIN                  GPIO_PIN_RC2
+
+/*** Macros for TP1 pin ***/
+#define TP1_Set()               (LATCSET = (1U<<11))
+#define TP1_Clear()             (LATCCLR = (1U<<11))
+#define TP1_Toggle()            (LATCINV= (1U<<11))
+#define TP1_OutputEnable()      (TRISCCLR = (1U<<11))
+#define TP1_InputEnable()       (TRISCSET = (1U<<11))
+#define TP1_Get()               ((PORTC >> 11) & 0x1U)
+#define TP1_PIN                  GPIO_PIN_RC11
+
+/*** Macros for PWM4ER pin ***/
+#define PWM4ER_Set()               (LATASET = (1U<<8))
+#define PWM4ER_Clear()             (LATACLR = (1U<<8))
+#define PWM4ER_Toggle()            (LATAINV= (1U<<8))
+#define PWM4ER_OutputEnable()      (TRISACLR = (1U<<8))
+#define PWM4ER_InputEnable()       (TRISASET = (1U<<8))
+#define PWM4ER_Get()               ((PORTA >> 8) & 0x1U)
+#define PWM4ER_PIN                  GPIO_PIN_RA8
+
+/*** Macros for REFCLK2 pin ***/
+#define REFCLK2_Get()               ((PORTA >> 4) & 0x1U)
+#define REFCLK2_PIN                  GPIO_PIN_RA4
+
 /*** Macros for LED_GREEN pin ***/
 #define LED_GREEN_Set()               (LATCSET = (1U<<12))
 #define LED_GREEN_Clear()             (LATCCLR = (1U<<12))
@@ -98,6 +138,24 @@
 #define LED_RED_Get()               ((PORTC >> 15) & 0x1U)
 #define LED_RED_PIN                  GPIO_PIN_RC15
 
+/*** Macros for PWM1EN pin ***/
+#define PWM1EN_Set()               (LATDSET = (1U<<8))
+#define PWM1EN_Clear()             (LATDCLR = (1U<<8))
+#define PWM1EN_Toggle()            (LATDINV= (1U<<8))
+#define PWM1EN_OutputEnable()      (TRISDCLR = (1U<<8))
+#define PWM1EN_InputEnable()       (TRISDSET = (1U<<8))
+#define PWM1EN_Get()               ((PORTD >> 8) & 0x1U)
+#define PWM1EN_PIN                  GPIO_PIN_RD8
+
+/*** Macros for PWM1ER pin ***/
+#define PWM1ER_Set()               (LATBSET = (1U<<8))
+#define PWM1ER_Clear()             (LATBCLR = (1U<<8))
+#define PWM1ER_Toggle()            (LATBINV= (1U<<8))
+#define PWM1ER_OutputEnable()      (TRISBCLR = (1U<<8))
+#define PWM1ER_InputEnable()       (TRISBSET = (1U<<8))
+#define PWM1ER_Get()               ((PORTB >> 8) & 0x1U)
+#define PWM1ER_PIN                  GPIO_PIN_RB8
+
 /*** Macros for SDI1_MODE pin ***/
 #define SDI1_MODE_Set()               (LATBSET = (1U<<9))
 #define SDI1_MODE_Clear()             (LATBCLR = (1U<<9))
@@ -115,6 +173,15 @@
 #define IMU_CS_InputEnable()       (TRISCSET = (1U<<9))
 #define IMU_CS_Get()               ((PORTC >> 9) & 0x1U)
 #define IMU_CS_PIN                  GPIO_PIN_RC9
+
+/*** Macros for PWM4EN pin ***/
+#define PWM4EN_Set()               (LATBSET = (1U<<11))
+#define PWM4EN_Clear()             (LATBCLR = (1U<<11))
+#define PWM4EN_Toggle()            (LATBINV= (1U<<11))
+#define PWM4EN_OutputEnable()      (TRISBCLR = (1U<<11))
+#define PWM4EN_InputEnable()       (TRISBSET = (1U<<11))
+#define PWM4EN_Get()               ((PORTB >> 11) & 0x1U)
+#define PWM4EN_PIN                  GPIO_PIN_RB11
 
 
 // *****************************************************************************

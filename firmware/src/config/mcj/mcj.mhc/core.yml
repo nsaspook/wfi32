@@ -61,6 +61,41 @@ children:
       - type: User
         attributes: {value: ''}
   - type: String
+    attributes: {id: BSP_PIN_11_DIR}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: Out}
+  - type: String
+    attributes: {id: BSP_PIN_11_FUNCTION_NAME}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: TP3}
+  - type: String
+    attributes: {id: BSP_PIN_11_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: GPIO}
+  - type: String
+    attributes: {id: BSP_PIN_11_LAT}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: High}
+  - type: String
+    attributes: {id: BSP_PIN_11_MODE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: DIGITAL}
+  - type: String
     attributes: {id: BSP_PIN_12_FUNCTION_NAME}
     children:
     - type: Values
@@ -110,6 +145,111 @@ children:
       - type: User
         attributes: {value: DIGITAL}
   - type: String
+    attributes: {id: BSP_PIN_19_DIR}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: Out}
+  - type: String
+    attributes: {id: BSP_PIN_19_FUNCTION_NAME}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: TP2}
+  - type: String
+    attributes: {id: BSP_PIN_19_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: GPIO}
+  - type: String
+    attributes: {id: BSP_PIN_19_MODE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: DIGITAL}
+  - type: String
+    attributes: {id: BSP_PIN_19_OD}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'True'}
+  - type: String
+    attributes: {id: BSP_PIN_1_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: PWM4L}
+  - type: String
+    attributes: {id: BSP_PIN_1_MODE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: DIGITAL}
+  - type: String
+    attributes: {id: BSP_PIN_20_DIR}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: Out}
+  - type: String
+    attributes: {id: BSP_PIN_20_FUNCTION_NAME}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: TP1}
+  - type: String
+    attributes: {id: BSP_PIN_20_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: GPIO}
+  - type: String
+    attributes: {id: BSP_PIN_20_MODE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: DIGITAL}
+  - type: String
+    attributes: {id: BSP_PIN_20_OD}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'True'}
+  - type: String
+    attributes: {id: BSP_PIN_23_FUNCTION_NAME}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: PWM4ER}
+  - type: String
+    attributes: {id: BSP_PIN_23_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: GPIO}
+  - type: String
+    attributes: {id: BSP_PIN_23_MODE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: DIGITAL}
+  - type: String
     attributes: {id: BSP_PIN_24_FUNCTION_TYPE}
     children:
     - type: Values
@@ -118,6 +258,27 @@ children:
         attributes: {value: SDI1}
   - type: String
     attributes: {id: BSP_PIN_24_MODE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: DIGITAL}
+  - type: String
+    attributes: {id: BSP_PIN_25_FUNCTION_NAME}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: REFCLK2}
+  - type: String
+    attributes: {id: BSP_PIN_25_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: REFCLKO2}
+  - type: String
+    attributes: {id: BSP_PIN_25_MODE}
     children:
     - type: Values
       children:
@@ -194,19 +355,54 @@ children:
       - type: User
         attributes: {value: DIGITAL}
   - type: String
+    attributes: {id: BSP_PIN_2_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: PWM1H}
+  - type: String
+    attributes: {id: BSP_PIN_2_MODE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: DIGITAL}
+  - type: String
     attributes: {id: BSP_PIN_30_DIR}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: ''}
+        attributes: {value: Out}
+  - type: String
+    attributes: {id: BSP_PIN_30_FUNCTION_NAME}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: PWM1EN}
+  - type: String
+    attributes: {id: BSP_PIN_30_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: GPIO}
   - type: String
     attributes: {id: BSP_PIN_30_LAT}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: ''}
+        attributes: {value: High}
+  - type: String
+    attributes: {id: BSP_PIN_30_MODE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: DIGITAL}
   - type: String
     attributes: {id: BSP_PIN_31_FUNCTION_TYPE}
     children:
@@ -265,6 +461,27 @@ children:
         attributes: {value: INT2}
   - type: String
     attributes: {id: BSP_PIN_35_MODE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: DIGITAL}
+  - type: String
+    attributes: {id: BSP_PIN_36_FUNCTION_NAME}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: PWM1ER}
+  - type: String
+    attributes: {id: BSP_PIN_36_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: GPIO}
+  - type: String
+    attributes: {id: BSP_PIN_36_MODE}
     children:
     - type: Values
       children:
@@ -333,6 +550,13 @@ children:
       children:
       - type: User
         attributes: {value: DIGITAL}
+  - type: String
+    attributes: {id: BSP_PIN_3_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: PWM1L}
   - type: String
     attributes: {id: BSP_PIN_3_MODE}
     children:
@@ -404,6 +628,41 @@ children:
       - type: User
         attributes: {value: DIGITAL}
   - type: String
+    attributes: {id: BSP_PIN_45_DIR}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: Out}
+  - type: String
+    attributes: {id: BSP_PIN_45_FUNCTION_NAME}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: PWM4EN}
+  - type: String
+    attributes: {id: BSP_PIN_45_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: GPIO}
+  - type: String
+    attributes: {id: BSP_PIN_45_LAT}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: High}
+  - type: String
+    attributes: {id: BSP_PIN_45_MODE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: DIGITAL}
+  - type: String
     attributes: {id: BSP_PIN_46_FUNCTION_TYPE}
     children:
     - type: Values
@@ -426,6 +685,20 @@ children:
         attributes: {value: QEB2}
   - type: String
     attributes: {id: BSP_PIN_47_MODE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: DIGITAL}
+  - type: String
+    attributes: {id: BSP_PIN_48_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: PWM4H}
+  - type: String
+    attributes: {id: BSP_PIN_48_MODE}
     children:
     - type: Values
       children:
@@ -1241,13 +1514,20 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: '0x1200'}
+  - type: Boolean
+    attributes: {id: MCPWM1_CLOCK_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: mcpwm, value: 'true'}
   - type: Integer
     attributes: {id: MCPWM1_CLOCK_FREQUENCY}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '0'}
+        attributes: {id: core, value: '120000000'}
   - type: Integer
     attributes: {id: MCPWM2_CLOCK_FREQUENCY}
     children:
@@ -1262,13 +1542,20 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: '0'}
+  - type: Boolean
+    attributes: {id: MCPWM4_CLOCK_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: mcpwm, value: 'true'}
   - type: Integer
     attributes: {id: MCPWM4_CLOCK_FREQUENCY}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '0'}
+        attributes: {id: core, value: '120000000'}
   - type: Integer
     attributes: {id: MCPWM5_CLOCK_FREQUENCY}
     children:
@@ -1387,7 +1674,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '268370383'}
+        attributes: {id: core, value: '267780559'}
   - type: Hex
     attributes: {id: PMD5_REG_VALUE}
     children:
@@ -1716,7 +2003,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '6145'}
+        attributes: {id: core, value: '6417'}
   - type: Hex
     attributes: {id: SYS_PORT_A_CNPU}
     children:
@@ -1730,7 +2017,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '644'}
+        attributes: {id: core, value: '645'}
   - type: Hex
     attributes: {id: SYS_PORT_B_CNPU}
     children:
@@ -1744,21 +2031,21 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '512'}
+        attributes: {id: core, value: '2561'}
   - type: Hex
     attributes: {id: SYS_PORT_B_TRIS}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '512'}
+        attributes: {id: core, value: '2561'}
   - type: Hex
     attributes: {id: SYS_PORT_C_ANSEL}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '4099'}
+        attributes: {id: core, value: '6151'}
   - type: Hex
     attributes: {id: SYS_PORT_C_LAT}
     children:
@@ -1767,26 +2054,33 @@ children:
       - type: Dynamic
         attributes: {id: core, value: '37376'}
   - type: Hex
+    attributes: {id: SYS_PORT_C_ODC}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '2052'}
+  - type: Hex
     attributes: {id: SYS_PORT_C_TRIS}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '37376'}
+        attributes: {id: core, value: '39428'}
   - type: Hex
     attributes: {id: SYS_PORT_D_LAT}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '0'}
+        attributes: {id: core, value: '256'}
   - type: Hex
     attributes: {id: SYS_PORT_D_TRIS}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '0'}
+        attributes: {id: core, value: '256'}
   - type: Combo
     attributes: {id: SYS_PORT_PPS_INPUT_FUNCTION_0}
     children:
@@ -2034,6 +2328,19 @@ children:
       children:
       - type: User
         attributes: {value: '26'}
+  - type: KeyValueSet
+    attributes: {id: SYS_PORT_PPS_OUTPUT_FUNCTION_5}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '3'}
   - type: Combo
     attributes: {id: SYS_PORT_PPS_OUTPUT_PIN_0}
     children:
@@ -2099,6 +2406,19 @@ children:
       children:
       - type: User
         attributes: {value: RPB6}
+  - type: Combo
+    attributes: {id: SYS_PORT_PPS_OUTPUT_PIN_5}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: RPA4}
   - type: Boolean
     attributes: {id: TIMER_5_INTERRUPT_ENABLE}
     children:
@@ -2416,6 +2736,13 @@ children:
         attributes: {value: 'true'}
   - type: Boolean
     attributes: {id: USE_PPS_OUTPUT_4}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
+  - type: Boolean
+    attributes: {id: USE_PPS_OUTPUT_5}
     children:
     - type: Values
       children:
