@@ -14131,9 +14131,80 @@ Source: www.kingbright.com</description>
 <junction x="-27.94" y="101.6"/>
 </segment>
 </net>
+<net name="SCK2" class="0">
+<segment>
+<pinref part="U1" gate="A" pin="RPC6/PWM6H/RC6"/>
+<wire x1="200.66" y1="45.72" x2="213.36" y2="45.72" width="0.1524" layer="91"/>
+<label x="210.82" y="45.72" size="1.778" layer="95"/>
+<junction x="200.66" y="45.72"/>
+<junction x="213.36" y="45.72"/>
+</segment>
+<segment>
+<wire x1="68.58" y1="111.76" x2="81.28" y2="111.76" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="G$1" pin="SCX"/>
+<label x="68.58" y="111.76" size="1.778" layer="95"/>
+<junction x="81.28" y="111.76"/>
+<junction x="68.58" y="111.76"/>
+</segment>
+</net>
+<net name="SDO2" class="0">
+<segment>
+<pinref part="U1" gate="A" pin="RPC7/PWM6L/RC7"/>
+<wire x1="200.66" y1="48.26" x2="213.36" y2="48.26" width="0.1524" layer="91"/>
+<label x="213.36" y="48.26" size="1.778" layer="95"/>
+<junction x="200.66" y="48.26"/>
+<junction x="213.36" y="48.26"/>
+</segment>
+<segment>
+<wire x1="93.98" y1="81.28" x2="93.98" y2="93.98" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="G$1" pin="SDX"/>
+<label x="86.36" y="86.36" size="1.778" layer="95"/>
+<junction x="93.98" y="93.98"/>
+<junction x="93.98" y="81.28"/>
+</segment>
+</net>
+<net name="SDI2" class="0">
+<segment>
+<pinref part="U1" gate="A" pin="RPC8/PWM5H/RC8"/>
+<wire x1="200.66" y1="50.8" x2="213.36" y2="50.8" width="0.1524" layer="91"/>
+<label x="213.36" y="50.8" size="1.778" layer="95"/>
+<junction x="200.66" y="50.8"/>
+<junction x="213.36" y="50.8"/>
+</segment>
+<segment>
+<wire x1="78.74" y1="93.98" x2="91.44" y2="93.98" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="G$1" pin="SDO"/>
+<label x="81.28" y="93.98" size="1.778" layer="95"/>
+<junction x="91.44" y="93.98"/>
+<junction x="78.74" y="93.98"/>
+</segment>
+</net>
+<net name="EXT_INT2" class="0">
+<segment>
+<pinref part="U1" gate="A" pin="SOSCI/RPC13/RC13"/>
+<wire x1="200.66" y1="38.1" x2="203.2" y2="38.1" width="0.1524" layer="91"/>
+<label x="210.82" y="38.1" size="1.778" layer="95"/>
+<junction x="203.2" y="38.1"/>
+<wire x1="203.2" y1="38.1" x2="213.36" y2="38.1" width="0.1524" layer="91"/>
+<junction x="200.66" y="38.1"/>
+<junction x="213.36" y="38.1"/>
+</segment>
+<segment>
+<wire x1="109.22" y1="111.76" x2="121.92" y2="111.76" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="G$1" pin="INT1"/>
+<junction x="109.22" y="111.76"/>
+<junction x="121.92" y="111.76"/>
+<label x="116.84" y="109.22" size="1.778" layer="95"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="104,1,-17.78,58.42,U1,VDD_2,VDD,,,"/>
+<approved hash="104,1,-17.78,17.78,U1,VDD_3,VDD,,,"/>
+<approved hash="104,1,200.66,15.24,U1,VDD_4,VDD,,,"/>
+</errors>
 </schematic>
 </drawing>
 <compatibility>

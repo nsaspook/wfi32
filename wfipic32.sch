@@ -15187,8 +15187,6 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2" value="RESET_JMP"/>
 <part name="VSS8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 <part name="JP2" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X6" device="" package3d_urn="urn:adsk.eagle:package:22472/2" value="ICSP"/>
-<part name="VDD3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VDD" device=""/>
-<part name="VSS9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 <part name="J1" library="MLE-105-01-G-DV" deviceset="MLE-105-01-G-DV" device=""/>
 <part name="J2" library="MLE-105-01-G-DV" deviceset="MLE-105-01-G-DV" device=""/>
 <part name="VSS10" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
@@ -15318,12 +15316,6 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <instance part="JP2" gate="A" x="38.1" y="-5.08" smashed="yes" rot="R180">
 <attribute name="NAME" x="44.45" y="-15.875" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="44.45" y="5.08" size="1.778" layer="96" rot="R180"/>
-</instance>
-<instance part="VDD3" gate="G$1" x="55.88" y="-10.16" smashed="yes" rot="R270">
-<attribute name="VALUE" x="53.34" y="-7.62" size="1.778" layer="96"/>
-</instance>
-<instance part="VSS9" gate="G$1" x="55.88" y="-7.62" smashed="yes" rot="R90">
-<attribute name="VALUE" x="60.96" y="-10.16" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="J1" gate="G$1" x="170.18" y="129.54" smashed="yes">
 <attribute name="NAME" x="189.23" y="137.16" size="1.778" layer="95" align="center-left"/>
@@ -15486,13 +15478,6 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <junction x="-17.78" y="111.76"/>
 </segment>
 <segment>
-<pinref part="JP2" gate="A" pin="2"/>
-<wire x1="40.64" y1="-10.16" x2="53.34" y2="-10.16" width="0.1524" layer="91"/>
-<pinref part="VDD3" gate="G$1" pin="VDD"/>
-<junction x="40.64" y="-10.16"/>
-<junction x="53.34" y="-10.16"/>
-</segment>
-<segment>
 <pinref part="J1" gate="G$1" pin="10"/>
 <pinref part="VDD4" gate="G$1" pin="VDD"/>
 <junction x="193.04" y="129.54"/>
@@ -15504,6 +15489,13 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <pinref part="C7" gate="G$1" pin="1"/>
 <wire x1="213.36" y1="93.98" x2="193.04" y2="93.98" width="0.1524" layer="91"/>
 <junction x="213.36" y="93.98"/>
+</segment>
+<segment>
+<wire x1="40.64" y1="-10.16" x2="53.34" y2="-10.16" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="2"/>
+<junction x="40.64" y="-10.16"/>
+<junction x="53.34" y="-10.16"/>
+<label x="58.42" y="-10.16" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="VSS" class="0">
@@ -15609,13 +15601,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <wire x1="-10.16" y1="99.06" x2="-10.16" y2="93.98" width="0.1524" layer="91"/>
 <pinref part="VSS8" gate="G$1" pin="VSS"/>
 <junction x="-10.16" y="93.98"/>
-</segment>
-<segment>
-<pinref part="JP2" gate="A" pin="3"/>
-<wire x1="40.64" y1="-7.62" x2="53.34" y2="-7.62" width="0.1524" layer="91"/>
-<pinref part="VSS9" gate="G$1" pin="VSS"/>
-<junction x="40.64" y="-7.62"/>
-<junction x="53.34" y="-7.62"/>
+<junction x="-7.62" y="99.06"/>
 </segment>
 <segment>
 <pinref part="J1" gate="G$1" pin="1"/>
@@ -15671,6 +15657,13 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <pinref part="C11" gate="G$1" pin="2"/>
 <pinref part="VSS19" gate="G$1" pin="VSS"/>
 <junction x="129.54" y="-12.7"/>
+</segment>
+<segment>
+<wire x1="40.64" y1="-7.62" x2="53.34" y2="-7.62" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="3"/>
+<junction x="40.64" y="-7.62"/>
+<junction x="53.34" y="-7.62"/>
+<label x="58.42" y="-7.62" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="AVDD" class="0">
@@ -15774,6 +15767,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <junction x="-17.78" y="101.6"/>
 <wire x1="-17.78" y1="101.6" x2="-7.62" y2="101.6" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="1"/>
+<junction x="-7.62" y="101.6"/>
 </segment>
 </net>
 <net name="MCLR_SIG" class="0">
@@ -16087,7 +16081,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <junction x="129.54" y="-5.08"/>
 <wire x1="137.16" y1="-5.08" x2="137.16" y2="-17.78" width="0.1524" layer="91"/>
 <junction x="137.16" y="-17.78"/>
-<label x="142.24" y="-15.24" size="1.778" layer="95"/>
+<label x="139.7" y="-20.32" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="DAC1" class="0">
