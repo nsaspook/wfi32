@@ -50,7 +50,9 @@ extern "C" {
 
 #define BMA490_RD_WR_MAX_LEN		0x0514 // IMU ASIC firmware file size
 
-#define ACCEL_CONFIG			0xa9
+#define ACCEL_CONFIG			0xa9 // 10101001 200Hz ODR 80Hz filter
+//#define ACCEL_CONFIG			0xa5 // 10100101 12.5Hz ODR 5.06Hz filter
+// #define ACCEL_CONFIG			0x55 // 01010101 12.5Hz ODR avg 32	
 #define INT_MAP_DATA			0x04
 #define INT1_IO_CTRL			0x08
 #define REG_POWER_CTRL			0x04
@@ -64,7 +66,7 @@ extern "C" {
 #define SYS_FREQ	200000000 // Running at 200MHz
 
 #define imu_timeout	2000	// timeout for IMU ID data from query
-#define log_timeout	50	// timeout for IMU interrupts
+#define log_timeout	500	// timeout for IMU interrupts
 
 	enum accel_g {
 		range_2g = 0x00,
