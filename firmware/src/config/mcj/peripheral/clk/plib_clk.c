@@ -105,17 +105,17 @@ void CLK_Initialize( void )
 
     /* Set up Reference Clock 2 */
     /* REFO2CON register */
-    /* ROSEL =  SYSCLK */
+    /* ROSEL =  FRC */
     /* DIVSWEN = 1 */
     /* RODIV = 0 */
-    REFO2CON = 0x200;
+    REFO2CON = 0x203;
 
     /* REFO2TRIM register */
     /* ROTRIM = 0 */
     REFO2TRIM = 0x0;
 
-    /* Enable oscillator (ON bit) */
-    REFO2CONSET = 0x00008000;
+    /* Enable oscillator (ON bit) and Enable Output (OE bit) */
+    REFO2CONSET = 0x00001000 | 0x00008000;
 
     /* Set up Reference Clock 3 */
     /* REFO3CON register */

@@ -74,7 +74,7 @@ void TMR6_Initialize(void)
     TMR6 = 0x0;
 
     /*Set period */
-    PR6 = 17999U;
+    PR6 = 29999U;
 
     IEC2SET = _IEC2_T6IE_MASK;
 

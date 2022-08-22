@@ -76,11 +76,11 @@ void TMR5_Start(void);
 
 void TMR5_Stop(void);
 
-void TMR5_PeriodSet(uint16_t);
+void TMR5_PeriodSet(uint32_t);
 
-uint16_t TMR5_PeriodGet(void);
+uint32_t TMR5_PeriodGet(void);
 
-uint16_t TMR5_CounterGet(void);
+uint32_t TMR5_CounterGet(void);
 
 uint32_t TMR5_FrequencyGet(void);
 

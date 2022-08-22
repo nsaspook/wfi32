@@ -91,8 +91,12 @@ int main(void)
 	 */
 	StartTimer(TMR_IMU, imu_timeout);
 	while (!imu_getid(&imu0)) {
+		LED_RED_Toggle();
+		LED_GREEN_Toggle();
 		if (TimerDone(TMR_IMU)) {
 			while (true) {
+				LED_RED_On();
+				LED_GREEN_Off();
 				printf(" IMU NO ID response \r\n");
 			}
 		}

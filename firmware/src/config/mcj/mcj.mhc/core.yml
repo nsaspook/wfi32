@@ -893,6 +893,22 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: '2'}
+      - type: User
+        attributes: {value: '5'}
+  - type: Combo
+    attributes: {id: CONFIG_FNOSC}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: SPLL}
+  - type: Combo
+    attributes: {id: CONFIG_IESO}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'ON'}
   - type: String
     attributes: {id: CONFIG_SYS_CLK_PBCLK1_FREQ}
     children:
@@ -946,6 +962,10 @@ children:
         attributes: {id: visible}
         children:
         - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'false'}
   - type: Boolean
     attributes: {id: CONFIG_SYS_CLK_REFCLK2_ENABLE}
     children:
@@ -961,7 +981,7 @@ children:
       - type: Dynamic
         attributes: {id: core, value: '120000000'}
       - type: User
-        attributes: {value: '120000000'}
+        attributes: {value: '8000000'}
   - type: Boolean
     attributes: {id: CONFIG_SYS_CLK_REFCLK2_OE}
     children:
@@ -971,6 +991,10 @@ children:
         attributes: {id: visible}
         children:
         - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
   - type: Boolean
     attributes: {id: CONFIG_SYS_CLK_REFCLK3_ENABLE}
     children:
@@ -1039,6 +1063,10 @@ children:
         attributes: {id: visible}
         children:
         - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: FRC}
   - type: Combo
     attributes: {id: CONFIG_SYS_CLK_REFCLK_SOURCE3}
     children:
@@ -1786,7 +1814,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '0x200'}
+        attributes: {id: core, value: '0x203'}
   - type: String
     attributes: {id: REFOCON3_VALUE}
     children:
@@ -1912,7 +1940,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '60000000'}
+        attributes: {id: core, value: '120000000'}
   - type: Boolean
     attributes: {id: SPI2_FAULT_INTERRUPT_ENABLE}
     children:

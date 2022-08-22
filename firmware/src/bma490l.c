@@ -176,12 +176,8 @@ bool imu_getid(imu_cmd_t * imu)
 			delay_us(CHIP_ID_DELAY);
 			if (imu->rbuf[CHIP_ID_DATA] == BMA490L_ID) {
 				imu->online = true;
-				LED_GREEN_On();
-				LED_RED_Off();
 				imu->rbuf[CHIP_ID_DATA] = 0;
 			} else {
-				LED_RED_On();
-				LED_GREEN_Off();
 				imu->online = false;
 			}
 		}
