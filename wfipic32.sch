@@ -15150,6 +15150,95 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 </deviceset>
 </devicesets>
 </library>
+<library name="SCA3300-D01-1">
+<packages>
+<package name="SCA3300">
+<description>&lt;b&gt;SCA3300&lt;/b&gt;&lt;br&gt;
+</description>
+<text x="-0.299" y="-0.017" size="1.27" layer="27" align="center">&gt;VALUE</text>
+<text x="-0.299" y="-0.017" size="1.27" layer="25" align="center">&gt;NAME</text>
+<wire x1="-4.3" y1="3.5" x2="4.3" y2="3.5" width="0.2" layer="51"/>
+<wire x1="4.3" y1="3.5" x2="4.3" y2="-3.5" width="0.2" layer="51"/>
+<wire x1="4.3" y1="-3.5" x2="-4.3" y2="-3.5" width="0.2" layer="51"/>
+<wire x1="-4.3" y1="-3.5" x2="-4.3" y2="3.5" width="0.2" layer="51"/>
+<wire x1="-4.3" y1="-3.5" x2="-4.3" y2="3.5" width="0.2" layer="21"/>
+<wire x1="4.3" y1="3.5" x2="4.3" y2="-3.5" width="0.2" layer="21"/>
+<circle x="-2.492" y="-4.839" radius="0.06093125" width="0.2" layer="25"/>
+<smd name="1" x="-2.5" y="-3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
+<smd name="2" x="-1.5" y="-3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
+<smd name="3" x="-0.5" y="-3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
+<smd name="4" x="0.5" y="-3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
+<smd name="5" x="1.5" y="-3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
+<smd name="6" x="2.5" y="-3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
+<smd name="7" x="2.5" y="3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
+<smd name="8" x="1.5" y="3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
+<smd name="9" x="0.5" y="3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
+<smd name="10" x="-0.5" y="3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
+<smd name="11" x="-1.5" y="3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
+<smd name="12" x="-2.5" y="3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
+</package>
+</packages>
+<symbols>
+<symbol name="SCA3300-D01-1">
+<wire x1="5.08" y1="2.54" x2="30.48" y2="2.54" width="0.254" layer="94"/>
+<wire x1="30.48" y1="-15.24" x2="30.48" y2="2.54" width="0.254" layer="94"/>
+<wire x1="30.48" y1="-15.24" x2="5.08" y2="-15.24" width="0.254" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="5.08" y2="-15.24" width="0.254" layer="94"/>
+<text x="31.75" y="7.62" size="1.778" layer="95" align="center-left">&gt;NAME</text>
+<text x="31.75" y="5.08" size="1.778" layer="96" align="center-left">&gt;VALUE</text>
+<pin name="AVSS" x="0" y="0" length="middle"/>
+<pin name="A_EXTC" x="0" y="-2.54" length="middle"/>
+<pin name="REERVED" x="0" y="-5.08" length="middle"/>
+<pin name="VDD" x="0" y="-7.62" length="middle"/>
+<pin name="CSB" x="0" y="-10.16" length="middle"/>
+<pin name="MISO" x="0" y="-12.7" length="middle"/>
+<pin name="MOSI" x="35.56" y="0" length="middle" rot="R180"/>
+<pin name="SCK" x="35.56" y="-2.54" length="middle" rot="R180"/>
+<pin name="DVIO" x="35.56" y="-5.08" length="middle" rot="R180"/>
+<pin name="D_EXTC" x="35.56" y="-7.62" length="middle" rot="R180"/>
+<pin name="DVSS" x="35.56" y="-10.16" length="middle" rot="R180"/>
+<pin name="EMC_GND" x="35.56" y="-12.7" length="middle" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="SCA3300-D01-1" prefix="AC">
+<description>&lt;b&gt;Murata SCA3300-D01-1, 3-Axis Accelerometer, +/-1.5  +/-6g, 3  3.6 V, SPI, DFL/SMD 12-Pin&lt;/b&gt;&lt;p&gt;
+Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/accel/sca3300/sca3300-d01 industrial 3-axis accelerometer datasheet _a1.ashx"&gt; Datasheet &lt;/a&gt; &lt;a href="https://pricing.snapeda.com/parts/SCA3300-D01-1/Murata%20Electronics/view-part?ref=eda"&gt;Check availability&lt;/a&gt;</description>
+<gates>
+<gate name="G$1" symbol="SCA3300-D01-1" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SCA3300">
+<connects>
+<connect gate="G$1" pin="AVSS" pad="1"/>
+<connect gate="G$1" pin="A_EXTC" pad="2"/>
+<connect gate="G$1" pin="CSB" pad="5"/>
+<connect gate="G$1" pin="DVIO" pad="9"/>
+<connect gate="G$1" pin="DVSS" pad="11"/>
+<connect gate="G$1" pin="D_EXTC" pad="10"/>
+<connect gate="G$1" pin="EMC_GND" pad="12"/>
+<connect gate="G$1" pin="MISO" pad="6"/>
+<connect gate="G$1" pin="MOSI" pad="7"/>
+<connect gate="G$1" pin="REERVED" pad="3"/>
+<connect gate="G$1" pin="SCK" pad="8"/>
+<connect gate="G$1" pin="VDD" pad="4"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="AVAILABILITY" value="In Stock"/>
+<attribute name="DESCRIPTION" value=" Accelerometer X, Y, Z Axis ±1.5g, 3g, 6g - - "/>
+<attribute name="MF" value="Murata Electronics"/>
+<attribute name="MP" value="SCA3300-D01-1"/>
+<attribute name="PACKAGE" value="Nonstandard Murata"/>
+<attribute name="PRICE" value="None"/>
+<attribute name="PURCHASE-URL" value="https://pricing.snapeda.com/search/part/SCA3300-D01-1/?ref=eda"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -15215,6 +15304,11 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="VSS20" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 <part name="J4" library="MLE-105-01-G-DV" deviceset="MLE-105-01-G-DV" device=""/>
 <part name="VSS9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
+<part name="AC1" library="SCA3300-D01-1" deviceset="SCA3300-D01-1" device=""/>
+<part name="C12" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.01uf"/>
+<part name="C13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.01uf"/>
+<part name="VSS21" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
+<part name="VSS22" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -15417,6 +15511,24 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <instance part="VSS9" gate="G$1" x="93.98" y="139.7" smashed="yes" rot="R270">
 <attribute name="VALUE" x="88.9" y="142.24" size="1.778" layer="96"/>
 </instance>
+<instance part="AC1" gate="G$1" x="-30.48" y="-22.86" smashed="yes">
+<attribute name="NAME" x="1.27" y="-15.24" size="1.778" layer="95" align="center-left"/>
+<attribute name="VALUE" x="1.27" y="-17.78" size="1.778" layer="96" align="center-left"/>
+</instance>
+<instance part="C12" gate="G$1" x="25.4" y="-33.02" smashed="yes">
+<attribute name="NAME" x="26.416" y="-32.385" size="1.778" layer="95"/>
+<attribute name="VALUE" x="26.416" y="-37.211" size="1.778" layer="96"/>
+</instance>
+<instance part="C13" gate="G$1" x="-53.34" y="-30.48" smashed="yes">
+<attribute name="NAME" x="-52.324" y="-29.845" size="1.778" layer="95"/>
+<attribute name="VALUE" x="-52.324" y="-34.671" size="1.778" layer="96"/>
+</instance>
+<instance part="VSS21" gate="G$1" x="25.4" y="-40.64" smashed="yes">
+<attribute name="VALUE" x="22.86" y="-45.72" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="VSS22" gate="G$1" x="-53.34" y="-38.1" smashed="yes">
+<attribute name="VALUE" x="-55.88" y="-43.18" size="1.778" layer="96" rot="R90"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -15517,6 +15629,20 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <pinref part="J4" gate="G$1" pin="7"/>
 <label x="121.92" y="144.78" size="1.778" layer="95"/>
 <junction x="132.08" y="144.78"/>
+</segment>
+<segment>
+<wire x1="-30.48" y1="-30.48" x2="-40.64" y2="-30.48" width="0.1524" layer="91"/>
+<pinref part="AC1" gate="G$1" pin="VDD"/>
+<label x="-40.64" y="-30.48" size="1.778" layer="95"/>
+<junction x="-30.48" y="-30.48"/>
+<junction x="-40.64" y="-30.48"/>
+</segment>
+<segment>
+<wire x1="15.24" y1="-27.94" x2="5.08" y2="-27.94" width="0.1524" layer="91"/>
+<pinref part="AC1" gate="G$1" pin="DVIO"/>
+<label x="12.7" y="-27.94" size="1.778" layer="95"/>
+<junction x="5.08" y="-27.94"/>
+<junction x="15.24" y="-27.94"/>
 </segment>
 </net>
 <net name="VSS" class="0">
@@ -15689,6 +15815,44 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <pinref part="VSS9" gate="G$1" pin="VSS"/>
 <junction x="96.52" y="139.7"/>
 </segment>
+<segment>
+<wire x1="-30.48" y1="-22.86" x2="-38.1" y2="-22.86" width="0.1524" layer="91"/>
+<pinref part="AC1" gate="G$1" pin="AVSS"/>
+<label x="-38.1" y="-22.86" size="1.778" layer="95"/>
+<junction x="-30.48" y="-22.86"/>
+<junction x="-38.1" y="-22.86"/>
+</segment>
+<segment>
+<wire x1="12.7" y1="-33.02" x2="5.08" y2="-33.02" width="0.1524" layer="91"/>
+<pinref part="AC1" gate="G$1" pin="DVSS"/>
+<label x="10.16" y="-33.02" size="1.778" layer="95"/>
+<junction x="5.08" y="-33.02"/>
+<junction x="12.7" y="-33.02"/>
+</segment>
+<segment>
+<wire x1="12.7" y1="-35.56" x2="5.08" y2="-35.56" width="0.1524" layer="91"/>
+<pinref part="AC1" gate="G$1" pin="EMC_GND"/>
+<label x="10.16" y="-35.56" size="1.778" layer="95"/>
+<junction x="5.08" y="-35.56"/>
+<junction x="12.7" y="-35.56"/>
+</segment>
+<segment>
+<pinref part="C12" gate="G$1" pin="2"/>
+<pinref part="VSS21" gate="G$1" pin="VSS"/>
+<junction x="25.4" y="-38.1"/>
+</segment>
+<segment>
+<pinref part="C13" gate="G$1" pin="2"/>
+<pinref part="VSS22" gate="G$1" pin="VSS"/>
+<junction x="-53.34" y="-35.56"/>
+</segment>
+<segment>
+<wire x1="-30.48" y1="-27.94" x2="-38.1" y2="-27.94" width="0.1524" layer="91"/>
+<pinref part="AC1" gate="G$1" pin="REERVED"/>
+<label x="-40.64" y="-27.94" size="1.778" layer="95"/>
+<junction x="-38.1" y="-27.94"/>
+<junction x="-30.48" y="-27.94"/>
+</segment>
 </net>
 <net name="AVDD" class="0">
 <segment>
@@ -15788,6 +15952,13 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <label x="121.92" y="147.32" size="1.778" layer="95"/>
 <junction x="132.08" y="147.32"/>
 </segment>
+<segment>
+<wire x1="-43.18" y1="-33.02" x2="-30.48" y2="-33.02" width="0.1524" layer="91"/>
+<pinref part="AC1" gate="G$1" pin="CSB"/>
+<label x="-43.18" y="-33.02" size="1.778" layer="95"/>
+<junction x="-30.48" y="-33.02"/>
+<junction x="-43.18" y="-33.02"/>
+</segment>
 </net>
 <net name="N$3" class="0">
 <segment>
@@ -15844,6 +16015,13 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <label x="165.1" y="147.32" size="1.778" layer="95"/>
 <junction x="154.94" y="147.32"/>
 </segment>
+<segment>
+<wire x1="5.08" y1="-25.4" x2="17.78" y2="-25.4" width="0.1524" layer="91"/>
+<pinref part="AC1" gate="G$1" pin="SCK"/>
+<label x="12.7" y="-25.4" size="1.778" layer="95"/>
+<junction x="5.08" y="-25.4"/>
+<junction x="17.78" y="-25.4"/>
+</segment>
 </net>
 <net name="SDO2" class="0">
 <segment>
@@ -15866,6 +16044,13 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <label x="165.1" y="137.16" size="1.778" layer="95"/>
 <junction x="154.94" y="137.16"/>
 </segment>
+<segment>
+<wire x1="17.78" y1="-22.86" x2="5.08" y2="-22.86" width="0.1524" layer="91"/>
+<pinref part="AC1" gate="G$1" pin="MOSI"/>
+<label x="12.7" y="-22.86" size="1.778" layer="95"/>
+<junction x="5.08" y="-22.86"/>
+<junction x="17.78" y="-22.86"/>
+</segment>
 </net>
 <net name="SDI2" class="0">
 <segment>
@@ -15887,6 +16072,13 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <pinref part="J4" gate="G$1" pin="1"/>
 <label x="121.92" y="137.16" size="1.778" layer="95"/>
 <junction x="132.08" y="137.16"/>
+</segment>
+<segment>
+<wire x1="-43.18" y1="-35.56" x2="-30.48" y2="-35.56" width="0.1524" layer="91"/>
+<pinref part="AC1" gate="G$1" pin="MISO"/>
+<label x="-43.18" y="-35.56" size="1.778" layer="95"/>
+<junction x="-30.48" y="-35.56"/>
+<junction x="-43.18" y="-35.56"/>
 </segment>
 </net>
 <net name="EXT_INT2" class="0">
@@ -16403,6 +16595,25 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <wire x1="213.36" y1="12.7" x2="200.66" y2="12.7" width="0.1524" layer="91"/>
 <junction x="213.36" y="12.7"/>
 <junction x="200.66" y="12.7"/>
+</segment>
+</net>
+<net name="N$7" class="0">
+<segment>
+<pinref part="AC1" gate="G$1" pin="D_EXTC"/>
+<wire x1="5.08" y1="-30.48" x2="25.4" y2="-30.48" width="0.1524" layer="91"/>
+<pinref part="C12" gate="G$1" pin="1"/>
+<junction x="5.08" y="-30.48"/>
+<junction x="25.4" y="-30.48"/>
+</segment>
+</net>
+<net name="N$9" class="0">
+<segment>
+<pinref part="AC1" gate="G$1" pin="A_EXTC"/>
+<pinref part="C13" gate="G$1" pin="1"/>
+<wire x1="-30.48" y1="-25.4" x2="-53.34" y2="-25.4" width="0.1524" layer="91"/>
+<wire x1="-53.34" y1="-25.4" x2="-53.34" y2="-27.94" width="0.1524" layer="91"/>
+<junction x="-53.34" y="-27.94"/>
+<junction x="-30.48" y="-25.4"/>
 </segment>
 </net>
 </nets>
