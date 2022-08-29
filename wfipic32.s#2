@@ -15179,9 +15179,9 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="VSS6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 <part name="R1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:23556/2" value="2k"/>
 <part name="R2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:23556/2" value="2k"/>
-<part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:23556/2" value="2k"/>
+<part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:23556/2" value="10k"/>
 <part name="C6" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.1uf"/>
-<part name="R4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:23556/2" value="2k"/>
+<part name="R4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:23556/2" value="56"/>
 <part name="VDD2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VDD" device=""/>
 <part name="VSS7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 <part name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2" value="RESET_JMP"/>
@@ -15214,6 +15214,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="TP3" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="PTR1" device="PAD1-13" package3d_urn="urn:adsk.eagle:package:27946/1"/>
 <part name="TP2" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="PTR1" device="PAD1-13" package3d_urn="urn:adsk.eagle:package:27946/1"/>
 <part name="REFCLK2" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="PTR1" device="PAD1-13" package3d_urn="urn:adsk.eagle:package:27946/1"/>
+<part name="VSS20" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -15239,8 +15240,8 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <instance part="VDD1" gate="G$1" x="5.08" y="134.62" smashed="yes">
 <attribute name="VALUE" x="2.54" y="132.08" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="VSS1" gate="G$1" x="5.08" y="121.92" smashed="yes">
-<attribute name="VALUE" x="2.54" y="116.84" size="1.778" layer="96" rot="R90"/>
+<instance part="VSS1" gate="G$1" x="7.62" y="121.92" smashed="yes">
+<attribute name="VALUE" x="5.08" y="116.84" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="L1" gate="G$1" x="17.78" y="139.7" smashed="yes">
 <attribute name="NAME" x="16.51" y="134.62" size="1.778" layer="95" rot="R90"/>
@@ -15412,6 +15413,9 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <attribute name="NAME" x="222.25" y="11.684" size="1.778" layer="95" rot="R180"/>
 <attribute name="TP_SIGNAL_NAME" x="218.44" y="13.97" size="1.778" layer="97" rot="R90"/>
 </instance>
+<instance part="VSS20" gate="G$1" x="91.44" y="137.16" smashed="yes" rot="R270">
+<attribute name="VALUE" x="86.36" y="139.7" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -15504,7 +15508,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 </net>
 <net name="VSS" class="0">
 <segment>
-<wire x1="5.08" y1="124.46" x2="10.16" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="7.62" y1="124.46" x2="10.16" y2="124.46" width="0.1524" layer="91"/>
 <pinref part="C1" gate="G$1" pin="2"/>
 <wire x1="10.16" y1="124.46" x2="17.78" y2="124.46" width="0.1524" layer="91"/>
 <junction x="17.78" y="124.46"/>
@@ -15514,21 +15518,24 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <junction x="30.48" y="124.46"/>
 <label x="27.94" y="121.92" size="1.778" layer="95"/>
 <pinref part="VSS1" gate="G$1" pin="VSS"/>
-<junction x="5.08" y="124.46"/>
+<junction x="7.62" y="124.46"/>
 </segment>
 <segment>
-<wire x1="93.98" y1="132.08" x2="93.98" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="132.08" x2="93.98" y2="137.16" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="GND"/>
 <junction x="93.98" y="132.08"/>
 <junction x="93.98" y="144.78"/>
 <label x="88.9" y="142.24" size="1.778" layer="95"/>
-</segment>
-<segment>
+<wire x1="93.98" y1="137.16" x2="93.98" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="132.08" x2="96.52" y2="144.78" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="GNDIO"/>
 <junction x="96.52" y="132.08"/>
 <junction x="96.52" y="144.78"/>
-<label x="96.52" y="149.86" size="1.778" layer="95"/>
+<label x="91.44" y="147.32" size="1.778" layer="95"/>
+<wire x1="93.98" y1="132.08" x2="96.52" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="144.78" x2="96.52" y2="144.78" width="0.1524" layer="91"/>
+<pinref part="VSS20" gate="G$1" pin="VSS"/>
+<junction x="93.98" y="137.16"/>
 </segment>
 <segment>
 <wire x1="-30.48" y1="60.96" x2="-17.78" y2="60.96" width="0.1524" layer="91"/>
@@ -16307,13 +16314,21 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <junction x="-17.78" y="22.86"/>
 </segment>
 </net>
-<net name="N$7" class="0">
+<net name="BMA_INT2" class="0">
 <segment>
 <pinref part="U1" gate="A" pin="PGD3/VREF-/OA2IN-/AN2/C2IN1-/RPB0/CTED2/RB0"/>
 <pinref part="TP3" gate="G$1" pin="TP"/>
 <wire x1="-45.72" y1="45.72" x2="-17.78" y2="45.72" width="0.1524" layer="91"/>
 <junction x="-45.72" y="45.72"/>
 <junction x="-17.78" y="45.72"/>
+<label x="-43.18" y="45.72" size="1.778" layer="95"/>
+</segment>
+<segment>
+<wire x1="109.22" y1="114.3" x2="137.16" y2="114.3" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="G$1" pin="INT2"/>
+<junction x="109.22" y="114.3"/>
+<junction x="137.16" y="114.3"/>
+<label x="119.38" y="114.3" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$6" class="0">

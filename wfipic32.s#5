@@ -14034,6 +14034,7 @@ Source: &lt;a href="http://suddendocs.samtec.com/prints/mle-1xx-xx-x-dv-x-mkt1.p
 <part name="VSS12" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 <part name="J3" library="MLE-105-01-G-DV" deviceset="MLE-105-01-G-DV" device=""/>
 <part name="VSS13" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
+<part name="VSS14" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -14177,6 +14178,9 @@ Source: &lt;a href="http://suddendocs.samtec.com/prints/mle-1xx-xx-x-dv-x-mkt1.p
 </instance>
 <instance part="VSS13" gate="G$1" x="170.18" y="-17.78" smashed="yes">
 <attribute name="VALUE" x="167.64" y="-22.86" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="VSS14" gate="G$1" x="193.04" y="-17.78" smashed="yes">
+<attribute name="VALUE" x="190.5" y="-22.86" size="1.778" layer="96" rot="R90"/>
 </instance>
 </instances>
 <busses>
@@ -14395,6 +14399,11 @@ Source: &lt;a href="http://suddendocs.samtec.com/prints/mle-1xx-xx-x-dv-x-mkt1.p
 <pinref part="J3" gate="G$1" pin="1"/>
 <pinref part="VSS13" gate="G$1" pin="VSS"/>
 <junction x="170.18" y="-15.24"/>
+</segment>
+<segment>
+<pinref part="J3" gate="G$1" pin="2"/>
+<pinref part="VSS14" gate="G$1" pin="VSS"/>
+<junction x="193.04" y="-15.24"/>
 </segment>
 </net>
 <net name="AVDD" class="0">
@@ -14848,6 +14857,70 @@ Source: &lt;a href="http://suddendocs.samtec.com/prints/mle-1xx-xx-x-dv-x-mkt1.p
 <junction x="193.04" y="88.9"/>
 <junction x="205.74" y="88.9"/>
 <label x="198.12" y="86.36" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PWM1L" class="0">
+<segment>
+<pinref part="U1" gate="A" pin="RPB15/PWM1L/RB15"/>
+<wire x1="-17.78" y1="66.04" x2="-30.48" y2="66.04" width="0.1524" layer="91"/>
+<label x="-43.18" y="66.04" size="1.778" layer="95"/>
+<junction x="-17.78" y="66.04"/>
+<junction x="-30.48" y="66.04"/>
+</segment>
+<segment>
+<wire x1="170.18" y1="-7.62" x2="157.48" y2="-7.62" width="0.1524" layer="91"/>
+<pinref part="J3" gate="G$1" pin="7"/>
+<label x="147.32" y="-7.62" size="1.778" layer="95"/>
+<junction x="170.18" y="-7.62"/>
+<junction x="157.48" y="-7.62"/>
+</segment>
+</net>
+<net name="PWM1H" class="0">
+<segment>
+<pinref part="U1" gate="A" pin="RPB14/PWM1H/RB14"/>
+<wire x1="-17.78" y1="68.58" x2="-30.48" y2="68.58" width="0.1524" layer="91"/>
+<label x="-43.18" y="68.58" size="1.778" layer="95"/>
+<junction x="-17.78" y="68.58"/>
+<junction x="-30.48" y="68.58"/>
+</segment>
+<segment>
+<wire x1="170.18" y1="-5.08" x2="157.48" y2="-5.08" width="0.1524" layer="91"/>
+<pinref part="J3" gate="G$1" pin="9"/>
+<label x="147.32" y="-5.08" size="1.778" layer="95"/>
+<junction x="170.18" y="-5.08"/>
+<junction x="157.48" y="-5.08"/>
+</segment>
+</net>
+<net name="PWM4L" class="0">
+<segment>
+<pinref part="U1" gate="A" pin="TCK/RPA7/PWM4L/RA7"/>
+<wire x1="-17.78" y1="71.12" x2="-30.48" y2="71.12" width="0.1524" layer="91"/>
+<label x="-43.18" y="71.12" size="1.778" layer="95"/>
+<junction x="-17.78" y="71.12"/>
+<junction x="-30.48" y="71.12"/>
+</segment>
+<segment>
+<wire x1="205.74" y1="-7.62" x2="193.04" y2="-7.62" width="0.1524" layer="91"/>
+<pinref part="J3" gate="G$1" pin="8"/>
+<label x="208.28" y="-7.62" size="1.778" layer="95"/>
+<junction x="193.04" y="-7.62"/>
+<junction x="205.74" y="-7.62"/>
+</segment>
+</net>
+<net name="PWM4H" class="0">
+<segment>
+<pinref part="U1" gate="A" pin="TDO/PWM4H/RA10"/>
+<wire x1="200.66" y1="71.12" x2="213.36" y2="71.12" width="0.1524" layer="91"/>
+<label x="215.9" y="71.12" size="1.778" layer="95"/>
+<junction x="200.66" y="71.12"/>
+<junction x="213.36" y="71.12"/>
+</segment>
+<segment>
+<wire x1="193.04" y1="-5.08" x2="205.74" y2="-5.08" width="0.1524" layer="91"/>
+<pinref part="J3" gate="G$1" pin="10"/>
+<label x="208.28" y="-5.08" size="1.778" layer="95"/>
+<junction x="193.04" y="-5.08"/>
+<junction x="205.74" y="-5.08"/>
 </segment>
 </net>
 </nets>
