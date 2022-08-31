@@ -135,7 +135,7 @@ int main(void)
  */
 void update_imu_int1(uint32_t a, uintptr_t context)
 {
-	imu_cmd_t * imu = (void*) context;
+	imu_cmd_t * imu = (imu_cmd_t *) context;
 	static int8_t i = 0;
 
 	if (imu) {
