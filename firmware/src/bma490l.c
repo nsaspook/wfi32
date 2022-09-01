@@ -298,7 +298,7 @@ void imu_set_spimode(imu_cmd_t * imu)
 bool imu_cs(imu_cmd_t * imu)
 {
 	if (imu) {
-		switch (imu->device) {
+		switch (imu->cs) {
 		case 0:
 		default:
 			imu->run = true;
@@ -319,7 +319,7 @@ bool imu_cs(imu_cmd_t * imu)
 void imu_cs_disable(imu_cmd_t * imu)
 {
 	if (imu) {
-		switch (imu->device) {
+		switch (imu->cs) {
 		case 0:
 		default:
 			imu->run = false;
@@ -338,7 +338,7 @@ void imu_cs_cb(uintptr_t context)
 	imu_cmd_t * imu = (void*) context;
 
 	if (imu) {
-		switch (imu->device) {
+		switch (imu->cs) {
 		case 0:
 		default:
 			IMU_CS_Set();

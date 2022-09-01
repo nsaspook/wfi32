@@ -50,6 +50,7 @@
       <itemPath>../src/bma490l.h</itemPath>
       <itemPath>../src/bma490l_reg.h</itemPath>
       <itemPath>../src/timers.h</itemPath>
+      <itemPath>../src/sca3300.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -106,6 +107,7 @@
       <itemPath>../src/main.c</itemPath>
       <itemPath>../src/bma490l.c</itemPath>
       <itemPath>../src/timers.c</itemPath>
+      <itemPath>../src/sca3300.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -143,7 +145,7 @@
         <platformTool>ICD4Tool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.10</languageToolchainVersion>
-        <platform>2</platform>
+        <platform>3</platform>
       </toolsSet>
       <packs>
         <pack name="PIC32MK-MC_DFP" vendor="Microchip" version="1.11.151"/>

@@ -40,20 +40,39 @@
 #include <string.h>
 #include "definitions.h"                // SYS function prototypes
 
+#include "imupic32mcj.h"
 #include "bma490l.h"
 #include "timers.h"
 
+#ifdef BMA490L
 /*
  * BMA490L instance
  */
 imu_cmd_t imu0 = {
 	.tbuf[0] = CHIP_ID | RBIT,
 	.online = false,
-	.device = 0, // chip select number and device type
+	.device = 0, // device type
+	.cs = 0, // chip select number
 	.run = false,
 	.update = true,
 	.features = false,
 };
+#endif
+
+#ifdef SCA3300
+/*
+ * SCA3300-D01 instance
+ */
+imu_cmd_t imu0 = {
+	.tbuf[0] = CHIP_ID | RBIT,
+	.online = false,
+	.device = 1, // device type
+	.cs = 0, // chip select number
+	.run = false,
+	.update = true,
+	.features = false,
+};
+#endif
 
 /*
  * Logging data structure

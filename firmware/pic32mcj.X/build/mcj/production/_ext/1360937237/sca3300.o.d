@@ -1,5 +1,5 @@
-build/mcj/production/_ext/1360937237/main.o: ../src/main.c \
- ../src/config/mcj/definitions.h \
+build/mcj/production/_ext/1360937237/sca3300.o: ../src/sca3300.c \
+ ../src/sca3300.h ../src/config/mcj/definitions.h \
  ../src/config/mcj/peripheral/tmr/plib_tmr6.h ../src/config/mcj/device.h \
  ../src/config/mcj/toolchain_specifics.h \
  ../src/config/mcj/peripheral/tmr/plib_tmr_common.h \
@@ -15,9 +15,9 @@ build/mcj/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/config/mcj/peripheral/mcpwm/plib_mcpwm_common.h \
  ../src/config/mcj/peripheral/spi/spi_master/plib_spi2_master.h \
  ../src/config/mcj/peripheral/spi/spi_master/plib_spi_master_common.h \
- ../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.h \
- ../src/imupic32mcj.h ../src/bma490l.h ../src/bma490l_reg.h \
- ../src/timers.h
+ ../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.h
+
+../src/sca3300.h:
 
 ../src/config/mcj/definitions.h:
 
@@ -54,11 +54,3 @@ build/mcj/production/_ext/1360937237/main.o: ../src/main.c \
 ../src/config/mcj/peripheral/spi/spi_master/plib_spi_master_common.h:
 
 ../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.h:
-
-../src/imupic32mcj.h:
-
-../src/bma490l.h:
-
-../src/bma490l_reg.h:
-
-../src/timers.h:

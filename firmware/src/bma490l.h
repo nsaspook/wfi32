@@ -17,6 +17,7 @@ extern "C" {
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include <math.h>
 #include "definitions.h"                // SYS function prototypes
+#include "imupic32mcj.h"
 #include "bma490l_reg.h"
 
 #ifndef  LED_GREEN_On
@@ -82,12 +83,6 @@ extern "C" {
 #define BMA490_ACCEL_MG_LSB_8G		0.000244141F   ///< Macro for mg per LSB at +/- 8g sensitivity (1 LSB = 0.000244141mg) */
 #define BMA490_ACCEL_MG_LSB_16G		0.000488281F   ///< Macro for mg per LSB at +/- 16g sensitivity (1 LSB = 0.000488281mg) */
 #define BMA490_ACCEL_MG_SCALE		1.000000000F
-
-	typedef struct _imu_cmd_t {
-		uint8_t device;
-		uint8_t rbuf[64], tbuf[64];
-		volatile bool online, run, update, features;
-	} imu_cmd_t;
 
 	typedef struct {
 		float x; /**< X-axis sensor data */

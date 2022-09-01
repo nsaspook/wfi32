@@ -16,7 +16,7 @@ build/mcj/production/_ext/1360937237/bma490l.o: ../src/bma490l.c \
  ../src/config/mcj/peripheral/spi/spi_master/plib_spi2_master.h \
  ../src/config/mcj/peripheral/spi/spi_master/plib_spi_master_common.h \
  ../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.h \
- ../src/bma490l_reg.h
+ ../src/imupic32mcj.h ../src/bma490l_reg.h
 
 ../src/bma490l.h:
 
@@ -55,5 +55,7 @@ build/mcj/production/_ext/1360937237/bma490l.o: ../src/bma490l.c \
 ../src/config/mcj/peripheral/spi/spi_master/plib_spi_master_common.h:
 
 ../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.h:
+
+../src/imupic32mcj.h:
 
 ../src/bma490l_reg.h:
