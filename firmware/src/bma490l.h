@@ -77,17 +77,17 @@ extern "C" {
 	};
 
 	/*! Earth's gravity in m/s^2 */
-#define GRAVITY_EARTH			(9.80665f)	
-#define BMA490_ACCEL_MG_LSB_2G		0.000061035F   ///< Macro for mg per LSB at +/- 2g sensitivity (1 LSB = 0.000061035mg) */
-#define BMA490_ACCEL_MG_LSB_4G		0.000122070F   ///< Macro for mg per LSB at +/- 4g sensitivity (1 LSB = 0.000122070mg) */
-#define BMA490_ACCEL_MG_LSB_8G		0.000244141F   ///< Macro for mg per LSB at +/- 8g sensitivity (1 LSB = 0.000244141mg) */
-#define BMA490_ACCEL_MG_LSB_16G		0.000488281F   ///< Macro for mg per LSB at +/- 16g sensitivity (1 LSB = 0.000488281mg) */
-#define BMA490_ACCEL_MG_SCALE		1.000000000F
+#define GRAVITY_EARTH			(9.80665)	
+#define BMA490_ACCEL_MG_LSB_2G		0.000061035	///< Macro for mg per LSB at +/- 2g sensitivity (1 LSB = 0.000061035mg) */
+#define BMA490_ACCEL_MG_LSB_4G		0.000122070	///< Macro for mg per LSB at +/- 4g sensitivity (1 LSB = 0.000122070mg) */
+#define BMA490_ACCEL_MG_LSB_8G		0.000244141	///< Macro for mg per LSB at +/- 8g sensitivity (1 LSB = 0.000244141mg) */
+#define BMA490_ACCEL_MG_LSB_16G		0.000488281	///< Macro for mg per LSB at +/- 16g sensitivity (1 LSB = 0.000488281mg) */
+#define BMA490_ACCEL_MG_SCALE		1.000000000
 
 	typedef struct {
-		float x; /**< X-axis sensor data */
-		float y; /**< Y-axis sensor data */
-		float z; /**< Z-axis sensor data */
+		double x; /**< X-axis sensor data */
+		double y; /**< Y-axis sensor data */
+		double z; /**< Z-axis sensor data */
 		uint32_t sensortime; /**< sensor time */
 	} sBma490SensorData_t;
 

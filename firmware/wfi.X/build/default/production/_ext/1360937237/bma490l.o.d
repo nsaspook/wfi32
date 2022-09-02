@@ -32,7 +32,7 @@ build/default/production/_ext/1360937237/bma490l.o: ../src/bma490l.c \
  ../src/config/default/osal/osal_definitions.h \
  ../src/config/default/osal/osal_impl_basic.h \
  ../src/config/default/system/debug/sys_debug.h ../src/app.h \
- ../src/bma490l_reg.h
+ ../src/imupic32mcj.h ../src/bma490l_reg.h
 
 ../src/bma490l.h:
 
@@ -105,5 +105,7 @@ build/default/production/_ext/1360937237/bma490l.o: ../src/bma490l.c \
 ../src/config/default/system/debug/sys_debug.h:
 
 ../src/app.h:
+
+../src/imupic32mcj.h:
 
 ../src/bma490l_reg.h:
