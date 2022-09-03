@@ -116,16 +116,16 @@
         <itemPath>../src/config/mcj/mcj.mhc/adchs.yml</itemPath>
         <itemPath>../src/config/mcj/mcj.mhc/core.yml</itemPath>
         <itemPath>../src/config/mcj/mcj.mhc/dfp.yml</itemPath>
+        <itemPath>../src/config/mcj/mcj.mhc/GraphSettings.yml</itemPath>
         <itemPath>../src/config/mcj/mcj.mhc/mcpwm.yml</itemPath>
+        <itemPath>../src/config/mcj/mcj.mhc/project.yml</itemPath>
+        <itemPath>../src/config/mcj/mcj.mhc/settings.yml</itemPath>
         <itemPath>../src/config/mcj/mcj.mhc/spi1.yml</itemPath>
         <itemPath>../src/config/mcj/mcj.mhc/spi2.yml</itemPath>
         <itemPath>../src/config/mcj/mcj.mhc/stdio.yml</itemPath>
         <itemPath>../src/config/mcj/mcj.mhc/tmr5.yml</itemPath>
         <itemPath>../src/config/mcj/mcj.mhc/tmr6.yml</itemPath>
         <itemPath>../src/config/mcj/mcj.mhc/uart1.yml</itemPath>
-        <itemPath>../src/config/mcj/mcj.mhc/GraphSettings.yml</itemPath>
-        <itemPath>../src/config/mcj/mcj.mhc/settings.yml</itemPath>
-        <itemPath>../src/config/mcj/mcj.mhc/project.yml</itemPath>
       </logicalFolder>
       <itemPath>Makefile</itemPath>
       <itemPath>../src/config/mcj/harmony-manifest-success.yml</itemPath>

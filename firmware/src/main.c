@@ -105,8 +105,7 @@ int main(void)
 	/*
 	 * print the driver version
 	 */
-	imu0.info_ptr();
-//	bma490_version();
+	imu0.info_ptr(); // print driver version on the serial port
 	imu_set_spimode(&imu0); // setup the BMA490L chip for SPI comms, 200 value updates per second @ selected G range
 
 	/*

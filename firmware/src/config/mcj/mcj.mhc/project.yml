@@ -69,13 +69,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: F934EDD6F7041659B7EC94263717BF48
-- generatedChecksum: E98C02E5065C6920D4C7C6E1D45C9BF4
+- generatedChecksum: BAB5A2FD9F596371F4B923124C2BC4A3
   logicalPath: config/mcj/peripheral/spi/spi_master
   name: plib_spi2_master.c
   physicalPath: peripheral/spi/spi_master
   security: NON_SECURE
   type: SOURCE
-  userChecksum: E98C02E5065C6920D4C7C6E1D45C9BF4
+  userChecksum: BAB5A2FD9F596371F4B923124C2BC4A3
 - generatedChecksum: A182F1654C0D24C85A99FB6772C9FC2F
   logicalPath: config/mcj/peripheral/tmr
   name: plib_tmr5.c
@@ -237,13 +237,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 7DC91D6D376C98802C9C2990432DE9B7
-- generatedChecksum: 116D98DF5DBECD22C9968139BC099067
+- generatedChecksum: AD9028722C1D5DA19709387A0D18B3A5
   logicalPath: config/mcj
   name: p32MK0512MCJ048.ld
   physicalPath: ''
   security: NON_SECURE
   type: LINKER
-  userChecksum: 116D98DF5DBECD22C9968139BC099067
+  userChecksum: AD9028722C1D5DA19709387A0D18B3A5
 format_version: v1.0
 libraries: []
 settings:

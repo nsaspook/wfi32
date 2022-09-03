@@ -29,7 +29,7 @@ extern "C" {
 #define LED_RED_Off() LED_RED_Clear()
 #endif	
 
-#define BMA490_DRIVER "V0.200" 
+#define BMA490_DRIVER "V0.201" 
 	// version 0.200	PIC32MK MCJ 48 pin version
 
 #define RBIT		0b10000000
