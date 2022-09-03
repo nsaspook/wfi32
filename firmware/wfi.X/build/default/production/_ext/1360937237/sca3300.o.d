@@ -1,5 +1,5 @@
-build/default/production/_ext/1360937237/main.o: ../src/main.c \
- ../src/config/default/definitions.h \
+build/default/production/_ext/1360937237/sca3300.o: ../src/sca3300.c \
+ ../src/sca3300.h ../src/config/default/definitions.h \
  ../src/config/default/peripheral/tmr/plib_tmr6.h \
  ../src/config/default/device.h \
  ../src/config/default/toolchain_specifics.h \
@@ -31,9 +31,9 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/config/default/osal/osal.h \
  ../src/config/default/osal/osal_definitions.h \
  ../src/config/default/osal/osal_impl_basic.h \
- ../src/config/default/system/debug/sys_debug.h ../src/app.h \
- ../src/imupic32mcj.h ../src/bma490l.h ../src/bma490l_reg.h \
- ../src/sca3300.h ../src/timers.h
+ ../src/config/default/system/debug/sys_debug.h ../src/app.h
+
+../src/sca3300.h:
 
 ../src/config/default/definitions.h:
 
@@ -104,13 +104,3 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
 ../src/config/default/system/debug/sys_debug.h:
 
 ../src/app.h:
-
-../src/imupic32mcj.h:
-
-../src/bma490l.h:
-
-../src/bma490l_reg.h:
-
-../src/sca3300.h:
-
-../src/timers.h:

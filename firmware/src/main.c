@@ -42,6 +42,7 @@
 
 #include "imupic32mcj.h"
 #include "bma490l.h"
+#include "sca3300.h"
 #include "timers.h"
 
 #ifdef BMA490L
@@ -56,6 +57,7 @@ imu_cmd_t imu0 = {
 	.run = false,
 	.update = true,
 	.features = false,
+	.info_ptr = &bma490_version,
 };
 #endif
 
@@ -63,7 +65,7 @@ imu_cmd_t imu0 = {
 /*
  * SCA3300-D01 instance
  */
-imu_cmd_t imu0 = {
+imu_cmd_t imu1 = {
 	.tbuf[0] = CHIP_ID | RBIT,
 	.online = false,
 	.device = 1, // device type
@@ -71,6 +73,7 @@ imu_cmd_t imu0 = {
 	.run = false,
 	.update = true,
 	.features = false,
+	.info_ptr = &sca3300_version,
 };
 #endif
 
@@ -102,7 +105,8 @@ int main(void)
 	/*
 	 * print the driver version
 	 */
-	bma490_version();
+	imu0.info_ptr();
+//	bma490_version();
 	imu_set_spimode(&imu0); // setup the BMA490L chip for SPI comms, 200 value updates per second @ selected G range
 
 	/*

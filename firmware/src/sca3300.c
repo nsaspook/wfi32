@@ -1,5 +1,7 @@
 #include "sca3300.h"
 
+static const char *build_date = __DATE__, *build_time = __TIME__;
+
 static uint8_t CRC8(uint8_t, uint8_t);
 
 // Calculate CRC for 24 MSB's of the 32 bit dword
@@ -31,5 +33,10 @@ static uint8_t CRC8(uint8_t BitValue, uint8_t CRC)
 		CRC ^= 0x1D;
 	}
 	return CRC;
+}
+
+void sca3300_version(void)
+{
+	printf("\r--- SCA3300 Driver Version  %s %s %s ---\r\n", SCA3300_DRIVER, build_date, build_time);
 }
 

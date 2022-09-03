@@ -19,12 +19,13 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 
 #define BMA490L
-//#define SCA3300
+#define SCA3300
 
 	typedef struct _imu_cmd_t {
 		uint8_t device, cs;
 		uint8_t rbuf[64], tbuf[64];
 		volatile bool online, run, update, features;
+		void (*info_ptr)(void);
 	} imu_cmd_t;
 
 #ifdef	__cplusplus

@@ -18,8 +18,12 @@ extern "C" {
 #include <math.h>
 #include "definitions.h"                // SYS function prototypes
 
+#define SCA3300_DRIVER "V0.100" 
+
 	uint8_t CalculateCRC(uint32_t);
-	
+
+	void sca3300_version(void);
+
 #ifdef	__cplusplus
 }
 #endif
