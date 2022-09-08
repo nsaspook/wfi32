@@ -186,12 +186,15 @@ void SYS_Initialize ( void* data )
 
     TMR5_Initialize();
 
+    CAN1_Initialize();
+
     MCPWM_Initialize();
 
 	SPI2_Initialize();
 
 	SPI1_Initialize();
 
+    RTCC_Initialize();
 
 
 
