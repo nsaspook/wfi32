@@ -64,7 +64,6 @@ void EVIC_Initialize( void )
     IPC13SET = 0x40000 | 0x0;  /* SPI2_RX:  Priority 1 / Subpriority 0 */
     IPC13SET = 0x4000000 | 0x0;  /* SPI2_TX:  Priority 1 / Subpriority 0 */
     IPC19SET = 0x4 | 0x0;  /* TIMER_6:  Priority 1 / Subpriority 0 */
-    IPC41SET = 0x4000000 | 0x0;  /* CAN1:  Priority 1 / Subpriority 0 */
 
     /* Initialize External interrupt 2 callback object */
     extInt2CbObj.callback = NULL;

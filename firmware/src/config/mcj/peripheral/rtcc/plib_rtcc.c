@@ -95,6 +95,11 @@ void RTCC_Initialize( void )
     /* Set RTCC clock source (LPRC/SOSC) */
     RTCCONbits.RTCCLKSEL = 0;
 
+    RTCCONbits.ON = 0;   /* Disable clock to RTCC */
+    while(RTCCONbits.RTCCLKON);  /* Wait for clock to stop */
+
+    RTCTIME = 0x23595000;   /* Set RTCC time */
+    RTCDATE = 0x22072900;  /* Set RTCC date */
 
     /* Set alarm to repeat finite number of times */
     RTCALRMCLR = _RTCALRM_CHIME_MASK;

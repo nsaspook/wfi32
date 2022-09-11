@@ -9,8 +9,6 @@ build/mcj/production/_ext/1272080767/interrupts.o: \
  ../src/config/mcj/peripheral/uart/plib_uart1.h \
  ../src/config/mcj/peripheral/uart/plib_uart_common.h \
  ../src/config/mcj/peripheral/tmr/plib_tmr5.h \
- ../src/config/mcj/peripheral/canfd/plib_canfd1.h \
- ../src/config/mcj/peripheral/canfd/plib_canfd_common.h \
  ../src/config/mcj/peripheral/clk/plib_clk.h \
  ../src/config/mcj/peripheral/gpio/plib_gpio.h \
  ../src/config/mcj/peripheral/evic/plib_evic.h \
@@ -42,10 +40,6 @@ build/mcj/production/_ext/1272080767/interrupts.o: \
 ../src/config/mcj/peripheral/uart/plib_uart_common.h:
 
 ../src/config/mcj/peripheral/tmr/plib_tmr5.h:
-
-../src/config/mcj/peripheral/canfd/plib_canfd1.h:
-
-../src/config/mcj/peripheral/canfd/plib_canfd_common.h:
 
 ../src/config/mcj/peripheral/clk/plib_clk.h:
 

@@ -68,7 +68,6 @@ void SPI1_TX_InterruptHandler( void );
 void SPI2_RX_InterruptHandler( void );
 void SPI2_TX_InterruptHandler( void );
 void TIMER_6_InterruptHandler( void );
-void CAN1_InterruptHandler( void );
 
 
 
@@ -111,11 +110,6 @@ void __ISR(_SPI2_TX_VECTOR, ipl1SRS) SPI2_TX_Handler (void)
 void __ISR(_TIMER_6_VECTOR, ipl1SRS) TIMER_6_Handler (void)
 {
     TIMER_6_InterruptHandler();
-}
-
-void __ISR(_CAN1_VECTOR, ipl1SRS) CAN1_Handler (void)
-{
-    CAN1_InterruptHandler();
 }
 
 
