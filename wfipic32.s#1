@@ -15631,13 +15631,6 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <junction x="132.08" y="144.78"/>
 </segment>
 <segment>
-<wire x1="-30.48" y1="-30.48" x2="-40.64" y2="-30.48" width="0.1524" layer="91"/>
-<pinref part="AC1" gate="G$1" pin="VDD"/>
-<label x="-40.64" y="-30.48" size="1.778" layer="95"/>
-<junction x="-30.48" y="-30.48"/>
-<junction x="-40.64" y="-30.48"/>
-</segment>
-<segment>
 <wire x1="15.24" y1="-27.94" x2="5.08" y2="-27.94" width="0.1524" layer="91"/>
 <pinref part="AC1" gate="G$1" pin="DVIO"/>
 <label x="12.7" y="-27.94" size="1.778" layer="95"/>
@@ -15883,6 +15876,13 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <wire x1="73.66" y1="-5.08" x2="73.66" y2="2.54" width="0.1524" layer="91"/>
 <junction x="73.66" y="2.54"/>
 <label x="76.2" y="0" size="1.778" layer="95"/>
+</segment>
+<segment>
+<wire x1="-30.48" y1="-30.48" x2="-38.1" y2="-30.48" width="0.1524" layer="91"/>
+<pinref part="AC1" gate="G$1" pin="VDD"/>
+<label x="-40.64" y="-30.48" size="1.778" layer="95" rot="R180"/>
+<junction x="-30.48" y="-30.48"/>
+<junction x="-38.1" y="-30.48"/>
 </segment>
 </net>
 <net name="N$1" class="0">
