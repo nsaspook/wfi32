@@ -17,6 +17,7 @@ extern "C" {
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include <math.h>
 #include "definitions.h"                // SYS function prototypes
+#include "imupic32mcj.h"
 
 #define BMA490L
 #define SCA3300
@@ -26,6 +27,9 @@ extern "C" {
 		uint8_t rbuf[64], tbuf[64];
 		volatile bool online, run, update, features;
 		void (*info_ptr)(void);
+		void (*imu_set_spimode)(void *);
+		bool (*imu_getid)(void *);
+		bool (*imu_getdata)(void *);
 	} imu_cmd_t;
 
 #ifdef	__cplusplus

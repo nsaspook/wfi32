@@ -96,8 +96,10 @@ static const uint8_t bma490l_config_file[] = {
 /*
  * Read raw ACCEL data from the chip using SPI
  */
-bool imu_getdata(imu_cmd_t * imu)
+bool bma490l_getdata(void * imup)
 {
+	imu_cmd_t * imu = imup;
+
 	if (imu) {
 		if (!imu->run) {
 			imu_cs(imu);
@@ -167,8 +169,10 @@ void getAllData(sBma490SensorData_t *accel, imu_cmd_t * imu)
 /*
  * see if we can get the correct ID response in rbuf
  */
-bool imu_getid(imu_cmd_t * imu)
+bool bma490l_getid(void * imup)
 {
+	imu_cmd_t * imu = imup;
+
 	if (imu) {
 		if (!imu->run) {
 			imu_cs(imu);
@@ -248,8 +252,10 @@ void imu_gen_write(imu_cmd_t * imu, void* pTransmitData, size_t txSize, const bo
 /*
  * toggle the chip CS to set SPI mode
  */
-void imu_set_spimode(imu_cmd_t * imu)
+void bma490l_set_spimode(void * imup)
 {
+	imu_cmd_t * imu = imup;
+
 	// set SPI MODE on BMA490L by reading ID register
 	LED_GREEN_Off();
 	LED_RED_On();

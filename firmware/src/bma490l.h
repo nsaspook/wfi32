@@ -91,12 +91,12 @@ extern "C" {
 		uint32_t sensortime; /**< sensor time */
 	} sBma490SensorData_t;
 
-	void imu_set_spimode(imu_cmd_t *);
-	bool imu_getid(imu_cmd_t *);
+	void bma490l_set_spimode(void *);
+	bool bma490l_getid(void *);
 	bool imu_getis(imu_cmd_t *);
 	void delay_us(uint32_t);
 	void getAllData(sBma490SensorData_t *, imu_cmd_t *);
-	bool imu_getdata(imu_cmd_t *);
+	bool bma490l_getdata(void *);
 	void bma490_version(void);
 	void imu_set_reg(imu_cmd_t *, const uint8_t, const uint8_t, const bool);
 	/*

@@ -58,6 +58,9 @@ imu_cmd_t imu0 = {
 	.update = true,
 	.features = false,
 	.info_ptr = &bma490_version,
+	.imu_set_spimode = &bma490l_set_spimode,
+	.imu_getid = &bma490l_getid,
+	.imu_getdata = &bma490l_getdata,
 };
 #endif
 
@@ -106,13 +109,13 @@ int main(void)
 	 * print the driver version
 	 */
 	imu0.info_ptr(); // print driver version on the serial port
-	imu_set_spimode(&imu0); // setup the IMU chip for SPI comms, X updates per second @ selected G range
+	imu0.imu_set_spimode(&imu0); // setup the IMU chip for SPI comms, X updates per second @ selected G range
 
 	/*
 	 * check to see if we actually have a working IMU
 	 */
 	StartTimer(TMR_IMU, imu_timeout);
-	while (!imu_getid(&imu0)) {
+	while (!imu0.imu_getid(&imu0)) {
 		LED_RED_Toggle();
 		LED_GREEN_Toggle();
 		if (TimerDone(TMR_IMU)) {
@@ -140,7 +143,7 @@ int main(void)
 		 */
 		StartTimer(TMR_LOG, log_timeout);
 		if (imu0.update || TimerDone(TMR_LOG)) {
-			imu_getdata(&imu0); // read data from the chip
+			imu0.imu_getdata(&imu0); // read data from the chip
 			imu0.update = false;
 			getAllData(&accel, &imu0); // convert data from the chip
 			printf("%6.3f,%6.3f,%6.3f,%u\r\n", accel.x, accel.y, accel.z, accel.sensortime);
