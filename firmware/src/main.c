@@ -106,10 +106,10 @@ int main(void)
 	 * print the driver version
 	 */
 	imu0.info_ptr(); // print driver version on the serial port
-	imu_set_spimode(&imu0); // setup the BMA490L chip for SPI comms, 200 value updates per second @ selected G range
+	imu_set_spimode(&imu0); // setup the IMU chip for SPI comms, X updates per second @ selected G range
 
 	/*
-	 * check to see if we actually have a working BMA490L
+	 * check to see if we actually have a working IMU
 	 */
 	StartTimer(TMR_IMU, imu_timeout);
 	while (!imu_getid(&imu0)) {
@@ -117,9 +117,14 @@ int main(void)
 		LED_GREEN_Toggle();
 		if (TimerDone(TMR_IMU)) {
 			while (true) {
-				LED_RED_On();
-				LED_GREEN_Off();
-				printf(" IMU NO ID response \r\n");
+				if (TimerDone(TMR_IMU)) {
+					LED_RED_Toggle();
+					LED_GREEN_Toggle();
+					printf(" IMU NO ID, %d %d \r\n", ADCHS_ChannelResultGet(ADCHS_CH0), ADCHS_ChannelResultGet(ADCHS_CH1));
+					StartTimer(TMR_IMU, 200);
+					ADCHS_ChannelConversionStart(ADCHS_CH0);
+					ADCHS_ChannelConversionStart(ADCHS_CH1);
+				}
 			}
 		}
 	};
