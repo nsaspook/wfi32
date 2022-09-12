@@ -22,14 +22,24 @@ extern "C" {
 #define BMA490L
 #define SCA3300
 
-	typedef struct _imu_cmd_t {
-		uint8_t device, cs;
-		uint8_t rbuf[64], tbuf[64];
-		volatile bool online, run, update, features;
+	/*
+	 * function pointer templates structure
+	 */
+	typedef struct _op_t {
 		void (*info_ptr)(void);
 		void (*imu_set_spimode)(void *);
 		bool (*imu_getid)(void *);
 		bool (*imu_getdata)(void *);
+	} op_t;
+
+	/*
+	 * IMU data structure for driver
+	 */
+	typedef struct _imu_cmd_t {
+		uint8_t device, cs;
+		uint8_t rbuf[64], tbuf[64];
+		volatile bool online, run, update, features;
+		op_t op;
 	} imu_cmd_t;
 
 #ifdef	__cplusplus

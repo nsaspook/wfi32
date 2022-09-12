@@ -52,8 +52,8 @@ extern "C" {
 #define BMA490_RD_WR_MAX_LEN		0x0514 // IMU ASIC firmware file size
 
 #define ACCEL_CONFIG			0xa9 // 10101001 200Hz ODR 80Hz filter
-//#define ACCEL_CONFIG			0xa5 // 10100101 12.5Hz ODR 5.06Hz filter
-// #define ACCEL_CONFIG			0x55 // 01010101 12.5Hz ODR avg 32	
+	//#define ACCEL_CONFIG			0xa5 // 10100101 12.5Hz ODR 5.06Hz filter
+	// #define ACCEL_CONFIG			0x55 // 01010101 12.5Hz ODR avg 32	
 #define INT_MAP_DATA			0x04
 #define INT1_IO_CTRL			0x08
 #define REG_POWER_CTRL			0x04
@@ -91,13 +91,19 @@ extern "C" {
 		uint32_t sensortime; /**< sensor time */
 	} sBma490SensorData_t;
 
+	/*
+	 * function pointer templates
+	 */
 	void bma490l_set_spimode(void *);
 	bool bma490l_getid(void *);
+	bool bma490l_getdata(void *);
+	void bma490_version(void);
+
 	bool imu_getis(imu_cmd_t *);
 	void delay_us(uint32_t);
 	void getAllData(sBma490SensorData_t *, imu_cmd_t *);
-	bool bma490l_getdata(void *);
-	void bma490_version(void);
+
+
 	void imu_set_reg(imu_cmd_t *, const uint8_t, const uint8_t, const bool);
 	/*
 	 * user callback function per BMA490L data interrupt

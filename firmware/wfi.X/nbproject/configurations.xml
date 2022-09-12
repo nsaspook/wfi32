@@ -15,6 +15,10 @@
             <itemPath>../src/config/default/osal/osal_impl_basic.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="peripheral" projectFiles="true">
+            <logicalFolder name="f8" displayName="adchs" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/adchs/plib_adchs.h</itemPath>
+              <itemPath>../src/config/default/peripheral/adchs/plib_adchs_common.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="f6" displayName="cache" projectFiles="true">
               <itemPath>../src/config/default/peripheral/cache/plib_cache.h</itemPath>
               <itemPath>../src/config/default/peripheral/cache/plib_cache_pic32mz.h</itemPath>
@@ -99,6 +103,9 @@
             <itemPath>../src/config/default/bsp/bsp.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f3" displayName="peripheral" projectFiles="true">
+            <logicalFolder name="f8" displayName="adchs" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/adchs/plib_adchs.c</itemPath>
+            </logicalFolder>
             <logicalFolder name="f6" displayName="cache" projectFiles="true">
               <itemPath>../src/config/default/peripheral/cache/plib_cache_local.h</itemPath>
               <itemPath>../src/config/default/peripheral/cache/plib_cache.c</itemPath>
@@ -158,6 +165,7 @@
                    displayName="Important Files"
                    projectFiles="false">
       <logicalFolder name="f1" displayName="default.mhc" projectFiles="true">
+        <itemPath>../src/config/default/default.mhc/adchs.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/BSP_PIC32MZ_W1_Curiosity.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/core.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/dfp.yml</itemPath>
@@ -191,8 +199,8 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PKOBSKDEPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.00</languageToolchainVersion>
-        <platform>2</platform>
+        <languageToolchainVersion>4.10</languageToolchainVersion>
+        <platform>3</platform>
       </toolsSet>
       <packs>
         <pack name="PIC32MZ-W_DFP" vendor="Microchip" version="1.5.203"/>

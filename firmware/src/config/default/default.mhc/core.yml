@@ -4,13 +4,20 @@ attributes: {id: core}
 children:
 - type: Symbols
   children:
+  - type: Boolean
+    attributes: {id: ADCHS_CLOCK_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: adchs, value: 'true'}
   - type: Integer
     attributes: {id: ADCHS_CLOCK_FREQUENCY}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '0'}
+        attributes: {id: core, value: '100000000'}
   - type: Integer
     attributes: {id: BA414E_CLOCK_FREQUENCY}
     children:
@@ -1476,15 +1483,6 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: '0'}
-  - type: File
-    attributes: {id: INITIALIZATION_C}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: enabled}
-        children:
-        - {type: Value, value: 'true'}
   - type: Boolean
     attributes: {id: INSTRUCTION_CACHE_ENABLE}
     children:
@@ -1570,7 +1568,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '629246337'}
+        attributes: {id: core, value: '629245952'}
   - type: Hex
     attributes: {id: PMD2_REG_VALUE}
     children:

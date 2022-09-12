@@ -43,6 +43,7 @@
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
+#include "configuration.h"
 #include "definitions.h"
 #include "device.h"
 
@@ -120,6 +121,8 @@
 // Section: System Data
 // *****************************************************************************
 // *****************************************************************************
+/* Structure to hold the object handles for the modules in the system. */
+SYSTEM_OBJECTS sysObj;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -133,6 +136,23 @@
 // Section: System Initialization
 // *****************************************************************************
 // *****************************************************************************
+// <editor-fold defaultstate="collapsed" desc="SYS_TIME Initialization Data">
+
+const SYS_TIME_PLIB_INTERFACE sysTimePlibAPI = {
+    .timerCallbackSet = (SYS_TIME_PLIB_CALLBACK_REGISTER)TMR5_CallbackRegister,
+    .timerStart = (SYS_TIME_PLIB_START)TMR5_Start,
+    .timerStop = (SYS_TIME_PLIB_STOP)TMR5_Stop ,
+    .timerFrequencyGet = (SYS_TIME_PLIB_FREQUENCY_GET)TMR5_FrequencyGet,
+    .timerPeriodSet = (SYS_TIME_PLIB_PERIOD_SET)TMR5_PeriodSet,
+};
+
+const SYS_TIME_INIT sysTimeInitData =
+{
+    .timePlib = &sysTimePlibAPI,
+    .hwTimerIntNum = 24,
+};
+
+// </editor-fold>
 
 
 
@@ -195,6 +215,10 @@ void SYS_Initialize ( void* data )
     RTCC_Initialize();
 
 
+    sysObj.sysTime = SYS_TIME_Initialize(SYS_TIME_INDEX_0, (SYS_MODULE_INIT *)&sysTimeInitData);
+
+
+    APP_Initialize();
 
 
     EVIC_Initialize();
