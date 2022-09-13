@@ -72,27 +72,27 @@ bool sca3300_getdata(void * imup)
 			delay_us(10); // junk first response
 			imu_cs(imu);
 			imu->tbuf32[0] = SCA3300_ACC_X_32B;
-			SPI2_WriteRead(imu->tbuf32, 1, imu->rbuf32, 1);
+			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
 			while (imu->run) {
 			};
 			delay_us(10); // 
 			imu_cs(imu);
 			imu->tbuf32[0] = SCA3300_ACC_Y_32B;
-			SPI2_WriteRead(imu->tbuf32, 1, imu->rbuf32, 1);
+			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
 			while (imu->run) {
 			};
 			sdata.scan.channels[0] = ((imu->rbuf32[0] >> 8)&0xffff);
 			delay_us(10); // 
 			imu_cs(imu);
 			imu->tbuf32[0] = SCA3300_ACC_Z_32B;
-			SPI2_WriteRead(imu->tbuf32, 1, imu->rbuf32, 1);
+			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
 			while (imu->run) {
 			};
 			sdata.scan.channels[1] = ((imu->rbuf32[0] >> 8)&0xffff);
 			delay_us(10); // 
 			imu_cs(imu);
 			imu->tbuf32[0] = SCA3300_ACC_Z_32B;
-			SPI2_WriteRead(imu->tbuf32, 1, imu->rbuf32, 1);
+			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
 			while (imu->run) {
 			};
 			sdata.scan.channels[2] = ((imu->rbuf32[0] >> 8)&0xffff);
@@ -105,7 +105,7 @@ bool sca3300_getdata(void * imup)
 }
 
 /*
- * see if we can get the correct ID response in rbuf
+ * see if we can get the correct ID response in rbuf32
  */
 bool sca3300_getid(void * imup)
 {
@@ -113,11 +113,13 @@ bool sca3300_getid(void * imup)
 
 	if (imu) {
 		if (!imu->run) {
-			delay_us(10); // sca3300 command spacing
+			delay_us(SCA3300_CHIP_ID_DELAY); // sca3300 command spacing
 			imu_cs(imu);
 			imu->tbuf32[0] = SCA3300_WHOAMI_32B;
-			SPI2_WriteRead(imu->tbuf32, 1, imu->rbuf32, 1);
-			delay_us(CHIP_ID_DELAY);
+			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
+			while (imu->run) {
+			};
+			delay_us(10);
 			if (((imu->rbuf32[0] >> 8)&0xffff) == SCA3300_ID) {
 				imu->online = true;
 				imu->rbuf32[0] = 0;

@@ -49,8 +49,9 @@ extern "C" {
 #define	SCA3300_ACC_Y_32B	0x080000FD
 #define	SCA3300_ACC_Z_32B	0x0C0000FB
 #define SCA3300_TEMP_32B	0x140000EF
-	
-#define CHIP_ID_DELAY		100000
+
+#define SCA3300_CHIP_ID_DELAY		10000
+#define SCA3300_CHIP_BTYES_PER_SPI	4	// 32-bit transfers
 #define SCA3300_ID		0x51
 
 	/* Device return status and mask */

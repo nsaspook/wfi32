@@ -32,7 +32,8 @@ build/default/production/_ext/1360937237/sca3300.o: ../src/sca3300.c \
  ../src/config/default/system/system_module.h \
  ../src/config/default/system/system_common.h \
  ../src/config/default/system/time/sys_time.h \
- ../src/config/default/system/time/sys_time_definitions.h ../src/app.h
+ ../src/config/default/system/time/sys_time_definitions.h ../src/app.h \
+ ../src/imupic32mcj.h
 
 ../src/sca3300.h:
 
@@ -109,3 +110,5 @@ build/default/production/_ext/1360937237/sca3300.o: ../src/sca3300.c \
 ../src/config/default/system/time/sys_time_definitions.h:
 
 ../src/app.h:
+
+../src/imupic32mcj.h:
