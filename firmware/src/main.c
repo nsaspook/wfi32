@@ -68,7 +68,7 @@ imu_cmd_t imu0 = {
 /*
  * SCA3300-D01 instance
  */
-imu_cmd_t imu1 = {
+imu_cmd_t imu0 = {
 	.tbuf[0] = CHIP_ID | RBIT,
 	.online = false,
 	.device = 1, // device type
@@ -77,6 +77,9 @@ imu_cmd_t imu1 = {
 	.update = true,
 	.features = false,
 	.op.info_ptr = &sca3300_version,
+	.op.imu_set_spimode = &sca3300_set_spimode,
+	.op.imu_getid = &sca3300_getid,
+	.op.imu_getdata = &sca3300_getdata,
 };
 #endif
 
@@ -174,6 +177,19 @@ void update_imu_int1(uint32_t a, uintptr_t context)
 		}
 		imu->update = true;
 	}
+}
+
+/*
+ * microsecond busy wait delay, 90 seconds MAX
+ * Careful, uses core timer
+ */
+void delay_us(uint32_t us)
+{
+	// Convert microseconds us into how many clock ticks it will take
+	us *= SYS_FREQ / 1000000 / 2; // Core Timer updates every 2 ticks
+	_CP0_SET_COUNT(0); // Set Core Timer count to 0
+	while (us > _CP0_GET_COUNT()) {
+	}; // Wait until Core Timer count reaches the number we calculated earlier
 }
 
 /*******************************************************************************

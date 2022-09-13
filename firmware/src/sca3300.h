@@ -20,6 +20,7 @@ extern "C" {
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include <math.h>
 #include "definitions.h"                // SYS function prototypes
+#include "imupic32mcj.h"
 
 #define SCA3300_DRIVER "V0.100" 
 
@@ -41,6 +42,16 @@ extern "C" {
 	/* Device ID */
 #define SCA3300_REG_WHOAMI	0x10
 #define SCA3300_WHOAMI_ID	0x51
+#define SCA3300_WHOAMI_32B	0x40000091
+#define SCA3300_SWRESET_32B	0xB4002098
+#define SCA3300_RS_32B		0x180000E5
+#define	SCA3300_ACC_X_32B	0x040000F7
+#define	SCA3300_ACC_Y_32B	0x080000FD
+#define	SCA3300_ACC_Z_32B	0x0C0000FB
+#define SCA3300_TEMP_32B	0x140000EF
+	
+#define CHIP_ID_DELAY		100000
+#define SCA3300_ID		0x51
 
 	/* Device return status and mask */
 #define SCA3300_VALUE_RS_ERROR	0x3
@@ -80,6 +91,12 @@ extern "C" {
 
 	uint8_t CalculateCRC(uint32_t);
 
+	/*
+	 * function pointer templates
+	 */
+	void sca3300_set_spimode(void *);
+	bool sca3300_getid(void *);
+	bool sca3300_getdata(void *);
 	void sca3300_version(void);
 
 #ifdef	__cplusplus

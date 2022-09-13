@@ -19,8 +19,21 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-#define BMA490L
+	/*
+	 * what IMU chip are we using
+	 */
+//#define BMA490L
 #define SCA3300
+
+
+#ifndef  LED_GREEN_On
+#define LED_GREEN_On() LED_GREEN_Set()
+#define LED_GREEN_Off() LED_GREEN_Clear()
+#endif
+#ifndef  LED_RED_On
+#define LED_RED_On() LED_RED_Set()
+#define LED_RED_Off() LED_RED_Clear()
+#endif	
 
 	/*
 	 * function pointer templates structure
@@ -38,9 +51,12 @@ extern "C" {
 	typedef struct _imu_cmd_t {
 		uint8_t device, cs;
 		uint8_t rbuf[64], tbuf[64];
+		uint32_t rbuf32[5], tbuf32[5];
 		volatile bool online, run, update, features;
 		op_t op;
 	} imu_cmd_t;
+
+	void delay_us(uint32_t);
 
 #ifdef	__cplusplus
 }

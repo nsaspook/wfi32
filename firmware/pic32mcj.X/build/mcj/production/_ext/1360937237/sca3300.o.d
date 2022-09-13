@@ -30,7 +30,8 @@ build/mcj/production/_ext/1360937237/sca3300.o: ../src/sca3300.c \
  ../src/config/mcj/system/int/sys_int.h ../src/config/mcj/osal/osal.h \
  ../src/config/mcj/osal/osal_definitions.h \
  ../src/config/mcj/osal/osal_impl_basic.h \
- ../src/config/mcj/system/debug/sys_debug.h ../src/app.h
+ ../src/config/mcj/system/debug/sys_debug.h ../src/app.h \
+ ../src/imupic32mcj.h
 
 ../src/sca3300.h:
 
@@ -107,3 +108,5 @@ build/mcj/production/_ext/1360937237/sca3300.o: ../src/sca3300.c \
 ../src/config/mcj/system/debug/sys_debug.h:
 
 ../src/app.h:
+
+../src/imupic32mcj.h:

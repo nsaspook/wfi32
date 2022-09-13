@@ -11,6 +11,7 @@ static void imu_cs_disable(imu_cmd_t *);
 static void move_bma490_transfer_data(uint8_t *, imu_cmd_t *);
 static void init_imu_int(const imu_cmd_t * imu);
 static void imu_gen_write(imu_cmd_t *, void*, size_t, const bool);
+static void imu_set_reg(imu_cmd_t *, const uint8_t, const uint8_t, const bool);
 
 static uint32_t sensortime;
 
@@ -352,19 +353,6 @@ void imu_cs_cb(uintptr_t context)
 			break;
 		}
 	}
-}
-
-/*
- * microsecond busy wait delay, 90 seconds MAX
- * Careful, uses core timer
- */
-void delay_us(uint32_t us)
-{
-	// Convert microseconds us into how many clock ticks it will take
-	us *= SYS_FREQ / 1000000 / 2; // Core Timer updates every 2 ticks
-	_CP0_SET_COUNT(0); // Set Core Timer count to 0
-	while (us > _CP0_GET_COUNT()) {
-	}; // Wait until Core Timer count reaches the number we calculated earlier
 }
 
 void bma490_version(void)

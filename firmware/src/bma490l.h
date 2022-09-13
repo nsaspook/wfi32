@@ -20,15 +20,6 @@ extern "C" {
 #include "imupic32mcj.h"
 #include "bma490l_reg.h"
 
-#ifndef  LED_GREEN_On
-#define LED_GREEN_On() LED_GREEN_Set()
-#define LED_GREEN_Off() LED_GREEN_Clear()
-#endif
-#ifndef  LED_RED_On
-#define LED_RED_On() LED_RED_Set()
-#define LED_RED_Off() LED_RED_Clear()
-#endif	
-
 #define BMA490_DRIVER "V0.201" 
 	// version 0.200	PIC32MK MCJ 48 pin version
 
@@ -100,11 +91,8 @@ extern "C" {
 	void bma490_version(void);
 
 	bool imu_getis(imu_cmd_t *);
-	void delay_us(uint32_t);
 	void getAllData(sBma490SensorData_t *, imu_cmd_t *);
 
-
-	void imu_set_reg(imu_cmd_t *, const uint8_t, const uint8_t, const bool);
 	/*
 	 * user callback function per BMA490L data interrupt
 	 */
