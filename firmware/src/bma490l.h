@@ -58,7 +58,6 @@ extern "C" {
 #define SYS_FREQ	200000000 // Running at 200MHz
 
 #define imu_timeout	2000	// timeout for IMU ID data from query
-#define log_timeout	500	// timeout for IMU interrupts
 
 	enum accel_g {
 		range_2g = 0x00,

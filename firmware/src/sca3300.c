@@ -120,7 +120,7 @@ bool sca3300_getid(void * imup)
 			while (imu->run) {
 			};
 			delay_us(10);
-			if (((imu->rbuf32[0] >> 8)&0xffff) == SCA3300_ID) {
+			if (((imu->rbuf32[0] >> 8)&0xffff) == SCA3300_WHOAMI_ID) {
 				imu->online = true;
 				imu->rbuf32[0] = 0;
 			} else {

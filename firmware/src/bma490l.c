@@ -94,6 +94,8 @@ static const uint8_t bma490l_config_file[] = {
 	0x23, 0x2e, 0x11, 0x00, 0x80, 0x2e, 0x10, 0x00
 };
 
+extern struct sca3300_data sdata;
+
 /*
  * Read raw ACCEL data from the chip using SPI
  */
@@ -159,6 +161,11 @@ void getAllData(sBma490SensorData_t *accel, imu_cmd_t * imu)
 			x = (int16_t) (((uint16_t) data[2] << 8) | data[1]); // 16-bit xyz data
 			y = (int16_t) (((uint16_t) data[4] << 8) | data[3]);
 			z = (int16_t) (((uint16_t) data[6] << 8) | data[5]);
+#ifdef SCA3300
+			x = sdata.scan.channels[0];
+			y = sdata.scan.channels[1];
+			z = sdata.scan.channels[2];
+#endif
 			accel->x = x * accelRange; // scale to the correct units
 			accel->y = y * accelRange;
 			accel->z = z * accelRange;
