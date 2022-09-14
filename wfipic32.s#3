@@ -15305,8 +15305,8 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <part name="J4" library="MLE-105-01-G-DV" deviceset="MLE-105-01-G-DV" device=""/>
 <part name="VSS9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 <part name="AC1" library="SCA3300-D01-1" deviceset="SCA3300-D01-1" device=""/>
-<part name="C12" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.1uf"/>
-<part name="C13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.1uf"/>
+<part name="C12" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.01uf"/>
+<part name="C13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.01uf"/>
 <part name="VSS21" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 <part name="VSS22" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 </parts>
@@ -15631,13 +15631,6 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <junction x="132.08" y="144.78"/>
 </segment>
 <segment>
-<wire x1="-30.48" y1="-30.48" x2="-40.64" y2="-30.48" width="0.1524" layer="91"/>
-<pinref part="AC1" gate="G$1" pin="VDD"/>
-<label x="-40.64" y="-30.48" size="1.778" layer="95"/>
-<junction x="-30.48" y="-30.48"/>
-<junction x="-40.64" y="-30.48"/>
-</segment>
-<segment>
 <wire x1="15.24" y1="-27.94" x2="5.08" y2="-27.94" width="0.1524" layer="91"/>
 <pinref part="AC1" gate="G$1" pin="DVIO"/>
 <label x="12.7" y="-27.94" size="1.778" layer="95"/>
@@ -15884,6 +15877,13 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <junction x="73.66" y="2.54"/>
 <label x="76.2" y="0" size="1.778" layer="95"/>
 </segment>
+<segment>
+<wire x1="-30.48" y1="-30.48" x2="-38.1" y2="-30.48" width="0.1524" layer="91"/>
+<pinref part="AC1" gate="G$1" pin="VDD"/>
+<label x="-40.64" y="-30.48" size="1.778" layer="95" rot="R180"/>
+<junction x="-30.48" y="-30.48"/>
+<junction x="-38.1" y="-30.48"/>
+</segment>
 </net>
 <net name="N$1" class="0">
 <segment>
@@ -16105,11 +16105,11 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <junction x="132.08" y="142.24"/>
 </segment>
 </net>
-<net name="PGD" class="0">
+<net name="PGD_C1TX" class="0">
 <segment>
 <pinref part="JP2" gate="A" pin="4"/>
 <wire x1="40.64" y1="-5.08" x2="53.34" y2="-5.08" width="0.1524" layer="91"/>
-<label x="60.96" y="-5.08" size="1.778" layer="95"/>
+<label x="55.88" y="-5.08" size="1.778" layer="95"/>
 <junction x="40.64" y="-5.08"/>
 <junction x="53.34" y="-5.08"/>
 </segment>
@@ -16121,11 +16121,11 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <junction x="-17.78" y="38.1"/>
 </segment>
 </net>
-<net name="PGC" class="0">
+<net name="PGC_C1RX" class="0">
 <segment>
 <pinref part="JP2" gate="A" pin="5"/>
 <wire x1="40.64" y1="-2.54" x2="53.34" y2="-2.54" width="0.1524" layer="91"/>
-<label x="60.96" y="-2.54" size="1.778" layer="95"/>
+<label x="55.88" y="-2.54" size="1.778" layer="95"/>
 <junction x="40.64" y="-2.54"/>
 <junction x="53.34" y="-2.54"/>
 </segment>

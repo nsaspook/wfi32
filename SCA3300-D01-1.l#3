@@ -1,13 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.6.2">
+<!--This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA) with Design Exception 1.0-->
+<eagle version="7.1.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
-<setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
@@ -69,7 +67,7 @@
 <wire x1="-4.3" y1="-3.5" x2="-4.3" y2="3.5" width="0.2" layer="51"/>
 <wire x1="-4.3" y1="-3.5" x2="-4.3" y2="3.5" width="0.2" layer="21"/>
 <wire x1="4.3" y1="3.5" x2="4.3" y2="-3.5" width="0.2" layer="21"/>
-<circle x="-2.492" y="-4.839" radius="0.06093125" width="0.2" layer="25"/>
+<circle x="-2.492" y="-4.839" radius="0.06093" width="0.2" layer="25"/>
 <smd name="1" x="-2.5" y="-3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
 <smd name="2" x="-1.5" y="-3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
 <smd name="3" x="-0.5" y="-3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
@@ -82,8 +80,6 @@
 <smd name="10" x="-0.5" y="3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
 <smd name="11" x="-1.5" y="3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
 <smd name="12" x="-2.5" y="3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
-<rectangle x1="-3.81" y1="-2.54" x2="3.81" y2="-1.27" layer="43"/>
-<rectangle x1="-3.81" y1="1.27" x2="3.81" y2="2.54" layer="43"/>
 </package>
 </packages>
 <symbols>
@@ -120,26 +116,28 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <connects>
 <connect gate="G$1" pin="AVSS" pad="1"/>
 <connect gate="G$1" pin="A_EXTC" pad="2"/>
+<connect gate="G$1" pin="REERVED" pad="3"/>
+<connect gate="G$1" pin="VDD" pad="4"/>
 <connect gate="G$1" pin="CSB" pad="5"/>
-<connect gate="G$1" pin="DVIO" pad="9"/>
-<connect gate="G$1" pin="DVSS" pad="11"/>
-<connect gate="G$1" pin="D_EXTC" pad="10"/>
-<connect gate="G$1" pin="EMC_GND" pad="12"/>
 <connect gate="G$1" pin="MISO" pad="6"/>
 <connect gate="G$1" pin="MOSI" pad="7"/>
-<connect gate="G$1" pin="REERVED" pad="3"/>
 <connect gate="G$1" pin="SCK" pad="8"/>
-<connect gate="G$1" pin="VDD" pad="4"/>
+<connect gate="G$1" pin="DVIO" pad="9"/>
+<connect gate="G$1" pin="D_EXTC" pad="10"/>
+<connect gate="G$1" pin="DVSS" pad="11"/>
+<connect gate="G$1" pin="EMC_GND" pad="12"/>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="AVAILABILITY" value="In Stock"/>
-<attribute name="DESCRIPTION" value=" Accelerometer X, Y, Z Axis ±1.5g, 3g, 6g - - "/>
-<attribute name="MF" value="Murata Electronics"/>
+<attribute name="Description" value="
+Accelerometer X, Y, Z Axis ±1.5g, 3g, 6g - -
+"/>
+<attribute name="Purchase-URL" value="https://pricing.snapeda.com/search/part/SCA3300-D01-1/?ref=eda"/>
+<attribute name="Package" value="Nonstandard Murata"/>
 <attribute name="MP" value="SCA3300-D01-1"/>
-<attribute name="PACKAGE" value="Nonstandard Murata"/>
-<attribute name="PRICE" value="None"/>
-<attribute name="PURCHASE-URL" value="https://pricing.snapeda.com/search/part/SCA3300-D01-1/?ref=eda"/>
+<attribute name="Price" value="None"/>
+<attribute name="Availability" value="In Stock"/>
+<attribute name="MF" value="Murata Electronics"/>
 </technology>
 </technologies>
 </device>
