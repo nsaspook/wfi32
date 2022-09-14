@@ -81,7 +81,7 @@
 <hole x="0" y="53.34" drill="1.016"/>
 <hole x="30.48" y="53.34" drill="1.016"/>
 <hole x="30.48" y="30.48" drill="1.016"/>
-<text x="0" y="34.29" size="0.8128" layer="1" font="vector" ratio="10" distance="41" rot="R90">BMA490L-PIC32MK V1.2</text>
+<text x="0" y="34.29" size="0.8128" layer="1" font="vector" ratio="10" distance="41" rot="R90">BMA490L-PIC32MK V1.3</text>
 </plain>
 <libraries>
 <library name="2022-08-07_22-50-41_Library">
@@ -2882,7 +2882,7 @@ design rules under a new name.</description>
 <via x="16.66875" y="42.8625" extent="1-16" drill="0.35"/>
 <via x="19.3675" y="49.37125" extent="1-16" drill="0.35"/>
 </signal>
-<signal name="PGD">
+<signal name="PGD_C1TX">
 <contactref element="JP2" pad="4"/>
 <contactref element="U1" pad="14"/>
 <wire x1="7.77875" y1="34.925" x2="7.77875" y2="36.35375" width="0.1524" layer="1"/>
@@ -2899,7 +2899,7 @@ design rules under a new name.</description>
 <wire x1="7.77875" y1="36.35375" x2="7.91" y2="36.3601" width="0.1524" layer="1"/>
 <via x="7.77875" y="34.925" extent="1-16" drill="0.35"/>
 </signal>
-<signal name="PGC">
+<signal name="PGC_C1RX">
 <contactref element="JP2" pad="5"/>
 <contactref element="U1" pad="13"/>
 <wire x1="7.3025" y1="35.40125" x2="7.3025" y2="36.35375" width="0.1524" layer="1"/>
