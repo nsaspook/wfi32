@@ -22,7 +22,7 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-#define SCA3300_DRIVER "V0.100" 
+#define SCA3300_DRIVER "V0.200" 
 
 #define SCA3300_ALIAS "sca3300"
 
@@ -50,8 +50,8 @@ extern "C" {
 #define	SCA3300_ACC_Z_32B	0x0C0000FB
 #define SCA3300_TEMP_32B	0x140000EF
 
-#define SCA3300_CHIP_ID_DELAY		10000
-#define SCA3300_CHIP_CS_DELAY		11
+#define SCA3300_CHIP_ID_DELAY		10000	// ID command repeat delays
+#define SCA3300_CHIP_CS_DELAY		11	// CS high min duration between toggles
 #define SCA3300_CHIP_BTYES_PER_SPI	4	// 32-bit transfers
 
 	/* Device return status and mask */

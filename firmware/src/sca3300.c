@@ -6,8 +6,7 @@ static uint8_t CRC8(uint8_t, uint8_t);
 
 static bool imu_cs(imu_cmd_t *);
 static void imu_cs_cb(uintptr_t);
-static void imu_cs_disable(imu_cmd_t *);
-static void imu_set_reg(imu_cmd_t *, const uint8_t, const uint8_t, const bool);
+void sca3300_cs_disable(imu_cmd_t *);
 
 struct sca3300_data sdata;
 
@@ -43,24 +42,6 @@ static uint8_t CRC8(uint8_t BitValue, uint8_t CRC)
 }
 
 /*
- * read or write IMU register without read data returned
- */
-void imu_set_reg(imu_cmd_t * imu, const uint8_t reg, const uint8_t data, const bool fast)
-{
-	if (imu) {
-		imu_cs(imu);
-		imu->tbuf[0] = reg;
-		imu->tbuf[1] = data;
-		SPI2_Write(imu->tbuf, 1);
-		if (!fast) {
-			delay_us(100000); // 100ms for configuration delays
-		}
-		delay_us(2);
-		imu_cs_disable(imu);
-	}
-}
-
-/*
  * Read raw ACCEL data from the chip using SPI
  */
 bool sca3300_getdata(void * imup)
@@ -70,40 +51,55 @@ bool sca3300_getdata(void * imup)
 	if (imu) {
 		if (!imu->run) {
 			// junk first response
+			imu->crc_error = false; // reset CRC checking flag
 			imu_cs(imu);
 			imu->tbuf32[0] = SCA3300_ACC_X_32B;
 			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
 			while (imu->run) {
 			}; // dummy result
+			if (CalculateCRC(imu->rbuf32[0]) != (imu->rbuf32[0]&0xff)) {
+				imu->crc_error = true; // set of CRC failure of returned data
+			}
 			imu_cs(imu);
 			imu->tbuf32[0] = SCA3300_ACC_Y_32B;
 			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
 			while (imu->run) {
 			};
 			sdata.scan.channels[0] = ((imu->rbuf32[0] >> 8)&0xffff); // X
+			if (CalculateCRC(imu->rbuf32[0]) != (imu->rbuf32[0]&0xff)) {
+				imu->crc_error = true;
+			}
 			imu_cs(imu);
 			imu->tbuf32[0] = SCA3300_ACC_Z_32B;
 			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
 			while (imu->run) {
 			};
 			sdata.scan.channels[1] = ((imu->rbuf32[0] >> 8)&0xffff); // Y
+			if (CalculateCRC(imu->rbuf32[0]) != (imu->rbuf32[0]&0xff)) {
+				imu->crc_error = true;
+			}
 			imu_cs(imu);
 			imu->tbuf32[0] = SCA3300_RS_32B; // status command to return Z result
 			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
 			while (imu->run) {
 			};
 			sdata.scan.channels[2] = ((imu->rbuf32[0] >> 8)&0xffff); // Z
+			if (CalculateCRC(imu->rbuf32[0]) != (imu->rbuf32[0]&0xff)) {
+				imu->crc_error = true;
+			}
 			imu_cs(imu);
 			imu->tbuf32[0] = SCA3300_RS_32B; // status command again to get return status result
 			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
 			while (imu->run) {
 			};
 			sdata.scan.ret_status = ((imu->rbuf32[0] >> 8)&0xffff); // return status
+			if (CalculateCRC(imu->rbuf32[0]) != (imu->rbuf32[0]&0xff)) {
+				imu->crc_error = true;
+			}
 			sdata.scan.ts = TMR9_CounterGet();
 		}
 		return imu->online;
 	} else {
-		imu_set_reg(imu, 0, 0, false);
 		return false;
 	}
 }
@@ -124,8 +120,13 @@ bool sca3300_getid(void * imup)
 			while (imu->run) {
 			};
 			if (((imu->rbuf32[0] >> 8)&0xffff) == SCA3300_WHOAMI_ID) {
-				imu->online = true;
-				imu->rbuf32[0] = 0;
+				if (CalculateCRC(imu->rbuf32[0]) == (imu->rbuf32[0]&0xff)) {
+					imu->online = true;
+					imu->rbuf32[0] = 0;
+					imu->crc_error = false;
+				} else {
+					imu->crc_error = true;
+				}
 			} else {
 				imu->online = false;
 			}
@@ -176,7 +177,7 @@ bool imu_cs(imu_cmd_t * imu)
 /*
  * force sca3300 CS disabled
  */
-void imu_cs_disable(imu_cmd_t * imu)
+void sca3300_cs_disable(imu_cmd_t * imu)
 {
 	if (imu) {
 		switch (imu->cs) {

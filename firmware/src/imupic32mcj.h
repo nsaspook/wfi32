@@ -52,7 +52,7 @@ extern "C" {
 		uint8_t device, cs;
 		uint8_t rbuf[64], tbuf[64];
 		uint32_t rbuf32[2], tbuf32[2], log_timeout;
-		volatile bool online, run, update, features;
+		volatile bool online, run, update, features, crc_error;
 		op_t op;
 	} imu_cmd_t;
 
