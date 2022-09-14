@@ -161,15 +161,16 @@ void getAllData(sBma490SensorData_t *accel, imu_cmd_t * imu)
 			x = (int16_t) (((uint16_t) data[2] << 8) | data[1]); // 16-bit xyz data
 			y = (int16_t) (((uint16_t) data[4] << 8) | data[3]);
 			z = (int16_t) (((uint16_t) data[6] << 8) | data[5]);
+			accel->sensortime = sensortime; // time log each accel measurement
 #ifdef SCA3300
 			x = sdata.scan.channels[0];
 			y = sdata.scan.channels[1];
 			z = sdata.scan.channels[2];
+			accel->sensortime = sdata.scan.ts;
 #endif
 			accel->x = x * accelRange; // scale to the correct units
 			accel->y = y * accelRange;
 			accel->z = z * accelRange;
-			accel->sensortime = sensortime; // time log each accel measurement
 		}
 	}
 }

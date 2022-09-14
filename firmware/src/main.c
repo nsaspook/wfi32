@@ -108,8 +108,8 @@ int main(void)
 	 * using tickCount
 	 */
 	TMR6_CallbackRegister(timer_ms_tick, 0);
-	TMR6_Start();
-
+	TMR6_Start(); // software timers counter
+	TMR9_Start(); // IMU time-stamp counter
 	/*
 	 * print the driver version
 	 */

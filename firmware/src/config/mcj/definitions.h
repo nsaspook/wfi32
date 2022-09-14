@@ -60,6 +60,7 @@
 #include "peripheral/spi/spi_master/plib_spi2_master.h"
 #include "peripheral/spi/spi_master/plib_spi1_master.h"
 #include "peripheral/rtcc/plib_rtcc.h"
+#include "peripheral/tmr/plib_tmr9.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility

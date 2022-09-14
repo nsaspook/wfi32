@@ -6,13 +6,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 99DB74296DF9943C474F4F03A700C790
-- generatedChecksum: 41CA607285240587AB2AD7646F7F5D28
+- generatedChecksum: A35A38EF7C52D18AEA5CEE100161F795
   logicalPath: config/mcj
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 41CA607285240587AB2AD7646F7F5D28
+  userChecksum: A35A38EF7C52D18AEA5CEE100161F795
 - generatedChecksum: CFEED25AA33F25ABA13870DD2D3FF873
   logicalPath: config/mcj
   name: interrupts.c
@@ -34,13 +34,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 3213CA481ED737A308839C3ED86ADA8C
-- generatedChecksum: 66B05894E56E3AFA250F92E564D4EDB3
+- generatedChecksum: C289FFF5580D062BBD86AAC9B1ED7F88
   logicalPath: config/mcj/peripheral/clk
   name: plib_clk.c
   physicalPath: peripheral/clk
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 66B05894E56E3AFA250F92E564D4EDB3
+  userChecksum: C289FFF5580D062BBD86AAC9B1ED7F88
 - generatedChecksum: 6EC1B0B7687D517A423E73F0F405E922
   logicalPath: config/mcj/peripheral/evic
   name: plib_evic.c
@@ -97,6 +97,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 664AA2121585BF2FC6604AA4D0FB6EC0
+- generatedChecksum: 85C2EAC2FEDFD875206F7EF5D0A29D0A
+  logicalPath: config/mcj/peripheral/tmr
+  name: plib_tmr9.c
+  physicalPath: peripheral/tmr
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 85C2EAC2FEDFD875206F7EF5D0A29D0A
 - generatedChecksum: CAD1D811DE4EFDDB360498A387645C51
   logicalPath: config/mcj/peripheral/uart
   name: plib_uart1.c
@@ -111,13 +118,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 42A948E504602741B0D592C55FCD9A7B
-- generatedChecksum: AE3BA0FF9B1DD7509E20EB0E4F7F01B7
+- generatedChecksum: 92DA303140A9AB40C9A23A259AC2DDD2
   logicalPath: config/mcj
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: AE3BA0FF9B1DD7509E20EB0E4F7F01B7
+  userChecksum: 92DA303140A9AB40C9A23A259AC2DDD2
 - generatedChecksum: E189C26B2269F8DE46033CCD0621958D
   logicalPath: config/mcj
   name: device.h
@@ -223,6 +230,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: CADC791B8E45B0CBF877D2802F32B46B
+- generatedChecksum: D58F20DA56BE2E621A2F826E3F201DB0
+  logicalPath: config/mcj/peripheral/tmr
+  name: plib_tmr9.h
+  physicalPath: peripheral/tmr
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: D58F20DA56BE2E621A2F826E3F201DB0
 - generatedChecksum: D948F2CE092CAB556EF299D3CCD83A55
   logicalPath: config/mcj/peripheral/tmr
   name: plib_tmr_common.h

@@ -193,6 +193,8 @@ void SYS_Initialize ( void* data )
 	SPI1_Initialize();
 
     RTCC_Initialize();
+    TMR9_Initialize();
+
 
 
 

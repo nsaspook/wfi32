@@ -69,33 +69,37 @@ bool sca3300_getdata(void * imup)
 
 	if (imu) {
 		if (!imu->run) {
-			delay_us(10); // junk first response
+			// junk first response
 			imu_cs(imu);
 			imu->tbuf32[0] = SCA3300_ACC_X_32B;
 			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
 			while (imu->run) {
-			};
-			delay_us(10); // 
+			}; // dummy result
 			imu_cs(imu);
 			imu->tbuf32[0] = SCA3300_ACC_Y_32B;
 			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
 			while (imu->run) {
 			};
-			sdata.scan.channels[0] = ((imu->rbuf32[0] >> 8)&0xffff);
-			delay_us(10); // 
+			sdata.scan.channels[0] = ((imu->rbuf32[0] >> 8)&0xffff); // X
 			imu_cs(imu);
 			imu->tbuf32[0] = SCA3300_ACC_Z_32B;
 			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
 			while (imu->run) {
 			};
-			sdata.scan.channels[1] = ((imu->rbuf32[0] >> 8)&0xffff);
-			delay_us(10); // 
+			sdata.scan.channels[1] = ((imu->rbuf32[0] >> 8)&0xffff); // Y
 			imu_cs(imu);
-			imu->tbuf32[0] = SCA3300_ACC_Z_32B;
+			imu->tbuf32[0] = SCA3300_RS_32B; // status command to return Z result
 			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
 			while (imu->run) {
 			};
-			sdata.scan.channels[2] = ((imu->rbuf32[0] >> 8)&0xffff);
+			sdata.scan.channels[2] = ((imu->rbuf32[0] >> 8)&0xffff); // Z
+			imu_cs(imu);
+			imu->tbuf32[0] = SCA3300_RS_32B; // status command again to get return status result
+			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
+			while (imu->run) {
+			};
+			sdata.scan.ret_status = ((imu->rbuf32[0] >> 8)&0xffff); // return status
+			sdata.scan.ts = TMR9_CounterGet();
 		}
 		return imu->online;
 	} else {
@@ -113,13 +117,12 @@ bool sca3300_getid(void * imup)
 
 	if (imu) {
 		if (!imu->run) {
-			delay_us(SCA3300_CHIP_ID_DELAY); // sca3300 command spacing
+			delay_us(SCA3300_CHIP_ID_DELAY); // sca3300 ID command spacing
 			imu_cs(imu);
 			imu->tbuf32[0] = SCA3300_WHOAMI_32B;
 			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
 			while (imu->run) {
 			};
-			delay_us(10);
 			if (((imu->rbuf32[0] >> 8)&0xffff) == SCA3300_WHOAMI_ID) {
 				imu->online = true;
 				imu->rbuf32[0] = 0;
@@ -157,6 +160,7 @@ bool imu_cs(imu_cmd_t * imu)
 		switch (imu->cs) {
 		case 0:
 		default:
+			delay_us(SCA3300_CHIP_CS_DELAY); // 
 			imu->run = true;
 			IMU_CS_Clear();
 			// set SPI receive complete callback

@@ -16,7 +16,8 @@ build/mcj/production/_ext/65504635/xc32_monitor.o: \
  ../src/config/mcj/peripheral/spi/spi_master/plib_spi2_master.h \
  ../src/config/mcj/peripheral/spi/spi_master/plib_spi_master_common.h \
  ../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.h \
- ../src/config/mcj/peripheral/rtcc/plib_rtcc.h
+ ../src/config/mcj/peripheral/rtcc/plib_rtcc.h \
+ ../src/config/mcj/peripheral/tmr/plib_tmr9.h
 
 ../src/config/mcj/definitions.h:
 
@@ -55,3 +56,5 @@ build/mcj/production/_ext/65504635/xc32_monitor.o: \
 ../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.h:
 
 ../src/config/mcj/peripheral/rtcc/plib_rtcc.h:
+
+../src/config/mcj/peripheral/tmr/plib_tmr9.h:

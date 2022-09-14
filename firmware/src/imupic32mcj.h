@@ -51,7 +51,7 @@ extern "C" {
 	typedef struct _imu_cmd_t {
 		uint8_t device, cs;
 		uint8_t rbuf[64], tbuf[64];
-		uint32_t rbuf32[5], tbuf32[5], log_timeout;
+		uint32_t rbuf32[2], tbuf32[2], log_timeout;
 		volatile bool online, run, update, features;
 		op_t op;
 	} imu_cmd_t;
@@ -60,6 +60,7 @@ extern "C" {
 
 		struct {
 			int16_t channels[4];
+			uint16_t ret_status;
 			uint32_t ts;
 		} scan;
 		uint8_t txbuf[4];
