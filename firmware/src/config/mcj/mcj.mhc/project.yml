@@ -27,13 +27,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
-- generatedChecksum: C9A4C08F74C2420D977859DE9BE4ED58
+- generatedChecksum: 3213CA481ED737A308839C3ED86ADA8C
   logicalPath: config/mcj/peripheral/adchs
   name: plib_adchs.c
   physicalPath: peripheral/adchs
   security: NON_SECURE
   type: SOURCE
-  userChecksum: C9A4C08F74C2420D977859DE9BE4ED58
+  userChecksum: 3213CA481ED737A308839C3ED86ADA8C
 - generatedChecksum: C289FFF5580D062BBD86AAC9B1ED7F88
   logicalPath: config/mcj/peripheral/clk
   name: plib_clk.c
@@ -76,13 +76,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: F934EDD6F7041659B7EC94263717BF48
-- generatedChecksum: 61EBBA98534FDEA6A020E5FFF427D5DE
+- generatedChecksum: A81E20875613CD9E47E4F7AD47132195
   logicalPath: config/mcj/peripheral/spi/spi_master
   name: plib_spi2_master.c
   physicalPath: peripheral/spi/spi_master
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 61EBBA98534FDEA6A020E5FFF427D5DE
+  userChecksum: A81E20875613CD9E47E4F7AD47132195
 - generatedChecksum: A182F1654C0D24C85A99FB6772C9FC2F
   logicalPath: config/mcj/peripheral/tmr
   name: plib_tmr5.c
@@ -97,13 +97,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 664AA2121585BF2FC6604AA4D0FB6EC0
-- generatedChecksum: 85C2EAC2FEDFD875206F7EF5D0A29D0A
+- generatedChecksum: 032D470A04F8D851EE214F74E7177E82
   logicalPath: config/mcj/peripheral/tmr
   name: plib_tmr9.c
   physicalPath: peripheral/tmr
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 85C2EAC2FEDFD875206F7EF5D0A29D0A
+  userChecksum: 032D470A04F8D851EE214F74E7177E82
 - generatedChecksum: CAD1D811DE4EFDDB360498A387645C51
   logicalPath: config/mcj/peripheral/uart
   name: plib_uart1.c
@@ -146,13 +146,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: B2EE65C30069B4D8072900E7D5C17151
-- generatedChecksum: F11DF82654E42814B819EB7A28E7B7AF
+- generatedChecksum: A53A85C7B14CA7105C1164E0FC3C5973
   logicalPath: config/mcj/peripheral/adchs
   name: plib_adchs_common.h
   physicalPath: peripheral/adchs
   security: NON_SECURE
   type: HEADER
-  userChecksum: F11DF82654E42814B819EB7A28E7B7AF
+  userChecksum: A53A85C7B14CA7105C1164E0FC3C5973
 - generatedChecksum: 7066CC390335CF75126E2A50C46E3BDD
   logicalPath: config/mcj/peripheral/clk
   name: plib_clk.h
@@ -265,13 +265,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 7DC91D6D376C98802C9C2990432DE9B7
-- generatedChecksum: 15E3561019C1D1F5257DA5DDA810094C
+- generatedChecksum: AD9028722C1D5DA19709387A0D18B3A5
   logicalPath: config/mcj
   name: p32MK0512MCJ048.ld
   physicalPath: ''
   security: NON_SECURE
   type: LINKER
-  userChecksum: 15E3561019C1D1F5257DA5DDA810094C
+  userChecksum: AD9028722C1D5DA19709387A0D18B3A5
 format_version: v1.0
 libraries: []
 settings:

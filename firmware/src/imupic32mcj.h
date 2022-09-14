@@ -25,6 +25,14 @@ extern "C" {
 	//#define BMA490L
 #define SCA3300
 
+#define IMU_CS	0
+#define	LCD_CS	0
+	
+#define	BMA	0
+#define SCA	1
+	
+#define BMA_LOG_TIMEOUT 80
+#define	SCA_LOG_TIMEOUT	20
 
 #ifndef  LED_GREEN_On
 #define LED_GREEN_On() LED_GREEN_Set()

@@ -23,7 +23,7 @@
 // *****************************************************************************
 
 /*
- * BMA490L high-performance 16-bit digital triaxial acceleration sensor DEMO
+ * BMA490L and SCA3300 high-performance 16-bit digital triaxial acceleration sensor DEMO
  * http://download.mikroe.com/documents/datasheets/BMA490L%20Datasheet.pdf
  * for logging XYZ force values @ 115200 via a serial comm port
  * Original test configuration: 
@@ -31,6 +31,11 @@
  * PIC32 Wi-Fi MCU module eval board: https://www.microchip.com/en-us/development-tool/EV12F11A
  * USB to TTL serial adapter: http://www.dsdtech-global.com/2017/07/dsd-tech-usb-to-ttl-serial-converter.html
  * 
+ * Custom board PIC32MK0512MCJ048
+ * PCB IMU
+ * https://www.murata.com/-/media/webrenewal/products/sensor/pdf/datasheet/datasheet_sca3300-d01.ashx?la=en-us&cvid=20190620010315610400
+ * PCB CPU
+ * https://ww1.microchip.com/downloads/aemDocuments/documents/MCU32/ProductDocuments/DataSheets/PIC32MK-General-Purpose-and-Motor-Control-With-CAN-FD-Family-DataSheet-DS60001570D.pdf
  */
 
 #include <stddef.h>                     // Defines NULL
@@ -52,10 +57,10 @@
 imu_cmd_t imu0 = {
 	.tbuf[0] = CHIP_ID | RBIT,
 	.online = false,
-	.device = 0, // device type
-	.cs = 0, // chip select number
+	.device = BMA, // device type
+	.cs = IMU_CS, // chip select number
 	.run = false,
-	.log_timeout = 80,
+	.log_timeout = BMA_LOG_TIMEOUT,
 	.update = true,
 	.features = false,
 	.op.info_ptr = &bma490_version,
@@ -70,12 +75,13 @@ imu_cmd_t imu0 = {
  * SCA3300-D01 instance
  */
 imu_cmd_t imu0 = {
-	.tbuf[0] = CHIP_ID | RBIT,
+	.tbuf32[SCA3300_TRM] = SCA3300_SWRESET_32B,
 	.online = false,
-	.device = 1, // device type
-	.cs = 0, // chip select number
+	.device = SCA, // device type
+	.cs = IMU_CS, // chip select number
 	.run = false,
-	.log_timeout = 20,
+	.crc_error = false,
+	.log_timeout = SCA_LOG_TIMEOUT,
 	.update = true,
 	.features = false,
 	.op.info_ptr = &sca3300_version,

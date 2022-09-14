@@ -73,7 +73,7 @@ void TMR9_Initialize(void)
     TMR9 = 0x0;
 
     /*Set period */
-    PR9 = 937499999U;
+    PR9 = 3749999999U;
 
 
 }

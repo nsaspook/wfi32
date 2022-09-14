@@ -70,10 +70,10 @@ ADC1TIME = 0x3010001;
     ADCTRG1 = 0x0; 
     ADCTRG2 = 0x0; 
     ADCTRG3 = 0x0; 
-    ADCTRG4 = 0x0; 
-    ADCTRG5 = 0x0; 
     
     
+    
+    ADCTRG7 = 0x0; 
 
     ADCTRGSNS = 0x0;
 

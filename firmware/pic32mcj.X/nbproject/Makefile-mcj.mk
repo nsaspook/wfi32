@@ -19,7 +19,7 @@ endif
 endif
 
 # Environment
-MKDIR=mkdir -p
+MKDIR=gnumkdir -p
 RM=rm -f 
 MV=mv 
 CP=cp 
@@ -91,7 +91,7 @@ endif
 	${MAKE}  -f nbproject/Makefile-mcj.mk ${DISTDIR}/pic32mcj.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 
 MP_PROCESSOR_OPTION=32MK0512MCJ048
-MP_LINKER_FILE_OPTION=,--script="../src/config/mcj/p32MK0512MCJ048.ld"
+MP_LINKER_FILE_OPTION=,--script="..\src\config\mcj\p32MK0512MCJ048.ld"
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
@@ -107,242 +107,242 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/1278740186/plib_adchs.o: ../src/config/mcj/peripheral/adchs/plib_adchs.c  .generated_files/flags/mcj/63c75e69adca930110cc20778803c830ab8921d4 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1278740186/plib_adchs.o: ../src/config/mcj/peripheral/adchs/plib_adchs.c  .generated_files/flags/mcj/6411e11e3cac4457257f06de6b3dfd6e947bc26e .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1278740186" 
 	@${RM} ${OBJECTDIR}/_ext/1278740186/plib_adchs.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1278740186/plib_adchs.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1278740186/plib_adchs.o.d" -o ${OBJECTDIR}/_ext/1278740186/plib_adchs.o ../src/config/mcj/peripheral/adchs/plib_adchs.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/695877469/plib_clk.o: ../src/config/mcj/peripheral/clk/plib_clk.c  .generated_files/flags/mcj/ca077a10639d0b1f99358660cc56366879042051 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/695877469/plib_clk.o: ../src/config/mcj/peripheral/clk/plib_clk.c  .generated_files/flags/mcj/9bdc1e1ca587b8b3c1a58ee13774933a112f9b51 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/695877469" 
 	@${RM} ${OBJECTDIR}/_ext/695877469/plib_clk.o.d 
 	@${RM} ${OBJECTDIR}/_ext/695877469/plib_clk.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/695877469/plib_clk.o.d" -o ${OBJECTDIR}/_ext/695877469/plib_clk.o ../src/config/mcj/peripheral/clk/plib_clk.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/97434288/plib_evic.o: ../src/config/mcj/peripheral/evic/plib_evic.c  .generated_files/flags/mcj/cd970ab375e324a50f0eae419978b76171589d13 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/97434288/plib_evic.o: ../src/config/mcj/peripheral/evic/plib_evic.c  .generated_files/flags/mcj/56c82a8dbc173e076f5f9a4aabd9b6c28860c1ca .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/97434288" 
 	@${RM} ${OBJECTDIR}/_ext/97434288/plib_evic.o.d 
 	@${RM} ${OBJECTDIR}/_ext/97434288/plib_evic.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/97434288/plib_evic.o.d" -o ${OBJECTDIR}/_ext/97434288/plib_evic.o ../src/config/mcj/peripheral/evic/plib_evic.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/97488116/plib_gpio.o: ../src/config/mcj/peripheral/gpio/plib_gpio.c  .generated_files/flags/mcj/62684def5d59e44903e08febe5b8a381c78410fc .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/97488116/plib_gpio.o: ../src/config/mcj/peripheral/gpio/plib_gpio.c  .generated_files/flags/mcj/54b534566e2710545440b027bce583671636a8af .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/97488116" 
 	@${RM} ${OBJECTDIR}/_ext/97488116/plib_gpio.o.d 
 	@${RM} ${OBJECTDIR}/_ext/97488116/plib_gpio.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/97488116/plib_gpio.o.d" -o ${OBJECTDIR}/_ext/97488116/plib_gpio.o ../src/config/mcj/peripheral/gpio/plib_gpio.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1267674773/plib_mcpwm.o: ../src/config/mcj/peripheral/mcpwm/plib_mcpwm.c  .generated_files/flags/mcj/e73486020da8cef44fbb70d54b199773ca8999e4 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1267674773/plib_mcpwm.o: ../src/config/mcj/peripheral/mcpwm/plib_mcpwm.c  .generated_files/flags/mcj/6e46cd1a4bd0a0e64d7ea7623f31533ff06cd0b3 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1267674773" 
 	@${RM} ${OBJECTDIR}/_ext/1267674773/plib_mcpwm.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1267674773/plib_mcpwm.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1267674773/plib_mcpwm.o.d" -o ${OBJECTDIR}/_ext/1267674773/plib_mcpwm.o ../src/config/mcj/peripheral/mcpwm/plib_mcpwm.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/97819463/plib_rtcc.o: ../src/config/mcj/peripheral/rtcc/plib_rtcc.c  .generated_files/flags/mcj/c0bb5b7401ac1f891935bc95b9f09dc2d1799f24 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/97819463/plib_rtcc.o: ../src/config/mcj/peripheral/rtcc/plib_rtcc.c  .generated_files/flags/mcj/db114ee8d6131b50437090f17050d265fe895ea4 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/97819463" 
 	@${RM} ${OBJECTDIR}/_ext/97819463/plib_rtcc.o.d 
 	@${RM} ${OBJECTDIR}/_ext/97819463/plib_rtcc.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/97819463/plib_rtcc.o.d" -o ${OBJECTDIR}/_ext/97819463/plib_rtcc.o ../src/config/mcj/peripheral/rtcc/plib_rtcc.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1061855101/plib_spi2_master.o: ../src/config/mcj/peripheral/spi/spi_master/plib_spi2_master.c  .generated_files/flags/mcj/a0a592fe2dda43fa4e1a1f572cb51c21746a9331 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1061855101/plib_spi2_master.o: ../src/config/mcj/peripheral/spi/spi_master/plib_spi2_master.c  .generated_files/flags/mcj/813100483dbd3e8d881df30a991ef95ab5162fce .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1061855101" 
 	@${RM} ${OBJECTDIR}/_ext/1061855101/plib_spi2_master.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1061855101/plib_spi2_master.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1061855101/plib_spi2_master.o.d" -o ${OBJECTDIR}/_ext/1061855101/plib_spi2_master.o ../src/config/mcj/peripheral/spi/spi_master/plib_spi2_master.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1061855101/plib_spi1_master.o: ../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.c  .generated_files/flags/mcj/94d9324828ee67ff6dc6372636d1fa9996f508e3 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1061855101/plib_spi1_master.o: ../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.c  .generated_files/flags/mcj/351d56bdaa889ee8e096e85544ca10c3f36bc32e .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1061855101" 
 	@${RM} ${OBJECTDIR}/_ext/1061855101/plib_spi1_master.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1061855101/plib_spi1_master.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1061855101/plib_spi1_master.o.d" -o ${OBJECTDIR}/_ext/1061855101/plib_spi1_master.o ../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/695893844/plib_tmr6.o: ../src/config/mcj/peripheral/tmr/plib_tmr6.c  .generated_files/flags/mcj/540df071b5a6bdf8fe8963c65fd940607d7b5eff .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/695893844/plib_tmr6.o: ../src/config/mcj/peripheral/tmr/plib_tmr6.c  .generated_files/flags/mcj/200a5ff251fc09eb477d954974a8fbea474658c8 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/695893844" 
 	@${RM} ${OBJECTDIR}/_ext/695893844/plib_tmr6.o.d 
 	@${RM} ${OBJECTDIR}/_ext/695893844/plib_tmr6.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/695893844/plib_tmr6.o.d" -o ${OBJECTDIR}/_ext/695893844/plib_tmr6.o ../src/config/mcj/peripheral/tmr/plib_tmr6.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/695893844/plib_tmr5.o: ../src/config/mcj/peripheral/tmr/plib_tmr5.c  .generated_files/flags/mcj/aa7d29cc2ac9a7e8964b3b73e28a44d1ad9127d7 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/695893844/plib_tmr5.o: ../src/config/mcj/peripheral/tmr/plib_tmr5.c  .generated_files/flags/mcj/d1b6a0c9c451f94a1269c93b89486529a9064533 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/695893844" 
 	@${RM} ${OBJECTDIR}/_ext/695893844/plib_tmr5.o.d 
 	@${RM} ${OBJECTDIR}/_ext/695893844/plib_tmr5.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/695893844/plib_tmr5.o.d" -o ${OBJECTDIR}/_ext/695893844/plib_tmr5.o ../src/config/mcj/peripheral/tmr/plib_tmr5.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/695893844/plib_tmr9.o: ../src/config/mcj/peripheral/tmr/plib_tmr9.c  .generated_files/flags/mcj/10a92f905204f52d9f37eddabc538cf1d97665a1 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/695893844/plib_tmr9.o: ../src/config/mcj/peripheral/tmr/plib_tmr9.c  .generated_files/flags/mcj/8e7d7c0a7a37f55432464ddc1141f31f8456822a .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/695893844" 
 	@${RM} ${OBJECTDIR}/_ext/695893844/plib_tmr9.o.d 
 	@${RM} ${OBJECTDIR}/_ext/695893844/plib_tmr9.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/695893844/plib_tmr9.o.d" -o ${OBJECTDIR}/_ext/695893844/plib_tmr9.o ../src/config/mcj/peripheral/tmr/plib_tmr9.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/97891059/plib_uart1.o: ../src/config/mcj/peripheral/uart/plib_uart1.c  .generated_files/flags/mcj/23d331c92923f5088c30c64fa74d37058e010328 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/97891059/plib_uart1.o: ../src/config/mcj/peripheral/uart/plib_uart1.c  .generated_files/flags/mcj/3555fbf92f6dd537a96a827169ea85bb3682eb1b .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/97891059" 
 	@${RM} ${OBJECTDIR}/_ext/97891059/plib_uart1.o.d 
 	@${RM} ${OBJECTDIR}/_ext/97891059/plib_uart1.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/97891059/plib_uart1.o.d" -o ${OBJECTDIR}/_ext/97891059/plib_uart1.o ../src/config/mcj/peripheral/uart/plib_uart1.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/65504635/xc32_monitor.o: ../src/config/mcj/stdio/xc32_monitor.c  .generated_files/flags/mcj/c94d7a3af9c159da39f35f9f2baedc43382df165 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/65504635/xc32_monitor.o: ../src/config/mcj/stdio/xc32_monitor.c  .generated_files/flags/mcj/6f7220d96733e7b79426de1fffef4c78eed2ea65 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/65504635" 
 	@${RM} ${OBJECTDIR}/_ext/65504635/xc32_monitor.o.d 
 	@${RM} ${OBJECTDIR}/_ext/65504635/xc32_monitor.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/65504635/xc32_monitor.o.d" -o ${OBJECTDIR}/_ext/65504635/xc32_monitor.o ../src/config/mcj/stdio/xc32_monitor.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1272080767/initialization.o: ../src/config/mcj/initialization.c  .generated_files/flags/mcj/9e629ea6f2756c447afaeda9ff33e414a59b6e05 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1272080767/initialization.o: ../src/config/mcj/initialization.c  .generated_files/flags/mcj/f86cf22ae72e5eea4bf4dfe53920d76c0ff4afe7 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1272080767" 
 	@${RM} ${OBJECTDIR}/_ext/1272080767/initialization.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1272080767/initialization.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1272080767/initialization.o.d" -o ${OBJECTDIR}/_ext/1272080767/initialization.o ../src/config/mcj/initialization.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1272080767/interrupts.o: ../src/config/mcj/interrupts.c  .generated_files/flags/mcj/6d6ed6b3d9d1e34614eb1796a0887c630e61f08d .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1272080767/interrupts.o: ../src/config/mcj/interrupts.c  .generated_files/flags/mcj/5b91d193729957902d5232f94da064dd92c84662 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1272080767" 
 	@${RM} ${OBJECTDIR}/_ext/1272080767/interrupts.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1272080767/interrupts.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1272080767/interrupts.o.d" -o ${OBJECTDIR}/_ext/1272080767/interrupts.o ../src/config/mcj/interrupts.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1272080767/exceptions.o: ../src/config/mcj/exceptions.c  .generated_files/flags/mcj/bc342d2fe3945e670e3d220aac53eeadf6b943b1 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1272080767/exceptions.o: ../src/config/mcj/exceptions.c  .generated_files/flags/mcj/ebcaa1abf87bc73723c6fb6fd593eb2b184b4689 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1272080767" 
 	@${RM} ${OBJECTDIR}/_ext/1272080767/exceptions.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1272080767/exceptions.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1272080767/exceptions.o.d" -o ${OBJECTDIR}/_ext/1272080767/exceptions.o ../src/config/mcj/exceptions.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.c  .generated_files/flags/mcj/b06e49ac97c7d93b727c503aaf3d9cfbbdf27f4a .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.c  .generated_files/flags/mcj/e0b3a3d41e937b3d0cad113c6a89d611dad7d183 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/main.o.d" -o ${OBJECTDIR}/_ext/1360937237/main.o ../src/main.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1360937237/bma490l.o: ../src/bma490l.c  .generated_files/flags/mcj/919e702f3045647f1089ec78fb56ad0236094560 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1360937237/bma490l.o: ../src/bma490l.c  .generated_files/flags/mcj/82e4e2ff69183b6ac8ab78db2c5db91a0474311b .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/bma490l.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/bma490l.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/bma490l.o.d" -o ${OBJECTDIR}/_ext/1360937237/bma490l.o ../src/bma490l.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1360937237/timers.o: ../src/timers.c  .generated_files/flags/mcj/e0f28e4b2423cbb8f7dedce41761218a55ca52c .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1360937237/timers.o: ../src/timers.c  .generated_files/flags/mcj/e352dcd580cb0e871e80cd145a917705a6048098 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/timers.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/timers.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/timers.o.d" -o ${OBJECTDIR}/_ext/1360937237/timers.o ../src/timers.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1360937237/sca3300.o: ../src/sca3300.c  .generated_files/flags/mcj/8a1e8a6efa83cf94b8f43f56ea38e316e51e2658 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1360937237/sca3300.o: ../src/sca3300.c  .generated_files/flags/mcj/5cecd5643e46e100fb99a3a9b4b79b8ea8df8aae .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/sca3300.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/sca3300.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/sca3300.o.d" -o ${OBJECTDIR}/_ext/1360937237/sca3300.o ../src/sca3300.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
-${OBJECTDIR}/_ext/1278740186/plib_adchs.o: ../src/config/mcj/peripheral/adchs/plib_adchs.c  .generated_files/flags/mcj/91beb9ec8e16f7558e7e98df900cd249eddf34a2 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1278740186/plib_adchs.o: ../src/config/mcj/peripheral/adchs/plib_adchs.c  .generated_files/flags/mcj/a81cd4354c8321168b8df0bb00c66ef4c99a933b .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1278740186" 
 	@${RM} ${OBJECTDIR}/_ext/1278740186/plib_adchs.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1278740186/plib_adchs.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1278740186/plib_adchs.o.d" -o ${OBJECTDIR}/_ext/1278740186/plib_adchs.o ../src/config/mcj/peripheral/adchs/plib_adchs.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/695877469/plib_clk.o: ../src/config/mcj/peripheral/clk/plib_clk.c  .generated_files/flags/mcj/f2b15b2841bd3dabd2de1324eab8e78a15b29d9c .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/695877469/plib_clk.o: ../src/config/mcj/peripheral/clk/plib_clk.c  .generated_files/flags/mcj/fcab7d68fd22dff0924277c5a8b98ca32bf55f2 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/695877469" 
 	@${RM} ${OBJECTDIR}/_ext/695877469/plib_clk.o.d 
 	@${RM} ${OBJECTDIR}/_ext/695877469/plib_clk.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/695877469/plib_clk.o.d" -o ${OBJECTDIR}/_ext/695877469/plib_clk.o ../src/config/mcj/peripheral/clk/plib_clk.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/97434288/plib_evic.o: ../src/config/mcj/peripheral/evic/plib_evic.c  .generated_files/flags/mcj/98008ddc4f229ac668713ab00148a1b9324459c4 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/97434288/plib_evic.o: ../src/config/mcj/peripheral/evic/plib_evic.c  .generated_files/flags/mcj/4ba1840351843ec42b336859059ddf8cf3315830 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/97434288" 
 	@${RM} ${OBJECTDIR}/_ext/97434288/plib_evic.o.d 
 	@${RM} ${OBJECTDIR}/_ext/97434288/plib_evic.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/97434288/plib_evic.o.d" -o ${OBJECTDIR}/_ext/97434288/plib_evic.o ../src/config/mcj/peripheral/evic/plib_evic.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/97488116/plib_gpio.o: ../src/config/mcj/peripheral/gpio/plib_gpio.c  .generated_files/flags/mcj/5b6027fda162a4e377cb87f087fd3ca455e3e988 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/97488116/plib_gpio.o: ../src/config/mcj/peripheral/gpio/plib_gpio.c  .generated_files/flags/mcj/20ab2719139569370239b84192bccb5f424cd98d .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/97488116" 
 	@${RM} ${OBJECTDIR}/_ext/97488116/plib_gpio.o.d 
 	@${RM} ${OBJECTDIR}/_ext/97488116/plib_gpio.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/97488116/plib_gpio.o.d" -o ${OBJECTDIR}/_ext/97488116/plib_gpio.o ../src/config/mcj/peripheral/gpio/plib_gpio.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1267674773/plib_mcpwm.o: ../src/config/mcj/peripheral/mcpwm/plib_mcpwm.c  .generated_files/flags/mcj/d3d6b045c8cbbc620f7da38e288065c7d8fa8835 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1267674773/plib_mcpwm.o: ../src/config/mcj/peripheral/mcpwm/plib_mcpwm.c  .generated_files/flags/mcj/b04304c7fc6d0412a3633c9ac0ef0d0a4c8d1872 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1267674773" 
 	@${RM} ${OBJECTDIR}/_ext/1267674773/plib_mcpwm.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1267674773/plib_mcpwm.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1267674773/plib_mcpwm.o.d" -o ${OBJECTDIR}/_ext/1267674773/plib_mcpwm.o ../src/config/mcj/peripheral/mcpwm/plib_mcpwm.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/97819463/plib_rtcc.o: ../src/config/mcj/peripheral/rtcc/plib_rtcc.c  .generated_files/flags/mcj/f3163dcfe94d6981a1e8cb1230ae16280b7e27fd .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/97819463/plib_rtcc.o: ../src/config/mcj/peripheral/rtcc/plib_rtcc.c  .generated_files/flags/mcj/82c9ac698dc7ee06e02549936eb95ade0e793fee .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/97819463" 
 	@${RM} ${OBJECTDIR}/_ext/97819463/plib_rtcc.o.d 
 	@${RM} ${OBJECTDIR}/_ext/97819463/plib_rtcc.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/97819463/plib_rtcc.o.d" -o ${OBJECTDIR}/_ext/97819463/plib_rtcc.o ../src/config/mcj/peripheral/rtcc/plib_rtcc.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1061855101/plib_spi2_master.o: ../src/config/mcj/peripheral/spi/spi_master/plib_spi2_master.c  .generated_files/flags/mcj/aaffe7fbba55a735c596bfe5d5f7484d59a7c5 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1061855101/plib_spi2_master.o: ../src/config/mcj/peripheral/spi/spi_master/plib_spi2_master.c  .generated_files/flags/mcj/4313197cf5eaf18e8e9d4c58a30de1f44ec53599 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1061855101" 
 	@${RM} ${OBJECTDIR}/_ext/1061855101/plib_spi2_master.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1061855101/plib_spi2_master.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1061855101/plib_spi2_master.o.d" -o ${OBJECTDIR}/_ext/1061855101/plib_spi2_master.o ../src/config/mcj/peripheral/spi/spi_master/plib_spi2_master.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1061855101/plib_spi1_master.o: ../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.c  .generated_files/flags/mcj/6fe9f220971ce60e3e9b7a4550518675233c64b9 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1061855101/plib_spi1_master.o: ../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.c  .generated_files/flags/mcj/4c044c40695cf87850cba7e5b6b5a3ac7112b654 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1061855101" 
 	@${RM} ${OBJECTDIR}/_ext/1061855101/plib_spi1_master.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1061855101/plib_spi1_master.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1061855101/plib_spi1_master.o.d" -o ${OBJECTDIR}/_ext/1061855101/plib_spi1_master.o ../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/695893844/plib_tmr6.o: ../src/config/mcj/peripheral/tmr/plib_tmr6.c  .generated_files/flags/mcj/b23beb6610b965ef34e5aae60d26f0adbb082ea1 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/695893844/plib_tmr6.o: ../src/config/mcj/peripheral/tmr/plib_tmr6.c  .generated_files/flags/mcj/23a74743b01859607d6cd2f974bf6e8d9ca7ea97 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/695893844" 
 	@${RM} ${OBJECTDIR}/_ext/695893844/plib_tmr6.o.d 
 	@${RM} ${OBJECTDIR}/_ext/695893844/plib_tmr6.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/695893844/plib_tmr6.o.d" -o ${OBJECTDIR}/_ext/695893844/plib_tmr6.o ../src/config/mcj/peripheral/tmr/plib_tmr6.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/695893844/plib_tmr5.o: ../src/config/mcj/peripheral/tmr/plib_tmr5.c  .generated_files/flags/mcj/d0b19bc4d6bb5d9d755ddbca0f6ca0549c443f51 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/695893844/plib_tmr5.o: ../src/config/mcj/peripheral/tmr/plib_tmr5.c  .generated_files/flags/mcj/12715f8c67ff5f56edfc3441d7286fe85c82dd73 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/695893844" 
 	@${RM} ${OBJECTDIR}/_ext/695893844/plib_tmr5.o.d 
 	@${RM} ${OBJECTDIR}/_ext/695893844/plib_tmr5.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/695893844/plib_tmr5.o.d" -o ${OBJECTDIR}/_ext/695893844/plib_tmr5.o ../src/config/mcj/peripheral/tmr/plib_tmr5.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/695893844/plib_tmr9.o: ../src/config/mcj/peripheral/tmr/plib_tmr9.c  .generated_files/flags/mcj/df9c53378b259e1405ed137201491c1679b21806 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/695893844/plib_tmr9.o: ../src/config/mcj/peripheral/tmr/plib_tmr9.c  .generated_files/flags/mcj/ce31834c7bb836ad08c3c36f03bdf259dec8e176 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/695893844" 
 	@${RM} ${OBJECTDIR}/_ext/695893844/plib_tmr9.o.d 
 	@${RM} ${OBJECTDIR}/_ext/695893844/plib_tmr9.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/695893844/plib_tmr9.o.d" -o ${OBJECTDIR}/_ext/695893844/plib_tmr9.o ../src/config/mcj/peripheral/tmr/plib_tmr9.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/97891059/plib_uart1.o: ../src/config/mcj/peripheral/uart/plib_uart1.c  .generated_files/flags/mcj/52ff503fdef3a9fabeae3a41b70bd900beed941f .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/97891059/plib_uart1.o: ../src/config/mcj/peripheral/uart/plib_uart1.c  .generated_files/flags/mcj/303673cedb98328bff6f65499540ec62ace0d91 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/97891059" 
 	@${RM} ${OBJECTDIR}/_ext/97891059/plib_uart1.o.d 
 	@${RM} ${OBJECTDIR}/_ext/97891059/plib_uart1.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/97891059/plib_uart1.o.d" -o ${OBJECTDIR}/_ext/97891059/plib_uart1.o ../src/config/mcj/peripheral/uart/plib_uart1.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/65504635/xc32_monitor.o: ../src/config/mcj/stdio/xc32_monitor.c  .generated_files/flags/mcj/77cc1d9daf38e406d5815e826a79a018db9e9bd .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/65504635/xc32_monitor.o: ../src/config/mcj/stdio/xc32_monitor.c  .generated_files/flags/mcj/ec939245c01f0fc1fef26ae5f03b0770682e422c .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/65504635" 
 	@${RM} ${OBJECTDIR}/_ext/65504635/xc32_monitor.o.d 
 	@${RM} ${OBJECTDIR}/_ext/65504635/xc32_monitor.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/65504635/xc32_monitor.o.d" -o ${OBJECTDIR}/_ext/65504635/xc32_monitor.o ../src/config/mcj/stdio/xc32_monitor.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1272080767/initialization.o: ../src/config/mcj/initialization.c  .generated_files/flags/mcj/17fa6ea60415f947a7d5da43114e97498b926849 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1272080767/initialization.o: ../src/config/mcj/initialization.c  .generated_files/flags/mcj/bffba1d7cb4e885aa0c7bacd6ecf664b52fc3ff1 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1272080767" 
 	@${RM} ${OBJECTDIR}/_ext/1272080767/initialization.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1272080767/initialization.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1272080767/initialization.o.d" -o ${OBJECTDIR}/_ext/1272080767/initialization.o ../src/config/mcj/initialization.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1272080767/interrupts.o: ../src/config/mcj/interrupts.c  .generated_files/flags/mcj/971b0202c13a825be89cd06d4a7e5bfc0eab149 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1272080767/interrupts.o: ../src/config/mcj/interrupts.c  .generated_files/flags/mcj/45fd97e192175b6964ded949d5b9e8eaebe4dd8 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1272080767" 
 	@${RM} ${OBJECTDIR}/_ext/1272080767/interrupts.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1272080767/interrupts.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1272080767/interrupts.o.d" -o ${OBJECTDIR}/_ext/1272080767/interrupts.o ../src/config/mcj/interrupts.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1272080767/exceptions.o: ../src/config/mcj/exceptions.c  .generated_files/flags/mcj/540d1f70c2f73b5e75a76e8743ebddf2246b3601 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1272080767/exceptions.o: ../src/config/mcj/exceptions.c  .generated_files/flags/mcj/9dd4c9a00ea742bcaad28d782c1d7bcd67262abf .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1272080767" 
 	@${RM} ${OBJECTDIR}/_ext/1272080767/exceptions.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1272080767/exceptions.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1272080767/exceptions.o.d" -o ${OBJECTDIR}/_ext/1272080767/exceptions.o ../src/config/mcj/exceptions.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.c  .generated_files/flags/mcj/2a92532bb2dd8dc5ed603b00a0c8fe2a0398664c .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.c  .generated_files/flags/mcj/e9b8247fd2bc7e788900bd8bd559e177e6553633 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/main.o.d" -o ${OBJECTDIR}/_ext/1360937237/main.o ../src/main.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1360937237/bma490l.o: ../src/bma490l.c  .generated_files/flags/mcj/d4cf27223655b6f07316ab85eef7a8bfb6072b49 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1360937237/bma490l.o: ../src/bma490l.c  .generated_files/flags/mcj/cda0a0f0bad56f1d407ec73f49dd9056b44c0fbb .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/bma490l.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/bma490l.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/bma490l.o.d" -o ${OBJECTDIR}/_ext/1360937237/bma490l.o ../src/bma490l.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1360937237/timers.o: ../src/timers.c  .generated_files/flags/mcj/230af511a1e865260fda11f5354e6f07b6229333 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1360937237/timers.o: ../src/timers.c  .generated_files/flags/mcj/df42acfaf77a08fd72340ea7723726c2131ee83 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/timers.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/timers.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/timers.o.d" -o ${OBJECTDIR}/_ext/1360937237/timers.o ../src/timers.c    -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1360937237/sca3300.o: ../src/sca3300.c  .generated_files/flags/mcj/5c7d1b0139e52e3ac666b9218af54a08c3bbdd11 .generated_files/flags/mcj/7e071acd7074046ac7b2f1bc6f7acb6c0e8c66c3
+${OBJECTDIR}/_ext/1360937237/sca3300.o: ../src/sca3300.c  .generated_files/flags/mcj/e48042ebbad43bc600cc3936212fbdec4db53061 .generated_files/flags/mcj/4b7957a762d1a7329eb7ef2a65ee74abff976335
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/sca3300.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/sca3300.o 
@@ -361,13 +361,13 @@ endif
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 ${DISTDIR}/pic32mcj.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    ../src/config/mcj/p32MK0512MCJ048.ld
 	@${MKDIR} ${DISTDIR} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -g   -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/pic32mcj.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)      -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--defsym=_min_heap_size=512,--gc-sections,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
+	${MP_CC} $(MP_EXTRA_LD_PRE) -g   -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/pic32mcj.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)   -mreserve=data@0x0:0x36F   -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--defsym=_min_heap_size=512,--gc-sections,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
 	
 else
 ${DISTDIR}/pic32mcj.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   ../src/config/mcj/p32MK0512MCJ048.ld
 	@${MKDIR} ${DISTDIR} 
 	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/pic32mcj.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=_min_heap_size=512,--gc-sections,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
-	${MP_CC_DIR}/xc32-bin2hex ${DISTDIR}/pic32mcj.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
+	${MP_CC_DIR}\\xc32-bin2hex ${DISTDIR}/pic32mcj.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
 endif
 
 
@@ -386,7 +386,7 @@ endif
 # Enable dependency checking
 .dep.inc: .depcheck-impl
 
-DEPFILES=$(shell "${PATH_TO_IDE_BIN}"mplabwildcard ${POSSIBLE_DEPFILES})
+DEPFILES=$(shell mplabwildcard ${POSSIBLE_DEPFILES})
 ifneq (${DEPFILES},)
 include ${DEPFILES}
 endif

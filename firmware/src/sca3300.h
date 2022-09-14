@@ -22,24 +22,11 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-#define SCA3300_DRIVER "V0.200" 
+#define SCA3300_DRIVER "V0.201" 
 
 #define SCA3300_ALIAS "sca3300"
 
-#define SCA3300_CRC8_POLYNOMIAL 0x1d
-
-	/* Device mode register */
-#define SCA3300_REG_MODE	0xd
-#define SCA3300_MODE_SW_RESET	0x20
-
-	/* Last register in map */
-#define SCA3300_REG_SELBANK	0x1f
-
-	/* Device status and mask */
-#define SCA3300_REG_STATUS	0x6
-#define SCA3300_STATUS_MASK	GENMASK(8, 0)
-
-	/* Device ID */
+	/* Device commands and response */
 #define SCA3300_REG_WHOAMI	0x10
 #define SCA3300_WHOAMI_ID	0x51
 #define SCA3300_WHOAMI_32B	0x40000091
@@ -52,11 +39,7 @@ extern "C" {
 
 #define SCA3300_CHIP_ID_DELAY		10000	// ID command repeat delays
 #define SCA3300_CHIP_CS_DELAY		11	// CS high min duration between toggles
-#define SCA3300_CHIP_BTYES_PER_SPI	4	// 32-bit transfers
-
-	/* Device return status and mask */
-#define SCA3300_VALUE_RS_ERROR	0x3
-#define SCA3300_MASK_RS_STATUS	GENMASK(1, 0)
+#define SCA3300_CHIP_BTYES_PER_SPI	4	// 32-bit transfers, 4 bytes
 
 	enum sca3300_scan_indexes {
 		SCA3300_ACC_X = 0,
@@ -80,8 +63,6 @@ extern "C" {
 		0
 	};
 
-	uint8_t CalculateCRC(uint32_t);
-
 	/*
 	 * function pointer templates
 	 */
@@ -89,6 +70,14 @@ extern "C" {
 	bool sca3300_getid(void *);
 	bool sca3300_getdata(void *);
 	void sca3300_version(void);
+
+	enum sca3300_crc_check {
+		SCA3300_REC = 0,
+		SCA3300_TRM = 0,
+	};
+
+	uint8_t CalculateCRC(uint32_t);
+	bool sca3300_check_crc(imu_cmd_t *, uint8_t);
 
 #ifdef	__cplusplus
 }
