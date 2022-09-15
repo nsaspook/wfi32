@@ -23,7 +23,7 @@ extern "C" {
 #include "imupic32mcj.h"
 #include "timers.h"
 
-#define SCA3300_DRIVER "V0.201" 
+#define SCA3300_DRIVER "V0.202" 
 
 #define SCA3300_ALIAS "sca3300"
 
@@ -37,8 +37,14 @@ extern "C" {
 #define	SCA3300_ACC_Y_32B	0x080000FD
 #define	SCA3300_ACC_Z_32B	0x0C0000FB
 #define SCA3300_TEMP_32B	0x140000EF
+#define SCA3300_MODE1		0xB400001F	
+#define SCA3300_MODE2		0xB4000102	
+#define SCA3300_MODE3		0xB4000225
+#define SCA3300_MODE4		0xB4000338
 
 #define SCA3300_CHIP_ID_DELAY		10000	// ID command repeat delays
+#define SCA3300_CHIP_SWR_DELAY		2000	// chip software reset delay
+#define SCA3300_CHIP_MODE_DELAY		100000	// chip G mode setup delay
 #define SCA3300_CHIP_CS_DELAY		11	// CS high min duration between toggles
 #define SCA3300_CHIP_BTYES_PER_SPI	4	// 32-bit transfers, 4 bytes
 
@@ -73,8 +79,8 @@ extern "C" {
 	void sca3300_version(void);
 
 	enum sca3300_crc_check {
-		SCA3300_REC = 0,
-		SCA3300_TRM = 0,
+		SCA3300_REC = 0, // first item in the 32-bit receiver buffer
+		SCA3300_TRM = 0, // first item in the 32-bit transmit buffer
 	};
 
 	uint8_t CalculateCRC(uint32_t);

@@ -20,8 +20,10 @@ extern "C" {
 #include "imupic32mcj.h"
 #include "bma490l_reg.h"
 
-#define BMA490_DRIVER "V0.201" 
+#define BMA490_DRIVER "V0.202" 
 	// version 0.200	PIC32MK MCJ 48 pin version
+
+#define BMA490_ALIAS "bma490l"
 
 #define RBIT		0b10000000
 #define WBIT            0b00000000
@@ -55,24 +57,14 @@ extern "C" {
 #define BMA490L_FEATURE_CONFIG_ADDR                  UINT8_C(0x5E)
 #define BMA490L_INTERNAL_ERROR                       UINT8_C(0x5F)
 
+#ifdef BMA490L
 #define SYS_FREQ	200000000 // Running at 200MHz
+#endif
+#ifdef SCA3300
+#define SYS_FREQ	120000000 // Running at 120MHz
+#endif
 
 #define imu_timeout	2000	// timeout for IMU ID data from query
-
-	enum accel_g {
-		range_2g = 0x00,
-		range_4g = 0x01,
-		range_8g = 0x02,
-		range_16g = 0x03,
-	};
-
-	/*! Earth's gravity in m/s^2 */
-#define GRAVITY_EARTH			(9.80665)	
-#define BMA490_ACCEL_MG_LSB_2G		0.000061035	///< Macro for mg per LSB at +/- 2g sensitivity (1 LSB = 0.000061035mg) */
-#define BMA490_ACCEL_MG_LSB_4G		0.000122070	///< Macro for mg per LSB at +/- 4g sensitivity (1 LSB = 0.000122070mg) */
-#define BMA490_ACCEL_MG_LSB_8G		0.000244141	///< Macro for mg per LSB at +/- 8g sensitivity (1 LSB = 0.000244141mg) */
-#define BMA490_ACCEL_MG_LSB_16G		0.000488281	///< Macro for mg per LSB at +/- 16g sensitivity (1 LSB = 0.000488281mg) */
-#define BMA490_ACCEL_MG_SCALE		1.000000000
 
 	typedef struct {
 		double x; /**< X-axis sensor data */
@@ -101,11 +93,6 @@ extern "C" {
 	 * BMA490L chip instance
 	 */
 	extern imu_cmd_t imu0;
-
-	/*
-	 * User configuration
-	 */
-#define acc_range	range_4g // set IMU for the desired G range
 
 #ifdef	__cplusplus
 }

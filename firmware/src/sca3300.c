@@ -46,6 +46,7 @@ static uint8_t CRC8(uint8_t BitValue, uint8_t CRC)
 }
 
 /*
+ * check for a proper 8-bit CRC in bits [0..7] of the 32-bit word selected by option
  */
 bool sca3300_check_crc(imu_cmd_t * imu, uint8_t option)
 {
@@ -54,7 +55,7 @@ bool sca3300_check_crc(imu_cmd_t * imu, uint8_t option)
 	switch (option) {
 	case SCA3300_REC:
 	default:
-		if (CalculateCRC(imu->rbuf32[0]) != (imu->rbuf32[0]&0xff)) {
+		if (CalculateCRC(imu->rbuf32[SCA3300_REC]) != (imu->rbuf32[SCA3300_REC]&0xff)) {
 			imu->crc_error = true; // set of CRC failure of returned data
 			crc = false;
 		}
@@ -107,31 +108,22 @@ bool sca3300_getdata(void * imup)
 			if (sca3300_check_crc(imu, SCA3300_REC)) {
 				sdata.scan.channels[SCA3300_ACC_X] = ((imu->rbuf32[SCA3300_REC] >> 8)&0xffff); // X data
 			};
-			
-			imu_cs(imu);
-			imu->tbuf32[SCA3300_TRM] = SCA3300_ACC_Z_32B;
-			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
-			while (imu->run) {
-			};
+
+			sca3300_imu_transfer(imu, SCA3300_ACC_Z_32B);
 			if (sca3300_check_crc(imu, SCA3300_REC)) {
 				sdata.scan.channels[SCA3300_ACC_Y] = ((imu->rbuf32[SCA3300_REC] >> 8)&0xffff); // Y data
 			};
-			imu_cs(imu);
-			imu->tbuf32[SCA3300_TRM] = SCA3300_RS_32B; // status command to return Z result
-			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
-			while (imu->run) {
-			};
+
+			sca3300_imu_transfer(imu, SCA3300_RS_32B);
 			if (sca3300_check_crc(imu, SCA3300_REC)) {
 				sdata.scan.channels[SCA3300_ACC_Z] = ((imu->rbuf32[SCA3300_REC] >> 8)&0xffff); // Z data
 			};
-			imu_cs(imu);
-			imu->tbuf32[SCA3300_TRM] = SCA3300_RS_32B; // status command again to get return status result
-			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
-			while (imu->run) {
-			};
+
+			sca3300_imu_transfer(imu, SCA3300_RS_32B);
 			if (sca3300_check_crc(imu, SCA3300_REC)) {
 				sdata.scan.ret_status = ((imu->rbuf32[SCA3300_REC] >> 8)&0xffff); // return status data
 			};
+
 			sdata.scan.ts = TMR9_CounterGet(); // load a clock time-stamp from timer9 32-bit counter, frequency 234,375KHz, 266.66 min roll-over
 		}
 		return imu->online;
@@ -174,22 +166,48 @@ bool sca3300_getid(void * imup)
 }
 
 /*
- * toggle the chip CS to set SPI mode
+ * check SPI and device setup
  */
 void sca3300_set_spimode(void * imup)
 {
 	imu_cmd_t * imu = imup;
+	enum accel_g accel_range = SCA3300_MODE1;
 
-	// set SPI MODE on BMA490L by reading ID register
 	LED_GREEN_Off();
 	LED_RED_On();
 	if (imu) {
-		sca3300_getid(imu);
+		sca3300_imu_transfer(imu, SCA3300_SWRESET_32B); // chip software reset
+		delay_us(SCA3300_CHIP_SWR_DELAY);
+		switch (imu->acc_range) { // set the range variable
+		case range_15g:
+			accel_range = SCA3300_MODE3; // set to 1.5g full-scale, 70 Hz 1st order low pass filter
+			break;
+		case range_15gl:
+			accel_range = SCA3300_MODE4; // set to 1.5g full-scale, 10 Hz 1st order low pass filter
+			break;
+		case range_6g:
+			accel_range = SCA3300_MODE2; // set to 6g full-scale, 70 Hz 1st order low pass filter
+			break;
+		case range_3g:
+		default:
+			accel_range = SCA3300_MODE1; // set to 3g full-scale, 70 Hz 1st order low pass filter
+			break;
+		}
+		sca3300_imu_transfer(imu, accel_range); // send the range command
+		delay_us(SCA3300_CHIP_MODE_DELAY);
+		sca3300_imu_transfer(imu, SCA3300_RS_32B);
+		sca3300_imu_transfer(imu, SCA3300_RS_32B);
+		sca3300_imu_transfer(imu, SCA3300_RS_32B);
+		sca3300_imu_transfer(imu, SCA3300_RS_32B);
+		imu->ss = (imu->rbuf32[SCA3300_REC] >> 8)&0xfff;
+		imu->rs = (imu->rbuf32[SCA3300_REC] >> 24)&0x3;
 	}
 }
 
 /*
- * enable sca3300 CS and set flags
+ * enable sca3300 CS and set run flag that will be cleared when the buffer interrupt
+ * happens or the disable function is call manually
+ * we only use one gpio CS line on this board for either type of IMU device
  */
 bool imu_cs(imu_cmd_t * imu)
 {
@@ -211,7 +229,7 @@ bool imu_cs(imu_cmd_t * imu)
 }
 
 /*
- * force sca3300 CS disabled
+ * force sca3300 CS disabled and clear run flag
  */
 void sca3300_cs_disable(imu_cmd_t * imu)
 {
@@ -228,7 +246,7 @@ void sca3300_cs_disable(imu_cmd_t * imu)
 
 /*
  * SPI interrupt completed callback
- * disables sca3300 CS and sets flags
+ * disables sca3300 CS and clears run flags
  */
 void imu_cs_cb(uintptr_t context)
 {
@@ -247,6 +265,6 @@ void imu_cs_cb(uintptr_t context)
 
 void sca3300_version(void)
 {
-	printf("\r--- SCA3300 Driver Version  %s %s %s ---\r\n", SCA3300_DRIVER, build_date, build_time);
+	printf("\r--- %s Driver Version  %s %s %s ---\r\n", SCA3300_ALIAS, SCA3300_DRIVER, build_date, build_time);
 }
 

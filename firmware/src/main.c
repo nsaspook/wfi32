@@ -57,7 +57,7 @@
 imu_cmd_t imu0 = {
 	.tbuf[0] = CHIP_ID | RBIT,
 	.online = false,
-	.device = BMA, // device type
+	.device = IMU_BMA490L, // device type
 	.cs = IMU_CS, // chip select number
 	.run = false,
 	.log_timeout = BMA_LOG_TIMEOUT,
@@ -67,6 +67,7 @@ imu_cmd_t imu0 = {
 	.op.imu_set_spimode = &bma490l_set_spimode,
 	.op.imu_getid = &bma490l_getid,
 	.op.imu_getdata = &bma490l_getdata,
+	.acc_range = range_4g,
 };
 #endif
 
@@ -77,7 +78,7 @@ imu_cmd_t imu0 = {
 imu_cmd_t imu0 = {
 	.tbuf32[SCA3300_TRM] = SCA3300_SWRESET_32B,
 	.online = false,
-	.device = SCA, // device type
+	.device = IMU_SCA3300, // device type
 	.cs = IMU_CS, // chip select number
 	.run = false,
 	.crc_error = false,
@@ -88,6 +89,7 @@ imu_cmd_t imu0 = {
 	.op.imu_set_spimode = &sca3300_set_spimode,
 	.op.imu_getid = &sca3300_getid,
 	.op.imu_getdata = &sca3300_getdata,
+	.acc_range = range_15gl,
 };
 #endif
 
@@ -121,6 +123,7 @@ int main(void)
 	 */
 	imu0.op.info_ptr(); // print driver version on the serial port
 	imu0.op.imu_set_spimode(&imu0); // setup the IMU chip for SPI comms, X updates per second @ selected G range
+	printf(" IMU Read Status, %X  %X \r\n", imu0.rs, imu0.ss);
 
 	/*
 	 * check to see if we actually have a working IMU
@@ -162,7 +165,7 @@ int main(void)
 			imu0.op.imu_getdata(&imu0); // read data from the chip
 			imu0.update = false;
 			getAllData(&accel, &imu0); // convert data from the chip
-			printf("%6.3f,%6.3f,%6.3f,%u\r\n", accel.x, accel.y, accel.z, accel.sensortime);
+			printf("%6.3f,%6.3f,%6.3f,%u,%X,%X\r\n", accel.x, accel.y, accel.z, accel.sensortime, imu0.rs, imu0.ss);
 			if (TimerDone(TMR_LOG)) {
 				//				printf(" IMU data timeout \r\n");
 				LED_GREEN_Toggle();

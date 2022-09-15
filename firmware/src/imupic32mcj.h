@@ -27,10 +27,7 @@ extern "C" {
 
 #define IMU_CS	0
 #define	LCD_CS	0
-	
-#define	BMA	0
-#define SCA	1
-	
+
 #define BMA_LOG_TIMEOUT 80
 #define	SCA_LOG_TIMEOUT	20
 
@@ -57,9 +54,9 @@ extern "C" {
 	 * IMU data structure for driver
 	 */
 	typedef struct _imu_cmd_t {
-		uint8_t device, cs;
+		uint8_t device, cs, acc_range;
 		uint8_t rbuf[64], tbuf[64];
-		uint32_t rbuf32[2], tbuf32[2], log_timeout;
+		uint32_t rbuf32[2], tbuf32[2], log_timeout, rs, ss;
 		volatile bool online, run, update, features, crc_error;
 		op_t op;
 	} imu_cmd_t;
@@ -74,6 +71,33 @@ extern "C" {
 		uint8_t txbuf[4];
 		uint8_t rxbuf[4];
 	};
+
+	enum device_type {
+		IMU_BMA490L = 0, // IMU chip model
+		IMU_SCA3300,
+	};
+
+	enum accel_g {
+		range_2g = 0x00,
+		range_4g = 0x01,
+		range_8g = 0x02,
+		range_16g = 0x03,
+		range_15g = 0x04,
+		range_3g = 0x05,
+		range_6g = 0x06,
+		range_15gl = 0x07,
+	};
+
+	/*! Earth's gravity in m/s^2 */
+#define GRAVITY_EARTH			(9.80665)	
+#define BMA490_ACCEL_MG_LSB_2G		0.000061035	///< Macro for mg per LSB at +/- 2g sensitivity (1 LSB = 0.000061035mg) */
+#define BMA490_ACCEL_MG_LSB_4G		0.000122070	///< Macro for mg per LSB at +/- 4g sensitivity (1 LSB = 0.000122070mg) */
+#define BMA490_ACCEL_MG_LSB_8G		0.000244141	///< Macro for mg per LSB at +/- 8g sensitivity (1 LSB = 0.000244141mg) */
+#define BMA490_ACCEL_MG_LSB_16G		0.000488281	///< Macro for mg per LSB at +/- 16g sensitivity (1 LSB = 0.000488281mg) */
+#define BMA490_ACCEL_MG_SCALE		1.000000000
+#define SCA3300_ACCEL_MG_LSB_15G	0.000207000	///< Macro for mg per LSB at +/- 1.5g sensitivity
+#define SCA3300_ACCEL_MG_LSB_3G		0.000395000	///< Macro for mg per LSB at +/- 3g sensitivity
+#define SCA3300_ACCEL_MG_LSB_6G		0.000765000	///< Macro for mg per LSB at +/- 6g sensitivity
 
 	void delay_us(uint32_t);
 

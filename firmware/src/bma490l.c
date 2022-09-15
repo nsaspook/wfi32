@@ -132,12 +132,12 @@ void getAllData(sBma490SensorData_t *accel, imu_cmd_t * imu)
 {
 	uint8_t data[BMA490_DATA_RAW_LEN + 2] = {0}; // add space for dummy data
 	int16_t x = 0, y = 0, z = 0;
-	float accelRange;
+	double accelRange;
 
 	/*
 	 * load the proper scaling constants
 	 */
-	switch (acc_range) {
+	switch (imu->acc_range) {
 	case range_16g:
 		accelRange = BMA490_ACCEL_MG_LSB_16G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
 		break;
@@ -146,6 +146,16 @@ void getAllData(sBma490SensorData_t *accel, imu_cmd_t * imu)
 		break;
 	case range_4g:
 		accelRange = BMA490_ACCEL_MG_LSB_4G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
+		break;
+	case range_15g:
+	case range_15gl:
+		accelRange = SCA3300_ACCEL_MG_LSB_15G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
+		break;
+	case range_3g:
+		accelRange = SCA3300_ACCEL_MG_LSB_3G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
+		break;
+	case range_6g:
+		accelRange = SCA3300_ACCEL_MG_LSB_6G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
 		break;
 	case range_2g:
 	default:
@@ -293,7 +303,7 @@ void bma490l_set_spimode(void * imup)
 		// ACC_CONF
 		imu_set_reg(imu, BMA490L_REG_ACCEL_CONFIG, ACCEL_CONFIG, false);
 		// ACC_RANGE
-		imu_set_reg(imu, BMA490L_REG_ACCEL_RANGE, acc_range, false);
+		imu_set_reg(imu, BMA490L_REG_ACCEL_RANGE, imu->acc_range, false);
 		// INT_MAP_DATA
 		imu_set_reg(imu, BMA490L_REG_INT_MAP_DATA, INT_MAP_DATA, false);
 		// INT1_IO_CTRL
@@ -365,7 +375,7 @@ void imu_cs_cb(uintptr_t context)
 
 void bma490_version(void)
 {
-	printf("\r--- BMA490L Driver Version  %s %s %s ---\r\n", BMA490_DRIVER, build_date, build_time);
+	printf("\r--- %s Driver Version  %s %s %s ---\r\n", BMA490_ALIAS, BMA490_DRIVER, build_date, build_time);
 }
 
 /*
