@@ -21,6 +21,7 @@ extern "C" {
 #include <math.h>
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
+#include "timers.h"
 
 #define SCA3300_DRIVER "V0.201" 
 
@@ -77,6 +78,7 @@ extern "C" {
 	};
 
 	uint8_t CalculateCRC(uint32_t);
+	bool sca3300_imu_transfer(imu_cmd_t *, uint32_t);
 	bool sca3300_check_crc(imu_cmd_t *, uint8_t);
 
 #ifdef	__cplusplus

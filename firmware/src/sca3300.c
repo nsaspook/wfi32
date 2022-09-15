@@ -64,6 +64,24 @@ bool sca3300_check_crc(imu_cmd_t * imu, uint8_t option)
 }
 
 /*
+ * talk to the IMU via the SPI port
+ */
+bool sca3300_imu_transfer(imu_cmd_t * imu, uint32_t data)
+{
+	imu_cs(imu); // select IMU on SPI bus after required delay between SPI requests
+	imu->tbuf32[SCA3300_TRM] = data; // data request command as 32-bit word with CRC
+	SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
+	StartTimer(TMR_CS, SCA3300_CHIP_CS_DELAY); // milliseconds
+	while (imu->run) { // wait until data has left the SPI buffer, run flag is set in SPI interrupt ISR
+		if (TimerDone(TMR_CS)) {
+			return false;
+		}
+	};
+
+	return true;
+}
+
+/*
  * Read raw ACCEL data from the chip using SPI
  * check all returned SPI data for proper CRC
  * Off-frame protocol is used so each
@@ -80,20 +98,16 @@ bool sca3300_getdata(void * imup)
 		if (!imu->run) {
 			// junk first response
 			imu->crc_error = false; // reset CRC checking flag
-			imu_cs(imu); // select IMU on SPI bus after required delay between SPI requests
-			imu->tbuf32[SCA3300_TRM] = SCA3300_ACC_X_32B; // X data request command as 32-bit word with CRC
-			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
-			while (imu->run) { // wait until data has left the SPI buffer, run flag is set in SPI interrupt ISR
-			}; // dummy result return on first command
+			// dummy result return on first command
+
+			sca3300_imu_transfer(imu, SCA3300_ACC_X_32B);
 			sca3300_check_crc(imu, SCA3300_REC); // check dummy for CRC error
-			imu_cs(imu);
-			imu->tbuf32[SCA3300_TRM] = SCA3300_ACC_Y_32B;
-			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
-			while (imu->run) {
-			};
+
+			sca3300_imu_transfer(imu, SCA3300_ACC_Y_32B);
 			if (sca3300_check_crc(imu, SCA3300_REC)) {
 				sdata.scan.channels[SCA3300_ACC_X] = ((imu->rbuf32[SCA3300_REC] >> 8)&0xffff); // X data
 			};
+			
 			imu_cs(imu);
 			imu->tbuf32[SCA3300_TRM] = SCA3300_ACC_Z_32B;
 			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);

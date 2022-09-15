@@ -12,6 +12,7 @@ enum APP_TIMERS {
 	TMR_INTERNAL = 0, //Used in timers.c - do not remove or use elsewhere
 	TMR_IMU,
 	TMR_LOG,
+	TMR_CS,
 	//
 	//(Add timers here as needed)
 	//
