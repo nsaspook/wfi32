@@ -31,10 +31,13 @@ extern "C" {
 	 * DMA driver for DOGXL240 @15MHz SPI clock
 	 * 2021 XC32 and H3
 	 */
-
+#include <xc.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include "../src/config/mcj/peripheral/spi/spi_master/plib_spi_master_common.h"
+#include "../src/config/mcj/peripheral/gpio/plib_gpio.h"
+#include "../src/config/mcj/peripheral/dmac/plib_dmac.h"
 #include "display_type.h"
 #include "eadog.h"
 #include "dogm-graphic.h"

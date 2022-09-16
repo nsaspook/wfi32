@@ -1,4 +1,9 @@
+#include <xc.h>
 #include "eadog.h"
+#include <string.h>
+#include "../src/config/mcj/peripheral/spi/spi_master/plib_spi_master_common.h"
+#include "../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.h"
+#include "../src/config/mcj/peripheral/gpio/plib_gpio.h"
 
 /*
  *	LCD character display routines
@@ -6,28 +11,17 @@
  */
 
 /* Global object to save SPI Exchange related data */
-extern SPI_OBJECT spi3Obj;
-
-#ifdef EDOGM
-#define SPI3_CON_MSTEN                      (1 << _SPI3CON_MSTEN_POSITION)
-#define SPI3_CON_CKP                        (0 << _SPI3CON_CKP_POSITION)
-#define SPI3_CON_CKE                        (1 << _SPI3CON_CKE_POSITION)
-#define SPI3_CON_MODE_32_MODE_16            (0 << _SPI3CON_MODE16_POSITION)
-#define SPI3_CON_ENHBUF                     (1 << _SPI3CON_ENHBUF_POSITION)
-#define SPI3_CON_MCLKSEL                    (1 << _SPI3CON_MCLKSEL_POSITION)
-#define SPI3_CON_MSSEN                      (0 << _SPI3CON_MSSEN_POSITION)
-#define SPI3_CON_SMP                        (0 << _SPI3CON_SMP_POSITION)
-#endif
+extern SPI_OBJECT spi1Obj;
 
 #ifdef EDOGS
-#define SPI3_CON_MSTEN                      (1 << _SPI3CON_MSTEN_POSITION)
-#define SPI3_CON_CKP                        (1 << _SPI3CON_CKP_POSITION)
-#define SPI3_CON_CKE                        (0 << _SPI3CON_CKE_POSITION)
-#define SPI3_CON_MODE_32_MODE_16            (0 << _SPI3CON_MODE16_POSITION)
-#define SPI3_CON_ENHBUF                     (1 << _SPI3CON_ENHBUF_POSITION)
-#define SPI3_CON_MCLKSEL                    (1 << _SPI3CON_MCLKSEL_POSITION)
-#define SPI3_CON_MSSEN                      (0 << _SPI3CON_MSSEN_POSITION)
-#define SPI3_CON_SMP                        (0 << _SPI3CON_SMP_POSITION)
+#define SPI1_CON_MSTEN                      (1 << _SPI1CON_MSTEN_POSITION)
+#define SPI1_CON_CKP                        (1 << _SPI1CON_CKP_POSITION)
+#define SPI1_CON_CKE                        (0 << _SPI1CON_CKE_POSITION)
+#define SPI1_CON_MODE_32_MODE_16            (0 << _SPI1CON_MODE16_POSITION)
+#define SPI1_CON_ENHBUF                     (1 << _SPI1CON_ENHBUF_POSITION)
+#define SPI1_CON_MCLKSEL                    (0 << _SPI1CON_MCLKSEL_POSITION)
+#define SPI1_CON_MSSEN                      (0 << _SPI1CON_MSSEN_POSITION)
+#define SPI1_CON_SMP                        (0 << _SPI1CON_SMP_POSITION)
 #endif
 
 static void send_lcd_cmd_long(uint8_t); // for display init only
@@ -35,140 +29,90 @@ static void send_lcd_data(uint8_t);
 static void send_lcd_cmd(uint8_t);
 static volatile uint8_t NOPER = 0;
 
-void SPI3_Initialize_edogm(void)
+void SPI1_Initialize_internal ( void )
 {
-	uint32_t rdata;
+    uint32_t rdata = 0U;
 
-	/* Disable SPI3 Interrupts */
-	IEC6CLR = 0x4000000;
-	IEC6CLR = 0x8000000;
-	IEC6CLR = 0x10000000;
+    /* Disable SPI1 Interrupts */
+    IEC1CLR = 0x8;
+    IEC1CLR = 0x10;
+    IEC1CLR = 0x20;
 
-	/* STOP and Reset the SPI */
-	SPI3CON = 0;
+    /* STOP and Reset the SPI */
+    SPI1CON = 0;
 
-	/* Clear the Receiver buffer */
-	rdata = SPI3BUF;
-	rdata = rdata;
+    /* Clear the Receiver buffer */
+    rdata = SPI1BUF;
+    rdata = rdata;
 
-	/* Clear SPI3 Interrupt flags */
-	IFS6CLR = 0x4000000;
-	IFS6CLR = 0x8000000;
-	IFS6CLR = 0x10000000;
+    /* Clear SPI1 Interrupt flags */
+    IFS1CLR = 0x8;
+    IFS1CLR = 0x10;
+    IFS1CLR = 0x20;
 
-	/* BAUD Rate register Setup */
-	SPI3BRG = 1;
+    /* BAUD Rate register Setup */
+    SPI1BRG = 1;
 
-	/* CLear the Overflow */
-	SPI3STATCLR = _SPI3STAT_SPIROV_MASK;
+    /* CLear the Overflow */
+    SPI1STATCLR = _SPI1STAT_SPIROV_MASK;
 
-	/*
-	MSTEN = 1
-	CKP = 0
-	CKE = 1
-	MODE<32,16> = 0
-	ENHBUF = 1
-	MSSEN = 0
-	MCLKSEL = 1
-	 */
-	SPI3CONSET = (SPI3_CON_MSSEN | SPI3_CON_MCLKSEL | SPI3_CON_ENHBUF | SPI3_CON_MODE_32_MODE_16 | SPI3_CON_CKE | SPI3_CON_CKP | SPI3_CON_MSTEN | SPI3_CON_SMP);
+    /*
+    MSTEN = 1
+    CKP = 0
+    CKE = 1
+    MODE<32,16> = 0
+    ENHBUF = 1
+    MSSEN = 0
+    MCLKSEL = 0
+    */
+    SPI1CONSET = (SPI1_CON_MSSEN | SPI1_CON_MCLKSEL | SPI1_CON_ENHBUF | SPI1_CON_MODE_32_MODE_16 | SPI1_CON_CKE | SPI1_CON_CKP | SPI1_CON_MSTEN | SPI1_CON_SMP);
 
-	/* Enable transmit interrupt when transmit buffer is completely empty (STXISEL = '01') */
-	/* Enable receive interrupt when the receive buffer is not empty (SRXISEL = '01') */
-	SPI3CONSET = 0x00000005;
+    /* Enable transmit interrupt when transmit buffer is completely empty (STXISEL = '01') */
+    /* Enable receive interrupt when the receive buffer is not empty (SRXISEL = '01') */
+    SPI1CONSET = 0x00000005;
 
-	/* Initialize global variables */
-	spi3Obj.transferIsBusy = false;
-	spi3Obj.callback = NULL;
+    /* Initialize global variables */
+    spi1Obj.transferIsBusy = false;
+    spi1Obj.callback = NULL;
 
-	/* Enable SPI3 */
-	SPI3CONSET = _SPI3CON_ON_MASK;
-}
-
-void SPI3_Initialize_edogs(void)
-{
-	uint32_t rdata;
-
-	/* Disable SPI3 Interrupts */
-	IEC6CLR = 0x4000000;
-	IEC6CLR = 0x8000000;
-	IEC6CLR = 0x10000000;
-
-	/* STOP and Reset the SPI */
-	SPI3CON = 0;
-
-	/* Clear the Receiver buffer */
-	rdata = SPI3BUF;
-	rdata = rdata;
-
-	/* Clear SPI3 Interrupt flags */
-	IFS6CLR = 0x4000000;
-	IFS6CLR = 0x8000000;
-	IFS6CLR = 0x10000000;
-
-	/* BAUD Rate register Setup */
-	SPI3BRG = 3;
-
-	/* CLear the Overflow */
-	SPI3STATCLR = _SPI3STAT_SPIROV_MASK;
-
-	/*
-	MSTEN = 1
-	CKP = 1
-	CKE = 0
-	MODE<32,16> = 0
-	ENHBUF = 1
-	MSSEN = 0
-	MCLKSEL = 0
-	 */
-	SPI3CONSET = (SPI3_CON_MSSEN | SPI3_CON_MCLKSEL | SPI3_CON_ENHBUF | SPI3_CON_MODE_32_MODE_16 | SPI3_CON_CKE | SPI3_CON_CKP | SPI3_CON_MSTEN | SPI3_CON_SMP);
-
-	/* Enable transmit interrupt when transmit buffer is completely empty (STXISEL = '01') */
-	/* Enable receive interrupt when the receive buffer is not empty (SRXISEL = '01') */
-	SPI3CONSET = 0x00000005;
-
-	/* Initialize global variables */
-	spi3Obj.transferIsBusy = false;
-	spi3Obj.callback = NULL;
-
-	/* Enable SPI3 */
-	SPI3CONSET = _SPI3CON_ON_MASK;
+    /* Enable SPI1 */
+    SPI1CONSET = _SPI1CON_ON_MASK;
 }
 
 void RS_SetLow(void)
 {
 	wait_lcd_done();
-	SPI_EN0_Clear();
+	DIS_MODE_Clear();
 };
 
 void RS_SetHigh(void)
 {
 	wait_lcd_done();
-	SPI_EN0_Set();
+	DIS_MODE_Set();
 };
 
 void CSB_SetLow(void)
 {
 	wait_lcd_done();
-	SPI_EN1_Clear();
+	DIS_CS_Clear();
 };
 
 void CSB_SetHigh(void)
 {
 	wait_lcd_done();
-	SPI_EN1_Set();
+	DIS_CS_Set();
 };
 
-void SPI3_Exchange8bit(uint8_t data)
+void SPI1_Exchange8bit(uint8_t data)
 {
 	wait_lcd_done();
-	SPI3_Write(&data, 1);
+	SPI1_Write(&data, 1);
 };
 
-void SPI3_ExchangeBuffer(uint8_t *data, uint16_t len)
+void SPI1_ExchangeBuffer(uint8_t *data, uint16_t len)
 {
 	wait_lcd_done();
-	SPI3_Write(data, len);
+	SPI1_Write(data, len);
 };
 
 void wdtdelay(const uint32_t delay)
@@ -208,7 +152,7 @@ static void send_lcd_data(const uint8_t data)
 	RS_SetHigh();
 	CSB_SetLow();
 	wdtdelay(IS_DELAYSHORT);
-	SPI3_Exchange8bit(data);
+	SPI1_Exchange8bit(data);
 }
 
 /*
@@ -219,7 +163,7 @@ static void send_lcd_cmd(const uint8_t cmd)
 	RS_SetLow();
 	CSB_SetLow();
 	wdtdelay(IS_DELAYMED);
-	SPI3_Exchange8bit(cmd);
+	SPI1_Exchange8bit(cmd);
 	wdtdelay(IS_DELAYMED);
 	RS_SetHigh();
 }
@@ -231,7 +175,7 @@ static void send_lcd_cmd_long(const uint8_t cmd)
 {
 	RS_SetLow();
 	CSB_SetLow();
-	SPI3_Exchange8bit(cmd);
+	SPI1_Exchange8bit(cmd);
 	wdtdelay(IS_DELAYLONG);
 	RS_SetHigh();
 }
@@ -274,7 +218,7 @@ void eaDogM_WriteString(char *strPtr)
 		i = max_strlen;
 	}
 
-	SPI3_Write(strPtr, i); // use interrupt mode so we don't wait
+	SPI1_Write(strPtr, i); // use interrupt mode so we don't wait
 }
 
 void eaDogM_WriteStringAtPos(const uint8_t r, const uint8_t c, char *strPtr)

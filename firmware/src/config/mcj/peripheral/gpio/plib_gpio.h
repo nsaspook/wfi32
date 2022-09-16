@@ -147,6 +147,15 @@
 #define PWM1EN_Get()               ((PORTD >> 8) & 0x1U)
 #define PWM1EN_PIN                  GPIO_PIN_RD8
 
+/*** Macros for DIS_CS pin ***/
+#define DIS_CS_Set()               (LATBSET = (1U<<6))
+#define DIS_CS_Clear()             (LATBCLR = (1U<<6))
+#define DIS_CS_Toggle()            (LATBINV= (1U<<6))
+#define DIS_CS_OutputEnable()      (TRISBCLR = (1U<<6))
+#define DIS_CS_InputEnable()       (TRISBSET = (1U<<6))
+#define DIS_CS_Get()               ((PORTB >> 6) & 0x1U)
+#define DIS_CS_PIN                  GPIO_PIN_RB6
+
 /*** Macros for PWM1ER pin ***/
 #define PWM1ER_Set()               (LATBSET = (1U<<8))
 #define PWM1ER_Clear()             (LATBCLR = (1U<<8))
@@ -156,14 +165,14 @@
 #define PWM1ER_Get()               ((PORTB >> 8) & 0x1U)
 #define PWM1ER_PIN                  GPIO_PIN_RB8
 
-/*** Macros for SDI1_MODE pin ***/
-#define SDI1_MODE_Set()               (LATBSET = (1U<<9))
-#define SDI1_MODE_Clear()             (LATBCLR = (1U<<9))
-#define SDI1_MODE_Toggle()            (LATBINV= (1U<<9))
-#define SDI1_MODE_OutputEnable()      (TRISBCLR = (1U<<9))
-#define SDI1_MODE_InputEnable()       (TRISBSET = (1U<<9))
-#define SDI1_MODE_Get()               ((PORTB >> 9) & 0x1U)
-#define SDI1_MODE_PIN                  GPIO_PIN_RB9
+/*** Macros for DIS_MODE pin ***/
+#define DIS_MODE_Set()               (LATBSET = (1U<<9))
+#define DIS_MODE_Clear()             (LATBCLR = (1U<<9))
+#define DIS_MODE_Toggle()            (LATBINV= (1U<<9))
+#define DIS_MODE_OutputEnable()      (TRISBCLR = (1U<<9))
+#define DIS_MODE_InputEnable()       (TRISBSET = (1U<<9))
+#define DIS_MODE_Get()               ((PORTB >> 9) & 0x1U)
+#define DIS_MODE_PIN                  GPIO_PIN_RB9
 
 /*** Macros for IMU_CS pin ***/
 #define IMU_CS_Set()               (LATCSET = (1U<<9))

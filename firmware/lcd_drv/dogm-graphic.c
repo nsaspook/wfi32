@@ -289,9 +289,9 @@ void lcd_init(void)
 {
 	//Load settings
 #if DISPLAY_TYPE == 240
-	BACKLIGHT_Clear();
+	RS_SetLow();
 	WaitMs(2);
-	BACKLIGHT_Set();
+	RS_SetHigh();
 	WaitMs(150);
 	LCD_SET_COM_END(127); // set last COM electrode
 	LCD_SET_PARTIAL_DISPLAY(0, 127); // set partial display start and end

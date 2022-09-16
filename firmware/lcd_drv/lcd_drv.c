@@ -1,3 +1,4 @@
+#include <xc.h>
 #include "lcd_drv.h"
 
 /*
@@ -7,7 +8,7 @@
  * displays much of the code is unused and will one-day be removed
  * after functional testing is complete.
  * 10/15/2021
- * uses SPI3 with a 15MHz clock for the LCD chip. 
+ * uses SPI1 with a 15MHz clock for the LCD chip. 
  */
 static volatile uint8_t NOPER = 0;
 
@@ -21,7 +22,7 @@ void init_lcd_drv(LCD_DVR_STATE init_type)
 		eaDogM_CursorOff();
 #endif
 #ifdef EDOGS
-		SPI_EN1_Set(); // select SPI GLCD display, DOGXL240 @15MHz SPI clock
+		CSB_SetHigh(); // select SPI GLCD display, DOGXL240 @15MHz SPI clock
 		dmtdelay(IS_DELAYPOWERUP); // > 400ms power up delay
 		lcd_init();
 		OledInit();
@@ -46,7 +47,6 @@ void dmtdelay(const uint32_t delay)
 
 	for (dcount = 0; dcount <= delay; dcount++) { // delay a bit
 		if (!dmt_clear_count--) {
-			DMT_Clear(); // clear the Dead Man Timer
 			dmt_clear_count = DMT_INST_COUNT;
 		}
 		NOPER++;
