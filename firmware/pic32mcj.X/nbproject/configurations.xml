@@ -57,6 +57,17 @@
       <itemPath>../src/sca3300.h</itemPath>
       <itemPath>../src/imupic32mcj.h</itemPath>
     </logicalFolder>
+    <logicalFolder name="lcd_drv" displayName="lcd_drv" projectFiles="true">
+      <itemPath>../lcd_drv/lcd_drv.c</itemPath>
+      <itemPath>../lcd_drv/ChrFont0.c</itemPath>
+      <itemPath>../lcd_drv/FillPat.c</itemPath>
+      <itemPath>../lcd_drv/OledChar.c</itemPath>
+      <itemPath>../lcd_drv/OledDriver.c</itemPath>
+      <itemPath>../lcd_drv/OledGrph.c</itemPath>
+      <itemPath>../lcd_drv/dogm-graphic.c</itemPath>
+      <itemPath>../lcd_drv/eadog.c</itemPath>
+      <itemPath>../lcd_drv/foo.c</itemPath>
+    </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
@@ -144,6 +155,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>../src</Elem>
+    <Elem>../lcd_drv</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

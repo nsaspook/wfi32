@@ -42,7 +42,7 @@ extern "C" {
 #include "OledChar.h"
 #include "OledGrph.h"
 
-#include "tests.h"
+//#include "tests.h"
 #include "device.h"
 
 #define	DMT_INST_COUNT	5500000		// counts between DMT clears 5500000 for ~500ms

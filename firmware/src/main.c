@@ -49,6 +49,7 @@
 #include "bma490l.h"
 #include "sca3300.h"
 #include "timers.h"
+#include "../../firmware/lcd_drv/lcd_drv.h"
 
 #ifdef BMA490L
 /*
