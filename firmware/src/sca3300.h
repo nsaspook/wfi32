@@ -23,13 +23,14 @@ extern "C" {
 #include "imupic32mcj.h"
 #include "timers.h"
 
-#define SCA3300_DRIVER "V0.202" 
+#define SCA3300_DRIVER "V0.210" 
 
 #define SCA3300_ALIAS "sca3300"
 
 	/* Device commands and response */
 #define SCA3300_REG_WHOAMI	0x10
 #define SCA3300_WHOAMI_ID	0x51
+#define SCA3300_WHOAMI_ID_SCL	0xC1
 #define SCA3300_WHOAMI_32B	0x40000091
 #define SCA3300_SWRESET_32B	0xB4002098
 #define SCA3300_RS_32B		0x180000E5
@@ -41,9 +42,15 @@ extern "C" {
 #define SCA3300_MODE2		0xB4000102	
 #define SCA3300_MODE3		0xB4000225
 #define SCA3300_MODE4		0xB4000338
+#define SCL3300_ANGLE		0xB0001F6F
+#define SCL3300_E_FLAG1		0x1C0000E3
+#define SCL3300_E_FLAG2		0x200000C1
+#define	SCL3300_ANG_X_32B	0x240000C7
+#define	SCL3300_ANG_Y_32B	0x280000CD
+#define	SCL3300_ANG_Z_32B	0x2C0000CB	
 
-#define SCA3300_CHIP_ID_DELAY		10000	// ID command repeat delays
-#define SCA3300_CHIP_SWR_DELAY		2000	// chip software reset delay
+#define SCA3300_CHIP_ID_DELAY		10000	// ID command repeat delays in usec
+#define SCA3300_CHIP_SWR_DELAY		10000	// chip software reset delay
 #define SCA3300_CHIP_MODE_DELAY		100000	// chip G mode setup delay
 #define SCA3300_CHIP_CS_DELAY		11	// CS high min duration between toggles
 #define SCA3300_CHIP_BTYES_PER_SPI	4	// 32-bit transfers, 4 bytes
@@ -54,20 +61,9 @@ extern "C" {
 		SCA3300_ACC_Z,
 		SCA3300_TEMP,
 		SCA3300_TIMESTAMP,
-	};
-
-	static const int sca3300_lp_freq[] = {70, 70, 70, 10};
-	static const int sca3300_accel_scale[][2] = {
-		{0, 370},
-		{0, 741},
-		{0, 185},
-		{0, 185}
-	};
-
-	static const unsigned long sca3300_scan_masks[] = {
-		SCA3300_ACC_X | SCA3300_ACC_Y | SCA3300_ACC_Z |
-		SCA3300_TEMP,
-		0
+		SCL3300_ANG_X,
+		SCL3300_ANG_Y,
+		SCL3300_ANG_Z,
 	};
 
 	/*

@@ -42,6 +42,7 @@ extern "C" {
 
 	/*
 	 * function pointer templates structure
+	 * for the device I/O routines and data
 	 */
 	typedef struct _op_t {
 		void (*info_ptr)(void);
@@ -57,24 +58,25 @@ extern "C" {
 		uint8_t device, cs, acc_range;
 		uint8_t rbuf[64], tbuf[64];
 		uint32_t rbuf32[2], tbuf32[2], log_timeout, rs, ss;
-		volatile bool online, run, update, features, crc_error;
+		volatile bool online, run, update, features, crc_error, angles;
 		op_t op;
 	} imu_cmd_t;
 
 	struct sca3300_data {
 
 		struct {
-			int16_t channels[4];
+			int16_t channels[9];
 			uint16_t ret_status;
 			uint32_t ts;
 		} scan;
-		uint8_t txbuf[4];
-		uint8_t rxbuf[4];
+		uint8_t rs;
+		uint8_t ss;
 	};
 
 	enum device_type {
 		IMU_BMA490L = 0, // IMU chip model
 		IMU_SCA3300,
+		IMU_SCL3300,
 	};
 
 	enum accel_g {
@@ -90,14 +92,19 @@ extern "C" {
 
 	/*! Earth's gravity in m/s^2 */
 #define GRAVITY_EARTH			(9.80665)	
+	/*
+	 * device earth gravity range calibration scalars
+	 */
 #define BMA490_ACCEL_MG_LSB_2G		0.000061035	///< Macro for mg per LSB at +/- 2g sensitivity (1 LSB = 0.000061035mg) */
 #define BMA490_ACCEL_MG_LSB_4G		0.000122070	///< Macro for mg per LSB at +/- 4g sensitivity (1 LSB = 0.000122070mg) */
 #define BMA490_ACCEL_MG_LSB_8G		0.000244141	///< Macro for mg per LSB at +/- 8g sensitivity (1 LSB = 0.000244141mg) */
 #define BMA490_ACCEL_MG_LSB_16G		0.000488281	///< Macro for mg per LSB at +/- 16g sensitivity (1 LSB = 0.000488281mg) */
 #define BMA490_ACCEL_MG_SCALE		1.000000000
-#define SCA3300_ACCEL_MG_LSB_15G	0.000207000	///< Macro for mg per LSB at +/- 1.5g sensitivity
-#define SCA3300_ACCEL_MG_LSB_3G		0.000395000	///< Macro for mg per LSB at +/- 3g sensitivity
-#define SCA3300_ACCEL_MG_LSB_6G		0.000765000	///< Macro for mg per LSB at +/- 6g sensitivity
+#define SCA3300_ACCEL_MG_LSB_15G	0.000207000	///< Macro for mg per LSB at +/- 1.5g sensitivity	LSB/g 5400
+#define SCA3300_ACCEL_MG_LSB_3G		0.000395000	///< Macro for mg per LSB at +/- 3g sensitivity		LSB/g 2700
+#define SCA3300_ACCEL_MG_LSB_6G		0.000765000	///< Macro for mg per LSB at +/- 6g sensitivity		LSB/g 1350
+#define SCL3300_ACCEL_MG_LSB_12G	0.000207000	///< Macro for mg per LSB at +/- 1.2g sensitivity	LSB/g 6000
+#define SCL3300_ACCEL_MG_LSB_24G	0.000207000	///< Macro for mg per LSB at +/- 2.4g sensitivity	LSB/g 3000
 
 	void delay_us(uint32_t);
 

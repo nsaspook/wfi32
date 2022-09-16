@@ -22,6 +22,7 @@ uint8_t CalculateCRC(uint32_t Data)
 	uint8_t BitIndex;
 	uint8_t BitValue;
 	uint8_t CRC;
+
 	CRC = 0xFF;
 	for (BitIndex = 31; BitIndex > 7; BitIndex--) {
 		BitValue = (uint8_t) ((Data >> BitIndex) & 0x01);
@@ -34,6 +35,7 @@ uint8_t CalculateCRC(uint32_t Data)
 static uint8_t CRC8(uint8_t BitValue, uint8_t CRC)
 {
 	uint8_t Temp;
+
 	Temp = (uint8_t) (CRC & 0x80);
 	if (BitValue == 0x01) {
 		Temp ^= 0x80;
@@ -138,17 +140,17 @@ bool sca3300_getdata(void * imup)
 bool sca3300_getid(void * imup)
 {
 	imu_cmd_t * imu = imup;
+	bool angles = false;
 
 	if (imu) {
 		if (!imu->run) {
 			delay_us(SCA3300_CHIP_ID_DELAY); // sca3300 ID command spacing
-			imu_cs(imu);
-			imu->tbuf32[SCA3300_TRM] = SCA3300_WHOAMI_32B;
-			SPI2_WriteRead(imu->tbuf32, SCA3300_CHIP_BTYES_PER_SPI, imu->rbuf32, SCA3300_CHIP_BTYES_PER_SPI);
-			while (imu->run) {
-			};
-			if (((imu->rbuf32[SCA3300_REC] >> 8)&0xffff) == SCA3300_WHOAMI_ID) {
+			sca3300_imu_transfer(imu, SCA3300_WHOAMI_32B);
+			if ((((imu->rbuf32[SCA3300_REC] >> 8)&0xffff) == SCA3300_WHOAMI_ID) || (angles = ((imu->rbuf32[SCA3300_REC] >> 8)&0xffff) == SCA3300_WHOAMI_ID_SCL)) {
 				if (sca3300_check_crc(imu, SCA3300_REC)) {
+					if (angles) {
+						imu->angles = true; // SLC3300 mode
+					}
 					imu->online = true;
 					imu->rbuf32[SCA3300_REC] = 0;
 					imu->crc_error = false;
