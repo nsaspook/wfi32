@@ -70,6 +70,9 @@ extern "C" {
 		double x; /**< X-axis sensor data */
 		double y; /**< Y-axis sensor data */
 		double z; /**< Z-axis sensor data */
+		double xa; /**< X-angle sensor data */
+		double ya; /**< Y-angle sensor data */
+		double za; /**< Z-angle sensor data */
 		uint32_t sensortime; /**< sensor time */
 	} sBma490SensorData_t;
 
