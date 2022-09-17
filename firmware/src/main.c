@@ -64,6 +64,7 @@ imu_cmd_t imu0 = {
 	.log_timeout = BMA_LOG_TIMEOUT,
 	.update = true,
 	.features = false,
+	.spi_bytes = 1,
 	.op.info_ptr = &bma490_version,
 	.op.imu_set_spimode = &bma490l_set_spimode,
 	.op.imu_getid = &bma490l_getid,
@@ -86,6 +87,7 @@ imu_cmd_t imu0 = {
 	.log_timeout = SCA_LOG_TIMEOUT,
 	.update = true,
 	.features = false,
+	.spi_bytes = 4,
 	.op.info_ptr = &sca3300_version,
 	.op.imu_set_spimode = &sca3300_set_spimode,
 	.op.imu_getid = &sca3300_getid,
@@ -96,6 +98,14 @@ imu_cmd_t imu0 = {
 #endif
 
 /*
+ * PIC32 version specific setups
+ */
+#ifdef __32MK0512MCJ048__
+#endif
+#ifdef __32MZ1025W104132__
+#endif
+
+/*
  * Logging data structure
  */
 sBma490SensorData_t accel;
@@ -103,6 +113,8 @@ sBma490SensorData_t accel;
 volatile uint16_t tickCount[TMR_COUNT];
 
 static char buffer[STR_BUF_SIZE];
+
+static const char *build_date = __DATE__, *build_time = __TIME__;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -121,18 +133,25 @@ int main(void)
 	 */
 	TMR6_CallbackRegister(timer_ms_tick, 0);
 	TMR6_Start(); // software timers counter
-	TMR9_Start(); // IMU time-stamp counter
 
+#ifdef __32MK0512MCJ048__
+	TMR9_Start(); // IMU time-stamp counter
+#endif
+#ifdef __32MZ1025W104132__
+	TMR2_Start(); // IMU time-stamp counter
+#endif
+
+	printf("\r\n PIC32 IMU CHIP Controller  %s   %s %s ---\r\n", IMU_DRIVER, build_date, build_time);
 	/*
 	 * print the driver version
 	 */
 	imu0.op.info_ptr(); // print driver version on the serial port
 	imu0.op.imu_set_spimode(&imu0); // setup the IMU chip for SPI comms, X updates per second @ selected G range
-	printf(" IMU Read Status, %X  %X \r\n", imu0.rs, imu0.ss);
 
 	/*
 	 * start the graphic LCD driver
 	 */
+	lcd_version();
 	init_lcd_drv(D_INIT);
 	sprintf(buffer, " IMU CHIP Controller      ");
 	eaDogM_WriteStringAtPos(0, 0, buffer);

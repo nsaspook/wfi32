@@ -225,6 +225,9 @@ void SYS_Initialize ( void* data )
 
 	GPIO_Initialize();
 
+	BSP_Initialize();
+    DMAC_Initialize();
+
     TMR6_Initialize();
 
     ADCHS_Initialize();
@@ -233,7 +236,9 @@ void SYS_Initialize ( void* data )
 
     TMR5_Initialize();
 
-	BSP_Initialize();
+    TMR2_Initialize();
+
+
 	SPI2_Initialize();
 
 	SPI1_Initialize();

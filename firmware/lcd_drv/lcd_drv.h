@@ -54,6 +54,10 @@ extern "C" {
 #define bmp_y		24
 #define bmp_size	100		// x,y size of image
 #define	BANK1		0xA000A000	// bank 1 frame buffer memory address
+#define	BANK2		0x80030000	// bank 2 frame buffer memory address
+	
+#define LCD_DRIVER "V1.0" 
+#define LCD_ALIAS "EADOG LCD"
 
 	typedef enum {
 		D_INIT,
@@ -63,6 +67,7 @@ extern "C" {
 #define lcd_frame	0	// frame buffer 1 or 0
 
 	void init_lcd_drv(LCD_DVR_STATE init_type);
+	void lcd_version(void);
 
 	extern const uint8_t foo_map[]; // image in flash array
 

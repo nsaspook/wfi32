@@ -49,22 +49,24 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include <stdio.h>
-#include "peripheral/tmr/plib_tmr6.h"
-#include "peripheral/adchs/plib_adchs.h"
-#include "peripheral/uart/plib_uart1.h"
-#include "peripheral/tmr/plib_tmr5.h"
 #include "bsp/bsp.h"
 #include "peripheral/clk/plib_clk.h"
 #include "peripheral/gpio/plib_gpio.h"
 #include "peripheral/cache/plib_cache.h"
 #include "peripheral/evic/plib_evic.h"
+#include "peripheral/dmac/plib_dmac.h"
+#include "system/time/sys_time.h"
+#include "peripheral/tmr/plib_tmr6.h"
+#include "peripheral/adchs/plib_adchs.h"
+#include "peripheral/uart/plib_uart1.h"
+#include "peripheral/tmr/plib_tmr5.h"
+#include "peripheral/tmr/plib_tmr2.h"
 #include "peripheral/spi/spi_master/plib_spi2_master.h"
 #include "peripheral/spi/spi_master/plib_spi1_master.h"
 #include "system/int/sys_int.h"
 #include "system/cache/sys_cache.h"
 #include "osal/osal.h"
 #include "system/debug/sys_debug.h"
-#include "system/time/sys_time.h"
 #include "app.h"
 
 

@@ -63,6 +63,8 @@ void EVIC_Initialize( void )
     IPC11SET = 0x4 | 0x0;  /* CHANGE_NOTICE_A:  Priority 1 / Subpriority 0 */
     IPC13SET = 0x80000 | 0x0;  /* SPI2_RX:  Priority 2 / Subpriority 0 */
     IPC13SET = 0x8000000 | 0x0;  /* SPI2_TX:  Priority 2 / Subpriority 0 */
+    IPC17SET = 0x4 | 0x0;  /* DMA0:  Priority 1 / Subpriority 0 */
+    IPC17SET = 0x40000 | 0x0;  /* DMA2:  Priority 1 / Subpriority 0 */
     IPC19SET = 0x4 | 0x0;  /* TIMER_6:  Priority 1 / Subpriority 0 */
 
     /* Initialize External interrupt 2 callback object */

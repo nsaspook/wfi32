@@ -5,14 +5,20 @@
         <group>
             <file>file:/C:/Users/nsasp/wfi32/firmware/src/timers.h</file>
             <file>file:/C:/Users/nsasp/wfi32/firmware/src/sca3300.c</file>
+            <file>file:/C:/Users/nsasp/wfi32/firmware/lcd_drv/dogm-graphic.c</file>
             <file>file:/C:/Users/nsasp/wfi32/firmware/src/imupic32mcj.h</file>
-            <file>file:/C:/Users/nsasp/wfi32/firmware/src/main.c</file>
+            <file>file:/C:/Users/nsasp/wfi32/firmware/lcd_drv/OledDriver.c</file>
             <file>file:/C:/Users/nsasp/wfi32/firmware/src/timers.c</file>
             <file>file:/C:/Users/nsasp/wfi32/firmware/src/sca3300.h</file>
             <file>file:/C:/Users/nsasp/wfi32/firmware/src/bma490l.h</file>
             <file>file:/C:/Users/nsasp/wfi32/firmware/src/bma490l.c</file>
             <file>file:/C:/Users/nsasp/wfi32/firmware/src/bma490l_reg.h</file>
             <file>file:/C:/Users/nsasp/wfi32/firmware/src/config/default/bsp/bsp.h</file>
+            <file>file:/C:/Users/nsasp/wfi32/firmware/lcd_drv/dogm-graphic.h</file>
+            <file>file:/C:/Users/nsasp/wfi32/firmware/lcd_drv/lcd_drv.c</file>
+            <file>file:/C:/Users/nsasp/wfi32/firmware/src/main.c</file>
+            <file>file:/C:/Users/nsasp/wfi32/firmware/lcd_drv/lcd_drv.h</file>
+            <file>file:/C:/Users/nsasp/wfi32/firmware/lcd_drv/eadog.h</file>
         </group>
     </open-files>
 </project-private>

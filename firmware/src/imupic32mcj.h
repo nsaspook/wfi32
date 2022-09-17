@@ -19,6 +19,7 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
+#define IMU_DRIVER "V1.0" 
 	/*
 	 * what IMU chip are we using
 	 */
@@ -55,7 +56,7 @@ extern "C" {
 	 * IMU data structure for driver
 	 */
 	typedef struct _imu_cmd_t {
-		uint8_t device, cs, acc_range;
+		uint8_t device, cs, acc_range, spi_bytes;
 		uint8_t rbuf[64], tbuf[64];
 		uint32_t rbuf32[2], tbuf32[2], log_timeout, rs, ss;
 		volatile bool online, run, update, features, crc_error, angles;

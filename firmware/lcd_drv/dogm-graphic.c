@@ -94,7 +94,6 @@ void lcd_moveto_xy(uint8_t page, uint8_t column)
 #ifdef USE_DMA
 	LCD_GOTO_ADDRESS_S(page, column);
 #else
-	LCD_GOTO_ADDRESS(page, column);
 #endif
 	lcd_current_column = column;
 	lcd_current_page = page;

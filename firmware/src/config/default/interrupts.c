@@ -68,6 +68,8 @@ void SPI1_TX_InterruptHandler( void );
 void CHANGE_NOTICE_A_InterruptHandler( void );
 void SPI2_RX_InterruptHandler( void );
 void SPI2_TX_InterruptHandler( void );
+void DMA0_InterruptHandler( void );
+void DMA2_InterruptHandler( void );
 void TIMER_6_InterruptHandler( void );
 
 
@@ -106,6 +108,16 @@ void __ISR(_SPI2_RX_VECTOR, ipl2SRS) SPI2_RX_Handler (void)
 void __ISR(_SPI2_TX_VECTOR, ipl2SRS) SPI2_TX_Handler (void)
 {
     SPI2_TX_InterruptHandler();
+}
+
+void __ISR(_DMA0_VECTOR, ipl1SRS) DMA0_Handler (void)
+{
+    DMA0_InterruptHandler();
+}
+
+void __ISR(_DMA2_VECTOR, ipl1SRS) DMA2_Handler (void)
+{
+    DMA2_InterruptHandler();
 }
 
 void __ISR(_TIMER_6_VECTOR, ipl1SRS) TIMER_6_Handler (void)

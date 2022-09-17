@@ -126,7 +126,12 @@ bool sca3300_getdata(void * imup)
 				sdata.scan.ret_status = ((imu->rbuf32[SCA3300_REC] >> 8)&0xffff); // return status data
 			};
 
+#ifdef __32MK0512MCJ048__
 			sdata.scan.ts = TMR9_CounterGet(); // load a clock time-stamp from timer9 32-bit counter, frequency 234,375KHz, 266.66 min roll-over
+#endif
+#ifdef __32MZ1025W104132__
+			sdata.scan.ts = TMR2_CounterGet(); // load a clock time-stamp from timer9 32-bit counter, frequency 234,375KHz, 266.66 min roll-over
+#endif
 		}
 		return imu->online;
 	} else {

@@ -10,7 +10,7 @@
  * 10/15/2021
  * uses SPI1 with a 15MHz clock for the LCD chip. 
  */
-static volatile uint8_t NOPER = 0;
+
 static void delay_us(uint32_t);
 
 void init_lcd_drv(LCD_DVR_STATE init_type)

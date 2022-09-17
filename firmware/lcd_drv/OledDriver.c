@@ -61,7 +61,7 @@
 /* ------------------------------------------------------------ */
 /*				Global Variables								*/
 /* ------------------------------------------------------------ */
-volatile uint8_t dma_flag = 0, disp_frame = lcd_frame;
+volatile uint8_t disp_frame = lcd_frame;
 
 /*
  * various fonts locations
@@ -99,11 +99,11 @@ uint8_t * pbOledFontUser;
  ** so display data is rendered into this offscreen buffer and then
  ** copied to the display.
  *  must be in uncached memory for pic32 DMA so use __attribute__((coherent))
- * DMA0 SPI TX transfers DATA
- * DMA2 SPI TX transfers CMD
+ * DMA0 SPI TX transfers DATA, CMD
  * DMA1 GLCD buffer transfers
+ * DMA2 SPI TX transfers CMD, NOT USED
  */
-#ifdef __32MK0512MCJ048_H	// NO bank 2 for this CPU so memory in in bank 1
+#ifdef __32MK0512MCJ048__	// NO bank 2 for this CPU so memory in in bank 1
 uint8_t __attribute__((address(BANK1), coherent)) rgbOledBmp0[cbOledDispMax]; // two display buffers for page flipping
 uint8_t __attribute__((address(BANK1 + cbOledDispMax), coherent)) rgbOledBmp1[cbOledDispMax];
 #ifdef USE_DMA
@@ -112,7 +112,18 @@ static uint8_t __attribute__((address(BANK1 - 8), coherent)) rgbOledBmp_blank[4]
 volatile uint8_t __attribute__((address(BANK1 - 16), coherent)) rgbOledBmp_page[5];
 #endif
 
+#ifdef __32MZ1025W104132__	// bank 2 for this CPU
+uint8_t __attribute__((address(BANK2), coherent)) rgbOledBmp0[cbOledDispMax]; // two display buffers for page flipping
+uint8_t __attribute__((address(BANK2 + cbOledDispMax), coherent)) rgbOledBmp1[cbOledDispMax];
+#ifdef USE_DMA
+static uint8_t __attribute__((address(BANK2 - 8), coherent)) rgbOledBmp_blank[4] = {0x00, 0x00, 0x00, 0x00}; // 32-bit frame-buffer clearing variable
+#endif
+volatile uint8_t __attribute__((address(BANK2 - 16), coherent)) rgbOledBmp_page[5];
+#endif
+
 static volatile DMA_RUN_STATE dstate = D_idle;
+
+static const char *build_date = __DATE__, *build_time = __TIME__;
 
 /* ------------------------------------------------------------ */
 /*				Forward Declarations							*/
@@ -628,4 +639,9 @@ void wait_lcd_done(void)
 	while (DMAC_ChannelIsBusy(DMAC_CHANNEL_2)) {
 	};
 #endif
+}
+
+void lcd_version(void)
+{
+	printf("\r--- %s Driver Version  %s %s %s ---\r\n", LCD_ALIAS, LCD_DRIVER, build_date, build_time);
 }
