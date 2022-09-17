@@ -102,6 +102,8 @@ sBma490SensorData_t accel;
 
 volatile uint16_t tickCount[TMR_COUNT];
 
+static char buffer[STR_BUF_SIZE];
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Main Entry Point
@@ -120,12 +122,21 @@ int main(void)
 	TMR6_CallbackRegister(timer_ms_tick, 0);
 	TMR6_Start(); // software timers counter
 	TMR9_Start(); // IMU time-stamp counter
+
 	/*
 	 * print the driver version
 	 */
 	imu0.op.info_ptr(); // print driver version on the serial port
 	imu0.op.imu_set_spimode(&imu0); // setup the IMU chip for SPI comms, X updates per second @ selected G range
 	printf(" IMU Read Status, %X  %X \r\n", imu0.rs, imu0.ss);
+
+	/*
+	 * start the graphic LCD driver
+	 */
+	init_lcd_drv(D_INIT);
+	sprintf(buffer, " IMU CHIP Controller      ");
+	eaDogM_WriteStringAtPos(0, 0, buffer);
+	OledUpdate();
 
 	/*
 	 * check to see if we actually have a working IMU
@@ -168,6 +179,9 @@ int main(void)
 			imu0.update = false;
 			getAllData(&accel, &imu0); // convert data from the chip
 			printf("%6.3f,%6.3f,%6.3f,%u,%X,%X\r\n", accel.x, accel.y, accel.z, accel.sensortime, imu0.rs, imu0.ss);
+			sprintf(buffer, "%6.3f,%6.3f,%6.3f,%u,%X,%X\r\n", accel.x, accel.y, accel.z, accel.sensortime, imu0.rs, imu0.ss);
+			eaDogM_WriteStringAtPos(0, 0, buffer);
+			OledUpdate();
 			if (TimerDone(TMR_LOG)) {
 				//				printf(" IMU data timeout \r\n");
 				LED_GREEN_Toggle();

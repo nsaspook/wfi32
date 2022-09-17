@@ -63,6 +63,8 @@
 void EXTERNAL_2_InterruptHandler( void );
 void TIMER_5_InterruptHandler( void );
 void RTCC_InterruptHandler( void );
+void SPI1_RX_InterruptHandler( void );
+void SPI1_TX_InterruptHandler( void );
 void SPI2_RX_InterruptHandler( void );
 void SPI2_TX_InterruptHandler( void );
 void DMA0_InterruptHandler( void );
@@ -86,6 +88,16 @@ void __ISR(_TIMER_5_VECTOR, ipl1SRS) TIMER_5_Handler (void)
 void __ISR(_RTCC_VECTOR, ipl1SRS) RTCC_Handler (void)
 {
     RTCC_InterruptHandler();
+}
+
+void __ISR(_SPI1_RX_VECTOR, ipl2SRS) SPI1_RX_Handler (void)
+{
+    SPI1_RX_InterruptHandler();
+}
+
+void __ISR(_SPI1_TX_VECTOR, ipl2SRS) SPI1_TX_Handler (void)
+{
+    SPI1_TX_InterruptHandler();
 }
 
 void __ISR(_SPI2_RX_VECTOR, ipl3SRS) SPI2_RX_Handler (void)

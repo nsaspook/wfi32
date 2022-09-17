@@ -34,7 +34,7 @@ extern void RS_SetLow(void);
 extern void RS_SetHigh(void);
 extern void CSB_SetLow(void);
 extern void CSB_SetHigh(void);
-extern void SPI3_Exchange8bit(uint8_t);
+extern void SPI1_Exchange8bit(uint8_t);
 
 
 /*****************************************************************************

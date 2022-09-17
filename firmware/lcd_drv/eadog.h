@@ -40,7 +40,7 @@ extern "C" {
 #define IS_DELAYSHORT	4
 #define IS_DELAYMED	5
 #define IS_DELAYLONG	800
-#define IS_DELAYPOWERUP	350000
+#define IS_DELAYPOWERUP	400000
 
 #define EADOGM_CMD_CLR		1
 #define EADOGM_CMD_CURSOR_ON     0b00001111
@@ -64,9 +64,9 @@ extern "C" {
 	void eaDogM_WriteStringAtPos(uint8_t, uint8_t, char *);
 	void eaDogM_WriteIntAtPos(uint8_t, uint8_t, uint8_t);
 	void eaDogM_WriteByteToCGRAM(uint8_t, uint8_t);
-	void SPI3_Initialize_edogm(void);
-	void SPI3_Initialize_edogs(void);
-	void SPI3_ExchangeBuffer(uint8_t *, uint16_t);
+	void SPI1_Initialize_edogm(void);
+	void SPI1_Initialize_edogs(void);
+	void SPI1_ExchangeBuffer(uint8_t *, uint16_t);
 
 #define eaDogM_Cls()             eaDogM_WriteCommand(EADOGM_CMD_CLR)
 #define eaDogM_CursorOn()        eaDogM_WriteCommand(EADOGM_CMD_CURSOR_ON)

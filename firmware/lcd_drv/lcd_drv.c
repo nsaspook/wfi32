@@ -11,26 +11,21 @@
  * uses SPI1 with a 15MHz clock for the LCD chip. 
  */
 static volatile uint8_t NOPER = 0;
+static void delay_us(uint32_t);
 
 void init_lcd_drv(LCD_DVR_STATE init_type)
 {
 	switch (init_type) {
 	case D_MISC:
 	case D_INIT: // send the GLCD buffer data via DMA
-#ifdef EDOGM
-		init_display();
-		eaDogM_CursorOff();
-#endif
-#ifdef EDOGS
 		CSB_SetHigh(); // select SPI GLCD display, DOGXL240 @15MHz SPI clock
-		dmtdelay(IS_DELAYPOWERUP); // > 400ms power up delay
+		delay_us(IS_DELAYPOWERUP); // > 400ms power up delay
 		lcd_init();
 		OledInit();
 		OledSetCharUpdate(0); // manual LCD screen updates for speed
 		OledMoveTo(bmp_x, bmp_y); // position image
 		OledPutBmp(bmp_size, bmp_size, (uint8_t *) foo_map); // upload bitmap image from C array
-		dmtdelay(BMP_DELAY); // show image for a bit
-#endif
+		delay_us(BMP_DELAY); // show image for a bit
 		break;
 	default:
 		break;
@@ -38,17 +33,14 @@ void init_lcd_drv(LCD_DVR_STATE init_type)
 }
 
 /*
- * delay routine that clears the DMT in the required instruction count window
+ * microsecond busy wait delay, 90 seconds MAX
+ * Careful, uses core timer
  */
-void dmtdelay(const uint32_t delay)
+void delay_us(uint32_t us)
 {
-	uint32_t dcount; // keep this static to force loop timing
-	uint32_t dmt_clear_count = DMT_INST_COUNT;
-
-	for (dcount = 0; dcount <= delay; dcount++) { // delay a bit
-		if (!dmt_clear_count--) {
-			dmt_clear_count = DMT_INST_COUNT;
-		}
-		NOPER++;
-	};
+	// Convert microseconds us into how many clock ticks it will take
+	us *= SYS_FREQ / 1000000 / 2; // Core Timer updates every 2 ticks
+	_CP0_SET_COUNT(0); // Set Core Timer count to 0
+	while (us > _CP0_GET_COUNT()) {
+	}; // Wait until Core Timer count reaches the number we calculated earlier
 }

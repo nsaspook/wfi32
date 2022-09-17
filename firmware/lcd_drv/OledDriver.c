@@ -103,14 +103,14 @@ uint8_t * pbOledFontUser;
  * DMA2 SPI TX transfers CMD
  * DMA1 GLCD buffer transfers
  */
-//#ifdef __32MK1024MCM100_H	// bank 2 for this CPU
-uint8_t __attribute__((address(BANK2), coherent)) rgbOledBmp0[cbOledDispMax]; // two display buffers for page flipping
-uint8_t __attribute__((address(BANK2 + cbOledDispMax), coherent)) rgbOledBmp1[cbOledDispMax];
+#ifdef __32MK0512MCJ048_H	// NO bank 2 for this CPU so memory in in bank 1
+uint8_t __attribute__((address(BANK1), coherent)) rgbOledBmp0[cbOledDispMax]; // two display buffers for page flipping
+uint8_t __attribute__((address(BANK1 + cbOledDispMax), coherent)) rgbOledBmp1[cbOledDispMax];
 #ifdef USE_DMA
-static uint8_t __attribute__((address(BANK2 - 8), coherent)) rgbOledBmp_blank[4] = {0x00, 0x00, 0x00, 0x00}; // 32-bit frame-buffer clearing variable
+static uint8_t __attribute__((address(BANK1 - 8), coherent)) rgbOledBmp_blank[4] = {0x00, 0x00, 0x00, 0x00}; // 32-bit frame-buffer clearing variable
 #endif
-volatile uint8_t __attribute__((address(BANK2 - 16), coherent)) rgbOledBmp_page[5];
-//#endif
+volatile uint8_t __attribute__((address(BANK1 - 16), coherent)) rgbOledBmp_page[5];
+#endif
 
 static volatile DMA_RUN_STATE dstate = D_idle;
 
@@ -168,9 +168,6 @@ void OledInit(void)
 #ifdef USE_DMA
 #ifdef DMA_STATE_M
 	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_0, SPI1DmaChannelHandler_State, 0); // end of LCD buffer transfer interrupt function
-#else
-	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_2, SPI1DmaChannelHandler, 0); // end of LCD CDM transfer interrupt function
-	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_0, SPI1DmaChannelHandler, 0); // end of LCD buffer transfer interrupt function
 #endif
 	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_1, CBDmaChannelHandler, 0); // end of buffer clear transfer interrupt function
 
@@ -454,7 +451,7 @@ void OledClear(void)
 void CBDmaChannelHandler(DMAC_TRANSFER_EVENT event, uintptr_t contextHandle)
 {
 	if (event == DMAC_TRANSFER_EVENT_COMPLETE) {
-//		DEBUGB0_Clear();
+		//		DEBUGB0_Clear();
 	}
 }
 
@@ -479,13 +476,6 @@ void OledClearBuffer(void)
 	DMAC_ChannelTransfer(DMAC_CHANNEL_1, (const void *) rgbOledBmp_blank, (size_t) 4, (const void*) pb, (size_t) cbOledDispMax, (size_t) cbOledDispMax);
 	DCH1ECONSET = _DCH1ECON_CFORCE_MASK; // set CFORCE to 1 to start the transfer
 #else
-	int32_t ib;
-
-	/* Fill the memory buffer with 0.
-	 */
-	for (ib = 0; ib < cbOledDispMax; ib++) {
-		*pb++ = 0x00;
-	}
 #endif
 }
 
@@ -513,33 +503,6 @@ void OledUpdate(void)
 	SPI1DmaChannelHandler_State(0, DMA_MAGIC); // set DMA state machine init mode to start transfers
 	return;
 #else
-#ifdef EDOGS
-	int32_t ipag;
-	uint8_t* pb;
-
-	if (disp_frame) {
-		pb = rgbOledBmp0;
-	} else {
-		pb = rgbOledBmp1;
-	}
-	rgbOledBmp_page[4] = 0;
-
-	for (ipag = 0; ipag < cpagOledMax; ipag++) { // mainline code loop for GLCD update
-		/* Set the page address
-		 */
-		//Set page command
-		//page number
-		/* Start at the left column
-		 */
-		//set low nibble of column
-		//set high nibble of column
-		lcd_moveto_xy(ipag, 0);
-		/* Copy this memory page of display data.
-		 */
-		OledPutBuffer(ccolOledMax, pb);
-		pb += ccolOledMax;
-	}
-#endif
 #endif
 }
 
@@ -554,7 +517,7 @@ void SPI1DmaChannelHandler_State(DMAC_TRANSFER_EVENT event, uintptr_t contextHan
 	static int32_t ipag = 0; // buffer page number
 	static uint8_t* pb; // buffer page address
 
-//	DEBUGB0_Set(); // back to mainline code, GLCD updates in background using DMA and interrupts
+	// back to mainline code, GLCD updates in background using DMA and interrupts
 	LCD_UNSELECT();
 	if (contextHandle == DMA_MAGIC) { // re-init state machine for next GLCD update
 		dstate = D_init;
@@ -597,7 +560,6 @@ void SPI1DmaChannelHandler_State(DMAC_TRANSFER_EVENT event, uintptr_t contextHan
 		LCD_UNSELECT();
 		break;
 	}
-//	DEBUGB0_Clear();
 }
 
 /* ------------------------------------------------------------ */

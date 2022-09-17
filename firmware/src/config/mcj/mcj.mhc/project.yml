@@ -13,13 +13,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: E4D46EA9DD9D211CC62F25718F3C4671
-- generatedChecksum: 14BE4826D3A163C4ECE3C7A859E6CCD5
+- generatedChecksum: 9FCEBE65D3BAC4CD767AB5604E3CE957
   logicalPath: config/mcj
   name: interrupts.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 14BE4826D3A163C4ECE3C7A859E6CCD5
+  userChecksum: 9FCEBE65D3BAC4CD767AB5604E3CE957
 - generatedChecksum: null
   logicalPath: ''
   name: main.c
@@ -41,20 +41,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: C289FFF5580D062BBD86AAC9B1ED7F88
-- generatedChecksum: 6F6ABDF2F4384D3D8A2548F6A173B8A1
+- generatedChecksum: 6F6B471B0C0181422878659A23CB9BAA
   logicalPath: config/mcj/peripheral/dmac
   name: plib_dmac.c
   physicalPath: peripheral/dmac
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 6F6ABDF2F4384D3D8A2548F6A173B8A1
-- generatedChecksum: 897FCCD5F79A4686C3DD98DA6201019A
+  userChecksum: 6F6B471B0C0181422878659A23CB9BAA
+- generatedChecksum: 6F288A788666DDAA4B4184C739D6DC28
   logicalPath: config/mcj/peripheral/evic
   name: plib_evic.c
   physicalPath: peripheral/evic
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 897FCCD5F79A4686C3DD98DA6201019A
+  userChecksum: 6F288A788666DDAA4B4184C739D6DC28
 - generatedChecksum: 445ECC43FDFEEBCCB2C23D62E86C9DDC
   logicalPath: config/mcj/peripheral/gpio
   name: plib_gpio.c
@@ -76,13 +76,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: BD9CB061968B38179ABBF9B53E47A080
-- generatedChecksum: C9FB676CC35B0A0DA43490A01EFEB774
+- generatedChecksum: 3DBD5C08EB7DB8D666609DC772B98418
   logicalPath: config/mcj/peripheral/spi/spi_master
   name: plib_spi1_master.c
   physicalPath: peripheral/spi/spi_master
   security: NON_SECURE
   type: SOURCE
-  userChecksum: C9FB676CC35B0A0DA43490A01EFEB774
+  userChecksum: 3DBD5C08EB7DB8D666609DC772B98418
 - generatedChecksum: A81E20875613CD9E47E4F7AD47132195
   logicalPath: config/mcj/peripheral/spi/spi_master
   name: plib_spi2_master.c
@@ -209,13 +209,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: C5CCB53DBC284D1BCEAB7756ED870B04
-- generatedChecksum: 27EFFF00EA5DD882C446A714F0D9CE9E
+- generatedChecksum: A9C21E81CB403E638EEB811A7780088B
   logicalPath: config/mcj/peripheral/spi/spi_master
   name: plib_spi1_master.h
   physicalPath: peripheral/spi/spi_master
   security: NON_SECURE
   type: HEADER
-  userChecksum: 27EFFF00EA5DD882C446A714F0D9CE9E
+  userChecksum: A9C21E81CB403E638EEB811A7780088B
 - generatedChecksum: DD36DE6ACD8AE29EFBB17C8C6B4E962E
   logicalPath: config/mcj/peripheral/spi/spi_master
   name: plib_spi2_master.h

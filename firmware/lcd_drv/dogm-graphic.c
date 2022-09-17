@@ -123,7 +123,7 @@ void lcd_data(uint8_t data)
 {
 	LCD_DRAM();
 	LCD_SELECT();
-	SPI3_Exchange8bit(data);
+	SPI1_Exchange8bit(data);
 	LCD_UNSELECT();
 	lcd_inc_column(1);
 }
@@ -137,7 +137,7 @@ void lcd_command(uint8_t cmd)
 	LCD_CMD();
 	LCD_SELECT();
 
-	SPI3_Exchange8bit(cmd);
+	SPI1_Exchange8bit(cmd);
 	LCD_UNSELECT();
 }
 
