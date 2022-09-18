@@ -50,14 +50,14 @@ extern "C" {
 
 #define SYS_FREQ	120000000 // Running at 120MHz
 #define BMP_DELAY	3000000	// image display delay counts
-#define bmp_x		60		// screen positions of image
+#define bmp_x		60		// syoucreen positions of image
 #define bmp_y		24
 #define bmp_size	100		// x,y size of image
 #define	BANK1		0xA000A000	// bank 1 frame buffer memory address
 #define	BANK2		0x80030000	// bank 2 frame buffer memory address
 	
-#define LCD_DRIVER "V1.0" 
-#define LCD_ALIAS "EADOG LCD"
+#define LCD_DRIVER	"V1.001" 
+#define LCD_ALIAS	"EADOG LCD"
 
 	typedef enum {
 		D_INIT,

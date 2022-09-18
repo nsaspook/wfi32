@@ -23,9 +23,9 @@ extern "C" {
 #include "imupic32mcj.h"
 #include "timers.h"
 
-#define SCA3300_DRIVER "V0.210" 
+#define SCA3300_DRIVER	"V0.210" 
 
-#define SCA3300_ALIAS "sca3300"
+#define SCA3300_ALIAS	"SCA3300  "
 
 	/* Device commands and response */
 #define SCA3300_REG_WHOAMI	0x10

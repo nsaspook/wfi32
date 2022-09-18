@@ -20,10 +20,8 @@ extern "C" {
 #include "imupic32mcj.h"
 #include "bma490l_reg.h"
 
-#define BMA490_DRIVER "V0.202" 
-	// version 0.200	PIC32MK MCJ 48 pin version
-
-#define BMA490_ALIAS "bma490l"
+#define BMA490_DRIVER	"V0.202" 
+#define BMA490_ALIAS	"BMA490L  "
 
 #define RBIT		0b10000000
 #define WBIT            0b00000000

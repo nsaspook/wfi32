@@ -141,7 +141,8 @@ int main(void)
 	TMR2_Start(); // IMU time-stamp counter
 #endif
 
-	printf("\r\n PIC32 IMU CHIP Controller  %s   %s %s ---\r\n", IMU_DRIVER, build_date, build_time);
+	printf("\r\n PIC32 IMU Controller  %s %s %s ---\r\n", IMU_DRIVER, build_date, build_time);
+	printf("\r--- %s Driver Version  %s %s %s ---\r\n", SCA3300_ALIAS, SCA3300_DRIVER, build_date, build_time);
 	/*
 	 * print the driver version
 	 */
