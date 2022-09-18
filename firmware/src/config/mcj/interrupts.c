@@ -60,6 +60,7 @@
 // *****************************************************************************
 
 
+void CORE_TIMER_InterruptHandler( void );
 void EXTERNAL_2_InterruptHandler( void );
 void TIMER_5_InterruptHandler( void );
 void RTCC_InterruptHandler( void );
@@ -75,6 +76,11 @@ void TIMER_6_InterruptHandler( void );
 
 
 /* All the handlers are defined here.  Each will call its PLIB-specific function. */
+void __ISR(_CORE_TIMER_VECTOR, ipl1SRS) CORE_TIMER_Handler (void)
+{
+    CORE_TIMER_InterruptHandler();
+}
+
 void __ISR(_EXTERNAL_2_VECTOR, ipl1SRS) EXTERNAL_2_Handler (void)
 {
     EXTERNAL_2_InterruptHandler();

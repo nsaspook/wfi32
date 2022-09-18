@@ -50,6 +50,7 @@
 #include "sca3300.h"
 #include "timers.h"
 #include "../../firmware/lcd_drv/lcd_drv.h"
+#include "gfx.h"
 
 #ifdef BMA490L
 /*
@@ -115,6 +116,9 @@ volatile uint16_t tickCount[TMR_COUNT];
 static char buffer[STR_BUF_SIZE];
 
 static const char *build_date = __DATE__, *build_time = __TIME__;
+static const uint32_t update_delay = 5;
+
+extern CORETIMER_OBJECT coreTmr;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -142,7 +146,7 @@ int main(void)
 #endif
 
 	printf("\r\n PIC32 IMU Controller  %s %s %s ---\r\n", IMU_DRIVER, build_date, build_time);
-	printf("\r--- %s Driver Version  %s %s %s ---\r\n", SCA3300_ALIAS, SCA3300_DRIVER, build_date, build_time);
+
 	/*
 	 * print the driver version
 	 */
@@ -154,8 +158,9 @@ int main(void)
 	 */
 	lcd_version();
 	init_lcd_drv(D_INIT);
+	OledClearBuffer();
 	sprintf(buffer, " IMU CHIP Controller      ");
-	eaDogM_WriteStringAtPos(0, 0, buffer);
+	eaDogM_WriteStringAtPos(15, 0, buffer);
 	OledUpdate();
 
 	/*
@@ -195,12 +200,28 @@ int main(void)
 		 * convert the SPI XYZ response to standard floating point acceleration values and rolling integer time-stamps per measurement
 		 */
 		if (imu0.update || TimerDone(TMR_LOG)) {
+			OledClearBuffer();
 			imu0.op.imu_getdata(&imu0); // read data from the chip
 			imu0.update = false;
 			getAllData(&accel, &imu0); // convert data from the chip
 			printf("%6.3f,%6.3f,%6.3f,%u,%X,%X\r\n", accel.x, accel.y, accel.z, accel.sensortime, imu0.rs, imu0.ss);
-			sprintf(buffer, "%6.3f,%6.3f,%6.3f,%u,%X,%X\r\n", accel.x, accel.y, accel.z, accel.sensortime, imu0.rs, imu0.ss);
+			sprintf(buffer, "%6.3f,%6.3f,%6.3f,%X,%X\r\n", accel.x, accel.y, accel.z, imu0.rs, imu0.ss);
 			eaDogM_WriteStringAtPos(0, 0, buffer);
+			sprintf(buffer, "\r\n  PIC32 IMU Controller %s %s %s\r\n", IMU_DRIVER, build_date, build_time);
+			eaDogM_WriteStringAtPos(14, 0, buffer);
+
+			vector_graph();
+			{
+				//	100 Hz updates, processing takes 5ms
+				uint32_t tickStart, delayTicks;
+				tickStart = coreTmr.tickCounter;
+				delayTicks = (1000 * update_delay) / CORE_TIMER_INTERRUPT_PERIOD_IN_US; // Number of tick interrupts to wait for the delay
+				LA_gfx(false, false, 0);
+				while ((coreTmr.tickCounter - tickStart) < delayTicks) {
+					// extra processing loop while waiting for clock time to expire
+					LA_gfx(false, false, 1400);
+				}
+			}
 			OledUpdate();
 			if (TimerDone(TMR_LOG)) {
 				//				printf(" IMU data timeout \r\n");

@@ -126,6 +126,26 @@ bool sca3300_getdata(void * imup)
 				sdata.scan.ret_status = ((imu->rbuf32[SCA3300_REC] >> 8)&0xffff); // return status data
 			};
 
+			if (imu->device == IMU_SCL3300) { // we also need angles data
+				sca3300_imu_transfer(imu, SCL3300_ANG_X_32B);
+				sca3300_check_crc(imu, SCA3300_REC); // check dummy for CRC error
+
+				sca3300_imu_transfer(imu, SCL3300_ANG_Y_32B);
+				if (sca3300_check_crc(imu, SCA3300_REC)) {
+					sdata.scan.channels[SCL3300_ANG_X] = ((imu->rbuf32[SCA3300_REC] >> 8)&0xffff); // X data
+				};
+
+				sca3300_imu_transfer(imu, SCL3300_ANG_Z_32B);
+				if (sca3300_check_crc(imu, SCA3300_REC)) {
+					sdata.scan.channels[SCL3300_ANG_Y] = ((imu->rbuf32[SCA3300_REC] >> 8)&0xffff); // Y data
+				};
+
+				sca3300_imu_transfer(imu, SCA3300_RS_32B);
+				if (sca3300_check_crc(imu, SCA3300_REC)) {
+					sdata.scan.channels[SCL3300_ANG_Z] = ((imu->rbuf32[SCA3300_REC] >> 8)&0xffff); // Z data
+				};
+			}
+
 #ifdef __32MK0512MCJ048__
 			sdata.scan.ts = TMR9_CounterGet(); // load a clock time-stamp from timer9 32-bit counter, frequency 234,375KHz, 266.66 min roll-over
 #endif
@@ -153,8 +173,9 @@ bool sca3300_getid(void * imup)
 			sca3300_imu_transfer(imu, SCA3300_WHOAMI_32B);
 			if ((((imu->rbuf32[SCA3300_REC] >> 8)&0xffff) == SCA3300_WHOAMI_ID) || (angles = ((imu->rbuf32[SCA3300_REC] >> 8)&0xffff) == SCA3300_WHOAMI_ID_SCL)) {
 				if (sca3300_check_crc(imu, SCA3300_REC)) {
-					if (angles) {
+					if (angles) { // SCL3300 detected
 						imu->angles = true; // SLC3300 mode
+						imu->device = IMU_SCL3300;
 					}
 					imu->online = true;
 					imu->rbuf32[SCA3300_REC] = 0;

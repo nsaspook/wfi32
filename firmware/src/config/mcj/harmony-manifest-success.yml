@@ -4,8 +4,8 @@
 
 
 project: wfi32
-creation_date: 2022-09-16T19:34:01.477-07:00[America/Los_Angeles]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
-operating_system: Windows 10
+creation_date: 2022-09-18T13:25:32.152-07:00[America/Los_Angeles]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+operating_system: Linux
 mhc_mode: IDE            # [IDE|Standalone|Headless]
 mhc_version: v3.8.5
 mplabx_version: v6.00        # if MPLAB X plugin only
