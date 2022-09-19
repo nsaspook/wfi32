@@ -21,6 +21,7 @@ build/default/production/_ext/1171490990/interrupts.o: \
  ../src/config/default/configuration.h \
  ../src/config/default/peripheral/tmr/plib_tmr6.h \
  ../src/config/default/peripheral/tmr/plib_tmr_common.h \
+ ../src/config/default/peripheral/coretimer/plib_coretimer.h \
  ../src/config/default/peripheral/adchs/plib_adchs.h \
  ../src/config/default/peripheral/adchs/plib_adchs_common.h \
  ../src/config/default/peripheral/uart/plib_uart1.h \
@@ -86,6 +87,8 @@ build/default/production/_ext/1171490990/interrupts.o: \
 ../src/config/default/peripheral/tmr/plib_tmr6.h:
 
 ../src/config/default/peripheral/tmr/plib_tmr_common.h:
+
+../src/config/default/peripheral/coretimer/plib_coretimer.h:
 
 ../src/config/default/peripheral/adchs/plib_adchs.h:
 

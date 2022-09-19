@@ -20,20 +20,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: D230A6B646D2E78CEAA6AA924E04FCA0
-- generatedChecksum: A9995163DECD24410EAFFC191EDCEEB3
+- generatedChecksum: 2763344A92F06EF373F45F9A0E4D79CE
   logicalPath: config/default
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: A9995163DECD24410EAFFC191EDCEEB3
-- generatedChecksum: 768D2F7E60B04F3FBA91C7D86F8BEB5B
+  userChecksum: 2763344A92F06EF373F45F9A0E4D79CE
+- generatedChecksum: 54D90E3BB11897B8310B3D0682EE4F99
   logicalPath: config/default
   name: interrupts.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 768D2F7E60B04F3FBA91C7D86F8BEB5B
+  userChecksum: 54D90E3BB11897B8310B3D0682EE4F99
 - generatedChecksum: null
   logicalPath: ''
   name: main.c
@@ -76,6 +76,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 8B8826AD3AB170BA90F46B4688414547
+- generatedChecksum: CDE489012C46160ED6A67092B2FFCE99
+  logicalPath: config/default/peripheral/coretimer
+  name: plib_coretimer.c
+  physicalPath: peripheral/coretimer
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: CDE489012C46160ED6A67092B2FFCE99
 - generatedChecksum: B8DFA3C8E569EAA2337FE688C76F4A16
   logicalPath: config/default/peripheral/dmac
   name: plib_dmac.c
@@ -83,13 +90,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: B8DFA3C8E569EAA2337FE688C76F4A16
-- generatedChecksum: 756522A7FDAEF6B6B65AE82BEBDABF09
+- generatedChecksum: C86744FEDC9C785A843237A8CD4A613C
   logicalPath: config/default/peripheral/evic
   name: plib_evic.c
   physicalPath: peripheral/evic
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 756522A7FDAEF6B6B65AE82BEBDABF09
+  userChecksum: C86744FEDC9C785A843237A8CD4A613C
 - generatedChecksum: 9670DCBA45EC731DEB866F21347B0BFB
   logicalPath: config/default/peripheral/gpio
   name: plib_gpio.c
@@ -202,13 +209,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 47250B2F737814C884DACD506C30AFD3
-- generatedChecksum: FC1E98C051FE0DB1A4BB0326907FF307
+- generatedChecksum: 1835310BAE9DBBAFB637A0A1626AD250
   logicalPath: config/default
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: FC1E98C051FE0DB1A4BB0326907FF307
+  userChecksum: 1835310BAE9DBBAFB637A0A1626AD250
 - generatedChecksum: E189C26B2269F8DE46033CCD0621958D
   logicalPath: config/default
   name: device.h
@@ -286,6 +293,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: F4C7B8A950B1D12FF6EC959D0A996B5B
+- generatedChecksum: 2AE197E7D597C560D9068E8D88DE0BEC
+  logicalPath: config/default/peripheral/coretimer
+  name: plib_coretimer.h
+  physicalPath: peripheral/coretimer
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 2AE197E7D597C560D9068E8D88DE0BEC
 - generatedChecksum: AC36F429D7162D7D1A68B9955ED194A3
   logicalPath: config/default/peripheral/dmac
   name: plib_dmac.h

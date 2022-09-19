@@ -20,6 +20,7 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/config/default/device.h \
  ../src/config/default/peripheral/tmr/plib_tmr6.h \
  ../src/config/default/peripheral/tmr/plib_tmr_common.h \
+ ../src/config/default/peripheral/coretimer/plib_coretimer.h \
  ../src/config/default/peripheral/adchs/plib_adchs.h \
  ../src/config/default/peripheral/adchs/plib_adchs_common.h \
  ../src/config/default/peripheral/uart/plib_uart1.h \
@@ -46,6 +47,7 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/../../firmware/lcd_drv/dogm-graphic.h ../src/timers.h \
  ../src/../../firmware/lcd_drv/OledDriver.h \
  ../src/../../firmware/lcd_drv/OledChar.h \
+ ../src/../../firmware/lcd_drv/OledGrph.h ../src/gfx.h \
  ../src/../../firmware/lcd_drv/OledGrph.h
 
 ../src/config/default/definitions.h:
@@ -93,6 +95,8 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
 ../src/config/default/peripheral/tmr/plib_tmr6.h:
 
 ../src/config/default/peripheral/tmr/plib_tmr_common.h:
+
+../src/config/default/peripheral/coretimer/plib_coretimer.h:
 
 ../src/config/default/peripheral/adchs/plib_adchs.h:
 
@@ -157,5 +161,9 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
 ../src/../../firmware/lcd_drv/OledDriver.h:
 
 ../src/../../firmware/lcd_drv/OledChar.h:
+
+../src/../../firmware/lcd_drv/OledGrph.h:
+
+../src/gfx.h:
 
 ../src/../../firmware/lcd_drv/OledGrph.h:

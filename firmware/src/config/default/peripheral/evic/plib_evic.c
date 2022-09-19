@@ -56,6 +56,7 @@ void EVIC_Initialize( void )
     INTCONSET = _INTCON_MVEC_MASK;
 
     /* Set up priority and subpriority of enabled interrupts */
+    IPC0SET = 0xc | 0x0;  /* CORE_TIMER:  Priority 3 / Subpriority 0 */
     IPC3SET = 0xc00 | 0x0;  /* EXTERNAL_2:  Priority 3 / Subpriority 0 */
     IPC6SET = 0x4 | 0x0;  /* TIMER_5:  Priority 1 / Subpriority 0 */
     IPC9SET = 0x4 | 0x0;  /* SPI1_RX:  Priority 1 / Subpriority 0 */

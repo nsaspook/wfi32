@@ -57,6 +57,7 @@
 #include "peripheral/dmac/plib_dmac.h"
 #include "system/time/sys_time.h"
 #include "peripheral/tmr/plib_tmr6.h"
+#include "peripheral/coretimer/plib_coretimer.h"
 #include "peripheral/adchs/plib_adchs.h"
 #include "peripheral/uart/plib_uart1.h"
 #include "peripheral/tmr/plib_tmr5.h"

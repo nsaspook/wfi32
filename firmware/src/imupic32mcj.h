@@ -56,7 +56,7 @@ extern "C" {
 	 * IMU data structure for driver
 	 */
 	typedef struct _imu_cmd_t {
-		uint8_t device, cs, acc_range, spi_bytes;
+		uint8_t device, cs, acc_range, spi_bytes, acc_range_scl;
 		uint8_t rbuf[64], tbuf[64];
 		uint32_t rbuf32[2], tbuf32[2], log_timeout, rs, ss;
 		volatile bool online, run, update, features, crc_error, angles;
@@ -89,6 +89,10 @@ extern "C" {
 		range_3g = 0x05,
 		range_6g = 0x06,
 		range_15gl = 0x07,
+		range_12g = 0x08,
+		range_24g = 0x09,
+		range_inc1 = 0x0a,
+		range_inc2 = 0x0b
 	};
 
 	/*! Earth's gravity in m/s^2 */

@@ -157,6 +157,12 @@ void getAllData(sBma490SensorData_t *accel, imu_cmd_t * imu)
 	case range_6g:
 		accelRange = SCA3300_ACCEL_MG_LSB_6G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
 		break;
+	case range_12g:
+		accelRange = SCL3300_ACCEL_MG_LSB_12G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
+		break;
+	case range_24g:
+		accelRange = SCL3300_ACCEL_MG_LSB_24G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
+		break;
 	case range_2g:
 	default:
 		accelRange = BMA490_ACCEL_MG_LSB_2G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
