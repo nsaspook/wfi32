@@ -4,6 +4,13 @@ attributes: {id: tmr3}
 children:
 - type: Symbols
   children:
+  - type: Hex
+    attributes: {id: TCON_REG_VALUE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tmr3, value: '0'}
   - type: Integer
     attributes: {id: TIMER_CLOCK_FREQ}
     children:
@@ -102,6 +109,13 @@ children:
         attributes: {id: tmr3, value: 'true'}
       - type: User
         attributes: {value: 'false'}
+  - type: Integer
+    attributes: {id: TMR_PRESCALER_VALUE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tmr3, value: '1'}
   - type: Comment
     attributes: {id: TMR_SLAVE_COMMENT}
     children:

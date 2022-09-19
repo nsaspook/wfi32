@@ -18,9 +18,9 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/config/default/system/int/sys_int_mapping.h \
  ../src/config/default/configuration.h ../src/config/default/user.h \
  ../src/config/default/device.h \
+ ../src/config/default/peripheral/coretimer/plib_coretimer.h \
  ../src/config/default/peripheral/tmr/plib_tmr6.h \
  ../src/config/default/peripheral/tmr/plib_tmr_common.h \
- ../src/config/default/peripheral/coretimer/plib_coretimer.h \
  ../src/config/default/peripheral/adchs/plib_adchs.h \
  ../src/config/default/peripheral/adchs/plib_adchs_common.h \
  ../src/config/default/peripheral/uart/plib_uart1.h \
@@ -38,9 +38,9 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/config/default/system/debug/sys_debug.h ../src/app.h \
  ../src/imupic32mcj.h ../src/bma490l.h ../src/bma490l_reg.h \
  ../src/sca3300.h ../src/timers.h ../src/../../firmware/lcd_drv/lcd_drv.h \
- ../src/../../firmware/lcd_drv/../src/config/mcj/peripheral/spi/spi_master/plib_spi_master_common.h \
- ../src/../../firmware/lcd_drv/../src/config/mcj/peripheral/gpio/plib_gpio.h \
- ../src/../../firmware/lcd_drv/../src/config/mcj/peripheral/dmac/plib_dmac.h \
+ c:\users\nsasp\wfi32\firmware\src\config\mcj\peripheral\spi\spi_master\plib_spi_master_common.h \
+ c:\users\nsasp\wfi32\firmware\src\config\mcj\peripheral\gpio\plib_gpio.h \
+ c:\users\nsasp\wfi32\firmware\src\config\mcj\peripheral\dmac\plib_dmac.h \
  ../src/../../firmware/lcd_drv/display_type.h \
  ../src/../../firmware/lcd_drv/eadog.h \
  ../src/../../firmware/lcd_drv/lcd_drv.h \
@@ -92,11 +92,11 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
 
 ../src/config/default/device.h:
 
+../src/config/default/peripheral/coretimer/plib_coretimer.h:
+
 ../src/config/default/peripheral/tmr/plib_tmr6.h:
 
 ../src/config/default/peripheral/tmr/plib_tmr_common.h:
-
-../src/config/default/peripheral/coretimer/plib_coretimer.h:
 
 ../src/config/default/peripheral/adchs/plib_adchs.h:
 
@@ -142,11 +142,11 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
 
 ../src/../../firmware/lcd_drv/lcd_drv.h:
 
-../src/../../firmware/lcd_drv/../src/config/mcj/peripheral/spi/spi_master/plib_spi_master_common.h:
+c:\users\nsasp\wfi32\firmware\src\config\mcj\peripheral\spi\spi_master\plib_spi_master_common.h:
 
-../src/../../firmware/lcd_drv/../src/config/mcj/peripheral/gpio/plib_gpio.h:
+c:\users\nsasp\wfi32\firmware\src\config\mcj\peripheral\gpio\plib_gpio.h:
 
-../src/../../firmware/lcd_drv/../src/config/mcj/peripheral/dmac/plib_dmac.h:
+c:\users\nsasp\wfi32\firmware\src\config\mcj\peripheral\dmac\plib_dmac.h:
 
 ../src/../../firmware/lcd_drv/display_type.h:
 

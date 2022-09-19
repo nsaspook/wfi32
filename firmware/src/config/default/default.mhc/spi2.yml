@@ -17,14 +17,14 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '10000000'}
+        attributes: {value: '8000000'}
   - type: Integer
     attributes: {id: SPI_BRG_VALUE}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: spi2, value: '9'}
+        attributes: {id: spi2, value: '12'}
   - type: Comment
     attributes: {id: SPI_CLOCK_MODE_COMMENT}
     children:
@@ -42,11 +42,11 @@ children:
       - type: Long
         attributes: {id: max}
         children:
-        - {type: Value, value: '255'}
+        - {type: Value, value: '4294967295'}
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: spi2, value: '255'}
+        attributes: {id: spi2, value: '4294967295'}
   - type: Boolean
     attributes: {id: SPI_INTERRUPT_MODE}
     children:
@@ -81,7 +81,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '3'}
+        attributes: {value: '0'}
   - type: KeyValueSet
     attributes: {id: SPI_SPICON_MSSEN}
     children:
@@ -90,4 +90,4 @@ children:
       - type: User
         attributes: {value: '1'}
 - type: ElementPosition
-  attributes: {x: '20', y: '182', id: spi2}
+  attributes: {x: '21', y: '182', id: spi2}

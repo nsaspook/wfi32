@@ -94,6 +94,7 @@ imu_cmd_t imu0 = {
 	.op.imu_getid = &sca3300_getid,
 	.op.imu_getdata = &sca3300_getdata,
 	.acc_range = range_15gl,
+	.acc_range_scl = range_12g,
 	.angles = false,
 };
 #endif

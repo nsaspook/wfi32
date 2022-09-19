@@ -108,8 +108,8 @@ extern "C" {
 #define SCA3300_ACCEL_MG_LSB_15G	0.000207000	///< Macro for mg per LSB at +/- 1.5g sensitivity	LSB/g 5400
 #define SCA3300_ACCEL_MG_LSB_3G		0.000395000	///< Macro for mg per LSB at +/- 3g sensitivity		LSB/g 2700
 #define SCA3300_ACCEL_MG_LSB_6G		0.000765000	///< Macro for mg per LSB at +/- 6g sensitivity		LSB/g 1350
-#define SCL3300_ACCEL_MG_LSB_12G	0.000207000	///< Macro for mg per LSB at +/- 1.2g sensitivity	LSB/g 6000
-#define SCL3300_ACCEL_MG_LSB_24G	0.000207000	///< Macro for mg per LSB at +/- 2.4g sensitivity	LSB/g 3000
+#define SCL3300_ACCEL_MG_LSB_12G	0.000167400	///< Macro for mg per LSB at +/- 1.2g sensitivity	LSB/g 6000
+#define SCL3300_ACCEL_MG_LSB_24G	0.000333800	///< Macro for mg per LSB at +/- 2.4g sensitivity	LSB/g 3000
 
 	void delay_us(uint32_t);
 
