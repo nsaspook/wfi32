@@ -38,9 +38,9 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/config/default/system/debug/sys_debug.h ../src/app.h \
  ../src/imupic32mcj.h ../src/bma490l.h ../src/bma490l_reg.h \
  ../src/sca3300.h ../src/timers.h ../src/../../firmware/lcd_drv/lcd_drv.h \
- c:\users\nsasp\wfi32\firmware\src\config\mcj\peripheral\spi\spi_master\plib_spi_master_common.h \
- c:\users\nsasp\wfi32\firmware\src\config\mcj\peripheral\gpio\plib_gpio.h \
- c:\users\nsasp\wfi32\firmware\src\config\mcj\peripheral\dmac\plib_dmac.h \
+ c:\users\nsasp\wfi32\firmware\src\config\default\peripheral\spi\spi_master\plib_spi_master_common.h \
+ c:\users\nsasp\wfi32\firmware\src\config\default\peripheral\gpio\plib_gpio.h \
+ c:\users\nsasp\wfi32\firmware\src\config\default\peripheral\dmac\plib_dmac.h \
  ../src/../../firmware/lcd_drv/display_type.h \
  ../src/../../firmware/lcd_drv/eadog.h \
  ../src/../../firmware/lcd_drv/lcd_drv.h \
@@ -142,11 +142,11 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
 
 ../src/../../firmware/lcd_drv/lcd_drv.h:
 
-c:\users\nsasp\wfi32\firmware\src\config\mcj\peripheral\spi\spi_master\plib_spi_master_common.h:
+c:\users\nsasp\wfi32\firmware\src\config\default\peripheral\spi\spi_master\plib_spi_master_common.h:
 
-c:\users\nsasp\wfi32\firmware\src\config\mcj\peripheral\gpio\plib_gpio.h:
+c:\users\nsasp\wfi32\firmware\src\config\default\peripheral\gpio\plib_gpio.h:
 
-c:\users\nsasp\wfi32\firmware\src\config\mcj\peripheral\dmac\plib_dmac.h:
+c:\users\nsasp\wfi32\firmware\src\config\default\peripheral\dmac\plib_dmac.h:
 
 ../src/../../firmware/lcd_drv/display_type.h:
 

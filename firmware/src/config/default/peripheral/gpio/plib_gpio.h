@@ -86,6 +86,24 @@
 #define IMU_INT2_InterruptEnable()   (CNENASET = (1U<<14))
 #define IMU_INT2_InterruptDisable()  (CNENACLR = (1U<<14))
 
+/*** Macros for DIS_CS pin ***/
+#define DIS_CS_Set()               (LATBSET = (1U<<6))
+#define DIS_CS_Clear()             (LATBCLR = (1U<<6))
+#define DIS_CS_Toggle()            (LATBINV= (1U<<6))
+#define DIS_CS_OutputEnable()      (TRISBCLR = (1U<<6))
+#define DIS_CS_InputEnable()       (TRISBSET = (1U<<6))
+#define DIS_CS_Get()               ((PORTB >> 6) & 0x1U)
+#define DIS_CS_PIN                  GPIO_PIN_RB6
+
+/*** Macros for DIS_MODE pin ***/
+#define DIS_MODE_Set()               (LATBSET = (1U<<8))
+#define DIS_MODE_Clear()             (LATBCLR = (1U<<8))
+#define DIS_MODE_Toggle()            (LATBINV= (1U<<8))
+#define DIS_MODE_OutputEnable()      (TRISBCLR = (1U<<8))
+#define DIS_MODE_InputEnable()       (TRISBSET = (1U<<8))
+#define DIS_MODE_Get()               ((PORTB >> 8) & 0x1U)
+#define DIS_MODE_PIN                  GPIO_PIN_RB8
+
 /*** Macros for IMU_CS pin ***/
 #define IMU_CS_Set()               (LATBSET = (1U<<7))
 #define IMU_CS_Clear()             (LATBCLR = (1U<<7))

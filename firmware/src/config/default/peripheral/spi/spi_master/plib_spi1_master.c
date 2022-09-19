@@ -51,12 +51,12 @@
 SPI_OBJECT spi1Obj;
 
 #define SPI1_CON_MSTEN                      (1 << _SPI1CON_MSTEN_POSITION)
-#define SPI1_CON_CKP                        (0 << _SPI1CON_CKP_POSITION)
-#define SPI1_CON_CKE                        (1 << _SPI1CON_CKE_POSITION)
+#define SPI1_CON_CKP                        (1 << _SPI1CON_CKP_POSITION)
+#define SPI1_CON_CKE                        (0 << _SPI1CON_CKE_POSITION)
 #define SPI1_CON_MODE_32_MODE_16            (0 << _SPI1CON_MODE16_POSITION)
 #define SPI1_CON_ENHBUF                     (1 << _SPI1CON_ENHBUF_POSITION)
 #define SPI1_CON_MCLKSEL                    (0 << _SPI1CON_MCLKSEL_POSITION)
-#define SPI1_CON_MSSEN                      (1 << _SPI1CON_MSSEN_POSITION)
+#define SPI1_CON_MSSEN                      (0 << _SPI1CON_MSSEN_POSITION)
 #define SPI1_CON_SMP                        (0 << _SPI1CON_SMP_POSITION)
 
 void SPI1_Initialize ( void )
@@ -88,11 +88,11 @@ void SPI1_Initialize ( void )
 
     /*
     MSTEN = 1
-    CKP = 0
-    CKE = 1
+    CKP = 1
+    CKE = 0
     MODE<32,16> = 0
     ENHBUF = 1
-    MSSEN = 1
+    MSSEN = 0
     MCLKSEL = 0
     */
     SPI1CONSET = (SPI1_CON_MSSEN | SPI1_CON_MCLKSEL | SPI1_CON_ENHBUF | SPI1_CON_MODE_32_MODE_16 | SPI1_CON_CKE | SPI1_CON_CKP | SPI1_CON_MSTEN | SPI1_CON_SMP);

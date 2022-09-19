@@ -35,9 +35,16 @@ extern "C" {
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdio.h>
+#ifdef __32MK0512MCJ048__
 #include "../src/config/mcj/peripheral/spi/spi_master/plib_spi_master_common.h"
 #include "../src/config/mcj/peripheral/gpio/plib_gpio.h"
 #include "../src/config/mcj/peripheral/dmac/plib_dmac.h"
+#endif
+#ifdef __32MZ1025W104132__
+#include "../src/config/default/peripheral/spi/spi_master/plib_spi_master_common.h"
+#include "../src/config/default/peripheral/gpio/plib_gpio.h"
+#include "../src/config/default/peripheral/dmac/plib_dmac.h"
+#endif
 #include "display_type.h"
 #include "eadog.h"
 #include "dogm-graphic.h"

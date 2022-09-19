@@ -20,7 +20,7 @@ extern "C" {
 #include "imupic32mcj.h"
 #include "bma490l_reg.h"
 
-#define BMA490_DRIVER	"V0.202" 
+#define BMA490_DRIVER	"V1.001" 
 #define BMA490_ALIAS	"BMA490L  "
 
 #define RBIT		0b10000000

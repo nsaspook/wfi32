@@ -19,7 +19,7 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-#define IMU_DRIVER "V1.0" 
+#define IMU_DRIVER "V1.001" 
 	/*
 	 * what IMU chip are we using
 	 */

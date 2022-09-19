@@ -23,7 +23,7 @@ extern "C" {
 #include "imupic32mcj.h"
 #include "timers.h"
 
-#define SCA3300_DRIVER	"V0.210" 
+#define SCA3300_DRIVER	"V1.001" 
 
 #define SCA3300_ALIAS	"SCA3300  "
 

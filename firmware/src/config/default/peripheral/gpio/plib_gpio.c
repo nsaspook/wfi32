@@ -76,10 +76,10 @@ void GPIO_Initialize ( void )
     PORTA;
     IEC1SET = _IEC1_CNAIE_MASK;
     /* PORTB Initialization */
-    LATB = 0x80U; /* Initial Latch Value */
-    TRISBCLR = 0x80U; /* Direction Control */
-    ANSELBCLR = 0x80U; /* Digital Mode Enable */
-    CNPUBSET = 0x80U; /* Pull-Up Enable */
+    LATB = 0x1c0U; /* Initial Latch Value */
+    TRISBCLR = 0x1c0U; /* Direction Control */
+    ANSELBCLR = 0x3c0U; /* Digital Mode Enable */
+    CNPUBSET = 0x3c0U; /* Pull-Up Enable */
     /* PORTC Initialization */
     ODCCSET = 0x200U; /* Open Drain Enable */
     /* PORTK Initialization */
@@ -94,6 +94,7 @@ void GPIO_Initialize ( void )
 
     /* PPS Output Remapping */
     RPK4R = 4;
+    RPB9R = 3;
 
 
     uint32_t i;
