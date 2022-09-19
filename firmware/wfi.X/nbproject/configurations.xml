@@ -92,6 +92,7 @@
       <itemPath>../src/imupic32mcj.h</itemPath>
       <itemPath>../src/sca3300.h</itemPath>
       <itemPath>../src/gfx.h</itemPath>
+      <itemPath>../src/imu.h</itemPath>
     </logicalFolder>
     <logicalFolder name="lcd_drv" displayName="lcd_drv" projectFiles="true">
       <itemPath>../lcd_drv/ChrFont0.c</itemPath>
@@ -194,6 +195,7 @@
       <itemPath>../src/app.c</itemPath>
       <itemPath>../src/sca3300.c</itemPath>
       <itemPath>../src/gfx.c</itemPath>
+      <itemPath>../src/imu.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -238,7 +240,7 @@
         <platformTool>PKOBSKDEPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.10</languageToolchainVersion>
-        <platform>3</platform>
+        <platform>2</platform>
       </toolsSet>
       <packs>
         <pack name="PIC32MZ-W_DFP" vendor="Microchip" version="1.5.203"/>

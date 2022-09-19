@@ -19,6 +19,7 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 #include "bma490l_reg.h"
+#include "imu.h"
 
 #define BMA490_DRIVER	"V1.001" 
 #define BMA490_ALIAS	"BMA490L  "
@@ -63,16 +64,6 @@ extern "C" {
 #endif
 
 #define imu_timeout	2000	// timeout for IMU ID data from query
-
-	typedef struct {
-		double x; /**< X-axis sensor data */
-		double y; /**< Y-axis sensor data */
-		double z; /**< Z-axis sensor data */
-		double xa; /**< X-angle sensor data */
-		double ya; /**< Y-angle sensor data */
-		double za; /**< Z-angle sensor data */
-		uint32_t sensortime; /**< sensor time */
-	} sBma490SensorData_t;
 
 	/*
 	 * function pointer templates

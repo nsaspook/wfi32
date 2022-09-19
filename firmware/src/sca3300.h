@@ -21,6 +21,7 @@ extern "C" {
 #include <math.h>
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
+#include "imu.h"
 #include "timers.h"
 
 #define SCA3300_DRIVER	"V1.001" 
