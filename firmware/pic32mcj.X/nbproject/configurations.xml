@@ -62,6 +62,7 @@
       <itemPath>../src/timers.h</itemPath>
       <itemPath>../src/sca3300.h</itemPath>
       <itemPath>../src/imupic32mcj.h</itemPath>
+      <itemPath>../src/gfx.h</itemPath>
     </logicalFolder>
     <logicalFolder name="lcd_drv" displayName="lcd_drv" projectFiles="true">
       <itemPath>../lcd_drv/lcd_drv.c</itemPath>

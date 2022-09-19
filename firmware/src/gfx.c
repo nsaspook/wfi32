@@ -16,7 +16,7 @@ void vector_graph(void)
 	static double theta1 = sinea, theta2 = sineb, theta3 = sinec;
 	static double ra, si, co;
 
-	double t1 = 60.0 * q1, t2 = 50.0 * q2, t3 = 50.0 * q3, t4 = 50.0 * q0;
+	double t1 = 3.0 * q1, t2 = 2.0 * q2, t3 = 2.0 * q3, t4 = 1.0 * q0;
 
 	OledMoveTo(60 + t1, 0 + t4);
 	OledLineTo(180 - t1, 0 + t4);

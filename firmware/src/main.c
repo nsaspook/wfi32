@@ -116,7 +116,7 @@ volatile uint16_t tickCount[TMR_COUNT];
 static char buffer[STR_BUF_SIZE];
 
 static const char *build_date = __DATE__, *build_time = __TIME__;
-static const uint32_t update_delay = 5;
+const uint32_t update_delay = 5;
 
 extern CORETIMER_OBJECT coreTmr;
 
@@ -131,6 +131,8 @@ int main(void)
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
 
+	/* Start system tick timer */
+	CORETIMER_Start();
 	/*
 	 * software timers interrupt setup
 	 * using tickCount
@@ -210,14 +212,15 @@ int main(void)
 			sprintf(buffer, "\r\n  PIC32 IMU Controller %s %s %s\r\n", IMU_DRIVER, build_date, build_time);
 			eaDogM_WriteStringAtPos(14, 0, buffer);
 
+			q0=accel.x;
+			q1=accel.y;
+			q2=accel.z;
 			vector_graph();
 			{
-				//	100 Hz updates, processing takes 5ms
-				uint32_t tickStart, delayTicks;
-				tickStart = coreTmr.tickCounter;
-				delayTicks = (1000 * update_delay) / CORE_TIMER_INTERRUPT_PERIOD_IN_US; // Number of tick interrupts to wait for the delay
+				uint16_t i=1;
+
 				LA_gfx(false, false, 0);
-				while ((coreTmr.tickCounter - tickStart) < delayTicks) {
+				while ((i++ <1400)) {
 					// extra processing loop while waiting for clock time to expire
 					LA_gfx(false, false, 1400);
 				}
