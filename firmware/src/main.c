@@ -110,7 +110,7 @@ imu_cmd_t imu0 = {
 /*
  * Logging data structure
  */
-sBma490SensorData_t accel;
+sSensorData_t accel;
 
 volatile uint16_t tickCount[TMR_COUNT];
 
@@ -148,7 +148,7 @@ int main(void)
 	TMR2_Start(); // IMU time-stamp counter
 #endif
 
-	printf("\r\n PIC32 IMU Controller  %s %s %s ---\r\n", IMU_DRIVER, build_date, build_time);
+	printf("\r\nPIC32 %s Controller %s %s %s ---\r\n", IMU_ALIAS, IMU_DRIVER, build_date, build_time);
 
 	/*
 	 * print the driver version
@@ -162,7 +162,7 @@ int main(void)
 	lcd_version();
 	init_lcd_drv(D_INIT);
 	OledClearBuffer();
-	sprintf(buffer, " IMU CHIP Controller      ");
+	sprintf(buffer, "%s Controller %s", IMU_ALIAS, IMU_DRIVER);
 	eaDogM_WriteStringAtPos(15, 0, buffer);
 	OledUpdate();
 
@@ -211,18 +211,19 @@ int main(void)
 			printf("%6.3f,%6.3f,%6.3f,%u,%X,%X\r\n", accel.x, accel.y, accel.z, accel.sensortime, imu0.rs, imu0.ss);
 			sprintf(buffer, "%6.3f,%6.3f,%6.3f,%X,%X\r\n", accel.x, accel.y, accel.z, imu0.rs, imu0.ss);
 			eaDogM_WriteStringAtPos(0, 0, buffer);
-			sprintf(buffer, "\r\n  PIC32 IMU Controller %s %s %s\r\n", IMU_DRIVER, build_date, build_time);
+			sprintf(buffer, "  PIC32 IMU Controller %s %s %s\r\n", IMU_DRIVER, build_date, build_time);
 			eaDogM_WriteStringAtPos(14, 0, buffer);
 
-			q0=accel.x;
-			q1=accel.y;
-			q2=accel.z;
+			q0 = accel.x;
+			q1 = accel.y;
+			q2 = accel.z;
+			q3 = accel.x;
 			vector_graph();
 			{
-				uint16_t i=1;
+				uint16_t i = 1;
 
 				LA_gfx(false, false, 0);
-				while ((i++ <1400)) {
+				while ((i++ < 1400)) {
 					// extra processing loop while waiting for clock time to expire
 					LA_gfx(false, false, 1400);
 				}

@@ -87,7 +87,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: High}
+        attributes: {value: ''}
   - type: String
     attributes: {id: BSP_PIN_11_MODE}
     children:
@@ -201,6 +201,13 @@ children:
       - type: User
         attributes: {value: 'True'}
   - type: String
+    attributes: {id: BSP_PIN_19_PU}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'True'}
+  - type: String
     attributes: {id: BSP_PIN_1_FUNCTION_TYPE}
     children:
     - type: Values
@@ -244,6 +251,13 @@ children:
         attributes: {value: DIGITAL}
   - type: String
     attributes: {id: BSP_PIN_20_OD}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'True'}
+  - type: String
+    attributes: {id: BSP_PIN_20_PU}
     children:
     - type: Values
       children:
@@ -2886,7 +2900,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '2625'}
+        attributes: {id: core, value: '2624'}
   - type: Hex
     attributes: {id: SYS_PORT_B_TRIS}
     children:
@@ -2907,7 +2921,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '512'}
+        attributes: {id: core, value: '2564'}
   - type: Hex
     attributes: {id: SYS_PORT_C_LAT}
     children:

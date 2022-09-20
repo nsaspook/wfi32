@@ -15486,7 +15486,7 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <attribute name="VALUE" x="127" y="-20.32" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="TP1" gate="G$1" x="-48.26" y="22.86" smashed="yes" rot="R270">
-<attribute name="NAME" x="-54.61" y="23.876" size="1.778" layer="95"/>
+<attribute name="NAME" x="-54.61" y="18.796" size="1.778" layer="95"/>
 <attribute name="TP_SIGNAL_NAME" x="-50.8" y="21.59" size="1.778" layer="97" rot="R270"/>
 </instance>
 <instance part="TP3" gate="G$1" x="-48.26" y="45.72" smashed="yes" rot="R270">
@@ -15494,7 +15494,7 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <attribute name="TP_SIGNAL_NAME" x="-50.8" y="44.45" size="1.778" layer="97" rot="R270"/>
 </instance>
 <instance part="TP2" gate="G$1" x="-48.26" y="25.4" smashed="yes" rot="R270">
-<attribute name="NAME" x="-54.61" y="26.416" size="1.778" layer="95"/>
+<attribute name="NAME" x="-54.61" y="28.956" size="1.778" layer="95"/>
 <attribute name="TP_SIGNAL_NAME" x="-50.8" y="24.13" size="1.778" layer="97" rot="R270"/>
 </instance>
 <instance part="REFCLK2" gate="G$1" x="215.9" y="12.7" smashed="yes" rot="R90">

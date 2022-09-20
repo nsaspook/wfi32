@@ -21,7 +21,7 @@ extern "C" {
 #include "bma490l_reg.h"
 #include "imu.h"
 
-#define BMA490_DRIVER	"V1.001" 
+#define BMA490_DRIVER	"V1.002" 
 #define BMA490_ALIAS	"BMA490L  "
 
 #define RBIT		0b10000000
@@ -36,9 +36,7 @@ extern "C" {
 #define BMA490_ID_LEN			2
 #define BMA490_REG_LEN			2
 #define BMA490_DATA_LEN                 11
-#define BMA490_DATA_BUFFER_LEN		64
-#define BMA490_DATA_RAW_LEN		30
-#define BMA490_DATA_BUFFER_INDEX	1	
+#define BMA490_DATA_BUFFER_LEN		64	
 #define BMA490_DATA_INDEX		0x12
 
 #define BMA490_RD_WR_MAX_LEN		0x0514 // IMU ASIC firmware file size
@@ -56,13 +54,6 @@ extern "C" {
 #define BMA490L_FEATURE_CONFIG_ADDR                  UINT8_C(0x5E)
 #define BMA490L_INTERNAL_ERROR                       UINT8_C(0x5F)
 
-#ifdef BMA490L
-#define SYS_FREQ	200000000 // Running at 200MHz
-#endif
-#ifdef SCA3300
-#define SYS_FREQ	120000000 // Running at 120MHz
-#endif
-
 #define imu_timeout	2000	// timeout for IMU ID data from query
 
 	/*
@@ -74,7 +65,6 @@ extern "C" {
 	void bma490_version(void);
 
 	bool imu_getis(imu_cmd_t *);
-	void getAllData(sBma490SensorData_t *, imu_cmd_t *);
 
 	/*
 	 * user callback function per BMA490L data interrupt

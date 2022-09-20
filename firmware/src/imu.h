@@ -19,12 +19,16 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-#define IMU_DRIVER "V1.001" 
+#define IMU_DRIVER	"V1.002" 
+#define IMU_ALIAS	"IMU"
 	/*
 	 * what IMU chip are we using
 	 */
 	//#define BMA490L
 #define SCA3300 // this includes the SCL3300 device
+
+#define BMA490_DATA_RAW_LEN		30
+#define BMA490_DATA_BUFFER_INDEX	1
 
 	typedef struct {
 		double x; /**< X-axis sensor data */
@@ -34,7 +38,8 @@ extern "C" {
 		double ya; /**< Y-angle sensor data */
 		double za; /**< Z-angle sensor data */
 		uint32_t sensortime; /**< sensor time */
-	} sBma490SensorData_t;
+		double sensortemp;
+	} sSensorData_t;
 
 	/*
 	 * function pointer templates structure
@@ -91,6 +96,17 @@ extern "C" {
 		range_inc2,
 	};
 
+	enum sca3300_scan_indexes {
+		SCA3300_ACC_X = 0,
+		SCA3300_ACC_Y,
+		SCA3300_ACC_Z,
+		SCA3300_TEMP,
+		SCA3300_TIMESTAMP,
+		SCL3300_ANG_X,
+		SCL3300_ANG_Y,
+		SCL3300_ANG_Z,
+	};
+
 	/*! Earth's gravity in m/s^2 */
 #define GRAVITY_EARTH			(9.80665)	
 	/*
@@ -108,6 +124,9 @@ extern "C" {
 #define SCL3300_ACCEL_MG_LSB_24G	0.000333800	///< Macro for mg per LSB at +/- 2.4g sensitivity	LSB/g 3000
 #define SCL3300_INC1			1.0
 #define SCL3300_INC2			1.0
+
+	double get_imu_scale(imu_cmd_t *);
+	void getAllData(sSensorData_t *, imu_cmd_t *);
 
 #ifdef	__cplusplus
 }

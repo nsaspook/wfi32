@@ -8,12 +8,9 @@ static uint8_t dummy = 0x00;
 static bool imu_cs(imu_cmd_t *);
 static void imu_cs_cb(uintptr_t);
 static void imu_cs_disable(imu_cmd_t *);
-static void move_bma490_transfer_data(uint8_t *, imu_cmd_t *);
 static void init_imu_int(const imu_cmd_t * imu);
 static void imu_gen_write(imu_cmd_t *, void*, size_t, const bool);
 static void imu_set_reg(imu_cmd_t *, const uint8_t, const uint8_t, const bool);
-
-static uint32_t sensortime;
 
 static const char *build_date = __DATE__, *build_time = __TIME__;
 
@@ -94,8 +91,6 @@ static const uint8_t bma490l_config_file[] = {
 	0x23, 0x2e, 0x11, 0x00, 0x80, 0x2e, 0x10, 0x00
 };
 
-extern struct sca3300_data sdata;
-
 /*
  * Read raw ACCEL data from the chip using SPI
  */
@@ -113,81 +108,6 @@ bool bma490l_getdata(void * imup)
 		return imu->online;
 	} else {
 		return false;
-	}
-}
-
-/*
- * load raw SPI sensor data from IMU and transfer to the logging processing buffer
- */
-void move_bma490_transfer_data(uint8_t *pBuf, imu_cmd_t * imu)
-{
-	if (pBuf && imu) {
-		for (uint32_t i = BMA490_DATA_BUFFER_INDEX; i < BMA490_DATA_RAW_LEN; i++) {
-			pBuf[i - BMA490_DATA_BUFFER_INDEX] = imu->rbuf[i];
-		}
-	}
-}
-
-void getAllData(sBma490SensorData_t *accel, imu_cmd_t * imu)
-{
-	uint8_t data[BMA490_DATA_RAW_LEN + 2] = {0}; // add space for dummy data
-	int16_t x = 0, y = 0, z = 0;
-	double accelRange;
-
-	/*
-	 * load the proper scaling constants
-	 */
-	switch (imu->acc_range) {
-	case range_16g:
-		accelRange = BMA490_ACCEL_MG_LSB_16G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
-		break;
-	case range_8g:
-		accelRange = BMA490_ACCEL_MG_LSB_8G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
-		break;
-	case range_4g:
-		accelRange = BMA490_ACCEL_MG_LSB_4G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
-		break;
-	case range_15g:
-	case range_15gl:
-		accelRange = SCA3300_ACCEL_MG_LSB_15G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
-		break;
-	case range_3g:
-		accelRange = SCA3300_ACCEL_MG_LSB_3G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
-		break;
-	case range_6g:
-		accelRange = SCA3300_ACCEL_MG_LSB_6G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
-		break;
-	case range_12g:
-		accelRange = SCL3300_ACCEL_MG_LSB_12G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
-		break;
-	case range_24g:
-		accelRange = SCL3300_ACCEL_MG_LSB_24G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
-		break;
-	case range_2g:
-	default:
-		accelRange = BMA490_ACCEL_MG_LSB_2G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
-		break;
-	}
-
-	// munge data to proper format for logging
-	if (imu) {
-		move_bma490_transfer_data(data, imu);
-		sensortime = (data[9] << 16) | (data[8] << 8) | data[7]; // 24-bit sensor time
-		if (accel) { // null pointer check
-			x = (int16_t) (((uint16_t) data[2] << 8) | data[1]); // 16-bit xyz data
-			y = (int16_t) (((uint16_t) data[4] << 8) | data[3]);
-			z = (int16_t) (((uint16_t) data[6] << 8) | data[5]);
-			accel->sensortime = sensortime; // time log each accel measurement
-#ifdef SCA3300
-			x = sdata.scan.channels[0];
-			y = sdata.scan.channels[1];
-			z = sdata.scan.channels[2];
-			accel->sensortime = sdata.scan.ts;
-#endif
-			accel->x = x * accelRange; // scale to the correct units
-			accel->y = y * accelRange;
-			accel->z = z * accelRange;
-		}
 	}
 }
 

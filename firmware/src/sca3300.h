@@ -60,17 +60,6 @@ extern "C" {
 #define SCA3300_CHIP_CS_DELAY		11	// CS high min duration between toggles
 #define SCA3300_CHIP_BTYES_PER_SPI	4	// 32-bit transfers, 4 bytes
 
-	enum sca3300_scan_indexes {
-		SCA3300_ACC_X = 0,
-		SCA3300_ACC_Y,
-		SCA3300_ACC_Z,
-		SCA3300_TEMP,
-		SCA3300_TIMESTAMP,
-		SCL3300_ANG_X,
-		SCL3300_ANG_Y,
-		SCL3300_ANG_Z,
-	};
-
 	/*
 	 * function pointer templates
 	 */
