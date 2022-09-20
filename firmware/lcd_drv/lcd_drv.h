@@ -34,11 +34,13 @@ extern "C" {
 #include "../src/config/mcj/peripheral/spi/spi_master/plib_spi_master_common.h"
 #include "../src/config/mcj/peripheral/gpio/plib_gpio.h"
 #include "../src/config/mcj/peripheral/dmac/plib_dmac.h"
+#include "../src/config/mcj/peripheral/coretimer/plib_coretimer.h"
 #endif
 #ifdef __32MZ1025W104132__X
 #include "../src/config/default/peripheral/spi/spi_master/plib_spi_master_common.h"
 #include "../src/config/default/peripheral/gpio/plib_gpio.h"
 #include "../src/config/default/peripheral/dmac/plib_dmac.h"
+#include "../src/config/default/peripheral/coretimer/plib_coretimer.h"
 #endif
 #include "display_type.h"
 #include "eadog.h"

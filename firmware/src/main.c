@@ -115,6 +115,7 @@ sSensorData_t accel;
 volatile uint16_t tickCount[TMR_COUNT];
 
 static char buffer[STR_BUF_SIZE];
+static uint32_t delay_freq = 0;
 
 static const char *build_date = __DATE__, *build_time = __TIME__;
 const uint32_t update_delay = 5;
@@ -134,6 +135,7 @@ int main(void)
 
 	/* Start system tick timer */
 	CORETIMER_Start();
+	delay_freq = CORETIMER_FrequencyGet() / 1000000;
 	/*
 	 * software timers interrupt setup
 	 * using tickCount
@@ -169,7 +171,7 @@ int main(void)
 	/*
 	 * check to see if we actually have a working IMU
 	 */
-	StartTimer(TMR_IMU, imu0.log_timeout);
+	StartTimer(TMR_IMU, IMU_ID_DELAY);
 	ADCHS_ChannelConversionStart(ADCHS_CH0);
 	ADCHS_ChannelConversionStart(ADCHS_CH1);
 	while (!imu0.op.imu_getid(&imu0)) {
@@ -266,7 +268,7 @@ void update_imu_int1(uint32_t a, uintptr_t context)
 void delay_us(uint32_t us)
 {
 	// Convert microseconds us into how many clock ticks it will take
-	us *= CORETIMER_FrequencyGet(); // Core Timer updates every 2 ticks
+	us *= delay_freq; // Core Timer updates every 2 ticks
 	_CP0_SET_COUNT(0); // Set Core Timer count to 0
 	while (us > _CP0_GET_COUNT()) {
 	}; // Wait until Core Timer count reaches the number we calculated earlier
