@@ -20,27 +20,22 @@ extern "C" {
 #define DMA_STATE_M
 #endif
 
-#ifndef DMA_STATE_M
-#define USE_INT // SPI driver uses interrupts
-#endif
-
-	//#define EDOGM
 #define EDOGS
 
 	/*
 	 * DMA driver for DOGXL240 @15MHz SPI clock
 	 * 2021 XC32 and H3
 	 */
-#include <xc.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdio.h>
-#ifdef __32MK0512MCJ048__
+#include "definitions.h"                // SYS function prototypes
+#ifdef __32MK0512MCJ048__X
 #include "../src/config/mcj/peripheral/spi/spi_master/plib_spi_master_common.h"
 #include "../src/config/mcj/peripheral/gpio/plib_gpio.h"
 #include "../src/config/mcj/peripheral/dmac/plib_dmac.h"
 #endif
-#ifdef __32MZ1025W104132__
+#ifdef __32MZ1025W104132__X
 #include "../src/config/default/peripheral/spi/spi_master/plib_spi_master_common.h"
 #include "../src/config/default/peripheral/gpio/plib_gpio.h"
 #include "../src/config/default/peripheral/dmac/plib_dmac.h"
@@ -52,10 +47,8 @@ extern "C" {
 #include "OledChar.h"
 #include "OledGrph.h"
 
-	//#include "tests.h"
 #include "device.h"
 
-#define SYS_FREQ	120000000 // Running at 120MHz
 #define BMP_DELAY	3000000	// image display delay counts
 #define bmp_x		60		// syoucreen positions of image
 #define bmp_y		24

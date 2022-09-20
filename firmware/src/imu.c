@@ -67,7 +67,7 @@ double get_imu_scale(imu_cmd_t * imu)
 
 void getAllData(sSensorData_t *accel, imu_cmd_t * imu)
 {
-	uint8_t data[BMA490_DATA_RAW_LEN + 2] = {0}; // add space for dummy data
+	uint8_t data[IMU_DATA_RAW_LEN + 2] = {0}; // add space for dummy data
 	int16_t x = 0, y = 0, z = 0;
 #ifdef SCA3300
 	int16_t xa = 0, ya = 0, za = 0;
@@ -114,8 +114,8 @@ void getAllData(sSensorData_t *accel, imu_cmd_t * imu)
 void move_bma490_transfer_data(uint8_t *pBuf, imu_cmd_t * imu)
 {
 	if (pBuf && imu) { // null pointer checks
-		for (uint32_t i = BMA490_DATA_BUFFER_INDEX; i < BMA490_DATA_RAW_LEN; i++) {
-			pBuf[i - BMA490_DATA_BUFFER_INDEX] = imu->rbuf[i];
+		for (uint32_t i = IMU_DATA_BUFFER_INDEX; i < IMU_DATA_RAW_LEN; i++) {
+			pBuf[i - IMU_DATA_BUFFER_INDEX] = imu->rbuf[i];
 		}
 	}
 }

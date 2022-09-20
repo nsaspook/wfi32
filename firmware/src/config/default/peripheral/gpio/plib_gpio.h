@@ -62,6 +62,15 @@
 // *****************************************************************************
 
 
+/*** Macros for TP2 pin ***/
+#define TP2_Set()               (LATBSET = (1U<<2))
+#define TP2_Clear()             (LATBCLR = (1U<<2))
+#define TP2_Toggle()            (LATBINV= (1U<<2))
+#define TP2_OutputEnable()      (TRISBCLR = (1U<<2))
+#define TP2_InputEnable()       (TRISBSET = (1U<<2))
+#define TP2_Get()               ((PORTB >> 2) & 0x1U)
+#define TP2_PIN                  GPIO_PIN_RB2
+
 /*** Macros for SST26_CS pin ***/
 #define SST26_CS_Set()               (LATASET = (1U<<1))
 #define SST26_CS_Clear()             (LATACLR = (1U<<1))
@@ -74,6 +83,15 @@
 /*** Macros for IMU_INT1 pin ***/
 #define IMU_INT1_Get()               ((PORTK >> 6) & 0x1U)
 #define IMU_INT1_PIN                  GPIO_PIN_RK6
+
+/*** Macros for TP1 pin ***/
+#define TP1_Set()               (LATASET = (1U<<13))
+#define TP1_Clear()             (LATACLR = (1U<<13))
+#define TP1_Toggle()            (LATAINV= (1U<<13))
+#define TP1_OutputEnable()      (TRISACLR = (1U<<13))
+#define TP1_InputEnable()       (TRISASET = (1U<<13))
+#define TP1_Get()               ((PORTA >> 13) & 0x1U)
+#define TP1_PIN                  GPIO_PIN_RA13
 
 /*** Macros for IMU_INT2 pin ***/
 #define IMU_INT2_Set()               (LATASET = (1U<<14))

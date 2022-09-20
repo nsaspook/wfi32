@@ -67,19 +67,19 @@ void GPIO_Initialize ( void )
 
     /* PORTA Initialization */
     LATA = 0x2U; /* Initial Latch Value */
-    TRISACLR = 0x2U; /* Direction Control */
-    ANSELACLR = 0x4400U; /* Digital Mode Enable */
-    CNPUASET = 0x2U; /* Pull-Up Enable */
+    TRISACLR = 0x2002U; /* Direction Control */
+    ANSELACLR = 0x6400U; /* Digital Mode Enable */
+    CNPUASET = 0x2002U; /* Pull-Up Enable */
 
     /* Change Notice Enable */
     CNCONASET = _CNCONA_ON_MASK;
     PORTA;
     IEC1SET = _IEC1_CNAIE_MASK;
     /* PORTB Initialization */
-    LATB = 0x1c0U; /* Initial Latch Value */
-    TRISBCLR = 0x1c0U; /* Direction Control */
-    ANSELBCLR = 0x3c0U; /* Digital Mode Enable */
-    CNPUBSET = 0x3c0U; /* Pull-Up Enable */
+    LATB = 0x1c4U; /* Initial Latch Value */
+    TRISBCLR = 0x1c4U; /* Direction Control */
+    ANSELBCLR = 0x3c4U; /* Digital Mode Enable */
+    CNPUBSET = 0x3c4U; /* Pull-Up Enable */
     /* PORTC Initialization */
     ODCCSET = 0x200U; /* Open Drain Enable */
     /* PORTK Initialization */

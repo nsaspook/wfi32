@@ -18,9 +18,9 @@ build/default/production/_ext/1360937237/bma490l.o: ../src/bma490l.c \
  ../src/config/default/system/int/sys_int_mapping.h \
  ../src/config/default/configuration.h ../src/config/default/user.h \
  ../src/config/default/device.h \
- ../src/config/default/peripheral/coretimer/plib_coretimer.h \
  ../src/config/default/peripheral/tmr/plib_tmr6.h \
  ../src/config/default/peripheral/tmr/plib_tmr_common.h \
+ ../src/config/default/peripheral/coretimer/plib_coretimer.h \
  ../src/config/default/peripheral/adchs/plib_adchs.h \
  ../src/config/default/peripheral/adchs/plib_adchs_common.h \
  ../src/config/default/peripheral/uart/plib_uart1.h \
@@ -36,7 +36,7 @@ build/default/production/_ext/1360937237/bma490l.o: ../src/bma490l.c \
  ../src/config/default/osal/osal_definitions.h \
  ../src/config/default/osal/osal_impl_basic.h \
  ../src/config/default/system/debug/sys_debug.h ../src/app.h \
- ../src/imupic32mcj.h ../src/bma490l_reg.h
+ ../src/imupic32mcj.h ../src/bma490l_reg.h ../src/imu.h
 
 ../src/bma490l.h:
 
@@ -82,11 +82,11 @@ build/default/production/_ext/1360937237/bma490l.o: ../src/bma490l.c \
 
 ../src/config/default/device.h:
 
-../src/config/default/peripheral/coretimer/plib_coretimer.h:
-
 ../src/config/default/peripheral/tmr/plib_tmr6.h:
 
 ../src/config/default/peripheral/tmr/plib_tmr_common.h:
+
+../src/config/default/peripheral/coretimer/plib_coretimer.h:
 
 ../src/config/default/peripheral/adchs/plib_adchs.h:
 
@@ -123,3 +123,5 @@ build/default/production/_ext/1360937237/bma490l.o: ../src/bma490l.c \
 ../src/imupic32mcj.h:
 
 ../src/bma490l_reg.h:
+
+../src/imu.h:

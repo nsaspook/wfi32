@@ -18,9 +18,9 @@ build/default/production/_ext/1360937237/sca3300.o: ../src/sca3300.c \
  ../src/config/default/system/int/sys_int_mapping.h \
  ../src/config/default/configuration.h ../src/config/default/user.h \
  ../src/config/default/device.h \
- ../src/config/default/peripheral/coretimer/plib_coretimer.h \
  ../src/config/default/peripheral/tmr/plib_tmr6.h \
  ../src/config/default/peripheral/tmr/plib_tmr_common.h \
+ ../src/config/default/peripheral/coretimer/plib_coretimer.h \
  ../src/config/default/peripheral/adchs/plib_adchs.h \
  ../src/config/default/peripheral/adchs/plib_adchs_common.h \
  ../src/config/default/peripheral/uart/plib_uart1.h \
@@ -36,7 +36,7 @@ build/default/production/_ext/1360937237/sca3300.o: ../src/sca3300.c \
  ../src/config/default/osal/osal_definitions.h \
  ../src/config/default/osal/osal_impl_basic.h \
  ../src/config/default/system/debug/sys_debug.h ../src/app.h \
- ../src/imupic32mcj.h ../src/timers.h
+ ../src/imupic32mcj.h ../src/imu.h ../src/timers.h
 
 ../src/sca3300.h:
 
@@ -82,11 +82,11 @@ build/default/production/_ext/1360937237/sca3300.o: ../src/sca3300.c \
 
 ../src/config/default/device.h:
 
-../src/config/default/peripheral/coretimer/plib_coretimer.h:
-
 ../src/config/default/peripheral/tmr/plib_tmr6.h:
 
 ../src/config/default/peripheral/tmr/plib_tmr_common.h:
+
+../src/config/default/peripheral/coretimer/plib_coretimer.h:
 
 ../src/config/default/peripheral/adchs/plib_adchs.h:
 
@@ -121,5 +121,7 @@ build/default/production/_ext/1360937237/sca3300.o: ../src/sca3300.c \
 ../src/app.h:
 
 ../src/imupic32mcj.h:
+
+../src/imu.h:
 
 ../src/timers.h:

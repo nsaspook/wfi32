@@ -206,10 +206,7 @@
         <itemPath>../src/config/default/default.mhc/core.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/core_timer.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/dfp.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/GraphSettings.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/HarmonyCore.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/project.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/settings.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/spi1.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/spi2.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/stdio.yml</itemPath>
@@ -219,6 +216,9 @@
         <itemPath>../src/config/default/default.mhc/tmr5.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/tmr6.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/uart1.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/GraphSettings.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/settings.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/project.yml</itemPath>
       </logicalFolder>
       <itemPath>Makefile</itemPath>
       <itemPath>../src/config/default/harmony-manifest-success.yml</itemPath>

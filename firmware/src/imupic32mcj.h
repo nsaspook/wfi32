@@ -19,13 +19,6 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-#ifdef __32MZ1025W104132__
-#define SYS_FREQ	200000000 // Running at 200MHz
-#endif
-#ifdef __32MK0512MCJ048__
-#define SYS_FREQ	120000000 // Running at 120MHz
-#endif
-
 #define IMU_CS	0
 #define	LCD_CS	0
 

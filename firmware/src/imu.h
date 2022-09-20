@@ -27,8 +27,8 @@ extern "C" {
 	//#define BMA490L
 #define SCA3300 // this includes the SCL3300 device
 
-#define BMA490_DATA_RAW_LEN		30
-#define BMA490_DATA_BUFFER_INDEX	1
+#define IMU_DATA_RAW_LEN		30
+#define IMU_DATA_BUFFER_INDEX		1
 
 	typedef struct {
 		double x; /**< X-axis sensor data */
