@@ -5,7 +5,7 @@ const double imu_table[] = {
 	BMA490_ACCEL_MG_LSB_4G,
 	BMA490_ACCEL_MG_LSB_8G,
 	BMA490_ACCEL_MG_LSB_16G,
-	BMA490_ACCEL_MG_SCALE,
+	IMU_ACCEL_MG_SCALE,
 	SCA3300_ACCEL_MG_LSB_15G,
 	SCA3300_ACCEL_MG_LSB_3G,
 	SCA3300_ACCEL_MG_LSB_6G,
@@ -23,7 +23,7 @@ extern struct sca3300_data sdata;
 
 double get_imu_scale(imu_cmd_t * imu)
 {
-	double accelRange = BMA490_ACCEL_MG_SCALE;
+	double accelRange = IMU_ACCEL_MG_SCALE;
 
 	if (imu) { // null pointer check
 		/*
@@ -31,33 +31,39 @@ double get_imu_scale(imu_cmd_t * imu)
 		 */
 		switch (imu->acc_range) {
 		case range_16g:
-			accelRange = BMA490_ACCEL_MG_LSB_16G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
+			accelRange = BMA490_ACCEL_MG_LSB_16G * GRAVITY_EARTH * IMU_ACCEL_MG_SCALE;
 			break;
 		case range_8g:
-			accelRange = BMA490_ACCEL_MG_LSB_8G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
+			accelRange = BMA490_ACCEL_MG_LSB_8G * GRAVITY_EARTH * IMU_ACCEL_MG_SCALE;
 			break;
 		case range_4g:
-			accelRange = BMA490_ACCEL_MG_LSB_4G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
+			accelRange = BMA490_ACCEL_MG_LSB_4G * GRAVITY_EARTH * IMU_ACCEL_MG_SCALE;
 			break;
 		case range_15g:
 		case range_15gl:
-			accelRange = SCA3300_ACCEL_MG_LSB_15G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
+			accelRange = SCA3300_ACCEL_MG_LSB_15G * GRAVITY_EARTH * IMU_ACCEL_MG_SCALE;
 			break;
 		case range_3g:
-			accelRange = SCA3300_ACCEL_MG_LSB_3G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
+			accelRange = SCA3300_ACCEL_MG_LSB_3G * GRAVITY_EARTH * IMU_ACCEL_MG_SCALE;
 			break;
 		case range_6g:
-			accelRange = SCA3300_ACCEL_MG_LSB_6G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
+			accelRange = SCA3300_ACCEL_MG_LSB_6G * GRAVITY_EARTH * IMU_ACCEL_MG_SCALE;
 			break;
 		case range_12g:
-			accelRange = SCL3300_ACCEL_MG_LSB_12G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
+			accelRange = SCL3300_ACCEL_MG_LSB_12G * GRAVITY_EARTH * IMU_ACCEL_MG_SCALE;
 			break;
 		case range_24g:
-			accelRange = SCL3300_ACCEL_MG_LSB_24G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
+			accelRange = SCL3300_ACCEL_MG_LSB_24G * GRAVITY_EARTH * IMU_ACCEL_MG_SCALE;
+			break;
+		case range_inc1:
+			accelRange = SCL3300_INC1 * GRAVITY_EARTH * IMU_ACCEL_MG_SCALE;
+			break;
+		case range_inc2:
+			accelRange = SCL3300_INC2 * GRAVITY_EARTH * IMU_ACCEL_MG_SCALE;
 			break;
 		case range_2g:
 		default:
-			accelRange = BMA490_ACCEL_MG_LSB_2G * GRAVITY_EARTH * BMA490_ACCEL_MG_SCALE;
+			accelRange = BMA490_ACCEL_MG_LSB_2G * GRAVITY_EARTH * IMU_ACCEL_MG_SCALE;
 			break;
 		}
 	}
@@ -92,13 +98,14 @@ void getAllData(sSensorData_t *accel, imu_cmd_t * imu)
 			y = sdata.scan.channels[SCA3300_ACC_Y];
 			z = sdata.scan.channels[SCA3300_ACC_Z];
 			accel->sensortime = sdata.scan.ts; // time log each accel measurement from TIMER
+			accel->sensortemp = TEMPERATURE_OFFSET + (sdata.scan.channels[SCA3300_TEMP] / TEMPERATURE_RES);
 			if (imu->device == IMU_SCL3300) {
 				xa = sdata.scan.channels[SCL3300_ANG_X];
 				ya = sdata.scan.channels[SCL3300_ANG_Y];
 				za = sdata.scan.channels[SCL3300_ANG_Z];
-				accel->xa = xa * SCL3300_INC1; // scale angle data
-				accel->ya = ya * SCL3300_INC1;
-				accel->za = za * SCL3300_INC1;
+				accel->xa = xa / ANGLE_RES1 * ANGLE_RES2; // scale angle data
+				accel->ya = ya / ANGLE_RES1 * ANGLE_RES2;
+				accel->za = za / ANGLE_RES1 * ANGLE_RES2;
 			}
 #endif
 			accel->x = x * accelRange; // scale to the correct units

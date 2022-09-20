@@ -19,7 +19,7 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-#define IMU_DRIVER	"V1.002" 
+#define IMU_DRIVER	"V1.003" 
 #define IMU_ALIAS	"IMU"
 	
 #define IMU_ID_DELAY	100
@@ -118,14 +118,19 @@ extern "C" {
 #define BMA490_ACCEL_MG_LSB_4G		0.000122070	///< Macro for mg per LSB at +/- 4g sensitivity (1 LSB = 0.000122070mg) */
 #define BMA490_ACCEL_MG_LSB_8G		0.000244141	///< Macro for mg per LSB at +/- 8g sensitivity (1 LSB = 0.000244141mg) */
 #define BMA490_ACCEL_MG_LSB_16G		0.000488281	///< Macro for mg per LSB at +/- 16g sensitivity (1 LSB = 0.000488281mg) */
-#define BMA490_ACCEL_MG_SCALE		1.000000000
+#define IMU_ACCEL_MG_SCALE		1.000000000
 #define SCA3300_ACCEL_MG_LSB_15G	0.000207000	///< Macro for mg per LSB at +/- 1.5g sensitivity	LSB/g 5400
 #define SCA3300_ACCEL_MG_LSB_3G		0.000395000	///< Macro for mg per LSB at +/- 3g sensitivity		LSB/g 2700
 #define SCA3300_ACCEL_MG_LSB_6G		0.000765000	///< Macro for mg per LSB at +/- 6g sensitivity		LSB/g 1350
 #define SCL3300_ACCEL_MG_LSB_12G	0.000167400	///< Macro for mg per LSB at +/- 1.2g sensitivity	LSB/g 6000
 #define SCL3300_ACCEL_MG_LSB_24G	0.000333800	///< Macro for mg per LSB at +/- 2.4g sensitivity	LSB/g 3000
-#define SCL3300_INC1			1.0
-#define SCL3300_INC2			1.0
+#define SCL3300_INC1			0.000166900
+#define SCL3300_INC2			0.000166900
+	
+#define ANGLE_RES1		16384.0
+#define ANGLE_RES2		90.0
+#define TEMPERATURE_RES		18.9
+#define TEMPERATURE_OFFSET	-273.0
 
 	double get_imu_scale(imu_cmd_t *);
 	void getAllData(sSensorData_t *, imu_cmd_t *);

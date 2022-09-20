@@ -119,7 +119,6 @@ void LA_gfx(bool reset, bool redraw, uint32_t turns)
 
 	if (i++ >= turns) {
 		i = turns;
-//		dtog_Clear(); // diag pin
 		return;
 	}
 

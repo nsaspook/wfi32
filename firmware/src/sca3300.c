@@ -116,9 +116,14 @@ bool sca3300_getdata(void * imup)
 				sdata.scan.channels[SCA3300_ACC_Y] = ((imu->rbuf32[SCA3300_REC] >> 8)&0xffff); // Y data
 			};
 
-			sca3300_imu_transfer(imu, SCA3300_RS_32B);
+			sca3300_imu_transfer(imu, SCA3300_TEMP_32B);
 			if (sca3300_check_crc(imu, SCA3300_REC)) {
 				sdata.scan.channels[SCA3300_ACC_Z] = ((imu->rbuf32[SCA3300_REC] >> 8)&0xffff); // Z data
+			};
+
+			sca3300_imu_transfer(imu, SCA3300_RS_32B);
+			if (sca3300_check_crc(imu, SCA3300_REC)) {
+				sdata.scan.channels[SCA3300_TEMP] = ((imu->rbuf32[SCA3300_REC] >> 8)&0xffff); // Z data
 			};
 
 			sca3300_imu_transfer(imu, SCA3300_RS_32B);
@@ -176,7 +181,7 @@ bool sca3300_getid(void * imup)
 					if (angles) { // SCL3300 detected
 						imu->angles = true; // SLC3300 mode
 						imu->device = IMU_SCL3300;
-						imu->acc_range=imu->acc_range_scl; // set to SCL ranges
+						imu->acc_range = imu->acc_range_scl; // set to SCL ranges
 						sca3300_imu_transfer(imu, SCL3300_ANGLE); // enable angle data
 						delay_us(SCA3300_CHIP_MODE_DELAY);
 					}
@@ -237,7 +242,11 @@ void sca3300_set_spimode(void * imup)
 			accel_range = SCL3300_MODE4; // Inclination mode low noise, 10 Hz 1st order low pass filter
 			break;
 		default:
-			accel_range = SCA3300_MODE1; // set to 3g full-scale, 70 Hz 1st order low pass filter
+			if (imu->device == IMU_SCA3300) {
+				accel_range = SCA3300_MODE1; // set to 3g full-scale, 70 Hz 1st order low pass filter
+			} else {
+				accel_range = SCL3300_MODE1; // set to 1.2g full-scale, 40 Hz 1st order low pass filter
+			}
 			break;
 		}
 		sca3300_imu_transfer(imu, accel_range); // send the range command
