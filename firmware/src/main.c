@@ -215,13 +215,13 @@ int main(void)
 			eaDogM_WriteStringAtPos(0, 0, buffer);
 			sprintf(buffer, "%6.2f,%6.2f,%6.2f,%5.1f", accel.xa, accel.ya, accel.za, accel.sensortemp);
 			eaDogM_WriteStringAtPos(1, 0, buffer);
-			sprintf(buffer, "  PIC32 IMU Controller %s %s %s", IMU_DRIVER, build_date, build_time);
+			sprintf(buffer, "PIC32 IMU Controller %s   %s %s", IMU_DRIVER, build_date, build_time);
 			eaDogM_WriteStringAtPos(14, 0, buffer);
 			sprintf(buffer, "DEV %d", imu0.device);
 			eaDogM_WriteStringAtPos(4, 0, buffer);
 			sprintf(buffer, "RAN %d", imu0.acc_range);
 			eaDogM_WriteStringAtPos(5, 0, buffer);
-			sprintf(buffer, "ANG %d", imu0.angles);
+			sprintf(buffer, "ANG %s", imu0.angles ? "Yes" : "No");
 			eaDogM_WriteStringAtPos(6, 0, buffer);
 
 			q0 = accel.x;
