@@ -17,7 +17,7 @@ void vector_graph(void)
 	static int32_t x2 = 90, x1 = 120, y1 = 35, xn1, yn1, xn2, yn2, r;
 	static double theta1 = sinea, theta2 = sineb, theta3 = sinec;
 	static double ra, si, co;
-
+#ifdef GXF_BOX
 	double t1 = 3.0 * q1, t2 = 2.0 * q2, t3 = 2.0 * q3, t4 = 1.0 * q0;
 
 	OledMoveTo(60 + t1, 0 + t4);
@@ -33,7 +33,7 @@ void vector_graph(void)
 	OledMoveTo(80 + t3, 20 + t2);
 	OledLineTo(80 + t3, 50 - t2);
 	OledLineTo(160 - t3, 50 - t2);
-
+#endif
 	//Starting point
 	xn1 = x1;
 	yn1 = y1;

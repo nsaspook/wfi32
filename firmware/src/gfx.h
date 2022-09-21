@@ -14,6 +14,8 @@ extern "C" {
 
 #include <math.h>
 #include "../../firmware/lcd_drv/OledGrph.h"
+	
+//#define GFX_BOX
 
 	static const double sine_res = 3600.0;
 	static const double sinea = 0.0;

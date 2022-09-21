@@ -124,8 +124,8 @@ extern "C" {
 #define SCA3300_ACCEL_MG_LSB_6G		0.000765000	///< Macro for mg per LSB at +/- 6g sensitivity		LSB/g 1350
 #define SCL3300_ACCEL_MG_LSB_12G	0.000167400	///< Macro for mg per LSB at +/- 1.2g sensitivity	LSB/g 6000
 #define SCL3300_ACCEL_MG_LSB_24G	0.000333800	///< Macro for mg per LSB at +/- 2.4g sensitivity	LSB/g 3000
-#define SCL3300_INC1			0.000166900
-#define SCL3300_INC2			0.000166900
+#define SCL3300_INC1			0.000083700
+#define SCL3300_INC2			0.000083700
 	
 #define ANGLE_RES1		16384.0
 #define ANGLE_RES2		90.0

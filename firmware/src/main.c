@@ -94,7 +94,7 @@ imu_cmd_t imu0 = {
 	.op.imu_getid = &sca3300_getid,
 	.op.imu_getdata = &sca3300_getdata,
 	.acc_range = range_15gl,
-	.acc_range_scl = range_12g,
+	.acc_range_scl = range_inc1,
 	.angles = false,
 };
 #endif
@@ -211,10 +211,18 @@ int main(void)
 			imu0.update = false;
 			getAllData(&accel, &imu0); // convert data from the chip
 			printf("%6.3f,%6.3f,%6.3f,%u,%X,%X\r\n", accel.x, accel.y, accel.z, accel.sensortime, imu0.rs, imu0.ss);
-			sprintf(buffer, "%6.3f,%6.3f,%6.3f,%X,%X\r\n", accel.x, accel.y, accel.z, imu0.rs, imu0.ss);
+			sprintf(buffer, "%6.3f,%6.3f,%6.3f, %X, %X\r\n", accel.x, accel.y, accel.z, imu0.rs, imu0.ss);
 			eaDogM_WriteStringAtPos(0, 0, buffer);
-			sprintf(buffer, "  PIC32 IMU Controller %s %s %s\r\n", IMU_DRIVER, build_date, build_time);
+			sprintf(buffer, "%6.2f,%6.2f,%6.2f,%5.1f", accel.xa, accel.ya, accel.za, accel.sensortemp);
+			eaDogM_WriteStringAtPos(1, 0, buffer);
+			sprintf(buffer, "  PIC32 IMU Controller %s %s %s", IMU_DRIVER, build_date, build_time);
 			eaDogM_WriteStringAtPos(14, 0, buffer);
+			sprintf(buffer, "DEV %d", imu0.device);
+			eaDogM_WriteStringAtPos(4, 0, buffer);
+			sprintf(buffer, "RAN %d", imu0.acc_range);
+			eaDogM_WriteStringAtPos(5, 0, buffer);
+			sprintf(buffer, "ANG %d", imu0.angles);
+			eaDogM_WriteStringAtPos(6, 0, buffer);
 
 			q0 = accel.x;
 			q1 = accel.y;
