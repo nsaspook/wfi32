@@ -62,8 +62,21 @@ double get_imu_scale(imu_cmd_t * imu)
 			accelRange = SCL3300_INC2 * GRAVITY_EARTH * IMU_ACCEL_MG_SCALE;
 			break;
 		case range_2g:
-		default:
 			accelRange = BMA490_ACCEL_MG_LSB_2G * GRAVITY_EARTH * IMU_ACCEL_MG_SCALE;
+			break;
+		default:
+			if (imu->device == IMU_BMA490L) {
+				accelRange = BMA490_ACCEL_MG_LSB_2G * GRAVITY_EARTH * IMU_ACCEL_MG_SCALE;
+				imu->acc_range = range_2g; // update imu data structure
+			} else {
+				if (imu->device == IMU_SCA3300) {
+					accelRange = SCA3300_ACCEL_MG_LSB_15G * GRAVITY_EARTH * IMU_ACCEL_MG_SCALE;
+					imu->acc_range = range_15g; // update imu data structure
+				} else {
+					accelRange = SCL3300_ACCEL_MG_LSB_12G * GRAVITY_EARTH * IMU_ACCEL_MG_SCALE;
+					imu->acc_range = range_12g; // update imu data structure
+				}
+			}
 			break;
 		}
 	}
