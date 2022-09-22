@@ -1,8 +1,10 @@
 build/mcj/production/_ext/1360937237/bma490l.o: ../src/bma490l.c \
  ../src/bma490l.h ../src/config/mcj/definitions.h \
+ ../src/config/mcj/peripheral/canfd/plib_canfd1.h \
+ ../src/config/mcj/device.h ../src/config/mcj/toolchain_specifics.h \
+ ../src/config/mcj/peripheral/canfd/plib_canfd_common.h \
  ../src/config/mcj/peripheral/clk/plib_clk.h \
- ../src/config/mcj/peripheral/gpio/plib_gpio.h ../src/config/mcj/device.h \
- ../src/config/mcj/toolchain_specifics.h \
+ ../src/config/mcj/peripheral/gpio/plib_gpio.h \
  ../src/config/mcj/peripheral/evic/plib_evic.h \
  ../src/config/mcj/peripheral/dmac/plib_dmac.h \
  ../src/config/mcj/peripheral/coretimer/plib_coretimer.h \
@@ -26,13 +28,17 @@ build/mcj/production/_ext/1360937237/bma490l.o: ../src/bma490l.c \
 
 ../src/config/mcj/definitions.h:
 
-../src/config/mcj/peripheral/clk/plib_clk.h:
-
-../src/config/mcj/peripheral/gpio/plib_gpio.h:
+../src/config/mcj/peripheral/canfd/plib_canfd1.h:
 
 ../src/config/mcj/device.h:
 
 ../src/config/mcj/toolchain_specifics.h:
+
+../src/config/mcj/peripheral/canfd/plib_canfd_common.h:
+
+../src/config/mcj/peripheral/clk/plib_clk.h:
+
+../src/config/mcj/peripheral/gpio/plib_gpio.h:
 
 ../src/config/mcj/peripheral/evic/plib_evic.h:
 

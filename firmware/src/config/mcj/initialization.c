@@ -178,6 +178,8 @@ void SYS_Initialize ( void* data )
 
 	GPIO_Initialize();
 
+    CAN1_Initialize();
+
     DMAC_Initialize();
 
     CORETIMER_Initialize();

@@ -1,0 +1,36 @@
+format_version: v1.0
+type: UniqueComponent
+attributes: {id: can1}
+children:
+- type: Symbols
+  children:
+  - type: Boolean
+    attributes: {id: CAN_INTERRUPT_MODE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
+  - type: String
+    attributes: {id: FIFO_OFFSET}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: can1, value: '0xc'}
+  - type: String
+    attributes: {id: FILTER_OBJ_MASK_OFFSET}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: can1, value: '0x8'}
+  - type: String
+    attributes: {id: FILTER_OFFSET}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: can1, value: '0x4'}
+- type: ElementPosition
+  attributes: {x: '510', y: '100', id: can1}
