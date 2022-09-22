@@ -38,7 +38,7 @@ extern "C" {
 #endif
 #ifdef __32MZ1025W104132__X
 #include "../src/config/default/peripheral/spi/spi_master/plib_spi_master_common.h"
-#include "../src/config/default/peripheral/gpio/plib_gpio.h"
+#include "../src/config/default/peripheral/gpio/plib_gpio.h"ww
 #include "../src/config/default/peripheral/dmac/plib_dmac.h"
 #include "../src/config/default/peripheral/coretimer/plib_coretimer.h"
 #endif

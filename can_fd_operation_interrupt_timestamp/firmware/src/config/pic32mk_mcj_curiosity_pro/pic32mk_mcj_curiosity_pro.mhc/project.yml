@@ -27,13 +27,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
-- generatedChecksum: 0CB2D9F17CE7194CB73F1842BE843E56
+- generatedChecksum: 6708F2AB359108403C690519860E2171
   logicalPath: config/pic32mk_mcj_curiosity_pro/peripheral/canfd
   name: plib_canfd1.c
   physicalPath: peripheral/canfd
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 0CB2D9F17CE7194CB73F1842BE843E56
+  userChecksum: 6708F2AB359108403C690519860E2171
 - generatedChecksum: 2F6AC9B281C7A57114BF6FA3F2DEF37F
   logicalPath: config/pic32mk_mcj_curiosity_pro/peripheral/clk
   name: plib_clk.c
@@ -146,13 +146,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 7DC91D6D376C98802C9C2990432DE9B7
-- generatedChecksum: 7FABE4A9D0883C99ADAA9CA9BB4362C5
+- generatedChecksum: F763B024E08CC03A462BEA30DDC5C5D7
   logicalPath: config/pic32mk_mcj_curiosity_pro
   name: p32MK0512MCJ064.ld
   physicalPath: ''
   security: NON_SECURE
   type: LINKER
-  userChecksum: 7FABE4A9D0883C99ADAA9CA9BB4362C5
+  userChecksum: F763B024E08CC03A462BEA30DDC5C5D7
 format_version: v1.0
 libraries: []
 settings:

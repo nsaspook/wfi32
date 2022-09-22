@@ -74,6 +74,7 @@ extern "C" {
 		} scan;
 		uint8_t rs;
 		uint8_t ss;
+		uint8_t buffer[64]; // can-fd frame buffer space
 	};
 
 	enum device_type {

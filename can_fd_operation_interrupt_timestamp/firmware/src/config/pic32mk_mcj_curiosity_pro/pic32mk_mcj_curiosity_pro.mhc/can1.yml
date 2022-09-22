@@ -4,6 +4,20 @@ attributes: {id: can1}
 children:
 - type: Symbols
   children:
+  - type: Boolean
+    attributes: {id: AUTO_DATA_BIT_TIMING_CALCULATION}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
+  - type: Boolean
+    attributes: {id: AUTO_NOMINAL_BIT_TIMING_CALCULATION}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
   - type: Integer
     attributes: {id: CALCULATED_DATA_BITRATE}
     children:
@@ -94,48 +108,67 @@ children:
       children:
       - type: User
         attributes: {value: '2000'}
+  - type: Float
+    attributes: {id: DATA_SAMPLE_POINT}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: readOnly}
+        children:
+        - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: can1, value: '82.5'}
   - type: String
     attributes: {id: DATA_TIME_QUANTA_PERIOD}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: can1, value: '24.922'}
+        attributes: {id: can1, value: '12.461'}
   - type: Integer
     attributes: {id: DBT_BRP}
     children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: readOnly}
+        children:
+        - {type: Value, value: 'true'}
     - type: Values
       children:
-      - type: User
-        attributes: {value: '1'}
+      - type: Dynamic
+        attributes: {id: can1, value: '0'}
   - type: Integer
     attributes: {id: DBT_SJW}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: can1, value: '5'}
+        attributes: {id: can1, value: '7'}
   - type: Integer
     attributes: {id: DBT_TOTAL_TIME_QUANTA}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: can1, value: '20'}
+        attributes: {id: can1, value: '40'}
   - type: Integer
     attributes: {id: DBT_TSEG1}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: can1, value: '14'}
+        attributes: {id: can1, value: '32'}
   - type: Integer
     attributes: {id: DBT_TSEG2}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: can1, value: '5'}
+        attributes: {id: can1, value: '7'}
   - type: String
     attributes: {id: FIFO_OFFSET}
     children:
@@ -160,44 +193,70 @@ children:
   - type: Integer
     attributes: {id: NBT_BRP}
     children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: readOnly}
+        children:
+        - {type: Value, value: 'true'}
     - type: Values
       children:
-      - type: User
-        attributes: {value: '7'}
+      - type: Dynamic
+        attributes: {id: can1, value: '0'}
   - type: Integer
     attributes: {id: NBT_SJW}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: can1, value: '5'}
+        attributes: {id: can1, value: '1'}
   - type: Integer
     attributes: {id: NBT_TOTAL_TIME_QUANTA}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: can1, value: '20'}
+        attributes: {id: can1, value: '160'}
   - type: Integer
     attributes: {id: NBT_TSEG1}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: can1, value: '14'}
+        attributes: {id: can1, value: '158'}
   - type: Integer
     attributes: {id: NBT_TSEG2}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: can1, value: '5'}
+        attributes: {id: can1, value: '1'}
+  - type: Integer
+    attributes: {id: NOMINAL_BITRATE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '500'}
+  - type: Float
+    attributes: {id: NOMINAL_SAMPLE_POINT}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: readOnly}
+        children:
+        - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: can1, value: '99.375'}
   - type: String
     attributes: {id: NOMINAL_TIME_QUANTA_PERIOD}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: can1, value: '99.689'}
+        attributes: {id: can1, value: '12.461'}
 - type: ElementPosition
   attributes: {x: '340', y: '20', id: can1}

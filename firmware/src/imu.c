@@ -101,9 +101,13 @@ void getAllData(sSensorData_t *accel, imu_cmd_t * imu)
 			if (imu->device == IMU_BMA490L) {
 				move_bma490_transfer_data(data, imu);
 				sensortime = (data[9] << 16) | (data[8] << 8) | data[7]; // 24-bit sensor time
+				sdata.scan.ts = sensortime;
 				x = (int16_t) (((uint16_t) data[2] << 8) | data[1]); // 16-bit xyz data
+				sdata.scan.channels[SCA3300_ACC_X] = x;
 				y = (int16_t) (((uint16_t) data[4] << 8) | data[3]);
+				sdata.scan.channels[SCA3300_ACC_Y] = y;
 				z = (int16_t) (((uint16_t) data[6] << 8) | data[5]);
+				sdata.scan.channels[SCA3300_ACC_Z] = z;
 				accel->sensortime = sensortime; // time log each accel measurement from IMU
 			}
 #ifdef SCA3300
