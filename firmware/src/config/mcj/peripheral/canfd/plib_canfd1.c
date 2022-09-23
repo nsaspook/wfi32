@@ -58,7 +58,7 @@
 // *****************************************************************************
 // *****************************************************************************
 /* CAN1 Message memory size */
-#define CANFD_MESSAGE_RAM_CONFIG_SIZE 224
+#define CANFD_MESSAGE_RAM_CONFIG_SIZE 232
 /* Number of configured FIFO */
 #define CANFD_NUM_OF_FIFO             2
 /* Maximum number of CAN Message buffers in each FIFO */
@@ -160,29 +160,29 @@ static void CANLengthToDlcGet(uint8_t length, uint8_t *dlc)
 void CAN1_Initialize(void)
 {
     /* Switch the CAN module ON */
-    CFD1CON |= _CFD1CON_ON_MASK;
+    CFD1CON |= _CFD1CON_ON_MASK | _CFD1CON_CLKSEL0_MASK;
 
     /* Switch the CAN module to Configuration mode. Wait until the switch is complete */
     CFD1CON = (CFD1CON & ~_CFD1CON_REQOP_MASK) | ((CANFD_CONFIGURATION_MODE << _CFD1CON_REQOP_POSITION) & _CFD1CON_REQOP_MASK);
     while(((CFD1CON & _CFD1CON_OPMOD_MASK) >> _CFD1CON_OPMOD_POSITION) != CANFD_CONFIGURATION_MODE);
 
-    /* Set the Data bitrate to 500 Kbps */
-    CFD1DBTCFG = ((14 << _CFD1DBTCFG_BRP_POSITION) & _CFD1DBTCFG_BRP_MASK)
-               | ((10 << _CFD1DBTCFG_TSEG1_POSITION) & _CFD1DBTCFG_TSEG1_MASK)
-               | ((3 << _CFD1DBTCFG_TSEG2_POSITION) & _CFD1DBTCFG_TSEG2_MASK)
-               | ((3 << _CFD1DBTCFG_SJW_POSITION) & _CFD1DBTCFG_SJW_MASK);
+    /* Set the Data bitrate to 2000 Kbps */
+    CFD1DBTCFG = ((1 << _CFD1DBTCFG_BRP_POSITION) & _CFD1DBTCFG_BRP_MASK)
+               | ((27 << _CFD1DBTCFG_TSEG1_POSITION) & _CFD1DBTCFG_TSEG1_MASK)
+               | ((0 << _CFD1DBTCFG_TSEG2_POSITION) & _CFD1DBTCFG_TSEG2_MASK)
+               | ((0 << _CFD1DBTCFG_SJW_POSITION) & _CFD1DBTCFG_SJW_MASK);
 
     /* Set the Nominal bitrate to 500 Kbps */
-    CFD1NBTCFG = ((14 << _CFD1NBTCFG_BRP_POSITION) & _CFD1NBTCFG_BRP_MASK)
-               | ((10 << _CFD1NBTCFG_TSEG1_POSITION) & _CFD1NBTCFG_TSEG1_MASK)
-               | ((3 << _CFD1NBTCFG_TSEG2_POSITION) & _CFD1NBTCFG_TSEG2_MASK)
-               | ((3 << _CFD1NBTCFG_SJW_POSITION) & _CFD1NBTCFG_SJW_MASK);
+    CFD1NBTCFG = ((0 << _CFD1NBTCFG_BRP_POSITION) & _CFD1NBTCFG_BRP_MASK)
+               | ((237 << _CFD1NBTCFG_TSEG1_POSITION) & _CFD1NBTCFG_TSEG1_MASK)
+               | ((0 << _CFD1NBTCFG_TSEG2_POSITION) & _CFD1NBTCFG_TSEG2_MASK)
+               | ((0 << _CFD1NBTCFG_SJW_POSITION) & _CFD1NBTCFG_SJW_MASK);
 
     /* Set Message memory base address for all FIFOs/Queue */
     CFD1FIFOBA = (uint32_t)KVA_TO_PA(can_message_buffer);
 
     /* Tx Event FIFO Configuration */
-    CFD1TEFCON = (((1 - 1) << _CFD1TEFCON_FSIZE_POSITION) & _CFD1TEFCON_FSIZE_MASK);
+    CFD1TEFCON = (((1 - 1) << _CFD1TEFCON_FSIZE_POSITION) & _CFD1TEFCON_FSIZE_MASK) | _CFD1TEFCON_TEFTSEN_MASK;
     CFD1CON |= _CFD1CON_STEF_MASK;
 
     /* Tx Queue Configuration */
@@ -194,13 +194,19 @@ void CAN1_Initialize(void)
 
     /* Configure CAN FIFOs */
     CFD1FIFOCON1 = (((1 - 1) << _CFD1FIFOCON1_FSIZE_POSITION) & _CFD1FIFOCON1_FSIZE_MASK) | _CFD1FIFOCON1_TXEN_MASK | ((0x0 << _CFD1FIFOCON1_TXPRI_POSITION) & _CFD1FIFOCON1_TXPRI_MASK) | ((0x0 << _CFD1FIFOCON1_RTREN_POSITION) & _CFD1FIFOCON1_RTREN_MASK) | ((0x7 << _CFD1FIFOCON1_PLSIZE_POSITION) & _CFD1FIFOCON1_PLSIZE_MASK);
-    CFD1FIFOCON2 = (((1 - 1) << _CFD1FIFOCON2_FSIZE_POSITION) & _CFD1FIFOCON2_FSIZE_MASK) | ((0x7 << _CFD1FIFOCON2_PLSIZE_POSITION) & _CFD1FIFOCON2_PLSIZE_MASK);
+    CFD1FIFOCON2 = (((1 - 1) << _CFD1FIFOCON2_FSIZE_POSITION) & _CFD1FIFOCON2_FSIZE_MASK) | _CFD1FIFOCON2_RXTSEN_MASK  | ((0x7 << _CFD1FIFOCON2_PLSIZE_POSITION) & _CFD1FIFOCON2_PLSIZE_MASK);
 
     /* Configure CAN Filters */
     /* Filter 0 configuration */
     CFD1FLTOBJ0 = (0 & CANFD_MSG_SID_MASK);
     CFD1MASK0 = (0 & CANFD_MSG_SID_MASK);
     CFD1FLTCON0 |= (((0x2 << _CFD1FLTCON0_F0BP_POSITION) & _CFD1FLTCON0_F0BP_MASK)| _CFD1FLTCON0_FLTEN0_MASK);
+
+    /* Enable Timestamp */
+    CFD1TSCON = (0 & _CFD1TSCON_TBCPRE_MASK)
+                                | ((0x0 << _CFD1TSCON_TSEOF_POSITION) & _CFD1TSCON_TSEOF_MASK)
+| ((0x0 << _CFD1TSCON_TSRES_POSITION) & _CFD1TSCON_TSRES_MASK)
+                                | _CFD1TSCON_TBCEN_MASK;
 
     /* Set Interrupts */
     IEC5SET = _IEC5_CAN1IE_MASK;
@@ -606,6 +612,7 @@ bool CAN1_TransmitEventFIFOElementGet(uint32_t *id, uint32_t *sequence, uint32_t
 
         if (timestamp != NULL)
         {
+            *timestamp =  (txEventFIFOElement->timestamp[3] << 24) | (txEventFIFOElement->timestamp[2] << 16) | (txEventFIFOElement->timestamp[1] << 8) | txEventFIFOElement->timestamp[0];
         }
 
         /* Tx Event FIFO Element read done, update the Tx Event FIFO tail */
@@ -863,6 +870,7 @@ static void CAN1_RX_InterruptHandler(void)
     uint8_t  fifoSize = 0;
     uint8_t  count = 0;
     CANFD_RX_MSG_OBJECT *rxMessage = NULL;
+    uint8_t dataIndex = 4;
 
     fifoNum = (uint8_t)CFD1VEC & _CFD1VEC_ICODE_MASK;
     if (fifoNum <= CANFD_NUM_OF_FIFO)
@@ -902,12 +910,13 @@ static void CAN1_RX_InterruptHandler(void)
 
         if (can1RxMsg[fifoNum-1][msgIndex].timestamp != NULL)
         {
+            *can1RxMsg[fifoNum-1][msgIndex].timestamp =  (rxMessage->data[3] << 24) | (rxMessage->data[2] << 16) | (rxMessage->data[1] << 8) | rxMessage->data[0];
         }
 
         /* Copy the data into the payload */
         while (count < *can1RxMsg[fifoNum-1][msgIndex].size)
         {
-            *can1RxMsg[fifoNum-1][msgIndex].buffer++ = rxMessage->data[count++];
+            *can1RxMsg[fifoNum-1][msgIndex].buffer++ = rxMessage->data[dataIndex + count++];
         }
 
         /* Message processing is done, update the message buffer pointer. */

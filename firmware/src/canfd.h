@@ -17,6 +17,7 @@ extern "C" {
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include <stdarg.h>
 #include "definitions.h"                // SYS function prototypes
+#include "imupic32mcj.h"
 
 /* Application's state machine enum */
 typedef enum {
@@ -30,7 +31,8 @@ typedef enum {
 
 typedef enum {
 	CAN_RECEIVE,
-	CAN_TRANSMIT,
+	CAN_TRANSMIT_N,
+	CAN_TRANSMIT_FD,
 	CAN_IDLE,
 	CAN_USER_INPUT,
 	CAN_XFER_SUCCESSFUL,

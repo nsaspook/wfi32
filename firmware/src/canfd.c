@@ -52,6 +52,8 @@ void APP_CAN_Callback(uintptr_t context)
 		CANFD_ERROR_TX_BUS_PASSIVE_STATE | CANFD_ERROR_TX_BUS_OFF_STATE)) == CANFD_ERROR_NONE) {
 		switch ((APP_STATES) context) {
 		case APP_STATE_CAN_RECEIVE:
+			LED_RED_On();
+			LED_GREEN_On();
 		case APP_STATE_CAN_TRANSMIT:
 		{
 			state = APP_STATE_CAN_XFER_SUCCESSFUL;
@@ -62,7 +64,10 @@ void APP_CAN_Callback(uintptr_t context)
 		}
 	} else {
 		state = APP_STATE_CAN_XFER_ERROR;
+		LED_RED_On();
+		LED_GREEN_Off();
 	}
+
 }
 
 void print_menu(void)
@@ -94,9 +99,6 @@ int canfd_state(CANFD_STATES mode)
 	uint8_t user_input = 0;
 	uint8_t count = 0;
 
-	/* Initialize all modules */
-	SYS_Initialize(NULL);
-
 	printf(" ------------------------------ \r\n");
 	printf("            CAN FD Demo         \r\n");
 	printf(" ------------------------------ \r\n");
@@ -111,30 +113,31 @@ int canfd_state(CANFD_STATES mode)
 	while (true) {
 		if (state == APP_STATE_CAN_USER_INPUT) {
 			/* Read user input */
-			UART1_Read((void *) &user_input, 1);
+			//			UART1_Read((void *) &user_input, 1);
+			user_input = mode;
 
 			switch (user_input) {
-			case '1':
+			case CAN_TRANSMIT_FD:
 				printf(" Transmitting CAN FD Message:");
 				CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 				state = APP_STATE_CAN_IDLE;
-				messageID = 0x45A;
+				messageID = 0x35A;
 				messageLength = 64;
 				if (CAN1_MessageTransmit(messageID, messageLength, message, 1, CANFD_MODE_FD_WITH_BRS, CANFD_MSG_TX_DATA_FRAME) == false) {
 					printf("CAN1_MessageTransmit request has failed\r\n");
 				}
 				break;
-			case '2':
+			case CAN_TRANSMIT_N:
 				printf(" Transmitting CAN Normal Message:");
 				CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 				state = APP_STATE_CAN_IDLE;
-				messageID = 0x469;
+				messageID = 0x369;
 				messageLength = 8;
 				if (CAN1_MessageTransmit(messageID, messageLength, message, 1, CANFD_MODE_NORMAL, CANFD_MSG_TX_DATA_FRAME) == false) {
 					printf("CAN1_MessageTransmit request has failed\r\n");
 				}
 				break;
-			case '3':
+			case CAN_RECEIVE:
 				printf(" Waiting for message: \r\n");
 				CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE, 2);
 				state = APP_STATE_CAN_IDLE;
@@ -144,7 +147,7 @@ int canfd_state(CANFD_STATES mode)
 					printf("CAN1_MessageReceive request has failed\r\n");
 				}
 				break;
-			case 'm':
+			case CAN_IDLE:
 				print_menu();
 				break;
 			default:

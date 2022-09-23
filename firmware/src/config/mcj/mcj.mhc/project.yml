@@ -34,13 +34,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 3213CA481ED737A308839C3ED86ADA8C
-- generatedChecksum: 9858DE7DE826880D0B3DE140E651892F
+- generatedChecksum: 67DAB1D696A0F99125D03F87BC635788
   logicalPath: config/mcj/peripheral/canfd
   name: plib_canfd1.c
   physicalPath: peripheral/canfd
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 9858DE7DE826880D0B3DE140E651892F
+  userChecksum: 67DAB1D696A0F99125D03F87BC635788
 - generatedChecksum: 7199E30637F5CB2BB69049D10A0FE0C1
   logicalPath: config/mcj/peripheral/clk
   name: plib_clk.c

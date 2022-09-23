@@ -1,7 +1,7 @@
 configName: pic32mk_mcj_curiosity_pro
 folderName: ''
 format_version: v1.0
-frameworkPath: ../../../..
+frameworkPath: ../../../root/Harmony3
 processor: PIC32MK0512MCJ064
 projectName: ''
 settings:
@@ -10,4 +10,4 @@ settings:
   GENERATE_BACKUP: 'true'
   CMSISPath: ./dev_packs/arm/CMSIS/5.8.0
   MERGE_STRATEGY: USER_ALL
-  DFPPath: ./dev_packs/Microchip/PIC32MK-MC_DFP/1.8.132/atdf/PIC32MK0512MCJ064.atdf
+  DFPPath: ./../.mchp_packs/Microchip/PIC32MK-MC_DFP/1.11.151/atdf/PIC32MK0512MCJ064.atdf

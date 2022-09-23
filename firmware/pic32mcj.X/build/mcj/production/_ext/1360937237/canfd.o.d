@@ -21,7 +21,7 @@ build/mcj/production/_ext/1360937237/canfd.o: ../src/canfd.c \
  ../src/config/mcj/peripheral/spi/spi_master/plib_spi_master_common.h \
  ../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.h \
  ../src/config/mcj/peripheral/rtcc/plib_rtcc.h \
- ../src/config/mcj/peripheral/tmr/plib_tmr9.h
+ ../src/config/mcj/peripheral/tmr/plib_tmr9.h ../src/imupic32mcj.h
 
 ../src/canfd.h:
 
@@ -72,3 +72,5 @@ build/mcj/production/_ext/1360937237/canfd.o: ../src/canfd.c \
 ../src/config/mcj/peripheral/rtcc/plib_rtcc.h:
 
 ../src/config/mcj/peripheral/tmr/plib_tmr9.h:
+
+../src/imupic32mcj.h:

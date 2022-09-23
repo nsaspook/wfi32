@@ -51,6 +51,7 @@
 #include "timers.h"
 #include "../../firmware/lcd_drv/lcd_drv.h"
 #include "gfx.h"
+#include "canfd.h"
 
 #ifdef BMA490L
 /*
@@ -194,6 +195,8 @@ int main(void)
 	LED_RED_Off();
 	LED_GREEN_Off();
 	WaitMs(500);
+	
+	canfd_state(CAN_TRANSMIT_N);
 
 	// loop collecting data
 	StartTimer(TMR_LOG, imu0.log_timeout);
