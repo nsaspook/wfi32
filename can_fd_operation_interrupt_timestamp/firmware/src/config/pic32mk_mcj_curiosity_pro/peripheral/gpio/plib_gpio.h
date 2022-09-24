@@ -62,6 +62,15 @@
 // *****************************************************************************
 
 
+/*** Macros for LEDY pin ***/
+#define LEDY_Set()               (LATESET = (1U<<13))
+#define LEDY_Clear()             (LATECLR = (1U<<13))
+#define LEDY_Toggle()            (LATEINV= (1U<<13))
+#define LEDY_OutputEnable()      (TRISECLR = (1U<<13))
+#define LEDY_InputEnable()       (TRISESET = (1U<<13))
+#define LEDY_Get()               ((PORTE >> 13) & 0x1U)
+#define LEDY_PIN                  GPIO_PIN_RE13
+
 /*** Macros for LED pin ***/
 #define LED_Set()               (LATASET = (1U<<10))
 #define LED_Clear()             (LATACLR = (1U<<10))

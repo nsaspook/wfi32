@@ -160,7 +160,7 @@ static void CANLengthToDlcGet(uint8_t length, uint8_t *dlc)
 void CAN1_Initialize(void)
 {
     /* Switch the CAN module ON */
-    CFD1CON |= _CFD1CON_ON_MASK;
+    CFD1CON |= _CFD1CON_ON_MASK | _CFD1CON_CLKSEL0_MASK;
 
     /* Switch the CAN module to Configuration mode. Wait until the switch is complete */
     CFD1CON = (CFD1CON & ~_CFD1CON_REQOP_MASK) | ((CANFD_CONFIGURATION_MODE << _CFD1CON_REQOP_POSITION) & _CFD1CON_REQOP_MASK);
@@ -168,13 +168,13 @@ void CAN1_Initialize(void)
 
     /* Set the Data bitrate to 2000 Kbps */
     CFD1DBTCFG = ((0 << _CFD1DBTCFG_BRP_POSITION) & _CFD1DBTCFG_BRP_MASK)
-               | ((31 << _CFD1DBTCFG_TSEG1_POSITION) & _CFD1DBTCFG_TSEG1_MASK)
-               | ((6 << _CFD1DBTCFG_TSEG2_POSITION) & _CFD1DBTCFG_TSEG2_MASK)
-               | ((6 << _CFD1DBTCFG_SJW_POSITION) & _CFD1DBTCFG_SJW_MASK);
+               | ((17 << _CFD1DBTCFG_TSEG1_POSITION) & _CFD1DBTCFG_TSEG1_MASK)
+               | ((0 << _CFD1DBTCFG_TSEG2_POSITION) & _CFD1DBTCFG_TSEG2_MASK)
+               | ((0 << _CFD1DBTCFG_SJW_POSITION) & _CFD1DBTCFG_SJW_MASK);
 
-    /* Set the Nominal bitrate to 500 Kbps */
+    /* Set the Nominal bitrate to 1000 Kbps */
     CFD1NBTCFG = ((0 << _CFD1NBTCFG_BRP_POSITION) & _CFD1NBTCFG_BRP_MASK)
-               | ((157 << _CFD1NBTCFG_TSEG1_POSITION) & _CFD1NBTCFG_TSEG1_MASK)
+               | ((37 << _CFD1NBTCFG_TSEG1_POSITION) & _CFD1NBTCFG_TSEG1_MASK)
                | ((0 << _CFD1NBTCFG_TSEG2_POSITION) & _CFD1NBTCFG_TSEG2_MASK)
                | ((0 << _CFD1NBTCFG_SJW_POSITION) & _CFD1NBTCFG_SJW_MASK);
 
@@ -204,8 +204,8 @@ void CAN1_Initialize(void)
 
     /* Enable Timestamp */
     CFD1TSCON = (0 & _CFD1TSCON_TBCPRE_MASK)
-                                | ((0x0 << _CFD1TSCON_TSEOF_POSITION) & _CFD1TSCON_TSEOF_MASK)
-| ((0x0 << _CFD1TSCON_TSRES_POSITION) & _CFD1TSCON_TSRES_MASK)
+                                | ((0x1 << _CFD1TSCON_TSEOF_POSITION) & _CFD1TSCON_TSEOF_MASK)
+
                                 | _CFD1TSCON_TBCEN_MASK;
 
     /* Set Interrupts */

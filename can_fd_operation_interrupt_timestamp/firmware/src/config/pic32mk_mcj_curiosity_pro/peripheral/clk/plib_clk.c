@@ -89,6 +89,20 @@ void CLK_Initialize( void )
     SYSKEY = 0xAA996655;
     SYSKEY = 0x556699AA;
 
+    /* Set up Reference Clock 4 */
+    /* REFO4CON register */
+    /* ROSEL =  SYSCLK */
+    /* DIVSWEN = 1 */
+    /* RODIV = 1 */
+    REFO4CON = 0x10200;
+
+    /* REFO4TRIM register */
+    /* ROTRIM = 0 */
+    REFO4TRIM = 0x0;
+
+    /* Enable oscillator (ON bit) */
+    REFO4CONSET = 0x00008000;
+
   
 
     /* Peripheral Module Disable Configuration */

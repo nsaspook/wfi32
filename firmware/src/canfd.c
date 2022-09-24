@@ -52,8 +52,8 @@ void APP_CAN_Callback(uintptr_t context)
 		CANFD_ERROR_TX_BUS_PASSIVE_STATE | CANFD_ERROR_TX_BUS_OFF_STATE)) == CANFD_ERROR_NONE) {
 		switch ((APP_STATES) context) {
 		case APP_STATE_CAN_RECEIVE:
-			LED_RED_On();
-			LED_GREEN_On();
+			LED_RED_Off();
+			LED_GREEN_Toggle();
 		case APP_STATE_CAN_TRANSMIT:
 		{
 			state = APP_STATE_CAN_XFER_SUCCESSFUL;
@@ -65,9 +65,20 @@ void APP_CAN_Callback(uintptr_t context)
 	} else {
 		state = APP_STATE_CAN_XFER_ERROR;
 		LED_RED_On();
-		LED_GREEN_Off();
+		LED_GREEN_On();
 	}
 
+}
+
+void APP_CAN_Error_Callback(uintptr_t context)
+{
+	xferContext = context;
+
+	/* Check CAN Status */
+	status = CAN1_ErrorGet();
+
+	LED_RED_On();
+	LED_GREEN_Off();
 }
 
 void print_menu(void)
@@ -140,12 +151,15 @@ int canfd_state(CANFD_STATES mode)
 			case CAN_RECEIVE:
 				printf(" Waiting for message: \r\n");
 				CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE, 2);
+				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE);
 				state = APP_STATE_CAN_IDLE;
 				memset(rx_message, 0x00, sizeof(rx_message));
 				/* Receive New Message */
 				if (CAN1_MessageReceive(&rx_messageID, &rx_messageLength, rx_message, &timestamp, 2, &msgAttr) == false) {
 					printf("CAN1_MessageReceive request has failed\r\n");
 				}
+				LED_RED_Off();
+				LED_GREEN_Off();
 				break;
 			case CAN_IDLE:
 				print_menu();

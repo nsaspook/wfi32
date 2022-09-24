@@ -135,12 +135,12 @@ void CLK_Initialize( void )
     /* REFO4CON register */
     /* ROSEL =  SYSCLK */
     /* DIVSWEN = 1 */
-    /* RODIV = 0 */
-    REFO4CON = 0x200;
+    /* RODIV = 1 */
+    REFO4CON = 0x10200;
 
     /* REFO4TRIM register */
-    /* ROTRIM = 0 */
-    REFO4TRIM = 0x0;
+    /* ROTRIM = 256 */
+    REFO4TRIM = 0x80000000;
 
     /* Enable oscillator (ON bit) */
     REFO4CONSET = 0x00008000;

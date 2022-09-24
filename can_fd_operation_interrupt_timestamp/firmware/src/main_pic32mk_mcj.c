@@ -124,7 +124,18 @@ void APP_CAN_Callback(uintptr_t context)
 		}
 	} else {
 		state = APP_STATE_CAN_XFER_ERROR;
+
 	}
+}
+
+void APP_CAN_Error_Callback(uintptr_t context)
+{
+	xferContext = context;
+
+	/* Check CAN Status */
+	status = CAN1_ErrorGet();
+
+	LED_Set();
 }
 
 void print_menu(void)
@@ -170,6 +181,9 @@ int main(void)
 		message[count] = count;
 	}
 
+	LED_Clear();
+	LEDY_Clear();
+
 	while (true) {
 		if (state == APP_STATE_CAN_USER_INPUT) {
 			/* Read user input */
@@ -179,6 +193,7 @@ int main(void)
 			case '1':
 				printf(" Transmitting CAN FD Message:");
 				CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
+				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE);
 				state = APP_STATE_CAN_IDLE;
 				messageID = 0x45A;
 				messageLength = 64;
@@ -189,6 +204,7 @@ int main(void)
 			case '2':
 				printf(" Transmitting CAN Normal Message:");
 				CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
+				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE);
 				state = APP_STATE_CAN_IDLE;
 				messageID = 0x469;
 				messageLength = 8;
@@ -205,6 +221,7 @@ int main(void)
 				if (CAN1_MessageReceive(&rx_messageID, &rx_messageLength, rx_message, &timestamp, 2, &msgAttr) == false) {
 					printf("CAN1_MessageReceive request has failed\r\n");
 				}
+				LEDY_Set();
 				break;
 			case 'm':
 				print_menu();
@@ -234,8 +251,7 @@ int main(void)
 					PrintFormattedData("0x%x ", rx_message[rx_messageLength - length--]);
 				}
 				printf("\r\n");
-			}
-			else if ((APP_STATES) xferContext == APP_STATE_CAN_TRANSMIT) {
+			} else if ((APP_STATES) xferContext == APP_STATE_CAN_TRANSMIT) {
 				printf("Success \r\n");
 			}
 			LED_Toggle();

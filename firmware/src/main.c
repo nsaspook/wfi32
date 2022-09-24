@@ -196,7 +196,7 @@ int main(void)
 	LED_GREEN_Off();
 	WaitMs(500);
 	
-	canfd_state(CAN_TRANSMIT_N);
+	canfd_state(CAN_TRANSMIT_FD);
 
 	// loop collecting data
 	StartTimer(TMR_LOG, imu0.log_timeout);
