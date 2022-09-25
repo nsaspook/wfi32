@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<project>                                  
+  <executable name="dist/mcj_testing/production/pic32mcj.X.production.elf">                 
+    <memory name="program">                 
+      <units>bytes</units>                 
+      <length>525440</length>                 
+      <used>50484</used>                     
+      <free>474956</free>                     
+    </memory>                              
+    <memory name="data">              
+      <units>bytes</units>                 
+      <length>65536</length>                 
+      <used>1536</used>                     
+      <free>64000</free>                     
+    </memory>                              
+  </executable>                            
+</project>                                 
