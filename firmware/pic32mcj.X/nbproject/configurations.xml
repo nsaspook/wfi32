@@ -170,8 +170,11 @@
         <itemPath>../src/config/mcj/mcj.mhc/core.yml</itemPath>
         <itemPath>../src/config/mcj/mcj.mhc/core_timer.yml</itemPath>
         <itemPath>../src/config/mcj/mcj.mhc/dfp.yml</itemPath>
+        <itemPath>../src/config/mcj/mcj.mhc/GraphSettings.yml</itemPath>
         <itemPath>../src/config/mcj/mcj.mhc/mcpwm.yml</itemPath>
+        <itemPath>../src/config/mcj/mcj.mhc/project.yml</itemPath>
         <itemPath>../src/config/mcj/mcj.mhc/rtcc.yml</itemPath>
+        <itemPath>../src/config/mcj/mcj.mhc/settings.yml</itemPath>
         <itemPath>../src/config/mcj/mcj.mhc/spi1.yml</itemPath>
         <itemPath>../src/config/mcj/mcj.mhc/spi2.yml</itemPath>
         <itemPath>../src/config/mcj/mcj.mhc/stdio.yml</itemPath>
@@ -179,9 +182,6 @@
         <itemPath>../src/config/mcj/mcj.mhc/tmr6.yml</itemPath>
         <itemPath>../src/config/mcj/mcj.mhc/tmr9.yml</itemPath>
         <itemPath>../src/config/mcj/mcj.mhc/uart1.yml</itemPath>
-        <itemPath>../src/config/mcj/mcj.mhc/GraphSettings.yml</itemPath>
-        <itemPath>../src/config/mcj/mcj.mhc/settings.yml</itemPath>
-        <itemPath>../src/config/mcj/mcj.mhc/project.yml</itemPath>
       </logicalFolder>
       <itemPath>Makefile</itemPath>
       <itemPath>../src/config/mcj/harmony-manifest-success.yml</itemPath>
@@ -911,10 +911,10 @@
         <targetDevice>PIC32MK0512MCJ048</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>ICD4Tool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.10</languageToolchainVersion>
-        <platform>2</platform>
+        <platform>3</platform>
       </toolsSet>
       <packs>
         <pack name="PIC32MK-MC_DFP" vendor="Microchip" version="1.11.151"/>
@@ -1252,7 +1252,7 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="1d000000-1d07ffff"/>
-        <property key="poweroptions.powerenable" value="true"/>
+        <property key="poweroptions.powerenable" value="false"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.ledbrightness" value="5"/>
@@ -1465,7 +1465,7 @@
         <property key="memories.programmemory.end" value="0x1d003fff"/>
         <property key="memories.programmemory.ranges" value="1d000000-1d07ffff"/>
         <property key="memories.programmemory.start" value="0x1d000000"/>
-        <property key="poweroptions.powerenable" value="true"/>
+        <property key="poweroptions.powerenable" value="false"/>
         <property key="programmerToGoFilePath"
                   value="C:/Users/nsasp/wfi32/firmware/pic32mcj.X/debug/mcj/pic32mcj_ptg"/>
         <property key="programmerToGoImageName" value="pic32mcj_ptg"/>

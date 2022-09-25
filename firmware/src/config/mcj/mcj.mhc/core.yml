@@ -1006,7 +1006,7 @@ children:
       - type: Dynamic
         attributes: {id: core, value: '2'}
       - type: User
-        attributes: {value: '5'}
+        attributes: {value: '2'}
   - type: Combo
     attributes: {id: CONFIG_FNOSC}
     children:

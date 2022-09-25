@@ -111,12 +111,6 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 	uint8_t count = 0;
 	bool msg_ready = false;
 
-	printf(" ------------------------------ \r\n");
-	printf("            CAN FD Demo         \r\n");
-	printf(" ------------------------------ \r\n");
-
-	print_menu();
-
 	/* Prepare the message to send */
 	for (count = 0; count < 64; count++) {
 		message[count] = count;
@@ -175,7 +169,6 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 				}
 				break;
 			case CAN_IDLE:
-				print_menu();
 				break;
 			default:
 				printf(" Invalid Input \r\n");
