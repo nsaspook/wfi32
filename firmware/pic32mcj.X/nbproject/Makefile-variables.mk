@@ -8,3 +8,7 @@ CND_BASEDIR=`pwd`
 CND_ARTIFACT_DIR_mcj=dist/mcj/production
 CND_ARTIFACT_NAME_mcj=pic32mcj.X.production.hex
 CND_ARTIFACT_PATH_mcj=dist/mcj/production/pic32mcj.X.production.hex
+# mcj_testing configuration
+CND_ARTIFACT_DIR_mcj_testing=dist/mcj_testing/production
+CND_ARTIFACT_NAME_mcj_testing=pic32mcj.X.production.hex
+CND_ARTIFACT_PATH_mcj_testing=dist/mcj_testing/production/pic32mcj.X.production.hex

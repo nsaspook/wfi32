@@ -27,11 +27,11 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 PROJECTNAME=pic32mcj.X
 
 # Active Configuration
-DEFAULTCONF=mcj
+DEFAULTCONF=mcj_testing
 CONF=${DEFAULTCONF}
 
 # All Configurations
-ALLCONFS=mcj 
+ALLCONFS=mcj mcj_testing 
 
 
 # build
@@ -46,12 +46,14 @@ ALLCONFS=mcj
 # clobber
 .clobber-impl: .clobber-pre .depcheck-impl
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=mcj clean
+	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=mcj_testing clean
 
 
 
 # all
 .all-impl: .all-pre .depcheck-impl
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=mcj build
+	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=mcj_testing build
 
 
 
