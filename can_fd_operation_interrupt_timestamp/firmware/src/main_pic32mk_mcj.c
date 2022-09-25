@@ -61,14 +61,27 @@ typedef enum {
 	APP_STATE_CAN_XFER_ERROR
 } APP_STATES;
 
+typedef struct {
+	double x; /**< X-axis sensor data */
+	double y; /**< Y-axis sensor data */
+	double z; /**< Z-axis sensor data */
+	double xa; /**< X-angle sensor data */
+	double ya; /**< Y-angle sensor data */
+	double za; /**< Z-angle sensor data */
+	uint32_t sensortime; /**< sensor time */
+	double sensortemp;
+} sSensorData_t;
+
+sSensorData_t *accel;
+
 /* set format attribute for the vararg function */
 void PrintFormattedData(const char * format, ...) __attribute__((format(printf, 1, 2)));
 
 /* Variable to save application state */
 static APP_STATES state = APP_STATE_CAN_USER_INPUT;
 /* Variable to save Tx/Rx transfer status and context */
-static uint32_t status = 0;
-static uint32_t xferContext = 0;
+static volatile uint32_t status = 0;
+static volatile uint32_t xferContext = 0;
 /* Variable to save Tx/Rx message */
 static uint32_t messageID = 0;
 static uint8_t message[64];
@@ -166,6 +179,7 @@ int main(void)
 {
 	uint8_t user_input = 0;
 	uint8_t count = 0;
+	bool msg_ready = false;
 
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
@@ -213,15 +227,23 @@ int main(void)
 				}
 				break;
 			case '3':
-				printf(" Waiting for message: \r\n");
-				CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE, 2);
-				state = APP_STATE_CAN_IDLE;
-				memset(rx_message, 0x00, sizeof(rx_message));
-				/* Receive New Message */
-				if (CAN1_MessageReceive(&rx_messageID, &rx_messageLength, rx_message, &timestamp, 2, &msgAttr) == false) {
-					printf("CAN1_MessageReceive request has failed\r\n");
+				msg_ready = CAN1_InterruptGet(2, 0x1f);
+				if (msg_ready) {
+					printf(" Waiting for message: \r\n");
+					CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE, 2);
+					state = APP_STATE_CAN_IDLE;
+					memset(rx_message, 0x00, sizeof(rx_message));
+
+					/* Receive New Message */
+					if (CAN1_MessageReceive(&rx_messageID, &rx_messageLength, rx_message, &timestamp, 2, &msgAttr) == false) {
+						printf("CAN1_MessageReceive request has failed\r\n");
+					}
+					LEDY_Set();
+				} else {
+					state = APP_STATE_CAN_USER_INPUT;
+					printf(" No message: \r\n");
+					print_menu();
 				}
-				LEDY_Set();
 				break;
 			case 'm':
 				print_menu();
@@ -247,9 +269,8 @@ int main(void)
 				uint8_t length = rx_messageLength;
 				PrintFormattedData(" Message - Timestamp : 0x%x ID : 0x%x Length : 0x%x ", timestamp, (unsigned int) rx_messageID, (unsigned int) rx_messageLength);
 				printf("Message : ");
-				while (length) {
-					PrintFormattedData("0x%x ", rx_message[rx_messageLength - length--]);
-				}
+				accel = (sSensorData_t *) rx_message;
+				printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f, sensor TS %u, %u\r\n", accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->sensortime, length);
 				printf("\r\n");
 			} else if ((APP_STATES) xferContext == APP_STATE_CAN_TRANSMIT) {
 				printf("Success \r\n");

@@ -42,7 +42,7 @@ typedef enum {
 /* set format attribute for the vararg function */
 void PrintFormattedData(const char * format, ...) __attribute__((format(printf, 1, 2)));
 void APP_CAN_Callback(uintptr_t);
-int canfd_state(CANFD_STATES);
+int canfd_state(CANFD_STATES, void *);
 
 #ifdef	__cplusplus
 }

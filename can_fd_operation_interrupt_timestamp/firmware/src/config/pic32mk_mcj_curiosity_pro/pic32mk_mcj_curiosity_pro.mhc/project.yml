@@ -27,13 +27,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
-- generatedChecksum: C643785C84A9F6881DAA42C02ED57F76
+- generatedChecksum: D63C213DDCAABDC9F0488038A2B49517
   logicalPath: config/pic32mk_mcj_curiosity_pro/peripheral/canfd
   name: plib_canfd1.c
   physicalPath: peripheral/canfd
   security: NON_SECURE
   type: SOURCE
-  userChecksum: C643785C84A9F6881DAA42C02ED57F76
+  userChecksum: D63C213DDCAABDC9F0488038A2B49517
 - generatedChecksum: 7DBF88CF0766CDE81E7A1CCD97992E13
   logicalPath: config/pic32mk_mcj_curiosity_pro/peripheral/clk
   name: plib_clk.c

@@ -21,7 +21,7 @@ extern "C" {
 
 #define IMU_DRIVER	"V1.004" 
 #define IMU_ALIAS	"IMU"
-	
+
 #define IMU_ID_DELAY	100
 	/*
 	 * what IMU chip are we using
@@ -41,6 +41,7 @@ extern "C" {
 		double za; /**< Z-angle sensor data */
 		uint32_t sensortime; /**< sensor time */
 		double sensortemp;
+		uint8_t buffer[64]; // can-fd frame buffer space
 	} sSensorData_t;
 
 	/*
@@ -74,7 +75,6 @@ extern "C" {
 		} scan;
 		uint8_t rs;
 		uint8_t ss;
-		uint8_t buffer[64]; // can-fd frame buffer space
 	};
 
 	enum device_type {
@@ -127,7 +127,7 @@ extern "C" {
 #define SCL3300_ACCEL_MG_LSB_24G	0.000333800	///< Macro for mg per LSB at +/- 2.4g sensitivity	LSB/g 3000
 #define SCL3300_INC1			0.000083700
 #define SCL3300_INC2			0.000083700
-	
+
 #define ANGLE_RES1		16384.0
 #define ANGLE_RES2		90.0
 #define TEMPERATURE_RES		18.9

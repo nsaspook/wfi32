@@ -43,6 +43,7 @@
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include <stdio.h>
 #include <string.h>
+#include <proc/p32mk0512mcj048.h>
 #include "definitions.h"                // SYS function prototypes
 
 #include "imupic32mcj.h"
@@ -131,6 +132,7 @@ extern CORETIMER_OBJECT coreTmr;
 
 int main(void)
 {
+	uint8_t rxe, txe, times = 0;
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
 
@@ -195,8 +197,6 @@ int main(void)
 	LED_RED_Off();
 	LED_GREEN_Off();
 	WaitMs(500);
-	
-	canfd_state(CAN_TRANSMIT_FD);
 
 	// loop collecting data
 	StartTimer(TMR_LOG, imu0.log_timeout);
@@ -220,6 +220,8 @@ int main(void)
 			eaDogM_WriteStringAtPos(1, 0, buffer);
 			sprintf(buffer, "PIC32 IMU Controller %s   %s %s", IMU_DRIVER, build_date, build_time);
 			eaDogM_WriteStringAtPos(14, 0, buffer);
+			sprintf(buffer, "imu");
+			eaDogM_WriteStringAtPos(3, 0, buffer);
 			sprintf(buffer, "DEV %d", imu0.device);
 			eaDogM_WriteStringAtPos(4, 0, buffer);
 			sprintf(buffer, "RAN %d", imu0.acc_range);
@@ -246,6 +248,31 @@ int main(void)
 				//				printf(" IMU data timeout \r\n");
 				LED_GREEN_Toggle();
 			}
+			CAN1_ErrorCountGet(&txe, &rxe);
+			sprintf(buffer, "can-fd");
+			eaDogM_WriteStringAtPos(3, 20, buffer);
+			sprintf(buffer, "ErrorT %d", txe);
+			eaDogM_WriteStringAtPos(4, 20, buffer);
+			sprintf(buffer, "ErrorR %d", rxe);
+			eaDogM_WriteStringAtPos(5, 20, buffer);
+			sprintf(buffer, "Can INT %d", CAN1_InterruptGet(1, 0x1f));
+			eaDogM_WriteStringAtPos(6, 20, buffer);
+			sprintf(buffer, "TX Full %s", CAN1_TxFIFOQueueIsFull(1) ? "Y" : "N");
+			eaDogM_WriteStringAtPos(7, 20, buffer);
+			sprintf(buffer, "Update %d", ++times);
+			eaDogM_WriteStringAtPos(8, 20, buffer);
+			sprintf(buffer, "REQ %X", CFD1TXREQ);
+			eaDogM_WriteStringAtPos(9, 20, buffer);
+			sprintf(buffer, "Ce0 %X", CFD1BDIAG0);
+			eaDogM_WriteStringAtPos(10, 20, buffer);
+			sprintf(buffer, "Ce1 %X", CFD1BDIAG1);
+			eaDogM_WriteStringAtPos(11, 20, buffer);
+			sprintf(buffer, "CINT %X", CFD1INT);
+			eaDogM_WriteStringAtPos(13, 0, buffer);
+
+			canfd_state(CAN_RECEIVE, accel.buffer);
+			canfd_state(CAN_TRANSMIT_FD, &accel);
+
 			StartTimer(TMR_LOG, imu0.log_timeout);
 		}
 	}
