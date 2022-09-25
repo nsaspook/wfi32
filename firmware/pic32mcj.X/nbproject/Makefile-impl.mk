@@ -27,7 +27,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 PROJECTNAME=pic32mcj.X
 
 # Active Configuration
-DEFAULTCONF=mcj_testing
+DEFAULTCONF=mcj
 CONF=${DEFAULTCONF}
 
 # All Configurations
