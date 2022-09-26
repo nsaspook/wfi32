@@ -231,12 +231,13 @@ int main(void)
 			eaDogM_WriteStringAtPos(5, 0, buffer);
 			sprintf(buffer, "ANG %s", imu0.angles ? "Yes" : "No");
 			eaDogM_WriteStringAtPos(6, 0, buffer);
-
+			TP1_Clear();
 			q0 = accel.x;
 			q1 = accel.y;
 			q2 = accel.z;
 			q3 = accel.x;
 			vector_graph();
+			TP1_Set();
 			{
 				uint16_t i = 1;
 
@@ -246,7 +247,9 @@ int main(void)
 					LA_gfx(false, false, 1400);
 				}
 			}
+			TP1_Clear();
 			OledUpdate();
+			TP1_Set();
 			if (TimerDone(TMR_LOG)) {
 				//				printf(" IMU data timeout \r\n");
 				LED_GREEN_Toggle();
