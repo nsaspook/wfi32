@@ -118,35 +118,33 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 
 	while (true) {
 		if (state == APP_STATE_CAN_USER_INPUT) {
-			/* Read user input */
-			//			UART1_Read((void *) &user_input, 1);
 			user_input = mode;
 
 			switch (user_input) {
 			case CAN_TRANSMIT_FD:
 				msg_ready = CAN1_InterruptGet(1, 0x1f);
 				if (msg_ready) {
-					printf(" Transmitting CAN FD Message:,");
+					printf("CAN FD, ");
 //					CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 //					CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT);
 					state = APP_STATE_CAN_IDLE;
 					messageID = 0x35A;
 					messageLength = 64;
 					if (CAN1_MessageTransmit(messageID, messageLength, can_buffer, 1, CANFD_MODE_FD_WITH_BRS, CANFD_MSG_TX_DATA_FRAME) == false) {
-						printf("CAN1_MessageTransmit request has failed\r\n");
+						//printf("CAN1_MessageTransmit request has failed\r\n");
 					}
 				} else {
 					state = APP_STATE_CAN_IDLE;
 				}
 				break;
 			case CAN_TRANSMIT_N:
-				printf(" Transmitting CAN Normal Message:");
+				printf("CAN, ");
 //				CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 				state = APP_STATE_CAN_IDLE;
 				messageID = 0x369;
 				messageLength = 8;
 				if (CAN1_MessageTransmit(messageID, messageLength, can_buffer, 1, CANFD_MODE_NORMAL, CANFD_MSG_TX_DATA_FRAME) == false) {
-					printf("CAN1_MessageTransmit request has failed\r\n");
+					//printf("CAN1_MessageTransmit request has failed\r\n");
 				}
 				LED_RED_Toggle();
 				break;
@@ -160,7 +158,7 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 					memset(rx_message, 0x00, sizeof(rx_message));
 					/* Receive New Message */
 					if (CAN1_MessageReceive(&rx_messageID, &rx_messageLength, can_buffer, &timestamp, 2, &msgAttr) == false) {
-						printf("CAN1_MessageReceive request has failed\r\n");
+						//printf("CAN1_MessageReceive request has failed\r\n");
 					}
 					LED_RED_Off();
 					LED_GREEN_Off();
@@ -171,8 +169,6 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 			case CAN_IDLE:
 				break;
 			default:
-				printf(" Invalid Input \r\n");
-				print_menu();
 				break;
 			}
 		}

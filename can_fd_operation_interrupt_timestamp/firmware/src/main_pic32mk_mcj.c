@@ -265,15 +265,13 @@ int main(void)
 		{
 			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
 				/* Print message to Console */
-				printf(" New Message Received    \r\n");
 				uint8_t length = rx_messageLength;
 				PrintFormattedData(" Message - Timestamp : 0x%x ID : 0x%x Length : 0x%x ", timestamp, (unsigned int) rx_messageID, (unsigned int) rx_messageLength);
 				printf("Message : ");
 				accel = (sSensorData_t *) rx_message;
-				printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f, sensor TS %u, %u\r\n", accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->sensortime, length);
+				printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f, sensor TS 0X%x, %u\r\n", accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->sensortime, length);
 				printf("\r\n");
 			} else if ((APP_STATES) xferContext == APP_STATE_CAN_TRANSMIT) {
-				printf("Success \r\n");
 			}
 			LED_Toggle();
 			print_menu();
