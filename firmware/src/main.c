@@ -209,9 +209,12 @@ int main(void)
 		 * convert the SPI XYZ response to standard floating point acceleration values and rolling integer time-stamps per measurement
 		 */
 		if (imu0.update || TimerDone(TMR_LOG)) {
+			TP1_Set();
 			OledClearBuffer();
+			TP1_Clear();
 			imu0.op.imu_getdata(&imu0); // read data from the chip
 			imu0.update = false;
+			TP1_Set();
 			getAllData(&accel, &imu0); // convert data from the chip
 			printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f,%u,%X,%X\r\n", accel.x, accel.y, accel.z, accel.xa, accel.ya, accel.za, accel.sensortime, imu0.rs, imu0.ss);
 			sprintf(buffer, "%6.3f,%6.3f,%6.3f, %X, %X\r\n", accel.x, accel.y, accel.z, imu0.rs, imu0.ss);
@@ -272,6 +275,7 @@ int main(void)
 
 			canfd_state(CAN_RECEIVE, accel.buffer);
 			canfd_state(CAN_TRANSMIT_FD, &accel);
+			TP1_Clear();
 
 			StartTimer(TMR_LOG, imu0.log_timeout);
 		}

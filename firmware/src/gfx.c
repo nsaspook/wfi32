@@ -12,7 +12,6 @@ void line_rot(uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2)
 
 void vector_graph(void)
 {
-	TP1_Set();
 	static uint32_t irow = 0;
 	static int32_t x2 = 90, x1 = 120, y1 = 35, xn1, yn1, xn2, yn2, r;
 	static double theta1 = sinea, theta2 = sineb, theta3 = sinec;
@@ -78,7 +77,6 @@ void vector_graph(void)
 	if (theta3 > sine_res) {
 		theta3 = 0.0;
 	}
-	TP1_Clear();
 }
 
 /*
