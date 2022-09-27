@@ -43,7 +43,13 @@
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include <stdio.h>
 #include <string.h>
+/*
+ * PIC32 version specific setups
+ */
+#ifdef __32MK0512MCJ048__
 #include <proc/p32mk0512mcj048.h>
+#endif
+
 #include "definitions.h"                // SYS function prototypes
 
 #include "imupic32mcj.h"
@@ -52,7 +58,10 @@
 #include "timers.h"
 #include "../../firmware/lcd_drv/lcd_drv.h"
 #include "gfx.h"
+#ifdef __32MK0512MCJ048__
 #include "canfd.h"
+#endif
+
 
 #ifdef BMA490L
 /*
@@ -102,14 +111,6 @@ imu_cmd_t imu0 = {
 #endif
 
 /*
- * PIC32 version specific setups
- */
-#ifdef __32MK0512MCJ048__
-#endif
-#ifdef __32MZ1025W104132__
-#endif
-
-/*
  * Logging data structure
  */
 sSensorData_t accel;
@@ -132,7 +133,10 @@ extern CORETIMER_OBJECT coreTmr;
 
 int main(void)
 {
+#ifdef __32MK0512MCJ048__
 	uint8_t rxe, txe, times = 0;
+#endif
+
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
 
@@ -254,6 +258,8 @@ int main(void)
 				//				printf(" IMU data timeout \r\n");
 				LED_GREEN_Toggle();
 			}
+
+#ifdef __32MK0512MCJ048__
 			CAN1_ErrorCountGet(&txe, &rxe);
 			sprintf(buffer, "can-fd");
 			eaDogM_WriteStringAtPos(3, 20, buffer);
@@ -278,6 +284,7 @@ int main(void)
 
 			canfd_state(CAN_RECEIVE, accel.buffer);
 			canfd_state(CAN_TRANSMIT_FD, &accel);
+#endif
 			TP1_Clear();
 
 			StartTimer(TMR_LOG, imu0.log_timeout);

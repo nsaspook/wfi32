@@ -60,9 +60,10 @@ extern "C" {
 	 */
 	typedef struct _imu_cmd_t {
 		uint8_t device, cs, acc_range, spi_bytes, acc_range_scl;
-		uint8_t rbuf[64], tbuf[64];
-		uint32_t rbuf32[2], tbuf32[2], log_timeout, rs, ss;
+		uint32_t log_timeout, rs, ss;
 		volatile bool online, run, update, features, crc_error, angles;
+		uint8_t rbuf[64], tbuf[64];
+		uint32_t rbuf32[2], tbuf32[2];
 		op_t op;
 	} imu_cmd_t;
 

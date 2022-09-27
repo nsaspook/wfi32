@@ -237,10 +237,10 @@
         <targetDevice>WFI32E01</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>pk4hybrid</platformTool>
+        <platformTool>PKOBSKDEPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.00</languageToolchainVersion>
-        <platform>2</platform>
+        <languageToolchainVersion>4.10</languageToolchainVersion>
+        <platform>3</platform>
       </toolsSet>
       <packs>
         <pack name="PIC32MZ-W_DFP" vendor="Microchip" version="1.5.203"/>
