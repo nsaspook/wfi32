@@ -15,6 +15,13 @@ const double imu_table[] = {
 	SCL3300_INC2,
 };
 
+static const uint8_t imu_name [][8] = {
+	"BMA490L",
+	"SCA3300",
+	"SCL3300",
+	"NO IMU ",
+};
+
 static uint32_t sensortime;
 
 static void move_bma490_transfer_data(uint8_t *, imu_cmd_t *);
@@ -142,4 +149,17 @@ void move_bma490_transfer_data(uint8_t *pBuf, imu_cmd_t * imu)
 			pBuf[i - IMU_DATA_BUFFER_INDEX] = imu->rbuf[i];
 		}
 	}
+}
+
+const uint8_t * imu_string(imu_cmd_t * imu)
+{
+	const uint8_t * str_ptr = imu_name[IMU_NONE];
+
+	if (imu) { // null pointer check
+		if (imu->device < IMU_LAST) {
+			str_ptr = imu_name[imu->device];
+		}
+	}
+	return str_ptr; // return none string
+
 }

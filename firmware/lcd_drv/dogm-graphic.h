@@ -30,6 +30,8 @@
 
 extern volatile uint8_t __attribute__((coherent)) rgbOledBmp_page[];
 
+extern void ReSet_SetLow(void);
+extern void ReSet_SetHigh(void);
 extern void RS_SetLow(void);
 extern void RS_SetHigh(void);
 extern void CSB_SetLow(void);

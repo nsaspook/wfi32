@@ -1,14 +1,12 @@
 #include "canfd.h"
 
-
-
 /* Variable to save application state */
 static APP_STATES state = APP_STATE_CAN_USER_INPUT;
 /* Variable to save Tx/Rx transfer status and context */
 static volatile uint32_t status = 0;
 static volatile uint32_t xferContext = 0;
 /* Variable to save Tx/Rx message */
-static uint32_t messageID = 0;
+static uint32_t messageID = 0, num_tx=0, num_stall=0;
 static uint8_t message[64];
 static uint8_t messageLength = 0;
 static uint8_t rx_message[64];
@@ -64,8 +62,6 @@ void APP_CAN_Callback(uintptr_t context)
 		}
 	} else {
 		state = APP_STATE_CAN_XFER_ERROR;
-		//		LED_RED_On();
-		//		LED_GREEN_On();
 	}
 
 }
@@ -76,9 +72,6 @@ void APP_CAN_Error_Callback(uintptr_t context)
 
 	/* Check CAN Status */
 	status = CAN1_ErrorGet();
-
-	//	LED_RED_On();
-	//	LED_GREEN_Off();
 }
 
 void print_menu(void)
@@ -128,13 +121,15 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 //					CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 //					CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT);
 					state = APP_STATE_CAN_IDLE;
-					messageID = 0x35A;
+					messageID = MESS_ID_IMU;
 					messageLength = 64;
+					num_tx++;
 					if (CAN1_MessageTransmit(messageID, messageLength, can_buffer, 1, CANFD_MODE_FD_WITH_BRS, CANFD_MSG_TX_DATA_FRAME) == false) {
 						//printf("CAN1_MessageTransmit request has failed\r\n");
 					}
 				} else {
 					state = APP_STATE_CAN_IDLE;
+					num_stall++;
 				}
 				break;
 			case CAN_TRANSMIT_N:
@@ -224,7 +219,15 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 	return( EXIT_FAILURE);
 }
 
+uint32_t canfd_num_tx(void)
+{
+	return num_tx;
+}
 
+uint32_t canfd_num_stall(void)
+{
+	return num_stall;
+}
 /*******************************************************************************
  End of File
  */

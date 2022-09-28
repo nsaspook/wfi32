@@ -3,7 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/fred/wfi32/firmware/src/main.c</file>
+            <file>file:/public/wfi32/firmware/src/config/mcj/peripheral/canfd/plib_canfd1.c</file>
+            <file>file:/public/wfi32/firmware/src/main.c</file>
+            <file>file:/public/wfi32/firmware/lcd_drv/lcd_drv.h</file>
+            <file>file:/public/wfi32/firmware/src/imupic32mcj.h</file>
+            <file>file:/public/wfi32/firmware/src/canfd.c</file>
+            <file>file:/public/wfi32/firmware/src/sca3300.h</file>
+            <file>file:/public/wfi32/firmware/src/imu.h</file>
+            <file>file:/public/wfi32/firmware/src/sca3300.c</file>
+            <file>file:/public/wfi32/firmware/src/canfd.h</file>
+            <file>file:/public/wfi32/firmware/src/imu.c</file>
         </group>
     </open-files>
 </project-private>

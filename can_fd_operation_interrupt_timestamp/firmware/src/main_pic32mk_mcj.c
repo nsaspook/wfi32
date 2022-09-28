@@ -62,6 +62,7 @@ typedef enum {
 } APP_STATES;
 
 typedef struct {
+	uint8_t id;
 	double x; /**< X-axis sensor data */
 	double y; /**< Y-axis sensor data */
 	double z; /**< Z-axis sensor data */

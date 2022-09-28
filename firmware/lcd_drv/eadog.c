@@ -79,6 +79,18 @@ void SPI1_Initialize_internal(void)
 	SPI1CONSET = _SPI1CON_ON_MASK;
 }
 
+void ReSet_SetLow(void)
+{
+	wait_lcd_done();
+	EXT_SW1_Clear();
+};
+
+void ReSet_SetHigh(void)
+{
+	wait_lcd_done();
+	EXT_SW1_Set();
+};
+
 void RS_SetLow(void)
 {
 	wait_lcd_done();

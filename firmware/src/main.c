@@ -68,6 +68,7 @@
  * BMA490L instance
  */
 imu_cmd_t imu0 = {
+	.id = 0,
 	.tbuf[0] = CHIP_ID | RBIT,
 	.online = false,
 	.device = IMU_BMA490L, // device type
@@ -90,6 +91,7 @@ imu_cmd_t imu0 = {
  * SCA3300-D01 instance
  */
 imu_cmd_t imu0 = {
+	.id = 0,
 	.tbuf32[SCA3300_TRM] = SCA3300_SWRESET_32B,
 	.online = false,
 	.device = IMU_SCA3300, // device type
@@ -113,7 +115,9 @@ imu_cmd_t imu0 = {
 /*
  * Logging data structure
  */
-sSensorData_t accel;
+sSensorData_t accel = {
+	.id = 1,
+};
 
 volatile uint16_t tickCount[TMR_COUNT];
 
@@ -227,7 +231,7 @@ int main(void)
 			eaDogM_WriteStringAtPos(1, 0, buffer);
 			sprintf(buffer, "PIC32 IMU Controller %s   %s %s", IMU_DRIVER, build_date, build_time);
 			eaDogM_WriteStringAtPos(14, 0, buffer);
-			sprintf(buffer, "imu");
+			sprintf(buffer, "imu %s", imu_string(&imu0));
 			eaDogM_WriteStringAtPos(3, 0, buffer);
 			sprintf(buffer, "DEV %d", imu0.device);
 			eaDogM_WriteStringAtPos(4, 0, buffer);
@@ -261,7 +265,7 @@ int main(void)
 
 #ifdef __32MK0512MCJ048__
 			CAN1_ErrorCountGet(&txe, &rxe);
-			sprintf(buffer, "can-fd");
+			sprintf(buffer, "can-fd %X", MESS_ID_IMU);
 			eaDogM_WriteStringAtPos(3, 20, buffer);
 			sprintf(buffer, "ErrorT %d", txe);
 			eaDogM_WriteStringAtPos(4, 20, buffer);
@@ -279,7 +283,7 @@ int main(void)
 			eaDogM_WriteStringAtPos(10, 20, buffer);
 			sprintf(buffer, "Ce1 %X", CFD1BDIAG1);
 			eaDogM_WriteStringAtPos(11, 20, buffer);
-			sprintf(buffer, "CINT %X", CFD1INT);
+			sprintf(buffer, "CINT %X, %d, %d", CFD1INT, canfd_num_tx(), canfd_num_stall());
 			eaDogM_WriteStringAtPos(13, 0, buffer);
 
 			canfd_state(CAN_RECEIVE, accel.buffer);

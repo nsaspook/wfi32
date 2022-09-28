@@ -58,7 +58,7 @@ extern "C" {
 #define	BANK1		0xA000A000	// bank 1 frame buffer memory address
 #define	BANK2		0x80030000	// bank 2 frame buffer memory address
 	
-#define LCD_DRIVER	"V1.001" 
+#define LCD_DRIVER	"V1.002" 
 #define LCD_ALIAS	"EADOG LCD"
 
 	typedef enum {

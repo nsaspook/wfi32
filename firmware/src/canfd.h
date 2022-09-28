@@ -38,11 +38,15 @@ typedef enum {
 	CAN_XFER_SUCCESSFUL,
 	CAN_XFER_ERROR
 } CANFD_STATES;	
+
+#define MESS_ID_IMU	0x35A
 	
 /* set format attribute for the vararg function */
 void PrintFormattedData(const char * format, ...) __attribute__((format(printf, 1, 2)));
 void APP_CAN_Callback(uintptr_t);
 int canfd_state(CANFD_STATES, void *);
+uint32_t canfd_num_tx(void);
+uint32_t canfd_num_stall(void);
 
 #ifdef	__cplusplus
 }

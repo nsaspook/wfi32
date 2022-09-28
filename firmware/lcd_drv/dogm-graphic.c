@@ -288,10 +288,10 @@ void lcd_init(void)
 {
 	//Load settings
 #if DISPLAY_TYPE == 240
-	RS_SetLow();
-	WaitMs(2);
-	RS_SetHigh();
-	WaitMs(150);
+	ReSet_SetLow();
+	WaitMs(3);
+	ReSet_SetHigh();
+	WaitMs(170);
 	LCD_SET_COM_END(127); // set last COM electrode
 	LCD_SET_PARTIAL_DISPLAY(0, 127); // set partial display start and end
 	LCD_SET_POTI(0x8F); // set Contrast to mid range lvl

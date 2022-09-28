@@ -19,7 +19,7 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-#define IMU_DRIVER	"V1.004" 
+#define IMU_DRIVER	"V1.005" 
 #define IMU_ALIAS	"IMU"
 
 #define IMU_ID_DELAY	100
@@ -33,6 +33,7 @@ extern "C" {
 #define IMU_DATA_BUFFER_INDEX		1
 
 	typedef struct {
+		uint8_t id;
 		double x; /**< X-axis sensor data */
 		double y; /**< Y-axis sensor data */
 		double z; /**< Z-axis sensor data */
@@ -55,11 +56,21 @@ extern "C" {
 		bool (*imu_getdata)(void *);
 	} op_t;
 
+	enum device_type {
+		IMU_BMA490L = 0, // IMU chip model
+		IMU_SCA3300,
+		IMU_SCL3300,
+		IMU_NONE,
+		IMU_LAST,
+	};
+
 	/*
 	 * IMU data structure for driver
 	 */
 	typedef struct _imu_cmd_t {
-		uint8_t device, cs, acc_range, spi_bytes, acc_range_scl;
+		uint8_t id;
+		enum device_type device;
+		uint8_t cs, acc_range, spi_bytes, acc_range_scl;
 		uint32_t log_timeout, rs, ss;
 		volatile bool online, run, update, features, crc_error, angles;
 		uint8_t rbuf[64], tbuf[64];
@@ -68,6 +79,7 @@ extern "C" {
 	} imu_cmd_t;
 
 	struct sca3300_data {
+		uint8_t id;
 
 		struct {
 			int16_t channels[9];
@@ -76,12 +88,6 @@ extern "C" {
 		} scan;
 		uint8_t rs;
 		uint8_t ss;
-	};
-
-	enum device_type {
-		IMU_BMA490L = 0, // IMU chip model
-		IMU_SCA3300,
-		IMU_SCL3300,
 	};
 
 	enum accel_g {
@@ -136,6 +142,7 @@ extern "C" {
 
 	double get_imu_scale(imu_cmd_t *);
 	void getAllData(sSensorData_t *, imu_cmd_t *);
+	const uint8_t * imu_string(imu_cmd_t *);
 
 #ifdef	__cplusplus
 }

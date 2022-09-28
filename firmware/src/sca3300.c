@@ -12,7 +12,9 @@ void sca3300_cs_disable(imu_cmd_t *);
 /*
  * data from IMU query
  */
-struct sca3300_data sdata;
+struct sca3300_data sdata = {
+	.id = 2,
+};
 
 // Calculate CRC for 24 MSB's of the 32 bit dword
 // (8 LSB's are the CRC field and are not included in CRC calculation)
