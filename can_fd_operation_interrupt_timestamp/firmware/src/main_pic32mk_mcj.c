@@ -61,6 +61,17 @@ typedef enum {
 	APP_STATE_CAN_XFER_ERROR
 } APP_STATES;
 
+typedef enum {
+	CAN_NULL,
+	CAN_IMU_DATA,
+	CAN_IMU_INFO,
+	CAN_IMU_RAW,
+	CAN_IMU_GET,
+	CAN_IMU_SET,
+	CAN_STAT,
+	CAN_MISC,
+} CANFD_MESSAGE;
+
 typedef struct {
 	uint8_t id;
 	double x; /**< X-axis sensor data */
@@ -74,6 +85,41 @@ typedef struct {
 } sSensorData_t;
 
 sSensorData_t *accel;
+
+/*
+ * function pointer templates structure
+ * for the device I/O routines and data
+ */
+typedef struct _op_t {
+	void (*info_ptr)(void);
+	void (*imu_set_spimode)(void *);
+	bool(*imu_getid)(void *);
+	bool(*imu_getdata)(void *);
+} op_t;
+
+enum device_type {
+	IMU_BMA490L = 0, // IMU chip model
+	IMU_SCA3300,
+	IMU_SCL3300,
+	IMU_NONE,
+	IMU_LAST,
+};
+
+/*
+ * IMU data structure for driver
+ */
+typedef struct _imu_cmd_t {
+	uint8_t id;
+	enum device_type device;
+	uint8_t cs, acc_range, spi_bytes, acc_range_scl;
+	uint32_t log_timeout, rs, ss;
+	volatile bool online, run, update, features, crc_error, angles;
+	uint8_t rbuf[64], tbuf[64];
+	uint32_t rbuf32[2], tbuf32[2];
+	op_t op;
+} imu_cmd_t;
+
+imu_cmd_t *imu;
 
 /* set format attribute for the vararg function */
 void PrintFormattedData(const char * format, ...) __attribute__((format(printf, 1, 2)));
@@ -201,8 +247,15 @@ int main(void)
 
 	while (true) {
 		if (state == APP_STATE_CAN_USER_INPUT) {
+			user_input = 'n';
 			/* Read user input */
-			UART1_Read((void *) &user_input, 1);
+			if (UART1_ReceiverIsReady()) {
+				UART1_Read((void *) &user_input, 1);
+			} else {
+				if (CAN1_InterruptGet(2, 0x1f)) {
+					user_input = '3';
+				}
+			}
 
 			switch (user_input) {
 			case '1':
@@ -249,6 +302,8 @@ int main(void)
 			case 'm':
 				print_menu();
 				break;
+			case 'n':
+				break;
 			default:
 				printf(" Invalid Input \r\n");
 				print_menu();
@@ -267,10 +322,20 @@ int main(void)
 			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
 				/* Print message to Console */
 				uint8_t length = rx_messageLength;
+
 				PrintFormattedData(" Message - Timestamp : 0x%x ID : 0x%x Length : 0x%x ", timestamp, (unsigned int) rx_messageID, (unsigned int) rx_messageLength);
 				printf("Message : ");
-				accel = (sSensorData_t *) rx_message;
-				printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f, sensor TS 0X%x, %u\r\n", accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->sensortime, length);
+				if (rx_message[0] == CAN_IMU_DATA) {
+					accel = (sSensorData_t *) rx_message;
+					printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f, sensor TS 0X%x, %u, %u\r\n", accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->sensortime, length, rx_message[0]);
+				}
+				if (rx_message[0] == CAN_IMU_INFO) {
+					imu = (imu_cmd_t *) rx_message;
+					printf("%u,%u,%u,%u sensor info %u\r\n", imu->device, imu->acc_range, imu->acc_range_scl, imu->angles, rx_message[0]);
+				}
+				if (rx_message[0] == CAN_NULL) {
+					printf("NULL Message with 0 ID code\r\n");
+				}
 				printf("\r\n");
 			} else if ((APP_STATES) xferContext == APP_STATE_CAN_TRANSMIT) {
 			}

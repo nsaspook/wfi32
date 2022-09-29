@@ -23,7 +23,7 @@ build/mcj/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/config/mcj/peripheral/rtcc/plib_rtcc.h \
  ../src/config/mcj/peripheral/tmr/plib_tmr9.h ../src/imupic32mcj.h \
  ../src/bma490l.h ../src/bma490l_reg.h ../src/imu.h ../src/sca3300.h \
- ../src/timers.h ../src/../../firmware/lcd_drv/lcd_drv.h \
+ ../src/timers.h ../src/canfd.h ../src/../../firmware/lcd_drv/lcd_drv.h \
  ../src/../../firmware/lcd_drv/display_type.h \
  ../src/../../firmware/lcd_drv/eadog.h \
  ../src/../../firmware/lcd_drv/lcd_drv.h \
@@ -31,7 +31,7 @@ build/mcj/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/../../firmware/lcd_drv/OledDriver.h \
  ../src/../../firmware/lcd_drv/OledChar.h \
  ../src/../../firmware/lcd_drv/OledGrph.h ../src/gfx.h \
- ../src/../../firmware/lcd_drv/OledGrph.h ../src/canfd.h
+ ../src/../../firmware/lcd_drv/OledGrph.h
 
 ../src/config/mcj/definitions.h:
 
@@ -93,6 +93,8 @@ build/mcj/production/_ext/1360937237/main.o: ../src/main.c \
 
 ../src/timers.h:
 
+../src/canfd.h:
+
 ../src/../../firmware/lcd_drv/lcd_drv.h:
 
 ../src/../../firmware/lcd_drv/display_type.h:
@@ -114,5 +116,3 @@ build/mcj/production/_ext/1360937237/main.o: ../src/main.c \
 ../src/gfx.h:
 
 ../src/../../firmware/lcd_drv/OledGrph.h:
-
-../src/canfd.h:

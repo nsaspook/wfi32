@@ -23,6 +23,7 @@ extern "C" {
 #include "imupic32mcj.h"
 #include "imu.h"
 #include "timers.h"
+#include "canfd.h"
 
 #define SCA3300_DRIVER	"V1.005" 
 

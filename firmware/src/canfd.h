@@ -39,6 +39,17 @@ typedef enum {
 	CAN_XFER_ERROR
 } CANFD_STATES;	
 
+typedef enum {
+	CAN_NULL,
+	CAN_IMU_DATA,
+	CAN_IMU_INFO,	
+	CAN_IMU_RAW,
+	CAN_IMU_GET,
+	CAN_IMU_SET,
+	CAN_STAT,
+	CAN_MISC,
+} CANFD_MESSAGE;	
+
 #define MESS_ID_IMU	0x35A
 	
 /* set format attribute for the vararg function */

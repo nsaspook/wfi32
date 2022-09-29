@@ -13,7 +13,7 @@ void sca3300_cs_disable(imu_cmd_t *);
  * data from IMU query
  */
 struct sca3300_data sdata = {
-	.id = 2,
+	.id = CAN_IMU_RAW,
 };
 
 // Calculate CRC for 24 MSB's of the 32 bit dword

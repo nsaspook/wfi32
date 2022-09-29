@@ -68,7 +68,7 @@
  * BMA490L instance
  */
 imu_cmd_t imu0 = {
-	.id = 0,
+	.id = CAN_IMU_INFO,
 	.tbuf[0] = CHIP_ID | RBIT,
 	.online = false,
 	.device = IMU_BMA490L, // device type
@@ -91,7 +91,7 @@ imu_cmd_t imu0 = {
  * SCA3300-D01 instance
  */
 imu_cmd_t imu0 = {
-	.id = 0,
+	.id = CAN_IMU_INFO,
 	.tbuf32[SCA3300_TRM] = SCA3300_SWRESET_32B,
 	.online = false,
 	.device = IMU_SCA3300, // device type
@@ -116,7 +116,7 @@ imu_cmd_t imu0 = {
  * Logging data structure
  */
 sSensorData_t accel = {
-	.id = 1,
+	.id = CAN_IMU_DATA,
 };
 
 volatile uint16_t tickCount[TMR_COUNT];
