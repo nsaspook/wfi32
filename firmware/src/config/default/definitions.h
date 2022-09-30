@@ -50,14 +50,15 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "bsp/bsp.h"
+#include "peripheral/canfd/plib_canfd2.h"
 #include "peripheral/clk/plib_clk.h"
 #include "peripheral/gpio/plib_gpio.h"
 #include "peripheral/cache/plib_cache.h"
 #include "peripheral/evic/plib_evic.h"
 #include "peripheral/dmac/plib_dmac.h"
 #include "system/time/sys_time.h"
-#include "peripheral/tmr/plib_tmr6.h"
 #include "peripheral/coretimer/plib_coretimer.h"
+#include "peripheral/tmr/plib_tmr6.h"
 #include "peripheral/adchs/plib_adchs.h"
 #include "peripheral/uart/plib_uart1.h"
 #include "peripheral/tmr/plib_tmr5.h"

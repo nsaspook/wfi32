@@ -156,14 +156,14 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: adchs, value: '1562.5'}
+        attributes: {id: adchs, value: '625.0'}
   - type: Float
     attributes: {id: ADCHS_CONV_RATE7}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: adchs, value: '1470.5883'}
+        attributes: {id: adchs, value: '588.2353'}
   - type: String
     attributes: {id: ADCHS_DMA_STATUS_REG}
     children:
@@ -191,28 +191,28 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: adchs, value: '40.0'}
+        attributes: {id: adchs, value: '100.0'}
   - type: Float
     attributes: {id: ADCHS_TADC7}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: adchs, value: '40.0'}
+        attributes: {id: adchs, value: '100.0'}
   - type: Float
     attributes: {id: ADCHS_TCLK}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: adchs, value: '10.0'}
+        attributes: {id: adchs, value: '25.0'}
   - type: Float
     attributes: {id: ADCHS_TQ}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: adchs, value: '20.0'}
+        attributes: {id: adchs, value: '50.0'}
   - type: Boolean
     attributes: {id: ADCIMCON1__DIFF0}
     children:

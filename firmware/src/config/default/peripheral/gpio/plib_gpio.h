@@ -84,6 +84,15 @@
 #define IMU_INT1_Get()               ((PORTK >> 6) & 0x1U)
 #define IMU_INT1_PIN                  GPIO_PIN_RK6
 
+/*** Macros for EXT_SW1 pin ***/
+#define EXT_SW1_Set()               (LATASET = (1U<<4))
+#define EXT_SW1_Clear()             (LATACLR = (1U<<4))
+#define EXT_SW1_Toggle()            (LATAINV= (1U<<4))
+#define EXT_SW1_OutputEnable()      (TRISACLR = (1U<<4))
+#define EXT_SW1_InputEnable()       (TRISASET = (1U<<4))
+#define EXT_SW1_Get()               ((PORTA >> 4) & 0x1U)
+#define EXT_SW1_PIN                  GPIO_PIN_RA4
+
 /*** Macros for TP1 pin ***/
 #define TP1_Set()               (LATASET = (1U<<13))
 #define TP1_Clear()             (LATACLR = (1U<<13))

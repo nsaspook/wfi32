@@ -222,15 +222,17 @@ void SYS_Initialize ( void* data )
     PRECONbits.PFMWS = 5;
 
 
+    CAN2_Initialize();
+
 
 	GPIO_Initialize();
 
 	BSP_Initialize();
     DMAC_Initialize();
 
+    CORETIMER_Initialize();
     TMR6_Initialize();
 
-    CORETIMER_Initialize();
     ADCHS_Initialize();
 
 	UART1_Initialize();

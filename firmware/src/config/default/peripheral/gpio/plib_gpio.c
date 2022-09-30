@@ -66,10 +66,10 @@ void GPIO_Initialize ( void )
     CFGCON0bits.JTAGEN = 0U;
 
     /* PORTA Initialization */
-    LATA = 0x2U; /* Initial Latch Value */
-    TRISACLR = 0x2002U; /* Direction Control */
+    LATA = 0x12U; /* Initial Latch Value */
+    TRISACLR = 0x2012U; /* Direction Control */
     ANSELACLR = 0x6400U; /* Digital Mode Enable */
-    CNPUASET = 0x2002U; /* Pull-Up Enable */
+    CNPUASET = 0x2032U; /* Pull-Up Enable */
 
     /* Change Notice Enable */
     CNCONASET = _CNCONA_ON_MASK;
@@ -86,15 +86,18 @@ void GPIO_Initialize ( void )
     ODCKSET = 0x7000U; /* Open Drain Enable */
     LATK = 0x1aU; /* Initial Latch Value */
     TRISKCLR = 0xaU; /* Direction Control */
+    CNPUKSET = 0x80U; /* Pull-Up Enable */
 
 
     /* PPS Input Remapping */
     SDI2R = 12;
     INT2R = 12;
+    C2RXR = 12;
 
     /* PPS Output Remapping */
     RPK4R = 4;
     RPB9R = 3;
+    RPA5R = 6;
 
 
     uint32_t i;

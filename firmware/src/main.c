@@ -139,6 +139,7 @@ int main(void)
 {
 #ifdef __32MK0512MCJ048__
 	uint8_t rxe, txe, times = 0;
+	bool alter = false;
 #endif
 
 	/* Initialize all modules */
@@ -287,7 +288,15 @@ int main(void)
 			eaDogM_WriteStringAtPos(13, 0, buffer);
 
 			canfd_state(CAN_RECEIVE, accel.buffer);
-			canfd_state(CAN_TRANSMIT_FD, &accel);
+			canfd_state(CAN_RECEIVE, accel.buffer);
+
+			if (alter) {
+				canfd_state(CAN_TRANSMIT_FD, &imu0);
+				alter = false;
+			} else {
+				canfd_state(CAN_TRANSMIT_FD, &accel);
+				alter = true;
+			}
 #endif
 			TP1_Clear();
 
