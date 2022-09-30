@@ -19,7 +19,7 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-#define IMU_DRIVER	"V1.005" 
+#define IMU_DRIVER	"V1.100" 
 #define IMU_ALIAS	"IMU"
 
 #define IMU_ID_DELAY	100
@@ -33,7 +33,7 @@ extern "C" {
 #define IMU_DATA_BUFFER_INDEX		1
 
 	typedef struct {
-		uint8_t id;
+		uint16_t id;
 		double x; /**< X-axis sensor data */
 		double y; /**< Y-axis sensor data */
 		double z; /**< Z-axis sensor data */
@@ -68,7 +68,7 @@ extern "C" {
 	 * IMU data structure for driver
 	 */
 	typedef struct _imu_cmd_t {
-		uint8_t id;
+		uint16_t id;
 		enum device_type device;
 		uint8_t cs, acc_range, spi_bytes, acc_range_scl;
 		uint32_t log_timeout, rs, ss;
@@ -79,7 +79,7 @@ extern "C" {
 	} imu_cmd_t;
 
 	struct sca3300_data {
-		uint8_t id;
+		uint16_t id;
 
 		struct {
 			int16_t channels[9];

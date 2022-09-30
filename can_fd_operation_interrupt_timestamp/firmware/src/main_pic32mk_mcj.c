@@ -50,6 +50,7 @@
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include <stdarg.h>
 #include "definitions.h"                // SYS function prototypes
+#include "../../../../../firmware/src/imu.h"
 
 /* Application's state machine enum */
 typedef enum {
@@ -72,53 +73,7 @@ typedef enum {
 	CAN_MISC,
 } CANFD_MESSAGE;
 
-typedef struct {
-	uint8_t id;
-	double x; /**< X-axis sensor data */
-	double y; /**< Y-axis sensor data */
-	double z; /**< Z-axis sensor data */
-	double xa; /**< X-angle sensor data */
-	double ya; /**< Y-angle sensor data */
-	double za; /**< Z-angle sensor data */
-	uint32_t sensortime; /**< sensor time */
-	double sensortemp;
-} sSensorData_t;
-
 sSensorData_t *accel;
-
-/*
- * function pointer templates structure
- * for the device I/O routines and data
- */
-typedef struct _op_t {
-	void (*info_ptr)(void);
-	void (*imu_set_spimode)(void *);
-	bool(*imu_getid)(void *);
-	bool(*imu_getdata)(void *);
-} op_t;
-
-enum device_type {
-	IMU_BMA490L = 0, // IMU chip model
-	IMU_SCA3300,
-	IMU_SCL3300,
-	IMU_NONE,
-	IMU_LAST,
-};
-
-/*
- * IMU data structure for driver
- */
-typedef struct _imu_cmd_t {
-	uint8_t id;
-	enum device_type device;
-	uint8_t cs, acc_range, spi_bytes, acc_range_scl;
-	uint32_t log_timeout, rs, ss;
-	volatile bool online, run, update, features, crc_error, angles;
-	uint8_t rbuf[64], tbuf[64];
-	uint32_t rbuf32[2], tbuf32[2];
-	op_t op;
-} imu_cmd_t;
-
 imu_cmd_t *imu;
 
 /* set format attribute for the vararg function */
@@ -138,6 +93,8 @@ static uint32_t rx_messageID = 0;
 static uint8_t rx_messageLength = 0;
 static uint32_t timestamp = 0;
 static CANFD_MSG_RX_ATTRIBUTE msgAttr = CANFD_MSG_RX_DATA_FRAME;
+
+static const char *build_date = __DATE__, *build_time = __TIME__;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -168,6 +125,7 @@ void APP_CAN_Callback(uintptr_t context)
 
 	/* Check CAN Status */
 	status = CAN1_ErrorGet();
+	printf("\rCB status %d\r\n", status);
 
 	if ((status & (CANFD_ERROR_TX_RX_WARNING_STATE | CANFD_ERROR_RX_WARNING_STATE |
 		CANFD_ERROR_TX_WARNING_STATE | CANFD_ERROR_RX_BUS_PASSIVE_STATE |
@@ -194,6 +152,7 @@ void APP_CAN_Error_Callback(uintptr_t context)
 
 	/* Check CAN Status */
 	status = CAN1_ErrorGet();
+	printf("\rCEB status %d\r\n", status);
 
 	LED_Set();
 }
@@ -231,10 +190,7 @@ int main(void)
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
 
-	printf(" ------------------------------ \r\n");
-	printf("            CAN FD Demo         \r\n");
-	printf(" ------------------------------ \r\n");
-
+	printf("\r\nPIC32 %s Host Controller %s %s %s ---\r\n", IMU_ALIAS, IMU_DRIVER, build_date, build_time);
 	print_menu();
 
 	/* Prepare the message to send */
@@ -322,18 +278,19 @@ int main(void)
 			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
 				/* Print message to Console */
 				uint8_t length = rx_messageLength;
+				uint16_t * mtype = (uint16_t *) & rx_message[0];
 
 				PrintFormattedData(" Message - Timestamp : 0x%x ID : 0x%x Length : 0x%x ", timestamp, (unsigned int) rx_messageID, (unsigned int) rx_messageLength);
 				printf("Message : ");
-				if (rx_message[0] == CAN_IMU_DATA) {
+				if (*mtype == CAN_IMU_DATA) {
 					accel = (sSensorData_t *) rx_message;
 					printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f, sensor TS 0X%x, %u, %u\r\n", accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->sensortime, length, rx_message[0]);
 				}
-				if (rx_message[0] == CAN_IMU_INFO) {
+				if (*mtype == CAN_IMU_INFO) {
 					imu = (imu_cmd_t *) rx_message;
 					printf("%u,%u,%u,%u sensor info %u\r\n", imu->device, imu->acc_range, imu->acc_range_scl, imu->angles, rx_message[0]);
 				}
-				if (rx_message[0] == CAN_NULL) {
+				if (*mtype == CAN_NULL) {
 					printf("NULL Message with 0 ID code\r\n");
 				}
 				printf("\r\n");

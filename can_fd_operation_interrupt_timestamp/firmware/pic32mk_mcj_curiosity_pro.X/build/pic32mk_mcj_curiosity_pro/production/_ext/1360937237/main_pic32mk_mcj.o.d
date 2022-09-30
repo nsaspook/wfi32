@@ -9,7 +9,9 @@ build/pic32mk_mcj_curiosity_pro/production/_ext/1360937237/main_pic32mk_mcj.o: \
  ../src/config/pic32mk_mcj_curiosity_pro/peripheral/canfd/plib_canfd_common.h \
  ../src/config/pic32mk_mcj_curiosity_pro/peripheral/clk/plib_clk.h \
  ../src/config/pic32mk_mcj_curiosity_pro/peripheral/gpio/plib_gpio.h \
- ../src/config/pic32mk_mcj_curiosity_pro/peripheral/evic/plib_evic.h
+ ../src/config/pic32mk_mcj_curiosity_pro/peripheral/evic/plib_evic.h \
+ ../src/config/pic32mk_mcj_curiosity_pro/../../../../../firmware/src/imu.h \
+ ../src/config/pic32mk_mcj_curiosity_pro/../../../../../firmware/src/imupic32mcj.h
 
 ../src/config/pic32mk_mcj_curiosity_pro/definitions.h:
 
@@ -30,3 +32,7 @@ build/pic32mk_mcj_curiosity_pro/production/_ext/1360937237/main_pic32mk_mcj.o: \
 ../src/config/pic32mk_mcj_curiosity_pro/peripheral/gpio/plib_gpio.h:
 
 ../src/config/pic32mk_mcj_curiosity_pro/peripheral/evic/plib_evic.h:
+
+../src/config/pic32mk_mcj_curiosity_pro/../../../../../firmware/src/imu.h:
+
+../src/config/pic32mk_mcj_curiosity_pro/../../../../../firmware/src/imupic32mcj.h:
