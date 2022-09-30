@@ -51,6 +51,10 @@ typedef enum {
 } CANFD_MESSAGE;	
 
 #define MESS_ID_IMU	0x35A
+
+#ifdef __32MZ1025W104132__
+#define CANDEV2
+#endif
 	
 /* set format attribute for the vararg function */
 void PrintFormattedData(const char * format, ...) __attribute__((format(printf, 1, 2)));

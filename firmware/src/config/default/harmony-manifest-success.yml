@@ -4,8 +4,8 @@
 
 
 project: wfi32
-creation_date: 2022-09-29T19:00:18.417-07:00[America/Los_Angeles]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
-operating_system: Linux
+creation_date: 2022-09-30T10:47:48.105-07:00[America/Los_Angeles]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+operating_system: Windows 10
 mhc_mode: IDE            # [IDE|Standalone|Headless]
 mhc_version: v3.8.5
 mplabx_version: v6.00        # if MPLAB X plugin only
@@ -13,9 +13,8 @@ plugin_version: v3.6.4        # if MPLAB X plugin only
 compiler: XC32 (4.10)
 
 modules:
-    - {name: "..", version: "unknown"}
     - {name: "csp", version: "v3.13.1"}
     - {name: "core", version: "v3.11.1"}
-    - {name: "dev_packs", version: "v3.11.2"}
+    - {name: "dev_packs", version: "v3.13.1"}
     - {name: "bsp", version: "v3.13.0"}
 

@@ -6,7 +6,7 @@ static APP_STATES state = APP_STATE_CAN_USER_INPUT;
 static volatile uint32_t status = 0;
 static volatile uint32_t xferContext = 0;
 /* Variable to save Tx/Rx message */
-static uint32_t messageID = 0, num_tx=0, num_stall=0;
+static uint32_t messageID = 0, num_tx = 0, num_stall = 0;
 static uint8_t message[64];
 static uint8_t messageLength = 0;
 static uint8_t rx_message[64];
@@ -43,7 +43,11 @@ void APP_CAN_Callback(uintptr_t context)
 	xferContext = context;
 
 	/* Check CAN Status */
+#ifndef CANDEV2
 	status = CAN1_ErrorGet();
+#else
+	status = CAN2_ErrorGet();
+#endif
 
 	if ((status & (CANFD_ERROR_TX_RX_WARNING_STATE | CANFD_ERROR_RX_WARNING_STATE |
 		CANFD_ERROR_TX_WARNING_STATE | CANFD_ERROR_RX_BUS_PASSIVE_STATE |
@@ -71,7 +75,11 @@ void APP_CAN_Error_Callback(uintptr_t context)
 	xferContext = context;
 
 	/* Check CAN Status */
+#ifndef CANDEV2
 	status = CAN1_ErrorGet();
+#else
+	status = CAN2_ErrorGet();
+#endif
 }
 
 void print_menu(void)
@@ -118,8 +126,8 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 				msg_ready = CAN1_InterruptGet(1, 0x1f);
 				if (msg_ready) {
 					printf("CAN FD, ");
-//					CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
-//					CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT);
+					//					CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
+					//					CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT);
 					state = APP_STATE_CAN_IDLE;
 					messageID = MESS_ID_IMU;
 					messageLength = 64;
@@ -134,7 +142,7 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 				break;
 			case CAN_TRANSMIT_N:
 				printf("CAN, ");
-//				CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
+				//				CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 				state = APP_STATE_CAN_IDLE;
 				messageID = 0x369;
 				messageLength = 8;
@@ -147,8 +155,8 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 				msg_ready = CAN1_InterruptGet(2, 0x1f);
 				if (msg_ready) {
 					printf(" Waiting for message: \r\n");
-//					CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE, 2);
-//					CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE);
+					//					CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE, 2);
+					//					CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE);
 					state = APP_STATE_CAN_IDLE;
 					memset(rx_message, 0x00, sizeof(rx_message));
 					/* Receive New Message */
