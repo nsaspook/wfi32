@@ -52,6 +52,8 @@
 #include "definitions.h"                // SYS function prototypes
 #include "../../../../../firmware/src/imu.h"
 
+#define SHOW_DATA
+
 /* Application's state machine enum */
 typedef enum {
 	APP_STATE_CAN_RECEIVE,
@@ -94,7 +96,9 @@ static uint8_t rx_messageLength = 0;
 static uint32_t timestamp = 0;
 static CANFD_MSG_RX_ATTRIBUTE msgAttr = CANFD_MSG_RX_DATA_FRAME;
 
-static const char *build_date = __DATE__, *build_time = __TIME__;
+const char *build_date = __DATE__, *build_time = __TIME__;
+uint8_t rxe, txe;
+uint32_t times = 0;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -125,7 +129,9 @@ void APP_CAN_Callback(uintptr_t context)
 
 	/* Check CAN Status */
 	status = CAN1_ErrorGet();
+#ifndef SHOW_DATA
 	printf("\rCB status %d\r\n", status);
+#endif
 
 	if ((status & (CANFD_ERROR_TX_RX_WARNING_STATE | CANFD_ERROR_RX_WARNING_STATE |
 		CANFD_ERROR_TX_WARNING_STATE | CANFD_ERROR_RX_BUS_PASSIVE_STATE |
@@ -152,19 +158,22 @@ void APP_CAN_Error_Callback(uintptr_t context)
 
 	/* Check CAN Status */
 	status = CAN1_ErrorGet();
+#ifndef SHOW_DATA
 	printf("\rCEB status %d\r\n", status);
-
+#endif
 	LED_Set();
 }
 
 void print_menu(void)
 {
+#ifndef SHOW_DATA
 	printf("Menu :\r\n"
 		"  -- Select the action:\r\n"
 		"  1: Send FD standard message with ID: 0x45A and 64 byte data 0 to 63. \r\n"
 		"  2: Send normal standard message with ID: 0x469 and 8 byte data 0 to 7. \r\n"
 		"  3: To receive CAN FD or Normal message \r\n"
 		"  m: Display menu \r\n\r\n");
+#endif
 }
 
 void PrintFormattedData(const char * format, ...)
@@ -189,10 +198,10 @@ int main(void)
 
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
-
+#ifndef SHOW_DATA
 	printf("\r\nPIC32 %s Host Controller %s %s %s ---\r\n", IMU_ALIAS, IMU_DRIVER, build_date, build_time);
 	print_menu();
-
+#endif
 	/* Prepare the message to send */
 	for (count = 0; count < 64; count++) {
 		message[count] = count;
@@ -239,7 +248,9 @@ int main(void)
 			case '3':
 				msg_ready = CAN1_InterruptGet(2, 0x1f);
 				if (msg_ready) {
+#ifndef SHOW_DATA
 					printf(" Waiting for message: \r\n");
+#endif
 					CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE, 2);
 					state = APP_STATE_CAN_IDLE;
 					memset(rx_message, 0x00, sizeof(rx_message));
@@ -280,20 +291,40 @@ int main(void)
 				uint8_t length = rx_messageLength;
 				uint16_t * mtype = (uint16_t *) & rx_message[0];
 
+#ifndef SHOW_DATA				
 				PrintFormattedData(" Message - Timestamp : 0x%x ID : 0x%x Length : 0x%x ", timestamp, (unsigned int) rx_messageID, (unsigned int) rx_messageLength);
 				printf("Message : ");
+#endif
 				if (*mtype == CAN_IMU_DATA) {
 					accel = (sSensorData_t *) rx_message;
+#ifndef SHOW_DATA
 					printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f, sensor TS 0X%x, %u, %u\r\n", accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->sensortime, length, rx_message[0]);
+#else
+					length++;
+					printf("%7.3f,%7.3f,%7.3f,%7.3f,%7.3f,%7.3f,%7.3f\r\n", accel->x, accel->y, accel->z, accel->x, accel->y, accel->z, accel->x);
+#endif
 				}
 				if (*mtype == CAN_IMU_INFO) {
 					imu = (imu_cmd_t *) rx_message;
+#ifndef SHOW_DATA
 					printf("%u,%u,%u,%u sensor info %u\r\n", imu->device, imu->acc_range, imu->acc_range_scl, imu->angles, rx_message[0]);
+#endif
 				}
 				if (*mtype == CAN_NULL) {
 					printf("NULL Message with 0 ID code\r\n");
 				}
+#ifndef SHOW_DATA
+				CAN1_ErrorCountGet(&txe, &rxe);
+				printf("ErrorT %d ", txe);
+				printf("ErrorR %d ", rxe);
+				printf("Can INT %d ", CAN1_InterruptGet(1, 0x1f));
+				printf("FIFO %X ", CFD1FIFOSTA2);
+				printf("Update %u ", ++times);
+				printf("ERR %X ", CFD1TREC);
+				printf("Ce0 %X ", CFD1BDIAG0);
+				printf("Ce1 %X \r\n", CFD1BDIAG1);
 				printf("\r\n");
+#endif
 			} else if ((APP_STATES) xferContext == APP_STATE_CAN_TRANSMIT) {
 			}
 			LED_Toggle();

@@ -138,7 +138,9 @@ extern CORETIMER_OBJECT coreTmr;
 int main(void)
 {
 #ifdef __32MK0512MCJ048__
+#ifdef SHOW_LCD
 	uint8_t rxe, txe, times = 0;
+#endif
 	bool alter = false;
 #endif
 
@@ -218,14 +220,22 @@ int main(void)
 		 * convert the SPI XYZ response to standard floating point acceleration values and rolling integer time-stamps per measurement
 		 */
 		if (imu0.update || TimerDone(TMR_LOG)) {
+#ifdef SHOW_LCD			
 			TP1_Set();
 			OledClearBuffer();
 			TP1_Clear();
+#endif
+			TP1_Set();
 			imu0.op.imu_getdata(&imu0); // read data from the chip
 			imu0.update = false;
+			TP1_Clear();
 			TP1_Set();
 			getAllData(&accel, &imu0); // convert data from the chip
+			TP1_Clear();
+#ifdef SHOW_LOG
 			printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f,%u,%X,%X\r\n", accel.x, accel.y, accel.z, accel.xa, accel.ya, accel.za, accel.sensortime, imu0.rs, imu0.ss);
+#endif
+#ifdef SHOW_LCD
 			sprintf(buffer, "%6.3f,%6.3f,%6.3f, %X, %X\r\n", accel.x, accel.y, accel.z, imu0.rs, imu0.ss);
 			eaDogM_WriteStringAtPos(0, 0, buffer);
 			sprintf(buffer, "%6.2f,%6.2f,%6.2f,%5.1f", accel.xa, accel.ya, accel.za, accel.sensortemp);
@@ -240,13 +250,15 @@ int main(void)
 			eaDogM_WriteStringAtPos(5, 0, buffer);
 			sprintf(buffer, "ANG %s", imu0.angles ? "Yes" : "No");
 			eaDogM_WriteStringAtPos(6, 0, buffer);
-			TP1_Clear();
+#ifdef SHOW_VG
+			TP1_Set();
 			q0 = accel.x;
 			q1 = accel.y;
 			q2 = accel.z;
 			q3 = accel.x;
 			vector_graph();
-			TP1_Set();
+#endif
+#ifdef SHOW_LA
 			{
 				uint16_t i = 1;
 
@@ -256,15 +268,18 @@ int main(void)
 					LA_gfx(false, false, 1400);
 				}
 			}
+#endif	
 			TP1_Clear();
 			OledUpdate();
 			TP1_Set();
+#endif
 			if (TimerDone(TMR_LOG)) {
 				//				printf(" IMU data timeout \r\n");
 				LED_GREEN_Toggle();
 			}
 
 #ifdef __32MK0512MCJ048__
+#ifdef SHOW_LCD
 			CAN1_ErrorCountGet(&txe, &rxe);
 			sprintf(buffer, "can-fd %X", MESS_ID_IMU);
 			eaDogM_WriteStringAtPos(3, 20, buffer);
@@ -286,7 +301,7 @@ int main(void)
 			eaDogM_WriteStringAtPos(11, 20, buffer);
 			sprintf(buffer, "CINT %X, %d, %d", CFD1INT, canfd_num_tx(), canfd_num_stall());
 			eaDogM_WriteStringAtPos(13, 0, buffer);
-
+#endif
 			canfd_state(CAN_RECEIVE, accel.buffer);
 			canfd_state(CAN_RECEIVE, accel.buffer);
 
@@ -298,8 +313,8 @@ int main(void)
 				alter = true;
 			}
 #endif
-			TP1_Clear();
 
+			TP1_Clear();
 			StartTimer(TMR_LOG, imu0.log_timeout);
 		}
 	}

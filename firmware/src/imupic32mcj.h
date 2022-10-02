@@ -23,7 +23,11 @@ extern "C" {
 #define	LCD_CS	0
 
 #define BMA_LOG_TIMEOUT 80
-#define	SCA_LOG_TIMEOUT	8
+#define	SCA_LOG_TIMEOUT	7
+	
+#define SHOW_LOG
+#define SHOW_LCD
+#define SHOW_VG
 
 #ifndef  LED_GREEN_On
 #define LED_GREEN_On() LED_GREEN_Set()
