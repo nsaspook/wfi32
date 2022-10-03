@@ -26,8 +26,8 @@ extern "C" {
 	/*
 	 * what IMU chip are we using
 	 */
-	//#define BMA490L
-#define SCA3300 // this includes the SCL3300 device
+#define BMA490L
+	//#define SCA3300 // this includes the SCL3300 device
 
 #define IMU_DATA_RAW_LEN		30
 #define IMU_DATA_BUFFER_INDEX		1

@@ -97,13 +97,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 3DBD5C08EB7DB8D666609DC772B98418
-- generatedChecksum: A81E20875613CD9E47E4F7AD47132195
+- generatedChecksum: 5BC229DEF31B23187A3316502F730BA4
   logicalPath: config/mcj/peripheral/spi/spi_master
   name: plib_spi2_master.c
   physicalPath: peripheral/spi/spi_master
   security: NON_SECURE
   type: SOURCE
-  userChecksum: A81E20875613CD9E47E4F7AD47132195
+  userChecksum: 5BC229DEF31B23187A3316502F730BA4
 - generatedChecksum: A182F1654C0D24C85A99FB6772C9FC2F
   logicalPath: config/mcj/peripheral/tmr
   name: plib_tmr5.c
