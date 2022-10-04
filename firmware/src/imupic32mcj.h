@@ -22,7 +22,7 @@ extern "C" {
 #define IMU_CS	0
 #define	LCD_CS	0
 
-#define BMA_LOG_TIMEOUT 80
+#define BMA_LOG_TIMEOUT 12
 #define	SCA_LOG_TIMEOUT	7
 	
 #define SHOW_LOG
