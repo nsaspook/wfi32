@@ -8,34 +8,34 @@
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="no"/>
-<layer number="2" name="Route2" color="16" fill="1" visible="yes" active="no"/>
-<layer number="3" name="Route3" color="17" fill="1" visible="yes" active="no"/>
-<layer number="4" name="Route4" color="18" fill="1" visible="yes" active="no"/>
-<layer number="5" name="Route5" color="19" fill="1" visible="yes" active="no"/>
-<layer number="6" name="Route6" color="25" fill="1" visible="yes" active="no"/>
-<layer number="7" name="Route7" color="26" fill="1" visible="yes" active="no"/>
-<layer number="8" name="Route8" color="27" fill="1" visible="yes" active="no"/>
-<layer number="9" name="Route9" color="28" fill="1" visible="yes" active="no"/>
-<layer number="10" name="Route10" color="29" fill="1" visible="yes" active="no"/>
-<layer number="11" name="Route11" color="30" fill="1" visible="yes" active="no"/>
-<layer number="12" name="Route12" color="20" fill="1" visible="yes" active="no"/>
-<layer number="13" name="Route13" color="21" fill="1" visible="yes" active="no"/>
-<layer number="14" name="Route14" color="22" fill="1" visible="yes" active="no"/>
-<layer number="15" name="Route15" color="23" fill="1" visible="yes" active="no"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="no"/>
-<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="no"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="no"/>
-<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="no"/>
-<layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="no"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="no"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="no"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="no"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="no"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="no"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="no"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="no"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="no"/>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
+<layer number="2" name="Route2" color="16" fill="1" visible="no" active="no"/>
+<layer number="3" name="Route3" color="17" fill="1" visible="no" active="no"/>
+<layer number="4" name="Route4" color="18" fill="1" visible="no" active="no"/>
+<layer number="5" name="Route5" color="19" fill="1" visible="no" active="no"/>
+<layer number="6" name="Route6" color="25" fill="1" visible="no" active="no"/>
+<layer number="7" name="Route7" color="26" fill="1" visible="no" active="no"/>
+<layer number="8" name="Route8" color="27" fill="1" visible="no" active="no"/>
+<layer number="9" name="Route9" color="28" fill="1" visible="no" active="no"/>
+<layer number="10" name="Route10" color="29" fill="1" visible="no" active="no"/>
+<layer number="11" name="Route11" color="30" fill="1" visible="no" active="no"/>
+<layer number="12" name="Route12" color="20" fill="1" visible="no" active="no"/>
+<layer number="13" name="Route13" color="21" fill="1" visible="no" active="no"/>
+<layer number="14" name="Route14" color="22" fill="1" visible="no" active="no"/>
+<layer number="15" name="Route15" color="23" fill="1" visible="no" active="no"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="no" active="no"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="no" active="no"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="no"/>
+<layer number="20" name="Dimension" color="24" fill="1" visible="no" active="no"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="no"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="no"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="no"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="no"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="no"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="no" active="no"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="no" active="no"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="no" active="no"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="no"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="no"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="no"/>
@@ -44,8 +44,8 @@
 <layer number="34" name="bFinish" color="6" fill="6" visible="no" active="no"/>
 <layer number="35" name="tGlue" color="7" fill="4" visible="no" active="no"/>
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="no"/>
-<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="no"/>
-<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="no"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="no" active="no"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="no" active="no"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="no"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="no"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="no"/>
@@ -53,12 +53,12 @@
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="no"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="no"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="no"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="no"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="no"/>
-<layer number="48" name="Document" color="7" fill="1" visible="yes" active="no"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="no"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="no"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="no" active="no"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="no" active="no"/>
+<layer number="48" name="Document" color="7" fill="1" visible="no" active="no"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="no" active="no"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="no"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="no"/>
 <layer number="88" name="SimResults" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="89" name="SimProbes" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
@@ -15241,6 +15241,141 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 </deviceset>
 </devicesets>
 </library>
+<library name="LSM9DS1">
+<packages>
+<package name="PQFN24P43_350X300X102L35X23N">
+<wire x1="-1.75" y1="1.5" x2="1.75" y2="1.5" width="0.127" layer="51"/>
+<wire x1="1.75" y1="1.5" x2="1.75" y2="-1.5" width="0.127" layer="51"/>
+<wire x1="1.75" y1="-1.5" x2="-1.75" y2="-1.5" width="0.127" layer="51"/>
+<wire x1="-1.75" y1="-1.5" x2="-1.75" y2="1.5" width="0.127" layer="51"/>
+<text x="-1.937490625" y="1.95251875" size="0.81385" layer="25">&gt;NAME</text>
+<text x="-1.93895" y="-2.93096875" size="0.814459375" layer="27">&gt;VALUE</text>
+<circle x="-2.005" y="1.275" radius="0.08" width="0.16" layer="21"/>
+<wire x1="-2.005" y1="1.775" x2="1.995" y2="1.775" width="0.05" layer="39"/>
+<wire x1="1.995" y1="1.775" x2="1.995" y2="-1.725" width="0.05" layer="39"/>
+<wire x1="1.995" y1="-1.725" x2="-2.005" y2="-1.725" width="0.05" layer="39"/>
+<wire x1="-2.005" y1="-1.725" x2="-2.005" y2="1.775" width="0.05" layer="39"/>
+<wire x1="-1.75" y1="1.075" x2="-1.75" y2="1.5" width="0.1" layer="21"/>
+<wire x1="-1.75" y1="1.5" x2="-1.755" y2="1.475" width="0.05" layer="21"/>
+<rectangle x1="-1.69355" y1="0.921934375" x2="-1.32" y2="1.53" layer="29"/>
+<rectangle x1="-1.66338125" y1="0.34069375" x2="-1.29" y2="0.95" layer="29" rot="R90"/>
+<rectangle x1="-1.69516875" y1="-1.53468125" x2="-1.32" y2="-0.92" layer="29" rot="R180"/>
+<rectangle x1="1.28266875" y1="0.340709375" x2="1.65" y2="0.95" layer="29" rot="R270"/>
+<rectangle x1="-1.26233125" y1="0.92170625" x2="-0.89" y2="1.53" layer="29"/>
+<rectangle x1="-0.83213125" y1="0.922359375" x2="-0.46" y2="1.53" layer="29"/>
+<rectangle x1="-0.4012125" y1="0.922790625" x2="-0.03" y2="1.53" layer="29"/>
+<rectangle x1="0.4615375" y1="0.923075" x2="0.83" y2="1.53" layer="29"/>
+<rectangle x1="0.030096875" y1="0.922959375" x2="0.4" y2="1.53" layer="29"/>
+<rectangle x1="1.322990625" y1="0.922078125" x2="1.69" y2="1.53" layer="29"/>
+<rectangle x1="0.892215625" y1="0.922290625" x2="1.26" y2="1.53" layer="29"/>
+<rectangle x1="1.28313125" y1="-0.09021875" x2="1.65" y2="0.52" layer="29" rot="R270"/>
+<rectangle x1="1.28191875" y1="-0.520778125" x2="1.65" y2="0.09" layer="29" rot="R270"/>
+<rectangle x1="1.283840625" y1="-0.952853125" x2="1.65" y2="-0.34" layer="29" rot="R270"/>
+<rectangle x1="-1.663709375" y1="-0.0902" x2="-1.29" y2="0.52" layer="29" rot="R90"/>
+<rectangle x1="-1.661840625" y1="-0.520575" x2="-1.29" y2="0.09" layer="29" rot="R90"/>
+<rectangle x1="-1.664190625" y1="-0.952396875" x2="-1.29" y2="-0.34" layer="29" rot="R90"/>
+<rectangle x1="-1.261440625" y1="-1.53175" x2="-0.89" y2="-0.92" layer="29" rot="R180"/>
+<rectangle x1="-0.831003125" y1="-1.53185" x2="-0.46" y2="-0.92" layer="29" rot="R180"/>
+<rectangle x1="-0.40055625" y1="-1.53213125" x2="-0.03" y2="-0.92" layer="29" rot="R180"/>
+<rectangle x1="0.460728125" y1="-1.53241875" x2="0.83" y2="-0.92" layer="29" rot="R180"/>
+<rectangle x1="0.030025" y1="-1.5312" x2="0.4" y2="-0.92" layer="29" rot="R180"/>
+<rectangle x1="1.321209375" y1="-1.531409375" x2="1.69" y2="-0.92" layer="29" rot="R180"/>
+<rectangle x1="0.8913125" y1="-1.532259375" x2="1.26" y2="-0.92" layer="29" rot="R180"/>
+<smd name="18" x="1.505" y="1.225" dx="0.53" dy="0.28" layer="1" rot="R270" stop="no"/>
+<smd name="17" x="1.47" y="0.645" dx="0.53" dy="0.28" layer="1" stop="no"/>
+<smd name="16" x="1.47" y="0.215" dx="0.53" dy="0.28" layer="1" stop="no"/>
+<smd name="15" x="1.47" y="-0.215" dx="0.53" dy="0.28" layer="1" stop="no"/>
+<smd name="14" x="1.47" y="-0.645" dx="0.53" dy="0.28" layer="1" stop="no"/>
+<smd name="13" x="1.505" y="-1.225" dx="0.53" dy="0.28" layer="1" rot="R90" stop="no"/>
+<smd name="12" x="1.075" y="-1.225" dx="0.53" dy="0.28" layer="1" rot="R270" stop="no"/>
+<smd name="11" x="0.645" y="-1.225" dx="0.53" dy="0.28" layer="1" rot="R90" stop="no"/>
+<smd name="10" x="0.215" y="-1.225" dx="0.53" dy="0.28" layer="1" rot="R270" stop="no"/>
+<smd name="9" x="-0.215" y="-1.225" dx="0.53" dy="0.28" layer="1" rot="R90" stop="no"/>
+<smd name="8" x="-0.645" y="-1.225" dx="0.53" dy="0.28" layer="1" rot="R90" stop="no"/>
+<smd name="7" x="-1.075" y="-1.225" dx="0.53" dy="0.28" layer="1" rot="R90" stop="no"/>
+<smd name="6" x="-1.505" y="-1.225" dx="0.53" dy="0.28" layer="1" rot="R270" stop="no"/>
+<smd name="5" x="-1.47" y="-0.645" dx="0.53" dy="0.28" layer="1" rot="R180" stop="no"/>
+<smd name="4" x="-1.47" y="-0.215" dx="0.53" dy="0.28" layer="1" rot="R180" stop="no"/>
+<smd name="3" x="-1.47" y="0.215" dx="0.53" dy="0.28" layer="1" rot="R180" stop="no"/>
+<smd name="2" x="-1.47" y="0.645" dx="0.53" dy="0.28" layer="1" rot="R180" stop="no"/>
+<smd name="1" x="-1.505" y="1.225" dx="0.53" dy="0.28" layer="1" rot="R270" stop="no"/>
+<smd name="24" x="-1.075" y="1.225" dx="0.53" dy="0.28" layer="1" rot="R270" stop="no"/>
+<smd name="23" x="-0.645" y="1.225" dx="0.53" dy="0.28" layer="1" rot="R270" stop="no"/>
+<smd name="22" x="-0.215" y="1.225" dx="0.53" dy="0.28" layer="1" rot="R270" stop="no"/>
+<smd name="21" x="0.215" y="1.225" dx="0.53" dy="0.28" layer="1" rot="R270" stop="no"/>
+<smd name="20" x="0.645" y="1.225" dx="0.53" dy="0.28" layer="1" rot="R270" stop="no"/>
+<smd name="19" x="1.075" y="1.225" dx="0.53" dy="0.28" layer="1" rot="R270" stop="no"/>
+</package>
+</packages>
+<symbols>
+<symbol name="LSM9DS1">
+<wire x1="-17.78" y1="-20.32" x2="-17.78" y2="20.32" width="0.254" layer="94"/>
+<wire x1="-17.78" y1="20.32" x2="17.78" y2="20.32" width="0.254" layer="94"/>
+<wire x1="17.78" y1="20.32" x2="17.78" y2="-20.32" width="0.254" layer="94"/>
+<wire x1="17.78" y1="-20.32" x2="-17.78" y2="-20.32" width="0.254" layer="94"/>
+<text x="-17.8196" y="-22.9109" size="1.781959375" layer="96">&gt;VALUE</text>
+<text x="-17.8152" y="20.8693" size="1.78151875" layer="95">&gt;NAME</text>
+<pin name="VDDIO" x="22.86" y="15.24" length="middle" direction="pwr" rot="R180"/>
+<pin name="SCL/SPC" x="-22.86" y="5.08" length="middle" direction="in"/>
+<pin name="SDA/SDI/SDO" x="-22.86" y="0" length="middle"/>
+<pin name="SDO_A/G" x="-22.86" y="2.54" length="middle" direction="out"/>
+<pin name="SDO_M" x="-22.86" y="-2.54" length="middle"/>
+<pin name="CS_A/G" x="-22.86" y="12.7" length="middle" direction="in"/>
+<pin name="CS_M" x="-22.86" y="15.24" length="middle" direction="in"/>
+<pin name="DRDY_M" x="22.86" y="-5.08" length="middle" direction="out" rot="R180"/>
+<pin name="INT_M" x="22.86" y="5.08" length="middle" direction="out" rot="R180"/>
+<pin name="INT1_A/G" x="22.86" y="2.54" length="middle" direction="out" rot="R180"/>
+<pin name="INT2_A/G" x="22.86" y="0" length="middle" direction="out" rot="R180"/>
+<pin name="DEN_A/G" x="22.86" y="12.7" length="middle" direction="in" rot="R180"/>
+<pin name="RES" x="22.86" y="-15.24" length="middle" direction="pwr" rot="R180"/>
+<pin name="GND" x="22.86" y="-17.78" length="middle" direction="pwr" rot="R180"/>
+<pin name="CAP" x="-22.86" y="-17.78" length="middle" direction="pas"/>
+<pin name="VDD" x="22.86" y="17.78" length="middle" direction="pwr" rot="R180"/>
+<pin name="C1" x="-22.86" y="-15.24" length="middle" direction="pas"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="LSM9DS1" prefix="U">
+<description>iNEMO inertial module: 3D accelerometer, 3D gyroscope, 3D magnetometer </description>
+<gates>
+<gate name="G$1" symbol="LSM9DS1" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="PQFN24P43_350X300X102L35X23N">
+<connects>
+<connect gate="G$1" pin="C1" pad="24"/>
+<connect gate="G$1" pin="CAP" pad="21"/>
+<connect gate="G$1" pin="CS_A/G" pad="7"/>
+<connect gate="G$1" pin="CS_M" pad="8"/>
+<connect gate="G$1" pin="DEN_A/G" pad="13"/>
+<connect gate="G$1" pin="DRDY_M" pad="9"/>
+<connect gate="G$1" pin="GND" pad="19 20"/>
+<connect gate="G$1" pin="INT1_A/G" pad="11"/>
+<connect gate="G$1" pin="INT2_A/G" pad="12"/>
+<connect gate="G$1" pin="INT_M" pad="10"/>
+<connect gate="G$1" pin="RES" pad="14 15 16 17 18"/>
+<connect gate="G$1" pin="SCL/SPC" pad="2"/>
+<connect gate="G$1" pin="SDA/SDI/SDO" pad="4"/>
+<connect gate="G$1" pin="SDO_A/G" pad="5"/>
+<connect gate="G$1" pin="SDO_M" pad="6"/>
+<connect gate="G$1" pin="VDD" pad="22 23"/>
+<connect gate="G$1" pin="VDDIO" pad="1 3"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="AVAILABILITY" value="Unavailable"/>
+<attribute name="DESCRIPTION" value=" Accelerometer, Gyroscope, Magnetometer, Temperature, 9 Axis Sensor I²C, SPI Output "/>
+<attribute name="MF" value="STMicroelectronics"/>
+<attribute name="MP" value="LSM9DS1"/>
+<attribute name="PACKAGE" value="TFLGA-24 STMicroelectronics"/>
+<attribute name="PRICE" value="None"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -15311,6 +15446,15 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <part name="C13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.01uf"/>
 <part name="VSS21" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 <part name="VSS22" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
+<part name="U3" library="LSM9DS1" deviceset="LSM9DS1" device=""/>
+<part name="VSS23" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
+<part name="C14" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.1uf"/>
+<part name="C15" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.01uf"/>
+<part name="VSS24" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
+<part name="VSS25" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
+<part name="R5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:23556/2" value="1k"/>
+<part name="VSS26" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
+<part name="VSS27" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -15531,6 +15675,37 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <instance part="VSS22" gate="G$1" x="-53.34" y="-38.1" smashed="yes">
 <attribute name="VALUE" x="-55.88" y="-43.18" size="1.778" layer="96" rot="R90"/>
 </instance>
+<instance part="U3" gate="G$1" x="-50.8" y="142.24" smashed="yes">
+<attribute name="VALUE" x="-68.6196" y="119.3291" size="1.781959375" layer="96"/>
+<attribute name="NAME" x="-68.6152" y="163.1093" size="1.78151875" layer="95"/>
+</instance>
+<instance part="VSS23" gate="G$1" x="-20.32" y="121.92" smashed="yes">
+<attribute name="VALUE" x="-22.86" y="116.84" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="C14" gate="G$1" x="-76.2" y="127" smashed="yes" rot="R270">
+<attribute name="NAME" x="-75.565" y="125.984" size="1.778" layer="95" rot="R270"/>
+<attribute name="VALUE" x="-80.391" y="125.984" size="1.778" layer="96" rot="R270"/>
+</instance>
+<instance part="C15" gate="G$1" x="-73.66" y="121.92" smashed="yes">
+<attribute name="NAME" x="-72.644" y="122.555" size="1.778" layer="95"/>
+<attribute name="VALUE" x="-72.644" y="117.729" size="1.778" layer="96"/>
+</instance>
+<instance part="VSS24" gate="G$1" x="-73.66" y="114.3" smashed="yes">
+<attribute name="VALUE" x="-76.2" y="109.22" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="VSS25" gate="G$1" x="-81.28" y="124.46" smashed="yes">
+<attribute name="VALUE" x="-83.82" y="119.38" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="R5" gate="G$1" x="-22.86" y="142.24" smashed="yes" rot="R180">
+<attribute name="NAME" x="-19.05" y="140.7414" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="-19.05" y="145.542" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="VSS26" gate="G$1" x="-81.28" y="137.16" smashed="yes">
+<attribute name="VALUE" x="-81.28" y="134.62" size="1.778" layer="96"/>
+</instance>
+<instance part="VSS27" gate="G$1" x="-83.82" y="144.78" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-91.44" y="144.78" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -15638,6 +15813,18 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <label x="12.7" y="-27.94" size="1.778" layer="95"/>
 <junction x="5.08" y="-27.94"/>
 <junction x="15.24" y="-27.94"/>
+</segment>
+<segment>
+<wire x1="-15.24" y1="160.02" x2="-27.94" y2="160.02" width="0.1524" layer="91"/>
+<pinref part="U3" gate="G$1" pin="VDD"/>
+<label x="-25.4" y="160.02" size="1.778" layer="95"/>
+<junction x="-27.94" y="160.02"/>
+</segment>
+<segment>
+<wire x1="-17.78" y1="157.48" x2="-27.94" y2="157.48" width="0.1524" layer="91"/>
+<pinref part="U3" gate="G$1" pin="VDDIO"/>
+<label x="-25.4" y="157.48" size="1.778" layer="95"/>
+<junction x="-27.94" y="157.48"/>
 </segment>
 </net>
 <net name="VSS" class="0">
@@ -15848,6 +16035,49 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <junction x="-38.1" y="-27.94"/>
 <junction x="-30.48" y="-27.94"/>
 </segment>
+<segment>
+<wire x1="-20.32" y1="124.46" x2="-27.94" y2="124.46" width="0.1524" layer="91"/>
+<pinref part="U3" gate="G$1" pin="GND"/>
+<pinref part="VSS23" gate="G$1" pin="VSS"/>
+<label x="-25.4" y="124.46" size="1.778" layer="95"/>
+<junction x="-27.94" y="124.46"/>
+</segment>
+<segment>
+<wire x1="-20.32" y1="154.94" x2="-27.94" y2="154.94" width="0.1524" layer="91"/>
+<pinref part="U3" gate="G$1" pin="DEN_A/G"/>
+<label x="-25.4" y="154.94" size="1.778" layer="95"/>
+<junction x="-27.94" y="154.94"/>
+</segment>
+<segment>
+<wire x1="-20.32" y1="127" x2="-27.94" y2="127" width="0.1524" layer="91"/>
+<pinref part="U3" gate="G$1" pin="RES"/>
+<label x="-25.4" y="127" size="1.778" layer="95"/>
+<junction x="-27.94" y="127"/>
+</segment>
+<segment>
+<wire x1="-73.66" y1="139.7" x2="-81.28" y2="139.7" width="0.1524" layer="91"/>
+<pinref part="U3" gate="G$1" pin="SDO_M"/>
+<label x="-81.28" y="139.7" size="1.778" layer="95"/>
+<junction x="-73.66" y="139.7"/>
+<pinref part="VSS26" gate="G$1" pin="VSS"/>
+</segment>
+<segment>
+<wire x1="-73.66" y1="144.78" x2="-81.28" y2="144.78" width="0.1524" layer="91"/>
+<pinref part="U3" gate="G$1" pin="SDO_A/G"/>
+<label x="-81.28" y="144.78" size="1.778" layer="95"/>
+<junction x="-73.66" y="144.78"/>
+<pinref part="VSS27" gate="G$1" pin="VSS"/>
+</segment>
+<segment>
+<pinref part="C15" gate="G$1" pin="2"/>
+<pinref part="VSS24" gate="G$1" pin="VSS"/>
+<junction x="-73.66" y="116.84"/>
+</segment>
+<segment>
+<pinref part="C14" gate="G$1" pin="2"/>
+<pinref part="VSS25" gate="G$1" pin="VSS"/>
+<junction x="-81.28" y="127"/>
+</segment>
 </net>
 <net name="AVDD" class="0">
 <segment>
@@ -15961,6 +16191,12 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <junction x="-30.48" y="-33.02"/>
 <junction x="-43.18" y="-33.02"/>
 </segment>
+<segment>
+<wire x1="-86.36" y1="154.94" x2="-73.66" y2="154.94" width="0.1524" layer="91"/>
+<pinref part="U3" gate="G$1" pin="CS_A/G"/>
+<label x="-83.82" y="154.94" size="1.778" layer="95"/>
+<junction x="-73.66" y="154.94"/>
+</segment>
 </net>
 <net name="N$3" class="0">
 <segment>
@@ -16024,6 +16260,12 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <junction x="5.08" y="-25.4"/>
 <junction x="17.78" y="-25.4"/>
 </segment>
+<segment>
+<wire x1="-86.36" y1="147.32" x2="-73.66" y2="147.32" width="0.1524" layer="91"/>
+<pinref part="U3" gate="G$1" pin="SCL/SPC"/>
+<label x="-83.82" y="147.32" size="1.778" layer="95"/>
+<junction x="-73.66" y="147.32"/>
+</segment>
 </net>
 <net name="SDO2" class="0">
 <segment>
@@ -16052,6 +16294,12 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <label x="12.7" y="-22.86" size="1.778" layer="95"/>
 <junction x="5.08" y="-22.86"/>
 <junction x="17.78" y="-22.86"/>
+</segment>
+<segment>
+<wire x1="-73.66" y1="142.24" x2="-86.36" y2="142.24" width="0.1524" layer="91"/>
+<pinref part="U3" gate="G$1" pin="SDA/SDI/SDO"/>
+<label x="-83.82" y="142.24" size="1.778" layer="95"/>
+<junction x="-73.66" y="142.24"/>
 </segment>
 </net>
 <net name="SDI2" class="0">
@@ -16105,6 +16353,12 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <pinref part="J4" gate="G$1" pin="5"/>
 <label x="121.92" y="142.24" size="1.778" layer="95"/>
 <junction x="132.08" y="142.24"/>
+</segment>
+<segment>
+<wire x1="-27.94" y1="147.32" x2="-15.24" y2="147.32" width="0.1524" layer="91"/>
+<pinref part="U3" gate="G$1" pin="INT_M"/>
+<label x="-25.4" y="147.32" size="1.778" layer="95"/>
+<junction x="-27.94" y="147.32"/>
 </segment>
 </net>
 <net name="PGD_C1TX" class="0">
@@ -16580,14 +16834,31 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <label x="180.34" y="142.24" size="1.778" layer="95"/>
 <junction x="154.94" y="142.24"/>
 </segment>
+<segment>
+<wire x1="-27.94" y1="144.78" x2="-17.78" y2="144.78" width="0.1524" layer="91"/>
+<pinref part="U3" gate="G$1" pin="INT1_A/G"/>
+<pinref part="R5" gate="G$1" pin="1"/>
+<wire x1="-17.78" y1="144.78" x2="0" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="142.24" x2="-17.78" y2="144.78" width="0.1524" layer="91"/>
+<junction x="-17.78" y="144.78"/>
+<label x="-15.24" y="144.78" size="1.778" layer="95"/>
+<junction x="-27.94" y="144.78"/>
+</segment>
 </net>
-<net name="N$6" class="0">
+<net name="TP2" class="0">
 <segment>
 <pinref part="U1" gate="A" pin="OA3IN+/AN8/CVD8/C3IN1+/C3IN3-/RPC2/FLT3/RC2"/>
 <pinref part="TP2" gate="G$1" pin="TP"/>
 <wire x1="-45.72" y1="25.4" x2="-17.78" y2="25.4" width="0.1524" layer="91"/>
 <junction x="-45.72" y="25.4"/>
 <junction x="-17.78" y="25.4"/>
+<label x="-43.18" y="25.4" size="1.778" layer="95"/>
+</segment>
+<segment>
+<wire x1="-101.6" y1="157.48" x2="-73.66" y2="157.48" width="0.1524" layer="91"/>
+<pinref part="U3" gate="G$1" pin="CS_M"/>
+<label x="-83.82" y="157.48" size="1.778" layer="95"/>
+<junction x="-73.66" y="157.48"/>
 </segment>
 </net>
 <net name="N$8" class="0">
@@ -16618,6 +16889,33 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <junction x="-30.48" y="-25.4"/>
 </segment>
 </net>
+<net name="N$10" class="0">
+<segment>
+<pinref part="U3" gate="G$1" pin="C1"/>
+<pinref part="C14" gate="G$1" pin="1"/>
+<junction x="-73.66" y="127"/>
+</segment>
+</net>
+<net name="N$11" class="0">
+<segment>
+<pinref part="U3" gate="G$1" pin="CAP"/>
+<pinref part="C15" gate="G$1" pin="1"/>
+<junction x="-73.66" y="124.46"/>
+</segment>
+</net>
+<net name="N$12" class="0">
+<segment>
+<pinref part="U3" gate="G$1" pin="INT2_A/G"/>
+<pinref part="R5" gate="G$1" pin="2"/>
+<junction x="-27.94" y="142.24"/>
+</segment>
+</net>
+<net name="N$13" class="0">
+<segment>
+<pinref part="U3" gate="G$1" pin="DRDY_M"/>
+<junction x="-27.94" y="137.16"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
@@ -16627,8 +16925,40 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <approved hash="104,1,200.66,15.24,U1,VDD_4,VDD,,,"/>
 <approved hash="104,1,116.84,-25.4,U2,GNDS,VSS,,,"/>
 <approved hash="104,1,116.84,-27.94,U2,GND,VSS,,,"/>
+<approved hash="104,1,-27.94,157.48,U3,VDDIO,VDD,,,"/>
+<approved hash="104,1,-27.94,127,U3,RES,VSS,,,"/>
+<approved hash="104,1,-27.94,124.46,U3,GND,VSS,,,"/>
+<approved hash="106,1,-27.94,137.16,N$13,,,,,"/>
 <approved hash="206,1,116.84,-7.62,VREF+,,,,,"/>
 <approved hash="206,1,116.84,-5.08,VREF+,,,,,"/>
+<approved hash="208,1,7.62,124.46,VSS,sup,,,,"/>
+<approved hash="208,1,93.98,137.16,VSS,sup,,,,"/>
+<approved hash="208,1,22.86,139.7,VSS,sup,,,,"/>
+<approved hash="208,1,104.14,83.82,VSS,sup,,,,"/>
+<approved hash="208,1,106.68,144.78,VSS,sup,,,,"/>
+<approved hash="208,1,15.24,83.82,VSS,sup,,,,"/>
+<approved hash="208,1,25.4,83.82,VSS,sup,,,,"/>
+<approved hash="208,1,-17.78,93.98,VSS,sup,,,,"/>
+<approved hash="208,1,-10.16,93.98,VSS,sup,,,,"/>
+<approved hash="208,1,170.18,119.38,VSS,sup,,,,"/>
+<approved hash="208,1,170.18,83.82,VSS,sup,,,,"/>
+<approved hash="208,1,213.36,86.36,VSS,sup,,,,"/>
+<approved hash="208,1,170.18,-15.24,VSS,sup,,,,"/>
+<approved hash="208,1,193.04,-15.24,VSS,sup,,,,"/>
+<approved hash="208,1,124.46,-27.94,VSS,sup,,,,"/>
+<approved hash="208,1,81.28,-25.4,VSS,sup,,,,"/>
+<approved hash="208,1,76.2,-12.7,VSS,sup,,,,"/>
+<approved hash="208,1,121.92,-12.7,VSS,sup,,,,"/>
+<approved hash="208,1,129.54,-12.7,VSS,sup,,,,"/>
+<approved hash="208,1,96.52,139.7,VSS,sup,,,,"/>
+<approved hash="208,1,25.4,-38.1,VSS,sup,,,,"/>
+<approved hash="208,1,-53.34,-35.56,VSS,sup,,,,"/>
+<approved hash="208,1,-20.32,124.46,VSS,sup,,,,"/>
+<approved hash="208,1,-81.28,139.7,VSS,sup,,,,"/>
+<approved hash="208,1,-73.66,144.78,VSS,out,,,,"/>
+<approved hash="208,1,-81.28,144.78,VSS,sup,,,,"/>
+<approved hash="208,1,-73.66,116.84,VSS,sup,,,,"/>
+<approved hash="208,1,-81.28,127,VSS,sup,,,,"/>
 </errors>
 </schematic>
 </drawing>

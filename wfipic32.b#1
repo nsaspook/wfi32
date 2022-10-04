@@ -81,7 +81,7 @@
 <hole x="0" y="53.34" drill="1.016"/>
 <hole x="30.48" y="53.34" drill="1.016"/>
 <hole x="30.48" y="30.48" drill="1.016"/>
-<text x="0" y="34.29" size="0.8128" layer="1" font="vector" ratio="10" distance="41" rot="R90">BMA490L-PIC32MK V1.3</text>
+<text x="0" y="34.29" size="0.8128" layer="1" font="vector" ratio="10" distance="41" rot="R90">BMA490L-PIC32MK V1.4</text>
 </plain>
 <libraries>
 <library name="2022-08-07_22-50-41_Library">

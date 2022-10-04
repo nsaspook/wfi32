@@ -15176,8 +15176,8 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <smd name="10" x="-0.5" y="3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
 <smd name="11" x="-1.5" y="3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
 <smd name="12" x="-2.5" y="3.935" dx="0.98" dy="0.61" layer="1" rot="R90"/>
-<rectangle x1="-3.81" y1="-2.54" x2="3.81" y2="-1.27" layer="39"/>
-<rectangle x1="-3.81" y1="1.27" x2="3.81" y2="2.54" layer="39"/>
+<rectangle x1="-3.81" y1="-2.54" x2="3.81" y2="-1.27" layer="29"/>
+<rectangle x1="-3.81" y1="1.27" x2="3.81" y2="2.54" layer="29"/>
 </package>
 </packages>
 <symbols>

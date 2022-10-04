@@ -16105,11 +16105,11 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <junction x="132.08" y="142.24"/>
 </segment>
 </net>
-<net name="PGD" class="0">
+<net name="PGD_C1TX" class="0">
 <segment>
 <pinref part="JP2" gate="A" pin="4"/>
 <wire x1="40.64" y1="-5.08" x2="53.34" y2="-5.08" width="0.1524" layer="91"/>
-<label x="60.96" y="-5.08" size="1.778" layer="95"/>
+<label x="55.88" y="-5.08" size="1.778" layer="95"/>
 <junction x="40.64" y="-5.08"/>
 <junction x="53.34" y="-5.08"/>
 </segment>
@@ -16121,11 +16121,11 @@ Source: &lt;a href="https://www.murata.com/~/media/webrenewal/products/sensor/ac
 <junction x="-17.78" y="38.1"/>
 </segment>
 </net>
-<net name="PGC" class="0">
+<net name="PGC_C1RX" class="0">
 <segment>
 <pinref part="JP2" gate="A" pin="5"/>
 <wire x1="40.64" y1="-2.54" x2="53.34" y2="-2.54" width="0.1524" layer="91"/>
-<label x="60.96" y="-2.54" size="1.778" layer="95"/>
+<label x="55.88" y="-2.54" size="1.778" layer="95"/>
 <junction x="40.64" y="-2.54"/>
 <junction x="53.34" y="-2.54"/>
 </segment>
