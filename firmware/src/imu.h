@@ -22,7 +22,7 @@ extern "C" {
 #define IMU_DRIVER	"V1.102" 
 #define IMU_ALIAS	"IMU"
 
-#define IMU_ID_DELAY	100
+#define IMU_ID_DELAY	400
 	/*
 	 * what IMU chip are we using
 	 */
