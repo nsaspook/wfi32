@@ -209,6 +209,7 @@ int main(void) {
             }
         }
     };
+    imu0.op.imu_set_spimode(&imu0);
     printf(" IMU ID OK, device type %d: %d %d \r\n", imu0.device, ADCHS_ChannelResultGet(ADCHS_CH0), ADCHS_ChannelResultGet(ADCHS_CH1));
     LED_RED_Off();
     LED_GREEN_Off();
