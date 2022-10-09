@@ -65,7 +65,9 @@ void GPIO_Initialize ( void )
     CNPUASET = 0x8000U; /* Pull-Up Enable */
     /* PORTB Initialization */
     /* PORTC Initialization */
+    CNPUCSET = 0x80U; /* Pull-Up Enable */
     /* PORTD Initialization */
+    CNPUDSET = 0x40U; /* Pull-Up Enable */
     /* PORTE Initialization */
     LATE = 0x2000U; /* Initial Latch Value */
     TRISECLR = 0x2000U; /* Direction Control */
@@ -85,10 +87,13 @@ void GPIO_Initialize ( void )
     /* PPS Input Remapping */
     U1RXR = 10;
     C1RXR = 8;
+    SDI2R = 9;
 
     /* PPS Output Remapping */
     RPA15R = 12;
     RPE0R = 1;
+    RPF0R = 4;
+    RPC7R = 4;
 
         /* Lock back the system after PPS configuration */
     CFGCONbits.IOLOCK = 1U;

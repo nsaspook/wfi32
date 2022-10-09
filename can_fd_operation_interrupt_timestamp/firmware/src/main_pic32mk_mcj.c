@@ -1,4 +1,4 @@
-/*******************************************************************************
+	/*******************************************************************************
   Main Source File
 
   Company:
@@ -99,6 +99,8 @@ static CANFD_MSG_RX_ATTRIBUTE msgAttr = CANFD_MSG_RX_DATA_FRAME;
 const char *build_date = __DATE__, *build_time = __TIME__;
 uint8_t rxe, txe;
 uint32_t times = 0;
+
+uint8_t spid[]={0xb5,0x62,0x0A,0x04,0x00};
 
 // *****************************************************************************
 // *****************************************************************************
@@ -302,6 +304,7 @@ int main(void)
 #else
 					length++;
 					printf("%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f\r\n", accel->x, accel->y, accel->z, accel->x, accel->y, accel->z, accel->x);
+//					SPI2_WriteRead(spid, 5, imu->rbuf, 5);
 #endif
 				}
 				if (*mtype == CAN_IMU_INFO) {
