@@ -69,20 +69,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 212C8AC9CF64082BDF23CAE7705BD0AF
-- generatedChecksum: 08D30B9420956F55C949270F187ED2E3
+- generatedChecksum: E7A08784221B98A7462809A4C33ED738
   logicalPath: config/mcj/peripheral/gpio
   name: plib_gpio.c
   physicalPath: peripheral/gpio
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 08D30B9420956F55C949270F187ED2E3
-- generatedChecksum: 0D80DF5D639F801F6800052308AAB0DA
+  userChecksum: E7A08784221B98A7462809A4C33ED738
+- generatedChecksum: 0546E70296B306D1B4FFFB1D3C9B61B5
   logicalPath: config/mcj/peripheral/mcpwm
   name: plib_mcpwm.c
   physicalPath: peripheral/mcpwm
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 0D80DF5D639F801F6800052308AAB0DA
+  userChecksum: 0546E70296B306D1B4FFFB1D3C9B61B5
 - generatedChecksum: BD9CB061968B38179ABBF9B53E47A080
   logicalPath: config/mcj/peripheral/rtcc
   name: plib_rtcc.c
@@ -97,13 +97,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 3DBD5C08EB7DB8D666609DC772B98418
-- generatedChecksum: 5BC229DEF31B23187A3316502F730BA4
+- generatedChecksum: A81E20875613CD9E47E4F7AD47132195
   logicalPath: config/mcj/peripheral/spi/spi_master
   name: plib_spi2_master.c
   physicalPath: peripheral/spi/spi_master
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 5BC229DEF31B23187A3316502F730BA4
+  userChecksum: A81E20875613CD9E47E4F7AD47132195
 - generatedChecksum: A182F1654C0D24C85A99FB6772C9FC2F
   logicalPath: config/mcj/peripheral/tmr
   name: plib_tmr5.c

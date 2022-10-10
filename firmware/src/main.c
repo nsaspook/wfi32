@@ -209,11 +209,14 @@ int main(void) {
             }
         }
     };
-    imu0.op.imu_set_spimode(&imu0);
+
     printf(" IMU ID OK, device type %d: %d %d \r\n", imu0.device, ADCHS_ChannelResultGet(ADCHS_CH0), ADCHS_ChannelResultGet(ADCHS_CH1));
     LED_RED_Off();
     LED_GREEN_Off();
     WaitMs(500);
+    MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024);
+    MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024);
+    MCPWM_Start();
 
     // loop collecting data
     StartTimer(TMR_LOG, imu0.log_timeout);
@@ -238,6 +241,8 @@ int main(void) {
             TP1_Set();
             getAllData(&accel, &imu0); // convert data from the chip
             TP1_Clear();
+            MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024 + (uint32_t)(10.0*accel.xa));
+            MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024 + (uint32_t)(10.0*accel.ya));
 #ifdef SHOW_LOG
             printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f,%u,%X,%X\r\n", accel.x, accel.y, accel.z, accel.xa, accel.ya, accel.za, accel.sensortime, imu0.rs, imu0.ss);
 #endif

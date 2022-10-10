@@ -303,7 +303,7 @@ int main(void)
 					printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f, sensor TS 0X%x, %u, %u\r\n", accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->sensortime, length, rx_message[0]);
 #else
 					length++;
-					printf("%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f\r\n", accel->x, accel->y, accel->z, accel->x, accel->y, accel->z, accel->x);
+					printf("%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.1f\r\n", accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, (double)accel->sensortime);
 //					SPI2_WriteRead(spid, 5, imu->rbuf, 5);
 #endif
 				}

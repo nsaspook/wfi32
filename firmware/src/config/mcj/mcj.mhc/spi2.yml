@@ -33,11 +33,11 @@ children:
       - type: Long
         attributes: {id: max}
         children:
-        - {type: Value, value: '255'}
+        - {type: Value, value: '4294967295'}
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: spi2, value: '255'}
+        attributes: {id: spi2, value: '4294967295'}
   - type: KeyValueSet
     attributes: {id: SPI_MASTER_CLOCK}
     children:
@@ -51,7 +51,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '3'}
+        attributes: {value: '0'}
   - type: KeyValueSet
     attributes: {id: SPI_SPICON_MSSEN}
     children:

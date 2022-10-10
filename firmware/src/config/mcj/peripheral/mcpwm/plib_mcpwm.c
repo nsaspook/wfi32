@@ -51,17 +51,17 @@ void MCPWM_Initialize (void)
 {
     /* PTCON register  */
     /*  SEVTPS  = 0 */
-    /*  PCLKDIV = 0 */
+    /*  PCLKDIV = 1 */
     /*  SEIEN   = false */
-    PTCON = 0x0;
+    PTCON = 0x10;
 
     /* STCON register  */
     /*  SEVTPS  = 0 */
-    /*  SCLKDIV = 0 */
+    /*  SCLKDIV = 1 */
     /*  SSEIEN = false */
-    STCON = 0x0;
+    STCON = 0x10;
 
-    PTPER = 2000;
+    PTPER = 2048;
     STPER = 2000;
     SEVTCMP = 10;
     SSEVTCMP = 10;
@@ -98,7 +98,7 @@ void MCPWM_Initialize (void)
     /*  CLSRC  = 0  */
     IOCON1 = 0xc000;
 
-    PDC1 = 1000;
+    PDC1 = 1024;
     SDC1 = 500;
     PHASE1 = 0;
 
