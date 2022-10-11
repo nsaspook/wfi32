@@ -60,6 +60,7 @@
 #include "gfx.h"
 #ifdef __32MK0512MCJ048__
 #include "canfd.h"
+#include "pid.h"
 #endif
 
 

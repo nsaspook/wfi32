@@ -69,6 +69,7 @@
       <itemPath>../src/gfx.h</itemPath>
       <itemPath>../src/imu.h</itemPath>
       <itemPath>../src/canfd.h</itemPath>
+      <itemPath>../src/pid.h</itemPath>
     </logicalFolder>
     <logicalFolder name="lcd_drv" displayName="lcd_drv" projectFiles="true">
       <itemPath>../lcd_drv/lcd_drv.c</itemPath>
@@ -160,6 +161,7 @@
       <itemPath>../src/gfx.c</itemPath>
       <itemPath>../src/imu.c</itemPath>
       <itemPath>../src/canfd.c</itemPath>
+      <itemPath>../src/pid.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
