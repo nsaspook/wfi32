@@ -122,21 +122,21 @@ sSensorData_t accel = {
 
 volatile SPid
 xpid = {
-	.iMax = 2047.0,
-	.iMin = 0.0,
-	.pGain = .9, // 0.5
-	.iGain = 0.05, // 0.125
+	.iMax = 600.0,
+	.iMin = -600.0,
+	.pGain = 4.0,
+	.iGain = 1.05,
 },
 ypid = {
-	.iMax = 2047.0,
-	.iMin = 0.0,
-	.pGain = .9, // 0.5
-	.iGain = 0.05, // 0.125
+	.iMax = 600.0,
+	.iMin = -600.0,
+	.pGain = 4.0,
+	.iGain = 1.05,
 }, zpid = {
-	.iMax = 2047.0,
-	.iMin = 0.0,
-	.pGain = .9, // 0.5
-	.iGain = 0.05, // 0.125
+	.iMax = 600.0,
+	.iMin = -600.0,
+	.pGain = 4.0, 
+	.iGain = 1.05, 
 };
 
 volatile SPid xpid, ypid, zpid;
@@ -335,6 +335,8 @@ int main(void)
 			eaDogM_WriteStringAtPos(11, 20, buffer);
 			sprintf(buffer, "CINT %X, %d, %d", CFD1INT, canfd_num_tx(), canfd_num_stall());
 			eaDogM_WriteStringAtPos(13, 0, buffer);
+			sprintf(buffer, "ER %6.2f, %6.2f, %6.2f", UpdatePI(&xpid,(double)accel.xa),UpdatePI(&ypid,(double)accel.ya),UpdatePI(&zpid,(double)accel.za));
+			eaDogM_WriteStringAtPos(12, 0, buffer);
 #endif
 			canfd_state(CAN_RECEIVE, accel.buffer);
 			canfd_state(CAN_RECEIVE, accel.buffer);
