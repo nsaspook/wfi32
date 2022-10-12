@@ -4,6 +4,24 @@ attributes: {id: mcpwm}
 children:
 - type: Symbols
   children:
+  - type: Integer
+    attributes: {id: DTCOMP1__DTCOMP}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+  - type: Integer
+    attributes: {id: DTCOMP4__DTCOMP}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
   - type: String
     attributes: {id: INTR_PWM_FAULT}
     children:
@@ -231,6 +249,20 @@ children:
       children:
       - type: Dynamic
         attributes: {id: mcpwm, value: '16'}
+  - type: Hex
+    attributes: {id: MCPWM_PWMCON1}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: mcpwm, value: '192'}
+  - type: Hex
+    attributes: {id: MCPWM_PWMCON4}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: mcpwm, value: '192'}
   - type: Float
     attributes: {id: MCPWM_SEC_FREQ}
     children:
@@ -375,6 +407,38 @@ children:
       children:
       - type: User
         attributes: {value: '2048'}
+  - type: KeyValueSet
+    attributes: {id: PWMCON1__DTC}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '3'}
+  - type: KeyValueSet
+    attributes: {id: PWMCON1__DTCP}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+  - type: KeyValueSet
+    attributes: {id: PWMCON4__DTC}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '3'}
+  - type: KeyValueSet
+    attributes: {id: PWMCON4__DTCP}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
   - type: String
     attributes: {id: PWM_CALLBACK_API}
     children:
