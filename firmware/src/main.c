@@ -120,6 +120,8 @@ sSensorData_t accel = {
     .id = CAN_IMU_DATA,
 };
 
+volatile SPid xpid, ypid, zpid;
+
 volatile uint16_t tickCount[TMR_COUNT];
 
 static char buffer[STR_BUF_SIZE];
