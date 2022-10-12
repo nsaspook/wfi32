@@ -14,17 +14,17 @@ extern "C" {
 
 #include "imupic32mcj.h"
 
-	struct SPid {
+	typedef struct _SPid {
 		double dState; // Last position input
 		double iState; // Integrator state
 		double iMax, iMin; // Maximum and minimum allowable integrator state
 		double iGain, // integral gain
 		pGain, // proportional gain
 		dGain; // derivative gain
-	};
+	} SPid;
 
-	double UpdatePI(volatile struct SPid * const, const double);
-	void ResetPI(volatile struct SPid * const);
+	double UpdatePI(volatile SPid * const, const double);
+	void ResetPI(volatile SPid * const);
 
 #ifdef	__cplusplus
 }

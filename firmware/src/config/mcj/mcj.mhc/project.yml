@@ -76,13 +76,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: E7A08784221B98A7462809A4C33ED738
-- generatedChecksum: 0546E70296B306D1B4FFFB1D3C9B61B5
+- generatedChecksum: 9CCF87C604FB3759C0048FF2B0C07748
   logicalPath: config/mcj/peripheral/mcpwm
   name: plib_mcpwm.c
   physicalPath: peripheral/mcpwm
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 0546E70296B306D1B4FFFB1D3C9B61B5
+  userChecksum: 9CCF87C604FB3759C0048FF2B0C07748
 - generatedChecksum: BD9CB061968B38179ABBF9B53E47A080
   logicalPath: config/mcj/peripheral/rtcc
   name: plib_rtcc.c

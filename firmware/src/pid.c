@@ -4,7 +4,7 @@
 /*
  * converted to PI for motor control
  */
-double UpdatePI(volatile struct SPid * const pid, double const error)
+double UpdatePI(volatile SPid * const pid, double const error)
 {
 	double pTerm, iTerm;
 
@@ -25,7 +25,7 @@ double UpdatePI(volatile struct SPid * const pid, double const error)
 	return pTerm + iTerm;
 }
 
-void ResetPI(volatile struct SPid * const pid)
+void ResetPI(volatile SPid * const pid)
 {
 	pid->dState = 0.0; // not used but cleared
 	pid->iState = 0.0;
