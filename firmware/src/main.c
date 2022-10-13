@@ -135,8 +135,8 @@ ypid = {
 }, zpid = {
 	.iMax = 600.0,
 	.iMin = -600.0,
-	.pGain = 4.0, 
-	.iGain = 1.05, 
+	.pGain = 4.0,
+	.iGain = 1.05,
 };
 
 volatile SPid xpid, ypid, zpid;
@@ -252,7 +252,7 @@ int main(void)
 		 * convert the SPI XYZ response to standard floating point acceleration values and rolling integer time-stamps per measurement
 		 */
 		if (imu0.update || TimerDone(TMR_LOG)) {
-#ifdef SHOW_LCD			
+#ifdef SHOW_LCD   
 			TP1_Set();
 			OledClearBuffer();
 			TP1_Clear();
@@ -266,6 +266,9 @@ int main(void)
 			TP1_Clear();
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024 + (uint32_t) (10.0 * accel.xa));
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024 + (uint32_t) (10.0 * accel.ya));
+			accel.xerr = UpdatePI(&xpid, (double) accel.xa);
+			accel.yerr = UpdatePI(&ypid, (double) accel.ya);
+			accel.zerr = UpdatePI(&zpid, (double) accel.za);
 #ifdef SHOW_LOG
 			printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f,%u,%X,%X\r\n", accel.x, accel.y, accel.z, accel.xa, accel.ya, accel.za, accel.sensortime, imu0.rs, imu0.ss);
 #endif
@@ -302,7 +305,7 @@ int main(void)
 					LA_gfx(false, false, 1400);
 				}
 			}
-#endif	
+#endif 
 			TP1_Clear();
 			OledUpdate();
 			TP1_Set();
@@ -335,7 +338,7 @@ int main(void)
 			eaDogM_WriteStringAtPos(11, 20, buffer);
 			sprintf(buffer, "CINT %X, %d, %d", CFD1INT, canfd_num_tx(), canfd_num_stall());
 			eaDogM_WriteStringAtPos(13, 0, buffer);
-			sprintf(buffer, "ER %6.2f, %6.2f, %6.2f", UpdatePI(&xpid,(double)accel.xa),UpdatePI(&ypid,(double)accel.ya),UpdatePI(&zpid,(double)accel.za));
+			sprintf(buffer, "ER %6.2f, %6.2f, %6.2f", accel.xerr, accel.yerr, accel.zerr);
 			eaDogM_WriteStringAtPos(12, 0, buffer);
 #endif
 			canfd_state(CAN_RECEIVE, accel.buffer);
@@ -345,6 +348,7 @@ int main(void)
 				canfd_state(CAN_TRANSMIT_FD, &imu0);
 				alter = false;
 			} else {
+
 				canfd_state(CAN_TRANSMIT_FD, &accel);
 				alter = true;
 			}
@@ -371,6 +375,7 @@ void update_imu_int1(uint32_t a, uintptr_t context)
 
 	if (imu) {
 		if (!i++) {
+
 			LED_GREEN_Toggle();
 		}
 		imu->update = true;

@@ -1,19 +1,19 @@
-	/*******************************************************************************
-  Main Source File
+/*******************************************************************************
+Main Source File
 
-  Company:
-    Microchip Technology Inc.
+Company:
+Microchip Technology Inc.
 
-  File Name:
-    main.c
+File Name:
+main.c
 
-  Summary:
-    This file contains the "main" function for a project.
+Summary:
+This file contains the "main" function for a project.
 
-  Description:
-    This file contains the "main" function for a project.  The
-    "main" function calls the "SYS_Initialize" function to initialize the state
-    machines of all modules in the system
+Description:
+This file contains the "main" function for a project.  The
+"main" function calls the "SYS_Initialize" function to initialize the state
+machines of all modules in the system
  *******************************************************************************/
 
 /*******************************************************************************
@@ -100,7 +100,7 @@ const char *build_date = __DATE__, *build_time = __TIME__;
 uint8_t rxe, txe;
 uint32_t times = 0;
 
-uint8_t spid[]={0xb5,0x62,0x0A,0x04,0x00};
+uint8_t spid[] = {0xb5, 0x62, 0x0A, 0x04, 0x00};
 
 // *****************************************************************************
 // *****************************************************************************
@@ -293,7 +293,7 @@ int main(void)
 				uint8_t length = rx_messageLength;
 				uint16_t * mtype = (uint16_t *) & rx_message[0];
 
-#ifndef SHOW_DATA				
+#ifndef SHOW_DATA    
 				PrintFormattedData(" Message - Timestamp : 0x%x ID : 0x%x Length : 0x%x ", timestamp, (unsigned int) rx_messageID, (unsigned int) rx_messageLength);
 				printf("Message : ");
 #endif
@@ -303,8 +303,8 @@ int main(void)
 					printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f, sensor TS 0X%x, %u, %u\r\n", accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->sensortime, length, rx_message[0]);
 #else
 					length++;
-					printf("%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.1f\r\n", accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, (double)accel->sensortime);
-//					SPI2_WriteRead(spid, 5, imu->rbuf, 5);
+					printf("%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.1f\r\n", accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->xerr, accel->yerr, accel->zerr, (double) accel->sensortime);
+					//					SPI2_WriteRead(spid, 5, imu->rbuf, 5);
 #endif
 				}
 				if (*mtype == CAN_IMU_INFO) {
