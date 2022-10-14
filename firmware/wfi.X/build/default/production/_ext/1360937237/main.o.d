@@ -48,7 +48,7 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/../../firmware/lcd_drv/OledDriver.h \
  ../src/../../firmware/lcd_drv/OledChar.h \
  ../src/../../firmware/lcd_drv/OledGrph.h ../src/gfx.h \
- ../src/../../firmware/lcd_drv/OledGrph.h
+ ../src/../../firmware/lcd_drv/OledGrph.h ../src/pid.h
 
 ../src/config/default/definitions.h:
 
@@ -169,3 +169,5 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
 ../src/gfx.h:
 
 ../src/../../firmware/lcd_drv/OledGrph.h:
+
+../src/pid.h:

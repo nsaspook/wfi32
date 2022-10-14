@@ -60,8 +60,8 @@
 #include "gfx.h"
 #ifdef __32MK0512MCJ048__
 #include "canfd.h"
-#include "pid.h"
 #endif
+#include "pid.h"
 
 
 #ifdef BMA490L
@@ -237,9 +237,12 @@ int main(void)
 	LED_RED_Off();
 	LED_GREEN_Off();
 	WaitMs(500);
+#ifdef __32MK0512MCJ048__
 	MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024);
 	MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024);
 	MCPWM_Start();
+#endif
+
 
 	// loop collecting data
 	StartTimer(TMR_LOG, imu0.log_timeout);
@@ -264,8 +267,10 @@ int main(void)
 			TP1_Set();
 			getAllData(&accel, &imu0); // convert data from the chip
 			TP1_Clear();
+#ifdef __32MK0512MCJ048__
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024 + (uint32_t) (10.0 * accel.xa));
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024 + (uint32_t) (10.0 * accel.ya));
+#endif
 			accel.xerr = UpdatePI(&xpid, (double) accel.xa);
 			accel.yerr = UpdatePI(&ypid, (double) accel.ya);
 			accel.zerr = UpdatePI(&zpid, (double) accel.za);
