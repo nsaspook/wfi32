@@ -129,7 +129,7 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 					//					CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 					//					CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT);
 					state = APP_STATE_CAN_IDLE;
-					messageID = MESS_ID_IMU;
+					messageID = board_serial_id;
 					messageLength = 64;
 					num_tx++;
 					if (CAN1_MessageTransmit(messageID, messageLength, can_buffer, 1, CANFD_MODE_FD_WITH_BRS, CANFD_MSG_TX_DATA_FRAME) == false) {

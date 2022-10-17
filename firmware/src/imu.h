@@ -78,6 +78,7 @@ extern "C" {
                 volatile bool online, run, update, features, crc_error, angles;
                 uint8_t rbuf[64], tbuf[64];
                 uint32_t rbuf32[2], tbuf32[2];
+                uint16_t serial1, serial2;
                 op_t op;
         } imu_cmd_t;
 

@@ -53,7 +53,11 @@ extern "C" {
 #define SCL3300_E_FLAG2		0x200000C1
 #define	SCL3300_ANG_X_32B	0x240000C7
 #define	SCL3300_ANG_Y_32B	0x280000CD
-#define	SCL3300_ANG_Z_32B	0x2C0000CB	
+#define	SCL3300_ANG_Z_32B	0x2C0000CB
+#define SCA3300_BANK0           0xFC000073
+#define SCA3300_BANK1           0xFC00016E
+#define SCA3300_SERIAL1         0x640000A7
+#define SCA3300_SERIAL2         0x680000AD    
 
 #define SCA3300_CHIP_ID_DELAY		10000	// ID command repeat delays in usec
 #define SCA3300_CHIP_SWR_DELAY		10000	// chip software reset delay
@@ -66,6 +70,7 @@ extern "C" {
 	 */
 	void sca3300_set_spimode(void *);
 	bool sca3300_getid(void *);
+        bool sca3300_getserial(void *);
 	bool sca3300_getdata(void *);
 	void sca3300_version(void);
 

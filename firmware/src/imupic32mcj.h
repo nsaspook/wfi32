@@ -6,9 +6,9 @@
  */
 
 #ifndef IMUPIC32MCJ_H
-#define	IMUPIC32MCJ_H
+#define IMUPIC32MCJ_H
 
-#ifdef	__cplusplus
+#ifdef __cplusplus
 extern "C" {
 #endif
 
@@ -19,12 +19,12 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-#define IMU_CS	0
-#define	LCD_CS	0
+#define IMU_CS 0
+#define LCD_CS 0
 
 #define BMA_LOG_TIMEOUT 25
-#define	SCA_LOG_TIMEOUT	7
-	
+#define SCA_LOG_TIMEOUT 7
+
 #define SHOW_LOG
 #define SHOW_LCD
 #define SHOW_VG
@@ -36,13 +36,15 @@ extern "C" {
 #ifndef  LED_RED_On
 #define LED_RED_On() LED_RED_Set()
 #define LED_RED_Off() LED_RED_Clear()
-#endif	
+#endif 
 
-	void delay_us(uint32_t);
+    void delay_us(uint32_t);
 
-#ifdef	__cplusplus
+    extern uint32_t board_serial_id;
+
+#ifdef __cplusplus
 }
 #endif
 
-#endif	/* IMUPIC32MCJ_H */
+#endif /* IMUPIC32MCJ_H */
 

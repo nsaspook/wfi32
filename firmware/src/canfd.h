@@ -50,8 +50,6 @@ typedef enum {
 	CAN_MISC,
 } CANFD_MESSAGE;	
 
-#define MESS_ID_IMU	0x35A
-
 #ifdef __32MZ1025W104132__
 #define CANDEV2
 #endif
