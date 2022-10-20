@@ -148,7 +148,7 @@ static uint32_t delay_freq = 0;
 
 static const char *build_date = __DATE__, *build_time = __TIME__;
 const uint32_t update_delay = 5;
-uint32_t board_serial_id = 0x35A;
+uint32_t board_serial_id = 0x35A, cpu_serial_id = 0x1957;
 
 extern CORETIMER_OBJECT coreTmr;
 
@@ -201,7 +201,10 @@ int main(void) {
     lcd_version();
     init_lcd_drv(D_INIT);
     OledClearBuffer();
-    sprintf(buffer, "%s Controller %s", IMU_ALIAS, IMU_DRIVER);
+    cpu_serial_id = DEVSN0 & 0x1fffffff; // get CPU device serial number and convert that to 29 - bit ID for CAN - FD
+    board_serial_id = cpu_serial_id; // this ID could be changed to the ID of the IMU for IMU data transfers
+    imu0.board_serial_id = board_serial_id;
+    sprintf(buffer, "%s Controller %s %X", IMU_ALIAS, IMU_DRIVER, cpu_serial_id);
     eaDogM_WriteStringAtPos(15, 0, buffer);
     OledUpdate();
 
@@ -233,7 +236,6 @@ int main(void) {
         }
     };
 
-    sca3300_getserial(&imu0);
     printf(" IMU ID OK, device type %d: %X %X \r\n", imu0.device, imu0.serial1, imu0.serial2);
     LED_RED_Off();
     LED_GREEN_Off();

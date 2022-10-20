@@ -40,7 +40,7 @@ extern "C" {
 
     void delay_us(uint32_t);
 
-    extern uint32_t board_serial_id;
+    extern uint32_t board_serial_id, cpu_serial_id;
 
 #ifdef __cplusplus
 }

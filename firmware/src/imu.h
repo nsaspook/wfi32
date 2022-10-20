@@ -79,6 +79,7 @@ extern "C" {
                 uint8_t rbuf[64], tbuf[64];
                 uint32_t rbuf32[2], tbuf32[2];
                 uint16_t serial1, serial2;
+                uint32_t board_serial_id;
                 op_t op;
         } imu_cmd_t;
 
