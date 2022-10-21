@@ -188,7 +188,12 @@ int main(void)
 	TMR2_Start(); // IMU time-stamp counter
 #endif
 
-	printf("\r\nPIC32 %s Controller %s %s %s ---\r\n", IMU_ALIAS, IMU_DRIVER, build_date, build_time);
+#ifdef __32MZ1025W104132__
+	cpu_serial_id = USERID & 0x1fffffff; // get CPU device serial number and convert that to 29 - bit ID for CAN - FD
+#else
+	cpu_serial_id = DEVSN0 & 0x1fffffff; // get CPU device serial number and convert that to 29 - bit ID for CAN - FD
+#endif
+	printf("\r\nPIC32 %s Controller %s %s %s %X ---\r\n", IMU_ALIAS, IMU_DRIVER, build_date, build_time, cpu_serial_id);
 
 	/*
 	 * print the driver version
@@ -202,7 +207,6 @@ int main(void)
 	lcd_version();
 	init_lcd_drv(D_INIT);
 	OledClearBuffer();
-	cpu_serial_id = DEVSN0 & 0x1fffffff; // get CPU device serial number and convert that to 29 - bit ID for CAN - FD
 	board_serial_id = cpu_serial_id; // this ID could be changed to the ID of the IMU for IMU data transfers
 	imu0.board_serial_id = board_serial_id;
 	sprintf(buffer, "%s Controller %s %X", IMU_ALIAS, IMU_DRIVER, cpu_serial_id);
@@ -286,7 +290,7 @@ int main(void)
 			eaDogM_WriteStringAtPos(0, 0, buffer);
 			sprintf(buffer, "%6.2f,%6.2f,%6.2f,%5.1f", accel.xa, accel.ya, accel.za, accel.sensortemp);
 			eaDogM_WriteStringAtPos(1, 0, buffer);
-			sprintf(buffer, "PIC32 IMU Controller %s   %s %s %X", IMU_DRIVER, build_date, build_time, cpu_serial_id);
+			sprintf(buffer, "PIC32 IMU Controller %s   %s %s", IMU_DRIVER, build_date, build_time);
 			eaDogM_WriteStringAtPos(14, 0, buffer);
 			sprintf(buffer, "imu %s", imu_string(&imu0));
 			eaDogM_WriteStringAtPos(3, 0, buffer);
