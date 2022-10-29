@@ -6,20 +6,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 99DB74296DF9943C474F4F03A700C790
-- generatedChecksum: E4D4C472050D034A3878760BCF434F60
+- generatedChecksum: D56B29A96160D2C6CC79110DA49FED92
   logicalPath: config/mcj
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: E4D4C472050D034A3878760BCF434F60
-- generatedChecksum: DEDDDA0359CC0398A6192F794A86A9F3
+  userChecksum: D56B29A96160D2C6CC79110DA49FED92
+- generatedChecksum: E521C58F15549E81CA70FC93DEDF27EC
   logicalPath: config/mcj
   name: interrupts.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: DEDDDA0359CC0398A6192F794A86A9F3
+  userChecksum: E521C58F15549E81CA70FC93DEDF27EC
 - generatedChecksum: null
   logicalPath: ''
   name: main.c
@@ -41,13 +41,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 3649EEABDEE9E0240E2655B20C8C00FB
-- generatedChecksum: E10E5B66CAADECE1C00BACB3A8008D6E
+- generatedChecksum: C29157841123D27AEE9D06A772F9D627
   logicalPath: config/mcj/peripheral/clk
   name: plib_clk.c
   physicalPath: peripheral/clk
   security: NON_SECURE
   type: SOURCE
-  userChecksum: E10E5B66CAADECE1C00BACB3A8008D6E
+  userChecksum: C29157841123D27AEE9D06A772F9D627
 - generatedChecksum: CDE489012C46160ED6A67092B2FFCE99
   logicalPath: config/mcj/peripheral/coretimer
   name: plib_coretimer.c
@@ -62,20 +62,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 6F6B471B0C0181422878659A23CB9BAA
-- generatedChecksum: 212C8AC9CF64082BDF23CAE7705BD0AF
+- generatedChecksum: B91E7EC6E9FAA55D2E6CC9B0848EA9BD
   logicalPath: config/mcj/peripheral/evic
   name: plib_evic.c
   physicalPath: peripheral/evic
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 212C8AC9CF64082BDF23CAE7705BD0AF
-- generatedChecksum: E7A08784221B98A7462809A4C33ED738
+  userChecksum: B91E7EC6E9FAA55D2E6CC9B0848EA9BD
+- generatedChecksum: E6F270915FB37F155DFBF4CAA1BDBBB1
   logicalPath: config/mcj/peripheral/gpio
   name: plib_gpio.c
   physicalPath: peripheral/gpio
   security: NON_SECURE
   type: SOURCE
-  userChecksum: E7A08784221B98A7462809A4C33ED738
+  userChecksum: E6F270915FB37F155DFBF4CAA1BDBBB1
 - generatedChecksum: 9CCF87C604FB3759C0048FF2B0C07748
   logicalPath: config/mcj/peripheral/mcpwm
   name: plib_mcpwm.c
@@ -83,6 +83,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 9CCF87C604FB3759C0048FF2B0C07748
+- generatedChecksum: 0B8BE1839AD13E61F41A6699BD26EC02
+  logicalPath: config/mcj/peripheral/qei
+  name: plib_qei2.c
+  physicalPath: peripheral/qei
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 0B8BE1839AD13E61F41A6699BD26EC02
 - generatedChecksum: BD9CB061968B38179ABBF9B53E47A080
   logicalPath: config/mcj/peripheral/rtcc
   name: plib_rtcc.c
@@ -139,13 +146,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 42A948E504602741B0D592C55FCD9A7B
-- generatedChecksum: F11A609368E92836A4C9BA6044599384
+- generatedChecksum: 13B99A6FC1F3DB2123B5C854323DC111
   logicalPath: config/mcj
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: F11A609368E92836A4C9BA6044599384
+  userChecksum: 13B99A6FC1F3DB2123B5C854323DC111
 - generatedChecksum: E189C26B2269F8DE46033CCD0621958D
   logicalPath: config/mcj
   name: device.h
@@ -237,6 +244,20 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 475983F6F8CF7A0AF4A75B21D75A2179
+- generatedChecksum: 6E243E425F4F2621C1BE012DC06D3D6E
+  logicalPath: config/mcj/peripheral/qei
+  name: plib_qei2.h
+  physicalPath: peripheral/qei
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 6E243E425F4F2621C1BE012DC06D3D6E
+- generatedChecksum: D6A76BFCD1B06AC07959D1D4CB4D2B3E
+  logicalPath: config/mcj/peripheral/qei
+  name: plib_qei_common.h
+  physicalPath: peripheral/qei
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: D6A76BFCD1B06AC07959D1D4CB4D2B3E
 - generatedChecksum: C5CCB53DBC284D1BCEAB7756ED870B04
   logicalPath: config/mcj/peripheral/rtcc
   name: plib_rtcc.h

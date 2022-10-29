@@ -189,6 +189,8 @@ void SYS_Initialize ( void* data )
 
 	UART1_Initialize();
 
+    QEI2_Initialize();
+
     TMR5_Initialize();
 
     MCPWM_Initialize();

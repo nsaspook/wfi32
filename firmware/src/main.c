@@ -60,6 +60,7 @@
 #include "gfx.h"
 #ifdef __32MK0512MCJ048__
 #include "canfd.h"
+#include "config/mcj/peripheral/qei/plib_qei2.h"
 #endif
 #include "pid.h"
 
@@ -152,6 +153,15 @@ uint32_t board_serial_id = 0x35A, cpu_serial_id = 0x1957;
 
 extern CORETIMER_OBJECT coreTmr;
 
+#ifdef __32MK0512MCJ048__
+void qei_index_cb(QEI_STATUS, uintptr_t);
+
+void qei_index_cb(QEI_STATUS status, uintptr_t context)
+{
+	
+}
+#endif
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Main Entry Point
@@ -183,6 +193,8 @@ int main(void)
 
 #ifdef __32MK0512MCJ048__
 	TMR9_Start(); // IMU time-stamp counter
+	QEI2_CallbackRegister(qei_index_cb, 0);
+	QEI2_Start();
 #endif
 #ifdef __32MZ1025W104132__
 	TMR2_Start(); // IMU time-stamp counter
