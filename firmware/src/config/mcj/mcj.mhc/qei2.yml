@@ -47,6 +47,13 @@ children:
       - type: Dynamic
         attributes: {id: qei2, value: QEI2_Stop}
   - type: KeyValueSet
+    attributes: {id: QEI2CON__INTDIV}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '2'}
+  - type: KeyValueSet
     attributes: {id: QEI2CON__PIMOD}
     children:
     - type: Values
@@ -80,7 +87,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: qei2, value: '1024'}
+        attributes: {id: qei2, value: '1056'}
   - type: Hex
     attributes: {id: QEI_QEISTAT}
     children:
@@ -89,4 +96,4 @@ children:
       - type: Dynamic
         attributes: {id: qei2, value: '1'}
 - type: ElementPosition
-  attributes: {x: '30', y: '260', id: qei2}
+  attributes: {x: '650', y: '100', id: qei2}

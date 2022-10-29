@@ -83,13 +83,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 9CCF87C604FB3759C0048FF2B0C07748
-- generatedChecksum: 0B8BE1839AD13E61F41A6699BD26EC02
+- generatedChecksum: A569664E528A055806F4CEB4C0E9D233
   logicalPath: config/mcj/peripheral/qei
   name: plib_qei2.c
   physicalPath: peripheral/qei
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 0B8BE1839AD13E61F41A6699BD26EC02
+  userChecksum: A569664E528A055806F4CEB4C0E9D233
 - generatedChecksum: BD9CB061968B38179ABBF9B53E47A080
   logicalPath: config/mcj/peripheral/rtcc
   name: plib_rtcc.c
