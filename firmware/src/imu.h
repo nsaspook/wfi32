@@ -33,7 +33,7 @@ extern "C" {
 #define IMU_DATA_BUFFER_INDEX  1
 
         typedef struct {
-                uint16_t id;
+                const uint16_t id;
                 double x; /**< X-axis sensor data */
                 double y; /**< Y-axis sensor data */
                 double z; /**< Z-axis sensor data */
@@ -52,7 +52,7 @@ extern "C" {
          * function pointer templates structure
          * for the device I/O routines and data
          */
-        typedef struct _op_t {
+        typedef const struct _op_t {
                 void (*info_ptr)(void);
                 void (*imu_set_spimode)(void *);
                 bool (*imu_getid)(void *);
@@ -71,9 +71,10 @@ extern "C" {
          * IMU data structure for driver
          */
         typedef struct _imu_cmd_t {
-                uint16_t id;
+                const uint16_t id;
                 enum device_type device;
-                uint8_t cs, acc_range, spi_bytes, acc_range_scl;
+                const uint8_t cs, spi_bytes, acc_range_scl;
+		uint8_t acc_range;
                 uint32_t log_timeout, rs, ss;
                 volatile bool online, run, update, features, crc_error, angles;
                 uint8_t rbuf[64], tbuf[64];
@@ -84,7 +85,7 @@ extern "C" {
         } imu_cmd_t;
 
         struct sca3300_data {
-                uint16_t id;
+                const uint16_t id;
 
                 struct {
                         int16_t channels[9];
