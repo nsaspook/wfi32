@@ -74,6 +74,8 @@
       <itemPath>../src/imu.h</itemPath>
       <itemPath>../src/canfd.h</itemPath>
       <itemPath>../src/pid.h</itemPath>
+      <itemPath>../src/fft.h</itemPath>
+      <itemPath>../src/do_fft.h</itemPath>
     </logicalFolder>
     <logicalFolder name="lcd_drv" displayName="lcd_drv" projectFiles="true">
       <itemPath>../lcd_drv/lcd_drv.c</itemPath>
@@ -169,6 +171,8 @@
       <itemPath>../src/imu.c</itemPath>
       <itemPath>../src/canfd.c</itemPath>
       <itemPath>../src/pid.c</itemPath>
+      <itemPath>../src/do_fft.c</itemPath>
+      <itemPath>../src/fft.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -209,7 +213,7 @@
         <targetDevice>PIC32MK0512MCJ048</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>pk4hybrid</platformTool>
+        <platformTool>ICD4Tool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.20</languageToolchainVersion>
         <platform>2</platform>
@@ -1266,7 +1270,7 @@
         <property key="memories.programmemory.ranges" value="1d000000-1d07ffff"/>
         <property key="poweroptions.powerenable" value="false"/>
         <property key="programmerToGoFilePath"
-                  value="/public/wfi32/firmware/pic32mcj.X/debug/mcj_testing/pic32mcj_ptg"/>
+                  value="C:/Users/nsasp/wfi32/firmware/pic32mcj.X/debug/mcj/pic32mcj_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.ledbrightness" value="5"/>

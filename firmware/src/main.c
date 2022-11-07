@@ -63,7 +63,7 @@
 #include "config/mcj/peripheral/qei/plib_qei2.h"
 #endif
 #include "pid.h"
-
+#include "do_fft.h"
 
 #ifdef BMA490L
 /*
@@ -276,17 +276,17 @@ int main(void)
 		 */
 		if (imu0.update || TimerDone(TMR_LOG)) {
 #ifdef SHOW_LCD   
-			TP1_Set();
+//			TP1_Set();
 			OledClearBuffer();
-			TP1_Clear();
+//			TP1_Clear();
 #endif
-			TP1_Set();
+//			TP1_Set();
 			imu0.op.imu_getdata(&imu0); // read data from the chip
 			imu0.update = false;
-			TP1_Clear();
-			TP1_Set();
+//			TP1_Clear();
+//			TP1_Set();
 			getAllData(&accel, &imu0); // convert data from the chip
-			TP1_Clear();
+//			TP1_Clear();
 #ifdef __32MK0512MCJ048__
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024 + (uint32_t) (10.0 * accel.xa));
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024 + (uint32_t) (10.0 * accel.ya));
@@ -313,7 +313,7 @@ int main(void)
 			sprintf(buffer, "ANG %s", imu0.angles ? "Yes" : "No");
 			eaDogM_WriteStringAtPos(6, 0, buffer);
 #ifdef SHOW_VG
-			TP1_Set();
+//			TP1_Set();
 			q0 = accel.x;
 			q1 = accel.y;
 			q2 = accel.z;
@@ -331,9 +331,8 @@ int main(void)
 				}
 			}
 #endif 
-			TP1_Clear();
+//			TP1_Clear();
 			OledUpdate();
-			TP1_Set();
 #endif
 			if (TimerDone(TMR_LOG)) {
 				//				printf(" IMU data timeout \r\n");
@@ -378,7 +377,8 @@ int main(void)
 				alter = true;
 			}
 #endif
-
+			TP1_Set();
+			do_fft();
 			TP1_Clear();
 			StartTimer(TMR_LOG, imu0.log_timeout);
 		}
