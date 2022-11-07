@@ -17,23 +17,9 @@ void __delay_us_fft(uint32_t delay)
 	while (_CP0_GET_COUNT() - startCnt < waitCnt);
 }
 
-void configPerformance(void)
-{
-
-	__builtin_disable_interrupts(); //disable interrupts
-
-	//    PRECONbits.PREFEN = 0x03; //prefetch anyaddress
-	//    PRECONbits.PFMWS = 0x02; //2 wait states
-
-	__builtin_enable_interrupts(); // disable interrupts
-}
-
 void do_fft(void)
 {
-
-	configPerformance(); //enable prefetch
-
-	/* fft example to measure performance */
+	
 	unsigned int i;
 	double f;
 

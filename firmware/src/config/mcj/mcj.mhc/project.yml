@@ -6,13 +6,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 99DB74296DF9943C474F4F03A700C790
-- generatedChecksum: D56B29A96160D2C6CC79110DA49FED92
+- generatedChecksum: C73ABB4855B64DA7B1CA5956A5DDA00C
   logicalPath: config/mcj
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: D56B29A96160D2C6CC79110DA49FED92
+  userChecksum: C73ABB4855B64DA7B1CA5956A5DDA00C
 - generatedChecksum: E521C58F15549E81CA70FC93DEDF27EC
   logicalPath: config/mcj
   name: interrupts.c
@@ -146,13 +146,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 42A948E504602741B0D592C55FCD9A7B
-- generatedChecksum: 13B99A6FC1F3DB2123B5C854323DC111
+- generatedChecksum: 31133F45F5597D25E5796C59AA0D2671
   logicalPath: config/mcj
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 13B99A6FC1F3DB2123B5C854323DC111
+  userChecksum: 31133F45F5597D25E5796C59AA0D2671
 - generatedChecksum: E189C26B2269F8DE46033CCD0621958D
   logicalPath: config/mcj
   name: device.h

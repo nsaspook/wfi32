@@ -2,6 +2,21 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/public/wfi32/firmware/src/imupic32mcj.h</file>
+            <file>file:/public/wfi32/firmware/src/canfd.c</file>
+            <file>file:/public/wfi32/firmware/src/sca3300.h</file>
+            <file>file:/public/wfi32/firmware/src/imu.h</file>
+            <file>file:/public/wfi32/firmware/src/do_fft.h</file>
+            <file>file:/public/wfi32/firmware/src/sca3300.c</file>
+            <file>file:/public/wfi32/firmware/src/do_fft.c</file>
+            <file>file:/public/wfi32/firmware/src/imu.c</file>
+            <file>file:/public/wfi32/firmware/src/bma490l.c</file>
+            <file>file:/public/wfi32/firmware/src/main.c</file>
+            <file>file:/public/wfi32/firmware/lcd_drv/lcd_drv.h</file>
+            <file>file:/public/wfi32/firmware/src/fft.h</file>
+            <file>file:/public/wfi32/firmware/src/fft.c</file>
+            <file>file:/public/wfi32/firmware/src/canfd.h</file>
+        </group>
     </open-files>
 </project-private>

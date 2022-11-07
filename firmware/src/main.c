@@ -158,7 +158,7 @@ void qei_index_cb(QEI_STATUS, uintptr_t);
 
 void qei_index_cb(QEI_STATUS status, uintptr_t context)
 {
-	
+
 }
 #endif
 
@@ -172,7 +172,7 @@ int main(void)
 {
 #ifdef __32MK0512MCJ048__
 #ifdef SHOW_LCD
-	uint8_t rxe, txe, times = 0;
+	uint8_t rxe, txe, times = 0, ffti = 0;
 #endif
 	bool alter = false;
 #endif
@@ -276,17 +276,17 @@ int main(void)
 		 */
 		if (imu0.update || TimerDone(TMR_LOG)) {
 #ifdef SHOW_LCD   
-//			TP1_Set();
+			//			TP1_Set();
 			OledClearBuffer();
-//			TP1_Clear();
+			//			TP1_Clear();
 #endif
-//			TP1_Set();
+			//			TP1_Set();
 			imu0.op.imu_getdata(&imu0); // read data from the chip
 			imu0.update = false;
-//			TP1_Clear();
-//			TP1_Set();
+			//			TP1_Clear();
+			//			TP1_Set();
 			getAllData(&accel, &imu0); // convert data from the chip
-//			TP1_Clear();
+			//			TP1_Clear();
 #ifdef __32MK0512MCJ048__
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024 + (uint32_t) (10.0 * accel.xa));
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024 + (uint32_t) (10.0 * accel.ya));
@@ -312,8 +312,11 @@ int main(void)
 			eaDogM_WriteStringAtPos(5, 0, buffer);
 			sprintf(buffer, "ANG %s", imu0.angles ? "Yes" : "No");
 			eaDogM_WriteStringAtPos(6, 0, buffer);
+			sprintf(buffer, "FFT %3d, %3d ", inB[ffti], ffti);
+			eaDogM_WriteStringAtPos(8, 0, buffer);
+			ffti++;
 #ifdef SHOW_VG
-//			TP1_Set();
+			//			TP1_Set();
 			q0 = accel.x;
 			q1 = accel.y;
 			q2 = accel.z;
@@ -331,7 +334,7 @@ int main(void)
 				}
 			}
 #endif 
-//			TP1_Clear();
+			//			TP1_Clear();
 			OledUpdate();
 #endif
 			if (TimerDone(TMR_LOG)) {
@@ -377,9 +380,13 @@ int main(void)
 				alter = true;
 			}
 #endif
-			TP1_Set();
-			do_fft();
-			TP1_Clear();
+			if (!ffti) {
+				TP3_Set();
+				do_fft();
+				TP3_Clear();
+			}
+
+
 			StartTimer(TMR_LOG, imu0.log_timeout);
 		}
 	}
