@@ -98,6 +98,8 @@
       <itemPath>../src/gfx.h</itemPath>
       <itemPath>../src/imu.h</itemPath>
       <itemPath>../src/pid.h</itemPath>
+      <itemPath>../src/do_fft.h</itemPath>
+      <itemPath>../src/fft.h</itemPath>
     </logicalFolder>
     <logicalFolder name="lcd_drv" displayName="lcd_drv" projectFiles="true">
       <itemPath>../lcd_drv/ChrFont0.c</itemPath>
@@ -205,6 +207,8 @@
       <itemPath>../src/gfx.c</itemPath>
       <itemPath>../src/imu.c</itemPath>
       <itemPath>../src/pid.c</itemPath>
+      <itemPath>../src/do_fft.c</itemPath>
+      <itemPath>../src/fft.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -247,10 +251,10 @@
         <targetDevice>WFI32E01</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>PKOBSKDEPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.20</languageToolchainVersion>
-        <platform>2</platform>
+        <languageToolchainVersion>4.10</languageToolchainVersion>
+        <platform>3</platform>
       </toolsSet>
       <packs>
         <pack name="PIC32MZ-W_DFP" vendor="Microchip" version="1.6.220"/>
