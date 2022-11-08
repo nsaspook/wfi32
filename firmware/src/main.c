@@ -172,11 +172,12 @@ int main(void)
 {
 #ifdef __32MK0512MCJ048__
 #ifdef SHOW_LCD
-	uint8_t rxe, txe, times = 0, ffti = 0, w = 0;
+	uint8_t rxe, txe, times = 0;
 #endif
 	bool alter = false;
 #endif
 	bool wait = true;
+	uint8_t ffti = 0, w = 0;
 
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
@@ -320,13 +321,14 @@ int main(void)
 			//			sprintf(buffer, "FFT %3d, %3d ", inB[ffti], ffti);
 			//			eaDogM_WriteStringAtPos(8, 0, buffer);
 			ffti++;
-
+			//			if (!ffti) {
 			do_fft(false); // convert to 128 frequency bins in sample buffer
 			w = 0;
 			while (w < 128) {
 				fft_draw(w, inB[w]); // create screen graph from bin data
 				w++;
 			}
+			//			}
 			TP3_Clear();
 #ifdef SHOW_VG
 			//			TP1_Set();

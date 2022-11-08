@@ -62,14 +62,14 @@
 // *****************************************************************************
 
 
-/*** Macros for TP2 pin ***/
-#define TP2_Set()               (LATBSET = (1U<<2))
-#define TP2_Clear()             (LATBCLR = (1U<<2))
-#define TP2_Toggle()            (LATBINV= (1U<<2))
-#define TP2_OutputEnable()      (TRISBCLR = (1U<<2))
-#define TP2_InputEnable()       (TRISBSET = (1U<<2))
-#define TP2_Get()               ((PORTB >> 2) & 0x1U)
-#define TP2_PIN                  GPIO_PIN_RB2
+/*** Macros for TP3 pin ***/
+#define TP3_Set()               (LATBSET = (1U<<2))
+#define TP3_Clear()             (LATBCLR = (1U<<2))
+#define TP3_Toggle()            (LATBINV= (1U<<2))
+#define TP3_OutputEnable()      (TRISBCLR = (1U<<2))
+#define TP3_InputEnable()       (TRISBSET = (1U<<2))
+#define TP3_Get()               ((PORTB >> 2) & 0x1U)
+#define TP3_PIN                  GPIO_PIN_RB2
 
 /*** Macros for SST26_CS pin ***/
 #define SST26_CS_Set()               (LATASET = (1U<<1))

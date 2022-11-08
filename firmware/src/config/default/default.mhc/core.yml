@@ -717,7 +717,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: TP2}
+        attributes: {value: TP3}
   - type: String
     attributes: {id: BSP_PIN_7_FUNCTION_TYPE}
     children:
