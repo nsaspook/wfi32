@@ -23,11 +23,11 @@ extern "C" {
 
 #define _XTAL_FREQ 120000000UL
 	
-void do_fft(void);
+void do_fft(bool);
 void __delay_ms_fft(uint32_t);
 void __delay_us_fft(uint32_t);
 
-extern unsigned char inB[N_FFT];
+extern uint8_t inB[N_FFT];
 
 #ifdef	__cplusplus
 }

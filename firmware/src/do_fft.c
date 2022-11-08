@@ -17,23 +17,30 @@ void __delay_us_fft(uint32_t delay)
 	while (_CP0_GET_COUNT() - startCnt < waitCnt);
 }
 
-void do_fft(void)
+void do_fft(bool sine)
 {
-	
-	unsigned int i;
+
+	uint32_t i;
 	double f;
 
 	initFFT();
 
-	/* generate sin wave */
-	for (i = 0; i < N_FFT; i++) {
-		f = sin(2 * PI2N * i);
-		inB[i] = 128 + (unsigned char) (120.0 * f);
+	if (sine) {
+		/* generate sin wave */
+		for (i = 0; i < N_FFT; i++) {
+			f = sin(2 * PI2N * i);
+			inB[i] = 128 + (unsigned char) (120.0 * f);
+		}
 	}
 
 	/* fft */
 	windowFFT(inB);
 	FFT();
 	powerScale(inB);
-
+	/*
+	 * clear the first few bins of noise
+	 */
+	inB[0] = 0;
+	inB[1] = 0;
+	inB[2] = 0;
 }

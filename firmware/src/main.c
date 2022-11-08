@@ -172,7 +172,7 @@ int main(void)
 {
 #ifdef __32MK0512MCJ048__
 #ifdef SHOW_LCD
-	uint8_t rxe, txe, times = 0, ffti = 0;
+	uint8_t rxe, txe, times = 0, ffti = 0, w = 0;
 #endif
 	bool alter = false;
 #endif
@@ -312,9 +312,22 @@ int main(void)
 			eaDogM_WriteStringAtPos(5, 0, buffer);
 			sprintf(buffer, "ANG %s", imu0.angles ? "Yes" : "No");
 			eaDogM_WriteStringAtPos(6, 0, buffer);
-			sprintf(buffer, "FFT %3d, %3d ", inB[ffti], ffti);
-			eaDogM_WriteStringAtPos(8, 0, buffer);
+			TP3_Set();
+			/*
+			 * load FFT sample 256 element buffer
+			 */
+			inB[ffti] = 128 + (uint8_t) (120.0 * accel.z);
+			//			sprintf(buffer, "FFT %3d, %3d ", inB[ffti], ffti);
+			//			eaDogM_WriteStringAtPos(8, 0, buffer);
 			ffti++;
+
+			do_fft(false); // convert to 128 frequency bins in sample buffer
+			w = 0;
+			while (w < 128) {
+				fft_draw(w, inB[w]); // create screen graph from bin data
+				w++;
+			}
+			TP3_Clear();
 #ifdef SHOW_VG
 			//			TP1_Set();
 			q0 = accel.x;
@@ -380,13 +393,6 @@ int main(void)
 				alter = true;
 			}
 #endif
-			if (!ffti) {
-				TP3_Set();
-				do_fft();
-				TP3_Clear();
-			}
-
-
 			StartTimer(TMR_LOG, imu0.log_timeout);
 		}
 	}

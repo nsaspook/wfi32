@@ -2,19 +2,18 @@
 
 #include "fft.h"
 
-unsigned char inB[N_FFT];
-float xr[N_FFT];
-float xi[N_FFT];
+uint8_t inB[N_FFT];
+double xr[N_FFT];
+double xi[N_FFT];
 
-volatile int inCount;
-float wr[N_FFT / 2];
-float wi[N_FFT / 2];
-short rev[N_FFT / 2];
-float ww[N_FFT];
+double wr[N_FFT / 2];
+double wi[N_FFT / 2];
+int16_t rev[N_FFT / 2];
+double ww[N_FFT];
 
 void initFFT(void) {
-    int i, m, t, k;
-    float *wwp;
+    int32_t i, m, t, k;
+    double *wwp;
 
     for (i = 0; i < N_FFT / 2; i++) {
         wr[i] = cos(PI2N * i);
@@ -36,8 +35,8 @@ void initFFT(void) {
 }
 
 void FFT(void) {
-    int m, k, i, j;
-    float a, b, c, d, wwr, wwi, pr, pi;
+    int32_t m, k, i, j;
+    double a, b, c, d, wwr, wwi, pr, pi;
 
     m = N_FFT / 2;
     j = 0;
@@ -65,9 +64,9 @@ void FFT(void) {
     }
 }
 
-void windowFFT(unsigned char *s) {
-    int i;
-    float *xrp, *xip, *wwp;
+void windowFFT(uint8_t *s) {
+    int32_t i;
+    double *xrp, *xip, *wwp;
 
     xrp = xr;
     xip = xi;
@@ -78,10 +77,10 @@ void windowFFT(unsigned char *s) {
     }
 }
 
-void powerScale(unsigned char *r) {
-    int i, j;
-    float t, max;
-    float xrp, xip;
+void powerScale(uint8_t *r) {
+    int32_t i, j;
+    double t, max;
+    double xrp, xip;
 
     max = 0;
     for (i = 0; i < N_FFT / 2; i++) {

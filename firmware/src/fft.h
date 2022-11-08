@@ -17,13 +17,12 @@ extern "C" {
 #define N_FFT 256
 #define PI2N 2 * M_PI / N_FFT
 
-extern unsigned char inB[];
-extern volatile int inCount;
+extern uint8_t inB[];
 
 void initFFT(void);
-void windowFFT(unsigned char *source);
+void windowFFT(uint8_t *source);
 void FFT(void);
-void powerScale(unsigned char *dest);
+void powerScale(uint8_t *dest);
 
 
 #ifdef	__cplusplus

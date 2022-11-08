@@ -140,3 +140,11 @@ void LA_gfx(bool reset, bool redraw, uint32_t turns)
 	OledLineTo(xa + 1, ya + 1);
 	TP2_Clear();
 }
+
+void fft_draw(uint8_t freq, uint8_t bin)
+{
+	if (bin > 32) {
+		bin = 32;
+	}
+	line_rot(freq, 88, freq, 88 - bin);
+}

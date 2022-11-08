@@ -14,8 +14,8 @@ extern "C" {
 
 #include <math.h>
 #include "../../firmware/lcd_drv/OledGrph.h"
-	
-//#define GFX_BOX
+
+	//#define GFX_BOX
 
 	static const double sine_res = 3600.0;
 	static const double sinea = 0.0;
@@ -28,6 +28,7 @@ extern "C" {
 	void line_rot(uint32_t, uint32_t, uint32_t, uint32_t);
 	void vector_graph(void);
 	void LA_gfx(bool, bool, uint32_t);
+	void fft_draw(uint8_t, uint8_t);
 
 #ifdef	__cplusplus
 }
