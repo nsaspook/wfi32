@@ -19,7 +19,7 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-#define IMU_DRIVER "V1.102" 
+#define IMU_DRIVER "V1.105" 
 #define IMU_ALIAS "IMU"
 
 #define IMU_ID_DELAY 400

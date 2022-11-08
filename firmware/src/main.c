@@ -220,6 +220,7 @@ int main(void)
 	lcd_version();
 	init_lcd_drv(D_INIT);
 	OledClearBuffer();
+	do_fft_version();
 	board_serial_id = cpu_serial_id; // this ID could be changed to the ID of the IMU for IMU data transfers
 	imu0.board_serial_id = board_serial_id;
 	sprintf(buffer, "%s Controller %s %X", IMU_ALIAS, IMU_DRIVER, cpu_serial_id);
@@ -277,17 +278,17 @@ int main(void)
 		 */
 		if (imu0.update || TimerDone(TMR_LOG)) {
 #ifdef SHOW_LCD   
-			//			TP1_Set();
+			TP1_Set();
 			OledClearBuffer();
-			//			TP1_Clear();
+			TP1_Clear();
 #endif
-			//			TP1_Set();
+			TP1_Set();
 			imu0.op.imu_getdata(&imu0); // read data from the chip
 			imu0.update = false;
-			//			TP1_Clear();
-			//			TP1_Set();
+			TP1_Clear();
+			TP1_Set();
 			getAllData(&accel, &imu0); // convert data from the chip
-			//			TP1_Clear();
+			TP1_Clear();
 #ifdef __32MK0512MCJ048__
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024 + (uint32_t) (10.0 * accel.xa));
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024 + (uint32_t) (10.0 * accel.ya));
@@ -313,25 +314,29 @@ int main(void)
 			eaDogM_WriteStringAtPos(5, 0, buffer);
 			sprintf(buffer, "ANG %s", imu0.angles ? "Yes" : "No");
 			eaDogM_WriteStringAtPos(6, 0, buffer);
-			TP3_Set();
+
 			/*
-			 * load FFT sample 256 element buffer
+			 * load FFT sample 256 element 8-bit buffer
+			 * as we process each IMU 3-axis sample
+			 * This is not a pure FFT as it mixes bin data
+			 * with sample data for a feedback signature
 			 */
-			inB[ffti] = 128 + (uint8_t) (120.0 * accel.z);
-			//			sprintf(buffer, "FFT %3d, %3d ", inB[ffti], ffti);
-			//			eaDogM_WriteStringAtPos(8, 0, buffer);
+			inB[ffti] = 128 + (uint8_t) (120.0 * accel.z); // select one axis for display
+			sprintf(buffer, "FFTs %3d,%3d ", inB[ffti], ffti);
+			eaDogM_WriteStringAtPos(7, 4, buffer);
 			ffti++;
-			//			if (!ffti) {
-			do_fft(false); // convert to 128 frequency bins in sample buffer
+			TP3_Set(); // FFT processing timing mark
+			do_fft(false); // convert to 128 frequency bins in 8-bit sample buffer
+			TP3_Clear(); // end of FFT function
+			TP3_Set(); // drawing processing mark
 			w = 0;
 			while (w < 128) {
 				fft_draw(w, inB[w]); // create screen graph from bin data
 				w++;
 			}
-			//			}
-			TP3_Clear();
+			TP3_Clear(); // end of drawing function
 #ifdef SHOW_VG
-			//			TP1_Set();
+			TP1_Set();
 			q0 = accel.x;
 			q1 = accel.y;
 			q2 = accel.z;
@@ -349,7 +354,7 @@ int main(void)
 				}
 			}
 #endif 
-			//			TP1_Clear();
+			TP1_Clear();
 			OledUpdate();
 #endif
 			if (TimerDone(TMR_LOG)) {

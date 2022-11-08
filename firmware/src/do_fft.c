@@ -1,6 +1,8 @@
 #include "do_fft.h"
 #include "fft.h"
 
+static const char *build_date = __DATE__, *build_time = __TIME__;
+
 void __delay_ms_fft(uint32_t delay)
 {
 	register uint32_t startCntms = _CP0_GET_COUNT();
@@ -43,4 +45,9 @@ void do_fft(bool sine)
 	inB[0] = 0;
 	inB[1] = 0;
 	inB[2] = 0;
+}
+
+void do_fft_version(void)
+{
+	printf("\r--- %s Driver Version  %s %s %s ---\r\n", DO_FFT_ALIAS, DO_FFT_DRIVER, build_date, build_time);
 }
