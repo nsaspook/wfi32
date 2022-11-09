@@ -19,47 +19,49 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-/* Application's state machine enum */
-typedef enum {
-	APP_STATE_CAN_RECEIVE,
-	APP_STATE_CAN_TRANSMIT,
-	APP_STATE_CAN_IDLE,
-	APP_STATE_CAN_USER_INPUT,
-	APP_STATE_CAN_XFER_SUCCESSFUL,
-	APP_STATE_CAN_XFER_ERROR
-} APP_STATES;	
+	/* Application's state machine enum */
+	typedef enum {
+		APP_STATE_CAN_RECEIVE,
+		APP_STATE_CAN_TRANSMIT,
+		APP_STATE_CAN_IDLE,
+		APP_STATE_CAN_USER_INPUT,
+		APP_STATE_CAN_XFER_SUCCESSFUL,
+		APP_STATE_CAN_XFER_ERROR
+	} APP_STATES;
 
-typedef enum {
-	CAN_RECEIVE,
-	CAN_TRANSMIT_N,
-	CAN_TRANSMIT_FD,
-	CAN_IDLE,
-	CAN_USER_INPUT,
-	CAN_XFER_SUCCESSFUL,
-	CAN_XFER_ERROR
-} CANFD_STATES;	
+	typedef enum {
+		CAN_RECEIVE,
+		CAN_TRANSMIT_N,
+		CAN_TRANSMIT_FD,
+		CAN_IDLE,
+		CAN_USER_INPUT,
+		CAN_XFER_SUCCESSFUL,
+		CAN_XFER_ERROR
+	} CANFD_STATES;
 
-typedef enum {
-	CAN_NULL,
-	CAN_IMU_DATA,
-	CAN_IMU_INFO,	
-	CAN_IMU_RAW,
-	CAN_IMU_GET,
-	CAN_IMU_SET,
-	CAN_STAT,
-	CAN_MISC,
-} CANFD_MESSAGE;	
+	typedef enum {
+		CAN_NULL,
+		CAN_IMU_DATA,
+		CAN_IMU_INFO,
+		CAN_IMU_RAW,
+		CAN_IMU_GET,
+		CAN_IMU_SET,
+		CAN_STAT,
+		CAN_MISC,
+		CAN_FFT_LO,
+		CAN_FFT_HI,
+	} CANFD_MESSAGE;
 
 #ifdef __32MZ1025W104132__
 #define CANDEV2
 #endif
-	
-/* set format attribute for the vararg function */
-void PrintFormattedData(const char * format, ...) __attribute__((format(printf, 1, 2)));
-void APP_CAN_Callback(uintptr_t);
-int canfd_state(CANFD_STATES, void *);
-uint32_t canfd_num_tx(void);
-uint32_t canfd_num_stall(void);
+
+	/* set format attribute for the vararg function */
+	void PrintFormattedData(const char * format, ...) __attribute__((format(printf, 1, 2)));
+	void APP_CAN_Callback(uintptr_t);
+	int canfd_state(CANFD_STATES, void *);
+	uint32_t canfd_num_tx(void);
+	uint32_t canfd_num_stall(void);
 
 #ifdef	__cplusplus
 }

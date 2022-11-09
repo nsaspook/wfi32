@@ -69,13 +69,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: B91E7EC6E9FAA55D2E6CC9B0848EA9BD
-- generatedChecksum: E6F270915FB37F155DFBF4CAA1BDBBB1
+- generatedChecksum: D42D86192D189C4E52E2D867AB05DEF2
   logicalPath: config/mcj/peripheral/gpio
   name: plib_gpio.c
   physicalPath: peripheral/gpio
   security: NON_SECURE
   type: SOURCE
-  userChecksum: E6F270915FB37F155DFBF4CAA1BDBBB1
+  userChecksum: D42D86192D189C4E52E2D867AB05DEF2
 - generatedChecksum: 9CCF87C604FB3759C0048FF2B0C07748
   logicalPath: config/mcj/peripheral/mcpwm
   name: plib_mcpwm.c
