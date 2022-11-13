@@ -25,7 +25,7 @@ extern "C" {
 	
 #define DO_FFT_DRIVER	"V1.001" 
 #define DO_FFT_ALIAS	"DO_FFT  "
-	
+		
 void do_fft(bool);
 void __delay_ms_fft(uint32_t);
 void __delay_us_fft(uint32_t);

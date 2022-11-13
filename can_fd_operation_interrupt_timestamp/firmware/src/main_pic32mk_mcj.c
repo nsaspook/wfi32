@@ -73,10 +73,14 @@ typedef enum {
 	CAN_IMU_SET,
 	CAN_STAT,
 	CAN_MISC,
+	CAN_FFT_LO,
+	CAN_FFT_HI,
 } CANFD_MESSAGE;
 
 sSensorData_t *accel;
 imu_cmd_t *imu;
+sFFTData_t *fft;
+
 
 /* set format attribute for the vararg function */
 void PrintFormattedData(const char * format, ...) __attribute__((format(printf, 1, 2)));
@@ -311,6 +315,16 @@ int main(void)
 					imu = (imu_cmd_t *) rx_message;
 #ifndef SHOW_DATA
 					printf("%u,%u,%u,%u sensor info %u\r\n", imu->device, imu->acc_range, imu->acc_range_scl, imu->angles, rx_message[0]);
+#endif
+				}
+				if (*mtype == CAN_FFT_LO) {
+					fft = (sFFTData_t *) rx_message;
+#ifndef SHOW_DATA
+#endif
+				}
+				if (*mtype == CAN_FFT_HI) {
+					fft = (sFFTData_t *) rx_message;
+#ifndef SHOW_DATA
 #endif
 				}
 				if (*mtype == CAN_NULL) {

@@ -114,6 +114,10 @@ imu_cmd_t imu0 = {
 };
 #endif
 
+sFFTData_t fft0 = {
+	.id = CAN_FFT_LO,
+};
+
 /*
  * Logging data structure
  */
@@ -174,7 +178,7 @@ int main(void)
 #ifdef SHOW_LCD
 	uint8_t rxe, txe, times = 0;
 #endif
-	bool alter = false;
+	uint8_t alter = 0;
 #endif
 	bool wait = true;
 	uint8_t ffti = 0, w = 0;
@@ -391,13 +395,30 @@ int main(void)
 			canfd_state(CAN_RECEIVE, accel.buffer);
 			canfd_state(CAN_RECEIVE, accel.buffer);
 
-			if (alter) {
+			switch (alter) {
+			case 0:
 				canfd_state(CAN_TRANSMIT_FD, &imu0);
-				alter = false;
-			} else {
-
+				alter++;
+				break;
+			case 1:
 				canfd_state(CAN_TRANSMIT_FD, &accel);
-				alter = true;
+				alter++;
+				break;
+			case 2:
+				fft0.id = CAN_FFT_LO;
+				memcpy(fft0.buffer, &inB[0], 60);
+				canfd_state(CAN_TRANSMIT_FD, &fft0);
+				alter++;
+				break;
+			case 3:
+				fft0.id = CAN_FFT_HI;
+				memcpy(fft0.buffer, &inB[60], 60);
+				canfd_state(CAN_TRANSMIT_FD, &fft0);
+				alter = 0; // restart data sequence
+				break;
+			default:
+				alter = 0;
+				break;
 			}
 #endif
 			StartTimer(TMR_LOG, imu0.log_timeout);
