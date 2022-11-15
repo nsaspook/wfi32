@@ -199,6 +199,7 @@
       </logicalFolder>
       <itemPath>Makefile</itemPath>
       <itemPath>../src/config/mcj/harmony-manifest-success.yml</itemPath>
+      <itemPath>wfipic32mcj.mc3</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
