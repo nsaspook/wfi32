@@ -302,26 +302,26 @@ int main(void) {
                         printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f, sensor TS 0X%x, %u, %u\r\n", accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->sensortime, length, rx_message[0]);
 #else
                         length++;
-                        printf("%d,%X,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.1f\r\n", accel->id, rx_messageID, accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->xerr, accel->yerr, accel->zerr, (double) accel->sensortime);
+                        printf("%3d,%7X,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.1f\r\n", accel->id, rx_messageID, accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->xerr, accel->yerr, accel->zerr, (double) accel->sensortime);
                         //					SPI2_WriteRead(spid, 5, imu->rbuf, 5);
 #endif
                     }
                     if (*mtype == CAN_IMU_INFO) {
                         imu = (imu_cmd_t *) rx_message;
-                        printf("%d,%X\r\n", imu->id, rx_messageID);
+                        printf("%3d,%7X\r\n", imu->id, rx_messageID);
 #ifndef SHOW_DATA
                         printf("%u,%u,%u,%u sensor info %u\r\n", imu->device, imu->acc_range, imu->acc_range_scl, imu->angles, rx_message[0]);
 #endif
                     }
                     if (*mtype == CAN_FFT_LO) {
                         fft = (sFFTData_t *) rx_message;
-                        printf("%d,%X\r\n", fft->id, rx_messageID);
+                        printf("%3d,%7X\r\n", fft->id, rx_messageID);
 #ifndef SHOW_DATA
 #endif
                     }
                     if (*mtype == CAN_FFT_HI) {
                         fft = (sFFTData_t *) rx_message;
-                        printf("%d,%X\r\n", fft->id, rx_messageID);
+                        printf("%3d,%7X\r\n", fft->id, rx_messageID);
 #ifndef SHOW_DATA
 #endif
                     }
