@@ -72,6 +72,7 @@ extern "C" {
 	 */
 	typedef struct _imu_cmd_t {
 		const uint16_t id;
+		uint32_t board_serial_id;
 		enum device_type device;
 		const uint8_t cs, spi_bytes, acc_range_scl;
 		uint8_t acc_range;
@@ -80,7 +81,6 @@ extern "C" {
 		uint8_t rbuf[64], tbuf[64];
 		uint32_t rbuf32[2], tbuf32[2];
 		uint16_t serial1, serial2;
-		uint32_t board_serial_id;
 		op_t op;
 	} imu_cmd_t;
 
