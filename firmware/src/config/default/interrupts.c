@@ -71,7 +71,11 @@ void SPI2_RX_InterruptHandler( void );
 void SPI2_TX_InterruptHandler( void );
 void DMA0_InterruptHandler( void );
 void DMA2_InterruptHandler( void );
+void DMA7_InterruptHandler( void );
 void TIMER_6_InterruptHandler( void );
+void CAN2_RX_InterruptHandler( void );
+void CAN2_TX_InterruptHandler( void );
+void CAN2_MISC_InterruptHandler( void );
 
 
 
@@ -126,9 +130,29 @@ void __ISR(_DMA2_VECTOR, ipl1SRS) DMA2_Handler (void)
     DMA2_InterruptHandler();
 }
 
+void __ISR(_DMA7_VECTOR, ipl1SRS) DMA7_Handler (void)
+{
+    DMA7_InterruptHandler();
+}
+
 void __ISR(_TIMER_6_VECTOR, ipl1SRS) TIMER_6_Handler (void)
 {
     TIMER_6_InterruptHandler();
+}
+
+void __ISR(_CAN2_RX_VECTOR, ipl1SRS) CAN2_RX_Handler (void)
+{
+    CAN2_RX_InterruptHandler();
+}
+
+void __ISR(_CAN2_TX_VECTOR, ipl1SRS) CAN2_TX_Handler (void)
+{
+    CAN2_TX_InterruptHandler();
+}
+
+void __ISR(_CAN2_MISC_VECTOR, ipl1SRS) CAN2_MISC_Handler (void)
+{
+    CAN2_MISC_InterruptHandler();
 }
 
 

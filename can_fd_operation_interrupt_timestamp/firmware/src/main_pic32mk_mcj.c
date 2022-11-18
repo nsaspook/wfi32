@@ -53,6 +53,11 @@ machines of all modules in the system
 #include "../../../../../firmware/src/imu.h"
 
 #define SHOW_DATA
+#define USE_SERIAL_DMA
+
+#ifdef USE_SERIAL_DMA
+#include "config/pic32mk_mcj_curiosity_pro/peripheral/dmac/plib_dmac.h"
+#endif
 
 /* Application's state machine enum */
 typedef enum {
@@ -107,6 +112,8 @@ uint8_t rxe, txe;
 uint32_t times = 0;
 
 uint8_t spid[] = {0xb5, 0x62, 0x0A, 0x04, 0x00};
+
+static volatile bool uart1_dma_busy = false;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -191,6 +198,27 @@ void PrintFormattedData(const char * format, ...)
 	vprintf(format, args);
 	va_end(args);
 }
+#ifdef USE_SERIAL_DMA
+void UART1DmaChannelHandler_State(DMAC_TRANSFER_EVENT, uintptr_t);
+void UART1DmaWrite(uint8_t *, uint32_t);
+
+/*
+ * end of uart buffer complete flag handler
+ */
+void UART1DmaChannelHandler_State(DMAC_TRANSFER_EVENT event, uintptr_t contextHandle)
+{
+	uart1_dma_busy = false;
+}
+
+void UART1DmaWrite(uint8_t * buffer, uint32_t len)
+{
+	while (uart1_dma_busy) {
+	};
+
+	uart1_dma_busy = true;
+	DMAC_ChannelTransfer(DMAC_CHANNEL_7, (const void *) buffer, (size_t) len, (const void*) &U1TXREG, (size_t) 1, (size_t) 1);
+}
+#endif
 
 // *****************************************************************************
 // *****************************************************************************
@@ -206,6 +234,11 @@ int main(void)
 
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
+
+#ifdef USE_SERIAL_DMA
+	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_7, UART1DmaChannelHandler_State, 0); // end of UART buffer transfer interrupt function
+#endif
+
 #ifndef SHOW_DATA
 	printf("\r\nPIC32 %s Host Controller %s %s %s ---\r\n", IMU_ALIAS, IMU_DRIVER, build_date, build_time);
 	print_menu();

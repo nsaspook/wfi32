@@ -203,6 +203,8 @@ void SYS_Initialize ( void* data )
 
     CAN1_Initialize();
 
+    DMAC_Initialize();
+
 	SPI2_Initialize();
 
 

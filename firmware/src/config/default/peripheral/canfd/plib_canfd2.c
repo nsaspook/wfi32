@@ -89,6 +89,11 @@
 #define CANFD_MSG_FLT_EXT_SID_MASK    0x1FFC0000
 #define CANFD_MSG_FLT_EXT_EID_MASK    0x0003FFFF
 
+static CANFD_OBJ can2Obj;
+static CANFD_RX_MSG can2RxMsg[CANFD_NUM_OF_FIFO][CANFD_FIFO_MESSAGE_BUFFER_MAX];
+static CANFD_CALLBACK_OBJ can2CallbackObj[CANFD_NUM_OF_FIFO + 1];
+static CANFD_CALLBACK_OBJ can2ErrorCallbackObj;
+static uint32_t can2MsgIndex[CANFD_NUM_OF_FIFO];
 static uint8_t __attribute__((coherent, aligned(16))) can_message_buffer[CANFD_MESSAGE_RAM_CONFIG_SIZE];
 static const uint8_t dlcToLength[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 12, 16, 20, 24, 32, 48, 64};
 
@@ -203,6 +208,13 @@ void CAN2_Initialize(void)
 | ((0x1 << _CFD2TSCON_TSRES_POSITION) & _CFD2TSCON_TSRES_MASK)
                                 | _CFD2TSCON_TBCEN_MASK;
 
+    /* Set Interrupts */
+    IEC4SET = _IEC4_CAN2IE_MASK | _IEC4_CAN2RXIE_MASK | _IEC4_CAN2TXIE_MASK;
+    CFD2INT |= _CFD2INT_SERRIE_MASK | _CFD2INT_CERRIE_MASK | _CFD2INT_IVMIE_MASK;
+
+    /* Initialize the CAN PLib Object */
+    memset((void *)can2RxMsg, 0x00, sizeof(can2RxMsg));
+
     /* Switch the CAN module to CANFD_OPERATION_MODE. Wait until the switch is complete */
     CFD2CON = (CFD2CON & ~_CFD2CON_REQOP_MASK) | ((CANFD_OPERATION_MODE << _CFD2CON_REQOP_POSITION) & _CFD2CON_REQOP_MASK);
     while(((CFD2CON & _CFD2CON_OPMOD_MASK) >> _CFD2CON_OPMOD_POSITION) != CANFD_OPERATION_MODE);
@@ -301,16 +313,21 @@ bool CAN2_MessageTransmit(uint32_t id, uint8_t length, uint8_t* data, uint8_t fi
 
         if (fifoQueueNum == 0)
         {
+            CFD2TXQCON |= _CFD2TXQCON_TXQEIE_MASK;
+
             /* Request the transmit */
             CFD2TXQCON |= _CFD2TXQCON_UINC_MASK;
             CFD2TXQCON |= _CFD2TXQCON_TXREQ_MASK;
         }
         else
         {
+            *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoQueueNum - 1) * CANFD_FIFO_OFFSET)) |= _CFD2FIFOCON1_TFERFFIE_MASK;
+
             /* Request the transmit */
             *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoQueueNum - 1) * CANFD_FIFO_OFFSET)) |= _CFD2FIFOCON1_UINC_MASK;
             *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoQueueNum - 1) * CANFD_FIFO_OFFSET)) |= _CFD2FIFOCON1_TXREQ_MASK;
         }
+        CFD2INT |= _CFD2INT_TXIE_MASK;
     }
     return status;
 }
@@ -340,60 +357,37 @@ bool CAN2_MessageTransmit(uint32_t id, uint8_t length, uint8_t* data, uint8_t fi
 */
 bool CAN2_MessageReceive(uint32_t *id, uint8_t *length, uint8_t *data, uint32_t *timestamp, uint8_t fifoNum, CANFD_MSG_RX_ATTRIBUTE *msgAttr)
 {
-    CANFD_RX_MSG_OBJECT *rxMessage = NULL;
-    uint8_t count = 0;
-    uint8_t dataIndex = 4;
     bool status = false;
+    uint8_t msgIndex = 0;
+    uint8_t fifoSize = 0;
 
     if ((fifoNum > CANFD_NUM_OF_FIFO) || (id == NULL))
     {
         return status;
     }
 
-    /* Check if there is a message available in FIFO */
-    if ((*(volatile uint32_t *)(&CFD2FIFOSTA1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)) & _CFD2FIFOSTA1_TFNRFNIF_MASK) == _CFD2FIFOSTA1_TFNRFNIF_MASK)
+    fifoSize = (*(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)) & _CFD2FIFOCON1_FSIZE_MASK) >> _CFD2FIFOCON1_FSIZE_POSITION;
+    for (msgIndex = 0; msgIndex <= fifoSize; msgIndex++)
     {
-        /* Get a pointer to RX message buffer */
-        rxMessage = (CANFD_RX_MSG_OBJECT *)PA_TO_KVA1(*(volatile uint32_t *)(&CFD2FIFOUA1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)));
-
-        /* Check if it's a extended message type */
-        if (rxMessage->r1 & CANFD_MSG_IDE_MASK)
+        if ((can2MsgIndex[fifoNum-1] & (1UL << (msgIndex & 0x1F))) == 0)
         {
-            *id = (((rxMessage->r0 & CANFD_MSG_RX_EXT_SID_MASK) << 18) | ((rxMessage->r0 & CANFD_MSG_RX_EXT_EID_MASK) >> 11)) & CANFD_MSG_EID_MASK;
+            can2MsgIndex[fifoNum-1] |= (1UL << (msgIndex & 0x1F));
+            break;
         }
-        else
-        {
-            *id = rxMessage->r0 & CANFD_MSG_SID_MASK;
-        }
-
-        if ((rxMessage->r1 & CANFD_MSG_RTR_MASK) && ((rxMessage->r1 & CANFD_MSG_FDF_MASK) == 0))
-        {
-            *msgAttr = CANFD_MSG_RX_REMOTE_FRAME;
-        }
-        else
-        {
-            *msgAttr = CANFD_MSG_RX_DATA_FRAME;
-        }
-
-        *length = dlcToLength[(rxMessage->r1 & CANFD_MSG_DLC_MASK)];
-
-        if (timestamp != NULL)
-        {
-            *timestamp =  (rxMessage->data[3] << 24) | (rxMessage->data[2] << 16) | (rxMessage->data[1] << 8) | rxMessage->data[0];
-        }
-
-        /* Copy the data into the payload */
-        while (count < *length)
-        {
-            *data++ = rxMessage->data[dataIndex + count++];
-        }
-
-        /* Message processing is done, update the message buffer pointer. */
-        *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)) |= _CFD2FIFOCON1_UINC_MASK;
-
-        /* Message is processed successfully, so return true */
-        status = true;
     }
+    if(msgIndex > fifoSize)
+    {
+        /* FIFO is full */
+        return false;
+    }
+    can2RxMsg[fifoNum-1][msgIndex].id = id;
+    can2RxMsg[fifoNum-1][msgIndex].buffer = data;
+    can2RxMsg[fifoNum-1][msgIndex].size = length;
+    can2RxMsg[fifoNum-1][msgIndex].timestamp = timestamp;
+    can2RxMsg[fifoNum-1][msgIndex].msgAttr = msgAttr;
+    *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)) |= _CFD2FIFOCON1_TFNRFNIE_MASK;
+    CFD2INT |= _CFD2INT_RXIE_MASK;
+    status = true;
 
     return status;
 }
@@ -648,18 +642,7 @@ bool CAN2_TransmitEventFIFOElementGet(uint32_t *id, uint32_t *sequence, uint32_t
 */
 CANFD_ERROR CAN2_ErrorGet(void)
 {
-    CANFD_ERROR error = CANFD_ERROR_NONE;
-    uint32_t errorStatus = CFD2TREC;
-
-    /* Check if error occurred */
-    error = (CANFD_ERROR)((errorStatus & _CFD2TREC_EWARN_MASK) |
-                        (errorStatus & _CFD2TREC_RXWARN_MASK) |
-                        (errorStatus & _CFD2TREC_TXWARN_MASK) |
-                        (errorStatus & _CFD2TREC_RXBP_MASK) |
-                        (errorStatus & _CFD2TREC_TXBP_MASK) |
-                        (errorStatus & _CFD2TREC_TXBO_MASK));
-
-    return error;
+    return (CANFD_ERROR)can2Obj.errorStatus;
 }
 
 // *****************************************************************************
@@ -806,9 +789,199 @@ bool CAN2_AutoRTRResponseSet(uint32_t id, uint8_t length, uint8_t* data, uint8_t
             txMessage->data[count++] = *data++;
         }
 
+        *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)) |= _CFD2FIFOCON1_TFERFFIE_MASK;
+
         /* Set UINC to respond to RTR */
         *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)) |= _CFD2FIFOCON1_UINC_MASK;
+        CFD2INT |= _CFD2INT_TXIE_MASK;
     }
     return status;
+}
+
+// *****************************************************************************
+/* Function:
+    void CAN2_CallbackRegister(CANFD_CALLBACK callback, uintptr_t contextHandle, uint8_t fifoQueueNum)
+
+   Summary:
+    Sets the pointer to the function (and it's context) to be called when the
+    given CAN's transfer events occur.
+
+   Precondition:
+    CAN2_Initialize must have been called for the associated CAN instance.
+
+   Parameters:
+    callback - A pointer to a function with a calling signature defined
+    by the CANFD_CALLBACK data type.
+    fifoQueueNum - Tx Queue or Tx/Rx FIFO number
+
+    context - A value (usually a pointer) passed (unused) into the function
+    identified by the callback parameter.
+
+   Returns:
+    None.
+*/
+void CAN2_CallbackRegister(CANFD_CALLBACK callback, uintptr_t contextHandle, uint8_t fifoQueueNum)
+{
+    if (callback == NULL)
+    {
+        return;
+    }
+
+    can2CallbackObj[fifoQueueNum].callback = callback;
+    can2CallbackObj[fifoQueueNum].context = contextHandle;
+}
+
+// *****************************************************************************
+/* Function:
+    void CAN2_ErrorCallbackRegister(CANFD_CALLBACK callback, uintptr_t contextHandle)
+
+   Summary:
+    Sets the pointer to the function (and it's context) to be called when the
+    given CAN's transfer events occur.
+
+   Precondition:
+    CAN2_Initialize must have been called for the associated CAN instance.
+
+   Parameters:
+    callback - A pointer to a function with a calling signature defined
+    by the CANFD_CALLBACK data type.
+
+    context - A value (usually a pointer) passed (unused) into the function
+    identified by the callback parameter.
+
+   Returns:
+    None.
+*/
+void CAN2_ErrorCallbackRegister(CANFD_CALLBACK callback, uintptr_t contextHandle)
+{
+    if (callback == NULL)
+    {
+        return;
+    }
+
+    can2ErrorCallbackObj.callback = callback;
+    can2ErrorCallbackObj.context = contextHandle;
+}
+
+void CAN2_RX_InterruptHandler(void)
+{
+    uint8_t  msgIndex = 0;
+    uint8_t  fifoNum = 0;
+    uint8_t  fifoSize = 0;
+    uint8_t  count = 0;
+    CANFD_RX_MSG_OBJECT *rxMessage = NULL;
+    uint8_t dataIndex = 4;
+
+    fifoNum = (uint8_t)CFD2VEC & _CFD2VEC_ICODE_MASK;
+    if (fifoNum <= CANFD_NUM_OF_FIFO)
+    {
+        fifoSize = (*(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)) & _CFD2FIFOCON1_FSIZE_MASK) >> _CFD2FIFOCON1_FSIZE_POSITION;
+        for (msgIndex = 0; msgIndex <= fifoSize; msgIndex++)
+        {
+            if ((can2MsgIndex[fifoNum-1] & (1 << (msgIndex & 0x1F))) == (1 << (msgIndex & 0x1F)))
+            {
+                can2MsgIndex[fifoNum-1] &= ~(1 << (msgIndex & 0x1F));
+                break;
+            }
+        }
+        /* Get a pointer to RX message buffer */
+        rxMessage = (CANFD_RX_MSG_OBJECT *)PA_TO_KVA1(*(volatile uint32_t *)(&CFD2FIFOUA1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)));
+
+        /* Check if it's a extended message type */
+        if (rxMessage->r1 & CANFD_MSG_IDE_MASK)
+        {
+            *can2RxMsg[fifoNum-1][msgIndex].id = (((rxMessage->r0 & CANFD_MSG_RX_EXT_SID_MASK) << 18) | ((rxMessage->r0 & CANFD_MSG_RX_EXT_EID_MASK) >> 11)) & CANFD_MSG_EID_MASK;
+        }
+        else
+        {
+            *can2RxMsg[fifoNum-1][msgIndex].id = rxMessage->r0 & CANFD_MSG_SID_MASK;
+        }
+
+        if ((rxMessage->r1 & CANFD_MSG_RTR_MASK) && ((rxMessage->r1 & CANFD_MSG_FDF_MASK) == 0))
+        {
+            *can2RxMsg[fifoNum-1][msgIndex].msgAttr = CANFD_MSG_RX_REMOTE_FRAME;
+        }
+        else
+        {
+            *can2RxMsg[fifoNum-1][msgIndex].msgAttr = CANFD_MSG_RX_DATA_FRAME;
+        }
+
+        *can2RxMsg[fifoNum-1][msgIndex].size = dlcToLength[(rxMessage->r1 & CANFD_MSG_DLC_MASK)];
+
+        if (can2RxMsg[fifoNum-1][msgIndex].timestamp != NULL)
+        {
+            *can2RxMsg[fifoNum-1][msgIndex].timestamp =  (rxMessage->data[3] << 24) | (rxMessage->data[2] << 16) | (rxMessage->data[1] << 8) | rxMessage->data[0];
+        }
+
+        /* Copy the data into the payload */
+        while (count < *can2RxMsg[fifoNum-1][msgIndex].size)
+        {
+            *can2RxMsg[fifoNum-1][msgIndex].buffer++ = rxMessage->data[dataIndex + count++];
+        }
+
+        /* Message processing is done, update the message buffer pointer. */
+        *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)) |= _CFD2FIFOCON1_UINC_MASK;
+
+        if (((*(volatile uint32_t *)(&CFD2FIFOSTA1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)) & _CFD2FIFOSTA1_TFNRFNIF_MASK) != _CFD2FIFOSTA1_TFNRFNIF_MASK) ||
+            (can2MsgIndex[fifoNum-1] == 0))
+        {
+            *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)) &= ~_CFD2FIFOCON1_TFNRFNIE_MASK;
+        }
+        can2Obj.errorStatus = 0;
+    }
+    IFS4CLR = _IFS4_CAN2RXIF_MASK;
+
+    if (can2CallbackObj[fifoNum].callback != NULL)
+    {
+        can2CallbackObj[fifoNum].callback(can2CallbackObj[fifoNum].context);
+    }
+}
+
+void CAN2_TX_InterruptHandler(void)
+{
+    uint8_t  fifoNum = 0;
+
+    fifoNum = (uint8_t)CFD2VEC & _CFD2VEC_ICODE_MASK;
+    if (fifoNum <= CANFD_NUM_OF_FIFO)
+    {
+        if (fifoNum == 0)
+        {
+            CFD2TXQCON &= ~_CFD2TXQCON_TXQEIE_MASK;
+        }
+        else
+        {
+            *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)) &= ~_CFD2FIFOCON1_TFERFFIE_MASK;
+        }
+        can2Obj.errorStatus = 0;
+    }
+    IFS4CLR = _IFS4_CAN2TXIF_MASK;
+
+    if (can2CallbackObj[fifoNum].callback != NULL)
+    {
+        can2CallbackObj[fifoNum].callback(can2CallbackObj[fifoNum].context);
+    }
+}
+
+void CAN2_MISC_InterruptHandler(void)
+{
+    uint32_t errorStatus = 0;
+
+    CFD2INT &= ~(_CFD2INT_SERRIF_MASK | _CFD2INT_CERRIF_MASK | _CFD2INT_IVMIF_MASK);
+    IFS4CLR = _IFS4_CAN2IF_MASK;
+    errorStatus = CFD2TREC;
+
+    /* Check if error occurred */
+    can2Obj.errorStatus = ((errorStatus & _CFD2TREC_EWARN_MASK) |
+                                                      (errorStatus & _CFD2TREC_RXWARN_MASK) |
+                                                      (errorStatus & _CFD2TREC_TXWARN_MASK) |
+                                                      (errorStatus & _CFD2TREC_RXBP_MASK) |
+                                                      (errorStatus & _CFD2TREC_TXBP_MASK) |
+                                                      (errorStatus & _CFD2TREC_TXBO_MASK));
+
+    /* Client must call CAN2_ErrorGet and CAN2_ErrorCountGet functions to get errors */
+    if (can2ErrorCallbackObj.callback != NULL)
+    {
+        can2ErrorCallbackObj.callback(can2ErrorCallbackObj.context);
+    }
 }
 

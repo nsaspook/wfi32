@@ -4,8 +4,8 @@
 
 
 project: can_fd_operation_interrupt_timestamp
-creation_date: 2022-11-13T14:39:46.009-08:00[America/Los_Angeles]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
-operating_system: Linux
+creation_date: 2022-11-18T05:05:35.774-08:00[America/Los_Angeles]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+operating_system: Windows 10
 mhc_mode: IDE            # [IDE|Standalone|Headless]
 mhc_version: v3.8.5
 mplabx_version: v6.05        # if MPLAB X plugin only

@@ -11,6 +11,7 @@ build/pic32mk_mcj_curiosity_pro/production/_ext/1661106823/exceptions.o: \
  ../src/config/pic32mk_mcj_curiosity_pro/peripheral/clk/plib_clk.h \
  ../src/config/pic32mk_mcj_curiosity_pro/peripheral/gpio/plib_gpio.h \
  ../src/config/pic32mk_mcj_curiosity_pro/peripheral/evic/plib_evic.h \
+ ../src/config/pic32mk_mcj_curiosity_pro/peripheral/dmac/plib_dmac.h \
  ../src/config/pic32mk_mcj_curiosity_pro/peripheral/spi/spi_master/plib_spi2_master.h \
  ../src/config/pic32mk_mcj_curiosity_pro/peripheral/spi/spi_master/plib_spi_master_common.h
 
@@ -35,6 +36,8 @@ build/pic32mk_mcj_curiosity_pro/production/_ext/1661106823/exceptions.o: \
 ../src/config/pic32mk_mcj_curiosity_pro/peripheral/gpio/plib_gpio.h:
 
 ../src/config/pic32mk_mcj_curiosity_pro/peripheral/evic/plib_evic.h:
+
+../src/config/pic32mk_mcj_curiosity_pro/peripheral/dmac/plib_dmac.h:
 
 ../src/config/pic32mk_mcj_curiosity_pro/peripheral/spi/spi_master/plib_spi2_master.h:
 
