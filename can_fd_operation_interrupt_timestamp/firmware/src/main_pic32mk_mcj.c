@@ -114,6 +114,7 @@ uint32_t times = 0;
 uint8_t spid[] = {0xb5, 0x62, 0x0A, 0x04, 0x00};
 
 static volatile bool uart1_dma_busy = false;
+char uart_buffer[256];
 
 // *****************************************************************************
 // *****************************************************************************
@@ -200,22 +201,28 @@ void PrintFormattedData(const char * format, ...)
 }
 #ifdef USE_SERIAL_DMA
 void UART1DmaChannelHandler_State(DMAC_TRANSFER_EVENT, uintptr_t);
-void UART1DmaWrite(uint8_t *, uint32_t);
+void UART1DmaWrite(char *, uint32_t);
 
 /*
- * end of uart buffer complete flag handler
+ * end of uart buffer complete flag handler callback
+ * interrupt handler for the completion of buffer transfer.
  */
 void UART1DmaChannelHandler_State(DMAC_TRANSFER_EVENT event, uintptr_t contextHandle)
 {
 	uart1_dma_busy = false;
+	LEDY_Clear(); // serial trace signal
 }
 
-void UART1DmaWrite(uint8_t * buffer, uint32_t len)
+/*
+ * DMA uart serial function
+ * triggers the DMA transfer and returns, only one interrupt happens at the end of transfer
+ */
+void UART1DmaWrite(char * buffer, uint32_t len)
 {
-	while (uart1_dma_busy) {
+	while (uart1_dma_busy) { // should never wait in normal operation
 	};
 
-	uart1_dma_busy = true;
+	uart1_dma_busy = true; // in process flag
 	DMAC_ChannelTransfer(DMAC_CHANNEL_7, (const void *) buffer, (size_t) len, (const void*) &U1TXREG, (size_t) 1, (size_t) 1);
 }
 #endif
@@ -310,7 +317,7 @@ int main(void)
 						printf("CAN1_MessageReceive request has failed\r\n");
 #endif
 					}
-					LEDY_Toggle();
+					LEDY_Clear();
 				} else {
 					state = APP_STATE_CAN_USER_INPUT;
 #ifndef SHOW_DATA
@@ -344,7 +351,7 @@ int main(void)
 		case APP_STATE_CAN_XFER_SUCCESSFUL:
 		{
 			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
-				LED_Set();
+
 				/* Print message to Console */
 				uint8_t length = rx_messageLength;
 				uint16_t * mtype = (uint16_t *) & rx_message[0];
@@ -353,38 +360,42 @@ int main(void)
 				PrintFormattedData(" Message - Timestamp : 0x%x ID : 0x%x Length : 0x%x ", timestamp, (unsigned int) rx_messageID, (unsigned int) rx_messageLength);
 				printf("Message : ");
 #endif
+				sprintf(uart_buffer, "-1, Bad  Message ID code\r\n");
 				if (*mtype == CAN_IMU_DATA) {
 					accel = (sSensorData_t *) rx_message;
 #ifndef SHOW_DATA
 					printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f, sensor TS 0X%x, %u, %u\r\n", accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->sensortime, length, rx_message[0]);
 #else
 					length++;
-					printf("%3d,%7X,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.1f\r\n", accel->id, rx_messageID, accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->xerr, accel->yerr, accel->zerr, (double) accel->sensortime);
-					//					SPI2_WriteRead(spid, 5, imu->rbuf, 5);
+					sprintf(uart_buffer, "%3d,%7X,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.1f\r\n", accel->id, rx_messageID, accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->xerr, accel->yerr, accel->zerr, (double) accel->sensortime);
 #endif
 				}
 				if (*mtype == CAN_IMU_INFO) {
 					imu = (imu_cmd_t *) rx_message;
-					printf("%3d,%7X,%7X,%3d,%3d,%3d\r\n", imu->id, imu->board_serial_id, rx_messageID, imu->device, imu->acc_range, imu->features);
+					sprintf(uart_buffer, "%3d,%7X,%7X,%3d,%3d,%3d\r\n", imu->id, imu->board_serial_id, rx_messageID, imu->device, imu->acc_range, imu->features);
 #ifndef SHOW_DATA
 					printf("%u,%u,%u,%u sensor info %u\r\n", imu->device, imu->acc_range, imu->acc_range_scl, imu->angles, rx_message[0]);
 #endif
 				}
 				if (*mtype == CAN_FFT_LO) {
 					fft = (sFFTData_t *) rx_message;
-					printf("%3d,%7X,%5d\r\n", fft->id, rx_messageID, fft_bin_total(fft, 16));
+					sprintf(uart_buffer, "%3d,%7X,%3d\r\n", fft->id, rx_messageID, fft_bin_total(fft, 16));
 #ifndef SHOW_DATA
 #endif
 				}
 				if (*mtype == CAN_FFT_HI) {
 					fft = (sFFTData_t *) rx_message;
-					printf("%3d,%7X,%5d\r\n", fft->id, rx_messageID, fft_bin_total(fft, 0));
+					sprintf(uart_buffer, "%3d,%7X,%3d\r\n", fft->id, rx_messageID, fft_bin_total(fft, 0));
 #ifndef SHOW_DATA
 #endif
 				}
 				if (*mtype == CAN_NULL) {
-					printf("NULL Message with 0 ID code\r\n");
+					sprintf(uart_buffer, "0,NULL Message with 0 ID code\r\n");
 				}
+				LED_Set(); // cpu trace signal
+				LEDY_Set(); // serial trace signal
+				UART1DmaWrite(uart_buffer, strlen(uart_buffer));
+				LED_Clear();
 #ifndef SHOW_DATA
 				CAN1_ErrorCountGet(&txe, &rxe);
 				printf("ErrorT %d ", txe);
@@ -399,7 +410,6 @@ int main(void)
 #endif
 			} else if ((APP_STATES) xferContext == APP_STATE_CAN_TRANSMIT) {
 			}
-			LED_Clear();
 #ifndef SHOW_DATA
 			print_menu();
 #endif
