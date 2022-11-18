@@ -232,25 +232,33 @@ int main(void)
 
 			switch (user_input) {
 			case '1':
+#ifndef SHOW_DATA
 				printf(" Transmitting CAN FD Message:");
+#endif
 				CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE);
 				state = APP_STATE_CAN_IDLE;
 				messageID = 0x45A;
 				messageLength = 64;
 				if (CAN1_MessageTransmit(messageID, messageLength, message, 1, CANFD_MODE_FD_WITH_BRS, CANFD_MSG_TX_DATA_FRAME) == false) {
+#ifndef SHOW_DATA
 					printf("CAN1_MessageTransmit request has failed\r\n");
+#endif
 				}
 				break;
 			case '2':
+#ifndef SHOW_DATA
 				printf(" Transmitting CAN Normal Message:");
+#endif
 				CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE);
 				state = APP_STATE_CAN_IDLE;
 				messageID = 0x469;
 				messageLength = 8;
 				if (CAN1_MessageTransmit(messageID, messageLength, message, 1, CANFD_MODE_NORMAL, CANFD_MSG_TX_DATA_FRAME) == false) {
+#ifndef SHOW_DATA
 					printf("CAN1_MessageTransmit request has failed\r\n");
+#endif
 				}
 				break;
 			case '3':
@@ -265,23 +273,31 @@ int main(void)
 
 					/* Receive New Message */
 					if (CAN1_MessageReceive(&rx_messageID, &rx_messageLength, rx_message, &timestamp, 2, &msgAttr) == false) {
+#ifndef SHOW_DATA
 						printf("CAN1_MessageReceive request has failed\r\n");
+#endif
 					}
-					LEDY_Set();
+					LEDY_Toggle();
 				} else {
 					state = APP_STATE_CAN_USER_INPUT;
+#ifndef SHOW_DATA
 					printf(" No message: \r\n");
 					print_menu();
+#endif
 				}
 				break;
 			case 'm':
+#ifndef SHOW_DATA
 				print_menu();
+#endif
 				break;
 			case 'n':
 				break;
 			default:
+#ifndef SHOW_DATA
 				printf(" Invalid Input \r\n");
 				print_menu();
+#endif
 				break;
 			}
 		}
@@ -295,6 +311,7 @@ int main(void)
 		case APP_STATE_CAN_XFER_SUCCESSFUL:
 		{
 			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
+				LED_Set();
 				/* Print message to Console */
 				uint8_t length = rx_messageLength;
 				uint16_t * mtype = (uint16_t *) & rx_message[0];
@@ -315,7 +332,7 @@ int main(void)
 				}
 				if (*mtype == CAN_IMU_INFO) {
 					imu = (imu_cmd_t *) rx_message;
-					printf("%3d,%7X,%7X\r\n", imu->id, imu->board_serial_id, rx_messageID);
+					printf("%3d,%7X,%7X,%3d,%3d,%3d\r\n", imu->id, imu->board_serial_id, rx_messageID, imu->device, imu->acc_range, imu->features);
 #ifndef SHOW_DATA
 					printf("%u,%u,%u,%u sensor info %u\r\n", imu->device, imu->acc_range, imu->acc_range_scl, imu->angles, rx_message[0]);
 #endif
@@ -349,19 +366,27 @@ int main(void)
 #endif
 			} else if ((APP_STATES) xferContext == APP_STATE_CAN_TRANSMIT) {
 			}
-			LED_Toggle();
+			LED_Clear();
+#ifndef SHOW_DATA
 			print_menu();
+#endif
 			state = APP_STATE_CAN_USER_INPUT;
 			break;
 		}
 		case APP_STATE_CAN_XFER_ERROR:
 		{
 			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
+#ifndef SHOW_DATA
 				printf("Error in received message");
+#endif
 			} else {
+#ifndef SHOW_DATA
 				printf("Failed \r\n");
+#endif
 			}
+#ifndef SHOW_DATA
 			print_menu();
+#endif
 			state = APP_STATE_CAN_USER_INPUT;
 			break;
 		}
