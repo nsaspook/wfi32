@@ -2,6 +2,8 @@
 
 #include "fft.h"
 
+static const char *build_date = __DATE__, *build_time = __TIME__;
+
 uint8_t inB[N_FFT];
 double xr[N_FFT];
 double xi[N_FFT];
@@ -97,4 +99,8 @@ void powerScale(uint8_t *r) {
         t = xr[rev[i]] * max;
         *r++ = t;
     }
+}
+
+void fft_version(void) {
+    printf("\r--- %s Driver Version  %s %s %s ---\r\n", FFT_ALIAS, FFT_DRIVER, build_date, build_time);
 }

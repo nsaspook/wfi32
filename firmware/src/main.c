@@ -180,8 +180,9 @@ int main(void)
 #endif
 	uint8_t alter = 0;
 #endif
-	bool wait = true;
+	bool wait = true, fft_settle = false;
 	uint8_t ffti = 0, w = 0;
+	uint16_t fft_count = 0;
 
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
@@ -224,6 +225,7 @@ int main(void)
 	lcd_version();
 	init_lcd_drv(D_INIT);
 	OledClearBuffer();
+	fft_version();
 	do_fft_version();
 	board_serial_id = cpu_serial_id; // this ID could be changed to the ID of the IMU for IMU data transfers
 	imu0.board_serial_id = board_serial_id;
@@ -326,8 +328,10 @@ int main(void)
 			 * with sample data for a feedback signature
 			 */
 			inB[ffti] = 128 + (uint8_t) (120.0 * accel.z); // select one axis for display
-			sprintf(buffer, "FFTs %3d,%3d ", inB[ffti], ffti);
-			eaDogM_WriteStringAtPos(7, 4, buffer);
+			if (fft_settle) {
+				sprintf(buffer, "FFTs %3d,%3d ", inB[ffti], ffti);
+				eaDogM_WriteStringAtPos(7, 4, buffer);
+			}
 			ffti++;
 			TP3_Set(); // FFT processing timing mark
 			do_fft(false); // convert to 128 frequency bins in 8-bit sample buffer
@@ -406,14 +410,21 @@ int main(void)
 				break;
 			case 2:
 				fft0.id = CAN_FFT_LO;
-				memcpy(fft0.buffer, &inB[0], 60);
-				canfd_state(CAN_TRANSMIT_FD, &fft0);
+				if (fft_settle) {
+					memcpy(fft0.buffer, &inB[0], 60);
+					canfd_state(CAN_TRANSMIT_FD, &fft0);
+				}
 				alter++;
 				break;
 			case 3:
 				fft0.id = CAN_FFT_HI;
-				memcpy(fft0.buffer, &inB[60], 60);
-				canfd_state(CAN_TRANSMIT_FD, &fft0);
+				if (fft_settle) {
+					memcpy(fft0.buffer, &inB[60], 60);
+					canfd_state(CAN_TRANSMIT_FD, &fft0);
+				}
+				if (!fft_settle && (fft_count++ >= FFT_COUNT)) {
+					fft_settle = true;
+				}
 				alter = 0; // restart data sequence
 				break;
 			default:

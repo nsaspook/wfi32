@@ -12,10 +12,18 @@
 extern "C" {
 #endif
 
+#include <stdint.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
+    
+#define FFT_DRIVER "V1.100" 
+#define FFT_ALIAS "FFT"
 
 #define N_FFT 256
 #define PI2N 2 * M_PI / N_FFT
+#define FFT_COUNT   512
 
 extern uint8_t inB[];
 
@@ -23,7 +31,7 @@ void initFFT(void);
 void windowFFT(uint8_t *source);
 void FFT(void);
 void powerScale(uint8_t *dest);
-
+void fft_version(void);
 
 #ifdef	__cplusplus
 }
