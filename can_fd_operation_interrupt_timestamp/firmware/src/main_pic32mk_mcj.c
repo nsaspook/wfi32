@@ -49,6 +49,7 @@ machines of all modules in the system
 #include <stdbool.h>                    // Defines true
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include <stdarg.h>
+#include <proc/p32mk0512mcj064.h>
 #include "definitions.h"                // SYS function prototypes
 #include "../../../../../firmware/src/imu.h"
 
@@ -219,7 +220,7 @@ void UART1DmaChannelHandler_State(DMAC_TRANSFER_EVENT event, uintptr_t contextHa
  */
 void UART1DmaWrite(char * buffer, uint32_t len)
 {
-	while (uart1_dma_busy) { // should never wait in normal operation
+	while (uart1_dma_busy || U1STAbits.UTXBF) { // should never wait in normal operation
 	};
 
 	uart1_dma_busy = true; // in process flag
@@ -350,15 +351,13 @@ int main(void)
 		}
 		case APP_STATE_CAN_XFER_SUCCESSFUL:
 		{
+			while (uart1_dma_busy || U1STAbits.UTXBF) { // should never wait in normal operation
+			};
 			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
 
 				/* Print message to Console */
 				uint8_t length = rx_messageLength;
 				uint16_t * mtype = (uint16_t *) & rx_message[0];
-
-				while (uart1_dma_busy) { // should never wait in normal operation
-				};
-
 #ifndef SHOW_DATA    
 				PrintFormattedData(" Message - Timestamp : 0x%x ID : 0x%x Length : 0x%x ", timestamp, (unsigned int) rx_messageID, (unsigned int) rx_messageLength);
 				printf("Message : ");
