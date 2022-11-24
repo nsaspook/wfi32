@@ -55,9 +55,9 @@ void EVIC_Initialize( void )
     INTCONSET = _INTCON_MVEC_MASK;
 
     /* Set up priority and subpriority of enabled interrupts */
+    IPC18SET = 0x10 | 0x0;  /* DMA0:  Priority 4 / Subpriority 0 */
     IPC41SET = 0x4000000 | 0x0;  /* CAN1:  Priority 1 / Subpriority 0 */
-    IPC46SET = 0x4 | 0x0;  /* DMA6:  Priority 1 / Subpriority 0 */
-    IPC46SET = 0x400 | 0x0;  /* DMA7:  Priority 1 / Subpriority 0 */
+    IPC46SET = 0x1000 | 0x0;  /* DMA7:  Priority 4 / Subpriority 0 */
 
 
 

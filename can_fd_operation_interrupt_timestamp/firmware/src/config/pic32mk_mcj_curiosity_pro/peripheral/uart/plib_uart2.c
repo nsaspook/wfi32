@@ -80,7 +80,7 @@ void UART2_Initialize( void )
     /* Set up UxMODE bits */
     /* STSEL  = 0*/
     /* PDSEL = 0 */
-    /* BRGH = 1 */
+    /* BRGH = 0 */
     /* RXINV = 0 */
     /* ABAUD = 0 */
     /* LPBACK = 0 */
@@ -90,13 +90,13 @@ void UART2_Initialize( void )
     /* CLKSEL = 0 */
     /* SLPEN = 0 */
     /* UEN = 0 */
-    U2MODE = 0x8;
+    U2MODE = 0x0;
 
     /* Enable UART2 Receiver and Transmitter */
     U2STASET = (_U2STA_UTXEN_MASK | _U2STA_URXEN_MASK );
 
     /* BAUD Rate register Setup */
-    U2BRG = 9;
+    U2BRG = 10;
 
     /* Turn ON UART2 */
     U2MODESET = _U2MODE_ON_MASK;
@@ -107,7 +107,7 @@ bool UART2_SerialSetup( UART_SERIAL_SETUP *setup, uint32_t srcClkFreq )
     bool status = false;
     uint32_t baud;
     uint32_t status_ctrl;
-    bool brgh = 1;
+    bool brgh = 0;
     int32_t uxbrg = 0;
 
     if (setup != NULL)

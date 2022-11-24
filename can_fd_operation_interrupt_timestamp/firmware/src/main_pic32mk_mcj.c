@@ -243,6 +243,7 @@ void UART2DmaChannelHandler_State(DMAC_TRANSFER_EVENT event, uintptr_t contextHa
 /*
  * DMA uart serial function
  * triggers the DMA transfer and returns, only one interrupt happens at the end of transfer
+ * RC2 pin 4 connector J503
  */
 void UART2DmaWrite(char * buffer, uint32_t len)
 {
@@ -250,7 +251,7 @@ void UART2DmaWrite(char * buffer, uint32_t len)
 	};
 
 	uart2_dma_busy = true; // in process flag
-	DMAC_ChannelTransfer(DMAC_CHANNEL_6, (const void *) buffer, (size_t) len, (const void*) &U1TXREG, (size_t) 1, (size_t) 1);
+	DMAC_ChannelTransfer(DMAC_CHANNEL_0, (const void *) buffer, (size_t) len, (const void*) &U2TXREG, (size_t) 1, (size_t) 1);
 }
 #endif
 
@@ -271,7 +272,7 @@ int main(void)
 
 #ifdef USE_SERIAL_DMA
 	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_7, UART1DmaChannelHandler_State, 0); // end of UART buffer transfer interrupt function
-	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_6, UART2DmaChannelHandler_State, 0); // end of UART buffer transfer interrupt function
+	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_0, UART2DmaChannelHandler_State, 0); // end of UART buffer transfer interrupt function
 #endif
 
 #ifndef SHOW_DATA

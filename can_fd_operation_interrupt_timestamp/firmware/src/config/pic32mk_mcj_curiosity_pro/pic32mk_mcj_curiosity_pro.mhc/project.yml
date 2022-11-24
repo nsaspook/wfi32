@@ -13,13 +13,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 693390060FCB422D40D27A953DE5B4DC
-- generatedChecksum: 3216439DB3FBCD6135E22EF35E021D98
+- generatedChecksum: F531755BD1294662F6F73405C0A22618
   logicalPath: config/pic32mk_mcj_curiosity_pro
   name: interrupts.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 3216439DB3FBCD6135E22EF35E021D98
+  userChecksum: F531755BD1294662F6F73405C0A22618
 - generatedChecksum: null
   logicalPath: ''
   name: main_pic32mk_mcj.c
@@ -41,27 +41,27 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 34E1F1AE3B58D234D5B720A5E9BF072A
-- generatedChecksum: AEBD0FAE93924DF92EAEA8EE211736DD
+- generatedChecksum: 293C3FE1970F234F6DC8EED22935AB7C
   logicalPath: config/pic32mk_mcj_curiosity_pro/peripheral/dmac
   name: plib_dmac.c
   physicalPath: peripheral/dmac
   security: NON_SECURE
   type: SOURCE
-  userChecksum: AEBD0FAE93924DF92EAEA8EE211736DD
-- generatedChecksum: 9F8FCD7E52C9ADA9842D0542F2A005F9
+  userChecksum: 293C3FE1970F234F6DC8EED22935AB7C
+- generatedChecksum: 30C451ABD0949EAADD6E2BC3F99C6A82
   logicalPath: config/pic32mk_mcj_curiosity_pro/peripheral/evic
   name: plib_evic.c
   physicalPath: peripheral/evic
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 9F8FCD7E52C9ADA9842D0542F2A005F9
-- generatedChecksum: 4FE58B488F2C26B62582BFE11880ACEA
+  userChecksum: 30C451ABD0949EAADD6E2BC3F99C6A82
+- generatedChecksum: 504740A97DA00C982A3C4999F2A44850
   logicalPath: config/pic32mk_mcj_curiosity_pro/peripheral/gpio
   name: plib_gpio.c
   physicalPath: peripheral/gpio
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 4FE58B488F2C26B62582BFE11880ACEA
+  userChecksum: 504740A97DA00C982A3C4999F2A44850
 - generatedChecksum: F266610F25A6EEA29FB0A3E551A87CD0
   logicalPath: config/pic32mk_mcj_curiosity_pro/peripheral/spi/spi_master
   name: plib_spi2_master.c
@@ -76,13 +76,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 0BC42098D946D1FD451DEBE7616F3654
-- generatedChecksum: C488A1546D4B5A71E799B096F535DC63
+- generatedChecksum: DA5363E553F43ECDB0BD99E8816805D5
   logicalPath: config/pic32mk_mcj_curiosity_pro/peripheral/uart
   name: plib_uart2.c
   physicalPath: peripheral/uart
   security: NON_SECURE
   type: SOURCE
-  userChecksum: C488A1546D4B5A71E799B096F535DC63
+  userChecksum: DA5363E553F43ECDB0BD99E8816805D5
 - generatedChecksum: 42A948E504602741B0D592C55FCD9A7B
   logicalPath: config/pic32mk_mcj_curiosity_pro/stdio
   name: xc32_monitor.c

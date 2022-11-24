@@ -60,24 +60,24 @@
 // *****************************************************************************
 
 
+void DMA0_InterruptHandler( void );
 void CAN1_InterruptHandler( void );
-void DMA6_InterruptHandler( void );
 void DMA7_InterruptHandler( void );
 
 
 
 /* All the handlers are defined here.  Each will call its PLIB-specific function. */
+void __ISR(_DMA0_VECTOR, ipl4SRS) DMA0_Handler (void)
+{
+    DMA0_InterruptHandler();
+}
+
 void __ISR(_CAN1_VECTOR, ipl1SRS) CAN1_Handler (void)
 {
     CAN1_InterruptHandler();
 }
 
-void __ISR(_DMA6_VECTOR, ipl1SRS) DMA6_Handler (void)
-{
-    DMA6_InterruptHandler();
-}
-
-void __ISR(_DMA7_VECTOR, ipl1SRS) DMA7_Handler (void)
+void __ISR(_DMA7_VECTOR, ipl4SRS) DMA7_Handler (void)
 {
     DMA7_InterruptHandler();
 }
