@@ -34,6 +34,7 @@
             <logicalFolder name="f5" displayName="uart" projectFiles="true">
               <itemPath>../src/config/pic32mk_mcj_curiosity_pro/peripheral/uart/plib_uart_common.h</itemPath>
               <itemPath>../src/config/pic32mk_mcj_curiosity_pro/peripheral/uart/plib_uart1.h</itemPath>
+              <itemPath>../src/config/pic32mk_mcj_curiosity_pro/peripheral/uart/plib_uart2.h</itemPath>
             </logicalFolder>
           </logicalFolder>
           <itemPath>../src/config/pic32mk_mcj_curiosity_pro/toolchain_specifics.h</itemPath>
@@ -58,6 +59,7 @@
         <itemPath>../src/config/pic32mk_mcj_curiosity_pro/pic32mk_mcj_curiosity_pro.mhc/spi2.yml</itemPath>
         <itemPath>../src/config/pic32mk_mcj_curiosity_pro/pic32mk_mcj_curiosity_pro.mhc/stdio.yml</itemPath>
         <itemPath>../src/config/pic32mk_mcj_curiosity_pro/pic32mk_mcj_curiosity_pro.mhc/uart1.yml</itemPath>
+        <itemPath>../src/config/pic32mk_mcj_curiosity_pro/pic32mk_mcj_curiosity_pro.mhc/uart2.yml</itemPath>
       </logicalFolder>
       <itemPath>Makefile</itemPath>
       <itemPath>../src/config/pic32mk_mcj_curiosity_pro/harmony-manifest-success.yml</itemPath>
@@ -104,6 +106,7 @@
             </logicalFolder>
             <logicalFolder name="f5" displayName="uart" projectFiles="true">
               <itemPath>../src/config/pic32mk_mcj_curiosity_pro/peripheral/uart/plib_uart1.c</itemPath>
+              <itemPath>../src/config/pic32mk_mcj_curiosity_pro/peripheral/uart/plib_uart2.c</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f2" displayName="stdio" projectFiles="true">
@@ -131,7 +134,7 @@
         <platformTool>pkob4hybrid</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.20</languageToolchainVersion>
-        <platform>2</platform>
+        <platform>3</platform>
       </toolsSet>
       <packs>
         <pack name="PIC32MK-MC_DFP" vendor="Microchip" version="1.11.151"/>

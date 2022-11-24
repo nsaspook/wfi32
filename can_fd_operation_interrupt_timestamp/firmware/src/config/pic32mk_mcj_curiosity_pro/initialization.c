@@ -192,7 +192,7 @@ void SYS_Initialize ( void* data )
     __builtin_mtc0(16, 0,(__builtin_mfc0(16, 0) | 0x3));
 
     /* Configure Wait States and Prefetch */
-    CHECONbits.PFMWS = 1;
+    CHECONbits.PFMWS = 2;
     CHECONbits.PREFEN = 1;
 
 
@@ -200,6 +200,8 @@ void SYS_Initialize ( void* data )
 	GPIO_Initialize();
 
 	UART1_Initialize();
+
+	UART2_Initialize();
 
     CAN1_Initialize();
 

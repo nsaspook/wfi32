@@ -4,11 +4,11 @@
 
 
 project: can_fd_operation_interrupt_timestamp
-creation_date: 2022-11-18T05:05:35.774-08:00[America/Los_Angeles]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2022-11-23T17:04:06.142-08:00[America/Los_Angeles]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 10
 mhc_mode: IDE            # [IDE|Standalone|Headless]
 mhc_version: v3.8.5
-mplabx_version: v6.05        # if MPLAB X plugin only
+mplabx_version: v6.00        # if MPLAB X plugin only
 plugin_version: v3.6.4        # if MPLAB X plugin only
 compiler: XC32 (4.20)
 

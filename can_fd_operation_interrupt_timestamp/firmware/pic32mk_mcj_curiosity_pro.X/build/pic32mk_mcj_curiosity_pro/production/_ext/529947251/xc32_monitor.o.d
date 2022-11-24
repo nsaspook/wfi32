@@ -5,6 +5,7 @@ build/pic32mk_mcj_curiosity_pro/production/_ext/529947251/xc32_monitor.o: \
  ../src/config/pic32mk_mcj_curiosity_pro/device.h \
  ../src/config/pic32mk_mcj_curiosity_pro/toolchain_specifics.h \
  ../src/config/pic32mk_mcj_curiosity_pro/peripheral/uart/plib_uart_common.h \
+ ../src/config/pic32mk_mcj_curiosity_pro/peripheral/uart/plib_uart2.h \
  ../src/config/pic32mk_mcj_curiosity_pro/peripheral/canfd/plib_canfd1.h \
  ../src/config/pic32mk_mcj_curiosity_pro/peripheral/canfd/plib_canfd_common.h \
  ../src/config/pic32mk_mcj_curiosity_pro/peripheral/clk/plib_clk.h \
@@ -23,6 +24,8 @@ build/pic32mk_mcj_curiosity_pro/production/_ext/529947251/xc32_monitor.o: \
 ../src/config/pic32mk_mcj_curiosity_pro/toolchain_specifics.h:
 
 ../src/config/pic32mk_mcj_curiosity_pro/peripheral/uart/plib_uart_common.h:
+
+../src/config/pic32mk_mcj_curiosity_pro/peripheral/uart/plib_uart2.h:
 
 ../src/config/pic32mk_mcj_curiosity_pro/peripheral/canfd/plib_canfd1.h:
 
