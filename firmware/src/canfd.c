@@ -130,6 +130,10 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 					//					CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 					//					CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT);
 					state = APP_STATE_CAN_IDLE;
+					
+					/*
+					 * use CAN-FD compatible 29-bit serial ID numbers
+					 */
 					if (*mtype == CAN_IMU_DATA || *mtype == CAN_FFT_LO || *mtype == CAN_FFT_HI) {
 						messageID = board_serial_id; // serial of the IMU device
 					} else {

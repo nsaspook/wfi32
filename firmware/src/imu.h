@@ -78,6 +78,7 @@ extern "C" {
 		uint8_t acc_range;
 		uint32_t log_timeout, rs, ss;
 		volatile bool online, run, update, features, crc_error, angles;
+		uint64_t host_serial_id;
 		uint8_t rbuf[64], tbuf[64];
 		uint32_t rbuf32[2], tbuf32[2];
 		uint16_t serial1, serial2;

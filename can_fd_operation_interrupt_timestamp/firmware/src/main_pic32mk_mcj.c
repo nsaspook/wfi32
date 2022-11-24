@@ -109,6 +109,7 @@ static uint32_t timestamp = 0;
 static CANFD_MSG_RX_ATTRIBUTE msgAttr = CANFD_MSG_RX_DATA_FRAME;
 
 const char *build_date = __DATE__, *build_time = __TIME__;
+uint64_t host_cpu_serial_id = 0x1957;
 uint8_t rxe, txe;
 uint32_t times = 0;
 
@@ -266,9 +267,12 @@ int main(void)
 	uint8_t user_input = 0;
 	uint8_t count = 0;
 	bool msg_ready = false;
+	uint64_t * hcid=(uint64_t *) &DEVSN0; // set pointer to 64-bit cpu serial number
 
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
+
+	host_cpu_serial_id = *hcid; // get the CPU device 64-bit serial number and use that as a HOST ID
 
 #ifdef USE_SERIAL_DMA
 	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_7, UART1DmaChannelHandler_State, 0); // end of UART buffer transfer interrupt function
@@ -381,6 +385,8 @@ int main(void)
 		{
 			while (uart1_dma_busy || U1STAbits.UTXBF) { // should never wait in normal operation
 			};
+			while (uart2_dma_busy || U2STAbits.UTXBF) { // should never wait in normal operation
+			};
 			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
 
 				/* Print message to Console */
@@ -402,7 +408,8 @@ int main(void)
 				}
 				if (*mtype == CAN_IMU_INFO) {
 					imu = (imu_cmd_t *) rx_message;
-					sprintf(uart_buffer, "%3d,%7X,%7X,%3d,%3d,%3d\r\n", imu->id, imu->board_serial_id, rx_messageID, imu->device, imu->acc_range, imu->features);
+					imu->host_serial_id = host_cpu_serial_id;
+					sprintf(uart_buffer, "%3d,%7X,%7X,%3d,%3d,%3d,%18llX\r\n", imu->id, imu->board_serial_id, rx_messageID, imu->device, imu->acc_range, imu->features, host_cpu_serial_id);
 #ifndef SHOW_DATA
 					printf("%u,%u,%u,%u sensor info %u\r\n", imu->device, imu->acc_range, imu->acc_range_scl, imu->angles, rx_message[0]);
 #endif

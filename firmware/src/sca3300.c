@@ -216,7 +216,7 @@ bool sca3300_getserial(void * imup) {
             if (sca3300_check_crc(imu, SCA3300_REC)) {
                 imu->serial2 = (imu->rbuf32[SCA3300_REC] >> 8)&0xffff;
                 gotserial = true;
-                board_serial_id = (imu->serial1 + (imu->serial2 << 16)) &0x1fffffff; // reduce to 29-bit id
+                board_serial_id = (imu->serial1 + (imu->serial2 << 16)) &0x1fffffff; // reduce to 29-bit id for CAN-CD address
                 imu->board_serial_id = board_serial_id;
             }
         }
