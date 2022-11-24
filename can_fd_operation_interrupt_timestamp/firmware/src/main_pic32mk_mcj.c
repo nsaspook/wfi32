@@ -114,7 +114,7 @@ uint32_t times = 0;
 
 uint8_t spid[] = {0xb5, 0x62, 0x0A, 0x04, 0x00};
 
-static volatile bool uart1_dma_busy = false;
+static volatile bool uart1_dma_busy = false, uart2_dma_busy = false;
 char uart_buffer[256];
 
 // *****************************************************************************
@@ -211,7 +211,7 @@ void UART1DmaWrite(char *, uint32_t);
 void UART1DmaChannelHandler_State(DMAC_TRANSFER_EVENT event, uintptr_t contextHandle)
 {
 	uart1_dma_busy = false;
-	LEDY_Clear(); // serial trace signal
+	//	LEDY_Clear(); // serial trace signal
 }
 
 /*
@@ -225,6 +225,32 @@ void UART1DmaWrite(char * buffer, uint32_t len)
 
 	uart1_dma_busy = true; // in process flag
 	DMAC_ChannelTransfer(DMAC_CHANNEL_7, (const void *) buffer, (size_t) len, (const void*) &U1TXREG, (size_t) 1, (size_t) 1);
+}
+
+void UART2DmaChannelHandler_State(DMAC_TRANSFER_EVENT, uintptr_t);
+void UART2DmaWrite(char *, uint32_t);
+
+/*
+ * end of uart buffer complete flag handler callback
+ * interrupt handler for the completion of buffer transfer.
+ */
+void UART2DmaChannelHandler_State(DMAC_TRANSFER_EVENT event, uintptr_t contextHandle)
+{
+	uart2_dma_busy = false;
+	LEDY_Clear(); // serial trace signal
+}
+
+/*
+ * DMA uart serial function
+ * triggers the DMA transfer and returns, only one interrupt happens at the end of transfer
+ */
+void UART2DmaWrite(char * buffer, uint32_t len)
+{
+	while (uart2_dma_busy || U2STAbits.UTXBF) { // should never wait in normal operation
+	};
+
+	uart2_dma_busy = true; // in process flag
+	DMAC_ChannelTransfer(DMAC_CHANNEL_6, (const void *) buffer, (size_t) len, (const void*) &U1TXREG, (size_t) 1, (size_t) 1);
 }
 #endif
 
@@ -245,6 +271,7 @@ int main(void)
 
 #ifdef USE_SERIAL_DMA
 	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_7, UART1DmaChannelHandler_State, 0); // end of UART buffer transfer interrupt function
+	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_6, UART2DmaChannelHandler_State, 0); // end of UART buffer transfer interrupt function
 #endif
 
 #ifndef SHOW_DATA
@@ -397,6 +424,7 @@ int main(void)
 				LED_Set(); // cpu trace signal
 				LEDY_Set(); // serial trace signal
 				UART1DmaWrite(uart_buffer, strlen(uart_buffer));
+				UART2DmaWrite(uart_buffer, strlen(uart_buffer));
 				LED_Clear();
 #ifndef SHOW_DATA
 				CAN1_ErrorCountGet(&txe, &rxe);
