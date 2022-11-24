@@ -75,12 +75,26 @@ children:
       - type: User
         attributes: {value: 'True'}
   - type: String
+    attributes: {id: BSP_PIN_2_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: U2TX}
+  - type: String
     attributes: {id: BSP_PIN_2_MODE}
     children:
     - type: Values
       children:
       - type: User
         attributes: {value: DIGITAL}
+  - type: String
+    attributes: {id: BSP_PIN_2_PU}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'True'}
   - type: String
     attributes: {id: BSP_PIN_32_MODE}
     children:
@@ -1610,6 +1624,13 @@ children:
       - type: Dynamic
         attributes: {id: core, value: '1024'}
   - type: Hex
+    attributes: {id: SYS_PORT_B_CNPU}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '16384'}
+  - type: Hex
     attributes: {id: SYS_PORT_C_CNPU}
     children:
     - type: Values
@@ -1788,6 +1809,19 @@ children:
       children:
       - type: User
         attributes: {value: '28'}
+  - type: KeyValueSet
+    attributes: {id: SYS_PORT_PPS_OUTPUT_FUNCTION_4}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '19'}
   - type: Combo
     attributes: {id: SYS_PORT_PPS_OUTPUT_PIN_0}
     children:
@@ -1840,6 +1874,19 @@ children:
       children:
       - type: User
         attributes: {value: RPC7}
+  - type: Combo
+    attributes: {id: SYS_PORT_PPS_OUTPUT_PIN_4}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: RPB14}
   - type: Integer
     attributes: {id: TMR1_CLOCK_FREQUENCY}
     children:
@@ -2143,6 +2190,13 @@ children:
         attributes: {value: 'true'}
   - type: Boolean
     attributes: {id: USE_PPS_OUTPUT_3}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
+  - type: Boolean
+    attributes: {id: USE_PPS_OUTPUT_4}
     children:
     - type: Values
       children:

@@ -64,6 +64,7 @@ void GPIO_Initialize ( void )
     ANSELACLR = 0x8000U; /* Digital Mode Enable */
     CNPUASET = 0x8000U; /* Pull-Up Enable */
     /* PORTB Initialization */
+    CNPUBSET = 0x4000U; /* Pull-Up Enable */
     /* PORTC Initialization */
     CNPUCSET = 0x80U; /* Pull-Up Enable */
     /* PORTD Initialization */
@@ -94,6 +95,7 @@ void GPIO_Initialize ( void )
     RPE0R = 1;
     RPF0R = 4;
     RPC7R = 4;
+    RPB14R = 2;
 
         /* Lock back the system after PPS configuration */
     CFGCONbits.IOLOCK = 1U;
