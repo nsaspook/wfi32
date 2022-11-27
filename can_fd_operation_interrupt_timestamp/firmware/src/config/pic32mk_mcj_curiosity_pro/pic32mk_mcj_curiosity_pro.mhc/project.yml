@@ -76,13 +76,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 0BC42098D946D1FD451DEBE7616F3654
-- generatedChecksum: DA5363E553F43ECDB0BD99E8816805D5
+- generatedChecksum: 90A38536F1D2140D90B80B4FD14BD2C4
   logicalPath: config/pic32mk_mcj_curiosity_pro/peripheral/uart
   name: plib_uart2.c
   physicalPath: peripheral/uart
   security: NON_SECURE
   type: SOURCE
-  userChecksum: DA5363E553F43ECDB0BD99E8816805D5
+  userChecksum: 90A38536F1D2140D90B80B4FD14BD2C4
 - generatedChecksum: 42A948E504602741B0D592C55FCD9A7B
   logicalPath: config/pic32mk_mcj_curiosity_pro/stdio
   name: xc32_monitor.c
@@ -174,13 +174,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 38A7F5DCE6FE0F7B9E02AA5446AC3B68
-- generatedChecksum: 89AD8B61C21845E383942A94C344C91A
+- generatedChecksum: 3D9C5CE392D10EAD2D420FED1445597A
   logicalPath: config/pic32mk_mcj_curiosity_pro/peripheral/uart
   name: plib_uart2.h
   physicalPath: peripheral/uart
   security: NON_SECURE
   type: HEADER
-  userChecksum: 89AD8B61C21845E383942A94C344C91A
+  userChecksum: 3D9C5CE392D10EAD2D420FED1445597A
 - generatedChecksum: 67EEAF539A53B6B8FD7B600ACCB3F3CA
   logicalPath: config/pic32mk_mcj_curiosity_pro/peripheral/uart
   name: plib_uart_common.h

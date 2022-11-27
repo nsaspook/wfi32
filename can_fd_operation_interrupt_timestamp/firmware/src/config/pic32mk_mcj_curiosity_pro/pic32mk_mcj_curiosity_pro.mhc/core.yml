@@ -2201,7 +2201,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '40125000'}
+        attributes: {id: core, value: '80250000'}
   - type: Boolean
     attributes: {id: UART2_FAULT_INTERRUPT_ENABLE}
     children:
