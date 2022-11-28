@@ -267,7 +267,7 @@ int main(void)
 	uint8_t user_input = 0;
 	uint8_t count = 0;
 	bool msg_ready = false;
-	uint64_t * hcid=(uint64_t *) &DEVSN0; // set pointer to 64-bit cpu serial number
+	uint64_t * hcid = (uint64_t *) & DEVSN0; // set pointer to 64-bit cpu serial number
 
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
@@ -403,26 +403,26 @@ int main(void)
 					printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f, sensor TS 0X%x, %u, %u\r\n", accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->sensortime, length, rx_message[0]);
 #else
 					length++;
-					sprintf(uart_buffer, "%3d,%7X,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.1f\r\n", accel->id, rx_messageID, accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->xerr, accel->yerr, accel->zerr, (double) accel->sensortime);
+					sprintf(uart_buffer, "%3d,%7X,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.1f,%s\r\n", accel->id, rx_messageID, accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->xerr, accel->yerr, accel->zerr, (double) accel->sensortime, IMU_ALIAS);
 #endif
 				}
 				if (*mtype == CAN_IMU_INFO) {
 					imu = (imu_cmd_t *) rx_message;
 					imu->host_serial_id = host_cpu_serial_id;
-					sprintf(uart_buffer, "%3d,%7X,%7X,%3d,%3d,%3d,%18llX\r\n", imu->id, imu->board_serial_id, rx_messageID, imu->device, imu->acc_range, imu->features, host_cpu_serial_id);
+					sprintf(uart_buffer, "%3d,%7X,%7X,%3d,%3d,%3d,%18llX,%s\r\n", imu->id, imu->board_serial_id, rx_messageID, imu->device, imu->acc_range, imu->features, host_cpu_serial_id, IMU_ALIAS);
 #ifndef SHOW_DATA
 					printf("%u,%u,%u,%u sensor info %u\r\n", imu->device, imu->acc_range, imu->acc_range_scl, imu->angles, rx_message[0]);
 #endif
 				}
 				if (*mtype == CAN_FFT_LO) {
 					fft = (sFFTData_t *) rx_message;
-					sprintf(uart_buffer, "%3d,%7X,%3d\r\n", fft->id, rx_messageID, fft_bin_total(fft, 16));
+					sprintf(uart_buffer, "%3d,%7X,%3d,%s\r\n", fft->id, rx_messageID, fft_bin_total(fft, 16), IMU_ALIAS);
 #ifndef SHOW_DATA
 #endif
 				}
 				if (*mtype == CAN_FFT_HI) {
 					fft = (sFFTData_t *) rx_message;
-					sprintf(uart_buffer, "%3d,%7X,%3d\r\n", fft->id, rx_messageID, fft_bin_total(fft, 0));
+					sprintf(uart_buffer, "%3d,%7X,%3d,%s\r\n", fft->id, rx_messageID, fft_bin_total(fft, 0), IMU_ALIAS);
 #ifndef SHOW_DATA
 #endif
 				}
