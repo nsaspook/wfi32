@@ -71,6 +71,24 @@
 #define LEDY_Get()               ((PORTE >> 13) & 0x1U)
 #define LEDY_PIN                  GPIO_PIN_RE13
 
+/*** Macros for ETH_CFG pin ***/
+#define ETH_CFG_Set()               (LATBSET = (1U<<4))
+#define ETH_CFG_Clear()             (LATBCLR = (1U<<4))
+#define ETH_CFG_Toggle()            (LATBINV= (1U<<4))
+#define ETH_CFG_OutputEnable()      (TRISBCLR = (1U<<4))
+#define ETH_CFG_InputEnable()       (TRISBSET = (1U<<4))
+#define ETH_CFG_Get()               ((PORTB >> 4) & 0x1U)
+#define ETH_CFG_PIN                  GPIO_PIN_RB4
+
+/*** Macros for ETH_RST pin ***/
+#define ETH_RST_Set()               (LATASET = (1U<<4))
+#define ETH_RST_Clear()             (LATACLR = (1U<<4))
+#define ETH_RST_Toggle()            (LATAINV= (1U<<4))
+#define ETH_RST_OutputEnable()      (TRISACLR = (1U<<4))
+#define ETH_RST_InputEnable()       (TRISASET = (1U<<4))
+#define ETH_RST_Get()               ((PORTA >> 4) & 0x1U)
+#define ETH_RST_PIN                  GPIO_PIN_RA4
+
 /*** Macros for LED pin ***/
 #define LED_Set()               (LATASET = (1U<<10))
 #define LED_Clear()             (LATACLR = (1U<<10))

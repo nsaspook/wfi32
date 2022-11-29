@@ -59,14 +59,17 @@ void GPIO_Initialize ( void )
 {
 
     /* PORTA Initialization */
-    LATA = 0x400U; /* Initial Latch Value */
-    TRISACLR = 0x400U; /* Direction Control */
-    ANSELACLR = 0x8000U; /* Digital Mode Enable */
-    CNPUASET = 0x8000U; /* Pull-Up Enable */
+    LATA = 0x410U; /* Initial Latch Value */
+    TRISACLR = 0x410U; /* Direction Control */
+    ANSELACLR = 0x8010U; /* Digital Mode Enable */
+    CNPUASET = 0x8010U; /* Pull-Up Enable */
     /* PORTB Initialization */
+    LATB = 0x10U; /* Initial Latch Value */
+    TRISBCLR = 0x10U; /* Direction Control */
+    CNPUBSET = 0x810U; /* Pull-Up Enable */
     /* PORTC Initialization */
     ANSELCCLR = 0x4U; /* Digital Mode Enable */
-    CNPUCSET = 0x80U; /* Pull-Up Enable */
+    CNPUCSET = 0x84U; /* Pull-Up Enable */
     /* PORTD Initialization */
     CNPUDSET = 0x40U; /* Pull-Up Enable */
     /* PORTE Initialization */
@@ -89,6 +92,7 @@ void GPIO_Initialize ( void )
     U1RXR = 10;
     C1RXR = 8;
     SDI2R = 9;
+    U2RXR = 3;
 
     /* PPS Output Remapping */
     RPA15R = 12;
