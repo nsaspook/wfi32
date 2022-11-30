@@ -10,14 +10,14 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '230400'}
+        attributes: {value: '460800'}
   - type: Integer
     attributes: {id: BRG_VALUE}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: uart2, value: '86'}
+        attributes: {id: uart2, value: '43'}
   - type: Comment
     attributes: {id: UART_BAUD_PER_ERROR_COMMENT}
     children:
@@ -26,7 +26,7 @@ children:
       - type: String
         attributes: {id: text}
         children:
-        - {type: Value, value: '*** Baud Error = 0.0881 % ***'}
+        - {type: Value, value: '*** Baud Error = -1.0493 % ***'}
   - type: KeyValueSet
     attributes: {id: UART_BRGH}
     children:

@@ -76,13 +76,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 0BC42098D946D1FD451DEBE7616F3654
-- generatedChecksum: 90A38536F1D2140D90B80B4FD14BD2C4
+- generatedChecksum: DC21C3E6D6DCE78BF5C476F8902F3DC5
   logicalPath: config/pic32mk_mcj_curiosity_pro/peripheral/uart
   name: plib_uart2.c
   physicalPath: peripheral/uart
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 90A38536F1D2140D90B80B4FD14BD2C4
+  userChecksum: DC21C3E6D6DCE78BF5C476F8902F3DC5
 - generatedChecksum: 42A948E504602741B0D592C55FCD9A7B
   logicalPath: config/pic32mk_mcj_curiosity_pro/stdio
   name: xc32_monitor.c

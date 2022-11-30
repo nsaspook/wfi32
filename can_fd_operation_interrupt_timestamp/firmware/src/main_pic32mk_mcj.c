@@ -431,8 +431,8 @@ int main(void)
 				}
 				LED_Set(); // cpu trace signal
 				LEDY_Set(); // serial trace signal
-				UART1DmaWrite(uart_buffer, strlen(uart_buffer));
-				UART2DmaWrite(uart_buffer, strlen(uart_buffer));
+//				UART1DmaWrite(uart_buffer, strlen(uart_buffer));
+				UART2DmaWrite(uart_buffer, strlen(uart_buffer)); // send data to the ETH module
 				LED_Clear();
 #ifndef SHOW_DATA
 				CAN1_ErrorCountGet(&txe, &rxe);
