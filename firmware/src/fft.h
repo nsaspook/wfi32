@@ -18,7 +18,7 @@ extern "C" {
 #include <stdlib.h>
 #include <math.h>
     
-#define FFT_DRIVER "V1.100" 
+#define FFT_DRIVER "V1.102" 
 #define FFT_ALIAS "FFT"
 
 #define N_FFT 256

@@ -327,7 +327,7 @@ int main(void)
 			 * This is not a pure FFT as it mixes bin data
 			 * with sample data for a feedback signature
 			 */
-			inB[ffti] = 128 + (uint8_t) (120.0 * accel.z); // select one axis for display
+			inB[ffti] = 128 + (uint8_t) (120.0 * (accel.x+accel.y+accel.z)); // select one axis for display
 			if (fft_settle) {
 				sprintf(buffer, "FFTs %3d,%3d ", inB[ffti], ffti);
 				eaDogM_WriteStringAtPos(7, 4, buffer);
