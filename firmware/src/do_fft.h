@@ -23,7 +23,7 @@ extern "C" {
 
 #define _XTAL_FREQ 120000000UL
 	
-#define DO_FFT_DRIVER	"V1.001" 
+#define DO_FFT_DRIVER	"V1.002" 
 #define DO_FFT_ALIAS	"DO_FFT  "
 		
 void do_fft(bool);

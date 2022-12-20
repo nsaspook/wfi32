@@ -45,6 +45,9 @@ void do_fft(bool sine)
 	inB[0] = 0;
 	inB[1] = 0;
 	inB[2] = 0;
+	inB[3] = 0;
+	inB[4] = 0;
+	inB[5] = 0;
 }
 
 void do_fft_version(void)
