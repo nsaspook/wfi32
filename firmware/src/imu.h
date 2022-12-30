@@ -32,7 +32,7 @@ extern "C" {
 #define IMU_DATA_RAW_LEN  30
 #define IMU_DATA_BUFFER_INDEX  1
 
-	typedef struct {
+	typedef struct _sSensorData_t {
 		const uint16_t id;
 		double x; /**< X-axis sensor data */
 		double y; /**< Y-axis sensor data */

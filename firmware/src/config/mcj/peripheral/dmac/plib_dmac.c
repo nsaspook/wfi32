@@ -276,8 +276,8 @@ void DMAC_Initialize( void )
     /* DMA channel 2 configuration */
     /* CHPRI = 3, CHAEN= 0, CHCHN= 0, CHCHNS= 0x0, CHAED= 0 */
     DCH2CON = 0x3;
-    /* CHSIRQ = 37, SIRQEN = 1 */
-    DCH2ECON = 0x2510;
+    /* CHSIRQ = 55, SIRQEN = 1 */
+    DCH2ECON = 0x3710;
     /* CHBCIE = 1, CHTAIE=1, CHERIE=1, CHSHIE= 0, CHDHIE= 0 */
     DCH2INT = 0xb0000;
 

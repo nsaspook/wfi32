@@ -1,10 +1,4 @@
-#include <stddef.h>                     // Defines NULL
-#include <stdbool.h>                    // Defines true
-#include <stdlib.h>                     // Defines EXIT_FAILURE
-#include <stdarg.h>
-#include <proc/p32mk0512mcj048.h>
-#include "definitions.h"                // SYS function prototypes
-#include "imu.h"
+#include "host.h"
 
 #define SHOW_DATA
 #define USE_SERIAL_DMA
@@ -37,13 +31,13 @@ typedef enum {
 	CAN_FFT_HI,
 } CANFD_MESSAGE;
 
-sSensorData_t *accel;
-imu_cmd_t *imu;
-sFFTData_t *fft;
+static sSensorData_t *accel;
+static imu_cmd_t *imu;
+static sFFTData_t *fft;
 
 
 /* set format attribute for the vararg function */
-void PrintFormattedData(const char * format, ...) __attribute__((format(printf, 1, 2)));
+void PrintFormattedData_h(const char * format, ...) __attribute__((format(printf, 1, 2)));
 
 uint32_t fft_bin_total(sFFTData_t *, uint32_t);
 
@@ -81,7 +75,7 @@ char uart_buffer[256];
 /* This function will be called by CAN PLIB when transfer is completed */
 // *****************************************************************************
 
-/* void APP_CAN_Callback(uintptr_t context)
+/* void APP_CAN_Callback_h(uintptr_t context)
 
   Summary:
     Function called by CAN PLIB upon transfer completion
@@ -95,7 +89,7 @@ char uart_buffer[256];
   Remarks:
     None.
  */
-void APP_CAN_Callback(uintptr_t context)
+void APP_CAN_Callback_h(uintptr_t context)
 {
 	xferContext = context;
 
@@ -124,7 +118,7 @@ void APP_CAN_Callback(uintptr_t context)
 	}
 }
 
-void APP_CAN_Error_Callback(uintptr_t context)
+void APP_CAN_Error_Callback_h(uintptr_t context)
 {
 	xferContext = context;
 
@@ -136,7 +130,7 @@ void APP_CAN_Error_Callback(uintptr_t context)
 //	LED_Set();
 }
 
-void print_menu(void)
+void print_menu_h(void)
 {
 #ifndef SHOW_DATA
 	printf("Menu :\r\n"
@@ -148,7 +142,7 @@ void print_menu(void)
 #endif
 }
 
-void PrintFormattedData(const char * format, ...)
+void PrintFormattedData_h(const char * format, ...)
 {
 	va_list args = {0};
 	va_start(args, format);
@@ -235,7 +229,7 @@ int host_sm(void)
 
 #ifndef SHOW_DATA
 	printf("\r\nPIC32 %s Host Controller %s %s %s ---\r\n", IMU_ALIAS, IMU_DRIVER, build_date, build_time);
-	print_menu();
+	print_menu_h();
 #endif
 	/* Prepare the message to send */
 	for (count = 0; count < 64; count++) {
@@ -262,8 +256,8 @@ int host_sm(void)
 #ifndef SHOW_DATA
 				printf(" Transmitting CAN FD Message:");
 #endif
-				CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
-				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE);
+				CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
+				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE);
 				state = APP_STATE_CAN_IDLE;
 				messageID = 0x45A;
 				messageLength = 64;
@@ -277,8 +271,8 @@ int host_sm(void)
 #ifndef SHOW_DATA
 				printf(" Transmitting CAN Normal Message:");
 #endif
-				CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
-				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE);
+				CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
+				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE);
 				state = APP_STATE_CAN_IDLE;
 				messageID = 0x469;
 				messageLength = 8;
@@ -294,7 +288,7 @@ int host_sm(void)
 #ifndef SHOW_DATA
 					printf(" Waiting for message: \r\n");
 #endif
-					CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE, 2);
+					CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE, 2);
 					state = APP_STATE_CAN_IDLE;
 					memset(rx_message, 0x00, sizeof(rx_message));
 
@@ -309,13 +303,13 @@ int host_sm(void)
 					state = APP_STATE_CAN_USER_INPUT;
 #ifndef SHOW_DATA
 					printf(" No message: \r\n");
-					print_menu();
+					print_menu_h();
 #endif
 				}
 				break;
 			case 'm':
 #ifndef SHOW_DATA
-				print_menu();
+				print_menu_h();
 #endif
 				break;
 			case 'n':
@@ -323,7 +317,7 @@ int host_sm(void)
 			default:
 #ifndef SHOW_DATA
 				printf(" Invalid Input \r\n");
-				print_menu();
+				print_menu_h();
 #endif
 				break;
 			}
@@ -347,7 +341,7 @@ int host_sm(void)
 				uint8_t length = rx_messageLength;
 				uint16_t * mtype = (uint16_t *) & rx_message[0];
 #ifndef SHOW_DATA    
-				PrintFormattedData(" Message - Timestamp : 0x%x ID : 0x%x Length : 0x%x ", timestamp, (unsigned int) rx_messageID, (unsigned int) rx_messageLength);
+				PrintFormattedData_h(" Message - Timestamp : 0x%x ID : 0x%x Length : 0x%x ", timestamp, (unsigned int) rx_messageID, (unsigned int) rx_messageLength);
 				printf("Message : ");
 #endif
 				sprintf(uart_buffer, "-1, Bad  Message ID code\r\n");
@@ -385,8 +379,8 @@ int host_sm(void)
 				}
 //				LED_Set(); // cpu trace signal
 //				LEDY_Set(); // serial trace signal
-//				UART1DmaWrite(uart_buffer, strlen(uart_buffer));
-				UART2DmaWrite(uart_buffer, strlen(uart_buffer)); // send data to the ETH module
+				UART1DmaWrite(uart_buffer, strlen(uart_buffer)); // send data to the ETH module
+//				UART2DmaWrite(uart_buffer, strlen(uart_buffer)); // send data to the ETH module
 //				LED_Clear();
 #ifndef SHOW_DATA
 				CAN1_ErrorCountGet(&txe, &rxe);
@@ -403,7 +397,7 @@ int host_sm(void)
 			} else if ((APP_STATES) xferContext == APP_STATE_CAN_TRANSMIT) {
 			}
 #ifndef SHOW_DATA
-			print_menu();
+			print_menu_h();
 #endif
 			state = APP_STATE_CAN_USER_INPUT;
 			break;
@@ -420,7 +414,7 @@ int host_sm(void)
 #endif
 			}
 #ifndef SHOW_DATA
-			print_menu();
+			print_menu_h();
 #endif
 			state = APP_STATE_CAN_USER_INPUT;
 			break;

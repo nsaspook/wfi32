@@ -72,6 +72,7 @@ void DMA0_InterruptHandler( void );
 void DMA1_InterruptHandler( void );
 void DMA2_InterruptHandler( void );
 void TIMER_6_InterruptHandler( void );
+void CAN1_InterruptHandler( void );
 void QEI2_InterruptHandler( void );
 void DMA7_InterruptHandler( void );
 
@@ -136,6 +137,11 @@ void __ISR(_DMA2_VECTOR, ipl1SRS) DMA2_Handler (void)
 void __ISR(_TIMER_6_VECTOR, ipl2SRS) TIMER_6_Handler (void)
 {
     TIMER_6_InterruptHandler();
+}
+
+void __ISR(_CAN1_VECTOR, ipl1SRS) CAN1_Handler (void)
+{
+    CAN1_InterruptHandler();
 }
 
 void __ISR(_QEI2_VECTOR, ipl1SRS) QEI2_Handler (void)
