@@ -223,8 +223,8 @@ int host_sm(void)
 	host_cpu_serial_id = *hcid; // get the CPU device 64-bit serial number and use that as a HOST ID
 
 #ifdef USE_SERIAL_DMA
-	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_7, UART1DmaChannelHandler_State, 0); // end of UART buffer transfer interrupt function
-	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_0, UART2DmaChannelHandler_State, 0); // end of UART buffer transfer interrupt function
+	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_7, UART1DmaChannelHandler_State, 0); // end of UART buffer transfer interrupt function usart1
+//	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_0, UART2DmaChannelHandler_State, 0); // end of UART buffer transfer interrupt function
 #endif
 
 #ifndef SHOW_DATA
@@ -333,8 +333,8 @@ int host_sm(void)
 		{
 			while (uart1_dma_busy || U1STAbits.UTXBF) { // should never wait in normal operation
 			};
-			while (uart2_dma_busy || U2STAbits.UTXBF) { // should never wait in normal operation
-			};
+//			while (uart2_dma_busy || U2STAbits.UTXBF) { // should never wait in normal operation
+//			};
 			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
 
 				/* Print message to Console */
