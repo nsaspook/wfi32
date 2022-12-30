@@ -1,4 +1,13 @@
+#include <stddef.h>                     // Defines NULL
+#include <stdbool.h>                    // Defines true
+#include <stdlib.h>                     // Defines EXIT_FAILURE
+#include <stdarg.h>
+#include <proc/p32mk0512mcj048.h>
+#include "definitions.h"                // SYS function prototypes
+#include "imu.h"
+#include "../../firmware/lcd_drv/lcd_drv.h"
 #include "host.h"
+
 
 #define SHOW_DATA
 #define USE_SERIAL_DMA
@@ -34,7 +43,7 @@ typedef enum {
 static sSensorData_t *accel;
 static imu_cmd_t *imu;
 static sFFTData_t *fft;
-
+static char buffer[256];
 
 /* set format attribute for the vararg function */
 void PrintFormattedData_h(const char * format, ...) __attribute__((format(printf, 1, 2)));
@@ -42,7 +51,8 @@ void PrintFormattedData_h(const char * format, ...) __attribute__((format(printf
 uint32_t fft_bin_total(sFFTData_t *, uint32_t);
 
 /* Variable to save application state */
-static APP_STATES state = APP_STATE_CAN_USER_INPUT;
+//static APP_STATES state = APP_STATE_CAN_USER_INPUT;
+static APP_STATES state = APP_STATE_CAN_IDLE;
 /* Variable to save Tx/Rx transfer status and context */
 static volatile uint32_t status = 0;
 static volatile uint32_t xferContext = 0;
@@ -127,7 +137,7 @@ void APP_CAN_Error_Callback_h(uintptr_t context)
 #ifndef SHOW_DATA
 	printf("\rCEB status %d\r\n", status);
 #endif
-//	LED_Set();
+	//	LED_Set();
 }
 
 void print_menu_h(void)
@@ -186,7 +196,7 @@ void UART2DmaWrite(char *, uint32_t);
 void UART2DmaChannelHandler_State(DMAC_TRANSFER_EVENT event, uintptr_t contextHandle)
 {
 	uart2_dma_busy = false;
-//	LEDY_Clear(); // serial trace signal
+	//	LEDY_Clear(); // serial trace signal
 }
 
 /*
@@ -204,11 +214,13 @@ void UART2DmaWrite(char * buffer, uint32_t len)
 }
 #endif
 
-// *****************************************************************************
-// *****************************************************************************
-// Section: Main Entry Point
-// *****************************************************************************
-// *****************************************************************************
+#ifdef __32MK0512MCJ048__
+void qei_index_cb(QEI_STATUS, uintptr_t);
+#endif
+
+/*
+ * CAN-FD vibration sensor host to network state machine
+ */
 
 int host_sm(void)
 {
@@ -216,30 +228,66 @@ int host_sm(void)
 	uint8_t count = 0;
 	bool msg_ready = false;
 	uint64_t * hcid = (uint64_t *) & DEVSN0; // set pointer to 64-bit cpu serial number
+	uint32_t wait_count = 0;
 
 	/* Initialize all modules */
-	SYS_Initialize(NULL);
+	//	SYS_Initialize(NULL);
+
+	/* Start system tick timer */
+	CORETIMER_Start();
+	/*
+	 * software timers interrupt setup
+	 * using tickCount
+	 */
+	TMR6_CallbackRegister(timer_ms_tick, 0);
+	TMR6_Start(); // software timers counter
 
 	host_cpu_serial_id = *hcid; // get the CPU device 64-bit serial number and use that as a HOST ID
 
+#ifdef __32MK0512MCJ048__
+	TMR9_Start(); // IMU time-stamp counter
+	QEI2_CallbackRegister(qei_index_cb, 0);
+	QEI2_Start();
+#endif
+#ifdef __32MZ1025W104132__
+	TMR2_Start(); // IMU time-stamp counter
+#endif
+
 #ifdef USE_SERIAL_DMA
 	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_7, UART1DmaChannelHandler_State, 0); // end of UART buffer transfer interrupt function usart1
-//	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_0, UART2DmaChannelHandler_State, 0); // end of UART buffer transfer interrupt function
+	//	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_0, UART2DmaChannelHandler_State, 0); // end of UART buffer transfer interrupt function
 #endif
 
 #ifndef SHOW_DATA
 	printf("\r\nPIC32 %s Host Controller %s %s %s ---\r\n", IMU_ALIAS, IMU_DRIVER, build_date, build_time);
 	print_menu_h();
 #endif
-	/* Prepare the message to send */
+	/* Prepare the default message to send */
 	for (count = 0; count < 64; count++) {
 		message[count] = count;
 	}
 
-//	LED_Clear();
-//	LEDY_Clear();
+	//	LED_Clear();
+	//	LEDY_Clear();
+
+	/*
+	 * start the graphic LCD driver
+	 */
+	init_lcd_drv(D_INIT);
+	OledClearBuffer();
+	sprintf(buffer, "%s Driver %s %s %s", LCD_ALIAS, LCD_DRIVER, build_date, build_time);
+	eaDogM_WriteStringAtPos(0, 0, buffer);
+	sprintf(buffer, "%s Controller %s %llX", HOST_ALIAS, HOST_DRIVER, host_cpu_serial_id);
+	eaDogM_WriteStringAtPos(2, 0, buffer);
+	OledUpdate();
+
+	LED_RED_Off();
+	WaitMs(500);
 
 	while (true) {
+
+		LED_GREEN_Toggle();
+
 		if (state == APP_STATE_CAN_USER_INPUT) {
 			user_input = 'n';
 			/* Read user input */
@@ -298,7 +346,7 @@ int host_sm(void)
 						printf("CAN1_MessageReceive request has failed\r\n");
 #endif
 					}
-//					LEDY_Clear();
+					//					LEDY_Clear();
 				} else {
 					state = APP_STATE_CAN_USER_INPUT;
 #ifndef SHOW_DATA
@@ -327,14 +375,19 @@ int host_sm(void)
 		case APP_STATE_CAN_IDLE:
 		{
 			/* Application can do other task here */
+			sprintf(buffer, " Waiting for CAN-FD  %i", wait_count++);
+			eaDogM_WriteStringAtPos(14, 0, buffer);
+			OledUpdate();
+			WaitMs(50);
 			break;
 		}
 		case APP_STATE_CAN_XFER_SUCCESSFUL:
 		{
+			wait_count = 0;
 			while (uart1_dma_busy || U1STAbits.UTXBF) { // should never wait in normal operation
 			};
-//			while (uart2_dma_busy || U2STAbits.UTXBF) { // should never wait in normal operation
-//			};
+			//			while (uart2_dma_busy || U2STAbits.UTXBF) { // should never wait in normal operation
+			//			};
 			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
 
 				/* Print message to Console */
@@ -377,11 +430,11 @@ int host_sm(void)
 				if (*mtype == CAN_NULL) {
 					sprintf(uart_buffer, "0,NULL Message with 0 ID code\r\n");
 				}
-//				LED_Set(); // cpu trace signal
-//				LEDY_Set(); // serial trace signal
+				//				LED_Set(); // cpu trace signal
+				//				LEDY_Set(); // serial trace signal
 				UART1DmaWrite(uart_buffer, strlen(uart_buffer)); // send data to the ETH module
-//				UART2DmaWrite(uart_buffer, strlen(uart_buffer)); // send data to the ETH module
-//				LED_Clear();
+				//				UART2DmaWrite(uart_buffer, strlen(uart_buffer)); // send data to the ETH module
+				//				LED_Clear();
 #ifndef SHOW_DATA
 				CAN1_ErrorCountGet(&txe, &rxe);
 				printf("ErrorT %d ", txe);

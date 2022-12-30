@@ -1,4 +1,4 @@
-build/mcj/production/_ext/1360937237/host.o: ../src/host.c ../src/host.h \
+build/mcj/production/_ext/1360937237/host.o: ../src/host.c \
  ../src/config/mcj/definitions.h \
  ../src/config/mcj/peripheral/canfd/plib_canfd1.h \
  ../src/config/mcj/device.h ../src/config/mcj/toolchain_specifics.h \
@@ -24,9 +24,15 @@ build/mcj/production/_ext/1360937237/host.o: ../src/host.c ../src/host.h \
  ../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.h \
  ../src/config/mcj/peripheral/rtcc/plib_rtcc.h \
  ../src/config/mcj/peripheral/tmr/plib_tmr9.h ../src/imu.h \
- ../src/imupic32mcj.h ../src/config/default/peripheral/dmac/plib_dmac.h
-
-../src/host.h:
+ ../src/imupic32mcj.h ../src/../../firmware/lcd_drv/lcd_drv.h \
+ ../src/../../firmware/lcd_drv/display_type.h \
+ ../src/../../firmware/lcd_drv/eadog.h \
+ ../src/../../firmware/lcd_drv/lcd_drv.h \
+ ../src/../../firmware/lcd_drv/dogm-graphic.h ../src/timers.h \
+ ../src/../../firmware/lcd_drv/OledDriver.h \
+ ../src/../../firmware/lcd_drv/OledChar.h \
+ ../src/../../firmware/lcd_drv/OledGrph.h ../src/host.h \
+ ../src/config/default/peripheral/dmac/plib_dmac.h
 
 ../src/config/mcj/definitions.h:
 
@@ -83,5 +89,25 @@ build/mcj/production/_ext/1360937237/host.o: ../src/host.c ../src/host.h \
 ../src/imu.h:
 
 ../src/imupic32mcj.h:
+
+../src/../../firmware/lcd_drv/lcd_drv.h:
+
+../src/../../firmware/lcd_drv/display_type.h:
+
+../src/../../firmware/lcd_drv/eadog.h:
+
+../src/../../firmware/lcd_drv/lcd_drv.h:
+
+../src/../../firmware/lcd_drv/dogm-graphic.h:
+
+../src/timers.h:
+
+../src/../../firmware/lcd_drv/OledDriver.h:
+
+../src/../../firmware/lcd_drv/OledChar.h:
+
+../src/../../firmware/lcd_drv/OledGrph.h:
+
+../src/host.h:
 
 ../src/config/default/peripheral/dmac/plib_dmac.h:

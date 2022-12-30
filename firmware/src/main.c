@@ -64,6 +64,7 @@
 #endif
 #include "pid.h"
 #include "do_fft.h"
+#include "host.h"
 
 #ifdef BMA490L
 /*
@@ -186,6 +187,8 @@ int main(void)
 
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
+	
+	host_sm();
 
 	/* Start system tick timer */
 	CORETIMER_Start();
