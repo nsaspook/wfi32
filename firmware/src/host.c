@@ -8,12 +8,9 @@
 #include "../../firmware/lcd_drv/lcd_drv.h"
 #include "host.h"
 
-
-#define SHOW_DATA
 #define USE_SERIAL_DMA
 
 #ifdef USE_SERIAL_DMA
-//#include "config/pic32mk_mcj_curiosity_pro/peripheral/dmac/plib_dmac.h"
 #include "config/default/peripheral/dmac/plib_dmac.h"
 #endif
 
@@ -105,9 +102,8 @@ void APP_CAN_Callback_h(uintptr_t context)
 
 	/* Check CAN Status */
 	status = CAN1_ErrorGet();
-#ifndef SHOW_DATA
-	printf("\rCB status %d\r\n", status);
-#endif
+	sprintf(buffer, "CB status %d", status);
+	eaDogM_WriteStringAtPos(5, 0, buffer);
 
 	if ((status & (CANFD_ERROR_TX_RX_WARNING_STATE | CANFD_ERROR_RX_WARNING_STATE |
 		CANFD_ERROR_TX_WARNING_STATE | CANFD_ERROR_RX_BUS_PASSIVE_STATE |
@@ -134,22 +130,12 @@ void APP_CAN_Error_Callback_h(uintptr_t context)
 
 	/* Check CAN Status */
 	status = CAN1_ErrorGet();
-#ifndef SHOW_DATA
-	printf("\rCEB status %d\r\n", status);
-#endif
-	//	LED_Set();
+	sprintf(buffer, "CEB status %d", status);
+	eaDogM_WriteStringAtPos(6, 0, buffer);
 }
 
 void print_menu_h(void)
 {
-#ifndef SHOW_DATA
-	printf("Menu :\r\n"
-		"  -- Select the action:\r\n"
-		"  1: Send FD standard message with ID: 0x45A and 64 byte data 0 to 63. \r\n"
-		"  2: Send normal standard message with ID: 0x469 and 8 byte data 0 to 7. \r\n"
-		"  3: To receive CAN FD or Normal message \r\n"
-		"  m: Display menu \r\n\r\n");
-#endif
 }
 
 void PrintFormattedData_h(const char * format, ...)
@@ -170,7 +156,6 @@ void UART1DmaWrite(char *, uint32_t);
 void UART1DmaChannelHandler_State(DMAC_TRANSFER_EVENT event, uintptr_t contextHandle)
 {
 	uart1_dma_busy = false;
-	//	LEDY_Clear(); // serial trace signal
 }
 
 /*
@@ -184,33 +169,6 @@ void UART1DmaWrite(char * buffer, uint32_t len)
 
 	uart1_dma_busy = true; // in process flag
 	DMAC_ChannelTransfer(DMAC_CHANNEL_7, (const void *) buffer, (size_t) len, (const void*) &U1TXREG, (size_t) 1, (size_t) 1);
-}
-
-void UART2DmaChannelHandler_State(DMAC_TRANSFER_EVENT, uintptr_t);
-void UART2DmaWrite(char *, uint32_t);
-
-/*
- * end of uart buffer complete flag handler callback
- * interrupt handler for the completion of buffer transfer.
- */
-void UART2DmaChannelHandler_State(DMAC_TRANSFER_EVENT event, uintptr_t contextHandle)
-{
-	uart2_dma_busy = false;
-	//	LEDY_Clear(); // serial trace signal
-}
-
-/*
- * DMA uart serial function
- * triggers the DMA transfer and returns, only one interrupt happens at the end of transfer
- * RC2 pin 4 connector J503
- */
-void UART2DmaWrite(char * buffer, uint32_t len)
-{
-	while (uart2_dma_busy || U2STAbits.UTXBF) { // should never wait in normal operation
-	};
-
-	uart2_dma_busy = true; // in process flag
-	DMAC_ChannelTransfer(DMAC_CHANNEL_0, (const void *) buffer, (size_t) len, (const void*) &U2TXREG, (size_t) 1, (size_t) 1);
 }
 #endif
 
@@ -255,20 +213,12 @@ int host_sm(void)
 
 #ifdef USE_SERIAL_DMA
 	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_7, UART1DmaChannelHandler_State, 0); // end of UART buffer transfer interrupt function usart1
-	//	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_0, UART2DmaChannelHandler_State, 0); // end of UART buffer transfer interrupt function
 #endif
 
-#ifndef SHOW_DATA
-	printf("\r\nPIC32 %s Host Controller %s %s %s ---\r\n", IMU_ALIAS, IMU_DRIVER, build_date, build_time);
-	print_menu_h();
-#endif
 	/* Prepare the default message to send */
 	for (count = 0; count < 64; count++) {
 		message[count] = count;
 	}
-
-	//	LED_Clear();
-	//	LEDY_Clear();
 
 	/*
 	 * start the graphic LCD driver
@@ -301,72 +251,55 @@ int host_sm(void)
 
 			switch (user_input) {
 			case '1':
-#ifndef SHOW_DATA
-				printf(" Transmitting CAN FD Message:");
-#endif
+				// Transmitting CAN FD Message
+
 				CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE);
 				state = APP_STATE_CAN_IDLE;
 				messageID = 0x45A;
 				messageLength = 64;
 				if (CAN1_MessageTransmit(messageID, messageLength, message, 1, CANFD_MODE_FD_WITH_BRS, CANFD_MSG_TX_DATA_FRAME) == false) {
-#ifndef SHOW_DATA
-					printf("CAN1_MessageTransmit request has failed\r\n");
-#endif
+					sprintf(buffer, "CAN1_MessageTransmit request has failed");
+					eaDogM_WriteStringAtPos(11, 0, buffer);
 				}
 				break;
 			case '2':
-#ifndef SHOW_DATA
-				printf(" Transmitting CAN Normal Message:");
-#endif
+				// Transmitting CAN Normal Message
+
 				CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE);
 				state = APP_STATE_CAN_IDLE;
 				messageID = 0x469;
 				messageLength = 8;
 				if (CAN1_MessageTransmit(messageID, messageLength, message, 1, CANFD_MODE_NORMAL, CANFD_MSG_TX_DATA_FRAME) == false) {
-#ifndef SHOW_DATA
-					printf("CAN1_MessageTransmit request has failed\r\n");
-#endif
+					sprintf(buffer, "CAN1_MessageTransmit request has failed");
+					eaDogM_WriteStringAtPos(11, 0, buffer);
 				}
 				break;
 			case '3':
 				msg_ready = CAN1_InterruptGet(2, 0x1f);
 				if (msg_ready) {
-#ifndef SHOW_DATA
-					printf(" Waiting for message: \r\n");
-#endif
+
+					// Waiting for message
+
 					CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE, 2);
 					state = APP_STATE_CAN_IDLE;
 					memset(rx_message, 0x00, sizeof(rx_message));
 
 					/* Receive New Message */
 					if (CAN1_MessageReceive(&rx_messageID, &rx_messageLength, rx_message, &timestamp, 2, &msgAttr) == false) {
-#ifndef SHOW_DATA
-						printf("CAN1_MessageReceive request has failed\r\n");
-#endif
+						sprintf(buffer, "CAN1_MessageReceive request has failed");
+						eaDogM_WriteStringAtPos(11, 0, buffer);
 					}
-					//					LEDY_Clear();
 				} else {
 					state = APP_STATE_CAN_USER_INPUT;
-#ifndef SHOW_DATA
-					printf(" No message: \r\n");
-					print_menu_h();
-#endif
 				}
 				break;
 			case 'm':
-#ifndef SHOW_DATA
-				print_menu_h();
-#endif
 				break;
 			case 'n':
 				break;
 			default:
-#ifndef SHOW_DATA
-				printf(" Invalid Input \r\n");
-				print_menu_h();
-#endif
 				break;
 			}
 		}
@@ -384,91 +317,52 @@ int host_sm(void)
 		case APP_STATE_CAN_XFER_SUCCESSFUL:
 		{
 			wait_count = 0;
+			sprintf(buffer, "                             ");
+			eaDogM_WriteStringAtPos(14, 0, buffer);
+
 			while (uart1_dma_busy || U1STAbits.UTXBF) { // should never wait in normal operation
 			};
-			//			while (uart2_dma_busy || U2STAbits.UTXBF) { // should never wait in normal operation
-			//			};
 			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
 
 				/* Print message to Console */
 				uint8_t length = rx_messageLength;
 				uint16_t * mtype = (uint16_t *) & rx_message[0];
-#ifndef SHOW_DATA    
-				PrintFormattedData_h(" Message - Timestamp : 0x%x ID : 0x%x Length : 0x%x ", timestamp, (unsigned int) rx_messageID, (unsigned int) rx_messageLength);
-				printf("Message : ");
-#endif
 				sprintf(uart_buffer, "-1, Bad  Message ID code\r\n");
 				if (*mtype == CAN_IMU_DATA) {
 					accel = (sSensorData_t *) rx_message;
-#ifndef SHOW_DATA
-					printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f, sensor TS 0X%x, %u, %u\r\n", accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->sensortime, length, rx_message[0]);
-#else
 					length++;
 					sprintf(uart_buffer, "%3d,%7X,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.1f,%s\r\n", accel->id, rx_messageID, accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->xerr, accel->yerr, accel->zerr, (double) accel->sensortime, IMU_ALIAS);
-#endif
 				}
 				if (*mtype == CAN_IMU_INFO) {
 					imu = (imu_cmd_t *) rx_message;
 					imu->host_serial_id = host_cpu_serial_id;
 					sprintf(uart_buffer, "%3d,%7X,%7X,%3d,%3d,%3d,%18llX,%s\r\n", imu->id, imu->board_serial_id, rx_messageID, imu->device, imu->acc_range, imu->features, host_cpu_serial_id, IMU_ALIAS);
-#ifndef SHOW_DATA
-					printf("%u,%u,%u,%u sensor info %u\r\n", imu->device, imu->acc_range, imu->acc_range_scl, imu->angles, rx_message[0]);
-#endif
 				}
 				if (*mtype == CAN_FFT_LO) {
 					fft = (sFFTData_t *) rx_message;
 					sprintf(uart_buffer, "%3d,%7X,%3d,%s\r\n", fft->id, rx_messageID, fft_bin_total(fft, 16), IMU_ALIAS);
-#ifndef SHOW_DATA
-#endif
 				}
 				if (*mtype == CAN_FFT_HI) {
 					fft = (sFFTData_t *) rx_message;
 					sprintf(uart_buffer, "%3d,%7X,%3d,%s\r\n", fft->id, rx_messageID, fft_bin_total(fft, 0), IMU_ALIAS);
-#ifndef SHOW_DATA
-#endif
 				}
 				if (*mtype == CAN_NULL) {
 					sprintf(uart_buffer, "0,NULL Message with 0 ID code\r\n");
 				}
-				//				LED_Set(); // cpu trace signal
-				//				LEDY_Set(); // serial trace signal
 				UART1DmaWrite(uart_buffer, strlen(uart_buffer)); // send data to the ETH module
-				//				UART2DmaWrite(uart_buffer, strlen(uart_buffer)); // send data to the ETH module
-				//				LED_Clear();
-#ifndef SHOW_DATA
-				CAN1_ErrorCountGet(&txe, &rxe);
-				printf("ErrorT %d ", txe);
-				printf("ErrorR %d ", rxe);
-				printf("Can INT %d ", CAN1_InterruptGet(1, 0x1f));
-				printf("FIFO %X ", CFD1FIFOSTA2);
-				printf("Update %u ", ++times);
-				printf("ERR %X ", CFD1TREC);
-				printf("Ce0 %X ", CFD1BDIAG0);
-				printf("Ce1 %X \r\n", CFD1BDIAG1);
-				printf("\r\n");
-#endif
 			} else if ((APP_STATES) xferContext == APP_STATE_CAN_TRANSMIT) {
 			}
-#ifndef SHOW_DATA
-			print_menu_h();
-#endif
 			state = APP_STATE_CAN_USER_INPUT;
 			break;
 		}
 		case APP_STATE_CAN_XFER_ERROR:
 		{
 			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
-#ifndef SHOW_DATA
-				printf("Error in received message");
-#endif
+				sprintf(buffer, "Error in received message");
 			} else {
-#ifndef SHOW_DATA
-				printf("Failed \r\n");
-#endif
+				sprintf(buffer, "Failed");
 			}
-#ifndef SHOW_DATA
-			print_menu_h();
-#endif
+			eaDogM_WriteStringAtPos(10, 0, buffer);
 			state = APP_STATE_CAN_USER_INPUT;
 			break;
 		}
