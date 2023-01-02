@@ -49,7 +49,7 @@ uint32_t fft_bin_total(sFFTData_t *, uint32_t);
 
 /* Variable to save application state */
 //static APP_STATES state = APP_STATE_CAN_USER_INPUT;
-static APP_STATES state = APP_STATE_CAN_IDLE;
+static APP_STATES state = APP_STATE_CAN_USER_INPUT;
 /* Variable to save Tx/Rx transfer status and context */
 static volatile uint32_t status = 0;
 static volatile uint32_t xferContext = 0;
@@ -102,7 +102,8 @@ void APP_CAN_Callback_h(uintptr_t context)
 
 	/* Check CAN Status */
 	status = CAN1_ErrorGet();
-	sprintf(buffer, "CB status %d", status);
+	CAN1_ErrorCountGet(&txe, &rxe);
+	sprintf(buffer, "CB %d,TE %d,RE %d,ER %X,DI %X", status, txe, rxe, CFD1TREC,CFD1BDIAG1);
 	eaDogM_WriteStringAtPos(5, 0, buffer);
 
 	if ((status & (CANFD_ERROR_TX_RX_WARNING_STATE | CANFD_ERROR_RX_WARNING_STATE |
@@ -186,7 +187,8 @@ int host_sm(void)
 	uint8_t count = 0;
 	bool msg_ready = false;
 	uint64_t * hcid = (uint64_t *) & DEVSN0; // set pointer to 64-bit cpu serial number
-	uint32_t wait_count = 0;
+	uint32_t wait_count = 0, recv_count = 0;
+	;
 
 	/* Initialize all modules */
 	//	SYS_Initialize(NULL);
@@ -291,6 +293,11 @@ int host_sm(void)
 						sprintf(buffer, "CAN1_MessageReceive request has failed");
 						eaDogM_WriteStringAtPos(11, 0, buffer);
 					}
+					/* Application can do other task here */
+					sprintf(buffer, " CAN-FD  received %i", recv_count++);
+					eaDogM_WriteStringAtPos(13, 0, buffer);
+					OledUpdate();
+					WaitMs(50);
 				} else {
 					state = APP_STATE_CAN_USER_INPUT;
 				}
