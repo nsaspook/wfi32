@@ -103,7 +103,7 @@ void APP_CAN_Callback_h(uintptr_t context)
 	/* Check CAN Status */
 	status = CAN1_ErrorGet();
 	CAN1_ErrorCountGet(&txe, &rxe);
-	sprintf(buffer, "CB %d,TE %d,RE %d,ER %X,DI %X", status, txe, rxe, CFD1TREC,CFD1BDIAG1);
+	sprintf(buffer, "CB %d,TE %d,RE %d,ER %X,DI %X", status, txe, rxe, CFD1TREC, CFD1BDIAG1);
 	eaDogM_WriteStringAtPos(5, 0, buffer);
 
 	if ((status & (CANFD_ERROR_TX_RX_WARNING_STATE | CANFD_ERROR_RX_WARNING_STATE |
@@ -242,10 +242,24 @@ int host_sm(void)
 
 		if (state == APP_STATE_CAN_USER_INPUT) {
 			user_input = 'n';
+			UART1_ErrorGet(); // clear UART junk
+
 			/* Read user input */
 			if (UART1_ReceiverIsReady()) {
+				sprintf(buffer, " Processing CAN-FD  %i 1", wait_count++);
+				eaDogM_WriteStringAtPos(10, 0, buffer);
+				OledUpdate();
+				WaitMs(50);
 				UART1_Read((void *) &user_input, 1);
+				sprintf(buffer, " Processing CAN-FD  %i 2", wait_count++);
+				eaDogM_WriteStringAtPos(11, 0, buffer);
+				OledUpdate();
+				WaitMs(50);
 			} else {
+				sprintf(buffer, " Processing CAN-FD  %i 3", wait_count++);
+				eaDogM_WriteStringAtPos(12, 0, buffer);
+				OledUpdate();
+				WaitMs(50);
 				if (CAN1_InterruptGet(2, 0x1f)) {
 					user_input = '3';
 				}

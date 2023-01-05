@@ -291,6 +291,7 @@ int main(void)
 	LED_Clear();
 	LEDY_Clear();
 
+	UART1_ErrorGet(); // clear UART junk
 	while (true) {
 		if (state == APP_STATE_CAN_USER_INPUT) {
 			user_input = 'n';
