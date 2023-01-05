@@ -74,7 +74,7 @@ void GPIO_Initialize ( void )
     LATC = 0x9200U; /* Initial Latch Value */
     TRISCCLR = 0x9a04U; /* Direction Control */
     ANSELCCLR = 0x1807U; /* Digital Mode Enable */
-    CNPUCSET = 0xa04U; /* Pull-Up Enable */
+    CNPUCSET = 0xa06U; /* Pull-Up Enable */
     SRCON0CSET = 0x1c3U; /* Slew Rate Control */
     /* PORTD Initialization */
     LATD = 0x100U; /* Initial Latch Value */
