@@ -236,30 +236,25 @@ int host_sm(void)
 	LED_RED_Off();
 	WaitMs(500);
 
+	UART1_ErrorGet(); // clear UART junk
+	StartTimer(TMR_HOST, host_lcd_update);
 	while (true) {
 
 		LED_GREEN_Toggle();
 
 		if (state == APP_STATE_CAN_USER_INPUT) {
 			user_input = 'n';
-			UART1_ErrorGet(); // clear UART junk
 
 			/* Read user input */
 			if (UART1_ReceiverIsReady()) {
-				sprintf(buffer, " Processing CAN-FD  %i 1", wait_count++);
+				sprintf(buffer, "Processing CAN-FD %i 1", wait_count++);
 				eaDogM_WriteStringAtPos(10, 0, buffer);
-				OledUpdate();
-				WaitMs(50);
 				UART1_Read((void *) &user_input, 1);
-				sprintf(buffer, " Processing CAN-FD  %i 2", wait_count++);
+				sprintf(buffer, "Processing CAN-FD %i, input %c 2", wait_count++, user_input);
 				eaDogM_WriteStringAtPos(11, 0, buffer);
-				OledUpdate();
-				WaitMs(50);
 			} else {
-				sprintf(buffer, " Processing CAN-FD  %i 3", wait_count++);
+				sprintf(buffer, "Processing CAN-FD %i 3", wait_count++);
 				eaDogM_WriteStringAtPos(12, 0, buffer);
-				OledUpdate();
-				WaitMs(50);
 				if (CAN1_InterruptGet(2, 0x1f)) {
 					user_input = '3';
 				}
@@ -276,7 +271,7 @@ int host_sm(void)
 				messageLength = 64;
 				if (CAN1_MessageTransmit(messageID, messageLength, message, 1, CANFD_MODE_FD_WITH_BRS, CANFD_MSG_TX_DATA_FRAME) == false) {
 					sprintf(buffer, "CAN1_MessageTransmit request has failed");
-					eaDogM_WriteStringAtPos(11, 0, buffer);
+					eaDogM_WriteStringAtPos(9, 0, buffer);
 				}
 				break;
 			case '2':
@@ -289,7 +284,7 @@ int host_sm(void)
 				messageLength = 8;
 				if (CAN1_MessageTransmit(messageID, messageLength, message, 1, CANFD_MODE_NORMAL, CANFD_MSG_TX_DATA_FRAME) == false) {
 					sprintf(buffer, "CAN1_MessageTransmit request has failed");
-					eaDogM_WriteStringAtPos(11, 0, buffer);
+					eaDogM_WriteStringAtPos(9, 0, buffer);
 				}
 				break;
 			case '3':
@@ -305,13 +300,12 @@ int host_sm(void)
 					/* Receive New Message */
 					if (CAN1_MessageReceive(&rx_messageID, &rx_messageLength, rx_message, &timestamp, 2, &msgAttr) == false) {
 						sprintf(buffer, "CAN1_MessageReceive request has failed");
-						eaDogM_WriteStringAtPos(11, 0, buffer);
+						eaDogM_WriteStringAtPos(9, 0, buffer);
 					}
 					/* Application can do other task here */
-					sprintf(buffer, " CAN-FD  received %i", recv_count++);
+					sprintf(buffer, "CAN-FD  received %i", recv_count++);
 					eaDogM_WriteStringAtPos(13, 0, buffer);
-					OledUpdate();
-					WaitMs(50);
+					wait_count = 0;
 				} else {
 					state = APP_STATE_CAN_USER_INPUT;
 				}
@@ -329,10 +323,8 @@ int host_sm(void)
 		case APP_STATE_CAN_IDLE:
 		{
 			/* Application can do other task here */
-			sprintf(buffer, " Waiting for CAN-FD  %i", wait_count++);
+			sprintf(buffer, "Waiting for CAN-FD  %i", wait_count++);
 			eaDogM_WriteStringAtPos(14, 0, buffer);
-			OledUpdate();
-			WaitMs(50);
 			break;
 		}
 		case APP_STATE_CAN_XFER_SUCCESSFUL:
@@ -390,7 +382,10 @@ int host_sm(void)
 		default:
 			break;
 		}
-
+		if (TimerDone(TMR_HOST)) {
+			StartTimer(TMR_HOST, host_lcd_update);
+			OledUpdate();
+		}
 	}
 
 	/* Execution should not come here during normal operation */
