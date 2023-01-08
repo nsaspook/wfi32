@@ -116,18 +116,14 @@
 #define PWM4ER_Get()               ((PORTA >> 8) & 0x1U)
 #define PWM4ER_PIN                  GPIO_PIN_RA8
 
-/*** Macros for REFCLK2 pin ***/
-#define REFCLK2_Get()               ((PORTA >> 4) & 0x1U)
-#define REFCLK2_PIN                  GPIO_PIN_RA4
-
 /*** Macros for LED_GREEN pin ***/
-#define LED_GREEN_Set()               (LATCSET = (1U<<12))
-#define LED_GREEN_Clear()             (LATCCLR = (1U<<12))
-#define LED_GREEN_Toggle()            (LATCINV= (1U<<12))
-#define LED_GREEN_OutputEnable()      (TRISCCLR = (1U<<12))
-#define LED_GREEN_InputEnable()       (TRISCSET = (1U<<12))
-#define LED_GREEN_Get()               ((PORTC >> 12) & 0x1U)
-#define LED_GREEN_PIN                  GPIO_PIN_RC12
+#define LED_GREEN_Set()               (LATASET = (1U<<4))
+#define LED_GREEN_Clear()             (LATACLR = (1U<<4))
+#define LED_GREEN_Toggle()            (LATAINV= (1U<<4))
+#define LED_GREEN_OutputEnable()      (TRISACLR = (1U<<4))
+#define LED_GREEN_InputEnable()       (TRISASET = (1U<<4))
+#define LED_GREEN_Get()               ((PORTA >> 4) & 0x1U)
+#define LED_GREEN_PIN                  GPIO_PIN_RA4
 
 /*** Macros for LED_RED pin ***/
 #define LED_RED_Set()               (LATCSET = (1U<<15))

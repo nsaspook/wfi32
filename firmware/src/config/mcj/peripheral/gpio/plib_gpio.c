@@ -59,8 +59,8 @@ void GPIO_Initialize ( void )
 {
 
     /* PORTA Initialization */
-    LATA = 0x800U; /* Initial Latch Value */
-    TRISACLR = 0x800U; /* Direction Control */
+    LATA = 0x810U; /* Initial Latch Value */
+    TRISACLR = 0x810U; /* Direction Control */
     ANSELACLR = 0x1911U; /* Digital Mode Enable */
     CNPUASET = 0x1900U; /* Pull-Up Enable */
     /* PORTB Initialization */
@@ -103,7 +103,6 @@ void GPIO_Initialize ( void )
     RPC7R = 4;
     RPC0R = 1;
     RPB5R = 3;
-    RPA4R = 18;
     RPB3R = 12;
 
         /* Lock back the system after PPS configuration */

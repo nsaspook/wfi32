@@ -74,7 +74,7 @@
 #pragma config DMTINTV =    WIN_127_128
 #pragma config FSOSCEN =    OFF
 #pragma config IESO =       ON
-#pragma config POSCMOD =    OFF
+#pragma config POSCMOD =    EC
 #pragma config OSCIOFNC =   OFF
 #pragma config FCKSM =      CSECME
 #pragma config WDTPS =      PS1048576
@@ -87,9 +87,9 @@
 
 /*** DEVCFG2 ***/
 #pragma config FPLLIDIV =   DIV_1
-#pragma config FPLLRNG =    RANGE_5_10_MHZ
-#pragma config FPLLICLK =   PLL_FRC
-#pragma config FPLLMULT =   MUL_60
+#pragma config FPLLRNG =    RANGE_8_16_MHZ
+#pragma config FPLLICLK =   PLL_POSC
+#pragma config FPLLMULT =   MUL_40
 #pragma config FPLLODIV =   DIV_4
 #pragma config BORSEL =     LOW
 
@@ -182,14 +182,14 @@ void SYS_Initialize ( void* data )
 
     DMAC_Initialize();
 
+    CORETIMER_Initialize();
     TMR6_Initialize();
 
-    CORETIMER_Initialize();
     ADCHS_Initialize();
 
-	UART1_Initialize();
-
     QEI2_Initialize();
+
+	UART1_Initialize();
 
     TMR5_Initialize();
 

@@ -188,7 +188,9 @@ int main(void)
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
 	
+#ifdef HOST_BOARD
 	host_sm();
+#endif
 
 	/* Start system tick timer */
 	CORETIMER_Start();
