@@ -350,6 +350,8 @@ int host_sm(void)
 					imu = (imu_cmd_t *) rx_message;
 					imu->host_serial_id = host_cpu_serial_id;
 					sprintf(uart_buffer, "%3d,%7X,%7X,%3d,%3d,%3d,%18llX,%s\r\n", imu->id, imu->board_serial_id, rx_messageID, imu->device, imu->acc_range, imu->features, host_cpu_serial_id, IMU_ALIAS);
+					sprintf(buffer, "ID:%3d,%7X,%7X", imu->id, imu->board_serial_id, rx_messageID);
+					eaDogM_WriteStringAtPos(15, 0, buffer);
 				}
 				if (*mtype == CAN_FFT_LO) {
 					fft = (sFFTData_t *) rx_message;
