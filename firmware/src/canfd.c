@@ -119,6 +119,8 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 	}
 
 	while (true) {
+		CAN1_CallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
+		CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT);
 		if (state == APP_STATE_CAN_USER_INPUT) {
 			user_input = mode;
 
@@ -130,7 +132,7 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 					//					CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 					//					CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT);
 					state = APP_STATE_CAN_IDLE;
-					
+
 					/*
 					 * use CAN-FD compatible 29-bit serial ID numbers
 					 */
