@@ -16280,7 +16280,7 @@ W = angled&lt;p&gt;
 <part name="TP1" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="PTR1" device="PAD1-13" package3d_urn="urn:adsk.eagle:package:27946/1"/>
 <part name="TP3" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="PTR1" device="PAD1-13" package3d_urn="urn:adsk.eagle:package:27946/1"/>
 <part name="TP2" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="PTR1" device="PAD1-13" package3d_urn="urn:adsk.eagle:package:27946/1"/>
-<part name="REFCLK2" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="PTR1" device="PAD1-13" package3d_urn="urn:adsk.eagle:package:27946/1"/>
+<part name="GLED" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="PTR1" device="PAD1-13" package3d_urn="urn:adsk.eagle:package:27946/1"/>
 <part name="VSS20" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 <part name="J4" library="MLE-105-01-G-DV" deviceset="MLE-105-01-G-DV" device=""/>
 <part name="VSS9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
@@ -16321,6 +16321,7 @@ W = angled&lt;p&gt;
 <part name="C18" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.1uf"/>
 <part name="VSS31" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 <part name="VDD12" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VDD" device=""/>
+<part name="VDD13" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VDD" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -16509,7 +16510,7 @@ W = angled&lt;p&gt;
 <attribute name="NAME" x="-54.61" y="28.956" size="1.778" layer="95"/>
 <attribute name="TP_SIGNAL_NAME" x="-50.8" y="24.13" size="1.778" layer="97" rot="R270"/>
 </instance>
-<instance part="REFCLK2" gate="G$1" x="215.9" y="12.7" smashed="yes" rot="R90">
+<instance part="GLED" gate="G$1" x="215.9" y="12.7" smashed="yes" rot="R90">
 <attribute name="NAME" x="222.25" y="11.684" size="1.778" layer="95" rot="R180"/>
 <attribute name="TP_SIGNAL_NAME" x="218.44" y="13.97" size="1.778" layer="97" rot="R90"/>
 </instance>
@@ -16651,6 +16652,9 @@ W = angled&lt;p&gt;
 </instance>
 <instance part="VDD12" gate="G$1" x="210.82" y="-25.4" smashed="yes">
 <attribute name="VALUE" x="208.28" y="-27.94" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="VDD13" gate="G$1" x="246.38" y="-25.4" smashed="yes">
+<attribute name="VALUE" x="243.84" y="-27.94" size="1.778" layer="96" rot="R90"/>
 </instance>
 </instances>
 <busses>
@@ -16818,6 +16822,14 @@ W = angled&lt;p&gt;
 <wire x1="210.82" y1="-27.94" x2="215.9" y2="-27.94" width="0.1524" layer="91"/>
 <pinref part="VDD12" gate="G$1" pin="VDD"/>
 <junction x="210.82" y="-27.94"/>
+<junction x="215.9" y="-27.94"/>
+</segment>
+<segment>
+<wire x1="241.3" y1="-27.94" x2="246.38" y2="-27.94" width="0.1524" layer="91"/>
+<pinref part="OS1" gate="A" pin="CON"/>
+<pinref part="VDD13" gate="G$1" pin="VDD"/>
+<junction x="241.3" y="-27.94"/>
+<junction x="246.38" y="-27.94"/>
 </segment>
 </net>
 <net name="VSS" class="0">
@@ -17097,6 +17109,7 @@ W = angled&lt;p&gt;
 <wire x1="210.82" y1="-35.56" x2="210.82" y2="-38.1" width="0.1524" layer="91"/>
 <wire x1="210.82" y1="-38.1" x2="215.9" y2="-38.1" width="0.1524" layer="91"/>
 <junction x="215.9" y="-38.1"/>
+<junction x="210.82" y="-35.56"/>
 </segment>
 </net>
 <net name="AVDD" class="0">
@@ -17151,7 +17164,7 @@ W = angled&lt;p&gt;
 <junction x="25.4" y="91.44"/>
 </segment>
 </net>
-<net name="GREEN_LED" class="0">
+<net name="OSC_MCU" class="0">
 <segment>
 <pinref part="U1" gate="A" pin="OSCI/CLKI/AN49/CVD49/RPC12/RC12"/>
 <wire x1="200.66" y1="17.78" x2="213.36" y2="17.78" width="0.1524" layer="91"/>
@@ -17160,11 +17173,11 @@ W = angled&lt;p&gt;
 <junction x="213.36" y="17.78"/>
 </segment>
 <segment>
-<wire x1="25.4" y1="101.6" x2="38.1" y2="101.6" width="0.1524" layer="91"/>
-<pinref part="R2" gate="G$1" pin="2"/>
-<label x="33.02" y="101.6" size="1.778" layer="95"/>
-<junction x="38.1" y="101.6"/>
-<junction x="25.4" y="101.6"/>
+<wire x1="241.3" y1="-33.02" x2="254" y2="-33.02" width="0.1524" layer="91"/>
+<pinref part="OS1" gate="A" pin="OUT"/>
+<junction x="241.3" y="-33.02"/>
+<label x="241.3" y="-38.1" size="1.778" layer="95"/>
+<junction x="254" y="-33.02"/>
 </segment>
 </net>
 <net name="RED_LED" class="0">
@@ -17868,13 +17881,21 @@ W = angled&lt;p&gt;
 <junction x="-17.78" y="25.4"/>
 </segment>
 </net>
-<net name="N$8" class="0">
+<net name="GREEN_LED" class="0">
 <segment>
 <pinref part="U1" gate="A" pin="OA5IN+/AN24/CVD24/C5IN1+/C5IN3-/RPA4/RA4"/>
-<pinref part="REFCLK2" gate="G$1" pin="TP"/>
+<pinref part="GLED" gate="G$1" pin="TP"/>
 <wire x1="213.36" y1="12.7" x2="200.66" y2="12.7" width="0.1524" layer="91"/>
 <junction x="213.36" y="12.7"/>
 <junction x="200.66" y="12.7"/>
+<label x="200.66" y="7.62" size="1.778" layer="95"/>
+</segment>
+<segment>
+<wire x1="38.1" y1="101.6" x2="25.4" y2="101.6" width="0.1524" layer="91"/>
+<pinref part="R2" gate="G$1" pin="2"/>
+<label x="33.02" y="101.6" size="1.778" layer="95"/>
+<junction x="25.4" y="101.6"/>
+<junction x="38.1" y="101.6"/>
 </segment>
 </net>
 <net name="N$7" class="0">

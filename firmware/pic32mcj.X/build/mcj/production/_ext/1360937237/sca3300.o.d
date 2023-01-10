@@ -7,15 +7,15 @@ build/mcj/production/_ext/1360937237/sca3300.o: ../src/sca3300.c \
  ../src/config/mcj/peripheral/gpio/plib_gpio.h \
  ../src/config/mcj/peripheral/evic/plib_evic.h \
  ../src/config/mcj/peripheral/dmac/plib_dmac.h \
- ../src/config/mcj/peripheral/coretimer/plib_coretimer.h \
  ../src/config/mcj/peripheral/tmr/plib_tmr6.h \
  ../src/config/mcj/peripheral/tmr/plib_tmr_common.h \
+ ../src/config/mcj/peripheral/coretimer/plib_coretimer.h \
  ../src/config/mcj/peripheral/adchs/plib_adchs.h \
  ../src/config/mcj/peripheral/adchs/plib_adchs_common.h \
- ../src/config/mcj/peripheral/qei/plib_qei2.h \
- ../src/config/mcj/peripheral/qei/plib_qei_common.h \
  ../src/config/mcj/peripheral/uart/plib_uart1.h \
  ../src/config/mcj/peripheral/uart/plib_uart_common.h \
+ ../src/config/mcj/peripheral/qei/plib_qei2.h \
+ ../src/config/mcj/peripheral/qei/plib_qei_common.h \
  ../src/config/mcj/peripheral/tmr/plib_tmr5.h \
  ../src/config/mcj/peripheral/mcpwm/plib_mcpwm.h \
  ../src/config/mcj/peripheral/mcpwm/plib_mcpwm_common.h \
@@ -46,23 +46,23 @@ build/mcj/production/_ext/1360937237/sca3300.o: ../src/sca3300.c \
 
 ../src/config/mcj/peripheral/dmac/plib_dmac.h:
 
-../src/config/mcj/peripheral/coretimer/plib_coretimer.h:
-
 ../src/config/mcj/peripheral/tmr/plib_tmr6.h:
 
 ../src/config/mcj/peripheral/tmr/plib_tmr_common.h:
+
+../src/config/mcj/peripheral/coretimer/plib_coretimer.h:
 
 ../src/config/mcj/peripheral/adchs/plib_adchs.h:
 
 ../src/config/mcj/peripheral/adchs/plib_adchs_common.h:
 
-../src/config/mcj/peripheral/qei/plib_qei2.h:
-
-../src/config/mcj/peripheral/qei/plib_qei_common.h:
-
 ../src/config/mcj/peripheral/uart/plib_uart1.h:
 
 ../src/config/mcj/peripheral/uart/plib_uart_common.h:
+
+../src/config/mcj/peripheral/qei/plib_qei2.h:
+
+../src/config/mcj/peripheral/qei/plib_qei_common.h:
 
 ../src/config/mcj/peripheral/tmr/plib_tmr5.h:
 

@@ -263,9 +263,10 @@ int host_sm(void)
 			switch (user_input) {
 			case '1':
 				// Transmitting CAN FD Message
-
+#ifdef INT_BOARD
 				CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE);
+#endif
 				state = APP_STATE_CAN_IDLE;
 				messageID = 0x45A;
 				messageLength = 64;
@@ -276,9 +277,10 @@ int host_sm(void)
 				break;
 			case '2':
 				// Transmitting CAN Normal Message
-
+#ifdef INT_BOARD
 				CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE);
+#endif
 				state = APP_STATE_CAN_IDLE;
 				messageID = 0x469;
 				messageLength = 8;
@@ -292,8 +294,9 @@ int host_sm(void)
 				if (msg_ready) {
 
 					// Waiting for message
-
+#ifdef HOST_BOARD
 					CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE, 2);
+#endif
 					state = APP_STATE_CAN_IDLE;
 					memset(rx_message, 0x00, sizeof(rx_message));
 
