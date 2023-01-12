@@ -65,7 +65,7 @@ typedef enum
     APP_STATE_SERVICE_TASKS,
     /* TODO: Define states used by the application state machine. */
 
-} APP_STATES_0;
+} APP_STATES;
 
 
 // *****************************************************************************
@@ -84,7 +84,7 @@ typedef enum
 typedef struct
 {
     /* The application's current state */
-    APP_STATES_0 state;
+    APP_STATES state;
 
     /* TODO: Define any additional data used by the application. */
 

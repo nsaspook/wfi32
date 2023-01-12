@@ -19,7 +19,7 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-//#define HOST_BOARD
+#define HOST_BOARD
 	
 #define IMU_CS 0
 #define LCD_CS 0

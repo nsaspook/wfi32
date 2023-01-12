@@ -364,12 +364,12 @@ bool CAN1_MessageReceive(uint32_t *id, uint8_t *length, uint8_t *data, uint32_t 
         else
         {
             *id = rxMessage->r0 & CANFD_MSG_SID_MASK;
-    }
+        }
 
         if ((rxMessage->r1 & CANFD_MSG_RTR_MASK) && ((rxMessage->r1 & CANFD_MSG_FDF_MASK) == 0))
-    {
+        {
             *msgAttr = CANFD_MSG_RX_REMOTE_FRAME;
-    }
+        }
         else
         {
             *msgAttr = CANFD_MSG_RX_DATA_FRAME;
@@ -392,7 +392,7 @@ bool CAN1_MessageReceive(uint32_t *id, uint8_t *length, uint8_t *data, uint32_t 
         *(volatile uint32_t *)(&CFD1FIFOCON1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)) |= _CFD1FIFOCON1_UINC_MASK;
 
         /* Message is processed successfully, so return true */
-    status = true;
+        status = true;
     }
 
     return status;

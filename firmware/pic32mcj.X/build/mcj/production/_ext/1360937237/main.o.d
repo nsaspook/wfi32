@@ -12,10 +12,10 @@ build/mcj/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/config/mcj/peripheral/coretimer/plib_coretimer.h \
  ../src/config/mcj/peripheral/adchs/plib_adchs.h \
  ../src/config/mcj/peripheral/adchs/plib_adchs_common.h \
- ../src/config/mcj/peripheral/uart/plib_uart1.h \
- ../src/config/mcj/peripheral/uart/plib_uart_common.h \
  ../src/config/mcj/peripheral/qei/plib_qei2.h \
  ../src/config/mcj/peripheral/qei/plib_qei_common.h \
+ ../src/config/mcj/peripheral/uart/plib_uart1.h \
+ ../src/config/mcj/peripheral/uart/plib_uart_common.h \
  ../src/config/mcj/peripheral/tmr/plib_tmr5.h \
  ../src/config/mcj/peripheral/mcpwm/plib_mcpwm.h \
  ../src/config/mcj/peripheral/mcpwm/plib_mcpwm_common.h \
@@ -65,13 +65,13 @@ build/mcj/production/_ext/1360937237/main.o: ../src/main.c \
 
 ../src/config/mcj/peripheral/adchs/plib_adchs_common.h:
 
-../src/config/mcj/peripheral/uart/plib_uart1.h:
-
-../src/config/mcj/peripheral/uart/plib_uart_common.h:
-
 ../src/config/mcj/peripheral/qei/plib_qei2.h:
 
 ../src/config/mcj/peripheral/qei/plib_qei_common.h:
+
+../src/config/mcj/peripheral/uart/plib_uart1.h:
+
+../src/config/mcj/peripheral/uart/plib_uart_common.h:
 
 ../src/config/mcj/peripheral/tmr/plib_tmr5.h:
 

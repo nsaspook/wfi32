@@ -11,7 +11,7 @@
 #define USE_SERIAL_DMA
 
 #ifdef USE_SERIAL_DMA
-#include "config/default/peripheral/dmac/plib_dmac.h"
+#include "config/mcj/peripheral/dmac/plib_dmac.h"
 #endif
 
 /* Application's state machine enum */

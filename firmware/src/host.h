@@ -17,6 +17,8 @@ extern "C" {
 	
 #define host_lcd_update	50
 	
+#define INT_BOARD
+	
 /*
  * CAN-FD vibration sensor host to network state machine
  */

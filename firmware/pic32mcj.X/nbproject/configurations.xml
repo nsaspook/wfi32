@@ -164,7 +164,6 @@
           <itemPath>../src/config/mcj/exceptions.c</itemPath>
         </logicalFolder>
       </logicalFolder>
-      <itemPath>../src/main.c</itemPath>
       <itemPath>../src/bma490l.c</itemPath>
       <itemPath>../src/timers.c</itemPath>
       <itemPath>../src/sca3300.c</itemPath>
@@ -175,6 +174,7 @@
       <itemPath>../src/do_fft.c</itemPath>
       <itemPath>../src/fft.c</itemPath>
       <itemPath>../src/host.c</itemPath>
+      <itemPath>../src/main.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -219,7 +219,7 @@
         <platformTool>ICD4Tool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.20</languageToolchainVersion>
-        <platform>2</platform>
+        <platform>3</platform>
       </toolsSet>
       <packs>
         <pack name="PIC32MK-MC_DFP" vendor="Microchip" version="1.11.151"/>
