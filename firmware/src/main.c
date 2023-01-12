@@ -188,7 +188,7 @@ int main(void)
 
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
-	
+
 #ifdef HOST_BOARD
 	host_sm();
 #endif
@@ -237,6 +237,8 @@ int main(void)
 	imu0.board_serial_id = board_serial_id;
 	sprintf(buffer, "%s Controller %s %X", IMU_ALIAS, IMU_DRIVER, cpu_serial_id);
 	eaDogM_WriteStringAtPos(15, 0, buffer);
+	sprintf(buffer, "Configuration %s", "Sensor node");
+	eaDogM_WriteStringAtPos(14, 0, buffer);
 	OledUpdate();
 
 	/*
@@ -333,7 +335,7 @@ int main(void)
 			 * This is not a pure FFT as it mixes bin data
 			 * with sample data for a feedback signature
 			 */
-			inB[ffti] = 128 + (uint8_t) (120.0 * (accel.x+accel.y+accel.z)); // select one axis for display
+			inB[ffti] = 128 + (uint8_t) (120.0 * (accel.x + accel.y + accel.z)); // select one axis for display
 			if (fft_settle) {
 				sprintf(buffer, "FFTs %3d,%3d ", inB[ffti], ffti);
 				eaDogM_WriteStringAtPos(7, 4, buffer);

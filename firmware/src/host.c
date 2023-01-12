@@ -231,6 +231,8 @@ int host_sm(void)
 	eaDogM_WriteStringAtPos(0, 0, buffer);
 	sprintf(buffer, "%s Controller %s %llX", HOST_ALIAS, HOST_DRIVER, host_cpu_serial_id);
 	eaDogM_WriteStringAtPos(2, 0, buffer);
+	sprintf(buffer, "Configuration %s", "Host node");
+	eaDogM_WriteStringAtPos(14, 0, buffer);
 	OledUpdate();
 
 	LED_RED_Off();

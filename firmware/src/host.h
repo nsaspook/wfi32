@@ -14,15 +14,18 @@ extern "C" {
 
 #define HOST_DRIVER "V1.501" 
 #define HOST_ALIAS "HOST"
-	
+
 #define host_lcd_update	50
-	
+
+#ifdef XPRJ_nsensor
+#define HOST_BOARD
 #define INT_BOARD
-	
-/*
- * CAN-FD vibration sensor host to network state machine
- */
-int host_sm(void);
+#endif
+
+	/*
+	 * CAN-FD vibration sensor host to network state machine
+	 */
+	int host_sm(void);
 
 #ifdef	__cplusplus
 }
