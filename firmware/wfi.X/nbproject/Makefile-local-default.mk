@@ -33,4 +33,4 @@ MP_CPPC_DIR="/opt/microchip/xc32/v4.20/bin"
 MP_AS_DIR="/opt/microchip/xc32/v4.20/bin"
 MP_LD_DIR="/opt/microchip/xc32/v4.20/bin"
 MP_AR_DIR="/opt/microchip/xc32/v4.20/bin"
-DFP_DIR=/opt/microchip/mplabx/v6.05/packs/Microchip/PIC32MZ-W_DFP/1.6.220
+DFP_DIR=/opt/microchip/mplabx/v6.05/packs/Microchip/PIC32MK-MC_DFP/1.11.151
