@@ -23,7 +23,7 @@ extern "C" {
 #define LCD_CS 0
 
 #define BMA_LOG_TIMEOUT 25
-#define SCA_LOG_TIMEOUT 3 // 7
+#define SCA_LOG_TIMEOUT 5 // 3
 
 #define SHOW_LOG
 #define SHOW_LCD

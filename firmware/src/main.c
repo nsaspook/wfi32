@@ -298,6 +298,7 @@ int main(void)
 #endif
 			TP1_Set();
 			imu0.op.imu_getdata(&imu0); // read data from the chip
+			TP3_Toggle();
 			imu0.update = false;
 			TP1_Clear();
 			TP1_Set();
@@ -341,16 +342,16 @@ int main(void)
 				eaDogM_WriteStringAtPos(7, 4, buffer);
 			}
 			ffti++;
-			TP3_Set(); // FFT processing timing mark
+//			TP3_Set(); // FFT processing timing mark
 			do_fft(false); // convert to 128 frequency bins in 8-bit sample buffer
-			TP3_Clear(); // end of FFT function
-			TP3_Set(); // drawing processing mark
+//			TP3_Clear(); // end of FFT function
+//			TP3_Set(); // drawing processing mark
 			w = 0;
 			while (w < 128) {
 				fft_draw(w, inB[w]); // create screen graph from bin data
 				w++;
 			}
-			TP3_Clear(); // end of drawing function
+//			TP3_Clear(); // end of drawing function
 #ifdef SHOW_VG
 			TP1_Set();
 			q0 = accel.x;
