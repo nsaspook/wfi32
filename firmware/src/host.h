@@ -26,6 +26,11 @@ extern "C" {
 #define SENSOR_BOARD
 #define BLOCK_BOARD
 #endif
+	
+#ifdef XPRJ_mcj_remote
+#define SENSOR_BOARD
+#define BLOCK_BOARD
+#endif
 
 	/*
 	 * CAN-FD vibration sensor host to network state machine
