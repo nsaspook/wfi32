@@ -11,7 +11,14 @@
 #define USE_SERIAL_DMA
 
 #ifdef USE_SERIAL_DMA
+#ifdef XPRJ_mcj
 #include "config/mcj/peripheral/dmac/plib_dmac.h"
+#endif
+	
+#ifdef XPRJ_mcj_remote
+#include "config/mcj_remote/peripheral/dmac/plib_dmac.h"
+#endif
+
 #endif
 
 /* Application's state machine enum */

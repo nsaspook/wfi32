@@ -27,10 +27,7 @@ build/nsensor/production/_ext/1684788505/eadog.o: ../lcd_drv/eadog.c \
  ../src/config/nsensor/peripheral/rtcc/plib_rtcc.h \
  ../src/config/nsensor/peripheral/tmr/plib_tmr9.h \
  ../lcd_drv/display_type.h ../lcd_drv/dogm-graphic.h ../src/timers.h \
- ../lcd_drv/OledDriver.h ../lcd_drv/OledChar.h ../lcd_drv/OledGrph.h \
- ../lcd_drv/../src/config/mcj/peripheral/spi/spi_master/plib_spi_master_common.h \
- ../lcd_drv/../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.h \
- ../lcd_drv/../src/config/mcj/peripheral/gpio/plib_gpio.h
+ ../lcd_drv/OledDriver.h ../lcd_drv/OledChar.h ../lcd_drv/OledGrph.h
 
 ../lcd_drv/eadog.h:
 
@@ -99,9 +96,3 @@ build/nsensor/production/_ext/1684788505/eadog.o: ../lcd_drv/eadog.c \
 ../lcd_drv/OledChar.h:
 
 ../lcd_drv/OledGrph.h:
-
-../lcd_drv/../src/config/mcj/peripheral/spi/spi_master/plib_spi_master_common.h:
-
-../lcd_drv/../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.h:
-
-../lcd_drv/../src/config/mcj/peripheral/gpio/plib_gpio.h:

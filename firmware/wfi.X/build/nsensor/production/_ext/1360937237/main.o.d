@@ -34,9 +34,8 @@ build/nsensor/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/../../firmware/lcd_drv/OledDriver.h \
  ../src/../../firmware/lcd_drv/OledChar.h \
  ../src/../../firmware/lcd_drv/OledGrph.h ../src/gfx.h \
- ../src/../../firmware/lcd_drv/OledGrph.h \
- ../src/config/mcj/peripheral/qei/plib_qei2.h ../src/pid.h \
- ../src/do_fft.h ../src/fft.h ../src/host.h
+ ../src/../../firmware/lcd_drv/OledGrph.h ../src/pid.h ../src/do_fft.h \
+ ../src/fft.h ../src/host.h
 
 ../src/config/nsensor/definitions.h:
 
@@ -125,8 +124,6 @@ build/nsensor/production/_ext/1360937237/main.o: ../src/main.c \
 ../src/gfx.h:
 
 ../src/../../firmware/lcd_drv/OledGrph.h:
-
-../src/config/mcj/peripheral/qei/plib_qei2.h:
 
 ../src/pid.h:
 

@@ -61,7 +61,14 @@
 #include "gfx.h"
 #ifdef __32MK0512MCJ048__
 #include "canfd.h"
+#ifdef XPRJ_mcj
 #include "config/mcj/peripheral/qei/plib_qei2.h"
+#endif
+	
+#ifdef XPRJ_mcj_remote
+#include "config/mcj_remote/peripheral/qei/plib_qei2.h"
+#endif
+
 #endif
 #include "pid.h"
 #include "do_fft.h"
