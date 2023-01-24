@@ -18191,7 +18191,7 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <label x="-68.58" y="58.42" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="SDI1_MODE" class="0">
+<net name="DIS_RESET" class="0">
 <segment>
 <pinref part="U1" gate="A" pin="TMS/OA5IN-/AN27/CVD27/LVDIN/C5IN1-/RPB9/RB9"/>
 <wire x1="200.66" y1="43.18" x2="213.36" y2="43.18" width="0.1524" layer="91"/>
@@ -18260,7 +18260,7 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <junction x="-99.06" y="-2.54"/>
 </segment>
 </net>
-<net name="SS1_OUT" class="0">
+<net name="DIS_MODE" class="0">
 <segment>
 <pinref part="U1" gate="A" pin="PGC2/RPB6/SCL1/RB6"/>
 <wire x1="200.66" y1="30.48" x2="213.36" y2="30.48" width="0.1524" layer="91"/>
@@ -18283,7 +18283,7 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <junction x="-99.06" y="2.54"/>
 </segment>
 </net>
-<net name="EXT_SW1" class="0">
+<net name="DIS_CS" class="0">
 <segment>
 <pinref part="U1" gate="A" pin="AN9/CVD9/RPA11/FLT14/RA11"/>
 <wire x1="-17.78" y1="53.34" x2="-30.48" y2="53.34" width="0.1524" layer="91"/>
