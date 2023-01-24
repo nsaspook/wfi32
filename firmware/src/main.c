@@ -64,7 +64,7 @@
 #ifdef XPRJ_mcj
 #include "config/mcj/peripheral/qei/plib_qei2.h"
 #endif
-	
+
 #ifdef XPRJ_mcj_remote
 #include "config/mcj_remote/peripheral/qei/plib_qei2.h"
 #endif
@@ -196,6 +196,10 @@ int main(void)
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
 
+#ifdef XPRJ_mcj
+	//	setup the reset and command pins for the Ethernet adapter
+#endif
+
 #ifdef HOST_BOARD
 	host_sm();
 #endif
@@ -281,7 +285,9 @@ int main(void)
 	LED_GREEN_Off();
 	WaitMs(500);
 #ifdef __32MK0512MCJ048__
+#ifdef XPRJ_mcj
 	MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024);
+#endif
 	MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024);
 	MCPWM_Start();
 #endif
@@ -312,7 +318,9 @@ int main(void)
 			getAllData(&accel, &imu0); // convert data from the chip
 			TP1_Clear();
 #ifdef __32MK0512MCJ048__
+#ifdef XPRJ_mcj
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024 + (uint32_t) (10.0 * accel.xa));
+#endif
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024 + (uint32_t) (10.0 * accel.ya));
 #endif
 			accel.xerr = UpdatePI(&xpid, (double) accel.xa);
@@ -349,16 +357,16 @@ int main(void)
 				eaDogM_WriteStringAtPos(7, 4, buffer);
 			}
 			ffti++;
-//			TP3_Set(); // FFT processing timing mark
+			//			TP3_Set(); // FFT processing timing mark
 			do_fft(false); // convert to 128 frequency bins in 8-bit sample buffer
-//			TP3_Clear(); // end of FFT function
-//			TP3_Set(); // drawing processing mark
+			//			TP3_Clear(); // end of FFT function
+			//			TP3_Set(); // drawing processing mark
 			w = 0;
 			while (w < 128) {
 				fft_draw(w, inB[w]); // create screen graph from bin data
 				w++;
 			}
-//			TP3_Clear(); // end of drawing function
+			//			TP3_Clear(); // end of drawing function
 #ifdef SHOW_VG
 			TP1_Set();
 			q0 = accel.x;

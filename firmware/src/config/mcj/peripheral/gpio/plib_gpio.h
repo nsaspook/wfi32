@@ -62,6 +62,24 @@
 // *****************************************************************************
 
 
+/*** Macros for ETH_CFG pin ***/
+#define ETH_CFG_Set()               (LATBSET = (1U<<14))
+#define ETH_CFG_Clear()             (LATBCLR = (1U<<14))
+#define ETH_CFG_Toggle()            (LATBINV= (1U<<14))
+#define ETH_CFG_OutputEnable()      (TRISBCLR = (1U<<14))
+#define ETH_CFG_InputEnable()       (TRISBSET = (1U<<14))
+#define ETH_CFG_Get()               ((PORTB >> 14) & 0x1U)
+#define ETH_CFG_PIN                  GPIO_PIN_RB14
+
+/*** Macros for ETH_RESET pin ***/
+#define ETH_RESET_Set()               (LATBSET = (1U<<15))
+#define ETH_RESET_Clear()             (LATBCLR = (1U<<15))
+#define ETH_RESET_Toggle()            (LATBINV= (1U<<15))
+#define ETH_RESET_OutputEnable()      (TRISBCLR = (1U<<15))
+#define ETH_RESET_InputEnable()       (TRISBSET = (1U<<15))
+#define ETH_RESET_Get()               ((PORTB >> 15) & 0x1U)
+#define ETH_RESET_PIN                  GPIO_PIN_RB15
+
 /*** Macros for EXT_SW2 pin ***/
 #define EXT_SW2_Set()               (LATASET = (1U<<12))
 #define EXT_SW2_Clear()             (LATACLR = (1U<<12))
