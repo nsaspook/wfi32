@@ -66,63 +66,6 @@ void MCPWM_Initialize (void)
     SEVTCMP = 10;
     SSEVTCMP = 10;
 
-    /*********** Channel 1 Configurations **********/
-    /* PWMCON1 register  */
-    /*  MTBS   = 0 */
-    /*  PTDIR  =  0 */
-    /*  ECAM   =  0 */
-    /*  DTCP   =  0 */
-    /*  DTC    =  3 */
-    /*  ITB    = 0 */
-    /*  PWMHIEN =  false */
-    /*  PWMLIEN = false */
-    /*  TRGIEN = false */
-    /*  CLIEN = false */
-    /*  FLTIEN = false */
-    PWMCON1 = 0xc0;
-
-    /* IOCON1 register  */
-    /*  SWAP    = 0*/
-    /*  PMOD    = 0*/
-    /*  POLH    = 0*/
-    /*  POLL    = 0*/
-    /*  FLTDAT  = 0b00 */
-    /*  FLTMOD  = 3 */
-    /*  PENH  = 1 */
-    /*  PENL  = 1 */
-    /*  FLTPOL  = 0  */
-    /*  FLTSRC  = 0  */
-    /*  CLDAT  = 0b00 */
-    /*  CLMOD  = 0 */
-    /*  CLPOL  = 0  */
-    /*  CLSRC  = 0  */
-    IOCON1 = 0xc000;
-
-    PDC1 = 1024;
-    SDC1 = 500;
-    PHASE1 = 0;
-
-    /* Dead Time */
-    DTR1 = 75;
-    ALTDTR1 = 75;
-
-    /* Trigger Generator */
-    TRGCON1 = 0x0;
-    TRIG1 = 0;
-    STRIG1 = 0;
-
-    /* leading edge blanking */
-    /* LEBCON1 register  */
-    /*  CLLEBEN    = false  */
-    /*  FLTLEBEN   = false */
-    /*  PLF        = 0  */
-    /*  PLR        = 0  */
-    /*  PHF        = 0  */
-    /*  PHR        = 0  */
-    LEBCON1 = 0x0;
-    LEBDLY1 = 10;
-
-
     /*********** Channel 4 Configurations **********/
     /* PWMCON4 register  */
     /*  MTBS   = 0 */

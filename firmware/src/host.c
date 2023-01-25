@@ -11,7 +11,14 @@
 #define USE_SERIAL_DMA
 
 #ifdef USE_SERIAL_DMA
-#include "config/default/peripheral/dmac/plib_dmac.h"
+#ifdef XPRJ_mcj
+#include "config/mcj/peripheral/dmac/plib_dmac.h"
+#endif
+
+#ifdef XPRJ_mcj_remote
+#include "config/mcj_remote/peripheral/dmac/plib_dmac.h"
+#endif
+
 #endif
 
 /* Application's state machine enum */
@@ -231,6 +238,8 @@ int host_sm(void)
 	eaDogM_WriteStringAtPos(0, 0, buffer);
 	sprintf(buffer, "%s Controller %s %llX", HOST_ALIAS, HOST_DRIVER, host_cpu_serial_id);
 	eaDogM_WriteStringAtPos(2, 0, buffer);
+	sprintf(buffer, "Configuration %s", "Host node");
+	eaDogM_WriteStringAtPos(14, 0, buffer);
 	OledUpdate();
 
 	LED_RED_Off();
@@ -263,9 +272,10 @@ int host_sm(void)
 			switch (user_input) {
 			case '1':
 				// Transmitting CAN FD Message
-
+#ifdef INT_BOARD
 				CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE);
+#endif
 				state = APP_STATE_CAN_IDLE;
 				messageID = 0x45A;
 				messageLength = 64;
@@ -276,9 +286,10 @@ int host_sm(void)
 				break;
 			case '2':
 				// Transmitting CAN Normal Message
-
+#ifdef INT_BOARD
 				CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE);
+#endif
 				state = APP_STATE_CAN_IDLE;
 				messageID = 0x469;
 				messageLength = 8;
@@ -292,8 +303,9 @@ int host_sm(void)
 				if (msg_ready) {
 
 					// Waiting for message
-
+#ifdef HOST_BOARD
 					CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE, 2);
+#endif
 					state = APP_STATE_CAN_IDLE;
 					memset(rx_message, 0x00, sizeof(rx_message));
 
@@ -350,6 +362,8 @@ int host_sm(void)
 					imu = (imu_cmd_t *) rx_message;
 					imu->host_serial_id = host_cpu_serial_id;
 					sprintf(uart_buffer, "%3d,%7X,%7X,%3d,%3d,%3d,%18llX,%s\r\n", imu->id, imu->board_serial_id, rx_messageID, imu->device, imu->acc_range, imu->features, host_cpu_serial_id, IMU_ALIAS);
+					sprintf(buffer, "ID:%3d,%7X,%7X", imu->id, imu->board_serial_id, rx_messageID);
+					eaDogM_WriteStringAtPos(15, 0, buffer);
 				}
 				if (*mtype == CAN_FFT_LO) {
 					fft = (sFFTData_t *) rx_message;

@@ -1,3 +1,4 @@
+
 /*******************************************************************************
   Main Source File
 
@@ -60,7 +61,14 @@
 #include "gfx.h"
 #ifdef __32MK0512MCJ048__
 #include "canfd.h"
+#ifdef XPRJ_mcj
 #include "config/mcj/peripheral/qei/plib_qei2.h"
+#endif
+
+#ifdef XPRJ_mcj_remote
+#include "config/mcj_remote/peripheral/qei/plib_qei2.h"
+#endif
+
 #endif
 #include "pid.h"
 #include "do_fft.h"
@@ -187,8 +195,14 @@ int main(void)
 
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
-	
+
+#ifdef XPRJ_mcj
+	//	setup the reset and command pins for the Ethernet adapter
+#endif
+
+#ifdef HOST_BOARD
 	host_sm();
+#endif
 
 	/* Start system tick timer */
 	CORETIMER_Start();
@@ -234,6 +248,8 @@ int main(void)
 	imu0.board_serial_id = board_serial_id;
 	sprintf(buffer, "%s Controller %s %X", IMU_ALIAS, IMU_DRIVER, cpu_serial_id);
 	eaDogM_WriteStringAtPos(15, 0, buffer);
+	sprintf(buffer, "Configuration %s", "Sensor node");
+	eaDogM_WriteStringAtPos(14, 0, buffer);
 	OledUpdate();
 
 	/*
@@ -269,7 +285,9 @@ int main(void)
 	LED_GREEN_Off();
 	WaitMs(500);
 #ifdef __32MK0512MCJ048__
+#ifdef XPRJ_mcj
 	MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024);
+#endif
 	MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024);
 	MCPWM_Start();
 #endif
@@ -293,13 +311,16 @@ int main(void)
 #endif
 			TP1_Set();
 			imu0.op.imu_getdata(&imu0); // read data from the chip
+			TP3_Toggle();
 			imu0.update = false;
 			TP1_Clear();
 			TP1_Set();
 			getAllData(&accel, &imu0); // convert data from the chip
 			TP1_Clear();
 #ifdef __32MK0512MCJ048__
+#ifdef XPRJ_mcj
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024 + (uint32_t) (10.0 * accel.xa));
+#endif
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024 + (uint32_t) (10.0 * accel.ya));
 #endif
 			accel.xerr = UpdatePI(&xpid, (double) accel.xa);
@@ -330,22 +351,22 @@ int main(void)
 			 * This is not a pure FFT as it mixes bin data
 			 * with sample data for a feedback signature
 			 */
-			inB[ffti] = 128 + (uint8_t) (120.0 * (accel.x+accel.y+accel.z)); // select one axis for display
+			inB[ffti] = 128 + (uint8_t) (120.0 * (accel.x + accel.y + accel.z)); // select one axis for display
 			if (fft_settle) {
 				sprintf(buffer, "FFTs %3d,%3d ", inB[ffti], ffti);
 				eaDogM_WriteStringAtPos(7, 4, buffer);
 			}
 			ffti++;
-			TP3_Set(); // FFT processing timing mark
+			//			TP3_Set(); // FFT processing timing mark
 			do_fft(false); // convert to 128 frequency bins in 8-bit sample buffer
-			TP3_Clear(); // end of FFT function
-			TP3_Set(); // drawing processing mark
+			//			TP3_Clear(); // end of FFT function
+			//			TP3_Set(); // drawing processing mark
 			w = 0;
 			while (w < 128) {
 				fft_draw(w, inB[w]); // create screen graph from bin data
 				w++;
 			}
-			TP3_Clear(); // end of drawing function
+			//			TP3_Clear(); // end of drawing function
 #ifdef SHOW_VG
 			TP1_Set();
 			q0 = accel.x;
@@ -478,4 +499,3 @@ void delay_us(uint32_t us)
 /*******************************************************************************
  End of File
  */
-

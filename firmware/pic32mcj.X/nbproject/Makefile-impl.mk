@@ -31,7 +31,7 @@ DEFAULTCONF=mcj
 CONF=${DEFAULTCONF}
 
 # All Configurations
-ALLCONFS=mcj mcj_testing 
+ALLCONFS=mcj mcj_testing mjc_remote 
 
 
 # build
@@ -47,6 +47,7 @@ ALLCONFS=mcj mcj_testing
 .clobber-impl: .clobber-pre .depcheck-impl
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=mcj clean
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=mcj_testing clean
+	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=mjc_remote clean
 
 
 
@@ -54,6 +55,7 @@ ALLCONFS=mcj mcj_testing
 .all-impl: .all-pre .depcheck-impl
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=mcj build
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=mcj_testing build
+	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=mjc_remote build
 
 
 

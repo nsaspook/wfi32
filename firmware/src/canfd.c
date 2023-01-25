@@ -40,24 +40,20 @@ static CANFD_MSG_RX_ATTRIBUTE msgAttr = CANFD_MSG_RX_DATA_FRAME;
  */
 void APP_CAN_Callback(uintptr_t context)
 {
+
 	xferContext = context;
 
 	/* Check CAN Status */
-#ifndef CANDEV2
 	status = CAN1_ErrorGet();
-#else
-	status = CAN2_ErrorGet();
-#endif
 
 	if ((status & (CANFD_ERROR_TX_RX_WARNING_STATE | CANFD_ERROR_RX_WARNING_STATE |
 		CANFD_ERROR_TX_WARNING_STATE | CANFD_ERROR_RX_BUS_PASSIVE_STATE |
 		CANFD_ERROR_TX_BUS_PASSIVE_STATE | CANFD_ERROR_TX_BUS_OFF_STATE)) == CANFD_ERROR_NONE) {
 		switch ((APP_STATES) context) {
 		case APP_STATE_CAN_RECEIVE:
-			LED_RED_Off();
-			LED_GREEN_Toggle();
 		case APP_STATE_CAN_TRANSMIT:
 		{
+			LED_RED_Toggle();
 			state = APP_STATE_CAN_XFER_SUCCESSFUL;
 			break;
 		}
@@ -67,7 +63,6 @@ void APP_CAN_Callback(uintptr_t context)
 	} else {
 		state = APP_STATE_CAN_XFER_ERROR;
 	}
-
 }
 
 void APP_CAN_Error_Callback(uintptr_t context)
@@ -84,12 +79,6 @@ void APP_CAN_Error_Callback(uintptr_t context)
 
 void print_menu(void)
 {
-	printf("Menu :\r\n"
-		"  -- Select the action:\r\n"
-		"  1: Send FD standard message with ID: 0x45A and 64 byte data 0 to 63. \r\n"
-		"  2: Send normal standard message with ID: 0x469 and 8 byte data 0 to 7. \r\n"
-		"  3: To receive CAN FD or Normal message \r\n"
-		"  m: Display menu \r\n\r\n");
 }
 
 void PrintFormattedData(const char * format, ...)
@@ -108,9 +97,9 @@ void PrintFormattedData(const char * format, ...)
 
 int canfd_state(CANFD_STATES mode, void * can_buffer)
 {
-	uint8_t user_input = 0;
-	uint8_t count = 0;
-	bool msg_ready = false;
+	static uint8_t user_input = 0;
+	static uint8_t count = 0;
+	static bool msg_ready = false;
 	uint16_t * mtype = (uint16_t *) can_buffer;
 
 	/* Prepare the message to send */
@@ -119,18 +108,23 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 	}
 
 	while (true) {
+		//		CAN1_CallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
+		//		CAN1_CallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 0);
+		//		CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT);
+		LED_RED_Off();
+		LED_GREEN_Off();
 		if (state == APP_STATE_CAN_USER_INPUT) {
 			user_input = mode;
 
 			switch (user_input) {
 			case CAN_TRANSMIT_FD:
 				msg_ready = CAN1_InterruptGet(1, 0x1f);
+
 				if (msg_ready) {
-					printf("CAN FD, ");
-					//					CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
+//					CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 					//					CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT);
 					state = APP_STATE_CAN_IDLE;
-					
+
 					/*
 					 * use CAN-FD compatible 29-bit serial ID numbers
 					 */
@@ -144,27 +138,27 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 					if (CAN1_MessageTransmit(messageID, messageLength, can_buffer, 1, CANFD_MODE_FD_WITH_BRS, CANFD_MSG_TX_DATA_FRAME) == false) {
 						//printf("CAN1_MessageTransmit request has failed\r\n");
 					}
+					LED_GREEN_Toggle();
 				} else {
 					state = APP_STATE_CAN_IDLE;
 					num_stall++;
 				}
 				break;
 			case CAN_TRANSMIT_N:
-				printf("CAN, ");
-				//				CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
+				//				printf("CAN, ");
+//				CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 				state = APP_STATE_CAN_IDLE;
 				messageID = 0x369;
 				messageLength = 8;
 				if (CAN1_MessageTransmit(messageID, messageLength, can_buffer, 1, CANFD_MODE_NORMAL, CANFD_MSG_TX_DATA_FRAME) == false) {
 					//printf("CAN1_MessageTransmit request has failed\r\n");
 				}
-				LED_RED_Toggle();
 				break;
 			case CAN_RECEIVE:
 				msg_ready = CAN1_InterruptGet(2, 0x1f);
 				if (msg_ready) {
-					printf(" Waiting for message: \r\n");
-					//					CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE, 2);
+					//					printf(" Waiting for message: \r\n");
+//					CAN1_CallbackRegister(APP_CAN_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE, 2);
 					//					CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback, (uintptr_t) APP_STATE_CAN_RECEIVE);
 					state = APP_STATE_CAN_IDLE;
 					memset(rx_message, 0x00, sizeof(rx_message));
@@ -172,8 +166,6 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 					if (CAN1_MessageReceive(&rx_messageID, &rx_messageLength, can_buffer, &timestamp, 2, &msgAttr) == false) {
 						//printf("CAN1_MessageReceive request has failed\r\n");
 					}
-					LED_RED_Off();
-					LED_GREEN_Off();
 				} else {
 					state = APP_STATE_CAN_IDLE;
 				}
@@ -197,29 +189,29 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 		{
 			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
 				/* Print message to Console */
-				printf(" New Message Received    \r\n");
+				//				printf(" New Message Received    \r\n");
 				uint8_t length = rx_messageLength;
-				PrintFormattedData(" Message - Timestamp : 0x%x ID : 0x%x Length : 0x%x ", timestamp, (unsigned int) rx_messageID, (unsigned int) rx_messageLength);
-				printf("Message : ");
+				//				PrintFormattedData(" Message - Timestamp : 0x%x ID : 0x%x Length : 0x%x ", timestamp, (unsigned int) rx_messageID, (unsigned int) rx_messageLength);
+				//				printf("Message : ");
 				while (length) {
 					PrintFormattedData("0x%x ", rx_message[rx_messageLength - length--]);
 				}
-				printf("\r\n");
+				//				printf("\r\n");
 			} else if ((APP_STATES) xferContext == APP_STATE_CAN_TRANSMIT) {
-				LED_RED_Toggle();
-				printf("Success \r\n");
+				//				LED_RED_Toggle();
+				//				printf("Success \r\n");
 			}
-			LED_GREEN_Toggle();
-			print_menu();
+			//			LED_GREEN_Toggle();
+			//			print_menu();
 			state = APP_STATE_CAN_IDLE;
 			break;
 		}
 		case APP_STATE_CAN_XFER_ERROR:
 		{
 			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
-				printf("Error in received message");
+				//				printf("Error in received message");
 			} else {
-				printf("Failed \r\n");
+				//				printf("Failed \r\n");
 			}
 			print_menu();
 			state = APP_STATE_CAN_IDLE;

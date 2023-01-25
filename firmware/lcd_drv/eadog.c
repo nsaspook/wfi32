@@ -1,9 +1,18 @@
 #include <xc.h>
 #include "eadog.h"
 #include <string.h>
+#ifdef XPRJ_mcj
 #include "../src/config/mcj/peripheral/spi/spi_master/plib_spi_master_common.h"
 #include "../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.h"
 #include "../src/config/mcj/peripheral/gpio/plib_gpio.h"
+#endif
+
+#ifdef XPRJ_mcj_remote
+#include "../src/config/mcj_remote/peripheral/spi/spi_master/plib_spi_master_common.h"
+#include "../src/config/mcj_remote/peripheral/spi/spi_master/plib_spi1_master.h"
+#include "../src/config/mcj_remote/peripheral/gpio/plib_gpio.h"
+#endif
+
 
 /*
  *	LCD character display routines

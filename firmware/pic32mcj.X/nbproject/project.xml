@@ -25,10 +25,17 @@
                     <name>mcj_testing</name>
                     <type>2</type>
                 </confElem>
+                <confElem>
+                    <name>mjc_remote</name>
+                    <type>2</type>
+                </confElem>
             </confList>
             <formatting>
                 <project-formatting-style>false</project-formatting-style>
             </formatting>
         </data>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>nsensor</word>
+        </spellchecker-wordlist>
     </configuration>
 </project>

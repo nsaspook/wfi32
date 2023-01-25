@@ -18,12 +18,12 @@ extern "C" {
 #include <math.h>
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
-
+	
 #define IMU_CS 0
 #define LCD_CS 0
 
 #define BMA_LOG_TIMEOUT 25
-#define SCA_LOG_TIMEOUT 3 // 7
+#define SCA_LOG_TIMEOUT 5 // 3
 
 #define SHOW_LOG
 #define SHOW_LCD
