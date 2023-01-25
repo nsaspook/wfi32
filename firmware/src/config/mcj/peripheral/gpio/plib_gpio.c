@@ -70,7 +70,6 @@ void GPIO_Initialize ( void )
     CNPUBSET = 0xff4cU; /* Pull-Up Enable */
     SRCON0BSET = 0xbcU; /* Slew Rate Control */
     /* PORTC Initialization */
-    ODCCSET = 0x804U; /* Open Drain Enable */
     LATC = 0x9200U; /* Initial Latch Value */
     TRISCCLR = 0x9a04U; /* Direction Control */
     ANSELCCLR = 0x1807U; /* Digital Mode Enable */

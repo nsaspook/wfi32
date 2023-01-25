@@ -64,13 +64,12 @@ void GPIO_Initialize ( void )
     ANSELACLR = 0x1911U; /* Digital Mode Enable */
     CNPUASET = 0x1900U; /* Pull-Up Enable */
     /* PORTB Initialization */
-    LATB = 0xa40U; /* Initial Latch Value */
-    TRISBCLR = 0xa41U; /* Direction Control */
+    LATB = 0xca40U; /* Initial Latch Value */
+    TRISBCLR = 0xca41U; /* Direction Control */
     ANSELBCLR = 0x28dU; /* Digital Mode Enable */
     CNPUBSET = 0xff4cU; /* Pull-Up Enable */
     SRCON0BSET = 0xbcU; /* Slew Rate Control */
     /* PORTC Initialization */
-    ODCCSET = 0x804U; /* Open Drain Enable */
     LATC = 0x9200U; /* Initial Latch Value */
     TRISCCLR = 0x9a04U; /* Direction Control */
     ANSELCCLR = 0x1807U; /* Digital Mode Enable */

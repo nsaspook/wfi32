@@ -62,6 +62,24 @@
 // *****************************************************************************
 
 
+/*** Macros for ETH_CFG pin ***/
+#define ETH_CFG_Set()               (LATBSET = (1U<<14))
+#define ETH_CFG_Clear()             (LATBCLR = (1U<<14))
+#define ETH_CFG_Toggle()            (LATBINV= (1U<<14))
+#define ETH_CFG_OutputEnable()      (TRISBCLR = (1U<<14))
+#define ETH_CFG_InputEnable()       (TRISBSET = (1U<<14))
+#define ETH_CFG_Get()               ((PORTB >> 14) & 0x1U)
+#define ETH_CFG_PIN                  GPIO_PIN_RB14
+
+/*** Macros for ETH_RESET pin ***/
+#define ETH_RESET_Set()               (LATBSET = (1U<<15))
+#define ETH_RESET_Clear()             (LATBCLR = (1U<<15))
+#define ETH_RESET_Toggle()            (LATBINV= (1U<<15))
+#define ETH_RESET_OutputEnable()      (TRISBCLR = (1U<<15))
+#define ETH_RESET_InputEnable()       (TRISBSET = (1U<<15))
+#define ETH_RESET_Get()               ((PORTB >> 15) & 0x1U)
+#define ETH_RESET_PIN                  GPIO_PIN_RB15
+
 /*** Macros for EXT_SW2 pin ***/
 #define EXT_SW2_Set()               (LATASET = (1U<<12))
 #define EXT_SW2_Clear()             (LATACLR = (1U<<12))
@@ -71,14 +89,14 @@
 #define EXT_SW2_Get()               ((PORTA >> 12) & 0x1U)
 #define EXT_SW2_PIN                  GPIO_PIN_RA12
 
-/*** Macros for EXT_SW1 pin ***/
-#define EXT_SW1_Set()               (LATASET = (1U<<11))
-#define EXT_SW1_Clear()             (LATACLR = (1U<<11))
-#define EXT_SW1_Toggle()            (LATAINV= (1U<<11))
-#define EXT_SW1_OutputEnable()      (TRISACLR = (1U<<11))
-#define EXT_SW1_InputEnable()       (TRISASET = (1U<<11))
-#define EXT_SW1_Get()               ((PORTA >> 11) & 0x1U)
-#define EXT_SW1_PIN                  GPIO_PIN_RA11
+/*** Macros for DIS_CS pin ***/
+#define DIS_CS_Set()               (LATASET = (1U<<11))
+#define DIS_CS_Clear()             (LATACLR = (1U<<11))
+#define DIS_CS_Toggle()            (LATAINV= (1U<<11))
+#define DIS_CS_OutputEnable()      (TRISACLR = (1U<<11))
+#define DIS_CS_InputEnable()       (TRISASET = (1U<<11))
+#define DIS_CS_Get()               ((PORTA >> 11) & 0x1U)
+#define DIS_CS_PIN                  GPIO_PIN_RA11
 
 /*** Macros for TP3 pin ***/
 #define TP3_Set()               (LATBSET = (1U<<0))
@@ -143,14 +161,14 @@
 #define PWM1EN_Get()               ((PORTD >> 8) & 0x1U)
 #define PWM1EN_PIN                  GPIO_PIN_RD8
 
-/*** Macros for DIS_CS pin ***/
-#define DIS_CS_Set()               (LATBSET = (1U<<6))
-#define DIS_CS_Clear()             (LATBCLR = (1U<<6))
-#define DIS_CS_Toggle()            (LATBINV= (1U<<6))
-#define DIS_CS_OutputEnable()      (TRISBCLR = (1U<<6))
-#define DIS_CS_InputEnable()       (TRISBSET = (1U<<6))
-#define DIS_CS_Get()               ((PORTB >> 6) & 0x1U)
-#define DIS_CS_PIN                  GPIO_PIN_RB6
+/*** Macros for DIS_MODE pin ***/
+#define DIS_MODE_Set()               (LATBSET = (1U<<6))
+#define DIS_MODE_Clear()             (LATBCLR = (1U<<6))
+#define DIS_MODE_Toggle()            (LATBINV= (1U<<6))
+#define DIS_MODE_OutputEnable()      (TRISBCLR = (1U<<6))
+#define DIS_MODE_InputEnable()       (TRISBSET = (1U<<6))
+#define DIS_MODE_Get()               ((PORTB >> 6) & 0x1U)
+#define DIS_MODE_PIN                  GPIO_PIN_RB6
 
 /*** Macros for PWM1ER pin ***/
 #define PWM1ER_Set()               (LATBSET = (1U<<8))
@@ -161,14 +179,14 @@
 #define PWM1ER_Get()               ((PORTB >> 8) & 0x1U)
 #define PWM1ER_PIN                  GPIO_PIN_RB8
 
-/*** Macros for DIS_MODE pin ***/
-#define DIS_MODE_Set()               (LATBSET = (1U<<9))
-#define DIS_MODE_Clear()             (LATBCLR = (1U<<9))
-#define DIS_MODE_Toggle()            (LATBINV= (1U<<9))
-#define DIS_MODE_OutputEnable()      (TRISBCLR = (1U<<9))
-#define DIS_MODE_InputEnable()       (TRISBSET = (1U<<9))
-#define DIS_MODE_Get()               ((PORTB >> 9) & 0x1U)
-#define DIS_MODE_PIN                  GPIO_PIN_RB9
+/*** Macros for EXT_SW1 pin ***/
+#define EXT_SW1_Set()               (LATBSET = (1U<<9))
+#define EXT_SW1_Clear()             (LATBCLR = (1U<<9))
+#define EXT_SW1_Toggle()            (LATBINV= (1U<<9))
+#define EXT_SW1_OutputEnable()      (TRISBCLR = (1U<<9))
+#define EXT_SW1_InputEnable()       (TRISBSET = (1U<<9))
+#define EXT_SW1_Get()               ((PORTB >> 9) & 0x1U)
+#define EXT_SW1_PIN                  GPIO_PIN_RB9
 
 /*** Macros for IMU_CS pin ***/
 #define IMU_CS_Set()               (LATCSET = (1U<<9))
