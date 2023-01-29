@@ -103,7 +103,7 @@ uint8_t * pbOledFontUser;
  * DMA1 GLCD buffer transfers
  * DMA2 SPI TX transfers CMD, NOT USED
  */
-#ifdef __32MK0512MCJ048__	// NO bank 2 for this CPU so memory in in bank 1
+#ifdef __32MK0512MCJ048__	// NO bank 2 for this CPU so memory is in bank 1
 uint8_t __attribute__((address(BANK1), coherent)) rgbOledBmp0[cbOledDispMax]; // two display buffers for page flipping
 uint8_t __attribute__((address(BANK1 + cbOledDispMax), coherent)) rgbOledBmp1[cbOledDispMax];
 #ifdef USE_DMA

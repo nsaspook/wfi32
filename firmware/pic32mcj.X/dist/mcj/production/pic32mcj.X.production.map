@@ -7,19 +7,19 @@ Archive member included to satisfy reference by file (symbol)
 /opt/microchip/xc32/v4.20/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(strlen.o)
                               build/mcj/production/_ext/1684788505/eadog.o (strlen)
 /opt/microchip/xc32/v4.20/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(default-on-reset.o)
-                              /tmp/ccNLlEyW.o (_on_reset)
+                              /tmp/ccPFwaMl.o (_on_reset)
 /opt/microchip/xc32/v4.20/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(default-on-bootstrap.o)
-                              /tmp/ccNLlEyW.o (_on_bootstrap)
+                              /tmp/ccPFwaMl.o (_on_bootstrap)
 /opt/microchip/xc32/v4.20/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(default-nmi-handler.o)
-                              /tmp/ccNLlEyW.o (_nmi_handler)
+                              /tmp/ccPFwaMl.o (_nmi_handler)
 /opt/microchip/xc32/v4.20/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(pic32_data_init_wrapper.o)
-                              /tmp/ccNLlEyW.o (__pic32_data_init)
+                              /tmp/ccPFwaMl.o (__pic32_data_init)
 /opt/microchip/xc32/v4.20/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(pic32_data_init_0_1.o)
                               (__copy_needed)
 /opt/microchip/xc32/v4.20/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(general-exception.o)
-                              /tmp/ccNLlEyW.o (_general_exception_context)
+                              /tmp/ccPFwaMl.o (_general_exception_context)
 /opt/microchip/xc32/v4.20/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(defaultinterrupt.o)
-                              /tmp/ccObVluk.o (_DefaultInterrupt)
+                              /tmp/cc1eceqd.o (_DefaultInterrupt)
 /opt/microchip/xc32/v4.20/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_printf_dfosux.o)
                               build/mcj/production/_ext/1360937237/main.o (_printf_cdfFnopsuxX)
 /opt/microchip/xc32/v4.20/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_printf_s.o)
@@ -1051,31 +1051,31 @@ Discarded input sections
  .text.update_imu_int1
                 0x0000000000000000       0x30 build/mcj/production/_ext/1360937237/main.o
  .rodata        0x0000000000000000        0x4 build/mcj/production/_ext/1360937237/main.o
- .text          0x0000000000000000        0x0 /tmp/ccNLlEyW.o
- .data          0x0000000000000000        0x0 /tmp/ccNLlEyW.o
- .bss           0x0000000000000000        0x0 /tmp/ccNLlEyW.o
- .reginfo       0x0000000000000000       0x18 /tmp/ccNLlEyW.o
+ .text          0x0000000000000000        0x0 /tmp/ccPFwaMl.o
+ .data          0x0000000000000000        0x0 /tmp/ccPFwaMl.o
+ .bss           0x0000000000000000        0x0 /tmp/ccPFwaMl.o
+ .reginfo       0x0000000000000000       0x18 /tmp/ccPFwaMl.o
  .MIPS.abiflags
-                0x0000000000000000       0x18 /tmp/ccNLlEyW.o
- .text          0x0000000000000000        0x0 /tmp/cc0Za4kN.o
- .data          0x0000000000000000        0x0 /tmp/cc0Za4kN.o
- .bss           0x0000000000000000        0x0 /tmp/cc0Za4kN.o
- .reginfo       0x0000000000000000       0x18 /tmp/cc0Za4kN.o
+                0x0000000000000000       0x18 /tmp/ccPFwaMl.o
+ .text          0x0000000000000000        0x0 /tmp/ccMCTf77.o
+ .data          0x0000000000000000        0x0 /tmp/ccMCTf77.o
+ .bss           0x0000000000000000        0x0 /tmp/ccMCTf77.o
+ .reginfo       0x0000000000000000       0x18 /tmp/ccMCTf77.o
  .MIPS.abiflags
-                0x0000000000000000       0x18 /tmp/cc0Za4kN.o
- .text          0x0000000000000000        0x0 /tmp/ccPT0yOO.o
- .data          0x0000000000000000        0x0 /tmp/ccPT0yOO.o
- .bss           0x0000000000000000        0x0 /tmp/ccPT0yOO.o
- .reginfo       0x0000000000000000       0x18 /tmp/ccPT0yOO.o
+                0x0000000000000000       0x18 /tmp/ccMCTf77.o
+ .text          0x0000000000000000        0x0 /tmp/ccLaCiHO.o
+ .data          0x0000000000000000        0x0 /tmp/ccLaCiHO.o
+ .bss           0x0000000000000000        0x0 /tmp/ccLaCiHO.o
+ .reginfo       0x0000000000000000       0x18 /tmp/ccLaCiHO.o
  .MIPS.abiflags
-                0x0000000000000000       0x18 /tmp/ccPT0yOO.o
- .text          0x0000000000000000        0x0 /tmp/ccObVluk.o
- .data          0x0000000000000000        0x0 /tmp/ccObVluk.o
- .bss           0x0000000000000000        0x0 /tmp/ccObVluk.o
- .reginfo       0x0000000000000000       0x18 /tmp/ccObVluk.o
+                0x0000000000000000       0x18 /tmp/ccLaCiHO.o
+ .text          0x0000000000000000        0x0 /tmp/cc1eceqd.o
+ .data          0x0000000000000000        0x0 /tmp/cc1eceqd.o
+ .bss           0x0000000000000000        0x0 /tmp/cc1eceqd.o
+ .reginfo       0x0000000000000000       0x18 /tmp/cc1eceqd.o
  .MIPS.abiflags
-                0x0000000000000000       0x18 /tmp/ccObVluk.o
- .discard       0x0000000000000000        0x4 /tmp/ccObVluk.o
+                0x0000000000000000       0x18 /tmp/cc1eceqd.o
+ .discard       0x0000000000000000        0x4 /tmp/cc1eceqd.o
  .data          0x0000000000000000        0x0 /opt/microchip/xc32/v4.20/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/pic32_software_reset.o
  .bss           0x0000000000000000        0x0 /opt/microchip/xc32/v4.20/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/pic32_software_reset.o
  .reginfo       0x0000000000000000       0x18 /opt/microchip/xc32/v4.20/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/pic32_software_reset.o
@@ -2111,20 +2111,20 @@ END GROUP
 
 .reset          0x00000000bfc00000      0x194
  *(.reset)
- .reset         0x00000000bfc00000       0x18 /tmp/ccNLlEyW.o
+ .reset         0x00000000bfc00000       0x18 /tmp/ccPFwaMl.o
                 0x00000000bfc00000                _reset
  *(.reset.startup)
  .reset.startup
-                0x00000000bfc00018      0x17c /tmp/ccNLlEyW.o
+                0x00000000bfc00018      0x17c /tmp/ccPFwaMl.o
                 0x00000000bfc00018                _startup
 
 .bev_excpt      0x00000000bfc00380       0x10
  *(.bev_handler)
- .bev_handler   0x00000000bfc00380       0x10 /tmp/ccNLlEyW.o
+ .bev_handler   0x00000000bfc00380       0x10 /tmp/ccPFwaMl.o
 
 .app_excpt      0x000000009d000180       0x10
  *(.gen_handler)
- .gen_handler   0x000000009d000180       0x10 /tmp/ccNLlEyW.o
+ .gen_handler   0x000000009d000180       0x10 /tmp/ccPFwaMl.o
 
 .vectors        0x000000009d000200       0xb8
                 0x000000009d000200                . = ALIGN (0x4)
@@ -4405,13 +4405,13 @@ END GROUP
  .gnu.attributes
                 0x0000000000000280       0x10 build/mcj/production/_ext/1360937237/main.o
  .gnu.attributes
-                0x0000000000000290       0x10 /tmp/ccNLlEyW.o
+                0x0000000000000290       0x10 /tmp/ccPFwaMl.o
  .gnu.attributes
-                0x00000000000002a0       0x10 /tmp/cc0Za4kN.o
+                0x00000000000002a0       0x10 /tmp/ccMCTf77.o
  .gnu.attributes
-                0x00000000000002b0       0x10 /tmp/ccPT0yOO.o
+                0x00000000000002b0       0x10 /tmp/ccLaCiHO.o
  .gnu.attributes
-                0x00000000000002c0       0x10 /tmp/ccObVluk.o
+                0x00000000000002c0       0x10 /tmp/cc1eceqd.o
  .gnu.attributes
                 0x00000000000002d0       0x10 /opt/microchip/xc32/v4.20/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/pic32_software_reset.o
  .gnu.attributes
@@ -4541,10 +4541,10 @@ END GROUP
  .gnu.attributes
                 0x00000000000006c0       0x10 /opt/microchip/xc32/v4.20/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(errno.o)
                 0x0000000000000200                _min_heap_size = 0x200
-LOAD /tmp/ccNLlEyW.o
-LOAD /tmp/cc0Za4kN.o
-LOAD /tmp/ccPT0yOO.o
-LOAD /tmp/ccObVluk.o
+LOAD /tmp/ccPFwaMl.o
+LOAD /tmp/ccMCTf77.o
+LOAD /tmp/ccLaCiHO.o
+LOAD /tmp/cc1eceqd.o
 LOAD /opt/microchip/xc32/v4.20/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/pic32_software_reset.o
 LOAD /opt/microchip/xc32/v4.20/bin/bin/../../lib/gcc/pic32mx/8.3.1/fpu64/libgcc.a
 START GROUP
@@ -4589,77 +4589,77 @@ __xc_reference_data
 .__vector_offset_BF8106B8_data
                 0x00000000bf8106b8       0x80
  .__vector_offset_BF8106B8_data
-                0x00000000bf8106b8       0x80 /tmp/ccPT0yOO.o
+                0x00000000bf8106b8       0x80 /tmp/ccLaCiHO.o
 
 .__vector_offset_BF810540_data
                 0x00000000bf810540       0x70
  .__vector_offset_BF810540_data
-                0x00000000bf810540       0x70 /tmp/ccPT0yOO.o
+                0x00000000bf810540       0x70 /tmp/ccLaCiHO.o
 
 .__vector_offset_BF81065C_data
                 0x00000000bf81065c       0x58
  .__vector_offset_BF81065C_data
-                0x00000000bf81065c       0x58 /tmp/ccPT0yOO.o
+                0x00000000bf81065c       0x58 /tmp/ccLaCiHO.o
 
 .__vector_offset_BF8105CC_data
                 0x00000000bf8105cc       0x40
  .__vector_offset_BF8105CC_data
-                0x00000000bf8105cc       0x40 /tmp/ccPT0yOO.o
+                0x00000000bf8105cc       0x40 /tmp/ccLaCiHO.o
 
 .__vector_offset_BF8107A0_data
                 0x00000000bf8107a0       0x2c
  .__vector_offset_BF8107A0_data
-                0x00000000bf8107a0       0x2c /tmp/ccPT0yOO.o
+                0x00000000bf8107a0       0x2c /tmp/ccLaCiHO.o
 
 .__vector_offset_BF8107E4_data
                 0x00000000bf8107e4       0x28
  .__vector_offset_BF8107E4_data
-                0x00000000bf8107e4       0x28 /tmp/ccPT0yOO.o
+                0x00000000bf8107e4       0x28 /tmp/ccLaCiHO.o
 
 .__vector_offset_BF810614_data
                 0x00000000bf810614       0x24
  .__vector_offset_BF810614_data
-                0x00000000bf810614       0x24 /tmp/ccPT0yOO.o
+                0x00000000bf810614       0x24 /tmp/ccLaCiHO.o
 
 .__vector_offset_BF8105B8_data
                 0x00000000bf8105b8       0x10
  .__vector_offset_BF8105B8_data
-                0x00000000bf8105b8       0x10 /tmp/ccPT0yOO.o
+                0x00000000bf8105b8       0x10 /tmp/ccLaCiHO.o
 
 .__vector_offset_BF810748_data
                 0x00000000bf810748       0x10
  .__vector_offset_BF810748_data
-                0x00000000bf810748       0x10 /tmp/ccPT0yOO.o
+                0x00000000bf810748       0x10 /tmp/ccLaCiHO.o
 
 .__vector_offset_BF810818_data
                 0x00000000bf810818       0x10
  .__vector_offset_BF810818_data
-                0x00000000bf810818       0x10 /tmp/ccPT0yOO.o
+                0x00000000bf810818       0x10 /tmp/ccLaCiHO.o
 
 .__vector_offset_BF810924_data
                 0x00000000bf810924       0x10
  .__vector_offset_BF810924_data
-                0x00000000bf810924       0x10 /tmp/ccPT0yOO.o
+                0x00000000bf810924       0x10 /tmp/ccLaCiHO.o
 
 .__vector_offset_BF8108F8_data
                 0x00000000bf8108f8        0xc
  .__vector_offset_BF8108F8_data
-                0x00000000bf8108f8        0xc /tmp/ccPT0yOO.o
+                0x00000000bf8108f8        0xc /tmp/ccLaCiHO.o
 
 .__vector_offset_BF810914_data
                 0x00000000bf810914        0xc
  .__vector_offset_BF810914_data
-                0x00000000bf810914        0xc /tmp/ccPT0yOO.o
+                0x00000000bf810914        0xc /tmp/ccLaCiHO.o
 
 .__vector_offset_BF810788_data
                 0x00000000bf810788        0x8
  .__vector_offset_BF810788_data
-                0x00000000bf810788        0x8 /tmp/ccPT0yOO.o
+                0x00000000bf810788        0x8 /tmp/ccLaCiHO.o
 
 .__vector_offset_BF810938_data
                 0x00000000bf810938        0x8
  .__vector_offset_BF810938_data
-                0x00000000bf810938        0x8 /tmp/ccPT0yOO.o
+                0x00000000bf810938        0x8 /tmp/ccLaCiHO.o
 
 .rgbOledBmp_page
                 0x00000000a0009ff0        0x5
@@ -4670,17 +4670,17 @@ __xc_reference_data
 .__vector_offset_BF8107DC_data
                 0x00000000bf8107dc        0x4
  .__vector_offset_BF8107DC_data
-                0x00000000bf8107dc        0x4 /tmp/ccPT0yOO.o
+                0x00000000bf8107dc        0x4 /tmp/ccLaCiHO.o
 
 .__vector_offset_BF810834_data
                 0x00000000bf810834        0x4
  .__vector_offset_BF810834_data
-                0x00000000bf810834        0x4 /tmp/ccPT0yOO.o
+                0x00000000bf810834        0x4 /tmp/ccLaCiHO.o
 
 .__vector_offset_BF8108D8_data
                 0x00000000bf8108d8        0x4
  .__vector_offset_BF8108D8_data
-                0x00000000bf8108d8        0x4 /tmp/ccPT0yOO.o
+                0x00000000bf8108d8        0x4 /tmp/ccLaCiHO.o
 
 .data           0x00000000800001c0      0x2b0
  .data          0x00000000800001c0      0x248 build/mcj/production/_ext/1360937237/main.o
@@ -5425,7 +5425,7 @@ __xc_reference_data
 .text.main_entry
                 0x000000009d00c3fc       0x54
  .text.main_entry
-                0x000000009d00c3fc       0x54 /tmp/ccNLlEyW.o
+                0x000000009d00c3fc       0x54 /tmp/ccPFwaMl.o
                 0x000000009d00c430                __crt0_exit
 
 .text.fft_draw  0x000000009d00c450       0x50
