@@ -37,6 +37,10 @@
  * https://www.murata.com/-/media/webrenewal/products/sensor/pdf/datasheet/datasheet_sca3300-d01.ashx?la=en-us&cvid=20190620010315610400
  * PCB CPU
  * https://ww1.microchip.com/downloads/aemDocuments/documents/MCU32/ProductDocuments/DataSheets/PIC32MK-General-Purpose-and-Motor-Control-With-CAN-FD-Family-DataSheet-DS60001570D.pdf
+ * 
+ * upgraded to 460800 uart speed and ttl serial to Ethernet TDP server module
+ * 32ms IMU updates when in sensor mode sent over 4 CAN packet durations of 3ms 0.5ms 0.5ms 1ms
+ * The Max sensor count is ~6 because of the serial ttl speed bottleneck
  */
 
 #include <stddef.h>                     // Defines NULL
@@ -267,7 +271,9 @@ int main(void)
 				if (TimerDone(TMR_IMU)) {
 					LED_RED_Toggle();
 					LED_GREEN_Toggle();
-					printf(" IMU NO ID, %d %d \r\n", ADCHS_ChannelResultGet(ADCHS_CH0), ADCHS_ChannelResultGet(ADCHS_CH1));
+					sprintf(buffer, "IMU NO ID, %d %d \r\n", ADCHS_ChannelResultGet(ADCHS_CH0), ADCHS_ChannelResultGet(ADCHS_CH1));
+					eaDogM_WriteStringAtPos(13, 0, buffer);
+					OledUpdate();
 					StartTimer(TMR_IMU, 200);
 					ADCHS_ChannelConversionStart(ADCHS_CH0);
 					ADCHS_ChannelConversionStart(ADCHS_CH1);
@@ -311,7 +317,7 @@ int main(void)
 #endif
 			TP1_Set();
 			imu0.op.imu_getdata(&imu0); // read data from the chip
-			TP3_Toggle();
+			//			TP3_Toggle();
 			imu0.update = false;
 			TP1_Clear();
 			TP1_Set();
@@ -346,27 +352,36 @@ int main(void)
 			eaDogM_WriteStringAtPos(6, 0, buffer);
 
 			/*
-			 * load FFT sample 256 element 8-bit buffer
+			 * load FFT sample 128 element 8-bit buffer from
+			 * 256 element signal buffer
 			 * as we process each IMU 3-axis sample
 			 * This is not a pure FFT as it mixes bin data
 			 * with sample data for a feedback signature
+			 * 
+			 * it recomputes with every new IMU data update
+			 * unless FFT_MIX is set to false
 			 */
-			inB[ffti] = 128 + (uint8_t) (120.0 * (accel.x + accel.y + accel.z)); // select one axis for display
+			inB[ffti] = 128 + (uint8_t) (fft_gain * (do_fft_dc_x(accel.x) + do_fft_dc_y(accel.y) + do_fft_dc_z(accel.z))); // select one axis for display
+
+			ffti++;
+			if (FFT_MIX || ffti == 0) {
+				TP3_Set(); // FFT processing timing mark
+				do_fft(false); // convert to 256 frequency bins in 8-bit sample buffer
+				TP3_Clear(); // end of FFT function
+				memset(inB + (N_FFT/2), 0, N_FFT / 2);  // clear upper 128 bytes
+				memcpy(fft_buffer, inB, N_FFT); // copy to results buffer
+			}
+			TP3_Set(); // drawing processing mark
 			if (fft_settle) {
-				sprintf(buffer, "FFTs %3d,%3d ", inB[ffti], ffti);
+				sprintf(buffer, "FFTs %3d,%3d ", fft_buffer[ffti], ffti);
 				eaDogM_WriteStringAtPos(7, 4, buffer);
 			}
-			ffti++;
-			//			TP3_Set(); // FFT processing timing mark
-			do_fft(false); // convert to 128 frequency bins in 8-bit sample buffer
-			//			TP3_Clear(); // end of FFT function
-			//			TP3_Set(); // drawing processing mark
 			w = 0;
 			while (w < 128) {
-				fft_draw(w, inB[w]); // create screen graph from bin data
+				fft_draw(w, fft_buffer[w]); // create screen graph from bin data
 				w++;
 			}
-			//			TP3_Clear(); // end of drawing function
+			TP3_Clear(); // end of drawing function
 #ifdef SHOW_VG
 			TP1_Set();
 			q0 = accel.x;
@@ -435,7 +450,7 @@ int main(void)
 			case 2:
 				fft0.id = CAN_FFT_LO;
 				if (fft_settle) {
-					memcpy(fft0.buffer, &inB[0], 60);
+					memcpy(fft0.buffer, &fft_buffer[0], 60);
 					canfd_state(CAN_TRANSMIT_FD, &fft0);
 				}
 				alter++;
@@ -443,7 +458,7 @@ int main(void)
 			case 3:
 				fft0.id = CAN_FFT_HI;
 				if (fft_settle) {
-					memcpy(fft0.buffer, &inB[60], 60);
+					memcpy(fft0.buffer, &fft_buffer[60], 60);
 					canfd_state(CAN_TRANSMIT_FD, &fft0);
 				}
 				if (!fft_settle && (fft_count++ >= FFT_COUNT)) {

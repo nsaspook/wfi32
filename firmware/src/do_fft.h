@@ -31,6 +31,10 @@ void __delay_ms_fft(uint32_t);
 void __delay_us_fft(uint32_t);
 void do_fft_version(void);
 
+double do_fft_dc_x(double input);
+double do_fft_dc_y(double input);
+double do_fft_dc_z(double input);
+
 extern uint8_t inB[N_FFT];
 
 #ifdef	__cplusplus

@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
-#define HOST_DRIVER "V1.603" 
+#define HOST_DRIVER "V1.605" 
 #define HOST_ALIAS "HOST"
 
 #define host_lcd_update	50
@@ -31,6 +31,10 @@ extern "C" {
 #define SENSOR_BOARD
 #define BLOCK_BOARD
 #endif
+	
+//#define DEBUG_can_callback
+
+#define avg_samples	256.0
 
 	/*
 	 * CAN-FD vibration sensor host to network state machine

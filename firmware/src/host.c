@@ -8,6 +8,15 @@
 #include "../../firmware/lcd_drv/lcd_drv.h"
 #include "host.h"
 
+/*
+ * Sensor network host
+ * it takes the four sensor data packets and converts that to a database format
+ * for a network client reading the data-stream. The physical CAN-FD hw/sw
+ * system can handle 50 sensors but the 460800 serial to ETH module connection
+ * bottlenecks. 
+ * The Max sensor count is ~6 because of the serial ttl speed bottleneck
+ */
+
 #define USE_SERIAL_DMA
 
 #ifdef USE_SERIAL_DMA
@@ -53,6 +62,7 @@ static char buffer[256];
 void PrintFormattedData_h(const char * format, ...) __attribute__((format(printf, 1, 2)));
 
 uint32_t fft_bin_total(sFFTData_t *, uint32_t);
+double approxRollingAverage(double avg, double new_sample);
 
 /* Variable to save application state */
 //static APP_STATES state = APP_STATE_CAN_USER_INPUT;
@@ -110,8 +120,10 @@ void APP_CAN_Callback_h(uintptr_t context)
 	/* Check CAN Status */
 	status = CAN1_ErrorGet();
 	CAN1_ErrorCountGet(&txe, &rxe);
+#ifdef DEBUG_can_callback
 	sprintf(buffer, "CB %d,TE %d,RE %d,ER %X,DI %X", status, txe, rxe, CFD1TREC, CFD1BDIAG1);
 	eaDogM_WriteStringAtPos(5, 0, buffer);
+#endif
 
 	if ((status & (CANFD_ERROR_TX_RX_WARNING_STATE | CANFD_ERROR_RX_WARNING_STATE |
 		CANFD_ERROR_TX_WARNING_STATE | CANFD_ERROR_RX_BUS_PASSIVE_STATE |
@@ -138,8 +150,10 @@ void APP_CAN_Error_Callback_h(uintptr_t context)
 
 	/* Check CAN Status */
 	status = CAN1_ErrorGet();
+#ifdef DEBUG_can_callback
 	sprintf(buffer, "CEB status %d", status);
 	eaDogM_WriteStringAtPos(6, 0, buffer);
+#endif
 }
 
 void print_menu_h(void)
@@ -256,13 +270,13 @@ int host_sm(void)
 
 			/* Read user input */
 			if (UART1_ReceiverIsReady()) {
-				sprintf(buffer, "Processing CAN-FD %i 1", wait_count++);
+				sprintf(buffer, "Processing CAN-FD %i 1       ", wait_count++);
 				eaDogM_WriteStringAtPos(10, 0, buffer);
 				UART1_Read((void *) &user_input, 1);
 				sprintf(buffer, "Processing CAN-FD %i, input %c 2", wait_count++, user_input);
 				eaDogM_WriteStringAtPos(11, 0, buffer);
 			} else {
-				sprintf(buffer, "Processing CAN-FD %i 3", wait_count++);
+				sprintf(buffer, "Processing CAN-FD %i 3       ", wait_count++);
 				eaDogM_WriteStringAtPos(12, 0, buffer);
 				if (CAN1_InterruptGet(2, 0x1f)) {
 					user_input = '3';
@@ -335,7 +349,13 @@ int host_sm(void)
 		case APP_STATE_CAN_IDLE:
 		{
 			/* Application can do other task here */
-			sprintf(buffer, "Waiting for CAN-FD  %i", wait_count++);
+			static double avg_result = 1.0;
+
+			avg_result = approxRollingAverage(avg_result, (double) wait_count++);
+			if (avg_result > 999999.0) { // limit display value
+				avg_result = 999999.0;
+			}
+			sprintf(buffer, "Waiting for data packet %6i", (int32_t) avg_result);
 			eaDogM_WriteStringAtPos(14, 0, buffer);
 			break;
 		}
@@ -420,3 +440,13 @@ uint32_t fft_bin_total(sFFTData_t * fftt, uint32_t trim)
 	}
 	return total;
 }
+
+double approxRollingAverage(double avg, double new_sample)
+{
+
+	avg -= avg / avg_samples;
+	avg += new_sample / avg_samples;
+
+	return avg;
+}
+

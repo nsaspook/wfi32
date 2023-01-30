@@ -18,14 +18,17 @@ extern "C" {
 #include <stdlib.h>
 #include <math.h>
     
-#define FFT_DRIVER "V1.102" 
+#define FFT_DRIVER "V1.160" 
 #define FFT_ALIAS "FFT"
 
 #define N_FFT 256
 #define PI2N 2 * M_PI / N_FFT
 #define FFT_COUNT   512
+	
+#define FFT_GAIN	16.0
 
-extern uint8_t inB[];
+extern uint8_t inB[], fft_buffer[];
+extern double fft_gain;
 
 void initFFT(void);
 void windowFFT(uint8_t *source);

@@ -28,6 +28,7 @@ extern "C" {
 #define SHOW_LOG
 #define SHOW_LCD
 #define SHOW_VG
+#define FFT_MIX false
 
 #ifndef  LED_GREEN_On
 #define LED_GREEN_On() LED_GREEN_Set()
