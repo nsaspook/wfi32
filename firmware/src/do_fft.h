@@ -25,6 +25,9 @@ extern "C" {
 	
 #define DO_FFT_DRIVER	"V1.002" 
 #define DO_FFT_ALIAS	"DO_FFT  "
+	
+#define fft_sample_rate	100.0
+#define fft_cutoff_freq	0.5
 		
 void do_fft(bool);
 void __delay_ms_fft(uint32_t);

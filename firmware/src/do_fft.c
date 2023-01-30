@@ -61,8 +61,8 @@ void do_fft_version(void)
 double do_fft_dc_x(double input)
 {
 	static double state = 0;
-	static const double cutoff_frequency = 0.1;
-	static const double gain = cutoff_frequency / (2 * M_PI * 1);
+	static const double cutoff_frequency = fft_cutoff_freq;
+	static const double gain = cutoff_frequency / (2 * M_PI * fft_sample_rate);
 
 	double retval = input - state;
 	state += gain * retval;
@@ -72,8 +72,8 @@ double do_fft_dc_x(double input)
 double do_fft_dc_y(double input)
 {
 	static double state = 0;
-	static const double cutoff_frequency = 0.1;
-	static const double gain = cutoff_frequency / (2 * M_PI * 1);
+	static const double cutoff_frequency = fft_cutoff_freq;
+	static const double gain = cutoff_frequency / (2 * M_PI * fft_sample_rate);
 
 	double retval = input - state;
 	state += gain * retval;
@@ -83,8 +83,8 @@ double do_fft_dc_y(double input)
 double do_fft_dc_z(double input)
 {
 	static double state = 0;
-	static const double cutoff_frequency = 0.1;
-	static const double gain = cutoff_frequency / (2 * M_PI * 1);
+	static const double cutoff_frequency = fft_cutoff_freq;
+	static const double gain = cutoff_frequency / (2 * M_PI * fft_sample_rate);
 
 	double retval = input - state;
 	state += gain * retval;

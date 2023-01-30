@@ -16,6 +16,8 @@ extern "C" {
 #include "../../firmware/lcd_drv/OledGrph.h"
 
 	//#define GFX_BOX
+#define fft_max_pixel		64
+#define fft_resolution_shift	1
 
 	static const double sine_res = 3600.0;
 	static const double sinea = 0.0;

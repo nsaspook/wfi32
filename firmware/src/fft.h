@@ -25,7 +25,7 @@ extern "C" {
 #define PI2N 2 * M_PI / N_FFT
 #define FFT_COUNT   512
 	
-#define FFT_GAIN	16.0
+#define FFT_GAIN	120.0
 
 extern uint8_t inB[], fft_buffer[];
 extern double fft_gain;

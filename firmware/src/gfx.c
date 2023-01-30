@@ -143,9 +143,9 @@ void LA_gfx(bool reset, bool redraw, uint32_t turns)
 
 void fft_draw(uint8_t freq, uint8_t bin)
 {
-	if (bin > 32) {
-		bin = 32;
+	if (bin > fft_max_pixel) {
+		bin = fft_max_pixel;
 	}
 
-	line_rot(freq, 88, freq, 88 - bin);
+	line_rot(freq, 88, freq, 88 - (bin >> fft_resolution_shift));
 }
