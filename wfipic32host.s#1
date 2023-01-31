@@ -18191,7 +18191,7 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <label x="-68.58" y="58.42" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="EXT_SW1" class="0">
+<net name="DIS_RESET" class="0">
 <segment>
 <pinref part="U1" gate="A" pin="TMS/OA5IN-/AN27/CVD27/LVDIN/C5IN1-/RPB9/RB9"/>
 <wire x1="200.66" y1="43.18" x2="213.36" y2="43.18" width="0.1524" layer="91"/>
