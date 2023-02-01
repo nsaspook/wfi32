@@ -35,6 +35,7 @@ extern "C" {
 //#define DEBUG_can_callback
 
 #define avg_samples	256.0
+#define uart_wait	32300
 
 	/*
 	 * CAN-FD vibration sensor host to network state machine

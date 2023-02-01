@@ -365,23 +365,33 @@ int host_sm(void)
 			sprintf(buffer, "                             ");
 			eaDogM_WriteStringAtPos(14, 0, buffer);
 
-			while (uart1_dma_busy || U1STAbits.UTXBF) { // should never wait in normal operation
+			/*
+			 * signal uart contention
+			 */
+			uint32_t contention = 0;
+			LED_RED_Off();
+			while (uart1_dma_busy || U1STAbits.UTXBF) { // uart flow-control RED led
+				if (contention++ == uart_wait) {
+					LED_RED_Toggle();
+				}
 			};
-			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
 
-				/* Print message to Console */
+			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
+				/* Print message to LCD Console buffer and CAN-FD uart_buffer */
 				uint8_t length = rx_messageLength;
 				uint16_t * mtype = (uint16_t *) & rx_message[0];
 				sprintf(uart_buffer, "-1, Bad  Message ID code\r\n");
 				if (*mtype == CAN_IMU_DATA) {
 					accel = (sSensorData_t *) rx_message;
 					length++;
-					sprintf(uart_buffer, "%3d,%7X,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.1f,%s\r\n", accel->id, rx_messageID, accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->xerr, accel->yerr, accel->zerr, (double) accel->sensortime, IMU_ALIAS);
+					sprintf(uart_buffer, "%3d,%7X,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.1f,%s\r\n",
+						accel->id, rx_messageID, accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->xerr, accel->yerr, accel->zerr, (double) accel->sensortime, IMU_ALIAS);
 				}
 				if (*mtype == CAN_IMU_INFO) {
 					imu = (imu_cmd_t *) rx_message;
 					imu->host_serial_id = host_cpu_serial_id;
-					sprintf(uart_buffer, "%3d,%7X,%7X,%3d,%3d,%3d,%18llX,%s\r\n", imu->id, imu->board_serial_id, rx_messageID, imu->device, imu->acc_range, imu->features, host_cpu_serial_id, IMU_ALIAS);
+					sprintf(uart_buffer, "%3d,%7X,%7X,%3d,%3d,%3d,%18llX,%s\r\n",
+						imu->id, imu->board_serial_id, rx_messageID, imu->device, imu->acc_range, imu->features, host_cpu_serial_id, IMU_ALIAS);
 					sprintf(buffer, "ID:%3d,%7X,%7X", imu->id, imu->board_serial_id, rx_messageID);
 					eaDogM_WriteStringAtPos(15, 0, buffer);
 				}

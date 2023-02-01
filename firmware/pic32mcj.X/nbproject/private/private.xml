@@ -2,22 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/fred/wfi32/firmware/src/imu.h</file>
-            <file>file:/fred/wfi32/firmware/src/host.h</file>
-            <file>file:/fred/wfi32/firmware/src/do_fft.h</file>
-            <file>file:/fred/wfi32/firmware/src/canfd.c</file>
-            <file>file:/fred/wfi32/firmware/src/bma490l.h</file>
-            <file>file:/fred/wfi32/firmware/src/gfx.h</file>
-            <file>file:/fred/wfi32/firmware/src/host.c</file>
-            <file>file:/fred/wfi32/firmware/src/gfx.c</file>
-            <file>file:/fred/wfi32/firmware/src/imupic32mcj.h</file>
-            <file>file:/fred/wfi32/firmware/src/fft.c</file>
-            <file>file:/fred/wfi32/firmware/src/sca3300.c</file>
-            <file>file:/fred/wfi32/firmware/src/sca3300.h</file>
-            <file>file:/fred/wfi32/firmware/src/main.c</file>
-            <file>file:/fred/wfi32/firmware/src/do_fft.c</file>
-            <file>file:/fred/wfi32/firmware/src/fft.h</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
