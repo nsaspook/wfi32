@@ -16893,6 +16893,8 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 </class>
 <class number="2" name="ncurrent" width="0.2032" drill="0">
 </class>
+<class number="3" name="diff_can" width="0.0508" drill="0">
+</class>
 </classes>
 <parts>
 <part name="U1" library="2022-08-07_22-50-41_Library" deviceset="PIC32MK0512MCJ048T-I/Y8X" device="TQFP48_Y8X_MCH-M"/>
@@ -17018,6 +17020,7 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <part name="VSS42" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 <part name="GND_POINTS" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2" value="GND_TEST"/>
 <part name="VSS43" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
+<part name="UART_POINTS" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2" value="UART_TEST"/>
 </parts>
 <sheets>
 <sheet>
@@ -17397,8 +17400,8 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <attribute name="VALUE" x="-107.95" y="-10.16" size="1.778" layer="96"/>
 <attribute name="NAME" x="-107.95" y="21.082" size="1.778" layer="95"/>
 </instance>
-<instance part="VSS23" gate="G$1" x="-86.36" y="15.24" smashed="yes" rot="R180">
-<attribute name="VALUE" x="-88.9" y="17.78" size="1.778" layer="96"/>
+<instance part="VSS23" gate="G$1" x="-83.82" y="15.24" smashed="yes" rot="R180">
+<attribute name="VALUE" x="-86.36" y="17.78" size="1.778" layer="96"/>
 </instance>
 <instance part="VDD15" gate="G$1" x="-81.28" y="12.7" smashed="yes">
 <attribute name="VALUE" x="-73.66" y="12.7" size="1.778" layer="96" rot="R180"/>
@@ -17457,6 +17460,10 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 </instance>
 <instance part="VSS43" gate="G$1" x="40.64" y="149.86" smashed="yes">
 <attribute name="VALUE" x="38.1" y="144.78" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="UART_POINTS" gate="G$1" x="-99.06" y="63.5" smashed="yes">
+<attribute name="NAME" x="-105.41" y="69.215" size="1.778" layer="95"/>
+<attribute name="VALUE" x="-105.41" y="58.42" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -17968,9 +17975,9 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 </segment>
 <segment>
 <pinref part="SV2" gate="1" pin="8"/>
-<wire x1="-99.06" y1="12.7" x2="-86.36" y2="12.7" width="0.1524" layer="91"/>
+<wire x1="-99.06" y1="12.7" x2="-83.82" y2="12.7" width="0.1524" layer="91"/>
 <pinref part="VSS23" gate="G$1" pin="VSS"/>
-<junction x="-86.36" y="12.7"/>
+<junction x="-83.82" y="12.7"/>
 <junction x="-99.06" y="12.7"/>
 </segment>
 <segment>
@@ -18331,6 +18338,13 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <junction x="-60.96" y="60.96"/>
 <label x="-71.12" y="60.96" size="1.778" layer="95"/>
 </segment>
+<segment>
+<wire x1="-101.6" y1="66.04" x2="-114.3" y2="66.04" width="0.1524" layer="91"/>
+<pinref part="UART_POINTS" gate="G$1" pin="1"/>
+<junction x="-101.6" y="66.04"/>
+<junction x="-114.3" y="66.04"/>
+<label x="-121.92" y="66.04" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="U1TX" class="0">
 <segment>
@@ -18353,6 +18367,13 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <junction x="-73.66" y="58.42"/>
 <junction x="-60.96" y="58.42"/>
 <label x="-68.58" y="58.42" size="1.778" layer="95"/>
+</segment>
+<segment>
+<wire x1="-101.6" y1="63.5" x2="-114.3" y2="63.5" width="0.1524" layer="91"/>
+<pinref part="UART_POINTS" gate="G$1" pin="2"/>
+<junction x="-101.6" y="63.5"/>
+<junction x="-114.3" y="63.5"/>
+<label x="-121.92" y="63.5" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="DIS_RESET" class="0">
@@ -18584,6 +18605,13 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <junction x="200.66" y="60.96"/>
 <junction x="213.36" y="60.96"/>
 </segment>
+<segment>
+<wire x1="-99.06" y1="15.24" x2="-86.36" y2="15.24" width="0.1524" layer="91"/>
+<pinref part="SV2" gate="1" pin="9"/>
+<junction x="-99.06" y="15.24"/>
+<junction x="-86.36" y="15.24"/>
+<label x="-93.98" y="15.24" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="QEB2" class="0">
 <segment>
@@ -18599,6 +18627,13 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <label x="198.12" y="83.82" size="1.778" layer="95"/>
 <junction x="193.04" y="86.36"/>
 <junction x="205.74" y="86.36"/>
+</segment>
+<segment>
+<wire x1="-99.06" y1="17.78" x2="-86.36" y2="17.78" width="0.1524" layer="91"/>
+<pinref part="SV2" gate="1" pin="10"/>
+<junction x="-99.06" y="17.78"/>
+<junction x="-86.36" y="17.78"/>
+<label x="-96.52" y="17.78" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="INDX2" class="0">
@@ -18910,7 +18945,7 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <junction x="-53.34" y="134.62"/>
 </segment>
 </net>
-<net name="CANL" class="0">
+<net name="CAN_N" class="3">
 <segment>
 <pinref part="IC2" gate="G$1" pin="CANL"/>
 <wire x1="-25.4" y1="137.16" x2="-15.24" y2="137.16" width="0.1524" layer="91"/>
@@ -18929,7 +18964,7 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <junction x="-68.58" y="88.9"/>
 </segment>
 </net>
-<net name="CANH" class="0">
+<net name="CAN_P" class="3">
 <segment>
 <pinref part="IC2" gate="G$1" pin="CANH"/>
 <wire x1="-25.4" y1="139.7" x2="-15.24" y2="139.7" width="0.1524" layer="91"/>
