@@ -59,6 +59,7 @@ static imu_cmd_t *imu;
 static sFFTData_t *fft;
 static char buffer[256];
 static char cmd_buffer[256] = "Waiting for commands";
+static char response_buffer[64] = " ";
 
 /* set format attribute for the vararg function */
 void PrintFormattedData_h(const char * format, ...) __attribute__((format(printf, 1, 2)));
@@ -255,6 +256,8 @@ int host_sm(void)
 	eaDogM_WriteStringAtPos(0, 0, buffer);
 	sprintf(buffer, "%s Controller %s %llX", HOST_ALIAS, HOST_DRIVER, host_cpu_serial_id);
 	eaDogM_WriteStringAtPos(2, 0, buffer);
+	sprintf(buffer, "%s Driver %s", CMD_ALIAS, CMD_DRIVER);
+	eaDogM_WriteStringAtPos(3, 0, buffer);
 	sprintf(buffer, "Configuration %s", "Host node");
 	eaDogM_WriteStringAtPos(14, 0, buffer);
 	OledUpdate();
@@ -437,6 +440,7 @@ int host_sm(void)
 		if (TimerDone(TMR_HOST)) {
 			StartTimer(TMR_HOST, host_lcd_update);
 			eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
+			eaDogM_WriteStringAtPos(7, 0, response_buffer);
 			OledUpdate();
 		}
 	}
@@ -482,5 +486,42 @@ void fh_stop_trigger(void *a_data)
 void fh_start_trigger(void *a_data)
 {
 	sprintf(cmd_buffer, "Start Trigger               ");
+}
+
+/*
+ * capture and display ETH module network IP address
+ */
+void fh_start_AT(void *a_data)
+{
+	sprintf(cmd_buffer, "Start AT commands            ");
+
+	// wait for send uart buffer to finish
+	uint32_t contention = 0;
+	LED_RED_Off();
+	while (uart1_dma_busy || U1STAbits.UTXBF) { // uart flow-control RED led
+		if (contention++ == uart_wait) {
+			LED_RED_Toggle();
+		}
+	};
+
+	// put the ETH module in config mode
+	ETH_CFG_Clear();
+	WaitMs(500);
+	ETH_CFG_Set();
+	WaitMs(5000); // wait until the module is back online
+
+	// AT command mode
+	UART1DmaWrite("+++", 3); // send data to the ETH module
+	WaitMs(200);
+	UART1DmaWrite("a", 1); // send data to the ETH module
+	WaitMs(200);
+	// send a Ethernet connection query
+	UART1DmaWrite("AT+WANN\r\r\n", 10); // send data to the ETH module
+	// put the result in a buffer for the GLCD to display
+	UART1_Read(response_buffer, 22);
+
+	/*
+	 * AT mode will timeout after 30 seconds and go back to transparent data mode
+	 */
 }
 

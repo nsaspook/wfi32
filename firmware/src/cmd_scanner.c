@@ -5,6 +5,7 @@ static t_cmd g_cmds[] = {
 	{ "L", fh_show_link},
 	{ "D", fh_stop_trigger},
 	{ "E", fh_start_trigger},
+	{ "A", fh_start_AT},
 
 	// null command terminator
 	{ 0x00, 0x00}
@@ -77,7 +78,7 @@ void cli_read(t_cli_ctx *a_ctx)
 
 	// if no character available - then exit
 	if (UART1_ReceiverIsReady()) {
-		i=UART1_ReadByte();
+		i = UART1_ReadByte();
 	} else {
 		return;
 	}

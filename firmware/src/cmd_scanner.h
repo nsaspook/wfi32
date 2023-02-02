@@ -20,6 +20,9 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imu.h"
 
+#define CMD_DRIVER "V1.001" 
+#define CMD_ALIAS "COMMAND"
+
 	/*
 	 * serial port command parser
 	 */
@@ -64,6 +67,7 @@ extern "C" {
 	void fh_show_link(void *a_data);
 	void fh_stop_trigger(void *a_data);
 	void fh_start_trigger(void *a_data);
+	void fh_start_AT(void *a_data);
 
 	/*
 	 * command parser functions
