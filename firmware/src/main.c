@@ -77,6 +77,7 @@
 #include "pid.h"
 #include "do_fft.h"
 #include "host.h"
+#include "cmd_scanner.h"
 
 #ifdef BMA490L
 /*

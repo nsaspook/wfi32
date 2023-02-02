@@ -35,7 +35,7 @@ build/nsensor/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/../../firmware/lcd_drv/OledChar.h \
  ../src/../../firmware/lcd_drv/OledGrph.h ../src/gfx.h \
  ../src/../../firmware/lcd_drv/OledGrph.h ../src/pid.h ../src/do_fft.h \
- ../src/fft.h ../src/host.h
+ ../src/fft.h ../src/host.h ../src/cmd_scanner.h
 
 ../src/config/nsensor/definitions.h:
 
@@ -132,3 +132,5 @@ build/nsensor/production/_ext/1360937237/main.o: ../src/main.c \
 ../src/fft.h:
 
 ../src/host.h:
+
+../src/cmd_scanner.h:

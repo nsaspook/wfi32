@@ -1,5 +1,5 @@
-build/mcj/production/_ext/1360937237/main.o: ../src/main.c \
- ../src/config/mcj/definitions.h \
+build/mcj/production/_ext/1360937237/cmd_scanner.o: ../src/cmd_scanner.c \
+ ../src/cmd_scanner.h ../src/config/mcj/definitions.h \
  ../src/config/mcj/peripheral/canfd/plib_canfd1.h \
  ../src/config/mcj/device.h ../src/config/mcj/toolchain_specifics.h \
  ../src/config/mcj/peripheral/canfd/plib_canfd_common.h \
@@ -23,19 +23,10 @@ build/mcj/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/config/mcj/peripheral/spi/spi_master/plib_spi_master_common.h \
  ../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.h \
  ../src/config/mcj/peripheral/rtcc/plib_rtcc.h \
- ../src/config/mcj/peripheral/tmr/plib_tmr9.h ../src/imupic32mcj.h \
- ../src/bma490l.h ../src/bma490l_reg.h ../src/imu.h ../src/sca3300.h \
- ../src/timers.h ../src/canfd.h ../src/../../firmware/lcd_drv/lcd_drv.h \
- ../src/../../firmware/lcd_drv/display_type.h \
- ../src/../../firmware/lcd_drv/eadog.h \
- ../src/../../firmware/lcd_drv/lcd_drv.h \
- ../src/../../firmware/lcd_drv/dogm-graphic.h ../src/timers.h \
- ../src/../../firmware/lcd_drv/OledDriver.h \
- ../src/../../firmware/lcd_drv/OledChar.h \
- ../src/../../firmware/lcd_drv/OledGrph.h ../src/gfx.h \
- ../src/../../firmware/lcd_drv/OledGrph.h \
- ../src/config/mcj/peripheral/qei/plib_qei2.h ../src/pid.h \
- ../src/do_fft.h ../src/fft.h ../src/host.h ../src/cmd_scanner.h
+ ../src/config/mcj/peripheral/tmr/plib_tmr9.h ../src/imu.h \
+ ../src/imupic32mcj.h
+
+../src/cmd_scanner.h:
 
 ../src/config/mcj/definitions.h:
 
@@ -89,50 +80,6 @@ build/mcj/production/_ext/1360937237/main.o: ../src/main.c \
 
 ../src/config/mcj/peripheral/tmr/plib_tmr9.h:
 
-../src/imupic32mcj.h:
-
-../src/bma490l.h:
-
-../src/bma490l_reg.h:
-
 ../src/imu.h:
 
-../src/sca3300.h:
-
-../src/timers.h:
-
-../src/canfd.h:
-
-../src/../../firmware/lcd_drv/lcd_drv.h:
-
-../src/../../firmware/lcd_drv/display_type.h:
-
-../src/../../firmware/lcd_drv/eadog.h:
-
-../src/../../firmware/lcd_drv/lcd_drv.h:
-
-../src/../../firmware/lcd_drv/dogm-graphic.h:
-
-../src/timers.h:
-
-../src/../../firmware/lcd_drv/OledDriver.h:
-
-../src/../../firmware/lcd_drv/OledChar.h:
-
-../src/../../firmware/lcd_drv/OledGrph.h:
-
-../src/gfx.h:
-
-../src/../../firmware/lcd_drv/OledGrph.h:
-
-../src/config/mcj/peripheral/qei/plib_qei2.h:
-
-../src/pid.h:
-
-../src/do_fft.h:
-
-../src/fft.h:
-
-../src/host.h:
-
-../src/cmd_scanner.h:
+../src/imupic32mcj.h:

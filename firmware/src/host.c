@@ -7,6 +7,7 @@
 #include "imu.h"
 #include "../../firmware/lcd_drv/lcd_drv.h"
 #include "host.h"
+#include "cmd_scanner.h"
 
 /*
  * Sensor network host
@@ -57,6 +58,7 @@ static sSensorData_t *accel;
 static imu_cmd_t *imu;
 static sFFTData_t *fft;
 static char buffer[256];
+static char cmd_buffer[256] = "Waiting for commands";
 
 /* set format attribute for the vararg function */
 void PrintFormattedData_h(const char * format, ...) __attribute__((format(printf, 1, 2)));
@@ -89,6 +91,7 @@ uint8_t spid[] = {0xb5, 0x62, 0x0A, 0x04, 0x00};
 
 static volatile bool uart1_dma_busy = false, uart2_dma_busy = false;
 char uart_buffer[256];
+extern t_cli_ctx cli_ctx; // command buffer
 
 // *****************************************************************************
 // *****************************************************************************
@@ -260,6 +263,8 @@ int host_sm(void)
 	WaitMs(500);
 
 	UART1_ErrorGet(); // clear UART junk
+	scmd_init(); // start command parser
+
 	StartTimer(TMR_HOST, host_lcd_update);
 	while (true) {
 
@@ -269,18 +274,21 @@ int host_sm(void)
 			user_input = 'n';
 
 			/* Read user input */
-			if (UART1_ReceiverIsReady()) {
-				sprintf(buffer, "Processing CAN-FD %i 1       ", wait_count++);
-				eaDogM_WriteStringAtPos(10, 0, buffer);
-				UART1_Read((void *) &user_input, 1);
-				sprintf(buffer, "Processing CAN-FD %i, input %c 2", wait_count++, user_input);
-				eaDogM_WriteStringAtPos(11, 0, buffer);
-			} else {
-				sprintf(buffer, "Processing CAN-FD %i 3       ", wait_count++);
-				eaDogM_WriteStringAtPos(12, 0, buffer);
-				if (CAN1_InterruptGet(2, 0x1f)) {
-					user_input = '3';
-				}
+
+			/*
+			 * read serial port 1 for command data
+			 */
+			cli_read(&cli_ctx);
+			//				sprintf(buffer, "Processing CAN-FD %i 1       ", wait_count++);
+			//				eaDogM_WriteStringAtPos(10, 0, buffer);
+			//				UART1_Read((void *) &user_input, 1);
+			//				sprintf(buffer, "Processing CAN-FD %i, input %c 2", wait_count++, user_input);
+			//				eaDogM_WriteStringAtPos(11, 0, buffer);
+
+			sprintf(buffer, "Processing CAN-FD %i 3       ", wait_count++);
+			eaDogM_WriteStringAtPos(12, 0, buffer);
+			if (CAN1_InterruptGet(2, 0x1f)) {
+				user_input = '3';
 			}
 
 			switch (user_input) {
@@ -428,6 +436,7 @@ int host_sm(void)
 		}
 		if (TimerDone(TMR_HOST)) {
 			StartTimer(TMR_HOST, host_lcd_update);
+			eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
 			OledUpdate();
 		}
 	}
@@ -458,5 +467,20 @@ double approxRollingAverage(double avg, double new_sample)
 	avg += new_sample / avg_samples;
 
 	return avg;
+}
+
+void fh_show_link(void *a_data)
+{
+	sprintf(cmd_buffer, "Show Link Status            ");
+}
+
+void fh_stop_trigger(void *a_data)
+{
+	sprintf(cmd_buffer, "Stop Trigger                ");
+}
+
+void fh_start_trigger(void *a_data)
+{
+	sprintf(cmd_buffer, "Start Trigger               ");
 }
 

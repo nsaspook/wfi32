@@ -80,6 +80,7 @@
       <itemPath>../src/fft.h</itemPath>
       <itemPath>../src/canfd.h</itemPath>
       <itemPath>../src/host.h</itemPath>
+      <itemPath>../src/cmd_scanner.h</itemPath>
     </logicalFolder>
     <logicalFolder name="lcd_drv" displayName="lcd_drv" projectFiles="true">
       <itemPath>../lcd_drv/ChrFont0.c</itemPath>
@@ -187,6 +188,7 @@
       <itemPath>../src/main.c</itemPath>
       <itemPath>../src/canfd.c</itemPath>
       <itemPath>../src/host.c</itemPath>
+      <itemPath>../src/cmd_scanner.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
