@@ -282,11 +282,6 @@ int host_sm(void)
 			 * read serial port 1 for command data
 			 */
 			cli_read(&cli_ctx);
-			//				sprintf(buffer, "Processing CAN-FD %i 1       ", wait_count++);
-			//				eaDogM_WriteStringAtPos(10, 0, buffer);
-			//				UART1_Read((void *) &user_input, 1);
-			//				sprintf(buffer, "Processing CAN-FD %i, input %c 2", wait_count++, user_input);
-			//				eaDogM_WriteStringAtPos(11, 0, buffer);
 
 			sprintf(buffer, "Processing CAN-FD %i 3       ", wait_count++);
 			eaDogM_WriteStringAtPos(12, 0, buffer);
@@ -515,11 +510,14 @@ void fh_start_AT(void *a_data)
 	WaitMs(200);
 	UART1DmaWrite("a", 1); // send data to the ETH module
 	WaitMs(200);
-	// send a Ethernet connection query
-	UART1DmaWrite("AT+WANN\r\r\n", 10); // send data to the ETH module
-	// put the result in a buffer for the GLCD to display
-	UART1_Read(response_buffer, 22);
-
+	if (UART1_ReceiverIsReady()) { // check to see if we have a response
+		// send a Ethernet connection query
+		UART1DmaWrite("AT+WANN\r\r\n", 10); // send data to the ETH module
+		// put the result in a buffer for the GLCD to display
+		UART1_Read(response_buffer, 22);
+	} else { // nothing
+		sprintf(response_buffer, "AT command failed           ");
+	}
 	/*
 	 * AT mode will timeout after 30 seconds and go back to transparent data mode
 	 */
