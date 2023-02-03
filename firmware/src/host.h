@@ -17,6 +17,8 @@ extern "C" {
 
 #define host_lcd_update	50
 
+#define debounce_delay 25000 // about 5 seconds
+
 #ifdef XPRJ_nsensor
 #define HOST_BOARD
 #define INT_BOARD
@@ -41,6 +43,7 @@ extern "C" {
 	 * CAN-FD vibration sensor host to network state machine
 	 */
 	int host_sm(void);
+	bool TP1_check(void);
 
 #ifdef	__cplusplus
 }

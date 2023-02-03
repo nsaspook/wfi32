@@ -263,6 +263,7 @@ int host_sm(void)
 	OledUpdate();
 
 	LED_RED_Off();
+	TP1_Set();
 	WaitMs(500);
 
 	UART1_ErrorGet(); // clear UART junk
@@ -272,6 +273,14 @@ int host_sm(void)
 	while (true) {
 
 		LED_GREEN_Toggle();
+		/*
+		 * Short TP1 to ground for at least 5 seconds to trigger a IP query to the ETH module
+		 * release short after red LED stays on
+		 */
+		if (TP1_check()) {
+			LED_RED_On();
+			fh_start_AT(&cli_ctx);
+		}
 
 		if (state == APP_STATE_CAN_USER_INPUT) {
 			user_input = 'n';
@@ -492,10 +501,8 @@ void fh_start_AT(void *a_data)
 
 	// wait for send uart buffer to finish
 	uint32_t contention = 0;
-	LED_RED_Off();
 	while (uart1_dma_busy || U1STAbits.UTXBF) { // uart flow-control RED led
 		if (contention++ == uart_wait) {
-			LED_RED_Toggle();
 		}
 	};
 
@@ -521,5 +528,25 @@ void fh_start_AT(void *a_data)
 	/*
 	 * AT mode will timeout after 30 seconds and go back to transparent data mode
 	 */
+	WaitMs(500);
+	UART1_ErrorGet(); // clear UART junk
+}
+
+bool TP1_check(void)
+{
+	static uint32_t debounce = 0;
+
+	if (TP1_Get() == 0) {
+		debounce++;
+		if (debounce >= debounce_delay) {
+			debounce = debounce_delay + 1;
+			return true;
+		} else {
+			return false;
+		}
+	} else {
+		debounce = 0;
+		return false;
+	}
 }
 

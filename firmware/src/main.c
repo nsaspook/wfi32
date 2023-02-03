@@ -312,18 +312,11 @@ int main(void)
 		 */
 		if (imu0.update || TimerDone(TMR_LOG)) {
 #ifdef SHOW_LCD   
-			TP1_Set();
 			OledClearBuffer();
-			TP1_Clear();
 #endif
-			TP1_Set();
 			imu0.op.imu_getdata(&imu0); // read data from the chip
-			//			TP3_Toggle();
 			imu0.update = false;
-			TP1_Clear();
-			TP1_Set();
 			getAllData(&accel, &imu0); // convert data from the chip
-			TP1_Clear();
 #ifdef __32MK0512MCJ048__
 #ifdef XPRJ_mcj
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024 + (uint32_t) (10.0 * accel.xa));
@@ -384,7 +377,6 @@ int main(void)
 			}
 			TP3_Clear(); // end of drawing function
 #ifdef SHOW_VG
-			TP1_Set();
 			q0 = accel.x;
 			q1 = accel.y;
 			q2 = accel.z;
@@ -402,7 +394,6 @@ int main(void)
 				}
 			}
 #endif 
-			TP1_Clear();
 			OledUpdate();
 #endif
 			if (TimerDone(TMR_LOG)) {

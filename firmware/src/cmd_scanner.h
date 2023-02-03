@@ -74,6 +74,7 @@ extern "C" {
 	 */
 	void scmd_init(void);
 	void cli_read(t_cli_ctx *);
+	void dump_uart(void);
 
 #ifdef	__cplusplus
 }

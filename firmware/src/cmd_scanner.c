@@ -106,3 +106,12 @@ void cli_read(t_cli_ctx *a_ctx)
 	}
 }
 
+void dump_uart(void)
+{
+	uint8_t i;
+	
+	while (UART1_ReceiverIsReady())
+	{
+		i=UART1_ReadByte();
+	}
+}

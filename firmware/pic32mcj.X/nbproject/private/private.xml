@@ -9,7 +9,7 @@
             <file>file:/public/wfi32/firmware/src/host.h</file>
             <file>file:/public/wfi32/firmware/src/imupic32mcj.h</file>
             <file>file:/public/wfi32/firmware/src/canfd.c</file>
-            <file>file:/public/wfi32/firmware/src/config/mcj/peripheral/uart/plib_uart1.c</file>
+            <file>file:/public/wfi32/firmware/src/config/mcj/peripheral/gpio/plib_gpio.h</file>
             <file>file:/public/wfi32/firmware/src/sca3300.h</file>
             <file>file:/public/wfi32/firmware/src/imu.h</file>
             <file>file:/public/wfi32/firmware/src/sca3300.c</file>
