@@ -11,9 +11,7 @@ static t_cmd g_cmds[] = {
 	{ 0x00, 0x00}
 };
 
-const char cmdm[] = "Command processor V0.1";
 t_cli_ctx cli_ctx; // command buffer 
-extern const char *build_date, *build_time;
 uint8_t res = E_CMD_OK;
 
 static void cli_init(t_cli_ctx *a_ctx, t_cmd *a_cmds)
