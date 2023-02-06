@@ -292,7 +292,7 @@ int host_sm(void)
 			 */
 			cli_read(&cli_ctx);
 
-			sprintf(buffer, "Processing CAN-FD %i 3       ", wait_count++);
+			sprintf(buffer, "Processing CAN-FD %4i  %4i      ", wait_count++,3);
 			eaDogM_WriteStringAtPos(12, 0, buffer);
 			if (CAN1_InterruptGet(2, 0x1f)) {
 				user_input = '3';
