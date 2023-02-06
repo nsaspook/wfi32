@@ -521,7 +521,7 @@ void fh_start_AT(void *a_data)
 		// send a Ethernet connection query
 		UART1DmaWrite("AT+WANN\r\r\n", 10); // send data to the ETH module
 		// put the result in a buffer for the GLCD to display
-		UART1_Read(response_buffer, 22);
+		UART1_Read(response_buffer, 30);
 	} else { // nothing
 		sprintf(response_buffer, "AT command failed           ");
 	}
