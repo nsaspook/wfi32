@@ -1,0 +1,1 @@
+ $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O2 -fno-common -I"../src" -I"../src/config/nsensor"   -DXPRJ_nsensor=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  /fred/wfi32/firmware/src/config/nsensor/peripheral/rtcc/plib_rtcc.c
