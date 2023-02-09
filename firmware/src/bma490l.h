@@ -23,6 +23,8 @@ extern "C" {
 
 #define BMA490_DRIVER	"V1.100" 
 #define BMA490_ALIAS	"BMA490L  "
+#define BMA400_DRIVER	"V1.000" 
+#define BMA400_ALIAS	"BMA400   "
 
 #define RBIT		0b10000000
 #define WBIT            0b00000000
@@ -31,6 +33,7 @@ extern "C" {
 #define CHIP_ID_INDEX	1
 #define CHIP_ID_DATA	1
 #define BMA490L_ID	0x1A
+#define BMA400_ID	0x90
 #define CHIP_ID_DELAY	100000
 
 #define BMA490_ID_LEN			2

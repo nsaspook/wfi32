@@ -233,7 +233,7 @@ int main(void)
 #else
 	cpu_serial_id = DEVSN0 & 0x1fffffff; // get CPU device 32-bit serial number and convert that to 29 - bit ID for CAN - FD
 #endif
-	printf("\r\nPIC32 %s Controller %s %s %s %X ---\r\n", IMU_ALIAS, IMU_DRIVER, build_date, build_time, cpu_serial_id);
+//	printf("\r\nPIC32 %s Controller %s %s %s %X ---\r\n", IMU_ALIAS, IMU_DRIVER, build_date, build_time, cpu_serial_id);
 
 	/*
 	 * print the driver version
@@ -247,6 +247,7 @@ int main(void)
 	lcd_version();
 	init_lcd_drv(D_INIT);
 	OledClearBuffer();
+	eaDogM_WriteStringAtPos(10, 0, imu_buffer);
 	fft_version();
 	do_fft_version();
 	board_serial_id = cpu_serial_id; // this ID could be changed to the ID of the IMU for IMU data transfers

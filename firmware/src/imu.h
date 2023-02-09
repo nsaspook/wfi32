@@ -26,8 +26,9 @@ extern "C" {
 	/*
 	 * what IMU chip are we using
 	 */
-	//#define BMA490L
-#define SCA3300 // this includes the SCL3300 device
+#define BMA490L
+#define BMA400
+	//#define SCA3300 // this includes the SCL3300 device
 
 #define IMU_DATA_RAW_LEN  30
 #define IMU_DATA_BUFFER_INDEX  1
@@ -155,6 +156,8 @@ extern "C" {
 	double get_imu_scale(imu_cmd_t *);
 	void getAllData(sSensorData_t *, imu_cmd_t *);
 	const uint8_t * imu_string(imu_cmd_t *);
+	
+	extern char imu_buffer[256];
 
 #ifdef __cplusplus
 }

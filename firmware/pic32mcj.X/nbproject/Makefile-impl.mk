@@ -27,11 +27,11 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 PROJECTNAME=pic32mcj.X
 
 # Active Configuration
-DEFAULTCONF=mcj
+DEFAULTCONF=bma400
 CONF=${DEFAULTCONF}
 
 # All Configurations
-ALLCONFS=mcj mcj_testing mjc_remote 
+ALLCONFS=mcj mcj_testing mjc_remote bma400 
 
 
 # build
@@ -48,6 +48,7 @@ ALLCONFS=mcj mcj_testing mjc_remote
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=mcj clean
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=mcj_testing clean
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=mjc_remote clean
+	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=bma400 clean
 
 
 
@@ -56,6 +57,7 @@ ALLCONFS=mcj mcj_testing mjc_remote
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=mcj build
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=mcj_testing build
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=mjc_remote build
+	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=bma400 build
 
 
 

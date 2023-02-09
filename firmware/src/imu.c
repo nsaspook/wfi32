@@ -22,6 +22,7 @@ static const uint8_t imu_name [][8] = {
 	"NO IMU ",
 };
 
+char imu_buffer[256];
 static uint32_t sensortime;
 
 static void move_bma490_transfer_data(uint8_t *, imu_cmd_t *);

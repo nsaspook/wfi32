@@ -59,7 +59,7 @@ extern "C" {
 #define BMA490L_INIT_START                            0x00 
 #define BMA490L_INIT_STOP                             0x01 
 	
-#define BMA490L_SOFT_RESET                            0x6B 
+#define BMA490L_SOFT_RESET                            0xB6 
 
 #define BMA490L_APS_OFF                               0x00
 #define BMA490L_APS_ON                                0x01 
