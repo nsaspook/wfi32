@@ -32,7 +32,7 @@ build/mcj/production/_ext/1360937237/host.o: ../src/host.c \
  ../src/../../firmware/lcd_drv/OledDriver.h \
  ../src/../../firmware/lcd_drv/OledChar.h \
  ../src/../../firmware/lcd_drv/OledGrph.h ../src/host.h \
- ../src/config/mcj/peripheral/dmac/plib_dmac.h
+ ../src/cmd_scanner.h ../src/config/mcj/peripheral/dmac/plib_dmac.h
 
 ../src/config/mcj/definitions.h:
 
@@ -109,5 +109,7 @@ build/mcj/production/_ext/1360937237/host.o: ../src/host.c \
 ../src/../../firmware/lcd_drv/OledGrph.h:
 
 ../src/host.h:
+
+../src/cmd_scanner.h:
 
 ../src/config/mcj/peripheral/dmac/plib_dmac.h:
