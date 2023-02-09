@@ -237,7 +237,7 @@ int main(void)
 #else
 	cpu_serial_id = DEVSN0 & 0x1fffffff; // get CPU device 32-bit serial number and convert that to 29 - bit ID for CAN - FD
 #endif
-//	printf("\r\nPIC32 %s Controller %s %s %s %X ---\r\n", IMU_ALIAS, IMU_DRIVER, build_date, build_time, cpu_serial_id);
+	//	printf("\r\nPIC32 %s Controller %s %s %s %X ---\r\n", IMU_ALIAS, IMU_DRIVER, build_date, build_time, cpu_serial_id);
 
 	/*
 	 * print the driver version
@@ -251,6 +251,8 @@ int main(void)
 	lcd_version();
 	init_lcd_drv(D_INIT);
 	OledClearBuffer();
+	eaDogM_WriteStringAtPos(9, 0, imu_buffer);
+	imu0.op.info_ptr();
 	eaDogM_WriteStringAtPos(10, 0, imu_buffer);
 	fft_version();
 	do_fft_version();
@@ -277,8 +279,9 @@ int main(void)
 				if (TimerDone(TMR_IMU)) {
 					LED_RED_Toggle();
 					LED_GREEN_Toggle();
-					sprintf(buffer, "IMU NO ID, %d %d \r\n", ADCHS_ChannelResultGet(ADCHS_CH0), ADCHS_ChannelResultGet(ADCHS_CH1));
+					sprintf(buffer, "IMU NO ID, %d %d ", ADCHS_ChannelResultGet(ADCHS_CH0), ADCHS_ChannelResultGet(ADCHS_CH1));
 					eaDogM_WriteStringAtPos(13, 0, buffer);
+					eaDogM_WriteStringAtPos(9, 0, imu_buffer);
 					OledUpdate();
 					StartTimer(TMR_IMU, 200);
 					ADCHS_ChannelConversionStart(ADCHS_CH0);
@@ -373,7 +376,7 @@ int main(void)
 				TP3_Set(); // FFT processing timing mark
 				do_fft(false); // convert to 256 frequency bins in 8-bit sample buffer
 				TP3_Clear(); // end of FFT function
-				memset(inB + (N_FFT/2), 0, N_FFT / 2);  // clear upper 128 bytes
+				memset(inB + (N_FFT / 2), 0, N_FFT / 2); // clear upper 128 bytes
 				memcpy(fft_buffer, inB, N_FFT); // copy to results buffer
 			}
 			TP3_Set(); // drawing processing mark

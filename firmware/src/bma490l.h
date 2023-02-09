@@ -27,9 +27,10 @@ extern "C" {
 #define BMA400_DRIVER	"V1.000" 
 #define BMA400_ALIAS	"BMA400   "
 
-#define RBIT		0b10000000
-#define WBIT            0b00000000
+#define RBIT		0x80
+#define WBIT            0x7f
 #define CHIP_ID		0
+#define CHIP_STATUS	3
 #define CHIP_IS		0x2A
 #define CHIP_ID_INDEX	1
 #define CHIP_ID_DATA	1
