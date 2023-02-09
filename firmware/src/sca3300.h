@@ -3,6 +3,7 @@
  * Author: nsasp
  *
  * Created on August 31, 2022, 6:28 PM
+ * SPI mode 0, 8MHz, 32-bit transfers
  */
 
 #ifndef SCA3300_H

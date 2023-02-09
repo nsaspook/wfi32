@@ -21,6 +21,10 @@
 #define USE_SERIAL_DMA
 
 #ifdef USE_SERIAL_DMA
+#ifdef XPRJ_bma400
+#include "config/bma400/peripheral/dmac/plib_dmac.h"
+#endif
+
 #ifdef XPRJ_mcj
 #include "config/mcj/peripheral/dmac/plib_dmac.h"
 #endif

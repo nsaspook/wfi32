@@ -69,6 +69,10 @@
 #include "config/mcj/peripheral/qei/plib_qei2.h"
 #endif
 
+#ifdef XPRJ_bma400
+#include "config/bma400/peripheral/qei/plib_qei2.h"
+#endif
+
 #ifdef XPRJ_mcj_remote
 #include "config/mcj_remote/peripheral/qei/plib_qei2.h"
 #endif
@@ -296,6 +300,9 @@ int main(void)
 #ifdef XPRJ_mcj
 	MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024);
 #endif
+#ifdef XPRJ_bma400
+	MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024);
+#endif	
 	MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024);
 	MCPWM_Start();
 #endif
@@ -322,6 +329,9 @@ int main(void)
 #ifdef XPRJ_mcj
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024 + (uint32_t) (10.0 * accel.xa));
 #endif
+#ifdef XPRJ_bma400
+			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024 + (uint32_t) (10.0 * accel.xa));
+#endif			
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024 + (uint32_t) (10.0 * accel.ya));
 #endif
 			accel.xerr = UpdatePI(&xpid, (double) accel.xa);
