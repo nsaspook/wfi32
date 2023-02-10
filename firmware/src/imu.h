@@ -64,6 +64,7 @@ extern "C" {
 		IMU_BMA490L = 0, // IMU chip model
 		IMU_SCA3300,
 		IMU_SCL3300,
+		IMU_BMA400,
 		IMU_NONE,
 		IMU_LAST,
 	};
@@ -130,6 +131,7 @@ extern "C" {
 	/*
 	 * device earth gravity range calibration scalars
 	 */
+#define BMA400_ACCEL_MG_LSB_2G  0.000980665
 #define BMA490_ACCEL_MG_LSB_2G  0.000061035 ///< Macro for mg per LSB at +/- 2g sensitivity (1 LSB = 0.000061035mg) */
 #define BMA490_ACCEL_MG_LSB_4G  0.000122070 ///< Macro for mg per LSB at +/- 4g sensitivity (1 LSB = 0.000122070mg) */
 #define BMA490_ACCEL_MG_LSB_8G  0.000244141 ///< Macro for mg per LSB at +/- 8g sensitivity (1 LSB = 0.000244141mg) */

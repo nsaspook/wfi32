@@ -322,6 +322,7 @@ int main(void)
 		 * convert the SPI XYZ response to standard floating point acceleration values and rolling integer time-stamps per measurement
 		 */
 		if (imu0.update || TimerDone(TMR_LOG)) {
+
 #ifdef SHOW_LCD   
 			OledClearBuffer();
 #endif
@@ -411,7 +412,6 @@ int main(void)
 			OledUpdate();
 #endif
 			if (TimerDone(TMR_LOG)) {
-				//				printf(" IMU data timeout \r\n");
 				LED_GREEN_Toggle();
 			}
 
@@ -494,13 +494,18 @@ void update_imu_int1(uint32_t a, uintptr_t context)
 {
 	imu_cmd_t * imu = (imu_cmd_t *) context;
 	static int8_t i = 0;
+	static uint8_t tog = 0;
 
 	if (imu) {
 		if (!i++) {
 
-			LED_GREEN_Toggle();
 		}
-		imu->update = true;
+		if (++tog >= 5) {
+			imu->update = true;
+			tog = 0;
+			LED_GREEN_Toggle();
+			TP2_Toggle();
+		}
 	}
 }
 

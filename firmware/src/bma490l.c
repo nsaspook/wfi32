@@ -1,9 +1,13 @@
 #include "bma490l.h"
 
-static uint8_t R_ID_CMD[BMA490_ID_LEN] = {CHIP_ID | RBIT};
-static uint8_t R_IS_CMD[BMA490_ID_LEN] = {CHIP_IS | RBIT};
-uint8_t R_ST_CMD[BMA490_ID_LEN] = {CHIP_STATUS | RBIT};
+static uint8_t R_ID_CMD[BMA490_ID_LEN + 1] = {CHIP_ID | RBIT};
+static uint8_t R_IS_CMD[BMA490_ID_LEN + 1] = {CHIP_IS | RBIT};
+uint8_t R_ST_CMD[BMA490_ID_LEN + 1] = {CHIP_STATUS | RBIT};
+#ifdef BMA400
+static uint8_t R_DATA_CMD[BMA400_DATA_BUFFER_LEN] = {BMA400_DATA_INDEX | RBIT, BMA400_DATA_LEN};
+#else
 static uint8_t R_DATA_CMD[BMA490_DATA_BUFFER_LEN] = {BMA490_DATA_INDEX | RBIT, BMA490_DATA_LEN};
+#endif
 
 static bool imu_cs(imu_cmd_t *);
 static void imu_cs_cb(uintptr_t);
@@ -94,6 +98,29 @@ static const uint8_t bma490l_config_file[] = {
 };
 #endif
 
+#ifdef BMA400
+
+/*
+ * Read raw ACCEL data from the chip using SPI
+ */
+bool bma490l_getdata(void * imup)
+{
+	imu_cmd_t * imu = imup;
+
+	if (imu) {
+		if (!imu->run) {
+			imu_cs(imu);
+			SPI2_WriteRead(R_DATA_CMD, BMA400_DATA_LEN, imu->rbuf, BMA400_DATA_LEN);
+			while (imu->run) {
+			};
+		}
+		return imu->online;
+	} else {
+		return false;
+	}
+}
+#else
+
 /*
  * Read raw ACCEL data from the chip using SPI
  */
@@ -113,6 +140,7 @@ bool bma490l_getdata(void * imup)
 		return false;
 	}
 }
+#endif
 
 #ifdef BMA400
 
@@ -126,9 +154,9 @@ bool bma490l_getid(void * imup)
 	if (imu) {
 		if (!imu->run) {
 			imu_cs(imu);
-			SPI2_WriteRead(R_ID_CMD, sizeof(R_ID_CMD), imu->rbuf, sizeof(R_ID_CMD));
+			SPI2_WriteRead(R_ID_CMD, BMA490_REG_LEN, imu->rbuf, BMA490_REG_LEN + 1); // send two, receive 3 for the data 
 			delay_us(CHIP_ID_DELAY);
-			sprintf(imu_buffer, "  ID Chip Data %3x %3x", imu->rbuf[0], imu->rbuf[CHIP_ID_DATA]);
+			sprintf(imu_buffer, "  ID Chip Data %3x %3x", imu->rbuf[CHIP_ID_INDEX], imu->rbuf[CHIP_ID_DATA]);
 			if (imu->rbuf[CHIP_ID_DATA] == BMA400_ID) {
 				imu->online = true;
 				imu->rbuf[CHIP_ID_DATA] = 0;
@@ -224,7 +252,7 @@ void imu_get_reg(imu_cmd_t * imu, const uint8_t reg, const bool fast)
 		imu_cs(imu);
 		imu->tbuf[0] = reg | RBIT;
 		imu->tbuf[1] = 0;
-		SPI2_WriteRead(imu->tbuf, BMA490_REG_LEN, imu->rbuf, BMA490_REG_LEN);
+		SPI2_WriteRead(imu->tbuf, BMA490_REG_LEN, imu->rbuf, BMA490_REG_LEN + 1);
 		if (!fast) {
 			delay_us(100000); // 100ms for configuration delays
 		}
@@ -274,14 +302,20 @@ void bma490l_set_spimode(void * imup)
 			bma490l_getid(imu);
 			bma490l_getid(imu);
 		}
-		// ACC_RANGE
-		imu_set_reg(imu, BMA490L_REG_ACCEL_RANGE, imu->acc_range, false);
-		// INT_MAP_DATA
-		//		imu_set_reg(imu, BMA490L_REG_INT_MAP_DATA, INT_MAP_DATA, false);
-		// INT1_IO_CTRL
-		//		imu_set_reg(imu, BMA490L_REG_INT1_IO_CTRL, INT1_IO_CTRL, false);
+
 		// PWR_CTRL
-		//		imu_set_reg(imu, BMA490L_REG_POWER_CTRL, REG_POWER_CTRL, false);
+		imu_set_reg(imu, 0x19, 0x02, false);
+		delay_us(1500);
+		// ACC_RANGE
+		imu_set_reg(imu, 0x1a, 0x38, false);
+		imu_set_reg(imu, 0x1b, 0x04, false);
+		imu_set_reg(imu, 0x1f, 0x80, false);
+		imu_set_reg(imu, 0x21, 0x80, false);
+//		imu_set_reg(imu, BMA490L_REG_ACCEL_RANGE, imu->acc_range, false);
+		// INT_MAP_DATA
+//		imu_set_reg(imu, BMA490L_REG_INT_MAP_DATA, INT_MAP_DATA, false);
+		// INT1_IO_CTRL
+//		imu_set_reg(imu, BMA490L_REG_INT1_IO_CTRL, INT1_IO_CTRL, false);
 		/*
 		 * trigger ISR on IMU data update interrupts
 		 */
