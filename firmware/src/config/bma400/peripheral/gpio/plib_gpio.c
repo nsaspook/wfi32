@@ -67,13 +67,13 @@ void GPIO_Initialize ( void )
     LATB = 0xca40U; /* Initial Latch Value */
     TRISBCLR = 0xca41U; /* Direction Control */
     ANSELBCLR = 0x28dU; /* Digital Mode Enable */
-    CNPUBSET = 0xff4cU; /* Pull-Up Enable */
+    CNPUBSET = 0xfffcU; /* Pull-Up Enable */
     SRCON0BSET = 0xbcU; /* Slew Rate Control */
     /* PORTC Initialization */
     LATC = 0x9200U; /* Initial Latch Value */
     TRISCCLR = 0x9a04U; /* Direction Control */
     ANSELCCLR = 0x1807U; /* Digital Mode Enable */
-    CNPUCSET = 0xa06U; /* Pull-Up Enable */
+    CNPUCSET = 0x2bc6U; /* Pull-Up Enable */
     SRCON0CSET = 0x1c3U; /* Slew Rate Control */
     /* PORTD Initialization */
     LATD = 0x100U; /* Initial Latch Value */
