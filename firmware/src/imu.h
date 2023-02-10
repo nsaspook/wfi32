@@ -27,7 +27,7 @@ extern "C" {
 	 * what IMU chip are we using
 	 */
 #define BMA490L
-#define BMA400
+#define BMA400 
 	//#define SCA3300 // this includes the SCL3300 device
 
 #define IMU_DATA_RAW_LEN  30

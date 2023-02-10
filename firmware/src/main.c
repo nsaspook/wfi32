@@ -500,7 +500,7 @@ void update_imu_int1(uint32_t a, uintptr_t context)
 		if (!i++) {
 
 		}
-		if (++tog >= 5) {
+		if (++tog >= 0) {
 			imu->update = true;
 			tog = 0;
 			LED_GREEN_Toggle();

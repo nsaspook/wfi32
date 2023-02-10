@@ -4,6 +4,7 @@
  *
  * Created on July 29, 2022, 12:37 PM
  * SPI mode 0, 8MHz, 8-bit transfers
+ * 100Hz sensor sample rate
  */
 
 #ifndef BMA490L_H

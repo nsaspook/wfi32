@@ -146,6 +146,7 @@ bool bma490l_getdata(void * imup)
 
 /*
  * see if we can get the correct ID response in rbuf
+ * apply offset of received dummy data in the received buffer
  */
 bool bma490l_getid(void * imup)
 {
@@ -155,7 +156,8 @@ bool bma490l_getid(void * imup)
 		if (!imu->run) {
 			imu_cs(imu);
 			SPI2_WriteRead(R_ID_CMD, BMA490_REG_LEN, imu->rbuf, BMA490_REG_LEN + 1); // send two, receive 3 for the data 
-			delay_us(CHIP_ID_DELAY);
+			while (imu->run) {
+			};
 			sprintf(imu_buffer, "  ID Chip Data %3x %3x", imu->rbuf[CHIP_ID_INDEX], imu->rbuf[CHIP_ID_DATA]);
 			if (imu->rbuf[CHIP_ID_DATA] == BMA400_ID) {
 				imu->online = true;
@@ -238,7 +240,8 @@ void imu_set_reg(imu_cmd_t * imu, const uint8_t reg, const uint8_t data, const b
 		if (!fast) {
 			delay_us(100000); // 100ms for configuration delays
 		}
-		delay_us(2);
+		while (imu->run) {
+		};
 		imu_cs_disable(imu);
 	}
 }
@@ -256,7 +259,8 @@ void imu_get_reg(imu_cmd_t * imu, const uint8_t reg, const bool fast)
 		if (!fast) {
 			delay_us(100000); // 100ms for configuration delays
 		}
-		delay_us(2);
+		while (imu->run) {
+		};
 		imu_cs_disable(imu);
 	}
 }
@@ -272,7 +276,8 @@ void imu_gen_write(imu_cmd_t * imu, void* pTransmitData, size_t txSize, const bo
 		if (!fast) {
 			delay_us(100000); // 100ms for configuration delays
 		}
-		delay_us(2);
+		while (imu->run) {
+		};
 		imu_cs_disable(imu);
 	}
 }
@@ -281,41 +286,31 @@ void imu_gen_write(imu_cmd_t * imu, void* pTransmitData, size_t txSize, const bo
 #ifdef BMA400
 
 /*
- * toggle the chip CS to set SPI mode
+ * toggle the chip CS to set BMA400 SPI mode and
+ * configure operation modes for vibration sensor software
  */
 void bma490l_set_spimode(void * imup)
 {
 	imu_cmd_t * imu = imup;
 	static bool first = true;
 
-	// set SPI MODE on BMA490L by reading ID register
 	LED_GREEN_Off();
 	LED_RED_On();
 
-	delay_us(5000);
-	imu_get_reg(imu, 0x7F, false); // start SPI mode with a dummy read
-
 	if (imu) {
 		if (first) {
-			// use SPI interface on reboots
-			//			imu_set_reg(imu, BMA490L_REG_CMD, BMA490L_SOFT_RESET, false);
-			bma490l_getid(imu);
+			delay_us(5000); // power-up device delay
+			imu_get_reg(imu, BMA400_CMD_DUMMY, false); // start SPI mode with a dummy read
+			// use SPI interface on reboots so send a dummy ID command to clear errors
 			bma490l_getid(imu);
 		}
 
-		// PWR_CTRL
-		imu_set_reg(imu, 0x19, 0x02, false);
+		imu_set_reg(imu, BMA400_REG_ACCEL_CONFIG_0, BMA400_NORM_MODE, false); // normal mode
 		delay_us(1500);
-		// ACC_RANGE
-		imu_set_reg(imu, 0x1a, 0x38, false);
-		imu_set_reg(imu, 0x1b, 0x04, false);
-		imu_set_reg(imu, 0x1f, 0x80, false);
-		imu_set_reg(imu, 0x21, 0x80, false);
-//		imu_set_reg(imu, BMA490L_REG_ACCEL_RANGE, imu->acc_range, false);
-		// INT_MAP_DATA
-//		imu_set_reg(imu, BMA490L_REG_INT_MAP_DATA, INT_MAP_DATA, false);
-		// INT1_IO_CTRL
-//		imu_set_reg(imu, BMA490L_REG_INT1_IO_CTRL, INT1_IO_CTRL, false);
+		imu_set_reg(imu, BMA400_REG_ACCEL_CONFIG_1, BMA400_RANGE_MODE, false); // range=2g, osr=3 (high perf), acc_odr=100Hz:
+		imu_set_reg(imu, BMA400_REG_ACCEL_CONFIG_2, BMA400_FILTER_MODE, false); // Use acc_filt2 (100Hz fixed) as data source
+		imu_set_reg(imu, BMA400_REG_INT_CONF_0, BMA400_INT_CONF, false); // Enable data ready interrupt
+		imu_set_reg(imu, BMA400_REG_INT_MAP, BMA400_INT_MAP, false); // Map data ready interrupt to INT1 pin -> ext2 interrupt on controller
 		/*
 		 * trigger ISR on IMU data update interrupts
 		 */
@@ -451,7 +446,7 @@ void bma490_version(void)
 #endif
 
 /*
- * setup external interrupt #2 for IMU BMA490L data update interrupt trigger output
+ * setup external interrupt #2 for IMU BMA4x0 data update interrupt trigger output
  */
 void init_imu_int(const imu_cmd_t * imu)
 {

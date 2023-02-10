@@ -16,7 +16,7 @@ const double imu_table[] = {
 };
 
 static const uint8_t imu_name [][8] = {
-	"BMA490L",
+	"BMA4x0",
 	"SCA3300",
 	"SCL3300",
 	"BMA400",
