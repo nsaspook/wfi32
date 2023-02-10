@@ -295,10 +295,9 @@ int main(void)
 		}
 	};
 
-	printf(" IMU ID OK, device type %d: %X %X \r\n", imu0.device, imu0.serial1, imu0.serial2);
 	LED_RED_Off();
 	LED_GREEN_Off();
-	WaitMs(500);
+	WaitMs(2500);
 #ifdef __32MK0512MCJ048__
 #ifdef XPRJ_mcj
 	MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024);
@@ -351,7 +350,7 @@ int main(void)
 			eaDogM_WriteStringAtPos(1, 0, buffer);
 			sprintf(buffer, "PIC32 IMU Controller %s   %s %s", IMU_DRIVER, build_date, build_time);
 			eaDogM_WriteStringAtPos(14, 0, buffer);
-			sprintf(buffer, "imu %s", imu_string(&imu0));
+			sprintf(buffer, "IMU %s", imu_string(&imu0));
 			eaDogM_WriteStringAtPos(3, 0, buffer);
 			sprintf(buffer, "DEV %d", imu0.device);
 			eaDogM_WriteStringAtPos(4, 0, buffer);
@@ -487,7 +486,7 @@ int main(void)
 }
 
 /*
- * user callback function per BMA490L data interrupt
+ * user callback function per BMA4x0 data interrupt
  * update pacing flag from IMU ISR
  */
 void update_imu_int1(uint32_t a, uintptr_t context)

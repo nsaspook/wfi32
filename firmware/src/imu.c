@@ -115,6 +115,10 @@ void getAllData(sSensorData_t *accel, imu_cmd_t * imu)
 		if (accel) { // null pointer check
 			if (imu->device == IMU_BMA490L) {
 #ifdef BMA400
+				/*
+				 * need to swap X-Y and reverse sign to match SCA3000
+				 * Z is fine
+				 */
 				uint16_t lsb;
 				uint8_t msb;
 
@@ -122,24 +126,26 @@ void getAllData(sSensorData_t *accel, imu_cmd_t * imu)
 				sensortime = (data[9] << 16) | (data[8] << 8) | data[7]; // 24-bit sensor time
 				sdata.scan.ts = sensortime;
 
-				lsb = data[1];
-				msb = data[2];
+				lsb = data[3];
+				msb = data[4];
 				x = (int16_t) (((uint16_t) msb * 256) + lsb); // 12-bit xyz data
 				if (x > 2047) {
 					/* Computing accel data negative value */
 					x = x - 4096;
 				}
-
+				x = -x; // invert sign, no bit-twiddling
 				sdata.scan.channels[SCA3300_ACC_X] = x;
-				lsb = data[3];
-				msb = data[4];
+
+				lsb = data[1];
+				msb = data[2];
 				y = (int16_t) (((uint16_t) msb * 256) + lsb);
 				if (y > 2047) {
 					/* Computing accel data negative value */
 					y = y - 4096;
 				}
-
+				y = -y; // invert sign
 				sdata.scan.channels[SCA3300_ACC_Y] = y;
+
 				lsb = data[5];
 				msb = data[6];
 				z = (int16_t) (((uint16_t) msb * 256) + lsb);
@@ -147,7 +153,6 @@ void getAllData(sSensorData_t *accel, imu_cmd_t * imu)
 					/* Computing accel data negative value */
 					z = z - 4096;
 				}
-
 				sdata.scan.channels[SCA3300_ACC_Z] = z;
 				accel->sensortime = sensortime; // time log each accel measurement from IMU		
 #else

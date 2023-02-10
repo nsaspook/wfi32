@@ -19,16 +19,19 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-#define IMU_DRIVER "V1.602" 
+#define IMU_DRIVER "V1.603" 
 #define IMU_ALIAS "IMU"
 
 #define IMU_ID_DELAY 400
 	/*
 	 * what IMU chip are we using
 	 */
-#define BMA490L
-#define BMA400 
 	//#define SCA3300 // this includes the SCL3300 device
+#define BMA400 
+
+#ifdef BMA400 // Current sensor used
+#define BMA490L // this device is not longer used but functions are needed
+#endif
 
 #define IMU_DATA_RAW_LEN  30
 #define IMU_DATA_BUFFER_INDEX  1
@@ -158,7 +161,7 @@ extern "C" {
 	double get_imu_scale(imu_cmd_t *);
 	void getAllData(sSensorData_t *, imu_cmd_t *);
 	const uint8_t * imu_string(imu_cmd_t *);
-	
+
 	extern char imu_buffer[256];
 
 #ifdef __cplusplus
