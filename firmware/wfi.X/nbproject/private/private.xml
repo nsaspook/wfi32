@@ -16,7 +16,6 @@
             <file>file:/public/wfi32/firmware/src/main.c</file>
             <file>file:/public/wfi32/firmware/lcd_drv/lcd_drv.h</file>
             <file>file:/public/wfi32/firmware/src/bma490l.h</file>
-            <file>file:/public/wfi32/firmware/lcd_drv/lcd_drv.c</file>
             <file>file:/public/wfi32/firmware/src/canfd.h</file>
         </group>
     </open-files>

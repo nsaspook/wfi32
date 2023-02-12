@@ -41,7 +41,7 @@ extern "C" {
 	
 //#define DEBUG_can_callback
 
-#define avg_samples	256.0
+#define avg_samples	10000.0
 #define uart_wait	32300
 
 	/*
