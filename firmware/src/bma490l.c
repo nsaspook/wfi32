@@ -14,8 +14,8 @@ static void imu_cs_cb(uintptr_t);
 static void imu_cs_disable(imu_cmd_t *);
 static void init_imu_int(const imu_cmd_t * imu);
 
-static void imu_set_reg(imu_cmd_t *, const uint8_t, const uint8_t, const bool);
-static void imu_get_reg(imu_cmd_t *, const uint8_t, const bool);
+void imu_set_reg(imu_cmd_t *, const uint8_t, const uint8_t, const bool);
+void imu_get_reg(imu_cmd_t *, const uint8_t, const bool);
 
 static const char *build_date = __DATE__, *build_time = __TIME__;
 
@@ -227,6 +227,7 @@ bool imu_getis(imu_cmd_t * imu)
 	}
 }
 
+#ifdef BMA400
 /*
  * read or write IMU register without read data returned
  */
@@ -245,7 +246,9 @@ void imu_set_reg(imu_cmd_t * imu, const uint8_t reg, const uint8_t data, const b
 		imu_cs_disable(imu);
 	}
 }
+#endif
 
+#ifdef BMA400
 /*
  * read IMU register read data returned in rbuf
  */
@@ -264,6 +267,7 @@ void imu_get_reg(imu_cmd_t * imu, const uint8_t reg, const bool fast)
 		imu_cs_disable(imu);
 	}
 }
+#endif
 
 #ifndef BMA400
 static void imu_gen_write(imu_cmd_t *, void*, size_t, const bool);
