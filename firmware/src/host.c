@@ -62,8 +62,8 @@ static sSensorData_t *accel;
 static imu_cmd_t *imu;
 static sFFTData_t *fft;
 static char buffer[256];
-static char cmd_buffer[256] = "Waiting for commands";
-static char response_buffer[64] = " ";
+char cmd_buffer[256] = "Waiting for commands";
+char response_buffer[64] = " ";
 
 /* set format attribute for the vararg function */
 void PrintFormattedData_h(const char * format, ...) __attribute__((format(printf, 1, 2)));

@@ -174,6 +174,10 @@ const uint32_t update_delay = 5;
 uint32_t board_serial_id = 0x35A, cpu_serial_id = 0x1957;
 
 extern CORETIMER_OBJECT coreTmr;
+extern t_cli_ctx cli_ctx;
+extern char response_buffer[64];
+extern char cmd_buffer[256];
+static void fh_start_AT_nodma(void *);
 
 #ifdef __32MK0512MCJ048__
 void qei_index_cb(QEI_STATUS, uintptr_t);
@@ -308,13 +312,23 @@ int main(void)
 	MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024);
 	MCPWM_Start();
 #endif
-
+	TP1_Set(); // ETH modules display trigger
 
 	// loop collecting data
 	StartTimer(TMR_LOG, imu0.log_timeout);
 	while (true) {
 		/* Maintain state machines of all polled MPLAB Harmony modules. */
 		SYS_Tasks();
+
+		if (TP1_check()) {
+			LED_RED_On();
+			OledClearBuffer();
+			fh_start_AT_nodma(&cli_ctx);
+			eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
+			eaDogM_WriteStringAtPos(7, 0, response_buffer);
+			OledUpdate();
+			WaitMs(5000);
+		}
 
 		/*
 		 * data logging routine
@@ -521,6 +535,38 @@ void delay_us(uint32_t us)
 	}; // Wait until Core Timer count reaches the number we calculated earlier
 }
 
+/*
+ * capture and display ETH module network IP address
+ */
+void fh_start_AT_nodma(void *a_data)
+{
+	sprintf(cmd_buffer, "Start AT commands            ");
+
+	// put the ETH module in config mode
+	ETH_CFG_Clear();
+	WaitMs(500);
+	ETH_CFG_Set();
+	WaitMs(5000); // wait until the module is back online
+
+	// AT command mode
+	UART1_Write("+++", 3); // send data to the ETH module
+	WaitMs(200);
+	UART1_Write("a", 1); // send data to the ETH module
+	WaitMs(200);
+	if (UART1_ReceiverIsReady()) { // check to see if we have a response
+		// send a Ethernet connection query
+		UART1_Write("AT+WANN\r\r\n", 10); // send data to the ETH module
+		// put the result in a buffer for the GLCD to display
+		UART1_Read(response_buffer, 30);
+	} else { // nothing
+		sprintf(response_buffer, "AT command failed           ");
+	}
+	/*
+	 * AT mode will timeout after 30 seconds and go back to transparent data mode
+	 */
+	WaitMs(500);
+	UART1_ErrorGet(); // clear UART junk
+}
 /*******************************************************************************
  End of File
  */
