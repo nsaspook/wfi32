@@ -24,7 +24,7 @@
 // *****************************************************************************
 
 /*
- * BMA490L and SCA3300 high-performance 16-bit digital triaxial acceleration sensor DEMO
+ * BMA490L, BMA400 and SCA3300 high-performance 16-bit digital triaxial acceleration sensor DEMO
  * http://download.mikroe.com/documents/datasheets/BMA490L%20Datasheet.pdf
  * for logging XYZ force values @ 115200 via a serial comm port
  * Original test configuration: 
