@@ -313,6 +313,10 @@ int main(void)
 	MCPWM_Start();
 #endif
 	TP1_Set(); // ETH modules display trigger
+	CAN1_MessageAcceptanceFilterMaskSet(0, 0x1FFFFFF8);
+	CAN1_MessageAcceptanceFilterSet(0, board_serial_id);
+	CAN1_MessageAcceptanceFilterMaskSet(1, 0x1FFFFFF8);
+	CAN1_MessageAcceptanceFilterSet(1, board_serial_id);
 
 	// loop collecting data
 	StartTimer(TMR_LOG, imu0.log_timeout);
@@ -449,13 +453,13 @@ int main(void)
 			eaDogM_WriteStringAtPos(10, 20, buffer);
 			sprintf(buffer, "Ce1 %X", CFD1BDIAG1);
 			eaDogM_WriteStringAtPos(11, 20, buffer);
-			sprintf(buffer, "CINT %X, %d, %d", CFD1INT, canfd_num_tx(), canfd_num_stall());
+			sprintf(buffer, "CINT %X, %d, %d, %d", CFD1INT, canfd_num_tx(), canfd_num_stall(), canfd_num_rx());
 			eaDogM_WriteStringAtPos(13, 0, buffer);
 			sprintf(buffer, "ER %6.2f, %6.2f, %6.2f", accel.xerr, accel.yerr, accel.zerr);
 			eaDogM_WriteStringAtPos(12, 0, buffer);
 #endif
 			canfd_state(CAN_RECEIVE, accel.buffer);
-			canfd_state(CAN_RECEIVE, accel.buffer);
+			//			canfd_state(CAN_RECEIVE, accel.buffer);
 
 			switch (alter) {
 			case 0:

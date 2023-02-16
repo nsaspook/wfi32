@@ -61,6 +61,7 @@ extern "C" {
 	void APP_CAN_Callback(uintptr_t);
 	int canfd_state(CANFD_STATES, void *);
 	uint32_t canfd_num_tx(void);
+	uint32_t canfd_num_rx(void);
 	uint32_t canfd_num_stall(void);
 
 #ifdef	__cplusplus
