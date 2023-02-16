@@ -66,7 +66,7 @@
 
 #define CANFD_CONFIGURATION_MODE      0x4
 #define CANFD_OPERATION_MODE          0x0
-#define CANFD_NUM_OF_FILTER           1
+#define CANFD_NUM_OF_FILTER           2
 /* FIFO Offset in word (4 bytes) */
 #define CANFD_FIFO_OFFSET             0xc
 /* Filter Offset in word (4 bytes) */
@@ -196,6 +196,10 @@ void CAN1_Initialize(void)
     CFD1FLTOBJ0 = (0 & CANFD_MSG_SID_MASK);
     CFD1MASK0 = (0 & CANFD_MSG_SID_MASK);
     CFD1FLTCON0 |= (((0x2 << _CFD1FLTCON0_F0BP_POSITION) & _CFD1FLTCON0_F0BP_MASK)| _CFD1FLTCON0_FLTEN0_MASK);
+    /* Filter 1 configuration */
+    CFD1FLTOBJ1 = (0 & CANFD_MSG_SID_MASK);
+    CFD1MASK1 = (0 & CANFD_MSG_SID_MASK);
+    CFD1FLTCON0 |= (((0x2 << _CFD1FLTCON0_F1BP_POSITION) & _CFD1FLTCON0_F1BP_MASK)| _CFD1FLTCON0_FLTEN1_MASK);
 
     /* Enable Timestamp */
     CFD1TSCON = (0 & _CFD1TSCON_TBCPRE_MASK)
