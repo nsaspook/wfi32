@@ -316,10 +316,9 @@ int main(void)
 
 	CAN1_MessageAcceptanceFilterSet(0, 0xE2D4EAE);
 	CAN1_MessageAcceptanceFilterSet(1, 0xE2D4EAE);
-//	CAN1_MessageAcceptanceFilterSet(2, 0xE2D4EAE);
 
-	sprintf(cmd_buffer, "%X %X", CAN1_MessageAcceptanceFilterMaskGet(0),CAN1_MessageAcceptanceFilterGet(0));
-	sprintf(response_buffer, "%X %X", CAN1_MessageAcceptanceFilterMaskGet(1),CAN1_MessageAcceptanceFilterGet(1));
+	sprintf(cmd_buffer, "%X %X", CAN1_MessageAcceptanceFilterMaskGet(0),~CAN1_MessageAcceptanceFilterGet(0));
+	sprintf(response_buffer, "%X %X", CAN1_MessageAcceptanceFilterMaskGet(1),~CAN1_MessageAcceptanceFilterGet(1));
 	eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
 	eaDogM_WriteStringAtPos(7, 0, response_buffer);
 	OledUpdate();
