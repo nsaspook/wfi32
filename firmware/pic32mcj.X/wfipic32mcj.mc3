@@ -938,7 +938,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;can1&gt;
   &lt;can1 dnOrder=&quot;0&quot; id=&quot;CAN1_FILTER0_MASK_ID&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;536870904&quot;/&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;536870911&quot;/&gt;
     &lt;/Values&gt;
   &lt;/can1&gt;
 &lt;/can1&gt;
@@ -949,7 +949,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;can1&gt;
   &lt;can1 dnOrder=&quot;0&quot; id=&quot;CAN1_FILTER0_MASK_ID_DECIMAL&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;can1&quot; value=&quot;536870904&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;can1&quot; value=&quot;536870911&quot;/&gt;
     &lt;/Values&gt;
   &lt;/can1&gt;
 &lt;/can1&gt;
@@ -983,11 +983,22 @@
 </value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="can1" name="CAN1_FILTER1_FIFO_SELECT"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;can1&gt;
+  &lt;can1 dnOrder=&quot;0&quot; id=&quot;CAN1_FILTER1_FIFO_SELECT&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;1&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/can1&gt;
+&lt;/can1&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="can1" name="CAN1_FILTER1_MASK_ID"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;can1&gt;
   &lt;can1 dnOrder=&quot;0&quot; id=&quot;CAN1_FILTER1_MASK_ID&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;536870904&quot;/&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;536870911&quot;/&gt;
     &lt;/Values&gt;
   &lt;/can1&gt;
 &lt;/can1&gt;
@@ -998,7 +1009,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;can1&gt;
   &lt;can1 dnOrder=&quot;0&quot; id=&quot;CAN1_FILTER1_MASK_ID_DECIMAL&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;can1&quot; value=&quot;536870904&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;can1&quot; value=&quot;536870911&quot;/&gt;
     &lt;/Values&gt;
   &lt;/can1&gt;
 &lt;/can1&gt;
@@ -1341,6 +1352,17 @@
   &lt;can1 dnOrder=&quot;0&quot; id=&quot;NUMBER_OF_FILTER&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
       &lt;User dnOrder=&quot;0&quot; value=&quot;2&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/can1&gt;
+&lt;/can1&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="can1" name="TX_QUEUE_MESSAGE_BUFFER"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;can1&gt;
+  &lt;can1 dnOrder=&quot;0&quot; id=&quot;TX_QUEUE_MESSAGE_BUFFER&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;1&quot;/&gt;
     &lt;/Values&gt;
   &lt;/can1&gt;
 &lt;/can1&gt;
@@ -9903,7 +9925,7 @@
       </entry>
       <entry>
          <file>..\src\config\bma400\definitions.h</file>
-         <hash>3cc1766959c0b72ad8ccbaeda286c2798bb654ba945d85765492e36c7c4bee93</hash>
+         <hash>040cc23e3e30f0340a3780dad21edabdec2b402612429cdaebbd079a686e65f4</hash>
       </entry>
       <entry>
          <file>..\src\config\bma400\peripheral\dmac\plib_dmac.c</file>
@@ -9915,7 +9937,7 @@
       </entry>
       <entry>
          <file>..\src\config\bma400\peripheral\canfd\plib_canfd1.c</file>
-         <hash>52cbb607db9e939278d44fecdf48a8ff17898dcc730c0d7c3ca3beebf5d098dc</hash>
+         <hash>e799d7a7e335dda225322615eea1ccfb5657458e7121cd5e0b9ba98b4c7db725</hash>
       </entry>
       <entry>
          <file>..\src\config\bma400\peripheral\spi\spi_master\plib_spi1_master.c</file>
@@ -10038,12 +10060,12 @@
          <hash>d80270d36578b780adde1c49f8e211992d2146ab922028a81964b1de4a76c976</hash>
       </entry>
       <entry>
-         <file>..\src\config\bma400\peripheral\uart\plib_uart1.c</file>
-         <hash>b699c0915d87ba370a61fc60405224729ef2f5ea7d5390967ef0a2a66b67fd2b</hash>
-      </entry>
-      <entry>
          <file>..\src\config\bma400\peripheral\qei\plib_qei_common.h</file>
          <hash>9ea3b4f643d5ca367a1e9a98b6e2fe8f9d16f5b6ab36f65e27ca41b52f2bfcd5</hash>
+      </entry>
+      <entry>
+         <file>..\src\config\bma400\peripheral\uart\plib_uart1.c</file>
+         <hash>b699c0915d87ba370a61fc60405224729ef2f5ea7d5390967ef0a2a66b67fd2b</hash>
       </entry>
       <entry>
          <file>..\src\config\bma400\peripheral\spi\spi_master\plib_spi2_master.h</file>
@@ -10071,7 +10093,7 @@
       </entry>
       <entry>
          <file>..\src\config\bma400\initialization.c</file>
-         <hash>93c7421d0c7f9f7d854a287ec01874e35407c482a75528f1f70fb8a86571814f</hash>
+         <hash>5e4a6f458350ecf6defbb6e1b0a3da9c80531186182bfdeafb6e67256c6abea5</hash>
       </entry>
       <entry>
          <file>..\src\config\bma400\peripheral\rtcc\plib_rtcc.h</file>
