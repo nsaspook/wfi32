@@ -998,7 +998,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;can1&gt;
   &lt;can1 dnOrder=&quot;0&quot; id=&quot;CAN1_FILTER1_MASK_ID&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;299020625&quot;/&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;519896856&quot;/&gt;
     &lt;/Values&gt;
   &lt;/can1&gt;
 &lt;/can1&gt;
@@ -1009,7 +1009,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;can1&gt;
   &lt;can1 dnOrder=&quot;0&quot; id=&quot;CAN1_FILTER1_MASK_ID_DECIMAL&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;can1&quot; value=&quot;299020625&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;can1&quot; value=&quot;519896856&quot;/&gt;
     &lt;/Values&gt;
   &lt;/can1&gt;
 &lt;/can1&gt;
@@ -1372,7 +1372,8 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="!@#harmonyUserData"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;UserData&gt;
   &lt;UserData dnOrder=&quot;0&quot;&gt;
-    &lt;ComponentGraph dnOrder=&quot;0&quot; id=&quot;__ROOTVIEW&quot;&gt;
+    &lt;GraphSettings canvasHeight=&quot;470&quot; canvasWidth=&quot;776&quot; dnOrder=&quot;0&quot;/&gt;
+    &lt;ComponentGraph dnOrder=&quot;1&quot; id=&quot;__ROOTVIEW&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
         &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;adchs&quot; x=&quot;224&quot; y=&quot;83&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;can1&quot; x=&quot;510&quot; y=&quot;100&quot;/&gt;
@@ -1391,7 +1392,6 @@
         &lt;ElementPosition dnOrder=&quot;14&quot; id=&quot;uart1&quot; x=&quot;373&quot; y=&quot;246&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
-    &lt;GraphSettings canvasHeight=&quot;470&quot; canvasWidth=&quot;776&quot; dnOrder=&quot;1&quot;/&gt;
   &lt;/UserData&gt;
 &lt;/UserData&gt;
 </value>
@@ -9925,7 +9925,7 @@
       </entry>
       <entry>
          <file>..\src\config\bma400\definitions.h</file>
-         <hash>bf6a9e474ea603f0cf1e85ee51fca16d975575ec549e0a6ddd32fcb76b4f5780</hash>
+         <hash>241ab65719a222cffeec9f325f49915a54219945c718e8cf6e6a12ecdb729715</hash>
       </entry>
       <entry>
          <file>..\src\config\bma400\peripheral\dmac\plib_dmac.c</file>
@@ -9937,7 +9937,7 @@
       </entry>
       <entry>
          <file>..\src\config\bma400\peripheral\canfd\plib_canfd1.c</file>
-         <hash>0ed5042ac6926f43275832d79efc13f8d0220fa3a3ef53285fa2720285c18fd8</hash>
+         <hash>a2d152d2fda9c432c1f6cc28c2a2b4ad51ff8837e69e915883167f77e930011e</hash>
       </entry>
       <entry>
          <file>..\src\config\bma400\peripheral\spi\spi_master\plib_spi1_master.c</file>
@@ -10060,12 +10060,12 @@
          <hash>d80270d36578b780adde1c49f8e211992d2146ab922028a81964b1de4a76c976</hash>
       </entry>
       <entry>
-         <file>..\src\config\bma400\peripheral\qei\plib_qei_common.h</file>
-         <hash>9ea3b4f643d5ca367a1e9a98b6e2fe8f9d16f5b6ab36f65e27ca41b52f2bfcd5</hash>
-      </entry>
-      <entry>
          <file>..\src\config\bma400\peripheral\uart\plib_uart1.c</file>
          <hash>b699c0915d87ba370a61fc60405224729ef2f5ea7d5390967ef0a2a66b67fd2b</hash>
+      </entry>
+      <entry>
+         <file>..\src\config\bma400\peripheral\qei\plib_qei_common.h</file>
+         <hash>9ea3b4f643d5ca367a1e9a98b6e2fe8f9d16f5b6ab36f65e27ca41b52f2bfcd5</hash>
       </entry>
       <entry>
          <file>..\src\config\bma400\peripheral\spi\spi_master\plib_spi2_master.h</file>
@@ -10093,7 +10093,7 @@
       </entry>
       <entry>
          <file>..\src\config\bma400\initialization.c</file>
-         <hash>5a94e480c4cf6592957d29f4903f0de3e87c7defdd7df3d8e9ed00cb12ddbad3</hash>
+         <hash>929d8c04ea7d4b0a58e09547d796215526bccec7c7b412eed0aa917fa92b61ec</hash>
       </entry>
       <entry>
          <file>..\src\config\bma400\peripheral\rtcc\plib_rtcc.h</file>
