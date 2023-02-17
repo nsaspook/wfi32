@@ -314,13 +314,12 @@ int main(void)
 #endif
 	TP1_Set(); // ETH modules display trigger
 
-	CAN1_MessageAcceptanceFilterSet(0, board_serial_id);
-	CAN1_MessageAcceptanceFilterMaskSet(0, 0x1FFFFFF8);
-	CAN1_MessageAcceptanceFilterMaskSet(1, 0x1FFFFFF8);
-	CAN1_MessageAcceptanceFilterSet(1, board_serial_id);
+	CAN1_MessageAcceptanceFilterSet(0, 0xE2D4EAE);
+	CAN1_MessageAcceptanceFilterSet(1, 0xE2D4EAE);
+//	CAN1_MessageAcceptanceFilterSet(2, 0xE2D4EAE);
 
-	sprintf(cmd_buffer, "%X", CAN1_MessageAcceptanceFilterMaskGet(0));
-	sprintf(response_buffer, "%X", CAN1_MessageAcceptanceFilterGet(0));
+	sprintf(cmd_buffer, "%X %X", CAN1_MessageAcceptanceFilterMaskGet(0),CAN1_MessageAcceptanceFilterGet(0));
+	sprintf(response_buffer, "%X %X", CAN1_MessageAcceptanceFilterMaskGet(1),CAN1_MessageAcceptanceFilterGet(1));
 	eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
 	eaDogM_WriteStringAtPos(7, 0, response_buffer);
 	OledUpdate();
