@@ -4,14 +4,14 @@
 
 
 project: wfi32
-creation_date: 2023-02-17T13:00:52.100-08:00[America/Los_Angeles]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
-operating_system: Linux
-mcc_mode: Standalone            # [IDE|Standalone|Headless]
+creation_date: 2023-02-18T09:06:49.051-08:00[America/Los_Angeles]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+operating_system: Windows 10
+mcc_mode: IDE            # [IDE|Standalone|Headless]
 mcc_version: v5.2.2
 mcc_core_version: v5.4.14
-mplabx_version: NA        # if MPLAB X plugin only
+mplabx_version: v6.05        # if MPLAB X plugin only
 harmony_version: v1.2.0
-compiler: NA
+compiler: XC32 (v4.20) 
 
 modules:
     - {name: "csp", version: "v3.15.0"}
