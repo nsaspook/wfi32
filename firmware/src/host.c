@@ -98,7 +98,7 @@ uint32_t times = 0;
 
 uint8_t spid[] = {0xb5, 0x62, 0x0A, 0x04, 0x00};
 
-static volatile bool uart1_dma_busy = false, uart2_dma_busy = false;
+static volatile bool uart1_dma_busy = false, uart2_dma_busy = false, rec_message = false;
 char uart_buffer[256];
 extern t_cli_ctx cli_ctx; // command buffer
 
@@ -145,6 +145,7 @@ void APP_CAN_Callback_h(uintptr_t context)
 		case APP_STATE_CAN_TRANSMIT:
 		{
 			state = APP_STATE_CAN_XFER_SUCCESSFUL;
+			rec_message = true;
 			break;
 		}
 		default:
@@ -278,6 +279,16 @@ int host_sm(void)
 	scmd_init(); // start command parser
 
 	StartTimer(TMR_HOST, host_lcd_update);
+
+	/* Place CAN module in configuration mode */
+	CFD1CONbits.REQOP = 4;
+	while (CFD1CONbits.OPMOD != 4);
+	CFD1FIFOCON1bits.TXAT = 1; // three retries
+	CFD1CONbits.RTXAT = 1; // limited retries
+	/* Place the CAN module in Normal mode */
+	CFD1CONbits.REQOP = 0;
+	while (CFD1CONbits.OPMOD != 0);
+
 	while (true) {
 
 		/* Maintain state machines of all polled MPLAB Harmony modules. */
@@ -453,7 +464,10 @@ int host_sm(void)
 			break;
 		}
 		if (TimerDone(TMR_HOST)) {
-			send_from_host(HOST_MAGIC);
+			if (rec_message) {
+				send_from_host(HOST_MAGIC);
+				rec_message = false;
+			}
 			StartTimer(TMR_HOST, host_lcd_update);
 			eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
 			eaDogM_WriteStringAtPos(7, 0, response_buffer);
