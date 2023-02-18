@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<project>                                  
+  <executable name="dist/nsensor/production/wfi.X.production.elf">                 
+    <memory name="program">                 
+      <units>bytes</units>                 
+      <length>525440</length>                 
+      <used>79352</used>                     
+      <free>446088</free>                     
+    </memory>                              
+    <memory name="data">              
+      <units>bytes</units>                 
+      <length>65536</length>                 
+      <used>14394</used>                     
+      <free>51142</free>                     
+    </memory>                              
+  </executable>                            
+</project>                                 

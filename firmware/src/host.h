@@ -14,10 +14,10 @@ extern "C" {
 
 #define HOST_DRIVER "V1.620" 
 #define HOST_ALIAS "HOST"
-	
+
 #define HOST_MAGIC	0x1957
 
-#define host_lcd_update	50
+#define host_lcd_update	100
 
 #define debounce_delay 25000 // about 5 seconds
 
@@ -30,18 +30,18 @@ extern "C" {
 #define SENSOR_BOARD
 #define BLOCK_BOARD
 #endif
-	
+
 #ifdef XPRJ_bma400
 #define SENSOR_BOARD
 #define BLOCK_BOARD
 #endif
-	
+
 #ifdef XPRJ_mcj_remote
 #define SENSOR_BOARD
 #define BLOCK_BOARD
 #endif
-	
-//#define DEBUG_can_callback
+
+	//#define DEBUG_can_callback
 
 #define avg_samples	10000.0
 #define uart_wait	32300
@@ -51,6 +51,7 @@ extern "C" {
 	 */
 	int host_sm(void);
 	bool TP1_check(void);
+	void send_from_host(uint32_t);
 
 #ifdef	__cplusplus
 }

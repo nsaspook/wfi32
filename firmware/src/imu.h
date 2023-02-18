@@ -19,7 +19,7 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-#define IMU_DRIVER "V1.605" 
+#define IMU_DRIVER "V1.606" 
 #define IMU_ALIAS "IMU"
 
 #define IMU_ID_DELAY 400
@@ -89,6 +89,15 @@ extern "C" {
 		uint16_t serial1, serial2;
 		op_t op;
 	} imu_cmd_t;
+	
+		/*
+	 * IMU data structure for host messages
+	 */
+	typedef struct _imu_host_t {
+		const uint16_t id;
+		uint64_t host_serial_id;
+		uint8_t buf[64];
+	} imu_host_t;
 
 	struct sca3300_data {
 		const uint16_t id;
