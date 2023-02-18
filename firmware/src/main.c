@@ -314,23 +314,17 @@ int main(void)
 #endif
 	TP1_Set(); // ETH modules display trigger
 
-	CFD1CONbits.REQOP = 4;
-	while (CFD1CONbits.OPMOD != 4);
-	CFD1FLTCON0bits.F0BP = 1; // message stored in FIFO1
-//	CFD1FLTOBJ1 = 0x40001000;
-//	CFD1MASK1 = (~0x10300E7) & 0x1fffffff;
-	CFD1CONbits.REQOP = 0;
-	while (CFD1CONbits.OPMOD != 0);
+	/* set can-fd extended ID filters and masks */
+	canfd_set_filter(0xE2D4EAE, 0xE2D4EAF);
 
-	CAN1_MessageAcceptanceFilterSet(0, 0xE2D4EAE);
-	CAN1_MessageAcceptanceFilterSet(1, 0x10300E7);
-
-	sprintf(cmd_buffer, "%X %X", CAN1_MessageAcceptanceFilterMaskGet(0), (~CAN1_MessageAcceptanceFilterGet(0)) & 0x1fffffff);
-	sprintf(response_buffer, "%X %X", CAN1_MessageAcceptanceFilterMaskGet(1), (~CAN1_MessageAcceptanceFilterGet(1)) & 0x1fffffff);
+#ifdef DEBUG_FILTER
+	sprintf(cmd_buffer, "%X %X", CAN1_MessageAcceptanceFilterMaskGet(0), CAN1_MessageAcceptanceFilterGet(0));
+	sprintf(response_buffer, "%X %X", CAN1_MessageAcceptanceFilterMaskGet(1), CAN1_MessageAcceptanceFilterGet(1));
 	eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
 	eaDogM_WriteStringAtPos(7, 0, response_buffer);
 	OledUpdate();
 	WaitMs(5000);
+#endif
 
 	// loop collecting data
 	StartTimer(TMR_LOG, imu0.log_timeout);
