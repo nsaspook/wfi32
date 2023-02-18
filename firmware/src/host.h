@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
-#define HOST_DRIVER "V1.616" 
+#define HOST_DRIVER "V1.620" 
 #define HOST_ALIAS "HOST"
 
 #define host_lcd_update	50

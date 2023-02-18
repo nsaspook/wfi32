@@ -18,6 +18,7 @@ extern "C" {
 #include <stdarg.h>
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
+#include <proc/p32mk0512mcj048.h>
 
 	/* Application's state machine enum */
 	typedef enum {

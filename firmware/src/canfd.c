@@ -253,6 +253,7 @@ void canfd_set_filter(uint32_t fil0, uint32_t fil1)
 	// disable filters for configuration
 	CFD1FLTCON0bits.FLTEN0 = 0;
 	CFD1FLTCON0bits.FLTEN1 = 0;
+	CFD1TDCbits.TDCMOD=2;
 	CFD1FLTCON0bits.F0BP = 2; // message stored in FIFO2
 	CFD1FLTCON0bits.F1BP = 2; // message stored in FIFO2
 	// extended identifier address
