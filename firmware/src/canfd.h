@@ -57,7 +57,7 @@ extern "C" {
 #define CANDEV2
 #endif
 
-#define DEBUG_FILTER
+//#define DEBUG_FILTER
 
 	/* set format attribute for the vararg function */
 	void PrintFormattedData(const char * format, ...) __attribute__((format(printf, 1, 2)));

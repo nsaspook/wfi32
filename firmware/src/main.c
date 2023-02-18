@@ -315,7 +315,7 @@ int main(void)
 	TP1_Set(); // ETH modules display trigger
 
 	/* set can-fd extended ID filters and masks */
-	canfd_set_filter(0xE2D4EAE, 0xE2D4EAF);
+	canfd_set_filter(board_serial_id, HOST_MAGIC);
 
 #ifdef DEBUG_FILTER
 	sprintf(cmd_buffer, "%X %X", CAN1_MessageAcceptanceFilterMaskGet(0), CAN1_MessageAcceptanceFilterGet(0));

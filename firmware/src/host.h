@@ -14,6 +14,8 @@ extern "C" {
 
 #define HOST_DRIVER "V1.620" 
 #define HOST_ALIAS "HOST"
+	
+#define HOST_MAGIC	0x1957
 
 #define host_lcd_update	50
 
