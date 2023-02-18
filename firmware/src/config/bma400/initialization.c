@@ -185,9 +185,9 @@ void SYS_Initialize ( void* data )
 
     ADCHS_Initialize();
 
-    QEI2_Initialize();
-
 	UART1_Initialize();
+
+    QEI2_Initialize();
 
     TMR5_Initialize();
 

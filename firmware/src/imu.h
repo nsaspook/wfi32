@@ -26,8 +26,8 @@ extern "C" {
 	/*
 	 * what IMU chip are we using
 	 */
-	//#define SCA3300 // this includes the SCL3300 device
-#define BMA400 
+	#define SCA3300 // this includes the SCL3300 device
+//#define BMA400 
 
 #ifdef BMA400 // Current sensor used
 #define BMA490L // this device is not longer used but functions are needed
