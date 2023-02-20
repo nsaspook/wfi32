@@ -94,7 +94,7 @@ extern "C" {
      * IMU data structure for host messages
      */
     typedef struct _imu_host_t {
-        const uint16_t id;
+        uint16_t id;
         uint64_t host_serial_id;
         uint8_t buf[64];
     } imu_host_t;

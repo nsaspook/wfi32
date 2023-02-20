@@ -279,13 +279,13 @@ int host_sm(void)
 	StartTimer(TMR_HOST, host_lcd_update);
 
 	/* Place CAN module in configuration mode */
-	CFD1CONbits.REQOP = 4;
-	while (CFD1CONbits.OPMOD != 4);
-	CFD1FIFOCON1bits.TXAT = 0; // three retries
-	CFD1CONbits.RTXAT = 1; // limited retries
+//	CFD1CONbits.REQOP = 4;
+//	while (CFD1CONbits.OPMOD != 4);
+//	CFD1FIFOCON1bits.TXAT = 0; // three retries
+//	CFD1CONbits.RTXAT = 1; // limited retries
 	/* Place the CAN module in Normal mode */
-	CFD1CONbits.REQOP = 0;
-	while (CFD1CONbits.OPMOD != 0);
+//	CFD1CONbits.REQOP = 0;
+//	while (CFD1CONbits.OPMOD != 0);
 
 	while (true) {
 
@@ -318,10 +318,10 @@ int host_sm(void)
 				user_input = '3';
 			}
 
-			if (rec_message) {
-				user_input = '1';
-				rec_message = false;
-			}
+			//			if (rec_message) {
+			//				user_input = '1';
+			//				rec_message = false;
+			//			}
 
 			switch (user_input) {
 			case '1':
@@ -381,6 +381,7 @@ int host_sm(void)
 			case 'm':
 				break;
 			case 'n':
+				state = APP_STATE_CAN_IDLE;
 				break;
 			default:
 				break;
@@ -472,12 +473,10 @@ int host_sm(void)
 		}
 
 		if (TimerDone(TMR_HOST)) {
-			//			if (rec_message) {
-			//				if (state == APP_STATE_CAN_XFER_SUCCESSFUL) {
-			//					send_from_host(HOST_MAGIC);
-			//				}
-			//				rec_message = false;
-			//			}
+			if (rec_message) {
+				rec_message = false;
+				send_from_host(HOST_MAGIC);
+			}
 			StartTimer(TMR_HOST, host_lcd_update);
 			eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
 			eaDogM_WriteStringAtPos(7, 0, response_buffer);
@@ -608,7 +607,6 @@ void send_from_host(uint32_t hostid)
 		host0.host_serial_id = DEVSN0 & 0x1fffffff;
 
 		if (CAN1_MessageTransmit(messageID, messageLength, (void *) &host0, 1, CANFD_MODE_FD_WITH_BRS, CANFD_MSG_TX_DATA_FRAME) == false) {
-			//			LED_RED_Set();
 		}
 		LED_RED_Clear();
 		LED_GREEN_Toggle();
