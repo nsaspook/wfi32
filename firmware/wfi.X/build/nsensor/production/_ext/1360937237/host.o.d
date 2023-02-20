@@ -1,5 +1,5 @@
 build/nsensor/production/_ext/1360937237/host.o: ../src/host.c \
- ../src/config/nsensor/definitions.h \
+ ../src/host.h ../src/config/nsensor/definitions.h \
  ../src/config/nsensor/peripheral/canfd/plib_canfd1.h \
  ../src/config/nsensor/device.h \
  ../src/config/nsensor/toolchain_specifics.h \
@@ -13,10 +13,10 @@ build/nsensor/production/_ext/1360937237/host.o: ../src/host.c \
  ../src/config/nsensor/peripheral/tmr/plib_tmr_common.h \
  ../src/config/nsensor/peripheral/adchs/plib_adchs.h \
  ../src/config/nsensor/peripheral/adchs/plib_adchs_common.h \
- ../src/config/nsensor/peripheral/qei/plib_qei2.h \
- ../src/config/nsensor/peripheral/qei/plib_qei_common.h \
  ../src/config/nsensor/peripheral/uart/plib_uart1.h \
  ../src/config/nsensor/peripheral/uart/plib_uart_common.h \
+ ../src/config/nsensor/peripheral/qei/plib_qei2.h \
+ ../src/config/nsensor/peripheral/qei/plib_qei_common.h \
  ../src/config/nsensor/peripheral/tmr/plib_tmr5.h \
  ../src/config/nsensor/peripheral/mcpwm/plib_mcpwm.h \
  ../src/config/nsensor/peripheral/mcpwm/plib_mcpwm_common.h \
@@ -32,8 +32,9 @@ build/nsensor/production/_ext/1360937237/host.o: ../src/host.c \
  ../src/../../firmware/lcd_drv/dogm-graphic.h ../src/timers.h \
  ../src/../../firmware/lcd_drv/OledDriver.h \
  ../src/../../firmware/lcd_drv/OledChar.h \
- ../src/../../firmware/lcd_drv/OledGrph.h ../src/host.h \
- ../src/cmd_scanner.h
+ ../src/../../firmware/lcd_drv/OledGrph.h ../src/cmd_scanner.h
+
+../src/host.h:
 
 ../src/config/nsensor/definitions.h:
 
@@ -63,13 +64,13 @@ build/nsensor/production/_ext/1360937237/host.o: ../src/host.c \
 
 ../src/config/nsensor/peripheral/adchs/plib_adchs_common.h:
 
-../src/config/nsensor/peripheral/qei/plib_qei2.h:
-
-../src/config/nsensor/peripheral/qei/plib_qei_common.h:
-
 ../src/config/nsensor/peripheral/uart/plib_uart1.h:
 
 ../src/config/nsensor/peripheral/uart/plib_uart_common.h:
+
+../src/config/nsensor/peripheral/qei/plib_qei2.h:
+
+../src/config/nsensor/peripheral/qei/plib_qei_common.h:
 
 ../src/config/nsensor/peripheral/tmr/plib_tmr5.h:
 
@@ -108,7 +109,5 @@ build/nsensor/production/_ext/1360937237/host.o: ../src/host.c \
 ../src/../../firmware/lcd_drv/OledChar.h:
 
 ../src/../../firmware/lcd_drv/OledGrph.h:
-
-../src/host.h:
 
 ../src/cmd_scanner.h:

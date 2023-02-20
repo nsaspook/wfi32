@@ -1,13 +1,4 @@
-#include <stddef.h>                     // Defines NULL
-#include <stdbool.h>                    // Defines true
-#include <stdlib.h>                     // Defines EXIT_FAILURE
-#include <stdarg.h>
-#include <proc/p32mk0512mcj048.h>
-#include "definitions.h"                // SYS function prototypes
-#include "imu.h"
-#include "../../firmware/lcd_drv/lcd_drv.h"
 #include "host.h"
-#include "cmd_scanner.h"
 
 /*
  * Sensor network host
@@ -76,8 +67,7 @@ uint32_t fft_bin_total(sFFTData_t *, uint32_t);
 double approxRollingAverage(double avg, double new_sample);
 
 /* Variable to save application state */
-//static APP_STATES state = APP_STATE_CAN_USER_INPUT;
-static APP_STATES state = APP_STATE_CAN_USER_INPUT;
+static volatile APP_STATES state = APP_STATE_CAN_USER_INPUT;
 /* Variable to save Tx/Rx transfer status and context */
 static volatile uint32_t status = 0;
 static volatile uint32_t xferContext = 0;
@@ -88,7 +78,8 @@ static uint8_t messageLength = 0;
 static uint8_t rx_message[64];
 static uint32_t rx_messageID = 0;
 static uint8_t rx_messageLength = 0;
-static uint32_t timestamp = 0, tx_num = 0;
+static uint32_t timestamp = 0;
+static volatile uint32_t tx_num = 0;
 static CANFD_MSG_RX_ATTRIBUTE msgAttr = CANFD_MSG_RX_DATA_FRAME;
 
 const char *build_date = __DATE__, *build_time = __TIME__;
@@ -125,6 +116,8 @@ extern t_cli_ctx cli_ctx; // command buffer
   Remarks:
     None.
  */
+void APP_CAN_Callback_h(uintptr_t);
+
 void APP_CAN_Callback_h(uintptr_t context)
 {
 	xferContext = context;
@@ -142,18 +135,22 @@ void APP_CAN_Callback_h(uintptr_t context)
 		CANFD_ERROR_TX_BUS_PASSIVE_STATE | CANFD_ERROR_TX_BUS_OFF_STATE)) == CANFD_ERROR_NONE) {
 		switch ((APP_STATES) context) {
 		case APP_STATE_CAN_RECEIVE:
-		case APP_STATE_CAN_TRANSMIT:
 		{
 			state = APP_STATE_CAN_XFER_SUCCESSFUL;
 			rec_message = true;
+			break;
+		}
+		case APP_STATE_CAN_TRANSMIT:
+		{
+			LED_RED_Set();
+			tx_num++;
 			break;
 		}
 		default:
 			break;
 		}
 	} else {
-		state = APP_STATE_CAN_XFER_ERROR;
-
+		//		state = APP_STATE_CAN_XFER_ERROR;
 	}
 }
 
@@ -167,6 +164,7 @@ void APP_CAN_Error_Callback_h(uintptr_t context)
 	sprintf(buffer, "CEB status %d", status);
 	eaDogM_WriteStringAtPos(6, 0, buffer);
 #endif
+	state = APP_STATE_CAN_XFER_ERROR;
 }
 
 void print_menu_h(void)
@@ -283,7 +281,7 @@ int host_sm(void)
 	/* Place CAN module in configuration mode */
 	CFD1CONbits.REQOP = 4;
 	while (CFD1CONbits.OPMOD != 4);
-	CFD1FIFOCON1bits.TXAT = 1; // three retries
+	CFD1FIFOCON1bits.TXAT = 0; // three retries
 	CFD1CONbits.RTXAT = 1; // limited retries
 	/* Place the CAN module in Normal mode */
 	CFD1CONbits.REQOP = 0;
@@ -314,10 +312,15 @@ int host_sm(void)
 			 */
 			cli_read(&cli_ctx);
 
-			sprintf(buffer, "Processing CAN-FD %4i  %4i      ", wait_count++, 3);
+			sprintf(buffer, "Processing CAN-FD %4i  %4i      ", wait_count++, state);
 			eaDogM_WriteStringAtPos(12, 0, buffer);
 			if (CAN1_InterruptGet(2, 0x1f)) {
 				user_input = '3';
+			}
+
+			if (rec_message) {
+				user_input = '1';
+				rec_message = false;
 			}
 
 			switch (user_input) {
@@ -328,12 +331,14 @@ int host_sm(void)
 				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE);
 #endif
 				state = APP_STATE_CAN_IDLE;
-				messageID = 0x45A;
+				messageID = HOST_MAGIC; // serial of the MPU
 				messageLength = 64;
-				if (CAN1_MessageTransmit(messageID, messageLength, message, 1, CANFD_MODE_FD_WITH_BRS, CANFD_MSG_TX_DATA_FRAME) == false) {
-					sprintf(buffer, "CAN1_MessageTransmit request has failed");
-					eaDogM_WriteStringAtPos(9, 0, buffer);
+				host0.host_serial_id = DEVSN0 & 0x1fffffff;
+				messageLength = 64;
+				if (CAN1_MessageTransmit(messageID, messageLength, (void *) &host0, 1, CANFD_MODE_FD_WITH_BRS, CANFD_MSG_TX_DATA_FRAME) == false) {
 				}
+				LED_RED_Clear();
+				LED_GREEN_Toggle();
 				break;
 			case '2':
 				// Transmitting CAN Normal Message
@@ -457,22 +462,26 @@ int host_sm(void)
 				sprintf(buffer, "Failed");
 			}
 			eaDogM_WriteStringAtPos(10, 0, buffer);
+			OledUpdate();
+			WaitMs(1500);
 			state = APP_STATE_CAN_USER_INPUT;
 			break;
 		}
 		default:
 			break;
 		}
+
 		if (TimerDone(TMR_HOST)) {
-			if (rec_message) {
-				send_from_host(HOST_MAGIC);
-				rec_message = false;
-			}
+			//			if (rec_message) {
+			//				if (state == APP_STATE_CAN_XFER_SUCCESSFUL) {
+			//					send_from_host(HOST_MAGIC);
+			//				}
+			//				rec_message = false;
+			//			}
 			StartTimer(TMR_HOST, host_lcd_update);
 			eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
 			eaDogM_WriteStringAtPos(7, 0, response_buffer);
-
-			sprintf(buffer, "Sending CAN-FD %8X %6i", messageID, tx_num++);
+			sprintf(buffer, "Sending CAN-FD %8X %6i", messageID, tx_num);
 			eaDogM_WriteStringAtPos(11, 0, buffer);
 			OledUpdate();
 		}
@@ -589,13 +598,21 @@ void send_from_host(uint32_t hostid)
 		/*
 		 * use CAN-FD compatible 29-bit serial ID numbers
 		 */
+#ifdef INT_BOARD
+		CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
+		CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE);
+#endif
+		state = APP_STATE_CAN_IDLE;
 		messageID = hostid; // serial of the MPU
 		messageLength = 64;
 		host0.host_serial_id = DEVSN0 & 0x1fffffff;
+
 		if (CAN1_MessageTransmit(messageID, messageLength, (void *) &host0, 1, CANFD_MODE_FD_WITH_BRS, CANFD_MSG_TX_DATA_FRAME) == false) {
-			//
+			//			LED_RED_Set();
 		}
+		LED_RED_Clear();
 		LED_GREEN_Toggle();
+		//		WaitMs(50);
 	} else {
 	}
 }

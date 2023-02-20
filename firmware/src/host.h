@@ -12,6 +12,16 @@
 extern "C" {
 #endif
 
+#include <stddef.h>                     // Defines NULL
+#include <stdbool.h>                    // Defines true
+#include <stdlib.h>                     // Defines EXIT_FAILURE
+#include <stdarg.h>
+#include <proc/p32mk0512mcj048.h>
+#include "definitions.h"                // SYS function prototypes
+#include "imu.h"
+#include "../../firmware/lcd_drv/lcd_drv.h"
+#include "cmd_scanner.h"
+
 #define HOST_DRIVER "V1.620" 
 #define HOST_ALIAS "HOST"
 
