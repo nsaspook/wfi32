@@ -14,6 +14,7 @@ enum APP_TIMERS {
 	TMR_LOG,
 	TMR_CS,
 	TMR_HOST,
+	TMR_REPLY,
 	//
 	//(Add timers here as needed)
 	//

@@ -51,7 +51,7 @@ extern "C" {
 #define BLOCK_BOARD
 #endif
 
-	//#define DEBUG_can_callback
+#define DEBUG_can_callback
 
 #define avg_samples	10000.0
 #define uart_wait	32300

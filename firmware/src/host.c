@@ -125,7 +125,7 @@ void APP_CAN_Callback_h(uintptr_t context)
 	/* Check CAN Status */
 	status = CAN1_ErrorGet();
 	CAN1_ErrorCountGet(&txe, &rxe);
-#ifdef DEBUG_can_callback
+#ifdef DEBUG_can_callback1
 	sprintf(buffer, "CB %d,TE %d,RE %d,ER %X,DI %X", status, txe, rxe, CFD1TREC, CFD1BDIAG1);
 	eaDogM_WriteStringAtPos(5, 0, buffer);
 #endif
@@ -156,13 +156,14 @@ void APP_CAN_Callback_h(uintptr_t context)
 
 void APP_CAN_Error_Callback_h(uintptr_t context)
 {
+	char cmd_buffer[256] = " ";
 	xferContext = context;
 
 	/* Check CAN Status */
 	status = CAN1_ErrorGet();
 #ifdef DEBUG_can_callback
-	sprintf(buffer, "CEB status %d", status);
-	eaDogM_WriteStringAtPos(6, 0, buffer);
+	sprintf(buffer, "CEB status %6X  ", status);
+	eaDogM_WriteStringAtPos(5, 0, buffer);
 #endif
 	state = APP_STATE_CAN_XFER_ERROR;
 }
@@ -277,15 +278,16 @@ int host_sm(void)
 	scmd_init(); // start command parser
 
 	StartTimer(TMR_HOST, host_lcd_update);
+	StartTimer(TMR_REPLY, 1000);
 
 	/* Place CAN module in configuration mode */
-//	CFD1CONbits.REQOP = 4;
-//	while (CFD1CONbits.OPMOD != 4);
-//	CFD1FIFOCON1bits.TXAT = 0; // three retries
-//	CFD1CONbits.RTXAT = 1; // limited retries
+	//	CFD1CONbits.REQOP = 4;
+	//	while (CFD1CONbits.OPMOD != 4);
+	//	CFD1FIFOCON1bits.TXAT = 1; // three retries
+	//	CFD1CONbits.RTXAT = 1; // limited retries
 	/* Place the CAN module in Normal mode */
-//	CFD1CONbits.REQOP = 0;
-//	while (CFD1CONbits.OPMOD != 0);
+	//	CFD1CONbits.REQOP = 0;
+	//	while (CFD1CONbits.OPMOD != 0);
 
 	while (true) {
 
@@ -328,7 +330,7 @@ int host_sm(void)
 				// Transmitting CAN FD Message
 #ifdef INT_BOARD
 				CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
-				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE);
+				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT);
 #endif
 				state = APP_STATE_CAN_IDLE;
 				messageID = HOST_MAGIC; // serial of the MPU
@@ -344,7 +346,7 @@ int host_sm(void)
 				// Transmitting CAN Normal Message
 #ifdef INT_BOARD
 				CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
-				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE);
+				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT);
 #endif
 				state = APP_STATE_CAN_IDLE;
 				messageID = 0x469;
@@ -361,6 +363,7 @@ int host_sm(void)
 					// Waiting for message
 #ifdef HOST_BOARD
 					CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE, 2);
+					CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE);
 #endif
 					state = APP_STATE_CAN_IDLE;
 					memset(rx_message, 0x00, sizeof(rx_message));
@@ -460,16 +463,23 @@ int host_sm(void)
 			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
 				sprintf(buffer, "Error in received message");
 			} else {
-				sprintf(buffer, "Failed");
+				sprintf(buffer, "Failed                   ");
 			}
-			eaDogM_WriteStringAtPos(10, 0, buffer);
-			OledUpdate();
+			eaDogM_WriteStringAtPos(9, 0, buffer);
 			WaitMs(1500);
 			state = APP_STATE_CAN_USER_INPUT;
 			break;
 		}
 		default:
 			break;
+		}
+
+		if (TimerDone(TMR_REPLY)) {
+			if (rec_message) {
+				rec_message = false;
+				send_from_host(HOST_MAGIC);
+			}
+			StartTimer(TMR_REPLY, 500);
 		}
 
 		if (TimerDone(TMR_HOST)) {
@@ -599,7 +609,7 @@ void send_from_host(uint32_t hostid)
 		 */
 #ifdef INT_BOARD
 		CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
-		CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE);
+		CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT);
 #endif
 		state = APP_STATE_CAN_IDLE;
 		messageID = hostid; // serial of the MPU
@@ -610,7 +620,6 @@ void send_from_host(uint32_t hostid)
 		}
 		LED_RED_Clear();
 		LED_GREEN_Toggle();
-		//		WaitMs(50);
 	} else {
 	}
 }
