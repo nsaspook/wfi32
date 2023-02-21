@@ -477,16 +477,12 @@ int host_sm(void)
 		if (TimerDone(TMR_REPLY)) {
 			if (rec_message) {
 				rec_message = false;
-				send_from_host(HOST_MAGIC);
+//				send_from_host(HOST_MAGIC);
 			}
 			StartTimer(TMR_REPLY, 500);
 		}
 
 		if (TimerDone(TMR_HOST)) {
-			if (rec_message) {
-				rec_message = false;
-				send_from_host(HOST_MAGIC);
-			}
 			StartTimer(TMR_HOST, host_lcd_update);
 			eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
 			eaDogM_WriteStringAtPos(7, 0, response_buffer);
