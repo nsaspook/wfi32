@@ -84,7 +84,6 @@ static CANFD_MSG_RX_ATTRIBUTE msgAttr = CANFD_MSG_RX_DATA_FRAME;
 
 const char *build_date = __DATE__, *build_time = __TIME__;
 uint64_t host_cpu_serial_id = 0x1957;
-uint8_t rxe, txe;
 uint32_t times = 0;
 
 uint8_t spid[] = {0xb5, 0x62, 0x0A, 0x04, 0x00};
@@ -121,6 +120,8 @@ void APP_CAN_Callback_h(uintptr_t);
 void APP_CAN_Callback_h(uintptr_t context)
 {
 	xferContext = context;
+	uint8_t rxe, txe;
+	char buffer[256] = " ";
 
 	/* Check CAN Status */
 	status = CAN1_ErrorGet();
@@ -150,19 +151,19 @@ void APP_CAN_Callback_h(uintptr_t context)
 			break;
 		}
 	} else {
-		//		state = APP_STATE_CAN_XFER_ERROR;
+		state = APP_STATE_CAN_XFER_ERROR;
 	}
 }
 
 void APP_CAN_Error_Callback_h(uintptr_t context)
 {
-	char cmd_buffer[256] = " ";
+	char buffer[256] = " ";
 	xferContext = context;
 
 	/* Check CAN Status */
 	status = CAN1_ErrorGet();
 #ifdef DEBUG_can_callback
-	sprintf(buffer, "CEB status %6X  ", status);
+	sprintf(buffer, "CEB status %3X Err ", status);
 	eaDogM_WriteStringAtPos(5, 0, buffer);
 #endif
 	state = APP_STATE_CAN_XFER_ERROR;
@@ -220,7 +221,7 @@ int host_sm(void)
 	uint8_t count = 0;
 	bool msg_ready = false;
 	uint64_t * hcid = (uint64_t *) & DEVSN0; // set pointer to 64-bit cpu serial number
-	uint32_t wait_count = 0, recv_count = 0;
+	uint32_t wait_count = 0, recv_count = 0, msg_error = 0;
 	;
 
 	/* Initialize all modules */
@@ -278,7 +279,7 @@ int host_sm(void)
 	scmd_init(); // start command parser
 
 	StartTimer(TMR_HOST, host_lcd_update);
-	StartTimer(TMR_REPLY, 1000);
+	StartTimer(TMR_REPLY, host_xmit_wait);
 
 	/* Place CAN module in configuration mode */
 	//	CFD1CONbits.REQOP = 4;
@@ -370,8 +371,8 @@ int host_sm(void)
 
 					/* Receive New Message */
 					if (CAN1_MessageReceive(&rx_messageID, &rx_messageLength, rx_message, &timestamp, 2, &msgAttr) == false) {
-						sprintf(buffer, "CAN1_MessageReceive request has failed");
-						eaDogM_WriteStringAtPos(9, 0, buffer);
+						sprintf(buffer, "Receive request has failed");
+						eaDogM_WriteStringAtPos(8, 0, buffer);
 					}
 					/* Application can do other task here */
 					sprintf(buffer, "CAN-FD  received %i", recv_count++);
@@ -384,7 +385,6 @@ int host_sm(void)
 			case 'm':
 				break;
 			case 'n':
-				state = APP_STATE_CAN_IDLE;
 				break;
 			default:
 				break;
@@ -461,12 +461,11 @@ int host_sm(void)
 		case APP_STATE_CAN_XFER_ERROR:
 		{
 			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
-				sprintf(buffer, "Error in received message");
+				sprintf(buffer, "Err,recv message %i", ++msg_error);
 			} else {
-				sprintf(buffer, "Failed                   ");
+				sprintf(buffer, "Failed  %d %d         ", ++msg_error, xferContext);
 			}
 			eaDogM_WriteStringAtPos(9, 0, buffer);
-			WaitMs(1500);
 			state = APP_STATE_CAN_USER_INPUT;
 			break;
 		}
@@ -476,14 +475,19 @@ int host_sm(void)
 
 		if (TimerDone(TMR_REPLY)) {
 			if (rec_message) {
-				rec_message = false;
-//				send_from_host(HOST_MAGIC);
+				//				rec_message = false;
+				//				send_from_host(HOST_MAGIC);
 			}
-			StartTimer(TMR_REPLY, 500);
+			StartTimer(TMR_REPLY, host_xmit_wait);
 		}
 
 		if (TimerDone(TMR_HOST)) {
 			StartTimer(TMR_HOST, host_lcd_update);
+			if (rec_message) {
+				rec_message = false;
+				send_from_host(HOST_MAGIC);
+			}
+			StartTimer(TMR_REPLY, host_xmit_wait);
 			eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
 			eaDogM_WriteStringAtPos(7, 0, response_buffer);
 			sprintf(buffer, "Sending CAN-FD %8X %6i", messageID, tx_num);
@@ -607,7 +611,6 @@ void send_from_host(uint32_t hostid)
 		CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
 		CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT);
 #endif
-		state = APP_STATE_CAN_IDLE;
 		messageID = hostid; // serial of the MPU
 		messageLength = 64;
 		host0.host_serial_id = DEVSN0 & 0x1fffffff;

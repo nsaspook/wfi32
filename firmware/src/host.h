@@ -51,10 +51,15 @@ extern "C" {
 #define BLOCK_BOARD
 #endif
 
-#define DEBUG_can_callback
+	/*
+	 * these routines can corrupt the display buffer with ISR level modifications of memory
+	 */
+	//#define DEBUG_can_callback
+	//#define DEBUG_can_callback1
 
 #define avg_samples	10000.0
 #define uart_wait	32300
+#define host_xmit_wait	100
 
 	/*
 	 * CAN-FD vibration sensor host to network state machine

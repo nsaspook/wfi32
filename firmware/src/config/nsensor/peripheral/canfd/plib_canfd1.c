@@ -51,7 +51,7 @@
 #include <sys/kmem.h>
 #include "plib_canfd1.h"
 
-
+#include "../gpio/plib_gpio.h"
 // *****************************************************************************
 // *****************************************************************************
 // Global Data
@@ -244,6 +244,8 @@ bool CAN1_MessageTransmit(uint32_t id, uint8_t length, uint8_t* data, uint8_t fi
     uint8_t dlc = 0;
     bool status = false;
 
+    LED_RED_Clear();
+    
     if (fifoQueueNum == 0)
     {
     }
@@ -255,7 +257,7 @@ bool CAN1_MessageTransmit(uint32_t id, uint8_t length, uint8_t* data, uint8_t fi
             status = true;
         }
     }
-
+    
     if (status)
     {
         /* Check the id whether it falls under SID or EID,
