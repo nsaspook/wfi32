@@ -88,6 +88,8 @@ void MCPWM_Initialize (void)
     /*  POLL    = 0*/
     /*  FLTDAT  = 0b00 */
     /*  FLTMOD  = 3 */
+    /*  PENH  = 1 */
+    /*  PENL  = 1 */
     /*  FLTPOL  = 0  */
     /*  FLTSRC  = 0  */
     /*  CLDAT  = 0b00 */

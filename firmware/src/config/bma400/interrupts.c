@@ -128,12 +128,12 @@ void __ISR(_DMA1_VECTOR, ipl1SRS) DMA1_Handler (void)
     DMA1_InterruptHandler();
 }
 
-void __ISR(_DMA2_VECTOR, ipl1SRS) DMA2_Handler (void)
+void __ISR(_DMA2_VECTOR, ipl2SRS) DMA2_Handler (void)
 {
     DMA2_InterruptHandler();
 }
 
-void __ISR(_TIMER_6_VECTOR, ipl2SRS) TIMER_6_Handler (void)
+void __ISR(_TIMER_6_VECTOR, ipl3SRS) TIMER_6_Handler (void)
 {
     TIMER_6_InterruptHandler();
 }

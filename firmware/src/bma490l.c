@@ -227,7 +227,16 @@ bool imu_getis(imu_cmd_t * imu)
 	}
 }
 
+#ifdef XPRJ_nsensor
+// dummy routine for host mode
+void imu_set_reg(imu_cmd_t * imu, const uint8_t reg, const uint8_t data, const bool fast)
+{
+
+}
+#endif
+
 #ifdef BMA400
+
 /*
  * read or write IMU register without read data returned
  */
@@ -249,6 +258,7 @@ void imu_set_reg(imu_cmd_t * imu, const uint8_t reg, const uint8_t data, const b
 #endif
 
 #ifdef BMA400
+
 /*
  * read IMU register read data returned in rbuf
  */

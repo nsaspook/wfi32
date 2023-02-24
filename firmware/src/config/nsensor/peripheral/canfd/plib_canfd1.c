@@ -51,7 +51,7 @@
 #include <sys/kmem.h>
 #include "plib_canfd1.h"
 
-#include "../gpio/plib_gpio.h"
+
 // *****************************************************************************
 // *****************************************************************************
 // Global Data
@@ -197,7 +197,7 @@ void CAN1_Initialize(void)
     CFD1FLTCON0 |= (((0x2 << _CFD1FLTCON0_F0BP_POSITION) & _CFD1FLTCON0_F0BP_MASK)| _CFD1FLTCON0_FLTEN0_MASK);
 
     /* Enable Timestamp */
-    CFD1TSCON = (0 & _CFD1TSCON_TBCPRE_MASK)
+    CFD1TSCON = (512 & _CFD1TSCON_TBCPRE_MASK)
                                 | ((0x1 << _CFD1TSCON_TSEOF_POSITION) & _CFD1TSCON_TSEOF_MASK)
 
                                 | _CFD1TSCON_TBCEN_MASK;
@@ -244,8 +244,6 @@ bool CAN1_MessageTransmit(uint32_t id, uint8_t length, uint8_t* data, uint8_t fi
     uint8_t dlc = 0;
     bool status = false;
 
-    LED_RED_Clear();
-    
     if (fifoQueueNum == 0)
     {
     }

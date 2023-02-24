@@ -66,8 +66,8 @@ void EVIC_Initialize( void )
     IPC13SET = 0xc000000 | 0x0;  /* SPI2_TX:  Priority 3 / Subpriority 0 */
     IPC18SET = 0x4 | 0x0;  /* DMA0:  Priority 1 / Subpriority 0 */
     IPC18SET = 0x400 | 0x0;  /* DMA1:  Priority 1 / Subpriority 0 */
-    IPC18SET = 0x40000 | 0x0;  /* DMA2:  Priority 1 / Subpriority 0 */
-    IPC19SET = 0x8 | 0x0;  /* TIMER_6:  Priority 2 / Subpriority 0 */
+    IPC18SET = 0x80000 | 0x0;  /* DMA2:  Priority 2 / Subpriority 0 */
+    IPC19SET = 0xc | 0x0;  /* TIMER_6:  Priority 3 / Subpriority 0 */
     IPC42SET = 0x40000 | 0x0;  /* QEI2:  Priority 1 / Subpriority 0 */
     IPC46SET = 0x400 | 0x0;  /* DMA7:  Priority 1 / Subpriority 0 */
 
@@ -77,6 +77,11 @@ void EVIC_Initialize( void )
 
     /* Configure Shadow Register Set */
     PRISS = 0x76543210;
+
+    while (PRISS != 0x76543210)
+    {
+        /* Wait for PRISS value to take effect */
+    }
 }
 
 void EVIC_SourceEnable( INT_SOURCE source )

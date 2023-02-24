@@ -1029,7 +1029,7 @@
       &lt;/Boolean&gt;
     &lt;/Attributes&gt;
     &lt;Values dnOrder=&quot;1&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;0&quot;/&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;512&quot;/&gt;
     &lt;/Values&gt;
   &lt;/can1&gt;
 &lt;/can1&gt;
@@ -4525,6 +4525,28 @@
 </value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="EVIC_167_PRIORITY"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
+  &lt;core dnOrder=&quot;0&quot; id=&quot;EVIC_167_PRIORITY&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;4&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/core&gt;
+&lt;/core&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="EVIC_167_PRIVALUE"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
+  &lt;core dnOrder=&quot;0&quot; id=&quot;EVIC_167_PRIVALUE&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;268435456&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/core&gt;
+&lt;/core&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="EVIC_170_ENABLE"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;EVIC_170_ENABLE&quot;&gt;
@@ -4585,6 +4607,28 @@
   &lt;core dnOrder=&quot;0&quot; id=&quot;EVIC_185_INTERRUPT_HANDLER&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
       &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;DMA7_InterruptHandler&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/core&gt;
+&lt;/core&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="EVIC_185_PRIORITY"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
+  &lt;core dnOrder=&quot;0&quot; id=&quot;EVIC_185_PRIORITY&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;5&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/core&gt;
+&lt;/core&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="EVIC_185_PRIVALUE"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
+  &lt;core dnOrder=&quot;0&quot; id=&quot;EVIC_185_PRIVALUE&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;5120&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -9801,7 +9845,7 @@
       </entry>
       <entry>
          <file>..\src\config\nsensor\initialization.c</file>
-         <hash>71fba2deb3e79aaa6dc1edf0861142e6db7fb64c08f46e7fd2d111245e1ac796</hash>
+         <hash>ea0445de98edc6eea89ae32f49b9cd8ba279e9173b10084e9db2f8b1aa04c4a9</hash>
       </entry>
       <entry>
          <file>..\src\config\nsensor\peripheral\spi\spi_master\plib_spi_master_common.h</file>
@@ -9873,7 +9917,7 @@
       </entry>
       <entry>
          <file>..\src\config\nsensor\peripheral\canfd\plib_canfd1.c</file>
-         <hash>298c1b9fb002c1fb29ce4d16d3eddbd585a1b3f896f00428cb592eb78bc010de</hash>
+         <hash>919ccccd5a7a12c33e9fb377b1f1bb2d95987a07b2139fd865dd2c71236770d2</hash>
       </entry>
       <entry>
          <file>..\src\config\nsensor\peripheral\mcpwm\plib_mcpwm.h</file>
@@ -9909,7 +9953,7 @@
       </entry>
       <entry>
          <file>..\src\config\nsensor\interrupts.c</file>
-         <hash>5de2886f37f0b7ff66e704075dd9e30ee1bb803f3210ebca82356f39512f6bd3</hash>
+         <hash>0e6a3e4a89a5db0bcbc7ec3bcff42852abad9d1d5e2e088b8dc11edecf795627</hash>
       </entry>
       <entry>
          <file>..\src\config\nsensor\peripheral\rtcc\plib_rtcc.h</file>
@@ -9929,7 +9973,7 @@
       </entry>
       <entry>
          <file>..\src\config\nsensor\definitions.h</file>
-         <hash>3cc1766959c0b72ad8ccbaeda286c2798bb654ba945d85765492e36c7c4bee93</hash>
+         <hash>241ab65719a222cffeec9f325f49915a54219945c718e8cf6e6a12ecdb729715</hash>
       </entry>
       <entry>
          <file>..\src\config\nsensor\peripheral\uart\plib_uart1.c</file>
@@ -9969,7 +10013,7 @@
       </entry>
       <entry>
          <file>..\src\config\nsensor\peripheral\evic\plib_evic.c</file>
-         <hash>6547371332d35b62ab0530d1186a950f51487e8d32600a4fee957ed977fbb948</hash>
+         <hash>14ffc2b1889df1f74f17def6272c84190de5f404a46b540f109f95fc88d443be</hash>
       </entry>
       <entry>
          <file>..\src\config\nsensor\peripheral\tmr\plib_tmr6.c</file>

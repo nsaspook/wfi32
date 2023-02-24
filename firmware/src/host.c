@@ -168,6 +168,15 @@ void APP_CAN_Error_Callback_h(uintptr_t context)
 	eaDogM_WriteStringAtPos(5, 0, buffer);
 #endif
 	state = APP_STATE_CAN_XFER_ERROR;
+	/*
+	 * clear application error bits
+	 */
+	CFD1INTbits.SERRIF = 0;
+	CFD1INTbits.CERRIF = 0;
+	CFD1INTbits.IVMIF = 0;
+	CFD1INTbits.WAKIF = 0;
+	CFD1INTbits.MODIF = 0;
+	CFD1INTbits.TBCIF = 0;
 }
 
 void print_menu_h(void)

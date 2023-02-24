@@ -5,7 +5,7 @@
     Microchip Technology Inc.
 
   File Name:
-    plib_gpio.h
+    plib_gpio.h UUUUUUUUU
 
   Summary:
     GPIO PLIB Header File
@@ -63,147 +63,147 @@
 
 
 /*** Macros for ETH_CFG pin ***/
-#define ETH_CFG_Set()               (LATBSET = (1<<14))
-#define ETH_CFG_Clear()             (LATBCLR = (1<<14))
-#define ETH_CFG_Toggle()            (LATBINV= (1<<14))
-#define ETH_CFG_OutputEnable()      (TRISBCLR = (1<<14))
-#define ETH_CFG_InputEnable()       (TRISBSET = (1<<14))
-#define ETH_CFG_Get()               ((PORTB >> 14) & 0x1)
+#define ETH_CFG_Set()               (LATBSET = (1U<<14))
+#define ETH_CFG_Clear()             (LATBCLR = (1U<<14))
+#define ETH_CFG_Toggle()            (LATBINV= (1U<<14))
+#define ETH_CFG_OutputEnable()      (TRISBCLR = (1U<<14))
+#define ETH_CFG_InputEnable()       (TRISBSET = (1U<<14))
+#define ETH_CFG_Get()               ((PORTB >> 14) & 0x1U)
 #define ETH_CFG_PIN                  GPIO_PIN_RB14
 
 /*** Macros for ETH_RESET pin ***/
-#define ETH_RESET_Set()               (LATBSET = (1<<15))
-#define ETH_RESET_Clear()             (LATBCLR = (1<<15))
-#define ETH_RESET_Toggle()            (LATBINV= (1<<15))
-#define ETH_RESET_OutputEnable()      (TRISBCLR = (1<<15))
-#define ETH_RESET_InputEnable()       (TRISBSET = (1<<15))
-#define ETH_RESET_Get()               ((PORTB >> 15) & 0x1)
+#define ETH_RESET_Set()               (LATBSET = (1U<<15))
+#define ETH_RESET_Clear()             (LATBCLR = (1U<<15))
+#define ETH_RESET_Toggle()            (LATBINV= (1U<<15))
+#define ETH_RESET_OutputEnable()      (TRISBCLR = (1U<<15))
+#define ETH_RESET_InputEnable()       (TRISBSET = (1U<<15))
+#define ETH_RESET_Get()               ((PORTB >> 15) & 0x1U)
 #define ETH_RESET_PIN                  GPIO_PIN_RB15
 
 /*** Macros for EXT_SW2 pin ***/
-#define EXT_SW2_Set()               (LATASET = (1<<12))
-#define EXT_SW2_Clear()             (LATACLR = (1<<12))
-#define EXT_SW2_Toggle()            (LATAINV= (1<<12))
-#define EXT_SW2_OutputEnable()      (TRISACLR = (1<<12))
-#define EXT_SW2_InputEnable()       (TRISASET = (1<<12))
-#define EXT_SW2_Get()               ((PORTA >> 12) & 0x1)
+#define EXT_SW2_Set()               (LATASET = (1U<<12))
+#define EXT_SW2_Clear()             (LATACLR = (1U<<12))
+#define EXT_SW2_Toggle()            (LATAINV= (1U<<12))
+#define EXT_SW2_OutputEnable()      (TRISACLR = (1U<<12))
+#define EXT_SW2_InputEnable()       (TRISASET = (1U<<12))
+#define EXT_SW2_Get()               ((PORTA >> 12) & 0x1U)
 #define EXT_SW2_PIN                  GPIO_PIN_RA12
 
 /*** Macros for DIS_CS pin ***/
-#define DIS_CS_Set()               (LATASET = (1<<11))
-#define DIS_CS_Clear()             (LATACLR = (1<<11))
-#define DIS_CS_Toggle()            (LATAINV= (1<<11))
-#define DIS_CS_OutputEnable()      (TRISACLR = (1<<11))
-#define DIS_CS_InputEnable()       (TRISASET = (1<<11))
-#define DIS_CS_Get()               ((PORTA >> 11) & 0x1)
+#define DIS_CS_Set()               (LATASET = (1U<<11))
+#define DIS_CS_Clear()             (LATACLR = (1U<<11))
+#define DIS_CS_Toggle()            (LATAINV= (1U<<11))
+#define DIS_CS_OutputEnable()      (TRISACLR = (1U<<11))
+#define DIS_CS_InputEnable()       (TRISASET = (1U<<11))
+#define DIS_CS_Get()               ((PORTA >> 11) & 0x1U)
 #define DIS_CS_PIN                  GPIO_PIN_RA11
 
 /*** Macros for TP3 pin ***/
-#define TP3_Set()               (LATBSET = (1<<0))
-#define TP3_Clear()             (LATBCLR = (1<<0))
-#define TP3_Toggle()            (LATBINV= (1<<0))
-#define TP3_OutputEnable()      (TRISBCLR = (1<<0))
-#define TP3_InputEnable()       (TRISBSET = (1<<0))
-#define TP3_Get()               ((PORTB >> 0) & 0x1)
+#define TP3_Set()               (LATBSET = (1U<<0))
+#define TP3_Clear()             (LATBCLR = (1U<<0))
+#define TP3_Toggle()            (LATBINV= (1U<<0))
+#define TP3_OutputEnable()      (TRISBCLR = (1U<<0))
+#define TP3_InputEnable()       (TRISBSET = (1U<<0))
+#define TP3_Get()               ((PORTB >> 0) & 0x1U)
 #define TP3_PIN                  GPIO_PIN_RB0
 
 /*** Macros for TP2 pin ***/
-#define TP2_Set()               (LATCSET = (1<<2))
-#define TP2_Clear()             (LATCCLR = (1<<2))
-#define TP2_Toggle()            (LATCINV= (1<<2))
-#define TP2_OutputEnable()      (TRISCCLR = (1<<2))
-#define TP2_InputEnable()       (TRISCSET = (1<<2))
-#define TP2_Get()               ((PORTC >> 2) & 0x1)
+#define TP2_Set()               (LATCSET = (1U<<2))
+#define TP2_Clear()             (LATCCLR = (1U<<2))
+#define TP2_Toggle()            (LATCINV= (1U<<2))
+#define TP2_OutputEnable()      (TRISCCLR = (1U<<2))
+#define TP2_InputEnable()       (TRISCSET = (1U<<2))
+#define TP2_Get()               ((PORTC >> 2) & 0x1U)
 #define TP2_PIN                  GPIO_PIN_RC2
 
 /*** Macros for TP1 pin ***/
-#define TP1_Set()               (LATCSET = (1<<11))
-#define TP1_Clear()             (LATCCLR = (1<<11))
-#define TP1_Toggle()            (LATCINV= (1<<11))
-#define TP1_OutputEnable()      (TRISCCLR = (1<<11))
-#define TP1_InputEnable()       (TRISCSET = (1<<11))
-#define TP1_Get()               ((PORTC >> 11) & 0x1)
+#define TP1_Set()               (LATCSET = (1U<<11))
+#define TP1_Clear()             (LATCCLR = (1U<<11))
+#define TP1_Toggle()            (LATCINV= (1U<<11))
+#define TP1_OutputEnable()      (TRISCCLR = (1U<<11))
+#define TP1_InputEnable()       (TRISCSET = (1U<<11))
+#define TP1_Get()               ((PORTC >> 11) & 0x1U)
 #define TP1_PIN                  GPIO_PIN_RC11
 
 /*** Macros for PWM4ER pin ***/
-#define PWM4ER_Set()               (LATASET = (1<<8))
-#define PWM4ER_Clear()             (LATACLR = (1<<8))
-#define PWM4ER_Toggle()            (LATAINV= (1<<8))
-#define PWM4ER_OutputEnable()      (TRISACLR = (1<<8))
-#define PWM4ER_InputEnable()       (TRISASET = (1<<8))
-#define PWM4ER_Get()               ((PORTA >> 8) & 0x1)
+#define PWM4ER_Set()               (LATASET = (1U<<8))
+#define PWM4ER_Clear()             (LATACLR = (1U<<8))
+#define PWM4ER_Toggle()            (LATAINV= (1U<<8))
+#define PWM4ER_OutputEnable()      (TRISACLR = (1U<<8))
+#define PWM4ER_InputEnable()       (TRISASET = (1U<<8))
+#define PWM4ER_Get()               ((PORTA >> 8) & 0x1U)
 #define PWM4ER_PIN                  GPIO_PIN_RA8
 
 /*** Macros for LED_GREEN pin ***/
-#define LED_GREEN_Set()               (LATASET = (1<<4))
-#define LED_GREEN_Clear()             (LATACLR = (1<<4))
-#define LED_GREEN_Toggle()            (LATAINV= (1<<4))
-#define LED_GREEN_OutputEnable()      (TRISACLR = (1<<4))
-#define LED_GREEN_InputEnable()       (TRISASET = (1<<4))
-#define LED_GREEN_Get()               ((PORTA >> 4) & 0x1)
+#define LED_GREEN_Set()               (LATASET = (1U<<4))
+#define LED_GREEN_Clear()             (LATACLR = (1U<<4))
+#define LED_GREEN_Toggle()            (LATAINV= (1U<<4))
+#define LED_GREEN_OutputEnable()      (TRISACLR = (1U<<4))
+#define LED_GREEN_InputEnable()       (TRISASET = (1U<<4))
+#define LED_GREEN_Get()               ((PORTA >> 4) & 0x1U)
 #define LED_GREEN_PIN                  GPIO_PIN_RA4
 
 /*** Macros for LED_RED pin ***/
-#define LED_RED_Set()               (LATCSET = (1<<15))
-#define LED_RED_Clear()             (LATCCLR = (1<<15))
-#define LED_RED_Toggle()            (LATCINV= (1<<15))
-#define LED_RED_OutputEnable()      (TRISCCLR = (1<<15))
-#define LED_RED_InputEnable()       (TRISCSET = (1<<15))
-#define LED_RED_Get()               ((PORTC >> 15) & 0x1)
+#define LED_RED_Set()               (LATCSET = (1U<<15))
+#define LED_RED_Clear()             (LATCCLR = (1U<<15))
+#define LED_RED_Toggle()            (LATCINV= (1U<<15))
+#define LED_RED_OutputEnable()      (TRISCCLR = (1U<<15))
+#define LED_RED_InputEnable()       (TRISCSET = (1U<<15))
+#define LED_RED_Get()               ((PORTC >> 15) & 0x1U)
 #define LED_RED_PIN                  GPIO_PIN_RC15
 
 /*** Macros for PWM1EN pin ***/
-#define PWM1EN_Set()               (LATDSET = (1<<8))
-#define PWM1EN_Clear()             (LATDCLR = (1<<8))
-#define PWM1EN_Toggle()            (LATDINV= (1<<8))
-#define PWM1EN_OutputEnable()      (TRISDCLR = (1<<8))
-#define PWM1EN_InputEnable()       (TRISDSET = (1<<8))
-#define PWM1EN_Get()               ((PORTD >> 8) & 0x1)
+#define PWM1EN_Set()               (LATDSET = (1U<<8))
+#define PWM1EN_Clear()             (LATDCLR = (1U<<8))
+#define PWM1EN_Toggle()            (LATDINV= (1U<<8))
+#define PWM1EN_OutputEnable()      (TRISDCLR = (1U<<8))
+#define PWM1EN_InputEnable()       (TRISDSET = (1U<<8))
+#define PWM1EN_Get()               ((PORTD >> 8) & 0x1U)
 #define PWM1EN_PIN                  GPIO_PIN_RD8
 
 /*** Macros for DIS_MODE pin ***/
-#define DIS_MODE_Set()               (LATBSET = (1<<6))
-#define DIS_MODE_Clear()             (LATBCLR = (1<<6))
-#define DIS_MODE_Toggle()            (LATBINV= (1<<6))
-#define DIS_MODE_OutputEnable()      (TRISBCLR = (1<<6))
-#define DIS_MODE_InputEnable()       (TRISBSET = (1<<6))
-#define DIS_MODE_Get()               ((PORTB >> 6) & 0x1)
+#define DIS_MODE_Set()               (LATBSET = (1U<<6))
+#define DIS_MODE_Clear()             (LATBCLR = (1U<<6))
+#define DIS_MODE_Toggle()            (LATBINV= (1U<<6))
+#define DIS_MODE_OutputEnable()      (TRISBCLR = (1U<<6))
+#define DIS_MODE_InputEnable()       (TRISBSET = (1U<<6))
+#define DIS_MODE_Get()               ((PORTB >> 6) & 0x1U)
 #define DIS_MODE_PIN                  GPIO_PIN_RB6
 
 /*** Macros for PWM1ER pin ***/
-#define PWM1ER_Set()               (LATBSET = (1<<8))
-#define PWM1ER_Clear()             (LATBCLR = (1<<8))
-#define PWM1ER_Toggle()            (LATBINV= (1<<8))
-#define PWM1ER_OutputEnable()      (TRISBCLR = (1<<8))
-#define PWM1ER_InputEnable()       (TRISBSET = (1<<8))
-#define PWM1ER_Get()               ((PORTB >> 8) & 0x1)
+#define PWM1ER_Set()               (LATBSET = (1U<<8))
+#define PWM1ER_Clear()             (LATBCLR = (1U<<8))
+#define PWM1ER_Toggle()            (LATBINV= (1U<<8))
+#define PWM1ER_OutputEnable()      (TRISBCLR = (1U<<8))
+#define PWM1ER_InputEnable()       (TRISBSET = (1U<<8))
+#define PWM1ER_Get()               ((PORTB >> 8) & 0x1U)
 #define PWM1ER_PIN                  GPIO_PIN_RB8
 
 /*** Macros for EXT_SW1 pin ***/
-#define EXT_SW1_Set()               (LATBSET = (1<<9))
-#define EXT_SW1_Clear()             (LATBCLR = (1<<9))
-#define EXT_SW1_Toggle()            (LATBINV= (1<<9))
-#define EXT_SW1_OutputEnable()      (TRISBCLR = (1<<9))
-#define EXT_SW1_InputEnable()       (TRISBSET = (1<<9))
-#define EXT_SW1_Get()               ((PORTB >> 9) & 0x1)
+#define EXT_SW1_Set()               (LATBSET = (1U<<9))
+#define EXT_SW1_Clear()             (LATBCLR = (1U<<9))
+#define EXT_SW1_Toggle()            (LATBINV= (1U<<9))
+#define EXT_SW1_OutputEnable()      (TRISBCLR = (1U<<9))
+#define EXT_SW1_InputEnable()       (TRISBSET = (1U<<9))
+#define EXT_SW1_Get()               ((PORTB >> 9) & 0x1U)
 #define EXT_SW1_PIN                  GPIO_PIN_RB9
 
 /*** Macros for IMU_CS pin ***/
-#define IMU_CS_Set()               (LATCSET = (1<<9))
-#define IMU_CS_Clear()             (LATCCLR = (1<<9))
-#define IMU_CS_Toggle()            (LATCINV= (1<<9))
-#define IMU_CS_OutputEnable()      (TRISCCLR = (1<<9))
-#define IMU_CS_InputEnable()       (TRISCSET = (1<<9))
-#define IMU_CS_Get()               ((PORTC >> 9) & 0x1)
+#define IMU_CS_Set()               (LATCSET = (1U<<9))
+#define IMU_CS_Clear()             (LATCCLR = (1U<<9))
+#define IMU_CS_Toggle()            (LATCINV= (1U<<9))
+#define IMU_CS_OutputEnable()      (TRISCCLR = (1U<<9))
+#define IMU_CS_InputEnable()       (TRISCSET = (1U<<9))
+#define IMU_CS_Get()               ((PORTC >> 9) & 0x1U)
 #define IMU_CS_PIN                  GPIO_PIN_RC9
 
 /*** Macros for PWM4EN pin ***/
-#define PWM4EN_Set()               (LATBSET = (1<<11))
-#define PWM4EN_Clear()             (LATBCLR = (1<<11))
-#define PWM4EN_Toggle()            (LATBINV= (1<<11))
-#define PWM4EN_OutputEnable()      (TRISBCLR = (1<<11))
-#define PWM4EN_InputEnable()       (TRISBSET = (1<<11))
-#define PWM4EN_Get()               ((PORTB >> 11) & 0x1)
+#define PWM4EN_Set()               (LATBSET = (1U<<11))
+#define PWM4EN_Clear()             (LATBCLR = (1U<<11))
+#define PWM4EN_Toggle()            (LATBINV= (1U<<11))
+#define PWM4EN_OutputEnable()      (TRISBCLR = (1U<<11))
+#define PWM4EN_InputEnable()       (TRISBSET = (1U<<11))
+#define PWM4EN_Get()               ((PORTB >> 11) & 0x1U)
 #define PWM4EN_PIN                  GPIO_PIN_RB11
 
 
@@ -224,13 +224,12 @@
     device data sheet to determine which ports are supported.
 */
 
-typedef enum
-{
-    GPIO_PORT_A = 0,
-    GPIO_PORT_B = 1,
-    GPIO_PORT_C = 2,
-    GPIO_PORT_D = 3,
-} GPIO_PORT;
+
+#define    GPIO_PORT_A  (0)
+#define    GPIO_PORT_B  (1)
+#define    GPIO_PORT_C  (2)
+#define    GPIO_PORT_D  (3)
+typedef uint32_t GPIO_PORT;
 
 typedef enum
 {
@@ -257,51 +256,50 @@ typedef enum
     device data sheet to determine which pins are supported.
 */
 
-typedef enum
-{
-    GPIO_PIN_RA0 = 0,
-    GPIO_PIN_RA1 = 1,
-    GPIO_PIN_RA4 = 4,
-    GPIO_PIN_RA7 = 7,
-    GPIO_PIN_RA8 = 8,
-    GPIO_PIN_RA10 = 10,
-    GPIO_PIN_RA11 = 11,
-    GPIO_PIN_RA12 = 12,
-    GPIO_PIN_RB0 = 16,
-    GPIO_PIN_RB1 = 17,
-    GPIO_PIN_RB2 = 18,
-    GPIO_PIN_RB3 = 19,
-    GPIO_PIN_RB4 = 20,
-    GPIO_PIN_RB5 = 21,
-    GPIO_PIN_RB6 = 22,
-    GPIO_PIN_RB7 = 23,
-    GPIO_PIN_RB8 = 24,
-    GPIO_PIN_RB9 = 25,
-    GPIO_PIN_RB10 = 26,
-    GPIO_PIN_RB11 = 27,
-    GPIO_PIN_RB12 = 28,
-    GPIO_PIN_RB13 = 29,
-    GPIO_PIN_RB14 = 30,
-    GPIO_PIN_RB15 = 31,
-    GPIO_PIN_RC0 = 32,
-    GPIO_PIN_RC1 = 33,
-    GPIO_PIN_RC2 = 34,
-    GPIO_PIN_RC6 = 38,
-    GPIO_PIN_RC7 = 39,
-    GPIO_PIN_RC8 = 40,
-    GPIO_PIN_RC9 = 41,
-    GPIO_PIN_RC10 = 42,
-    GPIO_PIN_RC11 = 43,
-    GPIO_PIN_RC12 = 44,
-    GPIO_PIN_RC13 = 45,
-    GPIO_PIN_RC15 = 47,
-    GPIO_PIN_RD8 = 56,
+
+#define     GPIO_PIN_RA0  (0U)
+#define     GPIO_PIN_RA1  (1U)
+#define     GPIO_PIN_RA4  (4U)
+#define     GPIO_PIN_RA7  (7U)
+#define     GPIO_PIN_RA8  (8U)
+#define     GPIO_PIN_RA10  (10U)
+#define     GPIO_PIN_RA11  (11U)
+#define     GPIO_PIN_RA12  (12U)
+#define     GPIO_PIN_RB0  (16U)
+#define     GPIO_PIN_RB1  (17U)
+#define     GPIO_PIN_RB2  (18U)
+#define     GPIO_PIN_RB3  (19U)
+#define     GPIO_PIN_RB4  (20U)
+#define     GPIO_PIN_RB5  (21U)
+#define     GPIO_PIN_RB6  (22U)
+#define     GPIO_PIN_RB7  (23U)
+#define     GPIO_PIN_RB8  (24U)
+#define     GPIO_PIN_RB9  (25U)
+#define     GPIO_PIN_RB10  (26U)
+#define     GPIO_PIN_RB11  (27U)
+#define     GPIO_PIN_RB12  (28U)
+#define     GPIO_PIN_RB13  (29U)
+#define     GPIO_PIN_RB14  (30U)
+#define     GPIO_PIN_RB15  (31U)
+#define     GPIO_PIN_RC0  (32U)
+#define     GPIO_PIN_RC1  (33U)
+#define     GPIO_PIN_RC2  (34U)
+#define     GPIO_PIN_RC6  (38U)
+#define     GPIO_PIN_RC7  (39U)
+#define     GPIO_PIN_RC8  (40U)
+#define     GPIO_PIN_RC9  (41U)
+#define     GPIO_PIN_RC10  (42U)
+#define     GPIO_PIN_RC11  (43U)
+#define     GPIO_PIN_RC12  (44U)
+#define     GPIO_PIN_RC13  (45U)
+#define     GPIO_PIN_RC15  (47U)
+#define     GPIO_PIN_RD8  (56U)
 
     /* This element should not be used in any of the GPIO APIs.
        It will be used by other modules or application to denote that none of the GPIO Pin is used */
-    GPIO_PIN_NONE = -1
+#define    GPIO_PIN_NONE   (-1)
 
-} GPIO_PIN;
+typedef uint32_t GPIO_PIN;
 
 
 void GPIO_Initialize(void);
@@ -336,42 +334,43 @@ void GPIO_PortOutputEnable(GPIO_PORT port, uint32_t mask);
 
 static inline void GPIO_PinWrite(GPIO_PIN pin, bool value)
 {
-    GPIO_PortWrite((GPIO_PORT)(pin>>4), (uint32_t)(0x1) << (pin & 0xF), (uint32_t)(value) << (pin & 0xF));
+	 uint32_t xvalue = (uint32_t)value;
+    GPIO_PortWrite((pin>>4U), (uint32_t)(0x1U) << (pin & 0xFU), (xvalue) << (pin & 0xFU));
 }
 
 static inline bool GPIO_PinRead(GPIO_PIN pin)
 {
-    return (bool)(((GPIO_PortRead((GPIO_PORT)(pin>>4))) >> (pin & 0xF)) & 0x1);
+    return ((((GPIO_PortRead((GPIO_PORT)(pin>>4U))) >> (pin & 0xFU)) & 0x1U) != 0U);
 }
 
 static inline bool GPIO_PinLatchRead(GPIO_PIN pin)
 {
-    return (bool)((GPIO_PortLatchRead((GPIO_PORT)(pin>>4)) >> (pin & 0xF)) & 0x1);
+    return (((GPIO_PortLatchRead((GPIO_PORT)(pin>>4U)) >> (pin & 0xFU)) & 0x1U) != 0U);
 }
 
 static inline void GPIO_PinToggle(GPIO_PIN pin)
 {
-    GPIO_PortToggle((GPIO_PORT)(pin>>4), 0x1 << (pin & 0xF));
+    GPIO_PortToggle((pin>>4U), (uint32_t)0x1U << (pin & 0xFU));
 }
 
 static inline void GPIO_PinSet(GPIO_PIN pin)
 {
-    GPIO_PortSet((GPIO_PORT)(pin>>4), 0x1 << (pin & 0xF));
+    GPIO_PortSet((pin>>4U), (uint32_t)0x1U << (pin & 0xFU));
 }
 
 static inline void GPIO_PinClear(GPIO_PIN pin)
 {
-    GPIO_PortClear((GPIO_PORT)(pin>>4), 0x1 << (pin & 0xF));
+    GPIO_PortClear((pin>>4U), (uint32_t)0x1U << (pin & 0xFU));
 }
 
 static inline void GPIO_PinInputEnable(GPIO_PIN pin)
 {
-    GPIO_PortInputEnable((GPIO_PORT)(pin>>4), 0x1 << (pin & 0xF));
+    GPIO_PortInputEnable((pin>>4U), (uint32_t)0x1U << (pin & 0xFU));
 }
 
 static inline void GPIO_PinOutputEnable(GPIO_PIN pin)
 {
-    GPIO_PortOutputEnable((GPIO_PORT)(pin>>4), 0x1 << (pin & 0xF));
+    GPIO_PortOutputEnable((pin>>4U), (uint32_t)0x1U << (pin & 0xFU));
 }
 
 
