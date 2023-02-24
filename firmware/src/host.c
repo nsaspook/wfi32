@@ -121,12 +121,12 @@ void APP_CAN_Callback_h(uintptr_t context)
 {
 	xferContext = context;
 	uint8_t rxe, txe;
-	char buffer[256] = " ";
 
 	/* Check CAN Status */
 	status = CAN1_ErrorGet();
 	CAN1_ErrorCountGet(&txe, &rxe);
 #ifdef DEBUG_can_callback1
+	char buffer[256] = " ";
 	sprintf(buffer, "CB %d,TE %d,RE %d,ER %X,DI %X", status, txe, rxe, CFD1TREC, CFD1BDIAG1);
 	eaDogM_WriteStringAtPos(5, 0, buffer);
 #endif
@@ -143,6 +143,7 @@ void APP_CAN_Callback_h(uintptr_t context)
 		}
 		case APP_STATE_CAN_TRANSMIT:
 		{
+			TP2_Clear();
 			LED_RED_Set();
 			tx_num++;
 			break;
@@ -157,12 +158,12 @@ void APP_CAN_Callback_h(uintptr_t context)
 
 void APP_CAN_Error_Callback_h(uintptr_t context)
 {
-	char buffer[256] = " ";
 	xferContext = context;
 
 	/* Check CAN Status */
 	status = CAN1_ErrorGet();
 #ifdef DEBUG_can_callback
+	char buffer[256] = " ";
 	sprintf(buffer, "CEB status %3X Err ", status);
 	eaDogM_WriteStringAtPos(5, 0, buffer);
 #endif
@@ -334,7 +335,7 @@ int host_sm(void)
 				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT);
 #endif
 				state = APP_STATE_CAN_IDLE;
-				messageID = HOST_MAGIC; // serial of the MPU
+				messageID = HOST_MAGIC_ID; // Master broadcast ID
 				messageLength = 64;
 				host0.host_serial_id = DEVSN0 & 0x1fffffff;
 				messageLength = 64;
@@ -485,7 +486,7 @@ int host_sm(void)
 			StartTimer(TMR_HOST, host_lcd_update);
 			if (rec_message) {
 				rec_message = false;
-				send_from_host(HOST_MAGIC);
+				send_from_host(HOST_MAGIC_ID); // Master broadcast ID
 			}
 			StartTimer(TMR_REPLY, host_xmit_wait);
 			eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
@@ -615,6 +616,7 @@ void send_from_host(uint32_t hostid)
 		messageLength = 64;
 		host0.host_serial_id = DEVSN0 & 0x1fffffff;
 
+		TP2_Set();
 		if (CAN1_MessageTransmit(messageID, messageLength, (void *) &host0, 1, CANFD_MODE_FD_WITH_BRS, CANFD_MSG_TX_DATA_FRAME) == false) {
 		}
 		LED_RED_Clear();

@@ -316,7 +316,7 @@ int main(void)
 	TP1_Set(); // ETH modules display trigger
 
 	/* set can-fd extended ID filters and masks */
-	canfd_set_filter(board_serial_id, HOST_MAGIC);
+	canfd_set_filter(board_serial_id, HOST_MAGIC_ID);
 
 #ifdef DEBUG_FILTER
 	sprintf(cmd_buffer, "%X %X", CAN1_MessageAcceptanceFilterMaskGet(0), CAN1_MessageAcceptanceFilterGet(0));
@@ -469,7 +469,7 @@ int main(void)
 #endif
 			canfd_state(CAN_RECEIVE, accel.buffer);
 			host_ptr = (imu_host_t *) accel.buffer;
-			sprintf(buffer, "Host   %llX", host_ptr->host_serial_id);
+			sprintf(buffer, "Host CPU %llX", host_ptr->host_serial_id);
 			eaDogM_WriteStringAtPos(12, 0, buffer);
 
 			switch (alter) {
@@ -532,7 +532,6 @@ void update_imu_int1(uint32_t a, uintptr_t context)
 			imu->update = true;
 			tog = 0;
 			LED_GREEN_Toggle();
-			TP2_Toggle();
 		}
 	}
 }

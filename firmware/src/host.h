@@ -26,6 +26,7 @@ extern "C" {
 #define HOST_ALIAS "HOST"
 
 #define HOST_MAGIC	0x1957
+#define HOST_MAGIC_ID	0x101957
 
 #define host_lcd_update	100
 
