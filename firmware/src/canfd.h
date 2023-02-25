@@ -57,7 +57,7 @@ extern "C" {
 #define CANDEV2
 #endif
 
-//#define DEBUG_FILTER
+	//#define DEBUG_FILTER
 
 	/* set format attribute for the vararg function */
 	void PrintFormattedData(const char * format, ...) __attribute__((format(printf, 1, 2)));
@@ -67,6 +67,9 @@ extern "C" {
 	uint32_t canfd_num_rx(void);
 	uint32_t canfd_num_stall(void);
 	void canfd_set_filter(uint32_t, uint32_t);
+
+	extern volatile bool tx_msg_ready;
+	extern volatile bool rx_msg_ready;
 
 #ifdef	__cplusplus
 }

@@ -464,13 +464,39 @@ int main(void)
 			eaDogM_WriteStringAtPos(11, 20, buffer);
 			sprintf(buffer, "CINT %X, %d, %d, %d", CFD1INT, canfd_num_tx(), canfd_num_stall(), canfd_num_rx());
 			eaDogM_WriteStringAtPos(13, 0, buffer);
-//			sprintf(buffer, "ER %6.2f, %6.2f, %6.2f", accel.xerr, accel.yerr, accel.zerr);
-//			eaDogM_WriteStringAtPos(12, 0, buffer);
+			//			sprintf(buffer, "ER %6.2f, %6.2f, %6.2f", accel.xerr, accel.yerr, accel.zerr);
+			//			eaDogM_WriteStringAtPos(12, 0, buffer);
 #endif
 			canfd_state(CAN_RECEIVE, accel.buffer);
 			host_ptr = (imu_host_t *) accel.buffer;
-			sprintf(buffer, "Host CPU %llX", host_ptr->host_serial_id);
-			eaDogM_WriteStringAtPos(12, 0, buffer);
+			if (rx_msg_ready) {
+				/*
+				 * decode received host message
+				 */
+				sprintf(buffer, "Host CPU %llX , Cmd %i", host_ptr->host_serial_id, host_ptr->cmd);
+				switch (host_ptr->cmd) {
+				case CMD_IDLE:
+					break;
+				case CMD_SPIN_DOWN:
+					PWM1EN_Set();
+					PWM4EN_Set();
+					break;
+				case CMD_WARN_ON:
+					PWM1EN_Set();
+					break;
+				case CMD_WARN_OFF:
+					PWM1EN_Clear();
+					break;
+				case CMD_SAFE:
+					PWM1EN_Clear();
+					PWM4EN_Clear();
+					break;
+				default:
+					sprintf(buffer, "Host CPU %llX", host_ptr->host_serial_id);
+					break;
+				}
+				eaDogM_WriteStringAtPos(12, 0, buffer);
+			}
 
 			switch (alter) {
 			case 0:

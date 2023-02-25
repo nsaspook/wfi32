@@ -90,12 +90,27 @@ extern "C" {
 		op_t op;
 	} imu_cmd_t;
 
+	enum hcmd_type { // IMU sensor chip commands from the host
+		CMD_UNLOCK = 0,
+		CMD_LOCK,
+		CMD_SAFE,
+		CMD_SPIN_DOWN,
+		CMD_WARN_ON,
+		CMD_WARN_OFF,
+		CMD_ACK,
+		CMD_IDLE,
+		CMD_ACTIVE,
+		CMD_LAST,
+	};
+
 	/*
 	 * IMU data structure for host messages
 	 */
 	typedef struct _imu_host_t {
 		uint16_t id;
 		uint64_t host_serial_id;
+		uint8_t cmd;
+		uint32_t cmd_data[4];
 		uint8_t buf[64];
 	} imu_host_t;
 

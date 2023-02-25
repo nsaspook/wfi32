@@ -57,7 +57,8 @@ char cmd_buffer[256] = "Waiting for commands";
 char response_buffer[64] = " ";
 
 imu_host_t host0 = {
-	.id = CAN_IMU_INFO,
+	.id = CAN_MISC,
+	.cmd = CMD_IDLE,
 };
 
 /* set format attribute for the vararg function */
@@ -331,11 +332,6 @@ int host_sm(void)
 				user_input = '3';
 			}
 
-			//			if (rec_message) {
-			//				user_input = '1';
-			//				rec_message = false;
-			//			}
-
 			switch (user_input) {
 			case '1':
 				// Transmitting CAN FD Message
@@ -495,6 +491,7 @@ int host_sm(void)
 			StartTimer(TMR_HOST, host_lcd_update);
 			if (rec_message) {
 				rec_message = false;
+				host0.cmd = CMD_IDLE;
 				send_from_host(HOST_MAGIC_ID); // Master broadcast ID
 			}
 			StartTimer(TMR_REPLY, host_xmit_wait);
