@@ -1372,8 +1372,7 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="!@#harmonyUserData"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;UserData&gt;
   &lt;UserData dnOrder=&quot;0&quot;&gt;
-    &lt;GraphSettings canvasHeight=&quot;470&quot; canvasWidth=&quot;776&quot; dnOrder=&quot;0&quot;/&gt;
-    &lt;ComponentGraph dnOrder=&quot;1&quot; id=&quot;__ROOTVIEW&quot;&gt;
+    &lt;ComponentGraph dnOrder=&quot;0&quot; id=&quot;__ROOTVIEW&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
         &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;adchs&quot; x=&quot;224&quot; y=&quot;83&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;can1&quot; x=&quot;510&quot; y=&quot;100&quot;/&gt;
@@ -1392,6 +1391,7 @@
         &lt;ElementPosition dnOrder=&quot;14&quot; id=&quot;uart1&quot; x=&quot;373&quot; y=&quot;246&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
+    &lt;GraphSettings canvasHeight=&quot;470&quot; canvasWidth=&quot;776&quot; dnOrder=&quot;1&quot;/&gt;
   &lt;/UserData&gt;
 &lt;/UserData&gt;
 </value>
@@ -9352,11 +9352,11 @@
   &lt;spi2 dnOrder=&quot;0&quot; id=&quot;SPI_DUMMY_DATA&quot;&gt;
     &lt;Attributes dnOrder=&quot;0&quot;&gt;
       &lt;Long dnOrder=&quot;0&quot; id=&quot;max&quot;&gt;
-        &lt;Value dnOrder=&quot;0&quot;&gt;4294967295&lt;/Value&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;255&lt;/Value&gt;
       &lt;/Long&gt;
     &lt;/Attributes&gt;
     &lt;Values dnOrder=&quot;1&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;spi2&quot; value=&quot;4294967295&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;spi2&quot; value=&quot;255&quot;/&gt;
     &lt;/Values&gt;
   &lt;/spi2&gt;
 &lt;/spi2&gt;
@@ -9378,7 +9378,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;spi2&gt;
   &lt;spi2 dnOrder=&quot;0&quot; id=&quot;SPI_SPICON_MODE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;0&quot;/&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;3&quot;/&gt;
     &lt;/Values&gt;
   &lt;/spi2&gt;
 &lt;/spi2&gt;
@@ -9934,7 +9934,7 @@
       </entry>
       <entry>
          <file>..\src\config\bma400\definitions.h</file>
-         <hash>241ab65719a222cffeec9f325f49915a54219945c718e8cf6e6a12ecdb729715</hash>
+         <hash>040cc23e3e30f0340a3780dad21edabdec2b402612429cdaebbd079a686e65f4</hash>
       </entry>
       <entry>
          <file>..\src\config\bma400\peripheral\dmac\plib_dmac.c</file>
@@ -10054,7 +10054,7 @@
       </entry>
       <entry>
          <file>..\src\config\bma400\peripheral\spi\spi_master\plib_spi2_master.c</file>
-         <hash>13bf9cf6c9be5eb2f2e5102f8c7203712574c7804516f118dc0e581bd5469f7f</hash>
+         <hash>4ce5b0b2fc703a78b1939ed5ac1fdcb2686d9413061c5674cddf18fb8d349692</hash>
       </entry>
       <entry>
          <file>..\src\config\bma400\peripheral\rtcc\plib_rtcc.c</file>
@@ -10069,12 +10069,12 @@
          <hash>d80270d36578b780adde1c49f8e211992d2146ab922028a81964b1de4a76c976</hash>
       </entry>
       <entry>
-         <file>..\src\config\bma400\peripheral\uart\plib_uart1.c</file>
-         <hash>b699c0915d87ba370a61fc60405224729ef2f5ea7d5390967ef0a2a66b67fd2b</hash>
-      </entry>
-      <entry>
          <file>..\src\config\bma400\peripheral\qei\plib_qei_common.h</file>
          <hash>9ea3b4f643d5ca367a1e9a98b6e2fe8f9d16f5b6ab36f65e27ca41b52f2bfcd5</hash>
+      </entry>
+      <entry>
+         <file>..\src\config\bma400\peripheral\uart\plib_uart1.c</file>
+         <hash>b699c0915d87ba370a61fc60405224729ef2f5ea7d5390967ef0a2a66b67fd2b</hash>
       </entry>
       <entry>
          <file>..\src\config\bma400\peripheral\spi\spi_master\plib_spi2_master.h</file>
@@ -10102,7 +10102,7 @@
       </entry>
       <entry>
          <file>..\src\config\bma400\initialization.c</file>
-         <hash>929d8c04ea7d4b0a58e09547d796215526bccec7c7b412eed0aa917fa92b61ec</hash>
+         <hash>5e4a6f458350ecf6defbb6e1b0a3da9c80531186182bfdeafb6e67256c6abea5</hash>
       </entry>
       <entry>
          <file>..\src\config\bma400\peripheral\rtcc\plib_rtcc.h</file>
