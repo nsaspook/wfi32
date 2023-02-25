@@ -158,7 +158,7 @@ bool bma490l_getid(void * imup)
 			SPI2_WriteRead(R_ID_CMD, BMA490_REG_LEN, imu->rbuf, BMA490_REG_LEN + 1); // send two, receive 3 for the data 
 			while (imu->run) {
 			};
-			sprintf(imu_buffer, "  ID Chip Data %3x %3x", imu->rbuf[CHIP_ID_INDEX], imu->rbuf[CHIP_ID_DATA]);
+			snprintf(imu_buffer, max_buf, "  ID Chip Data %3x %3x", imu->rbuf[CHIP_ID_INDEX], imu->rbuf[CHIP_ID_DATA]);
 			if (imu->rbuf[CHIP_ID_DATA] == BMA400_ID) {
 				imu->online = true;
 				imu->rbuf[CHIP_ID_DATA] = 0;
@@ -228,11 +228,14 @@ bool imu_getis(imu_cmd_t * imu)
 }
 
 #ifdef XPRJ_nsensor
+#ifndef BMA400
 // dummy routine for host mode
+
 void imu_set_reg(imu_cmd_t * imu, const uint8_t reg, const uint8_t data, const bool fast)
 {
 
 }
+#endif
 #endif
 
 #ifdef BMA400
@@ -449,13 +452,13 @@ void imu_cs_cb(uintptr_t context)
 
 void bma490_version(void)
 {
-	sprintf(imu_buffer, " %s Driver Version  %s %s %s ", BMA400_ALIAS, BMA400_DRIVER, build_date, build_time);
+	snprintf(imu_buffer, max_buf, " %s Driver Version  %s %s %s ", BMA400_ALIAS, BMA400_DRIVER, build_date, build_time);
 }
 #else
 
 void bma490_version(void)
 {
-	sprintf(imu_buffer, " %s Driver Version  %s %s %s ", BMA490_ALIAS, BMA490_DRIVER, build_date, build_time);
+	snprintf(imu_buffer, max_buf, " %s Driver Version  %s %s %s ", BMA490_ALIAS, BMA490_DRIVER, build_date, build_time);
 }
 #endif
 

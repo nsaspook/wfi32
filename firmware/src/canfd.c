@@ -103,6 +103,7 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 	static uint8_t user_input = 0;
 	static uint8_t count = 0;
 	uint16_t * mtype = (uint16_t *) can_buffer;
+	bool msg_ready = false;
 
 	/* Prepare the message to send */
 	for (count = 0; count < 64; count++) {
@@ -117,10 +118,11 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 
 			switch (user_input) {
 			case CAN_TRANSMIT_FD:
-				tx_msg_ready = CAN1_InterruptGet(1, 0x1f);
+				msg_ready = CAN1_InterruptGet(1, 0x1f);
 
-				if (tx_msg_ready) {
+				if (msg_ready) {
 					state = APP_STATE_CAN_IDLE;
+					tx_msg_ready = true;
 
 					/*
 					 * use CAN-FD compatible 29-bit serial ID numbers
@@ -148,9 +150,10 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 				}
 				break;
 			case CAN_RECEIVE:
-				rx_msg_ready = CAN1_InterruptGet(2, 0x1f);
-				if (rx_msg_ready) {
+				msg_ready = CAN1_InterruptGet(2, 0x1f);
+				if (msg_ready) {
 					state = APP_STATE_CAN_IDLE;
+					rx_msg_ready = true;
 					memset(rx_message, 0x00, sizeof(rx_message));
 					/* Receive New Message */
 					if (CAN1_MessageReceive(&rx_messageID, &rx_messageLength, can_buffer, &timestamp, 2, &msgAttr) == false) {

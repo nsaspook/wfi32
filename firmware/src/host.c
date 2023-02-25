@@ -128,7 +128,7 @@ void APP_CAN_Callback_h(uintptr_t context)
 	CAN1_ErrorCountGet(&txe, &rxe);
 #ifdef DEBUG_can_callback1
 	char buffer[256] = " ";
-	sprintf(buffer, "CB %d,TE %d,RE %d,ER %X,DI %X", status, txe, rxe, CFD1TREC, CFD1BDIAG1);
+	snprintf(buffer,max_buf, "CB %d,TE %d,RE %d,ER %X,DI %X", status, txe, rxe, CFD1TREC, CFD1BDIAG1);
 	eaDogM_WriteStringAtPos(5, 0, buffer);
 #endif
 
@@ -165,7 +165,7 @@ void APP_CAN_Error_Callback_h(uintptr_t context)
 	status = CAN1_ErrorGet();
 #ifdef DEBUG_can_callback
 	char buffer[256] = " ";
-	sprintf(buffer, "CEB status %3X Err ", status);
+	snprintf(buffer,max_buf, "CEB status %3X Err ", status);
 	eaDogM_WriteStringAtPos(5, 0, buffer);
 #endif
 	state = APP_STATE_CAN_XFER_ERROR;
@@ -272,13 +272,13 @@ int host_sm(void)
 	 */
 	init_lcd_drv(D_INIT);
 	OledClearBuffer();
-	sprintf(buffer, "%s Driver %s %s %s", LCD_ALIAS, LCD_DRIVER, build_date, build_time);
+	snprintf(buffer, max_buf,"%s Driver %s %s %s", LCD_ALIAS, LCD_DRIVER, build_date, build_time);
 	eaDogM_WriteStringAtPos(0, 0, buffer);
-	sprintf(buffer, "%s Controller %s %llX", HOST_ALIAS, HOST_DRIVER, host_cpu_serial_id);
+	snprintf(buffer,max_buf, "%s Controller %s %llX", HOST_ALIAS, HOST_DRIVER, host_cpu_serial_id);
 	eaDogM_WriteStringAtPos(2, 0, buffer);
-	sprintf(buffer, "%s Driver %s", CMD_ALIAS, CMD_DRIVER);
+	snprintf(buffer,max_buf, "%s Driver %s", CMD_ALIAS, CMD_DRIVER);
 	eaDogM_WriteStringAtPos(3, 0, buffer);
-	sprintf(buffer, "Configuration %s", "Host node");
+	snprintf(buffer,max_buf, "Configuration %s", "Host node");
 	eaDogM_WriteStringAtPos(14, 0, buffer);
 	OledUpdate();
 
@@ -326,7 +326,7 @@ int host_sm(void)
 			 */
 			cli_read(&cli_ctx);
 
-			sprintf(buffer, "Processing CAN-FD %4i  %4i      ", wait_count++, state);
+			snprintf(buffer,max_buf, "Processing CAN-FD %4i  %4i      ", wait_count++, state);
 			eaDogM_WriteStringAtPos(12, 0, buffer);
 			if (CAN1_InterruptGet(2, 0x1f)) {
 				user_input = '3';
@@ -359,7 +359,7 @@ int host_sm(void)
 				messageID = 0x469;
 				messageLength = 8;
 				if (CAN1_MessageTransmit(messageID, messageLength, message, 1, CANFD_MODE_NORMAL, CANFD_MSG_TX_DATA_FRAME) == false) {
-					sprintf(buffer, "CAN1_MessageTransmit request has failed");
+					snprintf(buffer,max_buf, "CAN1_MessageTransmit request has failed");
 					eaDogM_WriteStringAtPos(9, 0, buffer);
 				}
 				break;
@@ -377,11 +377,11 @@ int host_sm(void)
 
 					/* Receive New Message */
 					if (CAN1_MessageReceive(&rx_messageID, &rx_messageLength, rx_message, &timestamp, 2, &msgAttr) == false) {
-						sprintf(buffer, "Receive request has failed");
+						snprintf(buffer,max_buf, "Receive request has failed");
 						eaDogM_WriteStringAtPos(8, 0, buffer);
 					}
 					/* Application can do other task here */
-					sprintf(buffer, "CAN-FD  received %i", recv_count++);
+					snprintf(buffer,max_buf, "CAN-FD  received %i", recv_count++);
 					eaDogM_WriteStringAtPos(13, 0, buffer);
 					wait_count = 0;
 				} else {
@@ -407,14 +407,14 @@ int host_sm(void)
 			if (avg_result > 999999.0) { // limit display value
 				avg_result = 999999.0;
 			}
-			sprintf(buffer, "Waiting for data packet %6i", (int32_t) avg_result);
+			snprintf(buffer, max_buf,"Waiting for data packet %6i", (int32_t) avg_result);
 			eaDogM_WriteStringAtPos(14, 0, buffer);
 			break;
 		}
 		case APP_STATE_CAN_XFER_SUCCESSFUL:
 		{
 			wait_count = 0;
-			sprintf(buffer, "                             ");
+			snprintf(buffer,max_buf, "                             ");
 			eaDogM_WriteStringAtPos(14, 0, buffer);
 
 			/*
@@ -432,31 +432,31 @@ int host_sm(void)
 				/* Print message to LCD Console buffer and CAN-FD uart_buffer */
 				uint8_t length = rx_messageLength;
 				uint16_t * mtype = (uint16_t *) & rx_message[0];
-				sprintf(uart_buffer, "-1, Bad  Message ID code\r\n");
+				snprintf(uart_buffer,max_buf, "-1, Bad  Message ID code\r\n");
 				if (*mtype == CAN_IMU_DATA) {
 					accel = (sSensorData_t *) rx_message;
 					length++;
-					sprintf(uart_buffer, "%3d,%7X,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.1f,%s\r\n",
+					snprintf(uart_buffer,max_buf, "%3d,%7X,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.1f,%s\r\n",
 						accel->id, rx_messageID, accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->xerr, accel->yerr, accel->zerr, (double) accel->sensortime, IMU_ALIAS);
 				}
 				if (*mtype == CAN_IMU_INFO) {
 					imu = (imu_cmd_t *) rx_message;
 					imu->host_serial_id = host_cpu_serial_id;
-					sprintf(uart_buffer, "%3d,%7X,%7X,%3d,%3d,%3d,%18llX,%s\r\n",
+					snprintf(uart_buffer,max_buf, "%3d,%7X,%7X,%3d,%3d,%3d,%18llX,%s\r\n",
 						imu->id, imu->board_serial_id, rx_messageID, imu->device, imu->acc_range, imu->features, host_cpu_serial_id, IMU_ALIAS);
-					sprintf(buffer, "ID:%3d,%7X,%7X", imu->id, imu->board_serial_id, rx_messageID);
+					snprintf(buffer,max_buf, "ID:%3d,%7X,%7X", imu->id, imu->board_serial_id, rx_messageID);
 					eaDogM_WriteStringAtPos(15, 0, buffer);
 				}
 				if (*mtype == CAN_FFT_LO) {
 					fft = (sFFTData_t *) rx_message;
-					sprintf(uart_buffer, "%3d,%7X,%3d,%s\r\n", fft->id, rx_messageID, fft_bin_total(fft, 16), IMU_ALIAS);
+					snprintf(uart_buffer,max_buf, "%3d,%7X,%3d,%s\r\n", fft->id, rx_messageID, fft_bin_total(fft, 16), IMU_ALIAS);
 				}
 				if (*mtype == CAN_FFT_HI) {
 					fft = (sFFTData_t *) rx_message;
-					sprintf(uart_buffer, "%3d,%7X,%3d,%s\r\n", fft->id, rx_messageID, fft_bin_total(fft, 0), IMU_ALIAS);
+					snprintf(uart_buffer,max_buf, "%3d,%7X,%3d,%s\r\n", fft->id, rx_messageID, fft_bin_total(fft, 0), IMU_ALIAS);
 				}
 				if (*mtype == CAN_NULL) {
-					sprintf(uart_buffer, "0,NULL Message with 0 ID code\r\n");
+					snprintf(uart_buffer,max_buf, "0,NULL Message with 0 ID code\r\n");
 				}
 				UART1DmaWrite(uart_buffer, strlen(uart_buffer)); // send data to the ETH module
 			} else if ((APP_STATES) xferContext == APP_STATE_CAN_TRANSMIT) {
@@ -467,9 +467,9 @@ int host_sm(void)
 		case APP_STATE_CAN_XFER_ERROR:
 		{
 			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
-				sprintf(buffer, "Err,recv message %i", ++msg_error);
+				snprintf(buffer,max_buf, "Err,recv message %i", ++msg_error);
 			} else {
-				sprintf(buffer, "Failed  %d %d         ", ++msg_error, xferContext);
+				snprintf(buffer,max_buf, "Failed  %d %d         ", ++msg_error, xferContext);
 			}
 			eaDogM_WriteStringAtPos(9, 0, buffer);
 			state = APP_STATE_CAN_USER_INPUT;
@@ -491,13 +491,13 @@ int host_sm(void)
 			StartTimer(TMR_HOST, host_lcd_update);
 			if (rec_message) {
 				rec_message = false;
-				host0.cmd = CMD_IDLE;
+				//				host0.cmd = CMD_IDLE;
 				send_from_host(HOST_MAGIC_ID); // Master broadcast ID
 			}
 			StartTimer(TMR_REPLY, host_xmit_wait);
 			eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
 			eaDogM_WriteStringAtPos(7, 0, response_buffer);
-			sprintf(buffer, "Sending CAN-FD %8X %6i", messageID, tx_num);
+			snprintf(buffer,max_buf, "Sending CAN-FD %8X %6i", messageID, tx_num);
 			eaDogM_WriteStringAtPos(11, 0, buffer);
 			OledUpdate();
 		}
@@ -533,17 +533,20 @@ double approxRollingAverage(double avg, double new_sample)
 
 void fh_show_link(void *a_data)
 {
-	sprintf(cmd_buffer, "Show Link Status            ");
+	snprintf(cmd_buffer,max_buf, "Show Link Status            ");
+	host0.cmd = CMD_ACK;
 }
 
 void fh_stop_trigger(void *a_data)
 {
-	sprintf(cmd_buffer, "Stop Trigger                ");
+	snprintf(cmd_buffer,max_buf, "Stop Trigger                ");
+	host0.cmd = CMD_SAFE;
 }
 
 void fh_start_trigger(void *a_data)
 {
-	sprintf(cmd_buffer, "Start Trigger               ");
+	snprintf(cmd_buffer,max_buf, "Start Trigger               ");
+	host0.cmd = CMD_SPIN_DOWN;
 }
 
 /*
@@ -551,7 +554,7 @@ void fh_start_trigger(void *a_data)
  */
 void fh_start_AT(void *a_data)
 {
-	sprintf(cmd_buffer, "Start AT commands            ");
+	snprintf(cmd_buffer,max_buf, "Start AT commands            ");
 
 	// wait for send uart buffer to finish
 	uint32_t contention = 0;
@@ -577,7 +580,7 @@ void fh_start_AT(void *a_data)
 		// put the result in a buffer for the GLCD to display
 		UART1_Read(response_buffer, 30);
 	} else { // nothing
-		sprintf(response_buffer, "AT command failed           ");
+		snprintf(response_buffer, max_buf,"AT command failed           ");
 	}
 	/*
 	 * AT mode will timeout after 30 seconds and go back to transparent data mode

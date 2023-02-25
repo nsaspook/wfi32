@@ -167,7 +167,7 @@ volatile SPid xpid, ypid, zpid;
 
 volatile uint16_t tickCount[TMR_COUNT];
 
-static char buffer[STR_BUF_SIZE];
+static char buffer[FBUFFER_SIZE], hbuffer[FBUFFER_SIZE];
 static uint32_t delay_freq = 0;
 
 static const char *build_date = __DATE__, *build_time = __TIME__;
@@ -176,8 +176,8 @@ uint32_t board_serial_id = 0x35A, cpu_serial_id = 0x1957;
 
 extern CORETIMER_OBJECT coreTmr;
 extern t_cli_ctx cli_ctx;
-extern char response_buffer[64];
-extern char cmd_buffer[256];
+extern char response_buffer[RBUFFER_SIZE];
+extern char cmd_buffer[FBUFFER_SIZE];
 static void fh_start_AT_nodma(void *);
 
 #ifdef __32MK0512MCJ048__
@@ -263,9 +263,9 @@ int main(void)
 	do_fft_version();
 	board_serial_id = cpu_serial_id; // this ID could be changed to the ID of the IMU for IMU data transfers
 	imu0.board_serial_id = board_serial_id;
-	sprintf(buffer, "%s Controller %s %X", IMU_ALIAS, IMU_DRIVER, cpu_serial_id);
+	snprintf(buffer, max_buf, "%s Controller %s %X", IMU_ALIAS, IMU_DRIVER, cpu_serial_id);
 	eaDogM_WriteStringAtPos(15, 0, buffer);
-	sprintf(buffer, "Configuration %s", "Sensor node");
+	snprintf(buffer, max_buf, "Configuration %s", "Sensor node");
 	eaDogM_WriteStringAtPos(14, 0, buffer);
 	OledUpdate();
 
@@ -284,7 +284,7 @@ int main(void)
 				if (TimerDone(TMR_IMU)) {
 					LED_RED_Toggle();
 					LED_GREEN_Toggle();
-					sprintf(buffer, "IMU NO ID, %d %d ", ADCHS_ChannelResultGet(ADCHS_CH0), ADCHS_ChannelResultGet(ADCHS_CH1));
+					snprintf(buffer, max_buf, "IMU NO ID, %d %d ", ADCHS_ChannelResultGet(ADCHS_CH0), ADCHS_ChannelResultGet(ADCHS_CH1));
 					eaDogM_WriteStringAtPos(13, 0, buffer);
 					eaDogM_WriteStringAtPos(9, 0, imu_buffer);
 					OledUpdate();
@@ -319,8 +319,8 @@ int main(void)
 	canfd_set_filter(board_serial_id, HOST_MAGIC_ID);
 
 #ifdef DEBUG_FILTER
-	sprintf(cmd_buffer, "%X %X", CAN1_MessageAcceptanceFilterMaskGet(0), CAN1_MessageAcceptanceFilterGet(0));
-	sprintf(response_buffer, "%X %X", CAN1_MessageAcceptanceFilterMaskGet(1), CAN1_MessageAcceptanceFilterGet(1));
+	snprintf(cmd_buffer, max_buf, "%X %X", CAN1_MessageAcceptanceFilterMaskGet(0), CAN1_MessageAcceptanceFilterGet(0));
+	snprintf(response_buffer, max_buf, "%X %X", CAN1_MessageAcceptanceFilterMaskGet(1), CAN1_MessageAcceptanceFilterGet(1));
 	eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
 	eaDogM_WriteStringAtPos(7, 0, response_buffer);
 	OledUpdate();
@@ -371,19 +371,19 @@ int main(void)
 			printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f,%u,%X,%X\r\n", accel.x, accel.y, accel.z, accel.xa, accel.ya, accel.za, accel.sensortime, imu0.rs, imu0.ss);
 #endif
 #ifdef SHOW_LCD
-			sprintf(buffer, "%6.3f,%6.3f,%6.3f, %X, %X\r\n", accel.x, accel.y, accel.z, imu0.rs, imu0.ss);
+			snprintf(buffer, max_buf, "%6.3f,%6.3f,%6.3f, %X, %X\r\n", accel.x, accel.y, accel.z, imu0.rs, imu0.ss);
 			eaDogM_WriteStringAtPos(0, 0, buffer);
-			sprintf(buffer, "%6.2f,%6.2f,%6.2f,%5.1f", accel.xa, accel.ya, accel.za, accel.sensortemp);
+			snprintf(buffer, max_buf, "%6.2f,%6.2f,%6.2f,%5.1f", accel.xa, accel.ya, accel.za, accel.sensortemp);
 			eaDogM_WriteStringAtPos(1, 0, buffer);
-			sprintf(buffer, "PIC32 IMU Controller %s   %s %s", IMU_DRIVER, build_date, build_time);
+			snprintf(buffer, max_buf, "PIC32 IMU Controller %s   %s %s", IMU_DRIVER, build_date, build_time);
 			eaDogM_WriteStringAtPos(14, 0, buffer);
-			sprintf(buffer, "IMU %s", imu_string(&imu0));
+			snprintf(buffer, max_buf, "IMU %s", imu_string(&imu0));
 			eaDogM_WriteStringAtPos(3, 0, buffer);
-			sprintf(buffer, "DEV %d", imu0.device);
+			snprintf(buffer, max_buf, "DEV %d", imu0.device);
 			eaDogM_WriteStringAtPos(4, 0, buffer);
-			sprintf(buffer, "RAN %d", imu0.acc_range);
+			snprintf(buffer, max_buf, "RAN %d", imu0.acc_range);
 			eaDogM_WriteStringAtPos(5, 0, buffer);
-			sprintf(buffer, "ANG %s", imu0.angles ? "Yes" : "No");
+			snprintf(buffer, max_buf, "ANG %s", imu0.angles ? "Yes" : "No");
 			eaDogM_WriteStringAtPos(6, 0, buffer);
 
 			/*
@@ -408,7 +408,7 @@ int main(void)
 			}
 			TP3_Set(); // drawing processing mark
 			if (fft_settle) {
-				sprintf(buffer, "FFTs %3d,%3d ", fft_buffer[ffti], ffti);
+				snprintf(buffer, max_buf, "FFTs %3d,%3d ", fft_buffer[ffti], ffti);
 				eaDogM_WriteStringAtPos(7, 4, buffer);
 			}
 			w = 0;
@@ -444,37 +444,39 @@ int main(void)
 #ifdef __32MK0512MCJ048__
 #ifdef SHOW_LCD
 			CAN1_ErrorCountGet(&txe, &rxe);
-			sprintf(buffer, "can-fd %X", board_serial_id);
+			snprintf(buffer, max_buf, "can-fd %X", board_serial_id);
 			eaDogM_WriteStringAtPos(11, 0, buffer);
-			sprintf(buffer, "ErrorT %d", txe);
+			snprintf(buffer, max_buf, "ErrorT %d", txe);
 			eaDogM_WriteStringAtPos(4, 20, buffer);
-			sprintf(buffer, "ErrorR %d", rxe);
+			snprintf(buffer, max_buf, "ErrorR %d", rxe);
 			eaDogM_WriteStringAtPos(5, 20, buffer);
-			sprintf(buffer, "Can INT %d", CAN1_InterruptGet(1, 0x1f));
+			snprintf(buffer, max_buf, "Can INT %d", CAN1_InterruptGet(1, 0x1f));
 			eaDogM_WriteStringAtPos(6, 20, buffer);
-			sprintf(buffer, "TX Full %s", CAN1_TxFIFOQueueIsFull(1) ? "Y" : "N");
+			snprintf(buffer, max_buf, "TX Full %s", CAN1_TxFIFOQueueIsFull(1) ? "Y" : "N");
 			eaDogM_WriteStringAtPos(7, 20, buffer);
-			sprintf(buffer, "Update %d", ++times);
+			snprintf(buffer, max_buf, "Update %d", ++times);
 			eaDogM_WriteStringAtPos(8, 20, buffer);
-			sprintf(buffer, "REQ %X", CFD1TXREQ);
+			snprintf(buffer, max_buf, "REQ %X", CFD1TXREQ);
 			eaDogM_WriteStringAtPos(9, 20, buffer);
-			sprintf(buffer, "Ce0 %X", CFD1BDIAG0);
-			eaDogM_WriteStringAtPos(10, 20, buffer);
-			sprintf(buffer, "Ce1 %X", CFD1BDIAG1);
-			eaDogM_WriteStringAtPos(11, 20, buffer);
-			sprintf(buffer, "CINT %X, %d, %d, %d", CFD1INT, canfd_num_tx(), canfd_num_stall(), canfd_num_rx());
+			snprintf(buffer, max_buf, "Ce0 %X", CFD1BDIAG0);
+			eaDogM_WriteStringAtPos(10, 18, buffer);
+			snprintf(buffer, max_buf, "Ce1 %X", CFD1BDIAG1);
+			eaDogM_WriteStringAtPos(11, 18, buffer);
+			snprintf(buffer, max_buf, "CINT %X, %d, %d, %d", CFD1INT, canfd_num_tx(), canfd_num_stall(), canfd_num_rx());
 			eaDogM_WriteStringAtPos(13, 0, buffer);
-			//			sprintf(buffer, "ER %6.2f, %6.2f, %6.2f", accel.xerr, accel.yerr, accel.zerr);
+			//			snprintf(buffer, max_buf,"ER %6.2f, %6.2f, %6.2f", accel.xerr, accel.yerr, accel.zerr);
 			//			eaDogM_WriteStringAtPos(12, 0, buffer);
 #endif
 			canfd_state(CAN_RECEIVE, accel.buffer);
 			host_ptr = (imu_host_t *) accel.buffer;
 			if (rx_msg_ready) {
+				rx_msg_ready = false;
 				/*
 				 * decode received host message
 				 */
-				sprintf(buffer, "Host CPU %llX , Cmd %i", host_ptr->host_serial_id, host_ptr->cmd);
+				snprintf(hbuffer, max_buf, "Host CPU %llX , Cmd %i", host_ptr->host_serial_id, host_ptr->cmd);
 				switch (host_ptr->cmd) {
+				case CMD_ACK:
 				case CMD_IDLE:
 					break;
 				case CMD_SPIN_DOWN:
@@ -492,11 +494,11 @@ int main(void)
 					PWM4EN_Clear();
 					break;
 				default:
-					sprintf(buffer, "Host CPU %llX", host_ptr->host_serial_id);
+					snprintf(hbuffer, max_buf, "Host CPU %llX", host_ptr->host_serial_id);
 					break;
 				}
-				eaDogM_WriteStringAtPos(12, 0, buffer);
 			}
+			eaDogM_WriteStringAtPos(12, 0, hbuffer);
 
 			switch (alter) {
 			case 0:
@@ -580,7 +582,7 @@ void delay_us(uint32_t us)
  */
 void fh_start_AT_nodma(void *a_data)
 {
-	sprintf(cmd_buffer, "Start AT commands            ");
+	snprintf(cmd_buffer, max_buf, "Start AT commands            ");
 
 	// put the ETH module in config mode
 	ETH_CFG_Clear();
@@ -599,7 +601,7 @@ void fh_start_AT_nodma(void *a_data)
 		// put the result in a buffer for the GLCD to display
 		UART1_Read(response_buffer, 30);
 	} else { // nothing
-		sprintf(response_buffer, "AT command failed           ");
+		snprintf(response_buffer, max_buf, "AT command failed           ");
 	}
 	/*
 	 * AT mode will timeout after 30 seconds and go back to transparent data mode

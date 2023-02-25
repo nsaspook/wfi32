@@ -105,9 +105,8 @@ void cli_read(t_cli_ctx *a_ctx)
 }
 
 void dump_uart(void)
-{	
-	while (UART1_ReceiverIsReady())
-	{
+{
+	while (UART1_ReceiverIsReady()) {
 		UART1_ReadByte();
 	}
 }
