@@ -470,6 +470,7 @@ int main(void)
 			canfd_state(CAN_RECEIVE, accel.buffer);
 			host_ptr = (imu_host_t *) accel.buffer;
 			if (rx_msg_ready) {
+				static bool locked = true;
 				rx_msg_ready = false;
 				/*
 				 * decode received host message
@@ -479,11 +480,23 @@ int main(void)
 				case CMD_ACK:
 				case CMD_IDLE:
 					break;
-				case CMD_SPIN_DOWN:
+				case CMD_SPIN_DOWN: // vibration action triggered
 					PWM1EN_Set();
-					PWM4EN_Set();
+					if (!locked) {
+						PWM4EN_Set();
+					}
 					break;
-				case CMD_WARN_ON:
+				case CMD_LOCK:
+					locked = true;
+					break;
+				case CMD_UNLOCK:
+					if (host_ptr->secret == HOST_SECRET) {
+						locked = false;
+						host_ptr->secret = 0; //clear
+						host_ptr->cmd = CMD_IDLE;
+					}
+					break;
+				case CMD_WARN_ON: // vibration warning triggered
 					PWM1EN_Set();
 					break;
 				case CMD_WARN_OFF:
@@ -495,6 +508,7 @@ int main(void)
 					break;
 				default:
 					snprintf(hbuffer, max_buf, "Host CPU %llX", host_ptr->host_serial_id);
+					locked = true;
 					break;
 				}
 			}

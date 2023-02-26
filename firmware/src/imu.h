@@ -111,6 +111,7 @@ extern "C" {
 		uint64_t host_serial_id;
 		uint8_t cmd;
 		uint32_t cmd_data[4];
+		uint64_t secret;
 		uint8_t buf[64];
 	} imu_host_t;
 

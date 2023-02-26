@@ -59,6 +59,7 @@ char response_buffer[64] = " ";
 imu_host_t host0 = {
 	.id = CAN_MISC,
 	.cmd = CMD_IDLE,
+	.secret = HOST_SECRET,
 };
 
 /* set format attribute for the vararg function */
