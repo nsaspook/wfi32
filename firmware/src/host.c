@@ -316,6 +316,7 @@ int host_sm(void)
 		 */
 		if (TP1_check()) {
 			LED_RED_On();
+			OledClearBuffer();
 			fh_start_AT(&cli_ctx);
 		}
 
@@ -582,7 +583,7 @@ void fh_start_AT(void *a_data)
 		UART1DmaWrite("AT+WANN\r\r\n", 10); // send data to the ETH module
 		// put the result in a buffer for the GLCD to display
 		WaitMs(1200);
-		UART1_Read(response_buffer, 3);
+		UART1_Read(response_buffer, 1); // read serial response from module
 	} else { // nothing
 		snprintf(response_buffer, max_buf, "AT command failed           ");
 		ETH_RESET_Clear();
