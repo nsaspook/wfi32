@@ -9,19 +9,19 @@ Archive member included to satisfy reference by file (symbol)
 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(strlen.o)
                               build/nsensor/production/_ext/1684788505/eadog.o (strlen)
 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(default-on-reset.o)
-                              /tmp/cchh09Bh.o (_on_reset)
+                              /tmp/cc58qlDd.o (_on_reset)
 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(default-on-bootstrap.o)
-                              /tmp/cchh09Bh.o (_on_bootstrap)
+                              /tmp/cc58qlDd.o (_on_bootstrap)
 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(default-nmi-handler.o)
-                              /tmp/cchh09Bh.o (_nmi_handler)
+                              /tmp/cc58qlDd.o (_nmi_handler)
 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(pic32_data_init_wrapper.o)
-                              /tmp/cchh09Bh.o (__pic32_data_init)
+                              /tmp/cc58qlDd.o (__pic32_data_init)
 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(pic32_data_init_0_1.o)
                               (__copy_needed)
 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(general-exception.o)
-                              /tmp/cchh09Bh.o (_general_exception_context)
+                              /tmp/cc58qlDd.o (_general_exception_context)
 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(defaultinterrupt.o)
-                              /tmp/cck7ZObJ.o (_DefaultInterrupt)
+                              /tmp/ccDho8rO.o (_DefaultInterrupt)
 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_printf_s.o)
                               build/nsensor/production/_ext/1684788505/OledDriver.o (_printf_s)
 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_dfosux.o)
@@ -142,145 +142,145 @@ section                    address  length [bytes]      (dec)  Description
 .rodata                 0x9d000190           0x70         112  Read-only const 
 .vectors                0x9d000200           0xc0         192   
 .text                   0x9d0002c0         0x3958       14680  App's exec code 
-.text                   0x9d003c18         0x2bec       11244  App's exec code 
-.text                   0x9d006804         0x286c       10348  App's exec code 
-.text                   0x9d009070         0x1fd0        8144  App's exec code 
-.text                   0x9d00b040         0x1870        6256  App's exec code 
-.dinit                  0x9d00c8b0          0xbe0        3040   
-.text                   0x9d00d490          0x948        2376  App's exec code 
-.text.__rem_pio2_large  0x9d00ddd8          0x838        2104   
-.text                   0x9d00e610         0x1010        4112  App's exec code 
-.text                   0x9d00f620          0xec8        3784  App's exec code 
-.text                   0x9d0104e8          0xe54        3668  App's exec code 
-.text.__fmt_fp          0x9d01133c          0x6d0        1744   
-.text                   0x9d011a0c          0xd44        3396  App's exec code 
-.text.fma               0x9d012750          0x678        1656   
-.text.__fmt_a           0x9d012dc8          0x628        1576   
-.text                   0x9d0133f0          0xb08        2824  App's exec code 
-.text.__printf_core     0x9d013ef8          0x580        1408   
-.text                   0x9d014478          0x56c        1388  App's exec code 
-.rodata                 0x9d0149e4          0x514        1300  Read-only const 
-.text                   0x9d014ef8          0x89c        2204  App's exec code 
-.text                   0x9d015794          0x43c        1084  App's exec code 
-.text.__rem_pio2        0x9d015bd0          0x430        1072   
-.text                   0x9d016000          0x7b8        1976  App's exec code 
-.text                   0x9d0167b8          0x774        1908  App's exec code 
-.rodata                 0x9d016f30          0x640        1600  Read-only const 
-.text.malloc            0x9d017570          0x290         656   
-.text                   0x9d017800          0x4f8        1272  App's exec code 
-.text                   0x9d017cf8          0x4f0        1264  App's exec code 
-.text                   0x9d0181e8          0x250         592  App's exec code 
-.rodata                 0x9d018438          0x228         552  Read-only const 
-.text                   0x9d018660          0x218         536  App's exec code 
-.text.__fmt_x           0x9d018878          0x208         520   
-.text.free              0x9d018a80          0x198         408   
-.text.__pop_int         0x9d018c18          0x188         392   
-.text                   0x9d018da0          0x2cc         716  App's exec code 
-.text                   0x9d01906c          0x160         352  App's exec code 
-.rodata                 0x9d0191d0          0x158         344  Read-only const 
-.text._sbrk_init        0x9d019328          0x154         340   
-.text.__fmt_d           0x9d01947c          0x150         336   
-.text                   0x9d0195cc          0x140         320  App's exec code 
-.text.__cvt_u           0x9d01970c          0x13c         316   
-.text.sin               0x9d019848          0x120         288   
-.text                   0x9d019968          0x11c         284  App's exec code 
-.text.realloc           0x9d019a84          0x118         280   
-.text.__pad             0x9d019b9c          0x100         256   
-.text.cos               0x9d019c9c          0x100         256   
-.text                   0x9d019d9c          0x1f4         500  App's exec code 
-.text.__fmt_o           0x9d019f90           0xf4         244   
-.text.__pop_ptr         0x9d01a084           0xe4         228   
-.rodata                 0x9d01a168           0xe0         224  Read-only const 
-.text.general_exception 0x9d01a248           0xdc         220   
-.text.__stdio_close_rw  0x9d01a324           0xc0         192   
-.text.__fmt_u           0x9d01a3e4           0xbc         188   
-.text.floor             0x9d01a4a0           0xb4         180   
-.text._sbrk             0x9d01a554           0xb0         176   
-.text.unbin             0x9d01a604           0xac         172   
-.text                   0x9d01a6b0           0xa8         168  App's exec code 
-.text.__fmt_s           0x9d01a758           0xa4         164   
-.rodata                 0x9d01a800           0xa0         160  Read-only const 
-.text.__stdio_close     0x9d01a8a0           0xa0         160   
-.text.__sin             0x9d01a940           0x90         144   
-.text.__out             0x9d01a9d0           0x8c         140   
-.text.normalize         0x9d01aa5c           0x8c         140   
-.text.scalbn            0x9d01aae8           0x8c         140   
-.text.__cos             0x9d01ab74           0x88         136   
-.rodata                 0x9d01ac00           0x80         128  Read-only const 
-.text.dinit.startup     0x9d01ac80           0x80         128   
-.text.__vsnprintf       0x9d01ad00           0x80         128   
-.text.atoi              0x9d01ad80           0x7c         124   
-.rodata.cst8            0x9d01ae00           0x78         120   
-.text.alloc_rev         0x9d01ae78           0x74         116   
-.text.alloc_fwd         0x9d01aeec           0x70         112   
-.text.a_clz_64          0x9d01af5c           0x6c         108   
-.rodata                 0x9d01afc8           0x64         100  Read-only const 
-.text                   0x9d01b02c           0x60          96  App's exec code 
-.text.__fopen_std       0x9d01b08c           0x60          96   
-.text.bin_index         0x9d01b0ec           0x60          96   
-.text.__sio_snprintf_df 0x9d01b14c           0x5c          92   
-.text.__string_out      0x9d01b1a8           0x5c          92   
-.rodata                 0x9d01b204           0x5c          92  Read-only const 
-.text.__fmt_state       0x9d01b260           0x58          88   
-.text.adjust_size       0x9d01b2b8           0x58          88   
-.text.trim              0x9d01b310           0x58          88   
-.rodata                 0x9d01b368           0x54          84  Read-only const 
-.text.main_entry        0x9d01b3bc           0x54          84   
-.rodata                 0x9d01b410           0x50          80  Read-only const 
-.text.__malloc0         0x9d01b460           0x50          80   
-.text.__sio_snprintf_do 0x9d01b4b0           0x4c          76   
-.text.__sio_snprintf_do 0x9d01b4fc           0x4c          76   
-.text.sbrk              0x9d01b548           0x4c          76   
-.text.__pop_float       0x9d01b594           0x48          72   
-.text.strncmp           0x9d01b5dc           0x48          72   
-.text                   0x9d01b624           0x44          68  App's exec code 
-.rodata                 0x9d01b668           0x40          64  Read-only const 
-.rodata.cst8            0x9d01b6a8           0x80         128   
-.text.__wrap_printf     0x9d01b728           0x3c          60   
-.text.__vfprintf        0x9d01b764           0x3c          60   
-.text.vfprintf          0x9d01b7a0           0x3c          60   
-.text.__expand_heap     0x9d01b7dc           0x3c          60   
-.text                   0x9d01b818           0x78         120  App's exec code 
-.text.lock_bin          0x9d01b890           0x34          52   
-.text.vprintf           0x9d01b8c4           0x30          48   
-.rodata.cst8            0x9d01b8f8           0x30          48   
-.text.__init_stdio      0x9d01b928           0x2c          44   
-.text._stub_sbd_memlayo 0x9d01b954           0x2c          44   
-.text.strcpy            0x9d01b980           0x28          40   
-.rodata.cst8            0x9d01b9a8           0x28          40   
-.text.__wrap_snprintf   0x9d01b9d0           0x48          72   
-.text.__wrap_snprintf   0x9d01ba18           0x48          72   
-.text.dinit.startup     0x9d01ba60           0x20          32   
-.rodata.cst8            0x9d01ba80           0x20          32   
-.text.__init_stdout     0x9d01baa0           0x20          32   
-.text.__fwrite_min      0x9d01bac0           0x20          32   
-.text.stpcpy            0x9d01bae0           0x20          32   
-.rodata.cst8            0x9d01bb00           0x20          32   
-.text.__sio_printf_s    0x9d01bb20           0x1c          28   
-.text.__sio_snprintf_s  0x9d01bb3c           0x1c          28   
-.text.tolower           0x9d01bb58           0x1c          28   
-.text.__tolower_l       0x9d01bb74           0x1c          28   
-.text.toupper           0x9d01bb90           0x1c          28   
-.text.__toupper_l       0x9d01bbac           0x1c          28   
-.text.__fopen           0x9d01bbc8           0x1c          28   
-.text                   0x9d01bbe4           0x18          24  App's exec code 
-.rodata                 0x9d01bbfc           0x18          24  Read-only const 
-.rodata.cst8            0x9d01bc18           0x18          24   
-.rodata                 0x9d01bc30           0x20          32  Read-only const 
-.rodata.str1.4          0x9d01bc50           0x20          32   
-.rodata.cst8            0x9d01bc70           0x20          32   
-.rodata.cst8            0x9d01bc90           0x10          16   
-.text._on_reset         0x9d01bca0            0x8           8   
-.text._on_bootstrap     0x9d01bca8            0x8           8   
-.text.__dummy_fmt3      0x9d01bcb0            0x8           8   
-.text.__dummy_fmt4      0x9d01bcb8            0x8           8   
-.text.__dummy_fmts      0x9d01bcc0            0x8           8   
-.rodata.str1.4          0x9d01bcc8            0x8           8   
-.text.__dummy           0x9d01bcd0           0x10          16   
-.text.getpagesize       0x9d01bce0            0x8           8   
-.text.lseek             0x9d01bce8            0x8           8   
-.text.close             0x9d01bcf0            0x8           8   
-      Total kseg0_program_mem used  :     0x1bcdc      113884  21.7% of 0x80000
+.text                   0x9d003c18         0x2bf4       11252  App's exec code 
+.text                   0x9d00680c         0x286c       10348  App's exec code 
+.text                   0x9d009078         0x1fd0        8144  App's exec code 
+.text                   0x9d00b048         0x1870        6256  App's exec code 
+.dinit                  0x9d00c8b8          0xbe0        3040   
+.text                   0x9d00d498          0x948        2376  App's exec code 
+.text.__rem_pio2_large  0x9d00dde0          0x838        2104   
+.text                   0x9d00e618         0x1010        4112  App's exec code 
+.text                   0x9d00f628          0xec8        3784  App's exec code 
+.text                   0x9d0104f0          0xe54        3668  App's exec code 
+.text.__fmt_fp          0x9d011344          0x6d0        1744   
+.text                   0x9d011a14          0xd44        3396  App's exec code 
+.text.fma               0x9d012758          0x678        1656   
+.text.__fmt_a           0x9d012dd0          0x628        1576   
+.text                   0x9d0133f8          0xb08        2824  App's exec code 
+.text.__printf_core     0x9d013f00          0x580        1408   
+.text                   0x9d014480          0x56c        1388  App's exec code 
+.rodata                 0x9d0149ec          0x514        1300  Read-only const 
+.text                   0x9d014f00          0x89c        2204  App's exec code 
+.text                   0x9d01579c          0x43c        1084  App's exec code 
+.text.__rem_pio2        0x9d015bd8          0x430        1072   
+.text                   0x9d016008          0x7b8        1976  App's exec code 
+.text                   0x9d0167c0          0x774        1908  App's exec code 
+.rodata                 0x9d016f38          0x640        1600  Read-only const 
+.text.malloc            0x9d017578          0x290         656   
+.text                   0x9d017808          0x4f8        1272  App's exec code 
+.text                   0x9d017d00          0x4f0        1264  App's exec code 
+.text                   0x9d0181f0          0x250         592  App's exec code 
+.rodata                 0x9d018440          0x228         552  Read-only const 
+.text                   0x9d018668          0x218         536  App's exec code 
+.text.__fmt_x           0x9d018880          0x208         520   
+.text.free              0x9d018a88          0x198         408   
+.text.__pop_int         0x9d018c20          0x188         392   
+.text                   0x9d018da8          0x2cc         716  App's exec code 
+.text                   0x9d019074          0x160         352  App's exec code 
+.rodata                 0x9d0191d8          0x158         344  Read-only const 
+.text._sbrk_init        0x9d019330          0x154         340   
+.text.__fmt_d           0x9d019484          0x150         336   
+.text                   0x9d0195d4          0x140         320  App's exec code 
+.text.__cvt_u           0x9d019714          0x13c         316   
+.text.sin               0x9d019850          0x120         288   
+.text                   0x9d019970          0x11c         284  App's exec code 
+.text.realloc           0x9d019a8c          0x118         280   
+.text.__pad             0x9d019ba4          0x100         256   
+.text.cos               0x9d019ca4          0x100         256   
+.text                   0x9d019da4          0x1f4         500  App's exec code 
+.text.__fmt_o           0x9d019f98           0xf4         244   
+.text.__pop_ptr         0x9d01a08c           0xe4         228   
+.rodata                 0x9d01a170           0xe0         224  Read-only const 
+.text.general_exception 0x9d01a250           0xdc         220   
+.text.__stdio_close_rw  0x9d01a32c           0xc0         192   
+.text.__fmt_u           0x9d01a3ec           0xbc         188   
+.text.floor             0x9d01a4a8           0xb4         180   
+.text._sbrk             0x9d01a55c           0xb0         176   
+.text.unbin             0x9d01a60c           0xac         172   
+.text                   0x9d01a6b8           0xa8         168  App's exec code 
+.text.__fmt_s           0x9d01a760           0xa4         164   
+.rodata                 0x9d01a808           0xa0         160  Read-only const 
+.text.__stdio_close     0x9d01a8a8           0xa0         160   
+.text.__sin             0x9d01a948           0x90         144   
+.text.__out             0x9d01a9d8           0x8c         140   
+.text.normalize         0x9d01aa64           0x8c         140   
+.text.scalbn            0x9d01aaf0           0x8c         140   
+.text.__cos             0x9d01ab7c           0x88         136   
+.rodata                 0x9d01ac08           0x80         128  Read-only const 
+.text.dinit.startup     0x9d01ac88           0x80         128   
+.text.__vsnprintf       0x9d01ad08           0x80         128   
+.text.atoi              0x9d01ad88           0x7c         124   
+.rodata.cst8            0x9d01ae08           0x78         120   
+.text.alloc_rev         0x9d01ae80           0x74         116   
+.text.alloc_fwd         0x9d01aef4           0x70         112   
+.text.a_clz_64          0x9d01af64           0x6c         108   
+.rodata                 0x9d01afd0           0x64         100  Read-only const 
+.text                   0x9d01b034           0x60          96  App's exec code 
+.text.__fopen_std       0x9d01b094           0x60          96   
+.text.bin_index         0x9d01b0f4           0x60          96   
+.text.__sio_snprintf_df 0x9d01b154           0x5c          92   
+.text.__string_out      0x9d01b1b0           0x5c          92   
+.rodata                 0x9d01b20c           0x5c          92  Read-only const 
+.text.__fmt_state       0x9d01b268           0x58          88   
+.text.adjust_size       0x9d01b2c0           0x58          88   
+.text.trim              0x9d01b318           0x58          88   
+.rodata                 0x9d01b370           0x54          84  Read-only const 
+.text.main_entry        0x9d01b3c4           0x54          84   
+.rodata                 0x9d01b418           0x50          80  Read-only const 
+.text.__malloc0         0x9d01b468           0x50          80   
+.text.__sio_snprintf_do 0x9d01b4b8           0x4c          76   
+.text.__sio_snprintf_do 0x9d01b504           0x4c          76   
+.text.sbrk              0x9d01b550           0x4c          76   
+.text.__pop_float       0x9d01b59c           0x48          72   
+.text.strncmp           0x9d01b5e4           0x48          72   
+.text                   0x9d01b62c           0x44          68  App's exec code 
+.rodata                 0x9d01b670           0x40          64  Read-only const 
+.rodata.cst8            0x9d01b6b0           0x80         128   
+.text.__wrap_printf     0x9d01b730           0x3c          60   
+.text.__vfprintf        0x9d01b76c           0x3c          60   
+.text.vfprintf          0x9d01b7a8           0x3c          60   
+.text.__expand_heap     0x9d01b7e4           0x3c          60   
+.text                   0x9d01b820           0x78         120  App's exec code 
+.text.lock_bin          0x9d01b898           0x34          52   
+.text.vprintf           0x9d01b8cc           0x30          48   
+.rodata.cst8            0x9d01b900           0x30          48   
+.text.__init_stdio      0x9d01b930           0x2c          44   
+.text._stub_sbd_memlayo 0x9d01b95c           0x2c          44   
+.text.strcpy            0x9d01b988           0x28          40   
+.rodata.cst8            0x9d01b9b0           0x28          40   
+.text.__wrap_snprintf   0x9d01b9d8           0x48          72   
+.text.__wrap_snprintf   0x9d01ba20           0x48          72   
+.text.dinit.startup     0x9d01ba68           0x20          32   
+.rodata.cst8            0x9d01ba88           0x20          32   
+.text.__init_stdout     0x9d01baa8           0x20          32   
+.text.__fwrite_min      0x9d01bac8           0x20          32   
+.text.stpcpy            0x9d01bae8           0x20          32   
+.rodata.cst8            0x9d01bb08           0x20          32   
+.text.__sio_printf_s    0x9d01bb28           0x1c          28   
+.text.__sio_snprintf_s  0x9d01bb44           0x1c          28   
+.text.tolower           0x9d01bb60           0x1c          28   
+.text.__tolower_l       0x9d01bb7c           0x1c          28   
+.text.toupper           0x9d01bb98           0x1c          28   
+.text.__toupper_l       0x9d01bbb4           0x1c          28   
+.text.__fopen           0x9d01bbd0           0x1c          28   
+.text                   0x9d01bbec           0x18          24  App's exec code 
+.rodata                 0x9d01bc04           0x18          24  Read-only const 
+.rodata.cst8            0x9d01bc20           0x18          24   
+.rodata                 0x9d01bc38           0x20          32  Read-only const 
+.rodata.str1.4          0x9d01bc58           0x20          32   
+.rodata.cst8            0x9d01bc78           0x20          32   
+.rodata.cst8            0x9d01bc98           0x10          16   
+.text._on_reset         0x9d01bca8            0x8           8   
+.text._on_bootstrap     0x9d01bcb0            0x8           8   
+.text.__dummy_fmt3      0x9d01bcb8            0x8           8   
+.text.__dummy_fmt4      0x9d01bcc0            0x8           8   
+.text.__dummy_fmts      0x9d01bcc8            0x8           8   
+.rodata.str1.4          0x9d01bcd0            0x8           8   
+.text.__dummy           0x9d01bcd8           0x10          16   
+.text.getpagesize       0x9d01bce8            0x8           8   
+.text.lseek             0x9d01bcf0            0x8           8   
+.text.close             0x9d01bcf8            0x8           8   
+      Total kseg0_program_mem used  :     0x1bce4      113892  21.7% of 0x80000
 
 kseg0 Boot-Memory Usage
 section                    address  length [bytes]      (dec)  Description
@@ -294,7 +294,7 @@ section                    address  length [bytes]      (dec)  Description
 .bev_excpt              0xbfc00380           0x10          16  BEV-Exception 
          Total kseg1_boot_mem used  :       0x1a4         420  36.5% of 0x480
         --------------------------------------------------------------------------
-         Total Program Memory used  :     0x1be80      114304  21.8% of 0x80480
+         Total Program Memory used  :     0x1be88      114312  21.8% of 0x80480
         --------------------------------------------------------------------------
 
 
@@ -470,19 +470,19 @@ Discarded input sections
  .reginfo       0x0000000000000000       0x18 build/nsensor/production/_ext/1360937237/cmd_scanner.o
  .MIPS.abiflags
                 0x0000000000000000       0x18 build/nsensor/production/_ext/1360937237/cmd_scanner.o
- .reginfo       0x0000000000000000       0x18 /tmp/cchh09Bh.o
+ .reginfo       0x0000000000000000       0x18 /tmp/cc58qlDd.o
  .MIPS.abiflags
-                0x0000000000000000       0x18 /tmp/cchh09Bh.o
- .reginfo       0x0000000000000000       0x18 /tmp/cc6CRm0l.o
+                0x0000000000000000       0x18 /tmp/cc58qlDd.o
+ .reginfo       0x0000000000000000       0x18 /tmp/ccWbnKx1.o
  .MIPS.abiflags
-                0x0000000000000000       0x18 /tmp/cc6CRm0l.o
- .reginfo       0x0000000000000000       0x18 /tmp/ccyPNdk7.o
+                0x0000000000000000       0x18 /tmp/ccWbnKx1.o
+ .reginfo       0x0000000000000000       0x18 /tmp/ccBTRue7.o
  .MIPS.abiflags
-                0x0000000000000000       0x18 /tmp/ccyPNdk7.o
- .reginfo       0x0000000000000000       0x18 /tmp/cck7ZObJ.o
+                0x0000000000000000       0x18 /tmp/ccBTRue7.o
+ .reginfo       0x0000000000000000       0x18 /tmp/ccDho8rO.o
  .MIPS.abiflags
-                0x0000000000000000       0x18 /tmp/cck7ZObJ.o
- .discard       0x0000000000000000        0x4 /tmp/cck7ZObJ.o
+                0x0000000000000000       0x18 /tmp/ccDho8rO.o
+ .discard       0x0000000000000000        0x4 /tmp/ccDho8rO.o
  .reginfo       0x0000000000000000       0x18 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/pic32_software_reset.o
  .MIPS.abiflags
                 0x0000000000000000       0x18 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/pic32_software_reset.o
@@ -1285,20 +1285,20 @@ END GROUP
 
 .reset          0x00000000bfc00000      0x194
  *(.reset)
- .reset         0x00000000bfc00000       0x18 /tmp/cchh09Bh.o
+ .reset         0x00000000bfc00000       0x18 /tmp/cc58qlDd.o
                 0x00000000bfc00000                _reset
  *(.reset.startup)
  .reset.startup
-                0x00000000bfc00018      0x17c /tmp/cchh09Bh.o
+                0x00000000bfc00018      0x17c /tmp/cc58qlDd.o
                 0x00000000bfc00018                _startup
 
 .bev_excpt      0x00000000bfc00380       0x10
  *(.bev_handler)
- .bev_handler   0x00000000bfc00380       0x10 /tmp/cchh09Bh.o
+ .bev_handler   0x00000000bfc00380       0x10 /tmp/cc58qlDd.o
 
 .app_excpt      0x000000009d000180       0x10
  *(.gen_handler)
- .gen_handler   0x000000009d000180       0x10 /tmp/cchh09Bh.o
+ .gen_handler   0x000000009d000180       0x10 /tmp/cc58qlDd.o
 
 .vectors        0x000000009d000200       0xc0
                 0x000000009d000200                . = ALIGN (0x4)
@@ -3035,7 +3035,7 @@ END GROUP
  .debug_abbrev  0x0000000000007ce7       0x2e /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(lseek.o)
  .debug_abbrev  0x0000000000007d15       0x2e /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(close.o)
 
-.debug_line     0x0000000000000000     0xf249
+.debug_line     0x0000000000000000     0xf24a
  *.elf(.debug_line)
  *(.debug_line)
  .debug_line    0x0000000000000000       0x8a build/nsensor/production/_ext/1684788505/ChrFont0.o
@@ -3079,65 +3079,65 @@ END GROUP
  .debug_line    0x00000000000058db      0x242 build/nsensor/production/_ext/1360937237/fft.o
  .debug_line    0x0000000000005b1d      0x5e1 build/nsensor/production/_ext/1360937237/main.o
  .debug_line    0x00000000000060fe      0x30a build/nsensor/production/_ext/1360937237/canfd.o
- .debug_line    0x0000000000006408      0x5f4 build/nsensor/production/_ext/1360937237/host.o
- .debug_line    0x00000000000069fc      0x1a8 build/nsensor/production/_ext/1360937237/cmd_scanner.o
- .debug_line    0x0000000000006ba4       0xa6 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(default-on-reset.o)
- .debug_line    0x0000000000006c4a       0xaa /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(default-on-bootstrap.o)
- .debug_line    0x0000000000006cf4       0xc9 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(defaultinterrupt.o)
- .debug_line    0x0000000000006dbd      0x269 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_printf_s.o)
- .debug_line    0x0000000000007026      0x201 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_dfosux.o)
- .debug_line    0x0000000000007227      0x1fe /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_dosux.o)
- .debug_line    0x0000000000007425      0x1fd /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_doux.o)
- .debug_line    0x0000000000007622      0x1f0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_s.o)
- .debug_line    0x0000000000007812      0x25e /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_d.o)
- .debug_line    0x0000000000007a70      0x6c8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_fp.o)
- .debug_line    0x0000000000008138      0x20f /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_o.o)
- .debug_line    0x0000000000008347      0x25d /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_s.o)
- .debug_line    0x00000000000085a4      0x2a3 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_u.o)
- .debug_line    0x0000000000008847      0x338 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_x.o)
- .debug_line    0x0000000000008b7f      0x1bb /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__pop_float.o)
- .debug_line    0x0000000000008d3a      0x25a /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__pop_int.o)
- .debug_line    0x0000000000008f94      0x213 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__pop_ptr.o)
- .debug_line    0x00000000000091a7      0x71a /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__printf_core.o)
- .debug_line    0x00000000000098c1      0x25d /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(stdout.o)
- .debug_line    0x0000000000009b1e      0x19f /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(vprintf.o)
- .debug_line    0x0000000000009cbd      0x17c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(atoi.o)
- .debug_line    0x0000000000009e39       0xb4 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(strcpy.o)
- .debug_line    0x0000000000009eed      0x140 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(strncmp.o)
- .debug_line    0x000000000000a02d      0x1c1 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(tolower.o)
- .debug_line    0x000000000000a1ee      0x1c1 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(toupper.o)
- .debug_line    0x000000000000a3af      0x1c9 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__int_vfprintf.o)
- .debug_line    0x000000000000a578      0x272 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__int_vsnprintf.o)
- .debug_line    0x000000000000a7ea      0x284 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fopen.o)
- .debug_line    0x000000000000aa6e      0x155 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__io_init_needed.o)
- .debug_line    0x000000000000abc3      0x2ac /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__out.o)
- .debug_line    0x000000000000ae6f      0x2f8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__stdio_close.o)
- .debug_line    0x000000000000b167      0x25f /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(vfprintf.o)
- .debug_line    0x000000000000b3c6       0xbf /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(stpcpy.o)
- .debug_line    0x000000000000b485      0xb49 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
- .debug_line    0x000000000000bfce      0x14b /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(expand_heap.o)
- .debug_line    0x000000000000c119       0xd0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__init_stdio.o)
- .debug_line    0x000000000000c1e9       0xc4 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__io_file_needed.o)
- .debug_line    0x000000000000c2ad       0xd0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__io_fmt_needed.o)
- .debug_line    0x000000000000c37d      0x112 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(libc.o)
- .debug_line    0x000000000000c48f      0x67d /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_a.o)
- .debug_line    0x000000000000cb0c      0x22d /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(cos.o)
- .debug_line    0x000000000000cd39      0x18d /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(floor.o)
- .debug_line    0x000000000000cec6      0x697 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(fma.o)
- .debug_line    0x000000000000d55d      0x18d /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(scalbn.o)
- .debug_line    0x000000000000d6ea      0x236 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(sin.o)
- .debug_line    0x000000000000d920      0x17c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__cos.o)
- .debug_line    0x000000000000da9c      0x51f /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__rem_pio2.o)
- .debug_line    0x000000000000dfbb      0x66c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__rem_pio2_large.o)
- .debug_line    0x000000000000e627      0x17c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__sin.o)
- .debug_line    0x000000000000e7a3       0xe4 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/fpu64/libgcc.a(_lshrdi3.o)
- .debug_line    0x000000000000e887       0xe5 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/fpu64/libgcc.a(_ashldi3.o)
- .debug_line    0x000000000000e96c      0x2e0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/fpu64/libgcc.a(_udivdi3.o)
- .debug_line    0x000000000000ec4c      0x317 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/fpu64/libgcc.a(_umoddi3.o)
- .debug_line    0x000000000000ef63      0x1b0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(sbrk.o)
- .debug_line    0x000000000000f113       0x9b /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(lseek.o)
- .debug_line    0x000000000000f1ae       0x9b /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(close.o)
- .debug_line    0x000000000000f249        0x0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(errno.o)
+ .debug_line    0x0000000000006408      0x5f5 build/nsensor/production/_ext/1360937237/host.o
+ .debug_line    0x00000000000069fd      0x1a8 build/nsensor/production/_ext/1360937237/cmd_scanner.o
+ .debug_line    0x0000000000006ba5       0xa6 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(default-on-reset.o)
+ .debug_line    0x0000000000006c4b       0xaa /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(default-on-bootstrap.o)
+ .debug_line    0x0000000000006cf5       0xc9 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(defaultinterrupt.o)
+ .debug_line    0x0000000000006dbe      0x269 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_printf_s.o)
+ .debug_line    0x0000000000007027      0x201 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_dfosux.o)
+ .debug_line    0x0000000000007228      0x1fe /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_dosux.o)
+ .debug_line    0x0000000000007426      0x1fd /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_doux.o)
+ .debug_line    0x0000000000007623      0x1f0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_s.o)
+ .debug_line    0x0000000000007813      0x25e /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_d.o)
+ .debug_line    0x0000000000007a71      0x6c8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_fp.o)
+ .debug_line    0x0000000000008139      0x20f /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_o.o)
+ .debug_line    0x0000000000008348      0x25d /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_s.o)
+ .debug_line    0x00000000000085a5      0x2a3 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_u.o)
+ .debug_line    0x0000000000008848      0x338 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_x.o)
+ .debug_line    0x0000000000008b80      0x1bb /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__pop_float.o)
+ .debug_line    0x0000000000008d3b      0x25a /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__pop_int.o)
+ .debug_line    0x0000000000008f95      0x213 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__pop_ptr.o)
+ .debug_line    0x00000000000091a8      0x71a /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__printf_core.o)
+ .debug_line    0x00000000000098c2      0x25d /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(stdout.o)
+ .debug_line    0x0000000000009b1f      0x19f /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(vprintf.o)
+ .debug_line    0x0000000000009cbe      0x17c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(atoi.o)
+ .debug_line    0x0000000000009e3a       0xb4 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(strcpy.o)
+ .debug_line    0x0000000000009eee      0x140 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(strncmp.o)
+ .debug_line    0x000000000000a02e      0x1c1 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(tolower.o)
+ .debug_line    0x000000000000a1ef      0x1c1 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(toupper.o)
+ .debug_line    0x000000000000a3b0      0x1c9 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__int_vfprintf.o)
+ .debug_line    0x000000000000a579      0x272 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__int_vsnprintf.o)
+ .debug_line    0x000000000000a7eb      0x284 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fopen.o)
+ .debug_line    0x000000000000aa6f      0x155 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__io_init_needed.o)
+ .debug_line    0x000000000000abc4      0x2ac /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__out.o)
+ .debug_line    0x000000000000ae70      0x2f8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__stdio_close.o)
+ .debug_line    0x000000000000b168      0x25f /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(vfprintf.o)
+ .debug_line    0x000000000000b3c7       0xbf /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(stpcpy.o)
+ .debug_line    0x000000000000b486      0xb49 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
+ .debug_line    0x000000000000bfcf      0x14b /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(expand_heap.o)
+ .debug_line    0x000000000000c11a       0xd0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__init_stdio.o)
+ .debug_line    0x000000000000c1ea       0xc4 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__io_file_needed.o)
+ .debug_line    0x000000000000c2ae       0xd0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__io_fmt_needed.o)
+ .debug_line    0x000000000000c37e      0x112 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(libc.o)
+ .debug_line    0x000000000000c490      0x67d /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_a.o)
+ .debug_line    0x000000000000cb0d      0x22d /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(cos.o)
+ .debug_line    0x000000000000cd3a      0x18d /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(floor.o)
+ .debug_line    0x000000000000cec7      0x697 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(fma.o)
+ .debug_line    0x000000000000d55e      0x18d /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(scalbn.o)
+ .debug_line    0x000000000000d6eb      0x236 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(sin.o)
+ .debug_line    0x000000000000d921      0x17c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__cos.o)
+ .debug_line    0x000000000000da9d      0x51f /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__rem_pio2.o)
+ .debug_line    0x000000000000dfbc      0x66c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__rem_pio2_large.o)
+ .debug_line    0x000000000000e628      0x17c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__sin.o)
+ .debug_line    0x000000000000e7a4       0xe4 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/fpu64/libgcc.a(_lshrdi3.o)
+ .debug_line    0x000000000000e888       0xe5 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/fpu64/libgcc.a(_ashldi3.o)
+ .debug_line    0x000000000000e96d      0x2e0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/fpu64/libgcc.a(_udivdi3.o)
+ .debug_line    0x000000000000ec4d      0x317 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/fpu64/libgcc.a(_umoddi3.o)
+ .debug_line    0x000000000000ef64      0x1b0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(sbrk.o)
+ .debug_line    0x000000000000f114       0x9b /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(lseek.o)
+ .debug_line    0x000000000000f1af       0x9b /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(close.o)
+ .debug_line    0x000000000000f24a        0x0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(errno.o)
 
 .debug_frame    0x0000000000000000     0x4c18
  *.elf(.debug_frame)
@@ -3560,13 +3560,13 @@ END GROUP
  .gnu.attributes
                 0x00000000000002b0       0x10 build/nsensor/production/_ext/1360937237/cmd_scanner.o
  .gnu.attributes
-                0x00000000000002c0       0x10 /tmp/cchh09Bh.o
+                0x00000000000002c0       0x10 /tmp/cc58qlDd.o
  .gnu.attributes
-                0x00000000000002d0       0x10 /tmp/cc6CRm0l.o
+                0x00000000000002d0       0x10 /tmp/ccWbnKx1.o
  .gnu.attributes
-                0x00000000000002e0       0x10 /tmp/ccyPNdk7.o
+                0x00000000000002e0       0x10 /tmp/ccBTRue7.o
  .gnu.attributes
-                0x00000000000002f0       0x10 /tmp/cck7ZObJ.o
+                0x00000000000002f0       0x10 /tmp/ccDho8rO.o
  .gnu.attributes
                 0x0000000000000300       0x10 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/pic32_software_reset.o
  .gnu.attributes
@@ -3698,10 +3698,10 @@ END GROUP
  .gnu.attributes
                 0x0000000000000700       0x10 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(errno.o)
                 0x0000000000000200                _min_heap_size = 0x200
-LOAD /tmp/cchh09Bh.o
-LOAD /tmp/cc6CRm0l.o
-LOAD /tmp/ccyPNdk7.o
-LOAD /tmp/cck7ZObJ.o
+LOAD /tmp/cc58qlDd.o
+LOAD /tmp/ccWbnKx1.o
+LOAD /tmp/ccBTRue7.o
+LOAD /tmp/ccDho8rO.o
 LOAD /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/pic32_software_reset.o
 LOAD /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/fpu64/libgcc.a
 START GROUP
@@ -3746,77 +3746,77 @@ __xc_reference_data
 .__vector_offset_BF8106B8_data
                 0x00000000bf8106b8       0x80
  .__vector_offset_BF8106B8_data
-                0x00000000bf8106b8       0x80 /tmp/ccyPNdk7.o
+                0x00000000bf8106b8       0x80 /tmp/ccBTRue7.o
 
 .__vector_offset_BF810540_data
                 0x00000000bf810540       0x70
  .__vector_offset_BF810540_data
-                0x00000000bf810540       0x70 /tmp/ccyPNdk7.o
+                0x00000000bf810540       0x70 /tmp/ccBTRue7.o
 
 .__vector_offset_BF81065C_data
                 0x00000000bf81065c       0x58
  .__vector_offset_BF81065C_data
-                0x00000000bf81065c       0x58 /tmp/ccyPNdk7.o
+                0x00000000bf81065c       0x58 /tmp/ccBTRue7.o
 
 .__vector_offset_BF8105CC_data
                 0x00000000bf8105cc       0x40
  .__vector_offset_BF8105CC_data
-                0x00000000bf8105cc       0x40 /tmp/ccyPNdk7.o
+                0x00000000bf8105cc       0x40 /tmp/ccBTRue7.o
 
 .__vector_offset_BF8107A0_data
                 0x00000000bf8107a0       0x2c
  .__vector_offset_BF8107A0_data
-                0x00000000bf8107a0       0x2c /tmp/ccyPNdk7.o
+                0x00000000bf8107a0       0x2c /tmp/ccBTRue7.o
 
 .__vector_offset_BF8107E4_data
                 0x00000000bf8107e4       0x28
  .__vector_offset_BF8107E4_data
-                0x00000000bf8107e4       0x28 /tmp/ccyPNdk7.o
+                0x00000000bf8107e4       0x28 /tmp/ccBTRue7.o
 
 .__vector_offset_BF810614_data
                 0x00000000bf810614       0x24
  .__vector_offset_BF810614_data
-                0x00000000bf810614       0x24 /tmp/ccyPNdk7.o
+                0x00000000bf810614       0x24 /tmp/ccBTRue7.o
 
 .__vector_offset_BF8105B8_data
                 0x00000000bf8105b8       0x10
  .__vector_offset_BF8105B8_data
-                0x00000000bf8105b8       0x10 /tmp/ccyPNdk7.o
+                0x00000000bf8105b8       0x10 /tmp/ccBTRue7.o
 
 .__vector_offset_BF810748_data
                 0x00000000bf810748       0x10
  .__vector_offset_BF810748_data
-                0x00000000bf810748       0x10 /tmp/ccyPNdk7.o
+                0x00000000bf810748       0x10 /tmp/ccBTRue7.o
 
 .__vector_offset_BF810818_data
                 0x00000000bf810818       0x10
  .__vector_offset_BF810818_data
-                0x00000000bf810818       0x10 /tmp/ccyPNdk7.o
+                0x00000000bf810818       0x10 /tmp/ccBTRue7.o
 
 .__vector_offset_BF810924_data
                 0x00000000bf810924       0x10
  .__vector_offset_BF810924_data
-                0x00000000bf810924       0x10 /tmp/ccyPNdk7.o
+                0x00000000bf810924       0x10 /tmp/ccBTRue7.o
 
 .__vector_offset_BF8108F8_data
                 0x00000000bf8108f8        0xc
  .__vector_offset_BF8108F8_data
-                0x00000000bf8108f8        0xc /tmp/ccyPNdk7.o
+                0x00000000bf8108f8        0xc /tmp/ccBTRue7.o
 
 .__vector_offset_BF810914_data
                 0x00000000bf810914        0xc
  .__vector_offset_BF810914_data
-                0x00000000bf810914        0xc /tmp/ccyPNdk7.o
+                0x00000000bf810914        0xc /tmp/ccBTRue7.o
 
 .__vector_offset_BF810788_data
                 0x00000000bf810788        0x8
  .__vector_offset_BF810788_data
-                0x00000000bf810788        0x8 /tmp/ccyPNdk7.o
+                0x00000000bf810788        0x8 /tmp/ccBTRue7.o
 
 .__vector_offset_BF810938_data
                 0x00000000bf810938        0x8
  .__vector_offset_BF810938_data
-                0x00000000bf810938        0x8 /tmp/ccyPNdk7.o
+                0x00000000bf810938        0x8 /tmp/ccBTRue7.o
 
 .rgbOledBmp_page
                 0x00000000a0009ff0        0x5
@@ -3827,17 +3827,17 @@ __xc_reference_data
 .__vector_offset_BF8107DC_data
                 0x00000000bf8107dc        0x4
  .__vector_offset_BF8107DC_data
-                0x00000000bf8107dc        0x4 /tmp/ccyPNdk7.o
+                0x00000000bf8107dc        0x4 /tmp/ccBTRue7.o
 
 .__vector_offset_BF810834_data
                 0x00000000bf810834        0x4
  .__vector_offset_BF810834_data
-                0x00000000bf810834        0x4 /tmp/ccyPNdk7.o
+                0x00000000bf810834        0x4 /tmp/ccBTRue7.o
 
 .__vector_offset_BF8108D8_data
                 0x00000000bf8108d8        0x4
  .__vector_offset_BF8108D8_data
-                0x00000000bf8108d8        0x4 /tmp/ccyPNdk7.o
+                0x00000000bf8108d8        0x4 /tmp/ccBTRue7.o
 
 .data           0x00000000800002a8      0x3f8
  .data          0x00000000800002a8      0x248 build/nsensor/production/_ext/1360937237/main.o
@@ -4059,16 +4059,16 @@ __xc_reference_data
  .data          0x0000000000000000        0x0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/pic32_software_reset.o
 
 .data%z65       0x0000000000000000        0x0
- .data          0x0000000000000000        0x0 /tmp/cck7ZObJ.o
+ .data          0x0000000000000000        0x0 /tmp/ccDho8rO.o
 
 .data%z66       0x0000000000000000        0x0
- .data          0x0000000000000000        0x0 /tmp/ccyPNdk7.o
+ .data          0x0000000000000000        0x0 /tmp/ccBTRue7.o
 
 .data%z67       0x0000000000000000        0x0
- .data          0x0000000000000000        0x0 /tmp/cc6CRm0l.o
+ .data          0x0000000000000000        0x0 /tmp/ccWbnKx1.o
 
 .data%z68       0x0000000000000000        0x0
- .data          0x0000000000000000        0x0 /tmp/cchh09Bh.o
+ .data          0x0000000000000000        0x0 /tmp/cc58qlDd.o
 
 .data%z69       0x0000000000000000        0x0
  .data          0x0000000000000000        0x0 build/nsensor/production/_ext/1360937237/canfd.o
@@ -4452,16 +4452,16 @@ __xc_reference_data
  .bss           0x0000000000000000        0x0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/pic32_software_reset.o
 
 .bss%z170       0x0000000000000000        0x0
- .bss           0x0000000000000000        0x0 /tmp/cck7ZObJ.o
+ .bss           0x0000000000000000        0x0 /tmp/ccDho8rO.o
 
 .bss%z171       0x0000000000000000        0x0
- .bss           0x0000000000000000        0x0 /tmp/ccyPNdk7.o
+ .bss           0x0000000000000000        0x0 /tmp/ccBTRue7.o
 
 .bss%z172       0x0000000000000000        0x0
- .bss           0x0000000000000000        0x0 /tmp/cc6CRm0l.o
+ .bss           0x0000000000000000        0x0 /tmp/ccWbnKx1.o
 
 .bss%z173       0x0000000000000000        0x0
- .bss           0x0000000000000000        0x0 /tmp/cchh09Bh.o
+ .bss           0x0000000000000000        0x0 /tmp/cc58qlDd.o
 
 .bss%z174       0x0000000000000000        0x0
  .bss           0x0000000000000000        0x0 build/nsensor/production/_ext/1360937237/do_fft.o
@@ -4600,7 +4600,7 @@ __xc_reference_data
                 0x000000009d003860                QEI2_Handler
                 0x000000009d003a3c                DMA7_Handler
 
-.text           0x000000009d003c18     0x2bec
+.text           0x000000009d003c18     0x2bf4
  .text          0x000000009d003c18     0x1628 build/nsensor/production/_ext/1684788505/OledGrph.o
                 0x000000009d003c18                OledMoveTo
                 0x000000009d003d28                OledGetPos
@@ -4628,7 +4628,7 @@ __xc_reference_data
                 0x000000009d00516c                OledMoveRight
                 0x000000009d0051a0                OledClampXco
                 0x000000009d0051f0                OledClampYco
- .text          0x000000009d005240     0x15c4 build/nsensor/production/_ext/1360937237/host.o
+ .text          0x000000009d005240     0x15cc build/nsensor/production/_ext/1360937237/host.o
                 0x000000009d005240                APP_CAN_Callback_h
                 0x000000009d005320                APP_CAN_Error_Callback_h
                 0x000000009d0053cc                print_menu_h
@@ -4636,988 +4636,988 @@ __xc_reference_data
                 0x000000009d00544c                UART1DmaChannelHandler_State
                 0x000000009d00547c                UART1DmaWrite
                 0x000000009d005510                host_sm
-                0x000000009d0062b8                fft_bin_total
-                0x000000009d00634c                approxRollingAverage
-                0x000000009d0063b0                fh_show_link
-                0x000000009d00640c                fh_stop_trigger
-                0x000000009d006468                fh_start_trigger
-                0x000000009d0064c4                fh_start_AT
-                0x000000009d006660                TP1_check
-                0x000000009d0066dc                send_from_host
+                0x000000009d0062c0                fft_bin_total
+                0x000000009d006354                approxRollingAverage
+                0x000000009d0063b8                fh_show_link
+                0x000000009d006414                fh_stop_trigger
+                0x000000009d006470                fh_start_trigger
+                0x000000009d0064cc                fh_start_AT
+                0x000000009d006668                TP1_check
+                0x000000009d0066e4                send_from_host
 
-.text           0x000000009d006804     0x286c
- .text          0x000000009d006804     0x143c build/nsensor/production/_ext/2014863652/plib_dmac.o
-                0x000000009d006b24                DMAC_Initialize
-                0x000000009d006c64                DMAC_ChannelCallbackRegister
-                0x000000009d006ccc                DMAC_ChannelTransfer
-                0x000000009d006f24                DMAC_ChainTransferSetup
-                0x000000009d0070d8                DMAC_ChannelPatternMatchSetup
-                0x000000009d0071b8                DMAC_ChannelPatternMatchDisable
-                0x000000009d007214                DMAC_ChannelDisable
-                0x000000009d007298                DMAC_ChannelIsBusy
-                0x000000009d007330                DMAC_ChannelTransferStatusGet
-                0x000000009d0073d0                DMAC_ChannelCRCSetup
-                0x000000009d007518                DMAC_CRCDisable
-                0x000000009d007548                DMAC_CRCRead
-                0x000000009d0075d0                DMA0_InterruptHandler
-                0x000000009d00776c                DMA1_InterruptHandler
-                0x000000009d007908                DMA2_InterruptHandler
-                0x000000009d007aa4                DMA7_InterruptHandler
- .text          0x000000009d007c40     0x1430 build/nsensor/production/_ext/1360937237/main.o
-                0x000000009d007c40                qei_index_cb
-                0x000000009d007c6c                main
-                0x000000009d008e5c                update_imu_int1
-                0x000000009d008ee0                delay_us
+.text           0x000000009d00680c     0x286c
+ .text          0x000000009d00680c     0x143c build/nsensor/production/_ext/2014863652/plib_dmac.o
+                0x000000009d006b2c                DMAC_Initialize
+                0x000000009d006c6c                DMAC_ChannelCallbackRegister
+                0x000000009d006cd4                DMAC_ChannelTransfer
+                0x000000009d006f2c                DMAC_ChainTransferSetup
+                0x000000009d0070e0                DMAC_ChannelPatternMatchSetup
+                0x000000009d0071c0                DMAC_ChannelPatternMatchDisable
+                0x000000009d00721c                DMAC_ChannelDisable
+                0x000000009d0072a0                DMAC_ChannelIsBusy
+                0x000000009d007338                DMAC_ChannelTransferStatusGet
+                0x000000009d0073d8                DMAC_ChannelCRCSetup
+                0x000000009d007520                DMAC_CRCDisable
+                0x000000009d007550                DMAC_CRCRead
+                0x000000009d0075d8                DMA0_InterruptHandler
+                0x000000009d007774                DMA1_InterruptHandler
+                0x000000009d007910                DMA2_InterruptHandler
+                0x000000009d007aac                DMA7_InterruptHandler
+ .text          0x000000009d007c48     0x1430 build/nsensor/production/_ext/1360937237/main.o
+                0x000000009d007c48                qei_index_cb
+                0x000000009d007c74                main
+                0x000000009d008e64                update_imu_int1
+                0x000000009d008ee8                delay_us
 
-.text           0x000000009d009070     0x1fd0
- .text          0x000000009d009070      0xfe8 build/nsensor/production/_ext/1877210129/plib_spi1_master.o
-                0x000000009d009070                SPI1_Initialize
-                0x000000009d00914c                SPI1_TransferSetup
-                0x000000009d0092d4                SPI1_Write
-                0x000000009d00931c                SPI1_Read
-                0x000000009d009364                SPI1_IsTransmitterBusy
-                0x000000009d009398                SPI1_WriteRead
-                0x000000009d0098bc                SPI1_IsBusy
-                0x000000009d00991c                SPI1_CallbackRegister
-                0x000000009d009968                SPI1_RX_InterruptHandler
-                0x000000009d009e34                SPI1_TX_InterruptHandler
- .text          0x000000009d00a058      0xfe8 build/nsensor/production/_ext/1877210129/plib_spi2_master.o
-                0x000000009d00a058                SPI2_Initialize
-                0x000000009d00a134                SPI2_TransferSetup
-                0x000000009d00a2bc                SPI2_Write
-                0x000000009d00a304                SPI2_Read
-                0x000000009d00a34c                SPI2_IsTransmitterBusy
-                0x000000009d00a380                SPI2_WriteRead
-                0x000000009d00a8a4                SPI2_IsBusy
-                0x000000009d00a904                SPI2_CallbackRegister
-                0x000000009d00a950                SPI2_RX_InterruptHandler
-                0x000000009d00ae1c                SPI2_TX_InterruptHandler
+.text           0x000000009d009078     0x1fd0
+ .text          0x000000009d009078      0xfe8 build/nsensor/production/_ext/1877210129/plib_spi1_master.o
+                0x000000009d009078                SPI1_Initialize
+                0x000000009d009154                SPI1_TransferSetup
+                0x000000009d0092dc                SPI1_Write
+                0x000000009d009324                SPI1_Read
+                0x000000009d00936c                SPI1_IsTransmitterBusy
+                0x000000009d0093a0                SPI1_WriteRead
+                0x000000009d0098c4                SPI1_IsBusy
+                0x000000009d009924                SPI1_CallbackRegister
+                0x000000009d009970                SPI1_RX_InterruptHandler
+                0x000000009d009e3c                SPI1_TX_InterruptHandler
+ .text          0x000000009d00a060      0xfe8 build/nsensor/production/_ext/1877210129/plib_spi2_master.o
+                0x000000009d00a060                SPI2_Initialize
+                0x000000009d00a13c                SPI2_TransferSetup
+                0x000000009d00a2c4                SPI2_Write
+                0x000000009d00a30c                SPI2_Read
+                0x000000009d00a354                SPI2_IsTransmitterBusy
+                0x000000009d00a388                SPI2_WriteRead
+                0x000000009d00a8ac                SPI2_IsBusy
+                0x000000009d00a90c                SPI2_CallbackRegister
+                0x000000009d00a958                SPI2_RX_InterruptHandler
+                0x000000009d00ae24                SPI2_TX_InterruptHandler
 
-.text           0x000000009d00b040     0x1870
- .text          0x000000009d00b040      0xc84 build/nsensor/production/_ext/1360937237/sca3300.o
-                0x000000009d00b040                CalculateCRC
-                0x000000009d00b16c                sca3300_check_crc
-                0x000000009d00b1ec                sca3300_imu_transfer
-                0x000000009d00b2ac                sca3300_getdata
-                0x000000009d00b5dc                sca3300_getid
-                0x000000009d00b774                sca3300_getserial
-                0x000000009d00b8b4                sca3300_set_spimode
-                0x000000009d00bba8                sca3300_cs_disable
-                0x000000009d00bc58                sca3300_version
- .text          0x000000009d00bcc4      0xbec build/nsensor/production/_ext/2015287515/plib_rtcc.o
-                0x000000009d00bcc4                RTCC_Initialize
-                0x000000009d00bdb0                RTCC_InterruptEnable
-                0x000000009d00bde4                RTCC_InterruptDisable
-                0x000000009d00be18                RTCC_TimeSet
-                0x000000009d00c250                RTCC_TimeGet
-                0x000000009d00c458                RTCC_AlarmSet
-                0x000000009d00c81c                RTCC_CallbackRegister
-                0x000000009d00c858                RTCC_InterruptHandler
+.text           0x000000009d00b048     0x1870
+ .text          0x000000009d00b048      0xc84 build/nsensor/production/_ext/1360937237/sca3300.o
+                0x000000009d00b048                CalculateCRC
+                0x000000009d00b174                sca3300_check_crc
+                0x000000009d00b1f4                sca3300_imu_transfer
+                0x000000009d00b2b4                sca3300_getdata
+                0x000000009d00b5e4                sca3300_getid
+                0x000000009d00b77c                sca3300_getserial
+                0x000000009d00b8bc                sca3300_set_spimode
+                0x000000009d00bbb0                sca3300_cs_disable
+                0x000000009d00bc60                sca3300_version
+ .text          0x000000009d00bccc      0xbec build/nsensor/production/_ext/2015287515/plib_rtcc.o
+                0x000000009d00bccc                RTCC_Initialize
+                0x000000009d00bdb8                RTCC_InterruptEnable
+                0x000000009d00bdec                RTCC_InterruptDisable
+                0x000000009d00be20                RTCC_TimeSet
+                0x000000009d00c258                RTCC_TimeGet
+                0x000000009d00c460                RTCC_AlarmSet
+                0x000000009d00c824                RTCC_CallbackRegister
+                0x000000009d00c860                RTCC_InterruptHandler
 
-.dinit          0x000000009d00c8b0      0xbe0
- .dinit         0x000000009d00c8b0      0xbe0 data_init
+.dinit          0x000000009d00c8b8      0xbe0
+ .dinit         0x000000009d00c8b8      0xbe0 data_init
 
-.text           0x000000009d00d490      0x948
- .text          0x000000009d00d490      0x948 build/nsensor/production/_ext/1684788505/eadog.o
-                0x000000009d00d490                SPI1_Initialize_internal
-                0x000000009d00d56c                ReSet_SetLow
-                0x000000009d00d5ac                ReSet_SetHigh
-                0x000000009d00d5ec                RS_SetLow
-                0x000000009d00d62c                RS_SetHigh
-                0x000000009d00d66c                CSB_SetLow
-                0x000000009d00d6ac                CSB_SetHigh
-                0x000000009d00d6ec                SPI1_Exchange8bit
-                0x000000009d00d738                SPI1_ExchangeBuffer
-                0x000000009d00d78c                wdtdelay
-                0x000000009d00d7f4                init_display
-                0x000000009d00d9f8                eaDogM_WriteChr
-                0x000000009d00da3c                eaDogM_WriteCommand
-                0x000000009d00da80                eaDogM_SetPos
-                0x000000009d00daf0                eaDogM_ClearRow
-                0x000000009d00db6c                eaDogM_WriteString
-                0x000000009d00dbf4                eaDogM_WriteStringAtPos
-                0x000000009d00dc5c                eaDogM_WriteIntAtPos
-                0x000000009d00dd50                eaDogM_WriteByteToCGRAM
+.text           0x000000009d00d498      0x948
+ .text          0x000000009d00d498      0x948 build/nsensor/production/_ext/1684788505/eadog.o
+                0x000000009d00d498                SPI1_Initialize_internal
+                0x000000009d00d574                ReSet_SetLow
+                0x000000009d00d5b4                ReSet_SetHigh
+                0x000000009d00d5f4                RS_SetLow
+                0x000000009d00d634                RS_SetHigh
+                0x000000009d00d674                CSB_SetLow
+                0x000000009d00d6b4                CSB_SetHigh
+                0x000000009d00d6f4                SPI1_Exchange8bit
+                0x000000009d00d740                SPI1_ExchangeBuffer
+                0x000000009d00d794                wdtdelay
+                0x000000009d00d7fc                init_display
+                0x000000009d00da00                eaDogM_WriteChr
+                0x000000009d00da44                eaDogM_WriteCommand
+                0x000000009d00da88                eaDogM_SetPos
+                0x000000009d00daf8                eaDogM_ClearRow
+                0x000000009d00db74                eaDogM_WriteString
+                0x000000009d00dbfc                eaDogM_WriteStringAtPos
+                0x000000009d00dc64                eaDogM_WriteIntAtPos
+                0x000000009d00dd58                eaDogM_WriteByteToCGRAM
 
 .text.__rem_pio2_large
-                0x000000009d00ddd8      0x838
+                0x000000009d00dde0      0x838
  .text.__rem_pio2_large
-                0x000000009d00ddd8      0x838 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__rem_pio2_large.o)
-                0x000000009d00ddd8                __rem_pio2_large
+                0x000000009d00dde0      0x838 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__rem_pio2_large.o)
+                0x000000009d00dde0                __rem_pio2_large
 
-.text           0x000000009d00e610     0x1010
- .text          0x000000009d00e610      0x80c build/nsensor/production/_ext/1360937237/bma490l.o
-                0x000000009d00e610                bma490l_getdata
-                0x000000009d00e6cc                bma490l_getid
-                0x000000009d00e7f4                imu_getis
-                0x000000009d00e90c                imu_set_reg
-                0x000000009d00e9f4                imu_get_reg
-                0x000000009d00eae0                bma490l_set_spimode
-                0x000000009d00ed34                bma490_version
- .text          0x000000009d00ee1c      0x804 build/nsensor/production/_ext/1684788505/OledDriver.o
-                0x000000009d00ee1c                OledInit
-                0x000000009d00eeb0                OledTerm
-                0x000000009d00eeec                OledHostInit
-                0x000000009d00ef10                OledHostTerm
-                0x000000009d00ef34                OledDvrInit
-                0x000000009d00f030                OledDevInit
-                0x000000009d00f054                OledDevTerm
-                0x000000009d00f078                OledDisplayOn
-                0x000000009d00f09c                OledDisplayOff
-                0x000000009d00f0c0                OledClear
-                0x000000009d00f0fc                CBDmaChannelHandler
-                0x000000009d00f128                OledClearBuffer
-                0x000000009d00f1d8                OledUpdate
-                0x000000009d00f21c                SPI1DmaChannelHandler_State
-                0x000000009d00f3d0                OledPutBuffer
-                0x000000009d00f420                SPI1DmaChannelHandler
-                0x000000009d00f46c                SPI1_to_Buffer
-                0x000000009d00f550                wait_lcd_done
-                0x000000009d00f5c4                lcd_version
+.text           0x000000009d00e618     0x1010
+ .text          0x000000009d00e618      0x80c build/nsensor/production/_ext/1360937237/bma490l.o
+                0x000000009d00e618                bma490l_getdata
+                0x000000009d00e6d4                bma490l_getid
+                0x000000009d00e7fc                imu_getis
+                0x000000009d00e914                imu_set_reg
+                0x000000009d00e9fc                imu_get_reg
+                0x000000009d00eae8                bma490l_set_spimode
+                0x000000009d00ed3c                bma490_version
+ .text          0x000000009d00ee24      0x804 build/nsensor/production/_ext/1684788505/OledDriver.o
+                0x000000009d00ee24                OledInit
+                0x000000009d00eeb8                OledTerm
+                0x000000009d00eef4                OledHostInit
+                0x000000009d00ef18                OledHostTerm
+                0x000000009d00ef3c                OledDvrInit
+                0x000000009d00f038                OledDevInit
+                0x000000009d00f05c                OledDevTerm
+                0x000000009d00f080                OledDisplayOn
+                0x000000009d00f0a4                OledDisplayOff
+                0x000000009d00f0c8                OledClear
+                0x000000009d00f104                CBDmaChannelHandler
+                0x000000009d00f130                OledClearBuffer
+                0x000000009d00f1e0                OledUpdate
+                0x000000009d00f224                SPI1DmaChannelHandler_State
+                0x000000009d00f3d8                OledPutBuffer
+                0x000000009d00f428                SPI1DmaChannelHandler
+                0x000000009d00f474                SPI1_to_Buffer
+                0x000000009d00f558                wait_lcd_done
+                0x000000009d00f5cc                lcd_version
 
-.text           0x000000009d00f620      0xec8
- .text          0x000000009d00f620      0x770 build/nsensor/production/_ext/1684788505/dogm-graphic.o
-                0x000000009d00f668                lcd_inc_page
-                0x000000009d00f6c0                lcd_inc_column
-                0x000000009d00f714                lcd_moveto_xy
-                0x000000009d00f7f0                lcd_move_xy
-                0x000000009d00f86c                lcd_data
-                0x000000009d00f8d4                lcd_command
-                0x000000009d00f930                lcd_command_s
-                0x000000009d00f9d0                lcd_clear_area
-                0x000000009d00fb54                lcd_clear_area_xy
-                0x000000009d00fbe0                lcd_set_contrast
-                0x000000009d00fc60                lcd_init
- .text          0x000000009d00fd90      0x758 build/nsensor/production/_ext/1360937237/fft.o
-                0x000000009d00fd90                initFFT
-                0x000000009d00ff58                FFT
-                0x000000009d0101f8                windowFFT
-                0x000000009d0102c0                powerScale
-                0x000000009d01048c                fft_version
+.text           0x000000009d00f628      0xec8
+ .text          0x000000009d00f628      0x770 build/nsensor/production/_ext/1684788505/dogm-graphic.o
+                0x000000009d00f670                lcd_inc_page
+                0x000000009d00f6c8                lcd_inc_column
+                0x000000009d00f71c                lcd_moveto_xy
+                0x000000009d00f7f8                lcd_move_xy
+                0x000000009d00f874                lcd_data
+                0x000000009d00f8dc                lcd_command
+                0x000000009d00f938                lcd_command_s
+                0x000000009d00f9d8                lcd_clear_area
+                0x000000009d00fb5c                lcd_clear_area_xy
+                0x000000009d00fbe8                lcd_set_contrast
+                0x000000009d00fc68                lcd_init
+ .text          0x000000009d00fd98      0x758 build/nsensor/production/_ext/1360937237/fft.o
+                0x000000009d00fd98                initFFT
+                0x000000009d00ff60                FFT
+                0x000000009d010200                windowFFT
+                0x000000009d0102c8                powerScale
+                0x000000009d010494                fft_version
 
-.text           0x000000009d0104e8      0xe54
- .text          0x000000009d0104e8      0x748 build/nsensor/production/_ext/2015359111/plib_uart1.o
-                0x000000009d010578                UART1_Initialize
-                0x000000009d0105cc                UART1_SerialSetup
-                0x000000009d0107ec                UART1_Read
-                0x000000009d010924                UART1_Write
-                0x000000009d010a10                UART1_ErrorGet
-                0x000000009d010a64                UART1_AutoBaudQuery
-                0x000000009d010aa8                UART1_AutoBaudSet
-                0x000000009d010aec                UART1_WriteByte
-                0x000000009d010b38                UART1_TransmitterIsReady
-                0x000000009d010b7c                UART1_ReadByte
-                0x000000009d010ba4                UART1_ReceiverIsReady
-                0x000000009d010bec                UART1_TransmitComplete
- .text          0x000000009d010c30      0x70c build/nsensor/production/_ext/1360937237/canfd.o
-                0x000000009d010c30                APP_CAN_Callback
-                0x000000009d010cc8                APP_CAN_Error_Callback
-                0x000000009d010d0c                print_menu
-                0x000000009d010d30                PrintFormattedData
-                0x000000009d010d8c                canfd_state
-                0x000000009d011110                canfd_num_tx
-                0x000000009d011134                canfd_num_rx
-                0x000000009d011158                canfd_num_stall
-                0x000000009d01117c                canfd_set_filter
+.text           0x000000009d0104f0      0xe54
+ .text          0x000000009d0104f0      0x748 build/nsensor/production/_ext/2015359111/plib_uart1.o
+                0x000000009d010580                UART1_Initialize
+                0x000000009d0105d4                UART1_SerialSetup
+                0x000000009d0107f4                UART1_Read
+                0x000000009d01092c                UART1_Write
+                0x000000009d010a18                UART1_ErrorGet
+                0x000000009d010a6c                UART1_AutoBaudQuery
+                0x000000009d010ab0                UART1_AutoBaudSet
+                0x000000009d010af4                UART1_WriteByte
+                0x000000009d010b40                UART1_TransmitterIsReady
+                0x000000009d010b84                UART1_ReadByte
+                0x000000009d010bac                UART1_ReceiverIsReady
+                0x000000009d010bf4                UART1_TransmitComplete
+ .text          0x000000009d010c38      0x70c build/nsensor/production/_ext/1360937237/canfd.o
+                0x000000009d010c38                APP_CAN_Callback
+                0x000000009d010cd0                APP_CAN_Error_Callback
+                0x000000009d010d14                print_menu
+                0x000000009d010d38                PrintFormattedData
+                0x000000009d010d94                canfd_state
+                0x000000009d011118                canfd_num_tx
+                0x000000009d01113c                canfd_num_rx
+                0x000000009d011160                canfd_num_stall
+                0x000000009d011184                canfd_set_filter
 
-.text.__fmt_fp  0x000000009d01133c      0x6d0
+.text.__fmt_fp  0x000000009d011344      0x6d0
  .text.__fmt_fp
-                0x000000009d01133c      0x6d0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_fp.o)
-                0x000000009d01133c                __fmt_f_needed
-                0x000000009d01133c                __fmt_fp
+                0x000000009d011344      0x6d0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_fp.o)
+                0x000000009d011344                __fmt_f_needed
+                0x000000009d011344                __fmt_fp
 
-.text           0x000000009d011a0c      0xd44
- .text          0x000000009d011a0c      0x6c4 build/nsensor/production/_ext/1360937237/gfx.o
-                0x000000009d011a0c                line_rot
-                0x000000009d011a78                vector_graph
-                0x000000009d011e20                LA_gfx
-                0x000000009d012040                fft_draw
- .text          0x000000009d0120d0      0x680 build/nsensor/production/_ext/1966772718/plib_adchs.o
-                0x000000009d0120d0                ADCHS_Initialize
-                0x000000009d012298                ADCHS_ModulesEnable
-                0x000000009d0122dc                ADCHS_ModulesDisable
-                0x000000009d012324                ADCHS_ChannelResultInterruptEnable
-                0x000000009d0123b0                ADCHS_ChannelResultInterruptDisable
-                0x000000009d012444                ADCHS_ChannelEarlyInterruptEnable
-                0x000000009d0124d0                ADCHS_ChannelEarlyInterruptDisable
-                0x000000009d012564                ADCHS_GlobalEdgeConversionStart
-                0x000000009d01259c                ADCHS_GlobalLevelConversionStart
-                0x000000009d0125d4                ADCHS_GlobalLevelConversionStop
-                0x000000009d012608                ADCHS_ChannelConversionStart
-                0x000000009d012660                ADCHS_ChannelResultIsReady
-                0x000000009d0126e0                ADCHS_ChannelResultGet
-                0x000000009d012720                ADCHS_EOSStatusGet
+.text           0x000000009d011a14      0xd44
+ .text          0x000000009d011a14      0x6c4 build/nsensor/production/_ext/1360937237/gfx.o
+                0x000000009d011a14                line_rot
+                0x000000009d011a80                vector_graph
+                0x000000009d011e28                LA_gfx
+                0x000000009d012048                fft_draw
+ .text          0x000000009d0120d8      0x680 build/nsensor/production/_ext/1966772718/plib_adchs.o
+                0x000000009d0120d8                ADCHS_Initialize
+                0x000000009d0122a0                ADCHS_ModulesEnable
+                0x000000009d0122e4                ADCHS_ModulesDisable
+                0x000000009d01232c                ADCHS_ChannelResultInterruptEnable
+                0x000000009d0123b8                ADCHS_ChannelResultInterruptDisable
+                0x000000009d01244c                ADCHS_ChannelEarlyInterruptEnable
+                0x000000009d0124d8                ADCHS_ChannelEarlyInterruptDisable
+                0x000000009d01256c                ADCHS_GlobalEdgeConversionStart
+                0x000000009d0125a4                ADCHS_GlobalLevelConversionStart
+                0x000000009d0125dc                ADCHS_GlobalLevelConversionStop
+                0x000000009d012610                ADCHS_ChannelConversionStart
+                0x000000009d012668                ADCHS_ChannelResultIsReady
+                0x000000009d0126e8                ADCHS_ChannelResultGet
+                0x000000009d012728                ADCHS_EOSStatusGet
 
-.text.fma       0x000000009d012750      0x678
- .text.fma      0x000000009d012750      0x678 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(fma.o)
-                0x000000009d012750                fma
+.text.fma       0x000000009d012758      0x678
+ .text.fma      0x000000009d012758      0x678 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(fma.o)
+                0x000000009d012758                fma
 
-.text.__fmt_a   0x000000009d012dc8      0x628
- .text.__fmt_a  0x000000009d012dc8      0x628 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_a.o)
-                0x000000009d012dc8                __fmt_a_needed
-                0x000000009d012dc8                __fmt_a
+.text.__fmt_a   0x000000009d012dd0      0x628
+ .text.__fmt_a  0x000000009d012dd0      0x628 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_a.o)
+                0x000000009d012dd0                __fmt_a_needed
+                0x000000009d012dd0                __fmt_a
 
-.text           0x000000009d0133f0      0xb08
- .text          0x000000009d0133f0      0x584 build/nsensor/production/_ext/1955707305/plib_mcpwm.o
-                0x000000009d0133f0                MCPWM_Initialize
-                0x000000009d0134d8                MCPWM_Start
-                0x000000009d013510                MCPWM_Stop
-                0x000000009d013544                MCPWM_PrimaryPeriodSet
-                0x000000009d01357c                MCPWM_PrimaryPeriodGet
-                0x000000009d0135a8                MCPWM_SecondaryPeriodSet
-                0x000000009d0135e0                MCPWM_SecondaryPeriodGet
-                0x000000009d01360c                MCPWM_ChannelPrimaryDutySet
-                0x000000009d013658                MCPWM_ChannelSecondaryDutySet
-                0x000000009d0136a4                MCPWM_ChannelDeadTimeSet
-                0x000000009d013720                MCPWM_ChannelPrimaryTriggerSet
-                0x000000009d01376c                MCPWM_ChannelSecondaryTriggerSet
-                0x000000009d0137b8                MCPWM_ChannelLeadingEdgeBlankingDelaySet
-                0x000000009d013804                MCPWM_ChannelPinsOverrideEnable
-                0x000000009d013860                MCPWM_ChannelPinsOverrideDisable
-                0x000000009d0138bc                MCPWM_ChannelPinsOwnershipEnable
-                0x000000009d013918                MCPWM_ChannelPinsOwnershipDisable
- .text          0x000000009d013974      0x584 build/nsensor/production/_ext/1360937237/imu.o
-                0x000000009d013974                get_imu_scale
-                0x000000009d013b78                getAllData
-                0x000000009d013e88                imu_string
+.text           0x000000009d0133f8      0xb08
+ .text          0x000000009d0133f8      0x584 build/nsensor/production/_ext/1955707305/plib_mcpwm.o
+                0x000000009d0133f8                MCPWM_Initialize
+                0x000000009d0134e0                MCPWM_Start
+                0x000000009d013518                MCPWM_Stop
+                0x000000009d01354c                MCPWM_PrimaryPeriodSet
+                0x000000009d013584                MCPWM_PrimaryPeriodGet
+                0x000000009d0135b0                MCPWM_SecondaryPeriodSet
+                0x000000009d0135e8                MCPWM_SecondaryPeriodGet
+                0x000000009d013614                MCPWM_ChannelPrimaryDutySet
+                0x000000009d013660                MCPWM_ChannelSecondaryDutySet
+                0x000000009d0136ac                MCPWM_ChannelDeadTimeSet
+                0x000000009d013728                MCPWM_ChannelPrimaryTriggerSet
+                0x000000009d013774                MCPWM_ChannelSecondaryTriggerSet
+                0x000000009d0137c0                MCPWM_ChannelLeadingEdgeBlankingDelaySet
+                0x000000009d01380c                MCPWM_ChannelPinsOverrideEnable
+                0x000000009d013868                MCPWM_ChannelPinsOverrideDisable
+                0x000000009d0138c4                MCPWM_ChannelPinsOwnershipEnable
+                0x000000009d013920                MCPWM_ChannelPinsOwnershipDisable
+ .text          0x000000009d01397c      0x584 build/nsensor/production/_ext/1360937237/imu.o
+                0x000000009d01397c                get_imu_scale
+                0x000000009d013b80                getAllData
+                0x000000009d013e90                imu_string
 
 .text.__printf_core
-                0x000000009d013ef8      0x580
+                0x000000009d013f00      0x580
  .text.__printf_core
-                0x000000009d013ef8      0x580 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__printf_core.o)
-                0x000000009d013ef8                __printf_core
+                0x000000009d013f00      0x580 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__printf_core.o)
+                0x000000009d013f00                __printf_core
 
-.text           0x000000009d014478      0x56c
- .text          0x000000009d014478      0x56c build/nsensor/production/_ext/2014902340/plib_evic.o
-                0x000000009d014478                EVIC_Initialize
-                0x000000009d01458c                EVIC_SourceEnable
-                0x000000009d0145f8                EVIC_SourceDisable
-                0x000000009d014664                EVIC_SourceIsEnabled
-                0x000000009d0146c4                EVIC_SourceStatusGet
-                0x000000009d014724                EVIC_SourceStatusSet
-                0x000000009d014790                EVIC_SourceStatusClear
-                0x000000009d0147fc                EVIC_INT_Enable
-                0x000000009d01482c                EVIC_INT_Disable
-                0x000000009d014874                EVIC_INT_Restore
-                0x000000009d0148b8                EVIC_ExternalInterruptEnable
-                0x000000009d0148ec                EVIC_ExternalInterruptDisable
-                0x000000009d014920                EVIC_ExternalInterruptCallbackRegister
-                0x000000009d014988                EXTERNAL_2_InterruptHandler
+.text           0x000000009d014480      0x56c
+ .text          0x000000009d014480      0x56c build/nsensor/production/_ext/2014902340/plib_evic.o
+                0x000000009d014480                EVIC_Initialize
+                0x000000009d014594                EVIC_SourceEnable
+                0x000000009d014600                EVIC_SourceDisable
+                0x000000009d01466c                EVIC_SourceIsEnabled
+                0x000000009d0146cc                EVIC_SourceStatusGet
+                0x000000009d01472c                EVIC_SourceStatusSet
+                0x000000009d014798                EVIC_SourceStatusClear
+                0x000000009d014804                EVIC_INT_Enable
+                0x000000009d014834                EVIC_INT_Disable
+                0x000000009d01487c                EVIC_INT_Restore
+                0x000000009d0148c0                EVIC_ExternalInterruptEnable
+                0x000000009d0148f4                EVIC_ExternalInterruptDisable
+                0x000000009d014928                EVIC_ExternalInterruptCallbackRegister
+                0x000000009d014990                EXTERNAL_2_InterruptHandler
 
-.rodata         0x000000009d0149e4      0x514
- .rodata        0x000000009d0149e4      0x514 build/nsensor/production/_ext/1684788505/foo.o
-                0x000000009d0149e4                foo_map
+.rodata         0x000000009d0149ec      0x514
+ .rodata        0x000000009d0149ec      0x514 build/nsensor/production/_ext/1684788505/foo.o
+                0x000000009d0149ec                foo_map
 
-.text           0x000000009d014ef8      0x89c
- .text          0x000000009d014ef8      0x450 build/nsensor/production/_ext/1684788505/OledChar.o
-                0x000000009d014ef8                OledSetCursor
-                0x000000009d014fa0                OledGetCursor
-                0x000000009d014fe4                OledDefUserChar
-                0x000000009d01508c                OledSetCharUpdate
-                0x000000009d0150c4                OledGetCharUpdate
-                0x000000009d0150e8                OledPutChar
-                0x000000009d015148                OledPutString
-                0x000000009d0151d8                OledDrawGlyph
-                0x000000009d0152bc                OledAdvanceCursor
- .text          0x000000009d015348      0x44c build/nsensor/production/_ext/1360937237/cmd_scanner.o
-                0x000000009d01539c                scmd_init
-                0x000000009d0153e0                linux_getc
-                0x000000009d01543c                linux_putc
-                0x000000009d0155d4                cli_read
-                0x000000009d015748                dump_uart
+.text           0x000000009d014f00      0x89c
+ .text          0x000000009d014f00      0x450 build/nsensor/production/_ext/1684788505/OledChar.o
+                0x000000009d014f00                OledSetCursor
+                0x000000009d014fa8                OledGetCursor
+                0x000000009d014fec                OledDefUserChar
+                0x000000009d015094                OledSetCharUpdate
+                0x000000009d0150cc                OledGetCharUpdate
+                0x000000009d0150f0                OledPutChar
+                0x000000009d015150                OledPutString
+                0x000000009d0151e0                OledDrawGlyph
+                0x000000009d0152c4                OledAdvanceCursor
+ .text          0x000000009d015350      0x44c build/nsensor/production/_ext/1360937237/cmd_scanner.o
+                0x000000009d0153a4                scmd_init
+                0x000000009d0153e8                linux_getc
+                0x000000009d015444                linux_putc
+                0x000000009d0155dc                cli_read
+                0x000000009d015750                dump_uart
 
-.text           0x000000009d015794      0x43c
- .text          0x000000009d015794      0x43c build/nsensor/production/_ext/2014956168/plib_gpio.o
-                0x000000009d015794                GPIO_Initialize
-                0x000000009d015974                GPIO_PortRead
-                0x000000009d0159b0                GPIO_PortWrite
-                0x000000009d015a2c                GPIO_PortLatchRead
-                0x000000009d015a68                GPIO_PortSet
-                0x000000009d015ab0                GPIO_PortClear
-                0x000000009d015af8                GPIO_PortToggle
-                0x000000009d015b40                GPIO_PortInputEnable
-                0x000000009d015b88                GPIO_PortOutputEnable
+.text           0x000000009d01579c      0x43c
+ .text          0x000000009d01579c      0x43c build/nsensor/production/_ext/2014956168/plib_gpio.o
+                0x000000009d01579c                GPIO_Initialize
+                0x000000009d01597c                GPIO_PortRead
+                0x000000009d0159b8                GPIO_PortWrite
+                0x000000009d015a34                GPIO_PortLatchRead
+                0x000000009d015a70                GPIO_PortSet
+                0x000000009d015ab8                GPIO_PortClear
+                0x000000009d015b00                GPIO_PortToggle
+                0x000000009d015b48                GPIO_PortInputEnable
+                0x000000009d015b90                GPIO_PortOutputEnable
 
 .text.__rem_pio2
-                0x000000009d015bd0      0x430
+                0x000000009d015bd8      0x430
  .text.__rem_pio2
-                0x000000009d015bd0      0x430 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__rem_pio2.o)
-                0x000000009d015bd0                __rem_pio2
+                0x000000009d015bd8      0x430 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__rem_pio2.o)
+                0x000000009d015bd8                __rem_pio2
 
-.text           0x000000009d016000      0x7b8
- .text          0x000000009d016000      0x3dc build/nsensor/production/_ext/1664108525/plib_coretimer.o
-                0x000000009d016000                CORETIMER_Initialize
-                0x000000009d016064                CORETIMER_CallbackSet
-                0x000000009d0160ac                CORETIMER_PeriodSet
-                0x000000009d0160e4                CORETIMER_Start
-                0x000000009d01616c                CORETIMER_Stop
-                0x000000009d0161b8                CORETIMER_FrequencyGet
-                0x000000009d0161e0                CORE_TIMER_InterruptHandler
-                0x000000009d0162e8                CORETIMER_DelayMs
-                0x000000009d01636c                CORETIMER_DelayUs
- .text          0x000000009d0163dc      0x3dc build/nsensor/production/_ext/1360937237/do_fft.o
-                0x000000009d0163dc                __delay_ms_fft
-                0x000000009d016464                __delay_us_fft
-                0x000000009d0164d8                do_fft
-                0x000000009d016660                do_fft_version
-                0x000000009d0166bc                do_fft_dc_x
-                0x000000009d016710                do_fft_dc_y
-                0x000000009d016764                do_fft_dc_z
+.text           0x000000009d016008      0x7b8
+ .text          0x000000009d016008      0x3dc build/nsensor/production/_ext/1664108525/plib_coretimer.o
+                0x000000009d016008                CORETIMER_Initialize
+                0x000000009d01606c                CORETIMER_CallbackSet
+                0x000000009d0160b4                CORETIMER_PeriodSet
+                0x000000009d0160ec                CORETIMER_Start
+                0x000000009d016174                CORETIMER_Stop
+                0x000000009d0161c0                CORETIMER_FrequencyGet
+                0x000000009d0161e8                CORE_TIMER_InterruptHandler
+                0x000000009d0162f0                CORETIMER_DelayMs
+                0x000000009d016374                CORETIMER_DelayUs
+ .text          0x000000009d0163e4      0x3dc build/nsensor/production/_ext/1360937237/do_fft.o
+                0x000000009d0163e4                __delay_ms_fft
+                0x000000009d01646c                __delay_us_fft
+                0x000000009d0164e0                do_fft
+                0x000000009d016668                do_fft_version
+                0x000000009d0166c4                do_fft_dc_x
+                0x000000009d016718                do_fft_dc_y
+                0x000000009d01676c                do_fft_dc_z
 
-.text           0x000000009d0167b8      0x774
- .text          0x000000009d0167b8      0x3bc /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/fpu64/libgcc.a(_udivdi3.o)
-                0x000000009d0167b8                __udivdi3
- .text          0x000000009d016b74      0x3b8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/fpu64/libgcc.a(_umoddi3.o)
-                0x000000009d016b74                __umoddi3
+.text           0x000000009d0167c0      0x774
+ .text          0x000000009d0167c0      0x3bc /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/fpu64/libgcc.a(_udivdi3.o)
+                0x000000009d0167c0                __udivdi3
+ .text          0x000000009d016b7c      0x3b8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/fpu64/libgcc.a(_umoddi3.o)
+                0x000000009d016b7c                __umoddi3
 
-.rodata         0x000000009d016f30      0x640
- .rodata        0x000000009d016f30      0x340 build/nsensor/production/_ext/1360937237/host.o
- .rodata        0x000000009d017270      0x300 build/nsensor/production/_ext/1684788505/ChrFont0.o
-                0x000000009d017270                rgbOledFont0
+.rodata         0x000000009d016f38      0x640
+ .rodata        0x000000009d016f38      0x340 build/nsensor/production/_ext/1360937237/host.o
+ .rodata        0x000000009d017278      0x300 build/nsensor/production/_ext/1684788505/ChrFont0.o
+                0x000000009d017278                rgbOledFont0
 
-.text.malloc    0x000000009d017570      0x290
- .text.malloc   0x000000009d017570      0x290 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
-                0x000000009d017570                malloc
+.text.malloc    0x000000009d017578      0x290
+ .text.malloc   0x000000009d017578      0x290 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
+                0x000000009d017578                malloc
 
-.text           0x000000009d017800      0x4f8
- .text          0x000000009d017800      0x27c build/nsensor/production/_ext/619200320/plib_tmr3.o
-                0x000000009d017800                TMR3_Initialize
-                0x000000009d017858                TMR3_Start
-                0x000000009d017888                TMR3_Stop
-                0x000000009d0178b8                TMR3_PeriodSet
-                0x000000009d0178f0                TMR3_PeriodGet
-                0x000000009d01791c                TMR3_CounterGet
-                0x000000009d017948                TMR3_FrequencyGet
-                0x000000009d017970                TIMER_3_InterruptHandler
-                0x000000009d0179e0                TMR3_InterruptEnable
-                0x000000009d017a10                TMR3_InterruptDisable
-                0x000000009d017a40                TMR3_CallbackRegister
- .text          0x000000009d017a7c      0x27c build/nsensor/production/_ext/619200320/plib_tmr6.o
-                0x000000009d017a7c                TMR6_Initialize
-                0x000000009d017ad4                TMR6_Start
-                0x000000009d017b04                TMR6_Stop
-                0x000000009d017b34                TMR6_PeriodSet
-                0x000000009d017b6c                TMR6_PeriodGet
-                0x000000009d017b98                TMR6_CounterGet
-                0x000000009d017bc4                TMR6_FrequencyGet
-                0x000000009d017bec                TIMER_6_InterruptHandler
-                0x000000009d017c5c                TMR6_InterruptEnable
-                0x000000009d017c8c                TMR6_InterruptDisable
-                0x000000009d017cbc                TMR6_CallbackRegister
+.text           0x000000009d017808      0x4f8
+ .text          0x000000009d017808      0x27c build/nsensor/production/_ext/619200320/plib_tmr3.o
+                0x000000009d017808                TMR3_Initialize
+                0x000000009d017860                TMR3_Start
+                0x000000009d017890                TMR3_Stop
+                0x000000009d0178c0                TMR3_PeriodSet
+                0x000000009d0178f8                TMR3_PeriodGet
+                0x000000009d017924                TMR3_CounterGet
+                0x000000009d017950                TMR3_FrequencyGet
+                0x000000009d017978                TIMER_3_InterruptHandler
+                0x000000009d0179e8                TMR3_InterruptEnable
+                0x000000009d017a18                TMR3_InterruptDisable
+                0x000000009d017a48                TMR3_CallbackRegister
+ .text          0x000000009d017a84      0x27c build/nsensor/production/_ext/619200320/plib_tmr6.o
+                0x000000009d017a84                TMR6_Initialize
+                0x000000009d017adc                TMR6_Start
+                0x000000009d017b0c                TMR6_Stop
+                0x000000009d017b3c                TMR6_PeriodSet
+                0x000000009d017b74                TMR6_PeriodGet
+                0x000000009d017ba0                TMR6_CounterGet
+                0x000000009d017bcc                TMR6_FrequencyGet
+                0x000000009d017bf4                TIMER_6_InterruptHandler
+                0x000000009d017c64                TMR6_InterruptEnable
+                0x000000009d017c94                TMR6_InterruptDisable
+                0x000000009d017cc4                TMR6_CallbackRegister
 
-.text           0x000000009d017cf8      0x4f0
- .text          0x000000009d017cf8      0x27c build/nsensor/production/_ext/619200320/plib_tmr2.o
-                0x000000009d017cf8                TMR2_Initialize
-                0x000000009d017d50                TMR2_Start
-                0x000000009d017d80                TMR2_Stop
-                0x000000009d017db0                TMR2_PeriodSet
-                0x000000009d017de8                TMR2_PeriodGet
-                0x000000009d017e14                TMR2_CounterGet
-                0x000000009d017e40                TMR2_FrequencyGet
-                0x000000009d017e68                TIMER_2_InterruptHandler
-                0x000000009d017ed8                TMR2_InterruptEnable
-                0x000000009d017f08                TMR2_InterruptDisable
-                0x000000009d017f38                TMR2_CallbackRegister
- .text          0x000000009d017f74      0x274 build/nsensor/production/_ext/619200320/plib_tmr5.o
-                0x000000009d017f74                TMR5_Initialize
-                0x000000009d017fd0                TMR5_Start
-                0x000000009d018000                TMR5_Stop
-                0x000000009d018030                TMR5_PeriodSet
-                0x000000009d018064                TMR5_PeriodGet
-                0x000000009d01808c                TMR5_CounterGet
-                0x000000009d0180b4                TMR5_FrequencyGet
-                0x000000009d0180dc                TIMER_5_InterruptHandler
-                0x000000009d01814c                TMR5_InterruptEnable
-                0x000000009d01817c                TMR5_InterruptDisable
-                0x000000009d0181ac                TMR5_CallbackRegister
+.text           0x000000009d017d00      0x4f0
+ .text          0x000000009d017d00      0x27c build/nsensor/production/_ext/619200320/plib_tmr2.o
+                0x000000009d017d00                TMR2_Initialize
+                0x000000009d017d58                TMR2_Start
+                0x000000009d017d88                TMR2_Stop
+                0x000000009d017db8                TMR2_PeriodSet
+                0x000000009d017df0                TMR2_PeriodGet
+                0x000000009d017e1c                TMR2_CounterGet
+                0x000000009d017e48                TMR2_FrequencyGet
+                0x000000009d017e70                TIMER_2_InterruptHandler
+                0x000000009d017ee0                TMR2_InterruptEnable
+                0x000000009d017f10                TMR2_InterruptDisable
+                0x000000009d017f40                TMR2_CallbackRegister
+ .text          0x000000009d017f7c      0x274 build/nsensor/production/_ext/619200320/plib_tmr5.o
+                0x000000009d017f7c                TMR5_Initialize
+                0x000000009d017fd8                TMR5_Start
+                0x000000009d018008                TMR5_Stop
+                0x000000009d018038                TMR5_PeriodSet
+                0x000000009d01806c                TMR5_PeriodGet
+                0x000000009d018094                TMR5_CounterGet
+                0x000000009d0180bc                TMR5_FrequencyGet
+                0x000000009d0180e4                TIMER_5_InterruptHandler
+                0x000000009d018154                TMR5_InterruptEnable
+                0x000000009d018184                TMR5_InterruptDisable
+                0x000000009d0181b4                TMR5_CallbackRegister
 
-.text           0x000000009d0181e8      0x250
- .text          0x000000009d0181e8      0x250 build/nsensor/production/_ext/619197180/plib_qei2.o
-                0x000000009d0181e8                QEI2_Initialize
-                0x000000009d018248                QEI2_Start
-                0x000000009d018280                QEI2_Stop
-                0x000000009d0182bc                QEI2_PulseIntervalGet
-                0x000000009d0182e4                QEI2_PositionWindowSet
-                0x000000009d018328                QEI2_PositionCountSet
-                0x000000009d01835c                QEI2_VelocityCountSet
-                0x000000009d018390                QEI2_CallbackRegister
-                0x000000009d0183cc                QEI2_InterruptHandler
+.text           0x000000009d0181f0      0x250
+ .text          0x000000009d0181f0      0x250 build/nsensor/production/_ext/619197180/plib_qei2.o
+                0x000000009d0181f0                QEI2_Initialize
+                0x000000009d018250                QEI2_Start
+                0x000000009d018288                QEI2_Stop
+                0x000000009d0182c4                QEI2_PulseIntervalGet
+                0x000000009d0182ec                QEI2_PositionWindowSet
+                0x000000009d018330                QEI2_PositionCountSet
+                0x000000009d018364                QEI2_VelocityCountSet
+                0x000000009d018398                QEI2_CallbackRegister
+                0x000000009d0183d4                QEI2_InterruptHandler
 
-.rodata         0x000000009d018438      0x228
- .rodata        0x000000009d018438      0x228 build/nsensor/production/_ext/1360937237/main.o
-                0x000000009d018470                update_delay
+.rodata         0x000000009d018440      0x228
+ .rodata        0x000000009d018440      0x228 build/nsensor/production/_ext/1360937237/main.o
+                0x000000009d018478                update_delay
 
-.text           0x000000009d018660      0x218
- .text          0x000000009d018660      0x218 build/nsensor/production/_ext/1360937237/timers.o
-                0x000000009d018660                StartTimer
-                0x000000009d0186bc                TimerDone
-                0x000000009d018718                WaitMs
-                0x000000009d018780                timer_ms_tick
-                0x000000009d018834                delay_ms_tick
+.text           0x000000009d018668      0x218
+ .text          0x000000009d018668      0x218 build/nsensor/production/_ext/1360937237/timers.o
+                0x000000009d018668                StartTimer
+                0x000000009d0186c4                TimerDone
+                0x000000009d018720                WaitMs
+                0x000000009d018788                timer_ms_tick
+                0x000000009d01883c                delay_ms_tick
 
-.text.__fmt_x   0x000000009d018878      0x208
- .text.__fmt_x  0x000000009d018878      0x208 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_x.o)
-                0x000000009d018878                __fmt_x
-                0x000000009d018878                __fmt_x_needed
+.text.__fmt_x   0x000000009d018880      0x208
+ .text.__fmt_x  0x000000009d018880      0x208 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_x.o)
+                0x000000009d018880                __fmt_x
+                0x000000009d018880                __fmt_x_needed
 
-.text.free      0x000000009d018a80      0x198
- .text.free     0x000000009d018a80      0x198 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
-                0x000000009d018a80                free
+.text.free      0x000000009d018a88      0x198
+ .text.free     0x000000009d018a88      0x198 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
+                0x000000009d018a88                free
 
 .text.__pop_int
-                0x000000009d018c18      0x188
+                0x000000009d018c20      0x188
  .text.__pop_int
-                0x000000009d018c18      0x188 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__pop_int.o)
-                0x000000009d018c18                __pop_int
-                0x000000009d018c18                __pop_int_needed
+                0x000000009d018c20      0x188 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__pop_int.o)
+                0x000000009d018c20                __pop_int
+                0x000000009d018c20                __pop_int_needed
 
 .text           0x000000009d000000      0x168
  .text          0x000000009d000000      0x168 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(memcpy.o)
                 0x000000009d000000                memcpy
 
-.text           0x000000009d018da0      0x2cc
- .text          0x000000009d018da0      0x168 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(strlen.o)
-                0x000000009d018da0                strlen
- .text          0x000000009d018f08      0x164 build/nsensor/production/_ext/619183945/plib_clk.o
-                0x000000009d018f08                CLK_Initialize
+.text           0x000000009d018da8      0x2cc
+ .text          0x000000009d018da8      0x168 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(strlen.o)
+                0x000000009d018da8                strlen
+ .text          0x000000009d018f10      0x164 build/nsensor/production/_ext/619183945/plib_clk.o
+                0x000000009d018f10                CLK_Initialize
 
-.text           0x000000009d01906c      0x160
- .text          0x000000009d01906c      0x160 build/nsensor/production/_ext/619200320/plib_tmr9.o
-                0x000000009d01906c                TMR9_Initialize
-                0x000000009d0190c0                TMR9_Start
-                0x000000009d0190f0                TMR9_Stop
-                0x000000009d019120                TMR9_PeriodSet
-                0x000000009d019154                TMR9_PeriodGet
-                0x000000009d01917c                TMR9_CounterGet
-                0x000000009d0191a4                TMR9_FrequencyGet
+.text           0x000000009d019074      0x160
+ .text          0x000000009d019074      0x160 build/nsensor/production/_ext/619200320/plib_tmr9.o
+                0x000000009d019074                TMR9_Initialize
+                0x000000009d0190c8                TMR9_Start
+                0x000000009d0190f8                TMR9_Stop
+                0x000000009d019128                TMR9_PeriodSet
+                0x000000009d01915c                TMR9_PeriodGet
+                0x000000009d019184                TMR9_CounterGet
+                0x000000009d0191ac                TMR9_FrequencyGet
 
-.rodata         0x000000009d0191d0      0x158
- .rodata        0x000000009d0191d0      0x158 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__rem_pio2_large.o)
+.rodata         0x000000009d0191d8      0x158
+ .rodata        0x000000009d0191d8      0x158 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__rem_pio2_large.o)
 
 .text._sbrk_init
-                0x000000009d019328      0x154
+                0x000000009d019330      0x154
  .text._sbrk_init
-                0x000000009d019328      0x154 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(sbrk.o)
-                0x000000009d019328                _sbrk_init
+                0x000000009d019330      0x154 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(sbrk.o)
+                0x000000009d019330                _sbrk_init
 
-.text.__fmt_d   0x000000009d01947c      0x150
- .text.__fmt_d  0x000000009d01947c      0x150 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_d.o)
-                0x000000009d01947c                __fmt_d
-                0x000000009d01947c                __fmt_d_needed
+.text.__fmt_d   0x000000009d019484      0x150
+ .text.__fmt_d  0x000000009d019484      0x150 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_d.o)
+                0x000000009d019484                __fmt_d
+                0x000000009d019484                __fmt_d_needed
 
-.text           0x000000009d0195cc      0x140
- .text          0x000000009d0195cc      0x140 build/nsensor/production/_ext/1684788505/lcd_drv.o
-                0x000000009d0195cc                init_lcd_drv
+.text           0x000000009d0195d4      0x140
+ .text          0x000000009d0195d4      0x140 build/nsensor/production/_ext/1684788505/lcd_drv.o
+                0x000000009d0195d4                init_lcd_drv
 
-.text.__cvt_u   0x000000009d01970c      0x13c
- .text.__cvt_u  0x000000009d01970c      0x13c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_u.o)
-                0x000000009d01970c                __cvt_u
+.text.__cvt_u   0x000000009d019714      0x13c
+ .text.__cvt_u  0x000000009d019714      0x13c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_u.o)
+                0x000000009d019714                __cvt_u
 
-.text.sin       0x000000009d019848      0x120
- .text.sin      0x000000009d019848      0x120 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(sin.o)
-                0x000000009d019848                sin
+.text.sin       0x000000009d019850      0x120
+ .text.sin      0x000000009d019850      0x120 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(sin.o)
+                0x000000009d019850                sin
 
-.text           0x000000009d019968      0x11c
- .text          0x000000009d019968      0x11c build/nsensor/production/_ext/1360937237/pid.o
-                0x000000009d019968                UpdatePI
-                0x000000009d019a44                ResetPI
+.text           0x000000009d019970      0x11c
+ .text          0x000000009d019970      0x11c build/nsensor/production/_ext/1360937237/pid.o
+                0x000000009d019970                UpdatePI
+                0x000000009d019a4c                ResetPI
 
-.text.realloc   0x000000009d019a84      0x118
- .text.realloc  0x000000009d019a84      0x118 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
-                0x000000009d019a84                realloc
+.text.realloc   0x000000009d019a8c      0x118
+ .text.realloc  0x000000009d019a8c      0x118 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
+                0x000000009d019a8c                realloc
 
-.text.__pad     0x000000009d019b9c      0x100
- .text.__pad    0x000000009d019b9c      0x100 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__printf_core.o)
-                0x000000009d019b9c                __pad
+.text.__pad     0x000000009d019ba4      0x100
+ .text.__pad    0x000000009d019ba4      0x100 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__printf_core.o)
+                0x000000009d019ba4                __pad
 
-.text.cos       0x000000009d019c9c      0x100
- .text.cos      0x000000009d019c9c      0x100 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(cos.o)
-                0x000000009d019c9c                cos
+.text.cos       0x000000009d019ca4      0x100
+ .text.cos      0x000000009d019ca4      0x100 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(cos.o)
+                0x000000009d019ca4                cos
 
-.text           0x000000009d019d9c      0x1f4
- .text          0x000000009d019d9c       0xfc build/nsensor/production/_ext/725740559/xc32_monitor.o
-                0x000000009d019d9c                read
-                0x000000009d019e24                write
- .text          0x000000009d019e98       0xf8 build/nsensor/production/_ext/1856863253/initialization.o
-                0x000000009d019e98                SYS_Initialize
+.text           0x000000009d019da4      0x1f4
+ .text          0x000000009d019da4       0xfc build/nsensor/production/_ext/725740559/xc32_monitor.o
+                0x000000009d019da4                read
+                0x000000009d019e2c                write
+ .text          0x000000009d019ea0       0xf8 build/nsensor/production/_ext/1856863253/initialization.o
+                0x000000009d019ea0                SYS_Initialize
 
-.text.__fmt_o   0x000000009d019f90       0xf4
- .text.__fmt_o  0x000000009d019f90       0xf4 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_o.o)
-                0x000000009d019f90                __fmt_o
-                0x000000009d019f90                __fmt_o_needed
+.text.__fmt_o   0x000000009d019f98       0xf4
+ .text.__fmt_o  0x000000009d019f98       0xf4 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_o.o)
+                0x000000009d019f98                __fmt_o
+                0x000000009d019f98                __fmt_o_needed
 
 .text.__pop_ptr
-                0x000000009d01a084       0xe4
+                0x000000009d01a08c       0xe4
  .text.__pop_ptr
-                0x000000009d01a084       0xe4 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__pop_ptr.o)
-                0x000000009d01a084                __pop_ptr
-                0x000000009d01a084                __pop_ptr_needed
+                0x000000009d01a08c       0xe4 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__pop_ptr.o)
+                0x000000009d01a08c                __pop_ptr
+                0x000000009d01a08c                __pop_ptr_needed
 
-.rodata         0x000000009d01a168       0xe0
- .rodata        0x000000009d01a168       0xe0 build/nsensor/production/_ext/1360937237/imu.o
-                0x000000009d01a168                imu_table
+.rodata         0x000000009d01a170       0xe0
+ .rodata        0x000000009d01a170       0xe0 build/nsensor/production/_ext/1360937237/imu.o
+                0x000000009d01a170                imu_table
 
 .text.general_exception
-                0x000000009d01a248       0xdc
+                0x000000009d01a250       0xdc
  .text.general_exception
-                0x000000009d01a248       0xdc /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(general-exception.o)
-                0x000000009d01a248                _general_exception_context
+                0x000000009d01a250       0xdc /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(general-exception.o)
+                0x000000009d01a250                _general_exception_context
 
 .text.__stdio_close_rw
-                0x000000009d01a324       0xc0
+                0x000000009d01a32c       0xc0
  .text.__stdio_close_rw
-                0x000000009d01a324       0xc0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__stdio_close.o)
-                0x000000009d01a324                __stdio_close_rw
+                0x000000009d01a32c       0xc0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__stdio_close.o)
+                0x000000009d01a32c                __stdio_close_rw
 
-.text.__fmt_u   0x000000009d01a3e4       0xbc
- .text.__fmt_u  0x000000009d01a3e4       0xbc /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_u.o)
-                0x000000009d01a3e4                __fmt_u
-                0x000000009d01a3e4                __fmt_u_needed
+.text.__fmt_u   0x000000009d01a3ec       0xbc
+ .text.__fmt_u  0x000000009d01a3ec       0xbc /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_u.o)
+                0x000000009d01a3ec                __fmt_u
+                0x000000009d01a3ec                __fmt_u_needed
 
-.text.floor     0x000000009d01a4a0       0xb4
- .text.floor    0x000000009d01a4a0       0xb4 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(floor.o)
-                0x000000009d01a4a0                floor
+.text.floor     0x000000009d01a4a8       0xb4
+ .text.floor    0x000000009d01a4a8       0xb4 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(floor.o)
+                0x000000009d01a4a8                floor
 
-.text._sbrk     0x000000009d01a554       0xb0
- .text._sbrk    0x000000009d01a554       0xb0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(sbrk.o)
-                0x000000009d01a554                _sbrk
+.text._sbrk     0x000000009d01a55c       0xb0
+ .text._sbrk    0x000000009d01a55c       0xb0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(sbrk.o)
+                0x000000009d01a55c                _sbrk
 
-.text.unbin     0x000000009d01a604       0xac
- .text.unbin    0x000000009d01a604       0xac /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
+.text.unbin     0x000000009d01a60c       0xac
+ .text.unbin    0x000000009d01a60c       0xac /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
 
-.text           0x000000009d01a6b0       0xa8
- .text          0x000000009d01a6b0       0xa8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(memset.o)
-                0x000000009d01a6b0                memset
+.text           0x000000009d01a6b8       0xa8
+ .text          0x000000009d01a6b8       0xa8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(memset.o)
+                0x000000009d01a6b8                memset
 
-.text.__fmt_s   0x000000009d01a758       0xa4
- .text.__fmt_s  0x000000009d01a758       0xa4 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_s.o)
-                0x000000009d01a758                __fmt_s
-                0x000000009d01a758                __fmt_0_needed
-                0x000000009d01a758                __fmt_s_needed
+.text.__fmt_s   0x000000009d01a760       0xa4
+ .text.__fmt_s  0x000000009d01a760       0xa4 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_s.o)
+                0x000000009d01a760                __fmt_s
+                0x000000009d01a760                __fmt_0_needed
+                0x000000009d01a760                __fmt_s_needed
 
-.rodata         0x000000009d01a800       0xa0
- .rodata        0x000000009d01a800       0xa0 build/nsensor/production/_ext/1360937237/do_fft.o
+.rodata         0x000000009d01a808       0xa0
+ .rodata        0x000000009d01a808       0xa0 build/nsensor/production/_ext/1360937237/do_fft.o
 
 .text.__stdio_close
-                0x000000009d01a8a0       0xa0
+                0x000000009d01a8a8       0xa0
  .text.__stdio_close
-                0x000000009d01a8a0       0xa0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__stdio_close.o)
-                0x000000009d01a8a0                __stdio_close
+                0x000000009d01a8a8       0xa0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__stdio_close.o)
+                0x000000009d01a8a8                __stdio_close
 
-.text.__sin     0x000000009d01a940       0x90
- .text.__sin    0x000000009d01a940       0x90 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__sin.o)
-                0x000000009d01a940                __sin
+.text.__sin     0x000000009d01a948       0x90
+ .text.__sin    0x000000009d01a948       0x90 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__sin.o)
+                0x000000009d01a948                __sin
 
-.text.__out     0x000000009d01a9d0       0x8c
- .text.__out    0x000000009d01a9d0       0x8c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__out.o)
-                0x000000009d01a9d0                __out
-                0x000000009d01a9d0                __out_needed
+.text.__out     0x000000009d01a9d8       0x8c
+ .text.__out    0x000000009d01a9d8       0x8c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__out.o)
+                0x000000009d01a9d8                __out
+                0x000000009d01a9d8                __out_needed
 
 .text.normalize
-                0x000000009d01aa5c       0x8c
+                0x000000009d01aa64       0x8c
  .text.normalize
-                0x000000009d01aa5c       0x8c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(fma.o)
+                0x000000009d01aa64       0x8c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(fma.o)
 
-.text.scalbn    0x000000009d01aae8       0x8c
- .text.scalbn   0x000000009d01aae8       0x8c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(scalbn.o)
-                0x000000009d01aae8                scalbn
+.text.scalbn    0x000000009d01aaf0       0x8c
+ .text.scalbn   0x000000009d01aaf0       0x8c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(scalbn.o)
+                0x000000009d01aaf0                scalbn
 
-.text.__cos     0x000000009d01ab74       0x88
- .text.__cos    0x000000009d01ab74       0x88 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__cos.o)
-                0x000000009d01ab74                __cos
+.text.__cos     0x000000009d01ab7c       0x88
+ .text.__cos    0x000000009d01ab7c       0x88 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__cos.o)
+                0x000000009d01ab7c                __cos
 
-.rodata         0x000000009d01ac00       0x80
- .rodata        0x000000009d01ac00       0x80 build/nsensor/production/_ext/1360937237/gfx.o
+.rodata         0x000000009d01ac08       0x80
+ .rodata        0x000000009d01ac08       0x80 build/nsensor/production/_ext/1360937237/gfx.o
 
 .text.dinit.startup
-                0x000000009d01ac80       0x80
+                0x000000009d01ac88       0x80
  .text.dinit.startup
-                0x000000009d01ac80       0x80 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(pic32_data_init_0_1.o)
-                0x000000009d01ac80                __copy_needed
-                0x000000009d01ac80                __pic32_data_init_impl
+                0x000000009d01ac88       0x80 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(pic32_data_init_0_1.o)
+                0x000000009d01ac88                __copy_needed
+                0x000000009d01ac88                __pic32_data_init_impl
 
 .text.__vsnprintf
-                0x000000009d01ad00       0x80
+                0x000000009d01ad08       0x80
  .text.__vsnprintf
-                0x000000009d01ad00       0x80 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__int_vsnprintf.o)
-                0x000000009d01ad00                __vsnprintf
+                0x000000009d01ad08       0x80 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__int_vsnprintf.o)
+                0x000000009d01ad08                __vsnprintf
 
-.text.atoi      0x000000009d01ad80       0x7c
- .text.atoi     0x000000009d01ad80       0x7c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(atoi.o)
-                0x000000009d01ad80                atoi
+.text.atoi      0x000000009d01ad88       0x7c
+ .text.atoi     0x000000009d01ad88       0x7c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(atoi.o)
+                0x000000009d01ad88                atoi
 
-.rodata.cst8    0x000000009d01ae00       0x78
- .rodata.cst8   0x000000009d01ae00       0x78 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__rem_pio2.o)
+.rodata.cst8    0x000000009d01ae08       0x78
+ .rodata.cst8   0x000000009d01ae08       0x78 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__rem_pio2.o)
 
 .text.alloc_rev
-                0x000000009d01ae78       0x74
+                0x000000009d01ae80       0x74
  .text.alloc_rev
-                0x000000009d01ae78       0x74 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
+                0x000000009d01ae80       0x74 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
 
 .rodata         0x000000009d000190       0x70
  .rodata        0x000000009d000190       0x70 build/nsensor/production/_ext/1360937237/fft.o
 
 .text.alloc_fwd
-                0x000000009d01aeec       0x70
+                0x000000009d01aef4       0x70
  .text.alloc_fwd
-                0x000000009d01aeec       0x70 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
+                0x000000009d01aef4       0x70 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
 
-.text.a_clz_64  0x000000009d01af5c       0x6c
+.text.a_clz_64  0x000000009d01af64       0x6c
  .text.a_clz_64
-                0x000000009d01af5c       0x6c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(fma.o)
+                0x000000009d01af64       0x6c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(fma.o)
 
-.rodata         0x000000009d01afc8       0x64
- .rodata        0x000000009d01afc8       0x64 build/nsensor/production/_ext/1360937237/bma490l.o
+.rodata         0x000000009d01afd0       0x64
+ .rodata        0x000000009d01afd0       0x64 build/nsensor/production/_ext/1360937237/bma490l.o
 
-.text           0x000000009d01b02c       0x60
- .text          0x000000009d01b02c       0x60 build/nsensor/production/_ext/1856863253/exceptions.o
-                0x000000009d01b02c                _general_exception_handler
-                0x000000009d01b05c                _bootstrap_exception_handler
+.text           0x000000009d01b034       0x60
+ .text          0x000000009d01b034       0x60 build/nsensor/production/_ext/1856863253/exceptions.o
+                0x000000009d01b034                _general_exception_handler
+                0x000000009d01b064                _bootstrap_exception_handler
 
 .text.__fopen_std
-                0x000000009d01b08c       0x60
+                0x000000009d01b094       0x60
  .text.__fopen_std
-                0x000000009d01b08c       0x60 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fopen.o)
-                0x000000009d01b08c                __fopen_rw
+                0x000000009d01b094       0x60 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fopen.o)
+                0x000000009d01b094                __fopen_rw
 
 .text.bin_index
-                0x000000009d01b0ec       0x60
+                0x000000009d01b0f4       0x60
  .text.bin_index
-                0x000000009d01b0ec       0x60 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
+                0x000000009d01b0f4       0x60 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
 
 .text.__sio_snprintf_dfosux
-                0x000000009d01b14c       0x5c
+                0x000000009d01b154       0x5c
  .text.__sio_snprintf_dfosux
-                0x000000009d01b14c       0x5c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_dfosux.o)
-                0x000000009d01b14c                __sio_snprintf_dfosux
+                0x000000009d01b154       0x5c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_dfosux.o)
+                0x000000009d01b154                __sio_snprintf_dfosux
 
 .text.__string_out
-                0x000000009d01b1a8       0x5c
+                0x000000009d01b1b0       0x5c
  .text.__string_out
-                0x000000009d01b1a8       0x5c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__printf_core.o)
+                0x000000009d01b1b0       0x5c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__printf_core.o)
 
-.rodata         0x000000009d01b204       0x5c
- .rodata        0x000000009d01b204       0x5c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
+.rodata         0x000000009d01b20c       0x5c
+ .rodata        0x000000009d01b20c       0x5c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
 
 .text.__fmt_state
-                0x000000009d01b260       0x58
+                0x000000009d01b268       0x58
  .text.__fmt_state
-                0x000000009d01b260       0x58 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__printf_core.o)
-                0x000000009d01b260                __fmt_state
+                0x000000009d01b268       0x58 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__printf_core.o)
+                0x000000009d01b268                __fmt_state
 
 .text.adjust_size
-                0x000000009d01b2b8       0x58
+                0x000000009d01b2c0       0x58
  .text.adjust_size
-                0x000000009d01b2b8       0x58 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
+                0x000000009d01b2c0       0x58 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
 
-.text.trim      0x000000009d01b310       0x58
- .text.trim     0x000000009d01b310       0x58 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
+.text.trim      0x000000009d01b318       0x58
+ .text.trim     0x000000009d01b318       0x58 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
 
-.rodata         0x000000009d01b368       0x54
- .rodata        0x000000009d01b368       0x54 build/nsensor/production/_ext/1684788505/OledDriver.o
+.rodata         0x000000009d01b370       0x54
+ .rodata        0x000000009d01b370       0x54 build/nsensor/production/_ext/1684788505/OledDriver.o
 
 .text.main_entry
-                0x000000009d01b3bc       0x54
+                0x000000009d01b3c4       0x54
  .text.main_entry
-                0x000000009d01b3bc       0x54 /tmp/cchh09Bh.o
-                0x000000009d01b3f0                __crt0_exit
+                0x000000009d01b3c4       0x54 /tmp/cc58qlDd.o
+                0x000000009d01b3f8                __crt0_exit
 
-.rodata         0x000000009d01b410       0x50
- .rodata        0x000000009d01b410       0x50 build/nsensor/production/_ext/1360937237/sca3300.o
+.rodata         0x000000009d01b418       0x50
+ .rodata        0x000000009d01b418       0x50 build/nsensor/production/_ext/1360937237/sca3300.o
 
 .text.__malloc0
-                0x000000009d01b460       0x50
+                0x000000009d01b468       0x50
  .text.__malloc0
-                0x000000009d01b460       0x50 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
-                0x000000009d01b460                __malloc0
+                0x000000009d01b468       0x50 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
+                0x000000009d01b468                __malloc0
 
 .text.__sio_snprintf_dosux
-                0x000000009d01b4b0       0x4c
+                0x000000009d01b4b8       0x4c
  .text.__sio_snprintf_dosux
-                0x000000009d01b4b0       0x4c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_dosux.o)
-                0x000000009d01b4b0                __sio_snprintf_dosux
+                0x000000009d01b4b8       0x4c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_dosux.o)
+                0x000000009d01b4b8                __sio_snprintf_dosux
 
 .text.__sio_snprintf_doux
-                0x000000009d01b4fc       0x4c
+                0x000000009d01b504       0x4c
  .text.__sio_snprintf_doux
-                0x000000009d01b4fc       0x4c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_doux.o)
-                0x000000009d01b4fc                __sio_snprintf_doux
+                0x000000009d01b504       0x4c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_doux.o)
+                0x000000009d01b504                __sio_snprintf_doux
 
-.text.sbrk      0x000000009d01b548       0x4c
- .text.sbrk     0x000000009d01b548       0x4c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(sbrk.o)
-                0x000000009d01b548                sbrk
+.text.sbrk      0x000000009d01b550       0x4c
+ .text.sbrk     0x000000009d01b550       0x4c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(sbrk.o)
+                0x000000009d01b550                sbrk
 
 .text.__pop_float
-                0x000000009d01b594       0x48
+                0x000000009d01b59c       0x48
  .text.__pop_float
-                0x000000009d01b594       0x48 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__pop_float.o)
-                0x000000009d01b594                __pop_float
-                0x000000009d01b594                __pop_float_needed
+                0x000000009d01b59c       0x48 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__pop_float.o)
+                0x000000009d01b59c                __pop_float
+                0x000000009d01b59c                __pop_float_needed
 
-.text.strncmp   0x000000009d01b5dc       0x48
- .text.strncmp  0x000000009d01b5dc       0x48 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(strncmp.o)
-                0x000000009d01b5dc                strncmp
+.text.strncmp   0x000000009d01b5e4       0x48
+ .text.strncmp  0x000000009d01b5e4       0x48 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(strncmp.o)
+                0x000000009d01b5e4                strncmp
 
-.text           0x000000009d01b624       0x44
- .text          0x000000009d01b624       0x44 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/pic32_software_reset.o
-                0x000000009d01b624                __pic32_software_reset
+.text           0x000000009d01b62c       0x44
+ .text          0x000000009d01b62c       0x44 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/pic32_software_reset.o
+                0x000000009d01b62c                __pic32_software_reset
 
-.rodata         0x000000009d01b668       0x40
- .rodata        0x000000009d01b668       0x40 build/nsensor/production/_ext/1684788505/FillPat.o
-                0x000000009d01b668                rgbFillPat
+.rodata         0x000000009d01b670       0x40
+ .rodata        0x000000009d01b670       0x40 build/nsensor/production/_ext/1684788505/FillPat.o
+                0x000000009d01b670                rgbFillPat
 
-.rodata.cst8    0x000000009d01b6a8       0x80
- .rodata.cst8   0x000000009d01b6a8       0x40 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__cos.o)
- .rodata.cst8   0x000000009d01b6e8       0x40 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__sin.o)
+.rodata.cst8    0x000000009d01b6b0       0x80
+ .rodata.cst8   0x000000009d01b6b0       0x40 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__cos.o)
+ .rodata.cst8   0x000000009d01b6f0       0x40 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__sin.o)
 
 .text.__wrap_printf
-                0x000000009d01b728       0x3c
+                0x000000009d01b730       0x3c
  .text.__wrap_printf
-                0x000000009d01b728       0x3c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_printf_s.o)
-                0x000000009d01b728                _printf_s
-                0x000000009d01b728                _dprintf_s
+                0x000000009d01b730       0x3c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_printf_s.o)
+                0x000000009d01b730                _printf_s
+                0x000000009d01b730                _dprintf_s
 
 .text.__vfprintf
-                0x000000009d01b764       0x3c
+                0x000000009d01b76c       0x3c
  .text.__vfprintf
-                0x000000009d01b764       0x3c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__int_vfprintf.o)
-                0x000000009d01b764                __vfprintf
+                0x000000009d01b76c       0x3c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__int_vfprintf.o)
+                0x000000009d01b76c                __vfprintf
 
-.text.vfprintf  0x000000009d01b7a0       0x3c
+.text.vfprintf  0x000000009d01b7a8       0x3c
  .text.vfprintf
-                0x000000009d01b7a0       0x3c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(vfprintf.o)
-                0x000000009d01b7a0                vfprintf
+                0x000000009d01b7a8       0x3c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(vfprintf.o)
+                0x000000009d01b7a8                vfprintf
 
 .text.__expand_heap
-                0x000000009d01b7dc       0x3c
+                0x000000009d01b7e4       0x3c
  .text.__expand_heap
-                0x000000009d01b7dc       0x3c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(expand_heap.o)
-                0x000000009d01b7dc                __expand_heap
+                0x000000009d01b7e4       0x3c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(expand_heap.o)
+                0x000000009d01b7e4                __expand_heap
 
-.text           0x000000009d01b818       0x78
- .text          0x000000009d01b818       0x3c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/fpu64/libgcc.a(_lshrdi3.o)
-                0x000000009d01b818                __lshrdi3
- .text          0x000000009d01b854       0x3c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/fpu64/libgcc.a(_ashldi3.o)
-                0x000000009d01b854                __ashldi3
+.text           0x000000009d01b820       0x78
+ .text          0x000000009d01b820       0x3c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/fpu64/libgcc.a(_lshrdi3.o)
+                0x000000009d01b820                __lshrdi3
+ .text          0x000000009d01b85c       0x3c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/fpu64/libgcc.a(_ashldi3.o)
+                0x000000009d01b85c                __ashldi3
 
-.text.lock_bin  0x000000009d01b890       0x34
+.text.lock_bin  0x000000009d01b898       0x34
  .text.lock_bin
-                0x000000009d01b890       0x34 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
+                0x000000009d01b898       0x34 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(malloc.o)
 
-.text.vprintf   0x000000009d01b8c4       0x30
- .text.vprintf  0x000000009d01b8c4       0x30 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(vprintf.o)
-                0x000000009d01b8c4                vprintf
+.text.vprintf   0x000000009d01b8cc       0x30
+ .text.vprintf  0x000000009d01b8cc       0x30 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(vprintf.o)
+                0x000000009d01b8cc                vprintf
 
-.rodata.cst8    0x000000009d01b8f8       0x30
- .rodata.cst8   0x000000009d01b8f8       0x30 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__rem_pio2_large.o)
+.rodata.cst8    0x000000009d01b900       0x30
+ .rodata.cst8   0x000000009d01b900       0x30 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(__rem_pio2_large.o)
 
 .text.__init_stdio
-                0x000000009d01b928       0x2c
+                0x000000009d01b930       0x2c
  .text.__init_stdio
-                0x000000009d01b928       0x2c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__init_stdio.o)
-                0x000000009d01b928                __init_stdio_needed
-                0x000000009d01b928                __init_stdio
+                0x000000009d01b930       0x2c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__init_stdio.o)
+                0x000000009d01b930                __init_stdio_needed
+                0x000000009d01b930                __init_stdio
 
 .text._stub_sbd_memlayout
-                0x000000009d01b954       0x2c
+                0x000000009d01b95c       0x2c
  .text._stub_sbd_memlayout
-                0x000000009d01b954       0x2c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(sbrk.o)
-                0x000000009d01b954                _stub_sbd_memlayout
-                0x000000009d01b954                _sbd_memlayout
+                0x000000009d01b95c       0x2c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(sbrk.o)
+                0x000000009d01b95c                _stub_sbd_memlayout
+                0x000000009d01b95c                _sbd_memlayout
 
-.text.strcpy    0x000000009d01b980       0x28
- .text.strcpy   0x000000009d01b980       0x28 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(strcpy.o)
-                0x000000009d01b980                strcpy
+.text.strcpy    0x000000009d01b988       0x28
+ .text.strcpy   0x000000009d01b988       0x28 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(strcpy.o)
+                0x000000009d01b988                strcpy
 
-.rodata.cst8    0x000000009d01b9a8       0x28
- .rodata.cst8   0x000000009d01b9a8       0x28 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_a.o)
-
-.text.__wrap_snprintf
-                0x000000009d01b9d0       0x48
- .text.__wrap_snprintf
-                0x000000009d01b9d0       0x24 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_dfosux.o)
-                0x000000009d01b9d0                _snprintf_cdeEfFnopsuxX
-                0x000000009d01b9d0                _snprintf_cdgGnopsuxX
-                0x000000009d01b9d0                _snprintf_cdeEnopsuxX
-                0x000000009d01b9d0                _dsnprintf_cdeEnopsuxX
-                0x000000009d01b9d0                _dsnprintf_cdfFgGnopsuxX
-                0x000000009d01b9d0                _snprintf_cdfFgGnopsuxX
-                0x000000009d01b9d0                _dsnprintf_cdeEgGnopsuxX
-                0x000000009d01b9d0                _snprintf_cdeEfFgGnopsuxX
-                0x000000009d01b9d0                _dsnprintf_cdeEfFnopsuxX
-                0x000000009d01b9d0                _dsnprintf_cdeEfFgGnopsuxX
-                0x000000009d01b9d0                _dsnprintf_cdfFnopsuxX
-                0x000000009d01b9d0                _dsnprintf_cdgGnopsuxX
-                0x000000009d01b9d0                _snprintf_cdfFnopsuxX
-                0x000000009d01b9d0                _snprintf_cdeEgGnopsuxX
- .text.__wrap_snprintf
-                0x000000009d01b9f4       0x24 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_dosux.o)
-                0x000000009d01b9f4                _dsnprintf_cdnopsuxX
-                0x000000009d01b9f4                _snprintf_cdnopsuxX
+.rodata.cst8    0x000000009d01b9b0       0x28
+ .rodata.cst8   0x000000009d01b9b0       0x28 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_a.o)
 
 .text.__wrap_snprintf
-                0x000000009d01ba18       0x48
+                0x000000009d01b9d8       0x48
  .text.__wrap_snprintf
-                0x000000009d01ba18       0x24 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_doux.o)
-                0x000000009d01ba18                _snprintf_cdnopuxX
-                0x000000009d01ba18                _dsnprintf_cdnopuxX
+                0x000000009d01b9d8       0x24 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_dfosux.o)
+                0x000000009d01b9d8                _snprintf_cdeEfFnopsuxX
+                0x000000009d01b9d8                _snprintf_cdgGnopsuxX
+                0x000000009d01b9d8                _snprintf_cdeEnopsuxX
+                0x000000009d01b9d8                _dsnprintf_cdeEnopsuxX
+                0x000000009d01b9d8                _dsnprintf_cdfFgGnopsuxX
+                0x000000009d01b9d8                _snprintf_cdfFgGnopsuxX
+                0x000000009d01b9d8                _dsnprintf_cdeEgGnopsuxX
+                0x000000009d01b9d8                _snprintf_cdeEfFgGnopsuxX
+                0x000000009d01b9d8                _dsnprintf_cdeEfFnopsuxX
+                0x000000009d01b9d8                _dsnprintf_cdeEfFgGnopsuxX
+                0x000000009d01b9d8                _dsnprintf_cdfFnopsuxX
+                0x000000009d01b9d8                _dsnprintf_cdgGnopsuxX
+                0x000000009d01b9d8                _snprintf_cdfFnopsuxX
+                0x000000009d01b9d8                _snprintf_cdeEgGnopsuxX
  .text.__wrap_snprintf
-                0x000000009d01ba3c       0x24 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_s.o)
-                0x000000009d01ba3c                _dsnprintf_s
-                0x000000009d01ba3c                _snprintf_s
+                0x000000009d01b9fc       0x24 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_dosux.o)
+                0x000000009d01b9fc                _dsnprintf_cdnopsuxX
+                0x000000009d01b9fc                _snprintf_cdnopsuxX
+
+.text.__wrap_snprintf
+                0x000000009d01ba20       0x48
+ .text.__wrap_snprintf
+                0x000000009d01ba20       0x24 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_doux.o)
+                0x000000009d01ba20                _snprintf_cdnopuxX
+                0x000000009d01ba20                _dsnprintf_cdnopuxX
+ .text.__wrap_snprintf
+                0x000000009d01ba44       0x24 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_s.o)
+                0x000000009d01ba44                _dsnprintf_s
+                0x000000009d01ba44                _snprintf_s
 
 .text.dinit.startup
-                0x000000009d01ba60       0x20
+                0x000000009d01ba68       0x20
  .text.dinit.startup
-                0x000000009d01ba60       0x20 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(pic32_data_init_wrapper.o)
-                0x000000009d01ba60                __pic32_data_init
+                0x000000009d01ba68       0x20 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(pic32_data_init_wrapper.o)
+                0x000000009d01ba68                __pic32_data_init
 
-.rodata.cst8    0x000000009d01ba80       0x20
- .rodata.cst8   0x000000009d01ba80       0x20 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_fp.o)
+.rodata.cst8    0x000000009d01ba88       0x20
+ .rodata.cst8   0x000000009d01ba88       0x20 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_fp.o)
 
 .text.__init_stdout
-                0x000000009d01baa0       0x20
+                0x000000009d01baa8       0x20
  .text.__init_stdout
-                0x000000009d01baa0       0x20 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(stdout.o)
-                0x000000009d01baa0                __init_stdout
+                0x000000009d01baa8       0x20 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(stdout.o)
+                0x000000009d01baa8                __init_stdout
 
 .text.__fwrite_min
-                0x000000009d01bac0       0x20
+                0x000000009d01bac8       0x20
  .text.__fwrite_min
-                0x000000009d01bac0       0x20 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__out.o)
-                0x000000009d01bac0                __fwrite
-                0x000000009d01bac0                __stdio_write
-                0x000000009d01bac0                __stdio_write_unbuffered
+                0x000000009d01bac8       0x20 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__out.o)
+                0x000000009d01bac8                __fwrite
+                0x000000009d01bac8                __stdio_write
+                0x000000009d01bac8                __stdio_write_unbuffered
 
-.text.stpcpy    0x000000009d01bae0       0x20
- .text.stpcpy   0x000000009d01bae0       0x20 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(stpcpy.o)
-                0x000000009d01bae0                stpcpy
-                0x000000009d01bae0                __stpcpy
+.text.stpcpy    0x000000009d01bae8       0x20
+ .text.stpcpy   0x000000009d01bae8       0x20 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(stpcpy.o)
+                0x000000009d01bae8                stpcpy
+                0x000000009d01bae8                __stpcpy
 
-.rodata.cst8    0x000000009d01bb00       0x20
- .rodata.cst8   0x000000009d01bb00       0x20 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(fma.o)
+.rodata.cst8    0x000000009d01bb08       0x20
+ .rodata.cst8   0x000000009d01bb08       0x20 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(fma.o)
 
 .text.__sio_printf_s
-                0x000000009d01bb20       0x1c
+                0x000000009d01bb28       0x1c
  .text.__sio_printf_s
-                0x000000009d01bb20       0x1c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_printf_s.o)
-                0x000000009d01bb20                __sio_printf_s
+                0x000000009d01bb28       0x1c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_printf_s.o)
+                0x000000009d01bb28                __sio_printf_s
 
 .text.__sio_snprintf_s
-                0x000000009d01bb3c       0x1c
+                0x000000009d01bb44       0x1c
  .text.__sio_snprintf_s
-                0x000000009d01bb3c       0x1c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_s.o)
-                0x000000009d01bb3c                __sio_snprintf_s
+                0x000000009d01bb44       0x1c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__sio_snprintf_s.o)
+                0x000000009d01bb44                __sio_snprintf_s
 
-.text.tolower   0x000000009d01bb58       0x1c
- .text.tolower  0x000000009d01bb58       0x1c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(tolower.o)
-                0x000000009d01bb58                tolower
+.text.tolower   0x000000009d01bb60       0x1c
+ .text.tolower  0x000000009d01bb60       0x1c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(tolower.o)
+                0x000000009d01bb60                tolower
 
 .text.__tolower_l
-                0x000000009d01bb74       0x1c
+                0x000000009d01bb7c       0x1c
  .text.__tolower_l
-                0x000000009d01bb74       0x1c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(tolower.o)
-                0x000000009d01bb74                __tolower_l
-                0x000000009d01bb74                tolower_l
+                0x000000009d01bb7c       0x1c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(tolower.o)
+                0x000000009d01bb7c                __tolower_l
+                0x000000009d01bb7c                tolower_l
 
-.text.toupper   0x000000009d01bb90       0x1c
- .text.toupper  0x000000009d01bb90       0x1c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(toupper.o)
-                0x000000009d01bb90                toupper
+.text.toupper   0x000000009d01bb98       0x1c
+ .text.toupper  0x000000009d01bb98       0x1c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(toupper.o)
+                0x000000009d01bb98                toupper
 
 .text.__toupper_l
-                0x000000009d01bbac       0x1c
+                0x000000009d01bbb4       0x1c
  .text.__toupper_l
-                0x000000009d01bbac       0x1c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(toupper.o)
-                0x000000009d01bbac                toupper_l
-                0x000000009d01bbac                __toupper_l
+                0x000000009d01bbb4       0x1c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(toupper.o)
+                0x000000009d01bbb4                toupper_l
+                0x000000009d01bbb4                __toupper_l
 
-.text.__fopen   0x000000009d01bbc8       0x1c
- .text.__fopen  0x000000009d01bbc8       0x1c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fopen.o)
-                0x000000009d01bbc8                __fopen_needed
-                0x000000009d01bbc8                __fopen
+.text.__fopen   0x000000009d01bbd0       0x1c
+ .text.__fopen  0x000000009d01bbd0       0x1c /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fopen.o)
+                0x000000009d01bbd0                __fopen_needed
+                0x000000009d01bbd0                __fopen
 
 .MIPS.abiflags  0x000000009d000168       0x18
  .MIPS.abiflags
                 0x000000009d000168       0x18 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/debug-exception-return.o
 
-.text           0x000000009d01bbe4       0x18
- .text          0x000000009d01bbe4       0x18 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(default-nmi-handler.o)
-                0x000000009d01bbe4                _nmi_handler
+.text           0x000000009d01bbec       0x18
+ .text          0x000000009d01bbec       0x18 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(default-nmi-handler.o)
+                0x000000009d01bbec                _nmi_handler
 
-.rodata         0x000000009d01bbfc       0x18
- .rodata        0x000000009d01bbfc       0x18 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__printf_core.o)
+.rodata         0x000000009d01bc04       0x18
+ .rodata        0x000000009d01bc04       0x18 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__printf_core.o)
 
-.rodata.cst8    0x000000009d01bc18       0x18
- .rodata.cst8   0x000000009d01bc18       0x18 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(floor.o)
+.rodata.cst8    0x000000009d01bc20       0x18
+ .rodata.cst8   0x000000009d01bc20       0x18 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(floor.o)
 
-.rodata         0x000000009d01bc30       0x20
- .rodata        0x000000009d01bc30       0x10 build/nsensor/production/_ext/1965004555/plib_canfd1.o
- .rodata        0x000000009d01bc40       0x10 build/nsensor/production/_ext/1360937237/cmd_scanner.o
+.rodata         0x000000009d01bc38       0x20
+ .rodata        0x000000009d01bc38       0x10 build/nsensor/production/_ext/1965004555/plib_canfd1.o
+ .rodata        0x000000009d01bc48       0x10 build/nsensor/production/_ext/1360937237/cmd_scanner.o
 
-.rodata.str1.4  0x000000009d01bc50       0x20
+.rodata.str1.4  0x000000009d01bc58       0x20
  .rodata.str1.4
-                0x000000009d01bc50       0x10 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_fp.o)
+                0x000000009d01bc58       0x10 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_fp.o)
  .rodata.str1.4
-                0x000000009d01bc60       0x10 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_a.o)
+                0x000000009d01bc68       0x10 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fmt_a.o)
 
-.rodata.cst8    0x000000009d01bc70       0x20
- .rodata.cst8   0x000000009d01bc70       0x10 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(cos.o)
- .rodata.cst8   0x000000009d01bc80       0x10 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(scalbn.o)
+.rodata.cst8    0x000000009d01bc78       0x20
+ .rodata.cst8   0x000000009d01bc78       0x10 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(cos.o)
+ .rodata.cst8   0x000000009d01bc88       0x10 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(scalbn.o)
 
-.rodata.cst8    0x000000009d01bc90       0x10
- .rodata.cst8   0x000000009d01bc90       0x10 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(sin.o)
+.rodata.cst8    0x000000009d01bc98       0x10
+ .rodata.cst8   0x000000009d01bc98       0x10 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libm-musl.a(sin.o)
 
 .text._on_reset
-                0x000000009d01bca0        0x8
+                0x000000009d01bca8        0x8
  .text._on_reset
-                0x000000009d01bca0        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(default-on-reset.o)
-                0x000000009d01bca0                _on_reset
+                0x000000009d01bca8        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(default-on-reset.o)
+                0x000000009d01bca8                _on_reset
 
 .text._on_bootstrap
-                0x000000009d01bca8        0x8
+                0x000000009d01bcb0        0x8
  .text._on_bootstrap
-                0x000000009d01bca8        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(default-on-bootstrap.o)
-                0x000000009d01bca8                _on_bootstrap
+                0x000000009d01bcb0        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(default-on-bootstrap.o)
+                0x000000009d01bcb0                _on_bootstrap
 
 .text.__dummy_fmt3
-                0x000000009d01bcb0        0x8
- .text.__dummy_fmt3
-                0x000000009d01bcb0        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__printf_core.o)
-
-.text.__dummy_fmt4
                 0x000000009d01bcb8        0x8
- .text.__dummy_fmt4
+ .text.__dummy_fmt3
                 0x000000009d01bcb8        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__printf_core.o)
 
-.text.__dummy_fmts
+.text.__dummy_fmt4
                 0x000000009d01bcc0        0x8
- .text.__dummy_fmts
+ .text.__dummy_fmt4
                 0x000000009d01bcc0        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__printf_core.o)
 
-.rodata.str1.4  0x000000009d01bcc8        0x8
- .rodata.str1.4
+.text.__dummy_fmts
+                0x000000009d01bcc8        0x8
+ .text.__dummy_fmts
                 0x000000009d01bcc8        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__printf_core.o)
 
-.text.__dummy   0x000000009d01bcd0       0x10
- .text.__dummy  0x000000009d01bcd0        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fopen.o)
-                0x000000009d01bcd0                __stdio_seek
- .text.__dummy  0x000000009d01bcd8        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__init_stdio.o)
-                0x000000009d01bcd8                __init_stderr
-                0x000000009d01bcd8                __init_stdin
+.rodata.str1.4  0x000000009d01bcd0        0x8
+ .rodata.str1.4
+                0x000000009d01bcd0        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__printf_core.o)
+
+.text.__dummy   0x000000009d01bcd8       0x10
+ .text.__dummy  0x000000009d01bcd8        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__fopen.o)
+                0x000000009d01bcd8                __stdio_seek
+ .text.__dummy  0x000000009d01bce0        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libc-musl.a(__init_stdio.o)
+                0x000000009d01bce0                __init_stderr
+                0x000000009d01bce0                __init_stdin
 
 .text.getpagesize
-                0x000000009d01bce0        0x8
+                0x000000009d01bce8        0x8
  .text.getpagesize
-                0x000000009d01bce0        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(sbrk.o)
-                0x000000009d01bce0                getpagesize
+                0x000000009d01bce8        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(sbrk.o)
+                0x000000009d01bce8                getpagesize
 
-.text.lseek     0x000000009d01bce8        0x8
- .text.lseek    0x000000009d01bce8        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(lseek.o)
-                0x000000009d01bce8                lseek
+.text.lseek     0x000000009d01bcf0        0x8
+ .text.lseek    0x000000009d01bcf0        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(lseek.o)
+                0x000000009d01bcf0                lseek
 
-.text.close     0x000000009d01bcf0        0x8
- .text.close    0x000000009d01bcf0        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(close.o)
-                0x000000009d01bcf0                close
+.text.close     0x000000009d01bcf8        0x8
+ .text.close    0x000000009d01bcf8        0x8 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(close.o)
+                0x000000009d01bcf8                close
 
 .text%z206      0x0000000000000000        0x0
  .text          0x0000000000000000        0x0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(errno.o)
@@ -5788,16 +5788,16 @@ __xc_reference_data
  .text          0x0000000000000000        0x0 /opt/microchip/xc32/v4.21/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib/fpu64/libpic32.a(default-on-reset.o)
 
 .text%z262      0x0000000000000000        0x0
- .text          0x0000000000000000        0x0 /tmp/cck7ZObJ.o
+ .text          0x0000000000000000        0x0 /tmp/ccDho8rO.o
 
 .text%z263      0x0000000000000000        0x0
- .text          0x0000000000000000        0x0 /tmp/ccyPNdk7.o
+ .text          0x0000000000000000        0x0 /tmp/ccBTRue7.o
 
 .text%z264      0x0000000000000000        0x0
- .text          0x0000000000000000        0x0 /tmp/cc6CRm0l.o
+ .text          0x0000000000000000        0x0 /tmp/ccWbnKx1.o
 
 .text%z265      0x0000000000000000        0x0
- .text          0x0000000000000000        0x0 /tmp/cchh09Bh.o
+ .text          0x0000000000000000        0x0 /tmp/cc58qlDd.o
 
 .text%z266      0x0000000000000000        0x0
  .text          0x0000000000000000        0x0 build/nsensor/production/_ext/1684788505/foo.o
