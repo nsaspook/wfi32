@@ -14,10 +14,10 @@ build/nsensor/production/_ext/1684788505/dogm-graphic.o: \
  ../src/config/nsensor/peripheral/coretimer/plib_coretimer.h \
  ../src/config/nsensor/peripheral/adchs/plib_adchs.h \
  ../src/config/nsensor/peripheral/adchs/plib_adchs_common.h \
- ../src/config/nsensor/peripheral/uart/plib_uart1.h \
- ../src/config/nsensor/peripheral/uart/plib_uart_common.h \
  ../src/config/nsensor/peripheral/qei/plib_qei2.h \
  ../src/config/nsensor/peripheral/qei/plib_qei_common.h \
+ ../src/config/nsensor/peripheral/uart/plib_uart1.h \
+ ../src/config/nsensor/peripheral/uart/plib_uart_common.h \
  ../src/config/nsensor/peripheral/tmr/plib_tmr5.h \
  ../src/config/nsensor/peripheral/mcpwm/plib_mcpwm.h \
  ../src/config/nsensor/peripheral/mcpwm/plib_mcpwm_common.h \
@@ -61,13 +61,13 @@ build/nsensor/production/_ext/1684788505/dogm-graphic.o: \
 
 ../src/config/nsensor/peripheral/adchs/plib_adchs_common.h:
 
-../src/config/nsensor/peripheral/uart/plib_uart1.h:
-
-../src/config/nsensor/peripheral/uart/plib_uart_common.h:
-
 ../src/config/nsensor/peripheral/qei/plib_qei2.h:
 
 ../src/config/nsensor/peripheral/qei/plib_qei_common.h:
+
+../src/config/nsensor/peripheral/uart/plib_uart1.h:
+
+../src/config/nsensor/peripheral/uart/plib_uart_common.h:
 
 ../src/config/nsensor/peripheral/tmr/plib_tmr5.h:
 
