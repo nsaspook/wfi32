@@ -52,9 +52,9 @@ typedef enum {
 static sSensorData_t *accel;
 static imu_cmd_t *imu;
 static sFFTData_t *fft;
-static char buffer[256];
-char cmd_buffer[256] = "Waiting for commands";
-char response_buffer[64] = " ";
+static char buffer[RBUFFER_SIZE];
+char cmd_buffer[RBUFFER_SIZE] = "Waiting for commands";
+char response_buffer[RBUFFER_SIZE] = " ";
 
 imu_host_t host0 = {
 	.id = CAN_MISC,
@@ -281,6 +281,8 @@ int host_sm(void)
 	eaDogM_WriteStringAtPos(2, 0, buffer);
 	snprintf(buffer, max_buf, "%s Driver %s", CMD_ALIAS, CMD_DRIVER);
 	eaDogM_WriteStringAtPos(3, 0, buffer);
+	snprintf(buffer, max_buf, "%s Driver %s", REMOTE_ALIAS, REMOTE_DRIVER);
+	eaDogM_WriteStringAtPos(4, 0, buffer);
 	snprintf(buffer, max_buf, "Configuration %s", "Host node");
 	eaDogM_WriteStringAtPos(14, 0, buffer);
 	OledUpdate();
@@ -446,9 +448,9 @@ int host_sm(void)
 				if (*mtype == CAN_IMU_INFO) {
 					imu = (imu_cmd_t *) rx_message;
 					imu->host_serial_id = host_cpu_serial_id;
-					snprintf(uart_buffer, max_buf, "%3d,%7X,%7X,%3d,%3d,%3d,%18llX,%s\r\n",
-						imu->id, imu->board_serial_id, rx_messageID, imu->device, imu->acc_range, imu->features, host_cpu_serial_id, IMU_ALIAS);
-					snprintf(buffer, max_buf, "ID:%3d,%7X,%7X,%1i,%1i,%1i", imu->id, imu->board_serial_id, rx_messageID, imu->locked, imu->down, imu->warn);
+					snprintf(uart_buffer, max_buf, "%3d,%7X,%7X,%3d,%3d,%3d,%18llX,%1i,%1i,%1i,%s\r\n",
+						imu->id, imu->board_serial_id, rx_messageID, imu->device, imu->acc_range, imu->features, host_cpu_serial_id, imu->locked, imu->down, imu->warn, IMU_ALIAS);
+					snprintf(buffer, max_buf, "ID:%3d,%7X,%7X", imu->id, imu->board_serial_id, rx_messageID);
 					eaDogM_WriteStringAtPos(15, 0, buffer);
 				}
 				if (*mtype == CAN_FFT_LO) {
@@ -533,55 +535,6 @@ double approxRollingAverage(double avg, double new_sample)
 	avg += new_sample / avg_samples;
 
 	return avg;
-}
-
-void fh_show_idle(void *a_data)
-{
-	snprintf(cmd_buffer, max_buf, "Show Link Status            ");
-	host0.cmd = CMD_ACK;
-	host0.secret = 0;
-}
-
-void fh_stop_trigger(void *a_data)
-{
-	snprintf(cmd_buffer, max_buf, "Stop Trigger                ");
-	host0.cmd = CMD_SAFE;
-	host0.secret = 0;
-}
-
-void fh_start_trigger(void *a_data)
-{
-	snprintf(cmd_buffer, max_buf, "Start Trigger               ");
-	host0.cmd = CMD_SPIN_DOWN;
-	host0.secret = 0;
-}
-
-void fh_start_warn(void *a_data)
-{
-	snprintf(cmd_buffer, max_buf, "Start Warning               ");
-	host0.cmd = CMD_WARN_ON;
-	host0.secret = 0;
-}
-
-void fh_start_unlock(void *a_data)
-{
-	snprintf(cmd_buffer, max_buf, "Unlock System               ");
-	host0.cmd = CMD_UNLOCK;
-	host0.secret = HOST_SECRET;
-}
-
-void fh_start_lock(void *a_data)
-{
-	snprintf(cmd_buffer, max_buf, "Lock System                 ");
-	host0.cmd = CMD_LOCK;
-	host0.secret = 0;
-}
-
-void fh_start_safe(void *a_data)
-{
-	snprintf(cmd_buffer, max_buf, "Safe System                 ");
-	host0.cmd = CMD_SAFE;
-	host0.secret = 0;
 }
 
 /*

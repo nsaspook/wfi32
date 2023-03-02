@@ -21,6 +21,7 @@ extern "C" {
 #include "imu.h"
 #include "../../firmware/lcd_drv/lcd_drv.h"
 #include "cmd_scanner.h"
+#include "remote_cmd.h"
 
 #define HOST_DRIVER "V1.700" 
 #define HOST_ALIAS "HOST"

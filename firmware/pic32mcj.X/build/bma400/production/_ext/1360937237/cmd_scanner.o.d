@@ -1,5 +1,5 @@
 build/bma400/production/_ext/1360937237/cmd_scanner.o: \
- ../src/cmd_scanner.c ../src/cmd_scanner.h \
+ ../src/cmd_scanner.c ../src/remote_cmd.h ../src/cmd_scanner.h \
  ../src/config/bma400/definitions.h \
  ../src/config/bma400/peripheral/canfd/plib_canfd1.h \
  ../src/config/bma400/device.h ../src/config/bma400/toolchain_specifics.h \
@@ -25,7 +25,17 @@ build/bma400/production/_ext/1360937237/cmd_scanner.o: \
  ../src/config/bma400/peripheral/spi/spi_master/plib_spi1_master.h \
  ../src/config/bma400/peripheral/rtcc/plib_rtcc.h \
  ../src/config/bma400/peripheral/tmr/plib_tmr9.h ../src/imu.h \
- ../src/imupic32mcj.h
+ ../src/imupic32mcj.h ../src/host.h \
+ ../src/../../firmware/lcd_drv/lcd_drv.h \
+ ../src/../../firmware/lcd_drv/display_type.h \
+ ../src/../../firmware/lcd_drv/eadog.h \
+ ../src/../../firmware/lcd_drv/lcd_drv.h \
+ ../src/../../firmware/lcd_drv/dogm-graphic.h ../src/timers.h \
+ ../src/../../firmware/lcd_drv/OledDriver.h \
+ ../src/../../firmware/lcd_drv/OledChar.h \
+ ../src/../../firmware/lcd_drv/OledGrph.h
+
+../src/remote_cmd.h:
 
 ../src/cmd_scanner.h:
 
@@ -84,3 +94,23 @@ build/bma400/production/_ext/1360937237/cmd_scanner.o: \
 ../src/imu.h:
 
 ../src/imupic32mcj.h:
+
+../src/host.h:
+
+../src/../../firmware/lcd_drv/lcd_drv.h:
+
+../src/../../firmware/lcd_drv/display_type.h:
+
+../src/../../firmware/lcd_drv/eadog.h:
+
+../src/../../firmware/lcd_drv/lcd_drv.h:
+
+../src/../../firmware/lcd_drv/dogm-graphic.h:
+
+../src/timers.h:
+
+../src/../../firmware/lcd_drv/OledDriver.h:
+
+../src/../../firmware/lcd_drv/OledChar.h:
+
+../src/../../firmware/lcd_drv/OledGrph.h:

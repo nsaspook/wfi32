@@ -273,6 +273,12 @@ int main(void)
 	eaDogM_WriteStringAtPos(15, 0, buffer);
 	snprintf(buffer, max_buf, "Configuration %s", "Sensor node");
 	eaDogM_WriteStringAtPos(14, 0, buffer);
+	snprintf(buffer, max_buf, "%s Driver %s %s %s", LCD_ALIAS, LCD_DRIVER, build_date, build_time);
+	eaDogM_WriteStringAtPos(1, 0, buffer);
+	snprintf(buffer, max_buf, "%s Driver %s", CMD_ALIAS, CMD_DRIVER);
+	eaDogM_WriteStringAtPos(3, 0, buffer);
+	snprintf(buffer, max_buf, "%s Driver %s", REMOTE_ALIAS, REMOTE_DRIVER);
+	eaDogM_WriteStringAtPos(4, 0, buffer);
 	OledUpdate();
 
 	/*
