@@ -12,30 +12,66 @@
 extern "C" {
 #endif
 
-#define HOST_DRIVER "V1.603" 
+#include <stddef.h>                     // Defines NULL
+#include <stdbool.h>                    // Defines true
+#include <stdlib.h>                     // Defines EXIT_FAILURE
+#include <stdarg.h>
+#include <proc/p32mk0512mcj048.h>
+#include "definitions.h"                // SYS function prototypes
+#include "imu.h"
+#include "../../firmware/lcd_drv/lcd_drv.h"
+#include "cmd_scanner.h"
+
+#define HOST_DRIVER "V1.700" 
 #define HOST_ALIAS "HOST"
 
-#define host_lcd_update	50
+#define HOST_MAGIC	0x1957
+#define HOST_MAGIC_ID	0x101957
+#define HOST_SECRET	0xBD6FDC7BC925CD3E // 64-bit random number for unlocking machine control functions
+
+#define host_lcd_update	100
+
+
 
 #ifdef XPRJ_nsensor
 #define HOST_BOARD
 #define INT_BOARD
+#define debounce_delay 7000 // a few seconds in host mode
+#else
+#define debounce_delay 3000000 // a few seconds in sensor mode
 #endif
 
 #ifdef XPRJ_mcj
 #define SENSOR_BOARD
 #define BLOCK_BOARD
 #endif
-	
+
+#ifdef XPRJ_bma400
+#define SENSOR_BOARD
+#define BLOCK_BOARD
+#endif
+
 #ifdef XPRJ_mcj_remote
 #define SENSOR_BOARD
 #define BLOCK_BOARD
 #endif
 
 	/*
+	 * these routines can corrupt the display buffer with ISR level modifications of memory
+	 */
+	//#define DEBUG_can_callback
+	//#define DEBUG_can_callback1
+
+#define avg_samples	10000.0
+#define uart_wait	32300
+#define host_xmit_wait	100
+
+	/*
 	 * CAN-FD vibration sensor host to network state machine
 	 */
 	int host_sm(void);
+	bool TP1_check(void);
+	void send_from_host(uint32_t);
 
 #ifdef	__cplusplus
 }

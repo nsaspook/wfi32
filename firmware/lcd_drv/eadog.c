@@ -7,6 +7,12 @@
 #include "../src/config/mcj/peripheral/gpio/plib_gpio.h"
 #endif
 
+#ifdef XPRJ_bma400
+#include "../src/config/bma400/peripheral/spi/spi_master/plib_spi_master_common.h"
+#include "../src/config/bma400/peripheral/spi/spi_master/plib_spi1_master.h"
+#include "../src/config/bma400/peripheral/gpio/plib_gpio.h"
+#endif
+
 #ifdef XPRJ_mcj_remote
 #include "../src/config/mcj_remote/peripheral/spi/spi_master/plib_spi_master_common.h"
 #include "../src/config/mcj_remote/peripheral/spi/spi_master/plib_spi1_master.h"

@@ -95,7 +95,7 @@ void LA_gfx(bool reset, bool redraw, uint32_t turns)
 	static double t = 0.01;
 	static uint32_t i = 0;
 
-//	TP2_Set();
+	//	TP2_Set();
 	//Iterate and update x,y and z locations
 	//based upon the Lorenz equations
 	if (redraw) {
@@ -138,13 +138,14 @@ void LA_gfx(bool reset, bool redraw, uint32_t turns)
 	za = z;
 	OledMoveTo(xa, ya);
 	OledLineTo(xa + 1, ya + 1);
-//	TP2_Clear();
+	//	TP2_Clear();
 }
 
 void fft_draw(uint8_t freq, uint8_t bin)
 {
-	if (bin > 32) {
-		bin = 32;
+	if (bin > fft_max_pixel) {
+		bin = fft_max_pixel;
 	}
-	line_rot(freq, 88, freq, 88 - bin);
+
+	line_rot(freq, 88, freq, 88 - (bin >> fft_resolution_shift));
 }

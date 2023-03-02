@@ -59,7 +59,7 @@ extern "C" {
 #define BMA490L_INIT_START                            0x00 
 #define BMA490L_INIT_STOP                             0x01 
 	
-#define BMA490L_SOFT_RESET                            0x6B 
+#define BMA490L_SOFT_RESET                            0xB6 
 
 #define BMA490L_APS_OFF                               0x00
 #define BMA490L_APS_ON                                0x01 
@@ -70,6 +70,43 @@ extern "C" {
 #define BMA490L_NV_DISABLE_I2C                        0x01 
 #define BMA490L_NV_ACCEL_OFFSET_POS                   3 
 #define BMA490L_NV_ACCEL_OFFSET_MSK                   0x08 
+	
+/* BMA400 Register Address */
+#define BMA400_REG_CHIP_ID                        UINT8_C(0x00)
+#define BMA400_REG_STATUS                         UINT8_C(0x03)
+#define BMA400_REG_ACCEL_DATA                     UINT8_C(0x04)
+#define BMA400_REG_INT_STAT0                      UINT8_C(0x0E)
+#define BMA400_REG_TEMP_DATA                      UINT8_C(0x11)
+#define BMA400_REG_FIFO_LENGTH                    UINT8_C(0x12)
+#define BMA400_REG_FIFO_DATA                      UINT8_C(0x14)
+#define BMA400_REG_STEP_CNT_0                     UINT8_C(0x15)
+#define BMA400_REG_ACCEL_CONFIG_0                 UINT8_C(0x19)
+#define BMA400_REG_ACCEL_CONFIG_1                 UINT8_C(0x1A)
+#define BMA400_REG_ACCEL_CONFIG_2                 UINT8_C(0x1B)
+#define BMA400_REG_INT_CONF_0                     UINT8_C(0x1F)
+#define BMA400_REG_INT_12_IO_CTRL                 UINT8_C(0x24)
+#define BMA400_REG_INT_MAP                        UINT8_C(0x21)
+#define BMA400_REG_FIFO_CONFIG_0                  UINT8_C(0x26)
+#define BMA400_REG_FIFO_READ_EN                   UINT8_C(0x29)
+#define BMA400_REG_AUTO_LOW_POW_0                 UINT8_C(0x2A)
+#define BMA400_REG_AUTO_LOW_POW_1                 UINT8_C(0x2B)
+#define BMA400_REG_AUTOWAKEUP_0                   UINT8_C(0x2C)
+#define BMA400_REG_AUTOWAKEUP_1                   UINT8_C(0x2D)
+#define BMA400_REG_WAKEUP_INT_CONF_0              UINT8_C(0x2F)
+#define BMA400_REG_ORIENTCH_INT_CONFIG            UINT8_C(0x35)
+#define BMA400_REG_GEN1_INT_CONFIG                UINT8_C(0x3F)
+#define BMA400_REG_GEN2_INT_CONFIG                UINT8_C(0x4A)
+#define BMA400_REG_ACT_CH_CONFIG_0                UINT8_C(0x55)
+#define BMA400_REG_TAP_CONFIG                     UINT8_C(0x57)
+#define BMA400_REG_SELF_TEST                      UINT8_C(0x7D)
+#define BMA400_REG_COMMAND                        UINT8_C(0x7E)
+	
+#define BMA400_NORM_MODE			0x02
+#define BMA400_RANGE_MODE			0x38
+#define BMA400_FILTER_MODE			0x04
+#define BMA400_INT_CONF				0x80
+#define BMA400_INT_MAP				0x80
+#define BMA400_CMD_DUMMY			0x7F
 
 #ifdef	__cplusplus
 }

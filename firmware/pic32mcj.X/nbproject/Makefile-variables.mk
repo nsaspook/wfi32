@@ -16,3 +16,7 @@ CND_ARTIFACT_PATH_mcj_testing=dist/mcj_testing/production/pic32mcj.X.production.
 CND_ARTIFACT_DIR_mjc_remote=dist/mjc_remote/production
 CND_ARTIFACT_NAME_mjc_remote=pic32mcj.X.production.hex
 CND_ARTIFACT_PATH_mjc_remote=dist/mjc_remote/production/pic32mcj.X.production.hex
+# bma400 configuration
+CND_ARTIFACT_DIR_bma400=dist/bma400/production
+CND_ARTIFACT_NAME_bma400=pic32mcj.X.production.hex
+CND_ARTIFACT_PATH_bma400=dist/bma400/production/pic32mcj.X.production.hex

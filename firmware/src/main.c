@@ -24,7 +24,7 @@
 // *****************************************************************************
 
 /*
- * BMA490L and SCA3300 high-performance 16-bit digital triaxial acceleration sensor DEMO
+ * BMA490L, BMA400 and SCA3300 high-performance 16-bit digital triaxial acceleration sensor DEMO
  * http://download.mikroe.com/documents/datasheets/BMA490L%20Datasheet.pdf
  * for logging XYZ force values @ 115200 via a serial comm port
  * Original test configuration: 
@@ -37,6 +37,10 @@
  * https://www.murata.com/-/media/webrenewal/products/sensor/pdf/datasheet/datasheet_sca3300-d01.ashx?la=en-us&cvid=20190620010315610400
  * PCB CPU
  * https://ww1.microchip.com/downloads/aemDocuments/documents/MCU32/ProductDocuments/DataSheets/PIC32MK-General-Purpose-and-Motor-Control-With-CAN-FD-Family-DataSheet-DS60001570D.pdf
+ * 
+ * upgraded to 460800 uart speed and ttl serial to Ethernet TDP server module
+ * 32ms IMU updates when in sensor mode sent over 4 CAN packet durations of 3ms 0.5ms 0.5ms 1ms
+ * The Max sensor count is ~6 because of the serial ttl speed bottleneck
  */
 
 #include <stddef.h>                     // Defines NULL
@@ -65,6 +69,10 @@
 #include "config/mcj/peripheral/qei/plib_qei2.h"
 #endif
 
+#ifdef XPRJ_bma400
+#include "config/bma400/peripheral/qei/plib_qei2.h"
+#endif
+
 #ifdef XPRJ_mcj_remote
 #include "config/mcj_remote/peripheral/qei/plib_qei2.h"
 #endif
@@ -73,6 +81,7 @@
 #include "pid.h"
 #include "do_fft.h"
 #include "host.h"
+#include "cmd_scanner.h"
 
 #ifdef BMA490L
 /*
@@ -94,6 +103,9 @@ imu_cmd_t imu0 = {
 	.op.imu_getid = &bma490l_getid,
 	.op.imu_getdata = &bma490l_getdata,
 	.acc_range = range_2g,
+	.locked = true,
+	.warn = false,
+	.down = false,
 };
 #endif
 
@@ -120,9 +132,13 @@ imu_cmd_t imu0 = {
 	.acc_range = range_15gl,
 	.acc_range_scl = range_inc2,
 	.angles = false,
+	.locked = true,
+	.warn = false,
+	.down = false,
 };
 #endif
 
+imu_host_t *host_ptr;
 sFFTData_t fft0 = {
 	.id = CAN_FFT_LO,
 };
@@ -157,7 +173,7 @@ volatile SPid xpid, ypid, zpid;
 
 volatile uint16_t tickCount[TMR_COUNT];
 
-static char buffer[STR_BUF_SIZE];
+static char buffer[FBUFFER_SIZE], hbuffer[FBUFFER_SIZE];
 static uint32_t delay_freq = 0;
 
 static const char *build_date = __DATE__, *build_time = __TIME__;
@@ -165,6 +181,10 @@ const uint32_t update_delay = 5;
 uint32_t board_serial_id = 0x35A, cpu_serial_id = 0x1957;
 
 extern CORETIMER_OBJECT coreTmr;
+extern t_cli_ctx cli_ctx;
+extern char response_buffer[RBUFFER_SIZE];
+extern char cmd_buffer[FBUFFER_SIZE];
+static void fh_start_AT_nodma(void *);
 
 #ifdef __32MK0512MCJ048__
 void qei_index_cb(QEI_STATUS, uintptr_t);
@@ -228,7 +248,7 @@ int main(void)
 #else
 	cpu_serial_id = DEVSN0 & 0x1fffffff; // get CPU device 32-bit serial number and convert that to 29 - bit ID for CAN - FD
 #endif
-	printf("\r\nPIC32 %s Controller %s %s %s %X ---\r\n", IMU_ALIAS, IMU_DRIVER, build_date, build_time, cpu_serial_id);
+	//	printf("\r\nPIC32 %s Controller %s %s %s %X ---\r\n", IMU_ALIAS, IMU_DRIVER, build_date, build_time, cpu_serial_id);
 
 	/*
 	 * print the driver version
@@ -242,13 +262,16 @@ int main(void)
 	lcd_version();
 	init_lcd_drv(D_INIT);
 	OledClearBuffer();
+	eaDogM_WriteStringAtPos(9, 0, imu_buffer);
+	imu0.op.info_ptr();
+	eaDogM_WriteStringAtPos(10, 0, imu_buffer);
 	fft_version();
 	do_fft_version();
 	board_serial_id = cpu_serial_id; // this ID could be changed to the ID of the IMU for IMU data transfers
 	imu0.board_serial_id = board_serial_id;
-	sprintf(buffer, "%s Controller %s %X", IMU_ALIAS, IMU_DRIVER, cpu_serial_id);
+	snprintf(buffer, max_buf, "%s Controller %s %X", IMU_ALIAS, IMU_DRIVER, cpu_serial_id);
 	eaDogM_WriteStringAtPos(15, 0, buffer);
-	sprintf(buffer, "Configuration %s", "Sensor node");
+	snprintf(buffer, max_buf, "Configuration %s", "Sensor node");
 	eaDogM_WriteStringAtPos(14, 0, buffer);
 	OledUpdate();
 
@@ -267,7 +290,10 @@ int main(void)
 				if (TimerDone(TMR_IMU)) {
 					LED_RED_Toggle();
 					LED_GREEN_Toggle();
-					printf(" IMU NO ID, %d %d \r\n", ADCHS_ChannelResultGet(ADCHS_CH0), ADCHS_ChannelResultGet(ADCHS_CH1));
+					snprintf(buffer, max_buf, "IMU NO ID, %d %d ", ADCHS_ChannelResultGet(ADCHS_CH0), ADCHS_ChannelResultGet(ADCHS_CH1));
+					eaDogM_WriteStringAtPos(13, 0, buffer);
+					eaDogM_WriteStringAtPos(9, 0, imu_buffer);
+					OledUpdate();
 					StartTimer(TMR_IMU, 200);
 					ADCHS_ChannelConversionStart(ADCHS_CH0);
 					ADCHS_ChannelConversionStart(ADCHS_CH1);
@@ -280,18 +306,32 @@ int main(void)
 		}
 	};
 
-	printf(" IMU ID OK, device type %d: %X %X \r\n", imu0.device, imu0.serial1, imu0.serial2);
 	LED_RED_Off();
 	LED_GREEN_Off();
-	WaitMs(500);
+	WaitMs(2500);
 #ifdef __32MK0512MCJ048__
 #ifdef XPRJ_mcj
 	MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024);
 #endif
+#ifdef XPRJ_bma400
+	MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024);
+#endif	
 	MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024);
 	MCPWM_Start();
 #endif
+	TP1_Set(); // ETH modules display trigger
 
+	/* set can-fd extended ID filters and masks */
+	canfd_set_filter(board_serial_id, HOST_MAGIC_ID);
+
+#ifdef DEBUG_FILTER
+	snprintf(cmd_buffer, max_buf, "%X %X", CAN1_MessageAcceptanceFilterMaskGet(0), CAN1_MessageAcceptanceFilterGet(0));
+	snprintf(response_buffer, max_buf, "%X %X", CAN1_MessageAcceptanceFilterMaskGet(1), CAN1_MessageAcceptanceFilterGet(1));
+	eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
+	eaDogM_WriteStringAtPos(7, 0, response_buffer);
+	OledUpdate();
+	WaitMs(5000);
+#endif
 
 	// loop collecting data
 	StartTimer(TMR_LOG, imu0.log_timeout);
@@ -299,28 +339,35 @@ int main(void)
 		/* Maintain state machines of all polled MPLAB Harmony modules. */
 		SYS_Tasks();
 
+		if (TP1_check()) {
+			LED_RED_On();
+			OledClearBuffer();
+			fh_start_AT_nodma(&cli_ctx);
+			eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
+			eaDogM_WriteStringAtPos(7, 0, response_buffer);
+			OledUpdate();
+			WaitMs(5000);
+		}
+
 		/*
 		 * data logging routine
 		 * convert the SPI XYZ response to standard floating point acceleration values and rolling integer time-stamps per measurement
 		 */
 		if (imu0.update || TimerDone(TMR_LOG)) {
+
 #ifdef SHOW_LCD   
-			TP1_Set();
 			OledClearBuffer();
-			TP1_Clear();
 #endif
-			TP1_Set();
 			imu0.op.imu_getdata(&imu0); // read data from the chip
-			TP3_Toggle();
 			imu0.update = false;
-			TP1_Clear();
-			TP1_Set();
 			getAllData(&accel, &imu0); // convert data from the chip
-			TP1_Clear();
 #ifdef __32MK0512MCJ048__
 #ifdef XPRJ_mcj
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024 + (uint32_t) (10.0 * accel.xa));
 #endif
+#ifdef XPRJ_bma400
+			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024 + (uint32_t) (10.0 * accel.xa));
+#endif			
 			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024 + (uint32_t) (10.0 * accel.ya));
 #endif
 			accel.xerr = UpdatePI(&xpid, (double) accel.xa);
@@ -330,45 +377,53 @@ int main(void)
 			printf("%6.3f,%6.3f,%6.3f,%6.2f,%6.2f,%6.2f,%u,%X,%X\r\n", accel.x, accel.y, accel.z, accel.xa, accel.ya, accel.za, accel.sensortime, imu0.rs, imu0.ss);
 #endif
 #ifdef SHOW_LCD
-			sprintf(buffer, "%6.3f,%6.3f,%6.3f, %X, %X\r\n", accel.x, accel.y, accel.z, imu0.rs, imu0.ss);
+			snprintf(buffer, max_buf, "%6.3f,%6.3f,%6.3f, %X, %X\r\n", accel.x, accel.y, accel.z, imu0.rs, imu0.ss);
 			eaDogM_WriteStringAtPos(0, 0, buffer);
-			sprintf(buffer, "%6.2f,%6.2f,%6.2f,%5.1f", accel.xa, accel.ya, accel.za, accel.sensortemp);
+			snprintf(buffer, max_buf, "%6.2f,%6.2f,%6.2f,%5.1f", accel.xa, accel.ya, accel.za, accel.sensortemp);
 			eaDogM_WriteStringAtPos(1, 0, buffer);
-			sprintf(buffer, "PIC32 IMU Controller %s   %s %s", IMU_DRIVER, build_date, build_time);
+			snprintf(buffer, max_buf, "PIC32 IMU Controller %s   %s %s", IMU_DRIVER, build_date, build_time);
 			eaDogM_WriteStringAtPos(14, 0, buffer);
-			sprintf(buffer, "imu %s", imu_string(&imu0));
+			snprintf(buffer, max_buf, "IMU %s", imu_string(&imu0));
 			eaDogM_WriteStringAtPos(3, 0, buffer);
-			sprintf(buffer, "DEV %d", imu0.device);
+			snprintf(buffer, max_buf, "DEV %d", imu0.device);
 			eaDogM_WriteStringAtPos(4, 0, buffer);
-			sprintf(buffer, "RAN %d", imu0.acc_range);
+			snprintf(buffer, max_buf, "RAN %d", imu0.acc_range);
 			eaDogM_WriteStringAtPos(5, 0, buffer);
-			sprintf(buffer, "ANG %s", imu0.angles ? "Yes" : "No");
+			snprintf(buffer, max_buf, "ANG %s", imu0.angles ? "Yes" : "No");
 			eaDogM_WriteStringAtPos(6, 0, buffer);
 
 			/*
-			 * load FFT sample 256 element 8-bit buffer
+			 * load FFT sample 128 element 8-bit buffer from
+			 * 256 element signal buffer
 			 * as we process each IMU 3-axis sample
 			 * This is not a pure FFT as it mixes bin data
 			 * with sample data for a feedback signature
+			 * 
+			 * it recomputes with every new IMU data update
+			 * unless FFT_MIX is set to false
 			 */
-			inB[ffti] = 128 + (uint8_t) (120.0 * (accel.x + accel.y + accel.z)); // select one axis for display
+			inB[ffti] = 128 + (uint8_t) (fft_gain * (do_fft_dc_x(accel.x) + do_fft_dc_y(accel.y) + do_fft_dc_z(accel.z))); // select one axis for display
+
+			ffti++;
+			if (FFT_MIX || ffti == 0) {
+				TP3_Set(); // FFT processing timing mark
+				do_fft(false); // convert to 256 frequency bins in 8-bit sample buffer
+				TP3_Clear(); // end of FFT function
+				memset(inB + (N_FFT / 2), 0, N_FFT / 2); // clear upper 128 bytes
+				memcpy(fft_buffer, inB, N_FFT); // copy to results buffer
+			}
+			TP3_Set(); // drawing processing mark
 			if (fft_settle) {
-				sprintf(buffer, "FFTs %3d,%3d ", inB[ffti], ffti);
+				snprintf(buffer, max_buf, "FFTs %3d,%3d ", fft_buffer[ffti], ffti);
 				eaDogM_WriteStringAtPos(7, 4, buffer);
 			}
-			ffti++;
-			//			TP3_Set(); // FFT processing timing mark
-			do_fft(false); // convert to 128 frequency bins in 8-bit sample buffer
-			//			TP3_Clear(); // end of FFT function
-			//			TP3_Set(); // drawing processing mark
 			w = 0;
 			while (w < 128) {
-				fft_draw(w, inB[w]); // create screen graph from bin data
+				fft_draw(w, fft_buffer[w]); // create screen graph from bin data
 				w++;
 			}
-			//			TP3_Clear(); // end of drawing function
+			TP3_Clear(); // end of drawing function
 #ifdef SHOW_VG
-			TP1_Set();
 			q0 = accel.x;
 			q1 = accel.y;
 			q2 = accel.z;
@@ -386,42 +441,91 @@ int main(void)
 				}
 			}
 #endif 
-			TP1_Clear();
 			OledUpdate();
 #endif
 			if (TimerDone(TMR_LOG)) {
-				//				printf(" IMU data timeout \r\n");
 				LED_GREEN_Toggle();
 			}
 
 #ifdef __32MK0512MCJ048__
 #ifdef SHOW_LCD
 			CAN1_ErrorCountGet(&txe, &rxe);
-			sprintf(buffer, "can-fd %X", board_serial_id);
+			snprintf(buffer, max_buf, "can-fd %X", board_serial_id);
 			eaDogM_WriteStringAtPos(11, 0, buffer);
-			sprintf(buffer, "ErrorT %d", txe);
+			snprintf(buffer, max_buf, "ErrorT %d", txe);
 			eaDogM_WriteStringAtPos(4, 20, buffer);
-			sprintf(buffer, "ErrorR %d", rxe);
+			snprintf(buffer, max_buf, "ErrorR %d", rxe);
 			eaDogM_WriteStringAtPos(5, 20, buffer);
-			sprintf(buffer, "Can INT %d", CAN1_InterruptGet(1, 0x1f));
+			snprintf(buffer, max_buf, "Can INT %d", CAN1_InterruptGet(1, 0x1f));
 			eaDogM_WriteStringAtPos(6, 20, buffer);
-			sprintf(buffer, "TX Full %s", CAN1_TxFIFOQueueIsFull(1) ? "Y" : "N");
+			snprintf(buffer, max_buf, "TX Full %s", CAN1_TxFIFOQueueIsFull(1) ? "Y" : "N");
 			eaDogM_WriteStringAtPos(7, 20, buffer);
-			sprintf(buffer, "Update %d", ++times);
+			snprintf(buffer, max_buf, "Update %d", ++times);
 			eaDogM_WriteStringAtPos(8, 20, buffer);
-			sprintf(buffer, "REQ %X", CFD1TXREQ);
+			snprintf(buffer, max_buf, "REQ %X", CFD1TXREQ);
 			eaDogM_WriteStringAtPos(9, 20, buffer);
-			sprintf(buffer, "Ce0 %X", CFD1BDIAG0);
-			eaDogM_WriteStringAtPos(10, 20, buffer);
-			sprintf(buffer, "Ce1 %X", CFD1BDIAG1);
-			eaDogM_WriteStringAtPos(11, 20, buffer);
-			sprintf(buffer, "CINT %X, %d, %d", CFD1INT, canfd_num_tx(), canfd_num_stall());
+			snprintf(buffer, max_buf, "Ce0 %X", CFD1BDIAG0);
+			eaDogM_WriteStringAtPos(10, 18, buffer);
+			snprintf(buffer, max_buf, "Ce1 %X", CFD1BDIAG1);
+			eaDogM_WriteStringAtPos(11, 18, buffer);
+			snprintf(buffer, max_buf, "CINT %X, %d, %d, %d", CFD1INT, canfd_num_tx(), canfd_num_stall(), canfd_num_rx());
 			eaDogM_WriteStringAtPos(13, 0, buffer);
-			sprintf(buffer, "ER %6.2f, %6.2f, %6.2f", accel.xerr, accel.yerr, accel.zerr);
-			eaDogM_WriteStringAtPos(12, 0, buffer);
+			//			snprintf(buffer, max_buf,"ER %6.2f, %6.2f, %6.2f", accel.xerr, accel.yerr, accel.zerr);
+			//			eaDogM_WriteStringAtPos(12, 0, buffer);
 #endif
 			canfd_state(CAN_RECEIVE, accel.buffer);
-			canfd_state(CAN_RECEIVE, accel.buffer);
+			host_ptr = (imu_host_t *) accel.buffer;
+			if (rx_msg_ready) {
+				rx_msg_ready = false;
+				/*
+				 * decode received host message
+				 */
+				snprintf(hbuffer, max_buf, "Host CPU %llX , Cmd %i", host_ptr->host_serial_id, host_ptr->cmd);
+				switch (host_ptr->cmd) {
+				case CMD_ACK:
+				case CMD_IDLE:
+					break;
+				case CMD_SPIN_DOWN: // vibration action triggered
+					PWM1EN_Set();
+					if (!imu0.locked) {
+						PWM4EN_Set();
+						imu0.down = true;
+						imu0.locked = true; // auto relock
+					}
+					break;
+				case CMD_LOCK:
+					imu0.locked = true;
+					break;
+				case CMD_UNLOCK:
+					if (host_ptr->secret == HOST_SECRET) {
+						imu0.locked = false;
+						host_ptr->secret = 0; //clear
+						host_ptr->cmd = CMD_IDLE;
+					} else {
+						snprintf(cmd_buffer, max_buf, "Unlock System Failed        ");
+					}
+					break;
+				case CMD_WARN_ON: // vibration warning triggered
+					PWM1EN_Set();
+					imu0.warn = true;
+					break;
+				case CMD_WARN_OFF:
+					PWM1EN_Clear();
+					imu0.warn = false;
+					break;
+				case CMD_SAFE:
+					PWM1EN_Clear();
+					PWM4EN_Clear();
+					imu0.warn = false;
+					imu0.down = false;
+					break;
+				default:
+					snprintf(hbuffer, max_buf, "Host CPU %llX", host_ptr->host_serial_id);
+					imu0.locked = true;
+					break;
+				}
+			}
+			eaDogM_WriteStringAtPos(12, 0, hbuffer);
 
 			switch (alter) {
 			case 0:
@@ -435,7 +539,7 @@ int main(void)
 			case 2:
 				fft0.id = CAN_FFT_LO;
 				if (fft_settle) {
-					memcpy(fft0.buffer, &inB[0], 60);
+					memcpy(fft0.buffer, &fft_buffer[0], 60);
 					canfd_state(CAN_TRANSMIT_FD, &fft0);
 				}
 				alter++;
@@ -443,7 +547,7 @@ int main(void)
 			case 3:
 				fft0.id = CAN_FFT_HI;
 				if (fft_settle) {
-					memcpy(fft0.buffer, &inB[60], 60);
+					memcpy(fft0.buffer, &fft_buffer[60], 60);
 					canfd_state(CAN_TRANSMIT_FD, &fft0);
 				}
 				if (!fft_settle && (fft_count++ >= FFT_COUNT)) {
@@ -466,20 +570,24 @@ int main(void)
 }
 
 /*
- * user callback function per BMA490L data interrupt
+ * user callback function per BMA4x0 data interrupt
  * update pacing flag from IMU ISR
  */
 void update_imu_int1(uint32_t a, uintptr_t context)
 {
 	imu_cmd_t * imu = (imu_cmd_t *) context;
 	static int8_t i = 0;
+	static uint8_t tog = 0;
 
 	if (imu) {
 		if (!i++) {
 
+		}
+		if (++tog >= 0) {
+			imu->update = true;
+			tog = 0;
 			LED_GREEN_Toggle();
 		}
-		imu->update = true;
 	}
 }
 
@@ -496,6 +604,38 @@ void delay_us(uint32_t us)
 	}; // Wait until Core Timer count reaches the number we calculated earlier
 }
 
+/*
+ * capture and display ETH module network IP address
+ */
+void fh_start_AT_nodma(void *a_data)
+{
+	snprintf(cmd_buffer, max_buf, "Start AT commands            ");
+
+	// put the ETH module in config mode
+	ETH_CFG_Clear();
+	WaitMs(500);
+	ETH_CFG_Set();
+	WaitMs(5000); // wait until the module is back online
+
+	// AT command mode
+	UART1_Write("+++", 3); // send data to the ETH module
+	WaitMs(200);
+	UART1_Write("a", 1); // send data to the ETH module
+	WaitMs(200);
+	if (UART1_ReceiverIsReady()) { // check to see if we have a response
+		// send a Ethernet connection query
+		UART1_Write("AT+WANN\r\r\n", 10); // send data to the ETH module
+		// put the result in a buffer for the GLCD to display
+		UART1_Read(response_buffer, 30);
+	} else { // nothing
+		snprintf(response_buffer, max_buf, "AT command failed           ");
+	}
+	/*
+	 * AT mode will timeout after 30 seconds and go back to transparent data mode
+	 */
+	WaitMs(500);
+	UART1_ErrorGet(); // clear UART junk
+}
 /*******************************************************************************
  End of File
  */

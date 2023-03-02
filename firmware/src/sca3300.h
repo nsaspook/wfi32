@@ -3,6 +3,7 @@
  * Author: nsasp
  *
  * Created on August 31, 2022, 6:28 PM
+ * SPI mode 0, 8MHz, 32-bit transfers
  */
 
 #ifndef SCA3300_H
@@ -25,9 +26,9 @@ extern "C" {
 #include "timers.h"
 #include "canfd.h"
 
-#define SCA3300_DRIVER	"V1.005" 
+#define SCA3300_DRIVER	"V1.006" 
 
-#define SCA3300_ALIAS	"SCA3300  "
+#define SCA3300_ALIAS	"SCx3300  "
 
 	/* Device commands and response */
 #define SCA3300_REG_WHOAMI	0x10

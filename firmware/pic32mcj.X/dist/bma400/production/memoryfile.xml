@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<project>                                  
+  <executable name="dist/bma400/production/pic32mcj.X.production.elf">                 
+    <memory name="program">                 
+      <units>bytes</units>                 
+      <length>525440</length>                 
+      <used>57596</used>                     
+      <free>467844</free>                     
+    </memory>                              
+    <memory name="data">              
+      <units>bytes</units>                 
+      <length>65536</length>                 
+      <used>12024</used>                     
+      <free>53512</free>                     
+    </memory>                              
+  </executable>                            
+</project>                                 

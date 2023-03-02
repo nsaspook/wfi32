@@ -22,12 +22,17 @@ extern "C" {
 #define IMU_CS 0
 #define LCD_CS 0
 
-#define BMA_LOG_TIMEOUT 25
-#define SCA_LOG_TIMEOUT 5 // 3
+#define BMA_LOG_TIMEOUT 150
+#define SCA_LOG_TIMEOUT 8 // 3
 
-#define SHOW_LOG
+//#define SHOW_LOG
 #define SHOW_LCD
 #define SHOW_VG
+#define FFT_MIX false
+	
+#define FBUFFER_SIZE	256
+#define max_buf		FBUFFER_SIZE-1
+#define RBUFFER_SIZE	FBUFFER_SIZE
 
 #ifndef  LED_GREEN_On
 #define LED_GREEN_On() LED_GREEN_Set()

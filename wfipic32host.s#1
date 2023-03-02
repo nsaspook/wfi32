@@ -16757,6 +16757,130 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="jumper" urn="urn:adsk.eagle:library:252">
+<description>&lt;b&gt;Jumpers&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="SJ_2W" urn="urn:adsk.eagle:footprint:15438/1" library_version="2">
+<description>&lt;b&gt;Solder jumper&lt;/b&gt;</description>
+<wire x1="3.175" y1="-1.524" x2="-3.175" y2="-1.524" width="0.1524" layer="21"/>
+<wire x1="3.175" y1="1.524" x2="3.429" y2="1.27" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-3.429" y1="1.27" x2="-3.175" y2="1.524" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-3.429" y1="-1.27" x2="-3.175" y2="-1.524" width="0.1524" layer="21" curve="90"/>
+<wire x1="3.175" y1="-1.524" x2="3.429" y2="-1.27" width="0.1524" layer="21" curve="90"/>
+<wire x1="3.429" y1="-1.27" x2="3.429" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-3.429" y1="-1.27" x2="-3.429" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-3.175" y1="1.524" x2="3.175" y2="1.524" width="0.1524" layer="21"/>
+<wire x1="2.794" y1="0" x2="3.302" y2="0" width="0.1524" layer="51"/>
+<wire x1="-2.794" y1="0" x2="-3.302" y2="0" width="0.1524" layer="51"/>
+<wire x1="0" y1="0.762" x2="0" y2="1.397" width="0.1524" layer="51"/>
+<wire x1="0" y1="-1.397" x2="0" y2="-0.762" width="0.1524" layer="51"/>
+<wire x1="2.032" y1="0.127" x2="2.032" y2="-0.127" width="1.27" layer="51" curve="-180" cap="flat"/>
+<wire x1="-2.032" y1="-0.127" x2="-2.032" y2="0.127" width="1.27" layer="51" curve="-180" cap="flat"/>
+<smd name="1" x="-2.54" y="0" dx="1.27" dy="2.54" layer="1"/>
+<smd name="2" x="0" y="0" dx="1.27" dy="2.54" layer="1"/>
+<smd name="3" x="2.54" y="0" dx="1.27" dy="2.54" layer="1"/>
+<text x="-3.429" y="1.778" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-0.1001" y="0" size="0.02" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.508" y1="-0.762" x2="0.508" y2="0.762" layer="51"/>
+</package>
+<package name="SJ_2" urn="urn:adsk.eagle:footprint:15439/1" library_version="2">
+<description>&lt;b&gt;Solder jumper&lt;/b&gt;</description>
+<wire x1="2.159" y1="-1.016" x2="-2.159" y2="-1.016" width="0.1524" layer="21"/>
+<wire x1="2.159" y1="1.016" x2="2.413" y2="0.762" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-2.413" y1="0.762" x2="-2.159" y2="1.016" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-2.413" y1="-0.762" x2="-2.159" y2="-1.016" width="0.1524" layer="21" curve="90"/>
+<wire x1="2.159" y1="-1.016" x2="2.413" y2="-0.762" width="0.1524" layer="21" curve="90"/>
+<wire x1="2.413" y1="-0.762" x2="2.413" y2="0.762" width="0.1524" layer="21"/>
+<wire x1="-2.413" y1="-0.762" x2="-2.413" y2="0.762" width="0.1524" layer="21"/>
+<wire x1="-2.159" y1="1.016" x2="2.159" y2="1.016" width="0.1524" layer="21"/>
+<wire x1="1.778" y1="0" x2="2.286" y2="0" width="0.1524" layer="51"/>
+<wire x1="-1.778" y1="0" x2="-2.286" y2="0" width="0.1524" layer="51"/>
+<wire x1="0" y1="0.762" x2="0" y2="1.016" width="0.1524" layer="51"/>
+<wire x1="0" y1="-1.016" x2="0" y2="-0.762" width="0.1524" layer="51"/>
+<wire x1="1.016" y1="0.127" x2="1.016" y2="-0.127" width="1.27" layer="51" curve="-180" cap="flat"/>
+<wire x1="-1.016" y1="-0.127" x2="-1.016" y2="0.127" width="1.27" layer="51" curve="-180" cap="flat"/>
+<smd name="1" x="-1.524" y="0" dx="1.1684" dy="1.6002" layer="1"/>
+<smd name="2" x="0" y="0" dx="1.1684" dy="1.6002" layer="1"/>
+<smd name="3" x="1.524" y="0" dx="1.1684" dy="1.6002" layer="1"/>
+<text x="-2.413" y="1.27" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-0.1001" y="0" size="0.02" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.508" y1="-0.762" x2="0.508" y2="0.762" layer="51"/>
+</package>
+</packages>
+<packages3d>
+<package3d name="SJ_2W" urn="urn:adsk.eagle:package:15476/1" type="box" library_version="2">
+<description>Solder jumper</description>
+<packageinstances>
+<packageinstance name="SJ_2W"/>
+</packageinstances>
+</package3d>
+<package3d name="SJ_2" urn="urn:adsk.eagle:package:15474/1" type="box" library_version="2">
+<description>Solder jumper</description>
+<packageinstances>
+<packageinstance name="SJ_2"/>
+</packageinstances>
+</package3d>
+</packages3d>
+<symbols>
+<symbol name="SJ_2" urn="urn:adsk.eagle:symbol:15437/1" library_version="2">
+<wire x1="-0.635" y1="-1.397" x2="0.635" y2="-1.397" width="1.27" layer="94" curve="180" cap="flat"/>
+<wire x1="-0.635" y1="1.397" x2="0.635" y2="1.397" width="1.27" layer="94" curve="-180" cap="flat"/>
+<wire x1="1.27" y1="-0.635" x2="-1.27" y2="-0.635" width="0.1524" layer="94"/>
+<wire x1="-1.27" y1="-0.635" x2="-1.27" y2="0" width="0.1524" layer="94"/>
+<wire x1="-1.27" y1="0" x2="-1.27" y2="0.635" width="0.1524" layer="94"/>
+<wire x1="-1.27" y1="0.635" x2="1.27" y2="0.635" width="0.1524" layer="94"/>
+<wire x1="1.27" y1="0.635" x2="1.27" y2="-0.635" width="0.1524" layer="94"/>
+<wire x1="-2.54" y1="0" x2="-1.27" y2="0" width="0.1524" layer="94"/>
+<text x="2.54" y="0.381" size="1.778" layer="95">&gt;NAME</text>
+<text x="2.54" y="-1.905" size="1.778" layer="96">&gt;VALUE</text>
+<rectangle x1="-1.27" y1="-0.635" x2="1.27" y2="0.635" layer="94"/>
+<pin name="3" x="0" y="-5.08" visible="pad" length="short" direction="pas" rot="R90"/>
+<pin name="1" x="0" y="5.08" visible="pad" length="short" direction="pas" rot="R270"/>
+<pin name="2" x="-5.08" y="0" visible="pad" length="short" direction="pas"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="SJ2W" urn="urn:adsk.eagle:component:15505/2" prefix="SJ" uservalue="yes" library_version="2">
+<description>SMD solder &lt;b&gt;JUMPER&lt;/b&gt;</description>
+<gates>
+<gate name="G$1" symbol="SJ_2" x="0" y="0"/>
+</gates>
+<devices>
+<device name="W" package="SJ_2W">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="3" pad="3"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:15476/1"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="POPULARITY" value="1" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="" package="SJ_2">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="3" pad="3"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:15474/1"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="POPULARITY" value="7" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -16832,8 +16956,6 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <part name="VSS21" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 <part name="VSS22" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 <part name="IC2" library="TCAN330GD" deviceset="TCAN330GD" device=""/>
-<part name="JP3" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2" value="SIL"/>
-<part name="JP4" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2" value="STB"/>
 <part name="S1" library="JS202011SCQN_fixed" deviceset="JS202011SCQN" device=""/>
 <part name="JP5" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="/90" package3d_urn="urn:adsk.eagle:package:22404/2" value="CAN-FD"/>
 <part name="VSS24" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
@@ -16890,6 +17012,12 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <part name="VSS40" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 <part name="ETH_5V" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="PTR1" device="PAD1-13" package3d_urn="urn:adsk.eagle:package:27946/1"/>
 <part name="CAN_TERM" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2" value="can term"/>
+<part name="SJ1" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1" value="can_shdn"/>
+<part name="SJ2" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ2W" device="" package3d_urn="urn:adsk.eagle:package:15474/1" value="can_s"/>
+<part name="VSS41" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
+<part name="VSS42" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
+<part name="GND_POINTS" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2" value="GND_TEST"/>
+<part name="VSS43" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -17114,14 +17242,6 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <attribute name="NAME" x="-29.21" y="149.86" size="1.778" layer="95" align="center-left"/>
 <attribute name="VALUE" x="-29.21" y="147.32" size="1.778" layer="96" align="center-left"/>
 </instance>
-<instance part="JP3" gate="G$1" x="-7.62" y="152.4" smashed="yes">
-<attribute name="NAME" x="-13.97" y="158.115" size="1.778" layer="95"/>
-<attribute name="VALUE" x="-13.97" y="147.32" size="1.778" layer="96"/>
-</instance>
-<instance part="JP4" gate="G$1" x="-7.62" y="121.92" smashed="yes">
-<attribute name="NAME" x="-13.97" y="127.635" size="1.778" layer="95"/>
-<attribute name="VALUE" x="-13.97" y="116.84" size="1.778" layer="96"/>
-</instance>
 <instance part="S1" gate="G$1" x="-83.82" y="137.16" smashed="yes">
 <attribute name="NAME" x="-99.0822" y="139.7037" size="1.27185" layer="95"/>
 <attribute name="VALUE" x="-99.0712" y="132.076259375" size="1.270940625" layer="96"/>
@@ -17317,6 +17437,27 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <attribute name="NAME" x="3.81" y="158.115" size="1.778" layer="95"/>
 <attribute name="VALUE" x="3.81" y="147.32" size="1.778" layer="96"/>
 </instance>
+<instance part="SJ1" gate="G$1" x="-7.62" y="119.38" smashed="yes">
+<attribute name="NAME" x="-2.54" y="117.221" size="1.778" layer="95"/>
+<attribute name="VALUE" x="-15.24" y="125.095" size="1.778" layer="96"/>
+</instance>
+<instance part="SJ2" gate="G$1" x="-10.16" y="157.48" smashed="yes">
+<attribute name="NAME" x="-7.62" y="157.861" size="1.778" layer="95"/>
+<attribute name="VALUE" x="-15.24" y="163.195" size="1.778" layer="96"/>
+</instance>
+<instance part="VSS41" gate="G$1" x="-7.62" y="111.76" smashed="yes">
+<attribute name="VALUE" x="-10.16" y="106.68" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="VSS42" gate="G$1" x="-10.16" y="149.86" smashed="yes">
+<attribute name="VALUE" x="-12.7" y="144.78" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="GND_POINTS" gate="G$1" x="53.34" y="152.4" smashed="yes">
+<attribute name="NAME" x="46.99" y="158.115" size="1.778" layer="95"/>
+<attribute name="VALUE" x="46.99" y="147.32" size="1.778" layer="96"/>
+</instance>
+<instance part="VSS43" gate="G$1" x="40.64" y="149.86" smashed="yes">
+<attribute name="VALUE" x="38.1" y="144.78" size="1.778" layer="96" rot="R90"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -17426,16 +17567,18 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <junction x="15.24" y="-27.94"/>
 </segment>
 <segment>
-<wire x1="-22.86" y1="154.94" x2="-10.16" y2="154.94" width="0.1524" layer="91"/>
-<pinref part="JP3" gate="G$1" pin="1"/>
-<label x="-20.32" y="154.94" size="1.778" layer="95"/>
-<junction x="-22.86" y="154.94"/>
+<wire x1="-22.86" y1="162.56" x2="-10.16" y2="162.56" width="0.1524" layer="91"/>
+<label x="-27.94" y="165.1" size="1.778" layer="95"/>
+<junction x="-22.86" y="162.56"/>
+<pinref part="SJ2" gate="G$1" pin="1"/>
+<junction x="-10.16" y="162.56"/>
 </segment>
 <segment>
-<wire x1="-10.16" y1="124.46" x2="2.54" y2="124.46" width="0.1524" layer="91"/>
-<pinref part="JP4" gate="G$1" pin="1"/>
 <label x="-2.54" y="124.46" size="1.778" layer="95"/>
 <junction x="2.54" y="124.46"/>
+<pinref part="SJ1" gate="G$1" pin="1"/>
+<wire x1="-7.62" y1="124.46" x2="2.54" y2="124.46" width="0.1524" layer="91"/>
+<junction x="-7.62" y="124.46"/>
 </segment>
 <segment>
 <pinref part="JP5" gate="A" pin="4"/>
@@ -17838,6 +17981,27 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <pinref part="C23" gate="G$1" pin="2"/>
 <pinref part="VSS40" gate="G$1" pin="VSS"/>
 </segment>
+<segment>
+<pinref part="SJ1" gate="G$1" pin="3"/>
+<pinref part="VSS41" gate="G$1" pin="VSS"/>
+<junction x="-7.62" y="114.3"/>
+</segment>
+<segment>
+<pinref part="SJ2" gate="G$1" pin="3"/>
+<pinref part="VSS42" gate="G$1" pin="VSS"/>
+<junction x="-10.16" y="152.4"/>
+</segment>
+<segment>
+<pinref part="GND_POINTS" gate="G$1" pin="2"/>
+<wire x1="50.8" y1="152.4" x2="40.64" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="40.64" y1="152.4" x2="40.64" y2="154.94" width="0.1524" layer="91"/>
+<pinref part="GND_POINTS" gate="G$1" pin="1"/>
+<wire x1="40.64" y1="154.94" x2="50.8" y2="154.94" width="0.1524" layer="91"/>
+<pinref part="VSS43" gate="G$1" pin="VSS"/>
+<junction x="40.64" y="152.4"/>
+<junction x="50.8" y="152.4"/>
+<junction x="50.8" y="154.94"/>
+</segment>
 </net>
 <net name="AVDD" class="2">
 <segment>
@@ -18191,7 +18355,7 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <label x="-68.58" y="58.42" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="EXT_SW1" class="0">
+<net name="DIS_RESET" class="0">
 <segment>
 <pinref part="U1" gate="A" pin="TMS/OA5IN-/AN27/CVD27/LVDIN/C5IN1-/RPB9/RB9"/>
 <wire x1="200.66" y1="43.18" x2="213.36" y2="43.18" width="0.1524" layer="91"/>
@@ -18708,20 +18872,22 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <segment>
 <pinref part="IC2" gate="G$1" pin="SHDN"/>
 <wire x1="-25.4" y1="134.62" x2="-20.32" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="-20.32" y1="134.62" x2="-20.32" y2="121.92" width="0.1524" layer="91"/>
-<pinref part="JP4" gate="G$1" pin="2"/>
-<wire x1="-20.32" y1="121.92" x2="-10.16" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="-20.32" y1="134.62" x2="-20.32" y2="119.38" width="0.1524" layer="91"/>
 <junction x="-25.4" y="134.62"/>
+<pinref part="SJ1" gate="G$1" pin="2"/>
+<wire x1="-20.32" y1="119.38" x2="-12.7" y2="119.38" width="0.1524" layer="91"/>
+<junction x="-12.7" y="119.38"/>
 </segment>
 </net>
 <net name="N$13" class="0">
 <segment>
 <pinref part="IC2" gate="G$1" pin="S"/>
 <wire x1="-25.4" y1="142.24" x2="-20.32" y2="142.24" width="0.1524" layer="91"/>
-<wire x1="-20.32" y1="142.24" x2="-20.32" y2="152.4" width="0.1524" layer="91"/>
-<pinref part="JP3" gate="G$1" pin="2"/>
-<wire x1="-20.32" y1="152.4" x2="-10.16" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="-20.32" y1="142.24" x2="-20.32" y2="157.48" width="0.1524" layer="91"/>
 <junction x="-25.4" y="142.24"/>
+<pinref part="SJ2" gate="G$1" pin="2"/>
+<wire x1="-20.32" y1="157.48" x2="-15.24" y2="157.48" width="0.1524" layer="91"/>
+<junction x="-15.24" y="157.48"/>
 </segment>
 </net>
 <net name="N$10" class="0">

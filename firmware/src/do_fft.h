@@ -25,11 +25,18 @@ extern "C" {
 	
 #define DO_FFT_DRIVER	"V1.002" 
 #define DO_FFT_ALIAS	"DO_FFT  "
+	
+#define fft_sample_rate	100.0
+#define fft_cutoff_freq	0.5
 		
 void do_fft(bool);
 void __delay_ms_fft(uint32_t);
 void __delay_us_fft(uint32_t);
 void do_fft_version(void);
+
+double do_fft_dc_x(double input);
+double do_fft_dc_y(double input);
+double do_fft_dc_z(double input);
 
 extern uint8_t inB[N_FFT];
 

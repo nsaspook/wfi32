@@ -5,6 +5,7 @@
 static const char *build_date = __DATE__, *build_time = __TIME__;
 
 uint8_t inB[N_FFT];
+uint8_t fft_buffer[N_FFT];
 double xr[N_FFT];
 double xi[N_FFT];
 
@@ -12,6 +13,8 @@ double wr[N_FFT / 2];
 double wi[N_FFT / 2];
 int16_t rev[N_FFT / 2];
 double ww[N_FFT];
+
+double fft_gain=FFT_GAIN;
 
 void initFFT(void) {
     int32_t i, m, t, k;

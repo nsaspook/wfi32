@@ -54,3 +54,39 @@ void do_fft_version(void)
 {
 	printf("\r--- %s Driver Version  %s %s %s ---\r\n", DO_FFT_ALIAS, DO_FFT_DRIVER, build_date, build_time);
 }
+
+/*
+ * DC bias removal for each channel
+ */
+double do_fft_dc_x(double input)
+{
+	static double state = 0;
+	static const double cutoff_frequency = fft_cutoff_freq;
+	static const double gain = cutoff_frequency / (2 * M_PI * fft_sample_rate);
+
+	double retval = input - state;
+	state += gain * retval;
+	return retval;
+}
+
+double do_fft_dc_y(double input)
+{
+	static double state = 0;
+	static const double cutoff_frequency = fft_cutoff_freq;
+	static const double gain = cutoff_frequency / (2 * M_PI * fft_sample_rate);
+
+	double retval = input - state;
+	state += gain * retval;
+	return retval;
+}
+
+double do_fft_dc_z(double input)
+{
+	static double state = 0;
+	static const double cutoff_frequency = fft_cutoff_freq;
+	static const double gain = cutoff_frequency / (2 * M_PI * fft_sample_rate);
+
+	double retval = input - state;
+	state += gain * retval;
+	return retval;
+}

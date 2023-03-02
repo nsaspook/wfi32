@@ -19,15 +19,19 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-#define IMU_DRIVER "V1.601" 
+#define IMU_DRIVER "V1.700" 
 #define IMU_ALIAS "IMU"
 
 #define IMU_ID_DELAY 400
 	/*
 	 * what IMU chip are we using
 	 */
-	//#define BMA490L
-#define SCA3300 // this includes the SCL3300 device
+	//#define SCA3300 // this includes the SCL3300 device
+#define BMA400 
+
+#ifdef BMA400 // Current sensor used
+#define BMA490L // this device is not longer used but functions are needed
+#endif
 
 #define IMU_DATA_RAW_LEN  30
 #define IMU_DATA_BUFFER_INDEX  1
@@ -63,6 +67,7 @@ extern "C" {
 		IMU_BMA490L = 0, // IMU chip model
 		IMU_SCA3300,
 		IMU_SCL3300,
+		IMU_BMA400,
 		IMU_NONE,
 		IMU_LAST,
 	};
@@ -79,11 +84,37 @@ extern "C" {
 		uint32_t log_timeout, rs, ss;
 		volatile bool online, run, update, features, crc_error, angles;
 		uint64_t host_serial_id;
+		bool locked, warn, down;
 		uint8_t rbuf[64], tbuf[64];
 		uint32_t rbuf32[2], tbuf32[2];
 		uint16_t serial1, serial2;
 		op_t op;
 	} imu_cmd_t;
+
+	enum hcmd_type { // IMU sensor chip commands from the host
+		CMD_UNLOCK = 0,
+		CMD_LOCK,
+		CMD_SAFE,
+		CMD_SPIN_DOWN,
+		CMD_WARN_ON,
+		CMD_WARN_OFF,
+		CMD_ACK,
+		CMD_IDLE,
+		CMD_ACTIVE,
+		CMD_LAST,
+	};
+
+	/*
+	 * IMU data structure for host messages
+	 */
+	typedef struct _imu_host_t {
+		uint16_t id;
+		uint64_t host_serial_id;
+		uint8_t cmd;
+		uint32_t cmd_data[4];
+		uint64_t secret;
+		uint8_t buf[64];
+	} imu_host_t;
 
 	struct sca3300_data {
 		const uint16_t id;
@@ -129,6 +160,7 @@ extern "C" {
 	/*
 	 * device earth gravity range calibration scalars
 	 */
+#define BMA400_ACCEL_MG_LSB_2G  0.000980665
 #define BMA490_ACCEL_MG_LSB_2G  0.000061035 ///< Macro for mg per LSB at +/- 2g sensitivity (1 LSB = 0.000061035mg) */
 #define BMA490_ACCEL_MG_LSB_4G  0.000122070 ///< Macro for mg per LSB at +/- 4g sensitivity (1 LSB = 0.000122070mg) */
 #define BMA490_ACCEL_MG_LSB_8G  0.000244141 ///< Macro for mg per LSB at +/- 8g sensitivity (1 LSB = 0.000244141mg) */
@@ -155,6 +187,8 @@ extern "C" {
 	double get_imu_scale(imu_cmd_t *);
 	void getAllData(sSensorData_t *, imu_cmd_t *);
 	const uint8_t * imu_string(imu_cmd_t *);
+
+	extern char imu_buffer[256];
 
 #ifdef __cplusplus
 }

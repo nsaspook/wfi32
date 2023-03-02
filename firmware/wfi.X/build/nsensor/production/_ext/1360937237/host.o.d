@@ -1,5 +1,5 @@
 build/nsensor/production/_ext/1360937237/host.o: ../src/host.c \
- ../src/config/nsensor/definitions.h \
+ ../src/host.h ../src/config/nsensor/definitions.h \
  ../src/config/nsensor/peripheral/canfd/plib_canfd1.h \
  ../src/config/nsensor/device.h \
  ../src/config/nsensor/toolchain_specifics.h \
@@ -8,9 +8,9 @@ build/nsensor/production/_ext/1360937237/host.o: ../src/host.c \
  ../src/config/nsensor/peripheral/gpio/plib_gpio.h \
  ../src/config/nsensor/peripheral/evic/plib_evic.h \
  ../src/config/nsensor/peripheral/dmac/plib_dmac.h \
- ../src/config/nsensor/peripheral/coretimer/plib_coretimer.h \
  ../src/config/nsensor/peripheral/tmr/plib_tmr6.h \
  ../src/config/nsensor/peripheral/tmr/plib_tmr_common.h \
+ ../src/config/nsensor/peripheral/coretimer/plib_coretimer.h \
  ../src/config/nsensor/peripheral/adchs/plib_adchs.h \
  ../src/config/nsensor/peripheral/adchs/plib_adchs_common.h \
  ../src/config/nsensor/peripheral/qei/plib_qei2.h \
@@ -32,7 +32,9 @@ build/nsensor/production/_ext/1360937237/host.o: ../src/host.c \
  ../src/../../firmware/lcd_drv/dogm-graphic.h ../src/timers.h \
  ../src/../../firmware/lcd_drv/OledDriver.h \
  ../src/../../firmware/lcd_drv/OledChar.h \
- ../src/../../firmware/lcd_drv/OledGrph.h ../src/host.h
+ ../src/../../firmware/lcd_drv/OledGrph.h ../src/cmd_scanner.h
+
+../src/host.h:
 
 ../src/config/nsensor/definitions.h:
 
@@ -52,11 +54,11 @@ build/nsensor/production/_ext/1360937237/host.o: ../src/host.c \
 
 ../src/config/nsensor/peripheral/dmac/plib_dmac.h:
 
-../src/config/nsensor/peripheral/coretimer/plib_coretimer.h:
-
 ../src/config/nsensor/peripheral/tmr/plib_tmr6.h:
 
 ../src/config/nsensor/peripheral/tmr/plib_tmr_common.h:
+
+../src/config/nsensor/peripheral/coretimer/plib_coretimer.h:
 
 ../src/config/nsensor/peripheral/adchs/plib_adchs.h:
 
@@ -108,4 +110,4 @@ build/nsensor/production/_ext/1360937237/host.o: ../src/host.c \
 
 ../src/../../firmware/lcd_drv/OledGrph.h:
 
-../src/host.h:
+../src/cmd_scanner.h:
