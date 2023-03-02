@@ -103,6 +103,9 @@ imu_cmd_t imu0 = {
 	.op.imu_getid = &bma490l_getid,
 	.op.imu_getdata = &bma490l_getdata,
 	.acc_range = range_2g,
+	.locked = true,
+	.warn = false,
+	.down = false,
 };
 #endif
 
@@ -129,6 +132,9 @@ imu_cmd_t imu0 = {
 	.acc_range = range_15gl,
 	.acc_range_scl = range_inc2,
 	.angles = false,
+	.locked = true,
+	.warn = false,
+	.down = false,
 };
 #endif
 
@@ -470,7 +476,6 @@ int main(void)
 			canfd_state(CAN_RECEIVE, accel.buffer);
 			host_ptr = (imu_host_t *) accel.buffer;
 			if (rx_msg_ready) {
-				static bool locked = true;
 				rx_msg_ready = false;
 				/*
 				 * decode received host message
@@ -482,16 +487,18 @@ int main(void)
 					break;
 				case CMD_SPIN_DOWN: // vibration action triggered
 					PWM1EN_Set();
-					if (!locked) {
+					if (!imu0.locked) {
 						PWM4EN_Set();
+						imu0.down = true;
+						imu0.locked = true; // auto relock
 					}
 					break;
 				case CMD_LOCK:
-					locked = true;
+					imu0.locked = true;
 					break;
 				case CMD_UNLOCK:
 					if (host_ptr->secret == HOST_SECRET) {
-						locked = false;
+						imu0.locked = false;
 						host_ptr->secret = 0; //clear
 						host_ptr->cmd = CMD_IDLE;
 					} else {
@@ -500,17 +507,21 @@ int main(void)
 					break;
 				case CMD_WARN_ON: // vibration warning triggered
 					PWM1EN_Set();
+					imu0.warn = true;
 					break;
 				case CMD_WARN_OFF:
 					PWM1EN_Clear();
+					imu0.warn = false;
 					break;
 				case CMD_SAFE:
 					PWM1EN_Clear();
 					PWM4EN_Clear();
+					imu0.warn = false;
+					imu0.down = false;
 					break;
 				default:
 					snprintf(hbuffer, max_buf, "Host CPU %llX", host_ptr->host_serial_id);
-					locked = true;
+					imu0.locked = true;
 					break;
 				}
 			}

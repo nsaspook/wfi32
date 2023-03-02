@@ -448,7 +448,7 @@ int host_sm(void)
 					imu->host_serial_id = host_cpu_serial_id;
 					snprintf(uart_buffer, max_buf, "%3d,%7X,%7X,%3d,%3d,%3d,%18llX,%s\r\n",
 						imu->id, imu->board_serial_id, rx_messageID, imu->device, imu->acc_range, imu->features, host_cpu_serial_id, IMU_ALIAS);
-					snprintf(buffer, max_buf, "ID:%3d,%7X,%7X", imu->id, imu->board_serial_id, rx_messageID);
+					snprintf(buffer, max_buf, "ID:%3d,%7X,%7X,%1i,%1i,%1i", imu->id, imu->board_serial_id, rx_messageID, imu->locked, imu->down, imu->warn);
 					eaDogM_WriteStringAtPos(15, 0, buffer);
 				}
 				if (*mtype == CAN_FFT_LO) {

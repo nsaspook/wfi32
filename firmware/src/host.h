@@ -22,7 +22,7 @@ extern "C" {
 #include "../../firmware/lcd_drv/lcd_drv.h"
 #include "cmd_scanner.h"
 
-#define HOST_DRIVER "V1.620" 
+#define HOST_DRIVER "V1.700" 
 #define HOST_ALIAS "HOST"
 
 #define HOST_MAGIC	0x1957

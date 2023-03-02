@@ -19,7 +19,7 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-#define IMU_DRIVER "V1.606" 
+#define IMU_DRIVER "V1.700" 
 #define IMU_ALIAS "IMU"
 
 #define IMU_ID_DELAY 400
@@ -84,6 +84,7 @@ extern "C" {
 		uint32_t log_timeout, rs, ss;
 		volatile bool online, run, update, features, crc_error, angles;
 		uint64_t host_serial_id;
+		bool locked, warn, down;
 		uint8_t rbuf[64], tbuf[64];
 		uint32_t rbuf32[2], tbuf32[2];
 		uint16_t serial1, serial2;
