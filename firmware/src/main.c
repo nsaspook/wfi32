@@ -494,6 +494,8 @@ int main(void)
 						locked = false;
 						host_ptr->secret = 0; //clear
 						host_ptr->cmd = CMD_IDLE;
+					} else {
+						snprintf(cmd_buffer, max_buf, "Unlock System Failed        ");
 					}
 					break;
 				case CMD_WARN_ON: // vibration warning triggered

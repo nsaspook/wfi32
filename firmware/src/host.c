@@ -535,22 +535,53 @@ double approxRollingAverage(double avg, double new_sample)
 	return avg;
 }
 
-void fh_show_link(void *a_data)
+void fh_show_idle(void *a_data)
 {
 	snprintf(cmd_buffer, max_buf, "Show Link Status            ");
 	host0.cmd = CMD_ACK;
+	host0.secret = 0;
 }
 
 void fh_stop_trigger(void *a_data)
 {
 	snprintf(cmd_buffer, max_buf, "Stop Trigger                ");
 	host0.cmd = CMD_SAFE;
+	host0.secret = 0;
 }
 
 void fh_start_trigger(void *a_data)
 {
 	snprintf(cmd_buffer, max_buf, "Start Trigger               ");
 	host0.cmd = CMD_SPIN_DOWN;
+	host0.secret = 0;
+}
+
+void fh_start_warn(void *a_data)
+{
+	snprintf(cmd_buffer, max_buf, "Start Warning               ");
+	host0.cmd = CMD_WARN_ON;
+	host0.secret = 0;
+}
+
+void fh_start_unlock(void *a_data)
+{
+	snprintf(cmd_buffer, max_buf, "Unlock System               ");
+	host0.cmd = CMD_UNLOCK;
+	host0.secret = HOST_SECRET;
+}
+
+void fh_start_lock(void *a_data)
+{
+	snprintf(cmd_buffer, max_buf, "Lock System                 ");
+	host0.cmd = CMD_LOCK;
+	host0.secret = 0;
+}
+
+void fh_start_safe(void *a_data)
+{
+	snprintf(cmd_buffer, max_buf, "Safe System                 ");
+	host0.cmd = CMD_SAFE;
+	host0.secret = 0;
 }
 
 /*
@@ -570,35 +601,20 @@ void fh_start_AT(void *a_data)
 	U1MODECLR = _U1MODE_ON_MASK;
 	// put the ETH module in config mode
 	ETH_CFG_Clear();
-	WaitMs(10);
+	WaitMs(20);
 	ETH_CFG_Set();
-	WaitMs(10); // wait until the module is back online
+	WaitMs(1500); // wait until the module is back online
 	U1MODESET = _U1MODE_ON_MASK;
 
 	// AT command mode
-	UART1_Write("+++", 3); // send data to the ETH module
-	WaitMs(15);
-	UART1_Write("a", 1); // send data to the ETH module
-	WaitMs(15);
+	UART1DmaWrite("+++", 3); // send data to the ETH module
+	WaitMs(20);
+	UART1DmaWrite("a", 1); // send data to the ETH module
+	WaitMs(20);
 	if (UART1_ReceiverIsReady()) { // check to see if we have a response
-//		while (UART1_ReceiverIsReady()) {
-//			UART1_Read(response_buffer, 0);
-//		};
-		//		UART1_ErrorGet(); // clear UART junk
-		WaitMs(10);
 		// send a Ethernet connection query
-		//		UART1DmaWrite("AT+WANN\r\r\n", 10); // send data to the ETH module
-		UART1_Write("AT+VER\r", 7); // send data to the ETH module
-		WaitMs(10);
-		UART1_Write("AT+WANN\r", 8);
-		// put the result in a buffer for the GLCD to display
-		WaitMs(30);
-		{
-			uint8_t i = 0;
-			while (UART1_ReceiverIsReady()) {
-				UART1_Read(&response_buffer[i], 0); // read serial response from module
-			}
-		}
+		UART1DmaWrite("AT+WANN\r\r\n", 10); // send data to the ETH module
+		UART1_Read(&response_buffer, 30); // read serial response from module
 	} else { // nothing
 		snprintf(response_buffer, max_buf, "AT command failed           ");
 		ETH_RESET_Clear();

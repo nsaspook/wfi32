@@ -2,10 +2,14 @@
 
 static t_cmd g_cmds[] = {
 
-	{ "L", fh_show_link},
+	{ "I", fh_show_idle},
 	{ "D", fh_stop_trigger},
 	{ "E", fh_start_trigger},
 	{ "A", fh_start_AT},
+	{ "W", fh_start_warn},
+	{ "U", fh_start_unlock},
+	{ "L", fh_start_lock},
+	{ "S", fh_start_safe},
 
 	// null command terminator
 	{ 0x00, 0x00}

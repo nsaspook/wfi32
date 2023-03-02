@@ -31,11 +31,14 @@ extern "C" {
 
 #define host_lcd_update	100
 
-#define debounce_delay 25000 // about 5 seconds
+
 
 #ifdef XPRJ_nsensor
 #define HOST_BOARD
 #define INT_BOARD
+#define debounce_delay 7000 // a few seconds in host mode
+#else
+#define debounce_delay 3000000 // a few seconds in sensor mode
 #endif
 
 #ifdef XPRJ_mcj
