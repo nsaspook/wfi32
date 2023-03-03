@@ -35,8 +35,8 @@ build/bma400/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/../../firmware/lcd_drv/OledGrph.h ../src/gfx.h \
  ../src/../../firmware/lcd_drv/OledGrph.h \
  ../src/config/bma400/peripheral/qei/plib_qei2.h ../src/pid.h \
- ../src/do_fft.h ../src/fft.h ../src/host.h ../src/cmd_scanner.h \
- ../src/remote_cmd.h
+ ../src/do_fft.h ../src/fft.h ../src/host.h ../src/remote_cmd.h \
+ ../src/cmd_scanner.h
 
 ../src/config/bma400/definitions.h:
 
@@ -136,6 +136,6 @@ build/bma400/production/_ext/1360937237/main.o: ../src/main.c \
 
 ../src/host.h:
 
-../src/cmd_scanner.h:
-
 ../src/remote_cmd.h:
+
+../src/cmd_scanner.h:

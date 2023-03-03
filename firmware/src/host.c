@@ -448,8 +448,8 @@ int host_sm(void)
 				if (*mtype == CAN_IMU_INFO) {
 					imu = (imu_cmd_t *) rx_message;
 					imu->host_serial_id = host_cpu_serial_id;
-					snprintf(uart_buffer, max_buf, "%3d,%7X,%7X,%3d,%3d,%3d,%18llX,%1i,%1i,%1i,%s\r\n",
-						imu->id, imu->board_serial_id, rx_messageID, imu->device, imu->acc_range, imu->features, host_cpu_serial_id, imu->locked, imu->down, imu->warn, IMU_ALIAS);
+					snprintf(uart_buffer, max_buf, "%3d,%7X,%7X,%3d,%3d,%3d,%18llX,%s\r\n",
+						imu->id, imu->board_serial_id, rx_messageID, imu->device, imu->acc_range, imu->features, host_cpu_serial_id, IMU_ALIAS);
 					snprintf(buffer, max_buf, "ID:%3d,%7X,%7X", imu->id, imu->board_serial_id, rx_messageID);
 					eaDogM_WriteStringAtPos(15, 0, buffer);
 				}

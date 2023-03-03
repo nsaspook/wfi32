@@ -20,7 +20,6 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imu.h"
 #include "../../firmware/lcd_drv/lcd_drv.h"
-#include "cmd_scanner.h"
 #include "remote_cmd.h"
 
 #define HOST_DRIVER "V1.700" 

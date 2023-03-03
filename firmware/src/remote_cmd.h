@@ -29,12 +29,14 @@ extern "C" {
 	void fh_start_lock(void *a_data);
 	void fh_start_unlock(void *a_data);
 	void fh_start_warn(void *a_data);
+	void remote_cmd_decode(imu_host_t *);
 
-	extern t_cli_ctx cli_ctx;
 	extern char response_buffer[RBUFFER_SIZE];
 	extern char cmd_buffer[FBUFFER_SIZE];
 	extern imu_host_t host0;
 	extern t_cmd g_cmds[];
+	extern char hbuffer[FBUFFER_SIZE];
+	extern imu_cmd_t imu0;
 
 #ifdef	__cplusplus
 }

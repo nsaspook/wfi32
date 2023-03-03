@@ -81,7 +81,6 @@
 #include "pid.h"
 #include "do_fft.h"
 #include "host.h"
-#include "cmd_scanner.h"
 
 #ifdef BMA490L
 /*
@@ -170,25 +169,17 @@ ypid = {
 };
 
 volatile SPid xpid, ypid, zpid;
-
 volatile uint16_t tickCount[TMR_COUNT];
-
-static char buffer[FBUFFER_SIZE], hbuffer[FBUFFER_SIZE];
+static char buffer[FBUFFER_SIZE];
 static uint32_t delay_freq = 0;
-
 static const char *build_date = __DATE__, *build_time = __TIME__;
 const uint32_t update_delay = 5;
 uint32_t board_serial_id = 0x35A, cpu_serial_id = 0x1957;
 
-extern CORETIMER_OBJECT coreTmr;
-extern t_cli_ctx cli_ctx;
-extern char response_buffer[RBUFFER_SIZE];
-extern char cmd_buffer[FBUFFER_SIZE];
 static void fh_start_AT_nodma(void *);
 
 #ifdef __32MK0512MCJ048__
 void qei_index_cb(QEI_STATUS, uintptr_t);
-
 void qei_index_cb(QEI_STATUS status, uintptr_t context)
 {
 
@@ -348,7 +339,7 @@ int main(void)
 		if (TP1_check()) {
 			LED_RED_On();
 			OledClearBuffer();
-			fh_start_AT_nodma(&cli_ctx);
+			fh_start_AT_nodma(0);
 			eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
 			eaDogM_WriteStringAtPos(7, 0, response_buffer);
 			OledUpdate();
@@ -483,53 +474,7 @@ int main(void)
 			host_ptr = (imu_host_t *) accel.buffer;
 			if (rx_msg_ready) {
 				rx_msg_ready = false;
-				/*
-				 * decode received host message
-				 */
-				snprintf(hbuffer, max_buf, "Host CPU %llX , Cmd %i", host_ptr->host_serial_id, host_ptr->cmd);
-				switch (host_ptr->cmd) {
-				case CMD_ACK:
-				case CMD_IDLE:
-					break;
-				case CMD_SPIN_DOWN: // vibration action triggered
-					PWM1EN_Set();
-					if (!imu0.locked) {
-						PWM4EN_Set();
-						imu0.down = true;
-						imu0.locked = true; // auto relock
-					}
-					break;
-				case CMD_LOCK:
-					imu0.locked = true;
-					break;
-				case CMD_UNLOCK:
-					if (host_ptr->secret == HOST_SECRET) {
-						imu0.locked = false;
-						host_ptr->secret = 0; //clear
-						host_ptr->cmd = CMD_IDLE;
-					} else {
-						snprintf(cmd_buffer, max_buf, "Unlock System Failed        ");
-					}
-					break;
-				case CMD_WARN_ON: // vibration warning triggered
-					PWM1EN_Set();
-					imu0.warn = true;
-					break;
-				case CMD_WARN_OFF:
-					PWM1EN_Clear();
-					imu0.warn = false;
-					break;
-				case CMD_SAFE:
-					PWM1EN_Clear();
-					PWM4EN_Clear();
-					imu0.warn = false;
-					imu0.down = false;
-					break;
-				default:
-					snprintf(hbuffer, max_buf, "Host CPU %llX", host_ptr->host_serial_id);
-					imu0.locked = true;
-					break;
-				}
+				remote_cmd_decode(host_ptr);
 			}
 			eaDogM_WriteStringAtPos(12, 0, hbuffer);
 
