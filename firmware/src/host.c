@@ -485,11 +485,11 @@ int host_sm(void)
 			break;
 		}
 
+		/*
+		 * not currently used
+		 * host to sensor messages happen at screen updates
+		 */
 		if (TimerDone(TMR_REPLY)) {
-			if (rec_message) {
-				//				rec_message = false;
-				//				send_from_host(HOST_MAGIC);
-			}
 			StartTimer(TMR_REPLY, host_xmit_wait);
 		}
 
@@ -497,10 +497,8 @@ int host_sm(void)
 			StartTimer(TMR_HOST, host_lcd_update);
 			if (rec_message) {
 				rec_message = false;
-				//				host0.cmd = CMD_IDLE;
 				send_from_host(HOST_MAGIC_ID); // Master broadcast ID
 			}
-			StartTimer(TMR_REPLY, host_xmit_wait);
 			eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
 			eaDogM_WriteStringAtPos(7, 0, response_buffer);
 			snprintf(buffer, max_buf, "Sending CAN-FD %8X %6i", messageID, tx_num);

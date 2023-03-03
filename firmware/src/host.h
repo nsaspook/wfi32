@@ -64,7 +64,7 @@ extern "C" {
 
 #define avg_samples	10000.0
 #define uart_wait	32300
-#define host_xmit_wait	100
+#define host_xmit_wait	10000
 
 	/*
 	 * CAN-FD vibration sensor host to network state machine

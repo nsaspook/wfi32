@@ -1,5 +1,6 @@
 /*
- * decode and execute the IP remote host message
+ * decode and send the IP remote host message
+ * to the sensor for execution
  */
 
 #include "remote_cmd.h"
@@ -71,7 +72,8 @@ void fh_start_safe(void *a_data)
 }
 
 /*
- * decode and execute the IP remote host message
+ * decode and execute the IP remote message
+ * from the sensor host
  */
 void remote_cmd_decode(imu_host_t * host_ptr)
 {
