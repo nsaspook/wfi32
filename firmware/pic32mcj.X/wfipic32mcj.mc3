@@ -9930,7 +9930,7 @@
       </entry>
       <entry>
          <file>../src/config/bma400/definitions.h</file>
-         <hash>241ab65719a222cffeec9f325f49915a54219945c718e8cf6e6a12ecdb729715</hash>
+         <hash>bf6a9e474ea603f0cf1e85ee51fca16d975575ec549e0a6ddd32fcb76b4f5780</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/gpio/plib_gpio.h</file>
@@ -10050,7 +10050,7 @@
       </entry>
       <entry>
          <file>../src/config/bma400/initialization.c</file>
-         <hash>929d8c04ea7d4b0a58e09547d796215526bccec7c7b412eed0aa917fa92b61ec</hash>
+         <hash>5a94e480c4cf6592957d29f4903f0de3e87c7defdd7df3d8e9ed00cb12ddbad3</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/qei/plib_qei2.h</file>

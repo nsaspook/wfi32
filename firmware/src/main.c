@@ -253,7 +253,6 @@ int main(void)
 	lcd_version();
 	init_lcd_drv(D_INIT);
 	OledClearBuffer();
-	eaDogM_WriteStringAtPos(9, 0, imu_buffer);
 	imu0.op.info_ptr();
 	eaDogM_WriteStringAtPos(10, 0, imu_buffer);
 	fft_version();

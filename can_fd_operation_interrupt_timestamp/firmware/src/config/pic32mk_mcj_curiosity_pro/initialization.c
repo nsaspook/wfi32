@@ -153,6 +153,8 @@
  ********************************************************************************/
 static void STDIO_BufferModeSet(void)
 {
+    /* MISRAC 2012 deviation block start */
+    /* MISRA C-2012 Rule 21.6 deviated 2 times in this file.  Deviation record ID -  H3_MISRAC_2012_R_21_6_DR_3 */
 
     /* Make stdin unbuffered */
     setbuf(stdin, NULL);
@@ -192,7 +194,7 @@ void SYS_Initialize ( void* data )
     __builtin_mtc0(16, 0,(__builtin_mfc0(16, 0) | 0x3));
 
     /* Configure Wait States and Prefetch */
-    CHECONbits.PFMWS = 2;
+    CHECONbits.PFMWS = 1;
     CHECONbits.PREFEN = 1;
 
 
@@ -201,13 +203,7 @@ void SYS_Initialize ( void* data )
 
 	UART1_Initialize();
 
-	UART2_Initialize();
-
     CAN1_Initialize();
-
-    DMAC_Initialize();
-
-	SPI2_Initialize();
 
 
 
