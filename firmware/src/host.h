@@ -31,7 +31,7 @@ extern "C" {
 
 #define host_lcd_update	100
 
-#define USR_TCP
+//#define USR_TCP
 
 #ifdef XPRJ_nsensor
 #define HOST_BOARD
