@@ -32,8 +32,8 @@ build/nsensor/production/_ext/1360937237/host.o: ../src/host.c \
  ../src/../../firmware/lcd_drv/dogm-graphic.h ../src/timers.h \
  ../src/../../firmware/lcd_drv/OledDriver.h \
  ../src/../../firmware/lcd_drv/OledChar.h \
- ../src/../../firmware/lcd_drv/OledGrph.h ../src/cmd_scanner.h \
- ../src/remote_cmd.h
+ ../src/../../firmware/lcd_drv/OledGrph.h ../src/remote_cmd.h \
+ ../src/cmd_scanner.h
 
 ../src/host.h:
 
@@ -111,6 +111,6 @@ build/nsensor/production/_ext/1360937237/host.o: ../src/host.c \
 
 ../src/../../firmware/lcd_drv/OledGrph.h:
 
-../src/cmd_scanner.h:
-
 ../src/remote_cmd.h:
+
+../src/cmd_scanner.h:

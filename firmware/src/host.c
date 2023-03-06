@@ -552,7 +552,7 @@ void fh_start_AT(void *a_data)
 	U1MODECLR = _U1MODE_ON_MASK;
 	// put the ETH module in config mode
 	ETH_CFG_Clear();
-	WaitMs(20);
+	WaitMs(30);
 	ETH_CFG_Set();
 	WaitMs(1500); // wait until the module is back online
 	U1MODESET = _U1MODE_ON_MASK;
@@ -564,7 +564,11 @@ void fh_start_AT(void *a_data)
 	WaitMs(20);
 	if (UART1_ReceiverIsReady()) { // check to see if we have a response
 		// send a Ethernet connection query
+#ifdef USR_TCP
+		UART1DmaWrite("AT+WANN\r", 8); // send data to the ETH module
+#else
 		UART1DmaWrite("AT+WANN\r\r\n", 10); // send data to the ETH module
+#endif
 		UART1_Read(&response_buffer, 30); // read serial response from module
 	} else { // nothing
 		snprintf(response_buffer, max_buf, "AT command failed           ");
