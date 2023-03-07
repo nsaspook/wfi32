@@ -19,19 +19,10 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-#define IMU_DRIVER "V1.700" 
+#define IMU_DRIVER "V1.701" 
 #define IMU_ALIAS "IMU"
 
 #define IMU_ID_DELAY 400
-	/*
-	 * what IMU chip are we using
-	 */
-	//#define SCA3300 // this includes the SCL3300 device
-#define BMA400 
-
-#ifdef BMA400 // Current sensor used
-#define BMA490L // this device is not longer used but functions are needed
-#endif
 
 #define IMU_DATA_RAW_LEN  30
 #define IMU_DATA_BUFFER_INDEX  1

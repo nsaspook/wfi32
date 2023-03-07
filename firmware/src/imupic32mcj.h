@@ -17,19 +17,42 @@ extern "C" {
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include <math.h>
 #include "definitions.h"                // SYS function prototypes
-#include "imupic32mcj.h"
-	
+
+	/*
+	 * Board hardware configurations
+	 */
+
+	/*
+	 * what type of Ethernet TCP adapter are we using
+	 */
+#define USR_TCP
+
+	/*
+	 * what IMU chip are we using
+	 */
+	//#define SCA3300 // this includes the SCL3300 device, SPI2 32-bit transfers
+#define BMA400 // Bosch devices, SPI2 8-bit transfers
+
+#ifdef SCA3300
+#define	SPI2_32BIT
+#endif
+
+
+#ifdef BMA400 // vibration sensor used
+#define BMA490L // this device is not longer used but functions are needed
+#endif
+
 #define IMU_CS 0
 #define LCD_CS 0
 
 #define BMA_LOG_TIMEOUT 150
 #define SCA_LOG_TIMEOUT 8 // 3
 
-//#define SHOW_LOG
+	//#define SHOW_LOG
 #define SHOW_LCD
 #define SHOW_VG
 #define FFT_MIX false
-	
+
 #define FBUFFER_SIZE	256
 #define max_buf		FBUFFER_SIZE-1
 #define RBUFFER_SIZE	FBUFFER_SIZE
@@ -43,9 +66,9 @@ extern "C" {
 #define LED_RED_Off() LED_RED_Clear()
 #endif 
 
-    void delay_us(uint32_t);
+	void delay_us(uint32_t);
 
-    extern uint32_t board_serial_id, cpu_serial_id;
+	extern uint32_t board_serial_id, cpu_serial_id;
 
 #ifdef __cplusplus
 }

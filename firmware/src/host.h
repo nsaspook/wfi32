@@ -22,7 +22,7 @@ extern "C" {
 #include "../../firmware/lcd_drv/lcd_drv.h"
 #include "remote_cmd.h"
 
-#define HOST_DRIVER "V1.700" 
+#define HOST_DRIVER "V1.701" 
 #define HOST_ALIAS "HOST"
 
 #define HOST_MAGIC	0x1957
@@ -30,8 +30,6 @@ extern "C" {
 #define HOST_SECRET	0xBD6FDC7BC925CD3E // 64-bit random number for unlocking machine control functions
 
 #define host_lcd_update	100
-
-//#define USR_TCP
 
 #ifdef XPRJ_nsensor
 #define HOST_BOARD
