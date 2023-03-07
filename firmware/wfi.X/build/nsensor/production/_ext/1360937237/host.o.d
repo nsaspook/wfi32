@@ -1,5 +1,5 @@
 build/nsensor/production/_ext/1360937237/host.o: ../src/host.c \
- ../src/host.h ../src/config/nsensor/definitions.h \
+ ../src/imupic32mcj.h ../src/config/nsensor/definitions.h \
  ../src/config/nsensor/peripheral/canfd/plib_canfd1.h \
  ../src/config/nsensor/device.h \
  ../src/config/nsensor/toolchain_specifics.h \
@@ -25,7 +25,7 @@ build/nsensor/production/_ext/1360937237/host.o: ../src/host.c \
  ../src/config/nsensor/peripheral/spi/spi_master/plib_spi1_master.h \
  ../src/config/nsensor/peripheral/rtcc/plib_rtcc.h \
  ../src/config/nsensor/peripheral/tmr/plib_tmr9.h ../src/imu.h \
- ../src/imupic32mcj.h ../src/../../firmware/lcd_drv/lcd_drv.h \
+ ../src/timers.h ../src/host.h ../src/../../firmware/lcd_drv/lcd_drv.h \
  ../src/../../firmware/lcd_drv/display_type.h \
  ../src/../../firmware/lcd_drv/eadog.h \
  ../src/../../firmware/lcd_drv/lcd_drv.h \
@@ -35,7 +35,7 @@ build/nsensor/production/_ext/1360937237/host.o: ../src/host.c \
  ../src/../../firmware/lcd_drv/OledGrph.h ../src/remote_cmd.h \
  ../src/cmd_scanner.h
 
-../src/host.h:
+../src/imupic32mcj.h:
 
 ../src/config/nsensor/definitions.h:
 
@@ -91,7 +91,9 @@ build/nsensor/production/_ext/1360937237/host.o: ../src/host.c \
 
 ../src/imu.h:
 
-../src/imupic32mcj.h:
+../src/timers.h:
+
+../src/host.h:
 
 ../src/../../firmware/lcd_drv/lcd_drv.h:
 

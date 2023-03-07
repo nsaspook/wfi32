@@ -12,7 +12,6 @@ static uint8_t R_DATA_CMD[BMA490_DATA_BUFFER_LEN] = {BMA490_DATA_INDEX | RBIT, B
 static bool imu_cs(imu_cmd_t *);
 static void imu_cs_cb(uintptr_t);
 static void imu_cs_disable(imu_cmd_t *);
-static void init_imu_int(const imu_cmd_t * imu);
 
 void imu_set_reg(imu_cmd_t *, const uint8_t, const uint8_t, const bool);
 void imu_get_reg(imu_cmd_t *, const uint8_t, const bool);
@@ -311,6 +310,7 @@ void bma490l_set_spimode(void * imup)
 	imu_cmd_t * imu = imup;
 	static bool first = true;
 
+	set_imu_bits(); // set 8 or 32-bit SPI transfers
 	LED_GREEN_Off();
 	LED_RED_On();
 
@@ -461,17 +461,4 @@ void bma490_version(void)
 	snprintf(imu_buffer, max_buf, " %s Driver Version  %s %s %s ", BMA490_ALIAS, BMA490_DRIVER, build_date, build_time);
 }
 #endif
-
-/*
- * setup external interrupt #2 for IMU BMA4x0 data update interrupt trigger output
- */
-void init_imu_int(const imu_cmd_t * imu)
-{
-	if (imu) {
-		INTCONCLR = _INTCON_INT2EP_MASK; //External interrupt on falling edge
-		IFS0CLR = _IFS0_INT2IF_MASK; // Clear the external interrupt flag
-		EVIC_ExternalInterruptCallbackRegister(EXTERNAL_INT_2, update_imu_int1, (uintptr_t) imu);
-		EVIC_ExternalInterruptEnable(EXTERNAL_INT_2);
-	}
-}
 

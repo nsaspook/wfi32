@@ -24,7 +24,8 @@ build/nsensor/production/_ext/1360937237/pid.o: ../src/pid.c ../src/pid.h \
  ../src/config/nsensor/peripheral/spi/spi_master/plib_spi_master_common.h \
  ../src/config/nsensor/peripheral/spi/spi_master/plib_spi1_master.h \
  ../src/config/nsensor/peripheral/rtcc/plib_rtcc.h \
- ../src/config/nsensor/peripheral/tmr/plib_tmr9.h
+ ../src/config/nsensor/peripheral/tmr/plib_tmr9.h ../src/imu.h \
+ ../src/timers.h
 
 ../src/pid.h:
 
@@ -81,3 +82,7 @@ build/nsensor/production/_ext/1360937237/pid.o: ../src/pid.c ../src/pid.h \
 ../src/config/nsensor/peripheral/rtcc/plib_rtcc.h:
 
 ../src/config/nsensor/peripheral/tmr/plib_tmr9.h:
+
+../src/imu.h:
+
+../src/timers.h:

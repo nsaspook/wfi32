@@ -25,8 +25,8 @@ build/nsensor/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/config/nsensor/peripheral/spi/spi_master/plib_spi1_master.h \
  ../src/config/nsensor/peripheral/rtcc/plib_rtcc.h \
  ../src/config/nsensor/peripheral/tmr/plib_tmr9.h ../src/imupic32mcj.h \
- ../src/bma490l.h ../src/bma490l_reg.h ../src/imu.h ../src/sca3300.h \
- ../src/timers.h ../src/canfd.h ../src/../../firmware/lcd_drv/lcd_drv.h \
+ ../src/imu.h ../src/timers.h ../src/bma490l.h ../src/bma490l_reg.h \
+ ../src/sca3300.h ../src/canfd.h ../src/../../firmware/lcd_drv/lcd_drv.h \
  ../src/../../firmware/lcd_drv/display_type.h \
  ../src/../../firmware/lcd_drv/eadog.h \
  ../src/../../firmware/lcd_drv/lcd_drv.h \
@@ -91,15 +91,15 @@ build/nsensor/production/_ext/1360937237/main.o: ../src/main.c \
 
 ../src/imupic32mcj.h:
 
+../src/imu.h:
+
+../src/timers.h:
+
 ../src/bma490l.h:
 
 ../src/bma490l_reg.h:
 
-../src/imu.h:
-
 ../src/sca3300.h:
-
-../src/timers.h:
 
 ../src/canfd.h:
 

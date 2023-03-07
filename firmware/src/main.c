@@ -171,48 +171,11 @@ ypid = {
 volatile SPid xpid, ypid, zpid;
 volatile uint16_t tickCount[TMR_COUNT];
 static char buffer[FBUFFER_SIZE];
-static uint32_t delay_freq = 0;
 static const char *build_date = __DATE__, *build_time = __TIME__;
 const uint32_t update_delay = 5;
 uint32_t board_serial_id = 0x35A, cpu_serial_id = 0x1957;
 
 static void fh_start_AT_nodma(void *);
-static uint8_t set_imu_bits(void);
-
-#ifdef __32MK0512MCJ048__
-void qei_index_cb(QEI_STATUS, uintptr_t);
-
-void qei_index_cb(QEI_STATUS status, uintptr_t context)
-{
-
-}
-#endif
-
-/*
- * configure the SPI port bit size for data transfers
- */
-static uint8_t set_imu_bits(void)
-{
-	uint8_t imu_bits = 8;
-
-#define SPI2_CON_MSTEN                      (1 << _SPI2CON_MSTEN_POSITION)
-#define SPI2_CON_CKP                        (0 << _SPI2CON_CKP_POSITION)
-#define SPI2_CON_CKE                        (1 << _SPI2CON_CKE_POSITION)
-#define SPI2_CON_ENHBUF                     (1 << _SPI2CON_ENHBUF_POSITION)
-#define SPI2_CON_MCLKSEL                    (1 << _SPI2CON_MCLKSEL_POSITION)
-#define SPI2_CON_MSSEN                      (0 << _SPI2CON_MSSEN_POSITION)
-#define SPI2_CON_SMP                        (0 << _SPI2CON_SMP_POSITION)
-	
-#ifdef SPI2_32BIT
-	imu_bits = 32;
-#define SPI2_CON_MODE_32_MODE_16            (3 << _SPI2CON_MODE16_POSITION)
-#else
-#define SPI2_CON_MODE_32_MODE_16            (0 << _SPI2CON_MODE16_POSITION)
-#endif
- SPI2CONSET = (SPI2_CON_MSSEN | SPI2_CON_MCLKSEL | SPI2_CON_ENHBUF | SPI2_CON_MODE_32_MODE_16 | SPI2_CON_CKE | SPI2_CON_CKP | SPI2_CON_MSTEN | SPI2_CON_SMP);
-
-	return imu_bits;
-}
 
 // *****************************************************************************
 // *****************************************************************************
@@ -238,38 +201,17 @@ int main(void)
 #ifdef XPRJ_mcj
 	//	setup the reset and command pins for the Ethernet adapter
 #endif
-    
-set_imu_bits(); // set 8 or 32-bit SPI transfers
 
 #ifdef HOST_BOARD
 	host_sm();
 #endif
 
-	/* Start system tick timer */
-	CORETIMER_Start();
-	delay_freq = CORETIMER_FrequencyGet() / 1000000;
 	/*
-	 * software timers interrupt setup
-	 * using tickCount
+	 * start core-timer for delay_us
+	 * ms tick-timer
+	 * set cpu serial ID numbers
 	 */
-	TMR6_CallbackRegister(timer_ms_tick, 0);
-	TMR6_Start(); // software timers counter
-
-#ifdef __32MK0512MCJ048__
-	TMR9_Start(); // IMU time-stamp counter
-	QEI2_CallbackRegister(qei_index_cb, 0);
-	QEI2_Start();
-#endif
-#ifdef __32MZ1025W104132__
-	TMR2_Start(); // IMU time-stamp counter
-#endif
-
-#ifdef __32MZ1025W104132__
-	cpu_serial_id = USERID & 0x1fffffff; // get CPU device 32-bit serial number and convert that to 29 - bit ID for CAN - FD
-#else
-	cpu_serial_id = DEVSN0 & 0x1fffffff; // get CPU device 32-bit serial number and convert that to 29 - bit ID for CAN - FD
-#endif
-	//	printf("\r\nPIC32 %s Controller %s %s %s %X ---\r\n", IMU_ALIAS, IMU_DRIVER, build_date, build_time, cpu_serial_id);
+	start_tick();
 
 	/*
 	 * print the driver version
@@ -547,41 +489,6 @@ set_imu_bits(); // set 8 or 32-bit SPI transfers
 	/* Execution should not come here during normal operation */
 
 	return( EXIT_FAILURE);
-}
-
-/*
- * user callback function per BMA4x0 data interrupt
- * update pacing flag from IMU ISR
- */
-void update_imu_int1(uint32_t a, uintptr_t context)
-{
-	imu_cmd_t * imu = (imu_cmd_t *) context;
-	static int8_t i = 0;
-	static uint8_t tog = 0;
-
-	if (imu) {
-		if (!i++) {
-
-		}
-		if (++tog >= 0) {
-			imu->update = true;
-			tog = 0;
-			LED_GREEN_Toggle();
-		}
-	}
-}
-
-/*
- * microsecond busy wait delay, 90 seconds MAX
- * Careful, uses core timer
- */
-void delay_us(uint32_t us)
-{
-	// Convert microseconds us into how many clock ticks it will take
-	us *= delay_freq; // Core Timer updates every 2 ticks
-	_CP0_SET_COUNT(0); // Set Core Timer count to 0
-	while (us > _CP0_GET_COUNT()) {
-	}; // Wait until Core Timer count reaches the number we calculated earlier
 }
 
 /*

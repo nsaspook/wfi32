@@ -76,11 +76,6 @@ extern "C" {
 	bool imu_getis(imu_cmd_t *);
 
 	/*
-	 * user callback function per BMA490L data interrupt
-	 */
-	void update_imu_int1(uint32_t, uintptr_t);
-
-	/*
 	 * BMA490L chip instance
 	 */
 	extern imu_cmd_t imu0;

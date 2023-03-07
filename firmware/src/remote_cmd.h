@@ -11,6 +11,7 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
+#include "imupic32mcj.h"
 #include "cmd_scanner.h"
 #include "host.h"
 

@@ -239,6 +239,7 @@ void sca3300_set_spimode(void * imup)
 	imu_cmd_t * imu = imup;
 	enum accel_g accel_range = SCA3300_MODE1;
 
+	set_imu_bits(); // set 8 or 32-bit SPI transfers
 	LED_GREEN_Off();
 	LED_RED_On();
 	if (imu) {

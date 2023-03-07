@@ -19,6 +19,7 @@ extern "C" {
 #include <proc/p32mk0512mcj048.h>
 #include "definitions.h"                // SYS function prototypes
 #include "imu.h"
+#include "imupic32mcj.h"
 #include "../../firmware/lcd_drv/lcd_drv.h"
 #include "remote_cmd.h"
 

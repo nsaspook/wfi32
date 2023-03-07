@@ -1,3 +1,4 @@
+#include "imupic32mcj.h"
 #include "host.h"
 
 /*
@@ -219,10 +220,6 @@ void UART1DmaWrite(char * buffer, uint32_t len)
 }
 #endif
 
-#ifdef __32MK0512MCJ048__
-void qei_index_cb(QEI_STATUS, uintptr_t);
-#endif
-
 /*
  * CAN-FD vibration sensor host to network state machine
  */
@@ -234,31 +231,17 @@ int host_sm(void)
 	bool msg_ready = false;
 	uint64_t * hcid = (uint64_t *) & DEVSN0; // set pointer to 64-bit cpu serial number
 	uint32_t wait_count = 0, recv_count = 0, msg_error = 0;
-	;
 
-	/* Initialize all modules */
-	//	SYS_Initialize(NULL);
 	ETH_RESET_Clear();
 
-	/* Start system tick timer */
-	CORETIMER_Start();
-	/*
-	 * software timers interrupt setup
-	 * using tickCount
+	/* 
+	 * Start system tick timer 
+	 * ms tick-timer
+	 * set cpu serial ID numbers
 	 */
-	TMR6_CallbackRegister(timer_ms_tick, 0);
-	TMR6_Start(); // software timers counter
+	start_tick();
 
 	host_cpu_serial_id = *hcid; // get the CPU device 64-bit serial number and use that as a HOST ID
-
-#ifdef __32MK0512MCJ048__
-	TMR9_Start(); // IMU time-stamp counter
-	QEI2_CallbackRegister(qei_index_cb, 0);
-	QEI2_Start();
-#endif
-#ifdef __32MZ1025W104132__
-	TMR2_Start(); // IMU time-stamp counter
-#endif
 
 #ifdef USE_SERIAL_DMA
 	DMAC_ChannelCallbackRegister(DMAC_CHANNEL_7, UART1DmaChannelHandler_State, 0); // end of UART buffer transfer interrupt function usart1
@@ -296,15 +279,6 @@ int host_sm(void)
 
 	StartTimer(TMR_HOST, host_lcd_update);
 	StartTimer(TMR_REPLY, host_xmit_wait);
-
-	/* Place CAN module in configuration mode */
-	//	CFD1CONbits.REQOP = 4;
-	//	while (CFD1CONbits.OPMOD != 4);
-	//	CFD1FIFOCON1bits.TXAT = 1; // three retries
-	//	CFD1CONbits.RTXAT = 1; // limited retries
-	/* Place the CAN module in Normal mode */
-	//	CFD1CONbits.REQOP = 0;
-	//	while (CFD1CONbits.OPMOD != 0);
 
 	while (true) {
 

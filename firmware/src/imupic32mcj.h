@@ -17,15 +17,19 @@ extern "C" {
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include <math.h>
 #include "definitions.h"                // SYS function prototypes
+#include "imu.h"
+#include "timers.h"
 
 	/*
 	 * Board hardware configurations
+	 * and hardware specific functions
 	 */
 
 	/*
 	 * what type of Ethernet TCP adapter are we using
 	 */
-#define USR_TCP
+	//#define USR_TCP
+#define WAVESHARE
 
 	/*
 	 * what IMU chip are we using
@@ -66,7 +70,25 @@ extern "C" {
 #define LED_RED_Off() LED_RED_Clear()
 #endif 
 
+	/*
+	 * setup external interrupt #2 for IMU BMA4x0 data update interrupt trigger output
+	 */
+	void init_imu_int(const imu_cmd_t *);
+	/*
+	 * user callback function per BMA490L data interrupt
+	 */
+	void update_imu_int1(uint32_t, uintptr_t);
 	void delay_us(uint32_t);
+	/*
+	 * start core-timer
+	 * ms tick-timer
+	 * set cpu serial ID numbers
+	 */
+	void start_tick(void);
+	/*
+	 * configure the SPI port bit size for data transfers
+	 */
+	uint8_t set_imu_bits(void);
 
 	extern uint32_t board_serial_id, cpu_serial_id;
 

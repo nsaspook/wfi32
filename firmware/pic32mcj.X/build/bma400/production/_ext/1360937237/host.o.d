@@ -1,5 +1,5 @@
 build/bma400/production/_ext/1360937237/host.o: ../src/host.c \
- ../src/host.h ../src/config/bma400/definitions.h \
+ ../src/imupic32mcj.h ../src/config/bma400/definitions.h \
  ../src/config/bma400/peripheral/canfd/plib_canfd1.h \
  ../src/config/bma400/device.h ../src/config/bma400/toolchain_specifics.h \
  ../src/config/bma400/peripheral/canfd/plib_canfd_common.h \
@@ -24,7 +24,7 @@ build/bma400/production/_ext/1360937237/host.o: ../src/host.c \
  ../src/config/bma400/peripheral/spi/spi_master/plib_spi1_master.h \
  ../src/config/bma400/peripheral/rtcc/plib_rtcc.h \
  ../src/config/bma400/peripheral/tmr/plib_tmr9.h ../src/imu.h \
- ../src/imupic32mcj.h ../src/../../firmware/lcd_drv/lcd_drv.h \
+ ../src/timers.h ../src/host.h ../src/../../firmware/lcd_drv/lcd_drv.h \
  ../src/../../firmware/lcd_drv/display_type.h \
  ../src/../../firmware/lcd_drv/eadog.h \
  ../src/../../firmware/lcd_drv/lcd_drv.h \
@@ -34,7 +34,7 @@ build/bma400/production/_ext/1360937237/host.o: ../src/host.c \
  ../src/../../firmware/lcd_drv/OledGrph.h ../src/remote_cmd.h \
  ../src/cmd_scanner.h ../src/config/bma400/peripheral/dmac/plib_dmac.h
 
-../src/host.h:
+../src/imupic32mcj.h:
 
 ../src/config/bma400/definitions.h:
 
@@ -90,7 +90,9 @@ build/bma400/production/_ext/1360937237/host.o: ../src/host.c \
 
 ../src/imu.h:
 
-../src/imupic32mcj.h:
+../src/timers.h:
+
+../src/host.h:
 
 ../src/../../firmware/lcd_drv/lcd_drv.h:
 

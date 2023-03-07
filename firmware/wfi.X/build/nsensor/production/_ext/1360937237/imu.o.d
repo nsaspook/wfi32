@@ -1,5 +1,5 @@
-build/nsensor/production/_ext/1360937237/imu.o: ../src/imu.c ../src/imu.h \
- ../src/config/nsensor/definitions.h \
+build/nsensor/production/_ext/1360937237/imu.o: ../src/imu.c \
+ ../src/imupic32mcj.h ../src/config/nsensor/definitions.h \
  ../src/config/nsensor/peripheral/canfd/plib_canfd1.h \
  ../src/config/nsensor/device.h \
  ../src/config/nsensor/toolchain_specifics.h \
@@ -24,9 +24,10 @@ build/nsensor/production/_ext/1360937237/imu.o: ../src/imu.c ../src/imu.h \
  ../src/config/nsensor/peripheral/spi/spi_master/plib_spi_master_common.h \
  ../src/config/nsensor/peripheral/spi/spi_master/plib_spi1_master.h \
  ../src/config/nsensor/peripheral/rtcc/plib_rtcc.h \
- ../src/config/nsensor/peripheral/tmr/plib_tmr9.h ../src/imupic32mcj.h
+ ../src/config/nsensor/peripheral/tmr/plib_tmr9.h ../src/imu.h \
+ ../src/timers.h
 
-../src/imu.h:
+../src/imupic32mcj.h:
 
 ../src/config/nsensor/definitions.h:
 
@@ -80,4 +81,6 @@ build/nsensor/production/_ext/1360937237/imu.o: ../src/imu.c ../src/imu.h \
 
 ../src/config/nsensor/peripheral/tmr/plib_tmr9.h:
 
-../src/imupic32mcj.h:
+../src/imu.h:
+
+../src/timers.h:
