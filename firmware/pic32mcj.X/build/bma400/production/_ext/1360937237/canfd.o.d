@@ -1,5 +1,5 @@
 build/bma400/production/_ext/1360937237/canfd.o: ../src/canfd.c \
- ../src/canfd.h ../src/config/bma400/definitions.h \
+ ../src/canfd.h ../src/imupic32mcj.h ../src/config/bma400/definitions.h \
  ../src/config/bma400/peripheral/canfd/plib_canfd1.h \
  ../src/config/bma400/device.h ../src/config/bma400/toolchain_specifics.h \
  ../src/config/bma400/peripheral/canfd/plib_canfd_common.h \
@@ -23,10 +23,12 @@ build/bma400/production/_ext/1360937237/canfd.o: ../src/canfd.c \
  ../src/config/bma400/peripheral/spi/spi_master/plib_spi_master_common.h \
  ../src/config/bma400/peripheral/spi/spi_master/plib_spi1_master.h \
  ../src/config/bma400/peripheral/rtcc/plib_rtcc.h \
- ../src/config/bma400/peripheral/tmr/plib_tmr9.h ../src/imupic32mcj.h \
- ../src/imu.h ../src/timers.h
+ ../src/config/bma400/peripheral/tmr/plib_tmr9.h ../src/imu.h \
+ ../src/timers.h
 
 ../src/canfd.h:
+
+../src/imupic32mcj.h:
 
 ../src/config/bma400/definitions.h:
 
@@ -79,8 +81,6 @@ build/bma400/production/_ext/1360937237/canfd.o: ../src/canfd.c \
 ../src/config/bma400/peripheral/rtcc/plib_rtcc.h:
 
 ../src/config/bma400/peripheral/tmr/plib_tmr9.h:
-
-../src/imupic32mcj.h:
 
 ../src/imu.h:
 

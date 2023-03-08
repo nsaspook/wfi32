@@ -119,3 +119,32 @@ void start_tick(void)
 	cpu_serial_id = DEVSN0 & 0x1fffffff; // get CPU device 32-bit serial number and convert that to 29 - bit ID for CAN - FD
 #endif
 }
+
+void canfd_set_filter(uint32_t fil0, uint32_t fil1)
+{
+	/* Place CAN module in configuration mode */
+	CFD1CONbits.REQOP = 4;
+	while (CFD1CONbits.OPMOD != 4);
+	// disable filters for configuration
+	CFD1FLTCON0bits.FLTEN0 = 0;
+	CFD1FLTCON0bits.FLTEN1 = 0;
+	CFD1TDCbits.TDCMOD = 2;
+	CFD1FLTCON0bits.F0BP = 2; // message stored in FIFO2
+	CFD1FLTCON0bits.F1BP = 2; // message stored in FIFO2
+	// extended identifier address
+	CFD1FLTOBJ0bits.EXIDE = 1;
+	CFD1FLTOBJ1bits.EXIDE = 1;
+	// match mask to address type
+	CFD1MASK0bits.MIDE = 1;
+	CFD1MASK1bits.MIDE = 1;
+	CAN1_MessageAcceptanceFilterMaskSet(0, (~fil0) & 0x1fffffff); // generate mask from ID
+	CAN1_MessageAcceptanceFilterMaskSet(1, (~fil1) & 0x1fffffff);
+	CAN1_MessageAcceptanceFilterSet(0, fil0);
+	CAN1_MessageAcceptanceFilterSet(1, fil1);
+	// enable filters after configuration
+	CFD1FLTCON0bits.FLTEN0 = 1;
+	CFD1FLTCON0bits.FLTEN1 = 1;
+	/* Place the CAN module in Normal mode */
+	CFD1CONbits.REQOP = 0;
+	while (CFD1CONbits.OPMOD != 0);
+}

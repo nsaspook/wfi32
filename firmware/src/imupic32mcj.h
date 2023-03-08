@@ -89,6 +89,7 @@ extern "C" {
 	 * configure the SPI port bit size for data transfers
 	 */
 	uint8_t set_imu_bits(void);
+	void canfd_set_filter(uint32_t, uint32_t);
 
 	extern uint32_t board_serial_id, cpu_serial_id;
 

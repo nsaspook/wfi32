@@ -16,10 +16,9 @@ extern "C" {
 #include <stdbool.h>                    // Defines true
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include <math.h>
-#include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
 
-#define IMU_DRIVER "V1.702" 
+#define IMU_DRIVER "V1.705" 
 #define IMU_ALIAS "IMU"
 
 #define IMU_ID_DELAY 400

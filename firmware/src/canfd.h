@@ -16,9 +16,7 @@ extern "C" {
 #include <stdbool.h>                    // Defines true
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include <stdarg.h>
-#include "definitions.h"                // SYS function prototypes
 #include "imupic32mcj.h"
-#include <proc/p32mk0512mcj048.h>
 
 	/* Application's state machine enum */
 	typedef enum {
@@ -59,14 +57,11 @@ extern "C" {
 
 	//#define DEBUG_FILTER
 
-	/* set format attribute for the vararg function */
-	void PrintFormattedData(const char * format, ...) __attribute__((format(printf, 1, 2)));
 	void APP_CAN_Callback(uintptr_t);
 	int canfd_state(CANFD_STATES, void *);
 	uint32_t canfd_num_tx(void);
 	uint32_t canfd_num_rx(void);
 	uint32_t canfd_num_stall(void);
-	void canfd_set_filter(uint32_t, uint32_t);
 
 	extern volatile bool tx_msg_ready;
 	extern volatile bool rx_msg_ready;

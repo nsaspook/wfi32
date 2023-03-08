@@ -63,9 +63,6 @@ imu_host_t host0 = {
 	.secret = HOST_SECRET,
 };
 
-/* set format attribute for the vararg function */
-void PrintFormattedData_h(const char * format, ...) __attribute__((format(printf, 1, 2)));
-
 uint32_t fft_bin_total(sFFTData_t *, uint32_t);
 double approxRollingAverage(double avg, double new_sample);
 
@@ -182,20 +179,9 @@ void APP_CAN_Error_Callback_h(uintptr_t context)
 	CFD1INTbits.TBCIF = 0;
 }
 
-void print_menu_h(void)
-{
-}
-
-void PrintFormattedData_h(const char * format, ...)
-{
-	va_list args = {0};
-	va_start(args, format);
-	vprintf(format, args);
-	va_end(args);
-}
 #ifdef USE_SERIAL_DMA
 void UART1DmaChannelHandler_State(DMAC_TRANSFER_EVENT, uintptr_t);
-void UART1DmaWrite(char *, uint32_t);
+void UART1DmaWrite(const char *, uint32_t);
 
 /*
  * end of uart buffer complete flag handler callback
@@ -210,7 +196,7 @@ void UART1DmaChannelHandler_State(DMAC_TRANSFER_EVENT event, uintptr_t contextHa
  * DMA uart serial function
  * triggers the DMA transfer and returns, only one interrupt happens at the end of transfer
  */
-void UART1DmaWrite(char * buffer, uint32_t len)
+void UART1DmaWrite(const char * buffer, uint32_t len)
 {
 	while (uart1_dma_busy || U1STAbits.UTXBF) { // should never wait in normal operation
 	};
