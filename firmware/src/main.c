@@ -48,14 +48,6 @@
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include <stdio.h>
 #include <string.h>
-/*
- * PIC32 version specific setups
- */
-#ifdef __32MK0512MCJ048__
-#include <proc/p32mk0512mcj048.h>
-#endif
-
-#include "definitions.h"                // SYS function prototypes
 
 #include "imupic32mcj.h"
 #include "bma490l.h"
@@ -63,6 +55,7 @@
 #include "timers.h"
 #include "../../firmware/lcd_drv/lcd_drv.h"
 #include "gfx.h"
+
 #ifdef __32MK0512MCJ048__
 #include "canfd.h"
 #ifdef XPRJ_mcj
