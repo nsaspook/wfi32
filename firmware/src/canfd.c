@@ -108,7 +108,7 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 
 			switch (user_input) {
 			case CAN_TRANSMIT_FD:
-				msg_ready = CAN1_InterruptGet(1, 0x1f);
+				msg_ready = CAN1_InterruptGet(1, CANFD_FIFO_INTERRUPT_TFNRFNIF_MASK);
 
 				if (msg_ready) {
 					state = APP_STATE_CAN_IDLE;
@@ -140,7 +140,7 @@ int canfd_state(CANFD_STATES mode, void * can_buffer)
 				}
 				break;
 			case CAN_RECEIVE:
-				msg_ready = CAN1_InterruptGet(2, 0x1f);
+				msg_ready = CAN1_InterruptGet(2, CANFD_FIFO_INTERRUPT_TFNRFNIF_MASK);
 				if (msg_ready) {
 					state = APP_STATE_CAN_IDLE;
 					rx_msg_ready = true;

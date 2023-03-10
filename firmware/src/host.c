@@ -32,7 +32,6 @@ typedef enum {
 	APP_STATE_CAN_RECEIVE,
 	APP_STATE_CAN_TRANSMIT,
 	APP_STATE_CAN_IDLE,
-	APP_STATE_CAN_USER_INPUT,
 	APP_STATE_CAN_XFER_SUCCESSFUL,
 	APP_STATE_CAN_XFER_ERROR
 } APP_STATES;
@@ -67,7 +66,7 @@ uint32_t fft_bin_total(sFFTData_t *, uint32_t);
 double approxRollingAverage(double avg, double new_sample);
 
 /* Variable to save application state */
-static volatile APP_STATES state = APP_STATE_CAN_USER_INPUT;
+static volatile APP_STATES state = APP_STATE_CAN_IDLE;
 /* Variable to save Tx/Rx transfer status and context */
 static volatile uint32_t status = 0;
 static volatile uint32_t xferContext = 0;
@@ -141,7 +140,6 @@ void APP_CAN_Callback_h(uintptr_t context)
 		switch ((APP_STATES) context) {
 		case APP_STATE_CAN_RECEIVE:
 		{
-			state = APP_STATE_CAN_XFER_SUCCESSFUL;
 			rec_message = true;
 			break;
 		}
@@ -224,7 +222,6 @@ void UART1DmaWrite(const char * buffer, uint32_t len)
 
 int host_sm(void)
 {
-	uint8_t user_input = 0;
 	uint8_t count = 0;
 	bool msg_ready = false;
 	uint64_t * hcid = (uint64_t *) & DEVSN0; // set pointer to 64-bit cpu serial number
@@ -310,7 +307,6 @@ int host_sm(void)
 			CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE, 2);
 			CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE);
 #endif
-			state = APP_STATE_CAN_IDLE;
 			memset(rx_message, 0x00, sizeof(rx_message));
 
 			/* Receive New Message */
@@ -322,6 +318,7 @@ int host_sm(void)
 			snprintf(buffer, max_buf, "CAN-FD  received %i", recv_count++);
 			eaDogM_WriteStringAtPos(13, 0, buffer);
 			wait_count = 0;
+			state = APP_STATE_CAN_XFER_SUCCESSFUL;
 		} else {
 			{
 				/* Application can do other task here */
@@ -340,15 +337,7 @@ int host_sm(void)
 		switch (state) {
 		case APP_STATE_CAN_IDLE:
 		{
-			/* Application can do other task here */
-//			static double avg_result = 1.0;
-
-//			avg_result = approxRollingAverage(avg_result, (double) wait_count++);
-//			if (avg_result > 999999.0) { // limit display value
-//				avg_result = 999999.0;
-//			}
-//			snprintf(buffer, max_buf, "Waiting for data packet %6i", (int32_t) avg_result);
-//			eaDogM_WriteStringAtPos(14, 0, buffer);
+			// do nothing, loop again
 			break;
 		}
 		case APP_STATE_CAN_XFER_SUCCESSFUL:
@@ -401,18 +390,18 @@ int host_sm(void)
 				UART1DmaWrite(uart_buffer, strlen(uart_buffer)); // send data to the ETH module
 			} else if ((APP_STATES) xferContext == APP_STATE_CAN_TRANSMIT) {
 			}
-			state = APP_STATE_CAN_USER_INPUT;
+			state = APP_STATE_CAN_IDLE;
 			break;
 		}
 		case APP_STATE_CAN_XFER_ERROR:
 		{
 			if ((APP_STATES) xferContext == APP_STATE_CAN_RECEIVE) {
-				snprintf(buffer, max_buf, "Err,recv message %i", ++msg_error);
+				snprintf(buffer, max_buf, "Err,recv message %i, %d", ++msg_error, xferContext);
 			} else {
 				snprintf(buffer, max_buf, "Failed  %d %d         ", ++msg_error, xferContext);
 			}
 			eaDogM_WriteStringAtPos(9, 0, buffer);
-			state = APP_STATE_CAN_USER_INPUT;
+			state = APP_STATE_CAN_IDLE;
 			break;
 		}
 		default:
