@@ -88,7 +88,8 @@ uint32_t times = 0;
 
 uint8_t spid[] = {0xb5, 0x62, 0x0A, 0x04, 0x00};
 
-static volatile bool uart1_dma_busy = false, uart2_dma_busy = false, rec_message = false;
+static volatile bool uart1_dma_busy = false, uart2_dma_busy = false, rec_message = false,
+	send_wait = false, recv_error = false;
 char uart_buffer[256];
 extern t_cli_ctx cli_ctx; // command buffer
 
@@ -116,6 +117,9 @@ extern t_cli_ctx cli_ctx; // command buffer
     None.
  */
 void APP_CAN_Callback_h(uintptr_t);
+void APP_CAN_Callback_hs(uintptr_t);
+void APP_CAN_Error_Callback_h(uintptr_t);
+void APP_CAN_Error_Callback_hs(uintptr_t);
 
 void APP_CAN_Callback_h(uintptr_t context)
 {
@@ -156,6 +160,15 @@ void APP_CAN_Callback_h(uintptr_t context)
 	}
 }
 
+void APP_CAN_Callback_hs(uintptr_t context)
+{
+	xferContext = context;
+
+	TP2_Clear();
+	tx_num++;
+	send_wait = false;
+}
+
 void APP_CAN_Error_Callback_h(uintptr_t context)
 {
 	xferContext = context;
@@ -168,15 +181,14 @@ void APP_CAN_Error_Callback_h(uintptr_t context)
 	eaDogM_WriteStringAtPos(5, 0, buffer);
 #endif
 	state = APP_STATE_CAN_XFER_ERROR;
-	/*
-	 * clear application error bits
-	 */
-	CFD1INTbits.SERRIF = 0;
-	CFD1INTbits.CERRIF = 0;
-	CFD1INTbits.IVMIF = 0;
-	CFD1INTbits.WAKIF = 0;
-	CFD1INTbits.MODIF = 0;
-	CFD1INTbits.TBCIF = 0;
+	recv_error = true;
+}
+
+void APP_CAN_Error_Callback_hs(uintptr_t context)
+{
+	xferContext = context;
+
+	LED_RED_Set();
 }
 
 #ifdef USE_SERIAL_DMA
@@ -445,6 +457,19 @@ int host_sm(void)
 			break;
 		}
 
+		if (recv_error) {
+			recv_error = false;
+			/*
+			 * clear application error bits
+			 */
+			CFD1INTbits.SERRIF = 0;
+			CFD1INTbits.CERRIF = 0;
+			CFD1INTbits.IVMIF = 0;
+			CFD1INTbits.WAKIF = 0;
+			CFD1INTbits.MODIF = 0;
+			CFD1INTbits.TBCIF = 0;
+		}
+
 		/*
 		 * not currently used
 		 * host to sensor messages happen at screen updates
@@ -457,7 +482,10 @@ int host_sm(void)
 			StartTimer(TMR_HOST, host_lcd_update);
 			if (rec_message) {
 				rec_message = false;
+				send_wait = true;
 				send_from_host(HOST_MAGIC_ID); // Master broadcast ID
+				while (send_wait) {
+				};
 			}
 			eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
 			eaDogM_WriteStringAtPos(7, 0, response_buffer);
@@ -577,8 +605,8 @@ void send_from_host(uint32_t hostid)
 		 * use CAN-FD compatible 29-bit serial ID numbers
 		 */
 #ifdef INT_BOARD
-		CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
-		CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT);
+		CAN1_CallbackRegister(APP_CAN_Callback_hs, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
+		CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_hs, (uintptr_t) APP_STATE_CAN_TRANSMIT);
 #endif
 		messageID = hostid; // serial of the MPU
 		messageLength = 64;

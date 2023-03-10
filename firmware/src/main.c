@@ -357,7 +357,7 @@ int main(void)
 			 * load FFT sample 128 element 8-bit buffer from
 			 * 256 element signal buffer
 			 * as we process each IMU 3-axis sample
-			 * This is not a pure FFT as it mixes bin data
+			 * if FFT_mIX is set this is not a pure FFT as it mixes bin data
 			 * with sample data for a feedback signature
 			 * 
 			 * it recomputes with every new IMU data update
