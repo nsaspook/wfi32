@@ -294,99 +294,61 @@ int host_sm(void)
 			fh_start_AT(&cli_ctx);
 		}
 
-		if (state == APP_STATE_CAN_USER_INPUT) {
-			user_input = 'n';
+		/*
+		 * read serial port 1 for command data
+		 */
+		cli_read(&cli_ctx);
 
-			/* Read user input */
+		snprintf(buffer, max_buf, "Processing CAN-FD %4i  %4i", wait_count++, state);
+		eaDogM_WriteStringAtPos(12, 0, buffer);
 
-			/*
-			 * read serial port 1 for command data
-			 */
-			cli_read(&cli_ctx);
+		msg_ready = CAN1_InterruptGet(2, CANFD_FIFO_INTERRUPT_TFNRFNIF_MASK);
+		if (msg_ready) {
 
-			snprintf(buffer, max_buf, "Processing CAN-FD %4i  %4i      ", wait_count++, state);
-			eaDogM_WriteStringAtPos(12, 0, buffer);
-			if (CAN1_InterruptGet(2, 0x1f)) {
-				user_input = '3';
-			}
-
-			switch (user_input) {
-			case '1':
-				// Transmitting CAN FD Message
-#ifdef INT_BOARD
-				CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
-				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT);
-#endif
-				state = APP_STATE_CAN_IDLE;
-				messageID = HOST_MAGIC_ID; // Master broadcast ID
-				messageLength = 64;
-				host0.host_serial_id = DEVSN0 & 0x1fffffff;
-				messageLength = 64;
-				if (CAN1_MessageTransmit(messageID, messageLength, (void *) &host0, 1, CANFD_MODE_FD_WITH_BRS, CANFD_MSG_TX_DATA_FRAME) == false) {
-				}
-				LED_RED_Clear();
-				LED_GREEN_Toggle();
-				break;
-			case '2':
-				// Transmitting CAN Normal Message
-#ifdef INT_BOARD
-				CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT, 1);
-				CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_TRANSMIT);
-#endif
-				state = APP_STATE_CAN_IDLE;
-				messageID = 0x469;
-				messageLength = 8;
-				if (CAN1_MessageTransmit(messageID, messageLength, message, 1, CANFD_MODE_NORMAL, CANFD_MSG_TX_DATA_FRAME) == false) {
-					snprintf(buffer, max_buf, "CAN1_MessageTransmit request has failed");
-					eaDogM_WriteStringAtPos(9, 0, buffer);
-				}
-				break;
-			case '3':
-				msg_ready = CAN1_InterruptGet(2, 0x1f);
-				if (msg_ready) {
-
-					// Waiting for message
+			// Waiting for message
 #ifdef HOST_BOARD
-					CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE, 2);
-					CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE);
+			CAN1_CallbackRegister(APP_CAN_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE, 2);
+			CAN1_ErrorCallbackRegister(APP_CAN_Error_Callback_h, (uintptr_t) APP_STATE_CAN_RECEIVE);
 #endif
-					state = APP_STATE_CAN_IDLE;
-					memset(rx_message, 0x00, sizeof(rx_message));
+			state = APP_STATE_CAN_IDLE;
+			memset(rx_message, 0x00, sizeof(rx_message));
 
-					/* Receive New Message */
-					if (CAN1_MessageReceive(&rx_messageID, &rx_messageLength, rx_message, &timestamp, 2, &msgAttr) == false) {
-						snprintf(buffer, max_buf, "Receive request has failed");
-						eaDogM_WriteStringAtPos(8, 0, buffer);
-					}
-					/* Application can do other task here */
-					snprintf(buffer, max_buf, "CAN-FD  received %i", recv_count++);
-					eaDogM_WriteStringAtPos(13, 0, buffer);
-					wait_count = 0;
-				} else {
-					state = APP_STATE_CAN_USER_INPUT;
+			/* Receive New Message */
+			if (CAN1_MessageReceive(&rx_messageID, &rx_messageLength, rx_message, &timestamp, 2, &msgAttr) == false) {
+				snprintf(buffer, max_buf, "Receive request has failed");
+				eaDogM_WriteStringAtPos(8, 0, buffer);
+			}
+			/* Application can do other task here */
+			snprintf(buffer, max_buf, "CAN-FD  received %i", recv_count++);
+			eaDogM_WriteStringAtPos(13, 0, buffer);
+			wait_count = 0;
+		} else {
+			{
+				/* Application can do other task here */
+				static double avg_result = 1.0;
+
+				avg_result = approxRollingAverage(avg_result, (double) wait_count++);
+				if (avg_result > 999999.0) { // limit display value
+					avg_result = 999999.0;
 				}
-				break;
-			case 'm':
-				break;
-			case 'n':
-				break;
-			default:
-				break;
+				snprintf(buffer, max_buf, "Waiting for data packet %6i", (int32_t) avg_result);
+				eaDogM_WriteStringAtPos(14, 0, buffer);
 			}
 		}
+
 		/* Check the application's current state. */
 		switch (state) {
 		case APP_STATE_CAN_IDLE:
 		{
 			/* Application can do other task here */
-			static double avg_result = 1.0;
+//			static double avg_result = 1.0;
 
-			avg_result = approxRollingAverage(avg_result, (double) wait_count++);
-			if (avg_result > 999999.0) { // limit display value
-				avg_result = 999999.0;
-			}
-			snprintf(buffer, max_buf, "Waiting for data packet %6i", (int32_t) avg_result);
-			eaDogM_WriteStringAtPos(14, 0, buffer);
+//			avg_result = approxRollingAverage(avg_result, (double) wait_count++);
+//			if (avg_result > 999999.0) { // limit display value
+//				avg_result = 999999.0;
+//			}
+//			snprintf(buffer, max_buf, "Waiting for data packet %6i", (int32_t) avg_result);
+//			eaDogM_WriteStringAtPos(14, 0, buffer);
 			break;
 		}
 		case APP_STATE_CAN_XFER_SUCCESSFUL:
@@ -459,15 +421,7 @@ int host_sm(void)
 
 		if (recv_error) {
 			recv_error = false;
-			/*
-			 * clear application error bits
-			 */
-			CFD1INTbits.SERRIF = 0;
-			CFD1INTbits.CERRIF = 0;
-			CFD1INTbits.IVMIF = 0;
-			CFD1INTbits.WAKIF = 0;
-			CFD1INTbits.MODIF = 0;
-			CFD1INTbits.TBCIF = 0;
+			clear_can_errors();
 		}
 
 		/*
@@ -478,18 +432,21 @@ int host_sm(void)
 			StartTimer(TMR_REPLY, host_xmit_wait);
 		}
 
+
 		if (TimerDone(TMR_HOST)) {
 			StartTimer(TMR_HOST, host_lcd_update);
 			if (rec_message) {
 				rec_message = false;
-				send_wait = true;
-				send_from_host(HOST_MAGIC_ID); // Master broadcast ID
-				while (send_wait) {
-				};
+				if (CAN1_InterruptGet(1, CANFD_FIFO_INTERRUPT_TFNRFNIF_MASK)) {
+					send_wait = true;
+					send_from_host(HOST_MAGIC_ID); // Master broadcast ID
+					while (send_wait) {
+					};
+				}
 			}
 			eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
 			eaDogM_WriteStringAtPos(7, 0, response_buffer);
-			snprintf(buffer, max_buf, "Sending CAN-FD %8X %6i", messageID, tx_num);
+			snprintf(buffer, max_buf, "Tx CAN-FD %8X   %6i", messageID, tx_num);
 			eaDogM_WriteStringAtPos(11, 0, buffer);
 			OledUpdate();
 		}

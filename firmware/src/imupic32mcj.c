@@ -148,3 +148,16 @@ void canfd_set_filter(uint32_t fil0, uint32_t fil1)
 	CFD1CONbits.REQOP = 0;
 	while (CFD1CONbits.OPMOD != 0);
 }
+
+void clear_can_errors(void)
+{
+	/*
+	 * clear application error bits
+	 */
+	CFD1INTbits.SERRIF = 0;
+	CFD1INTbits.CERRIF = 0;
+	CFD1INTbits.IVMIF = 0;
+	CFD1INTbits.WAKIF = 0;
+	CFD1INTbits.MODIF = 0;
+	CFD1INTbits.TBCIF = 0;
+}
