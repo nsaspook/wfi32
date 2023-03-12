@@ -1,0 +1,1 @@
+ $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"../src" -I"../src/config/nsensor"   -DXPRJ_nsensor=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)    /public/wfi32/firmware/src/config/nsensor/interrupts.c
