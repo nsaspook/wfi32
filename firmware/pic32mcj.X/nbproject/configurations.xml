@@ -1259,8 +1259,6 @@
                   value="${communication.interface.default}"/>
         <property key="communication.interface.jtag" value="2wire"/>
         <property key="communication.speed" value="${communication.speed.default}"/>
-        <property key="debugoptions.debug-startup" value="Use system settings"/>
-        <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.simultaneous.debug" value="false"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
@@ -1978,8 +1976,6 @@
                   value="${communication.interface.default}"/>
         <property key="communication.interface.jtag" value="2wire"/>
         <property key="communication.speed" value="${communication.speed.default}"/>
-        <property key="debugoptions.debug-startup" value="Use system settings"/>
-        <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.simultaneous.debug" value="false"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
@@ -2369,7 +2365,7 @@
         <targetDevice>PIC32MK0512MCJ048</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>pk4hybrid</platformTool>
+        <platformTool>ICD4Tool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.21</languageToolchainVersion>
         <platform>2</platform>
