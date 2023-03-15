@@ -1,0 +1,9 @@
+<<<<<<< HEAD:firmware/pic32mcj.X/.generated_files/flags/mcj/9fa57230a1401ea2a59840ff560c1f3fd64ae233
+<<<<<<<< HEAD:firmware/pic32mcj.X/.generated_files/flags/mcj/923bcfcc278979450072a83f434c2f7b065dcbb
+ $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall   -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  /root/wfi32/firmware/src/host.c
+========
+ $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall   -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  /public/wfi32/firmware/src/gfx.c
+>>>>>>>> nhost:firmware/pic32mcj.X/.generated_files/flags/mcj/9fa57230a1401ea2a59840ff560c1f3fd64ae233
+=======
+ $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall   -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  /fred/wfi32/firmware/src/pid.c
+>>>>>>> nhost:firmware/pic32mcj.X/.generated_files/flags/mcj/85a35460da938e3511110e9af6b7511934d7393b

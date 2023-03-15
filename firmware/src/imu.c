@@ -1,3 +1,4 @@
+#include "imupic32mcj.h"
 #include "imu.h"
 
 const double imu_table[] = {

@@ -1,5 +1,0 @@
-<<<<<<<< HEAD:firmware/pic32mcj.X/.generated_files/flags/mcj/5b89c042b50e640339f4779d38bd778137edaddb
- $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall   -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  /root/wfi32/firmware/lcd_drv/OledChar.c
-========
- $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -Werror -Wall   -DXPRJ_mcj=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  /public/wfi32/firmware/lcd_drv/FillPat.c
->>>>>>>> nhost:firmware/pic32mcj.X/.generated_files/flags/mcj/666768df13f33e908b84ccbc50ce0e5909bbcbd0

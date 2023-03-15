@@ -239,6 +239,7 @@ void sca3300_set_spimode(void * imup)
 	imu_cmd_t * imu = imup;
 	enum accel_g accel_range = SCA3300_MODE1;
 
+	set_imu_bits(); // set 8 or 32-bit SPI transfers
 	LED_GREEN_Off();
 	LED_RED_On();
 	if (imu) {
@@ -351,6 +352,6 @@ void imu_cs_cb(uintptr_t context)
 
 void sca3300_version(void)
 {
-	snprintf(imu_buffer, max_buf, "--- %s Driver Version  %s %s %s ---", SCA3300_ALIAS, SCA3300_DRIVER, build_date, build_time);
+	snprintf(imu_buffer, max_buf, " %s Driver Version  %s %s %s", SCA3300_ALIAS, SCA3300_DRIVER, build_date, build_time);
 }
 

@@ -48,14 +48,6 @@
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include <stdio.h>
 #include <string.h>
-/*
- * PIC32 version specific setups
- */
-#ifdef __32MK0512MCJ048__
-#include <proc/p32mk0512mcj048.h>
-#endif
-
-#include "definitions.h"                // SYS function prototypes
 
 #include "imupic32mcj.h"
 #include "bma490l.h"
@@ -63,6 +55,7 @@
 #include "timers.h"
 #include "../../firmware/lcd_drv/lcd_drv.h"
 #include "gfx.h"
+
 #ifdef __32MK0512MCJ048__
 #include "canfd.h"
 #ifdef XPRJ_mcj
@@ -81,7 +74,6 @@
 #include "pid.h"
 #include "do_fft.h"
 #include "host.h"
-#include "cmd_scanner.h"
 
 #ifdef BMA490L
 /*
@@ -170,30 +162,13 @@ ypid = {
 };
 
 volatile SPid xpid, ypid, zpid;
-
 volatile uint16_t tickCount[TMR_COUNT];
-
-static char buffer[FBUFFER_SIZE], hbuffer[FBUFFER_SIZE];
-static uint32_t delay_freq = 0;
-
+static char buffer[FBUFFER_SIZE];
 static const char *build_date = __DATE__, *build_time = __TIME__;
 const uint32_t update_delay = 5;
 uint32_t board_serial_id = 0x35A, cpu_serial_id = 0x1957;
 
-extern CORETIMER_OBJECT coreTmr;
-extern t_cli_ctx cli_ctx;
-extern char response_buffer[RBUFFER_SIZE];
-extern char cmd_buffer[FBUFFER_SIZE];
 static void fh_start_AT_nodma(void *);
-
-#ifdef __32MK0512MCJ048__
-void qei_index_cb(QEI_STATUS, uintptr_t);
-
-void qei_index_cb(QEI_STATUS status, uintptr_t context)
-{
-
-}
-#endif
 
 // *****************************************************************************
 // *****************************************************************************
@@ -224,31 +199,12 @@ int main(void)
 	host_sm();
 #endif
 
-	/* Start system tick timer */
-	CORETIMER_Start();
-	delay_freq = CORETIMER_FrequencyGet() / 1000000;
 	/*
-	 * software timers interrupt setup
-	 * using tickCount
+	 * start core-timer for delay_us
+	 * ms tick-timer
+	 * set cpu serial ID numbers
 	 */
-	TMR6_CallbackRegister(timer_ms_tick, 0);
-	TMR6_Start(); // software timers counter
-
-#ifdef __32MK0512MCJ048__
-	TMR9_Start(); // IMU time-stamp counter
-	QEI2_CallbackRegister(qei_index_cb, 0);
-	QEI2_Start();
-#endif
-#ifdef __32MZ1025W104132__
-	TMR2_Start(); // IMU time-stamp counter
-#endif
-
-#ifdef __32MZ1025W104132__
-	cpu_serial_id = USERID & 0x1fffffff; // get CPU device 32-bit serial number and convert that to 29 - bit ID for CAN - FD
-#else
-	cpu_serial_id = DEVSN0 & 0x1fffffff; // get CPU device 32-bit serial number and convert that to 29 - bit ID for CAN - FD
-#endif
-	//	printf("\r\nPIC32 %s Controller %s %s %s %X ---\r\n", IMU_ALIAS, IMU_DRIVER, build_date, build_time, cpu_serial_id);
+	start_tick();
 
 	/*
 	 * print the driver version
@@ -262,7 +218,6 @@ int main(void)
 	lcd_version();
 	init_lcd_drv(D_INIT);
 	OledClearBuffer();
-	eaDogM_WriteStringAtPos(9, 0, imu_buffer);
 	imu0.op.info_ptr();
 	eaDogM_WriteStringAtPos(10, 0, imu_buffer);
 	fft_version();
@@ -273,6 +228,12 @@ int main(void)
 	eaDogM_WriteStringAtPos(15, 0, buffer);
 	snprintf(buffer, max_buf, "Configuration %s", "Sensor node");
 	eaDogM_WriteStringAtPos(14, 0, buffer);
+	snprintf(buffer, max_buf, "%s Driver %s %s %s", LCD_ALIAS, LCD_DRIVER, build_date, build_time);
+	eaDogM_WriteStringAtPos(1, 0, buffer);
+	snprintf(buffer, max_buf, "%s Driver %s", CMD_ALIAS, CMD_DRIVER);
+	eaDogM_WriteStringAtPos(3, 0, buffer);
+	snprintf(buffer, max_buf, "%s Driver %s", REMOTE_ALIAS, REMOTE_DRIVER);
+	eaDogM_WriteStringAtPos(4, 0, buffer);
 	OledUpdate();
 
 	/*
@@ -342,7 +303,7 @@ int main(void)
 		if (TP1_check()) {
 			LED_RED_On();
 			OledClearBuffer();
-			fh_start_AT_nodma(&cli_ctx);
+			fh_start_AT_nodma(0);
 			eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
 			eaDogM_WriteStringAtPos(7, 0, response_buffer);
 			OledUpdate();
@@ -396,7 +357,7 @@ int main(void)
 			 * load FFT sample 128 element 8-bit buffer from
 			 * 256 element signal buffer
 			 * as we process each IMU 3-axis sample
-			 * This is not a pure FFT as it mixes bin data
+			 * if FFT_mIX is set this is not a pure FFT as it mixes bin data
 			 * with sample data for a feedback signature
 			 * 
 			 * it recomputes with every new IMU data update
@@ -477,53 +438,7 @@ int main(void)
 			host_ptr = (imu_host_t *) accel.buffer;
 			if (rx_msg_ready) {
 				rx_msg_ready = false;
-				/*
-				 * decode received host message
-				 */
-				snprintf(hbuffer, max_buf, "Host CPU %llX , Cmd %i", host_ptr->host_serial_id, host_ptr->cmd);
-				switch (host_ptr->cmd) {
-				case CMD_ACK:
-				case CMD_IDLE:
-					break;
-				case CMD_SPIN_DOWN: // vibration action triggered
-					PWM1EN_Set();
-					if (!imu0.locked) {
-						PWM4EN_Set();
-						imu0.down = true;
-						imu0.locked = true; // auto relock
-					}
-					break;
-				case CMD_LOCK:
-					imu0.locked = true;
-					break;
-				case CMD_UNLOCK:
-					if (host_ptr->secret == HOST_SECRET) {
-						imu0.locked = false;
-						host_ptr->secret = 0; //clear
-						host_ptr->cmd = CMD_IDLE;
-					} else {
-						snprintf(cmd_buffer, max_buf, "Unlock System Failed        ");
-					}
-					break;
-				case CMD_WARN_ON: // vibration warning triggered
-					PWM1EN_Set();
-					imu0.warn = true;
-					break;
-				case CMD_WARN_OFF:
-					PWM1EN_Clear();
-					imu0.warn = false;
-					break;
-				case CMD_SAFE:
-					PWM1EN_Clear();
-					PWM4EN_Clear();
-					imu0.warn = false;
-					imu0.down = false;
-					break;
-				default:
-					snprintf(hbuffer, max_buf, "Host CPU %llX", host_ptr->host_serial_id);
-					imu0.locked = true;
-					break;
-				}
+				remote_cmd_decode(host_ptr);
 			}
 			eaDogM_WriteStringAtPos(12, 0, hbuffer);
 
@@ -567,41 +482,6 @@ int main(void)
 	/* Execution should not come here during normal operation */
 
 	return( EXIT_FAILURE);
-}
-
-/*
- * user callback function per BMA4x0 data interrupt
- * update pacing flag from IMU ISR
- */
-void update_imu_int1(uint32_t a, uintptr_t context)
-{
-	imu_cmd_t * imu = (imu_cmd_t *) context;
-	static int8_t i = 0;
-	static uint8_t tog = 0;
-
-	if (imu) {
-		if (!i++) {
-
-		}
-		if (++tog >= 0) {
-			imu->update = true;
-			tog = 0;
-			LED_GREEN_Toggle();
-		}
-	}
-}
-
-/*
- * microsecond busy wait delay, 90 seconds MAX
- * Careful, uses core timer
- */
-void delay_us(uint32_t us)
-{
-	// Convert microseconds us into how many clock ticks it will take
-	us *= delay_freq; // Core Timer updates every 2 ticks
-	_CP0_SET_COUNT(0); // Set Core Timer count to 0
-	while (us > _CP0_GET_COUNT()) {
-	}; // Wait until Core Timer count reaches the number we calculated earlier
 }
 
 /*

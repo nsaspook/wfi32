@@ -12,10 +12,10 @@ build/bma400/production/_ext/1360937237/pid.o: ../src/pid.c ../src/pid.h \
  ../src/config/bma400/peripheral/tmr/plib_tmr_common.h \
  ../src/config/bma400/peripheral/adchs/plib_adchs.h \
  ../src/config/bma400/peripheral/adchs/plib_adchs_common.h \
- ../src/config/bma400/peripheral/qei/plib_qei2.h \
- ../src/config/bma400/peripheral/qei/plib_qei_common.h \
  ../src/config/bma400/peripheral/uart/plib_uart1.h \
  ../src/config/bma400/peripheral/uart/plib_uart_common.h \
+ ../src/config/bma400/peripheral/qei/plib_qei2.h \
+ ../src/config/bma400/peripheral/qei/plib_qei_common.h \
  ../src/config/bma400/peripheral/tmr/plib_tmr5.h \
  ../src/config/bma400/peripheral/mcpwm/plib_mcpwm.h \
  ../src/config/bma400/peripheral/mcpwm/plib_mcpwm_common.h \
@@ -23,7 +23,8 @@ build/bma400/production/_ext/1360937237/pid.o: ../src/pid.c ../src/pid.h \
  ../src/config/bma400/peripheral/spi/spi_master/plib_spi_master_common.h \
  ../src/config/bma400/peripheral/spi/spi_master/plib_spi1_master.h \
  ../src/config/bma400/peripheral/rtcc/plib_rtcc.h \
- ../src/config/bma400/peripheral/tmr/plib_tmr9.h
+ ../src/config/bma400/peripheral/tmr/plib_tmr9.h ../src/imu.h \
+ ../src/timers.h
 
 ../src/pid.h:
 
@@ -57,13 +58,13 @@ build/bma400/production/_ext/1360937237/pid.o: ../src/pid.c ../src/pid.h \
 
 ../src/config/bma400/peripheral/adchs/plib_adchs_common.h:
 
-../src/config/bma400/peripheral/qei/plib_qei2.h:
-
-../src/config/bma400/peripheral/qei/plib_qei_common.h:
-
 ../src/config/bma400/peripheral/uart/plib_uart1.h:
 
 ../src/config/bma400/peripheral/uart/plib_uart_common.h:
+
+../src/config/bma400/peripheral/qei/plib_qei2.h:
+
+../src/config/bma400/peripheral/qei/plib_qei_common.h:
 
 ../src/config/bma400/peripheral/tmr/plib_tmr5.h:
 
@@ -80,3 +81,7 @@ build/bma400/production/_ext/1360937237/pid.o: ../src/pid.c ../src/pid.h \
 ../src/config/bma400/peripheral/rtcc/plib_rtcc.h:
 
 ../src/config/bma400/peripheral/tmr/plib_tmr9.h:
+
+../src/imu.h:
+
+../src/timers.h:

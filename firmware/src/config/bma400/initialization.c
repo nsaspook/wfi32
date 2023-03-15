@@ -91,7 +91,7 @@
 #pragma config FPLLICLK =   PLL_FRC
 #pragma config FPLLMULT =   MUL_60
 #pragma config FPLLODIV =   DIV_4
-#pragma config BORSEL =     LOW
+#pragma config BORSEL =     HIGH
 
 /*** DEVCFG3 ***/
 #pragma config USERID =     0xffff
@@ -187,9 +187,9 @@ void SYS_Initialize ( void* data )
 
     ADCHS_Initialize();
 
-    QEI2_Initialize();
-
 	UART1_Initialize();
+
+    QEI2_Initialize();
 
     TMR5_Initialize();
 

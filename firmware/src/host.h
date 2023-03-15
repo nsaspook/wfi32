@@ -19,10 +19,11 @@ extern "C" {
 #include <proc/p32mk0512mcj048.h>
 #include "definitions.h"                // SYS function prototypes
 #include "imu.h"
+#include "imupic32mcj.h"
 #include "../../firmware/lcd_drv/lcd_drv.h"
-#include "cmd_scanner.h"
+#include "remote_cmd.h"
 
-#define HOST_DRIVER "V1.700" 
+#define HOST_DRIVER "V1.701" 
 #define HOST_ALIAS "HOST"
 
 #define HOST_MAGIC	0x1957
@@ -30,8 +31,6 @@ extern "C" {
 #define HOST_SECRET	0xBD6FDC7BC925CD3E // 64-bit random number for unlocking machine control functions
 
 #define host_lcd_update	100
-
-
 
 #ifdef XPRJ_nsensor
 #define HOST_BOARD
@@ -64,7 +63,7 @@ extern "C" {
 
 #define avg_samples	10000.0
 #define uart_wait	32300
-#define host_xmit_wait	100
+#define host_xmit_wait	10000
 
 	/*
 	 * CAN-FD vibration sensor host to network state machine
