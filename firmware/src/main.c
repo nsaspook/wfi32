@@ -486,29 +486,39 @@ int main(void)
 
 /*
  * capture and display ETH module network IP address
+ * none-DMA serial driver
  */
-void fh_start_AT_nodma(void *a_data)
+static void fh_start_AT_nodma(void *a_data)
 {
 	snprintf(cmd_buffer, max_buf, "Start AT commands            ");
 
-	// put the ETH module in config mode
+#ifdef USR_TCP
+	ETH_CFG_Clear();
+	WaitMs(30);
+	ETH_CFG_Set();
+	WaitMs(1500); // wait until the module is back online
+#else
 	ETH_CFG_Clear();
 	WaitMs(500);
 	ETH_CFG_Set();
-	WaitMs(5000); // wait until the module is back online
+	WaitMs(4500); // wait until the module is back online
+#endif
 
 	// AT command mode
 	UART1_Write("+++", 3); // send data to the ETH module
-	WaitMs(200);
+	WaitMs(20);
 	UART1_Write("a", 1); // send data to the ETH module
-	WaitMs(200);
+	WaitMs(20);
 	if (UART1_ReceiverIsReady()) { // check to see if we have a response
 		// send a Ethernet connection query
-		UART1_Write("AT+WANN\r\r\n", 10); // send data to the ETH module
+		UART1_Write("AT+WANN\r", 8); // send data to the ETH module
 		// put the result in a buffer for the GLCD to display
 		UART1_Read(response_buffer, 30);
 	} else { // nothing
 		snprintf(response_buffer, max_buf, "AT command failed           ");
+		ETH_RESET_Clear();
+		WaitMs(200);
+		ETH_RESET_Set();
 	}
 	/*
 	 * AT mode will timeout after 30 seconds and go back to transparent data mode
