@@ -120,6 +120,8 @@ void APP_CAN_Callback_hs(uintptr_t);
 void APP_CAN_Error_Callback_h(uintptr_t);
 void APP_CAN_Error_Callback_hs(uintptr_t);
 
+void fh_start_AT(void *a_data);
+
 void APP_CAN_Callback_h(uintptr_t context)
 {
 	xferContext = context;
@@ -224,7 +226,7 @@ int host_sm(void)
 {
 	uint8_t count = 0;
 	bool msg_ready = false;
-	uint64_t * hcid = (uint64_t *) & DEVSN0; // set pointer to 64-bit cpu serial number
+	uint64_t * hcid = (uint64_t *) & DEVSN2; // set pointer to 64-bit cpu serial number
 	uint32_t wait_count = 0, recv_count = 0, msg_error = 0;
 
 	ETH_RESET_Clear();
@@ -471,6 +473,7 @@ double approxRollingAverage(double avg, double new_sample)
 
 /*
  * capture and display ETH module network IP address
+ * DMA serial driver
  */
 void fh_start_AT(void *a_data)
 {
