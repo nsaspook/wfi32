@@ -478,6 +478,12 @@ double approxRollingAverage(double avg, double new_sample)
 void fh_start_AT(void *a_data)
 {
 	snprintf(cmd_buffer, max_buf, "Start AT commands            ");
+//	UART_SERIAL_SETUP setup = {
+//		.baudRate = 115200,
+//		.parity = UART_PARITY_NONE,
+//		.dataWidth = UART_DATA_8_BIT,
+//		.stopBits = UART_STOP_1_BIT,
+//	};
 
 	// wait for send uart buffer to finish
 	uint32_t contention = 0;
@@ -485,6 +491,7 @@ void fh_start_AT(void *a_data)
 		if (contention++ == uart_wait) {
 		}
 	};
+//	UART1_SerialSetup(&setup, 60000000);
 
 	// put the ETH module in config mode
 	U1MODECLR = _U1MODE_ON_MASK; // turn off UART

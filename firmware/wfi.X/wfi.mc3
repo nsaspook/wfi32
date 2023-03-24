@@ -1301,7 +1301,8 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="!@#harmonyUserData"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;UserData&gt;
   &lt;UserData dnOrder=&quot;0&quot;&gt;
-    &lt;ComponentGraph dnOrder=&quot;0&quot; id=&quot;__ROOTVIEW&quot;&gt;
+    &lt;GraphSettings canvasHeight=&quot;473&quot; canvasWidth=&quot;776&quot; dnOrder=&quot;0&quot;/&gt;
+    &lt;ComponentGraph dnOrder=&quot;1&quot; id=&quot;__ROOTVIEW&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
         &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;adchs&quot; x=&quot;224&quot; y=&quot;83&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;can1&quot; x=&quot;511&quot; y=&quot;100&quot;/&gt;
@@ -1320,7 +1321,6 @@
         &lt;ElementPosition dnOrder=&quot;14&quot; id=&quot;uart1&quot; x=&quot;373&quot; y=&quot;246&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
-    &lt;GraphSettings canvasHeight=&quot;473&quot; canvasWidth=&quot;776&quot; dnOrder=&quot;1&quot;/&gt;
   &lt;/UserData&gt;
 &lt;/UserData&gt;
 </value>
@@ -9908,7 +9908,7 @@
       </entry>
       <entry>
          <file>../src/config/nsensor/definitions.h</file>
-         <hash>3cc1766959c0b72ad8ccbaeda286c2798bb654ba945d85765492e36c7c4bee93</hash>
+         <hash>bf6a9e474ea603f0cf1e85ee51fca16d975575ec549e0a6ddd32fcb76b4f5780</hash>
       </entry>
       <entry>
          <file>../src/config/nsensor/peripheral/adchs/plib_adchs_common.h</file>
@@ -9984,7 +9984,7 @@
       </entry>
       <entry>
          <file>../src/config/nsensor/initialization.c</file>
-         <hash>37e363c74e784ec68fdbb4cfc29faaf436572c39116ec48896088da536d92100</hash>
+         <hash>acd0751eb4301d163ed01fabd806e1ce28887fc723175829fbf052ee8ed7000b</hash>
       </entry>
       <entry>
          <file>../src/config/nsensor/peripheral/tmr/plib_tmr6.h</file>
