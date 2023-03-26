@@ -28,8 +28,8 @@ extern "C" {
 	/*
 	 * what type of Ethernet TCP adapter are we using
 	 */
-#define USR_TCP
-	//#define WAVESHARE
+	//#define USR_TCP
+#define WAVESHARE
 
 	/*
 	 * what IMU chip are we using
