@@ -34,8 +34,8 @@ extern "C" {
 	/*
 	 * what IMU chip are we using
 	 */
-	//#define SCA3300 // this includes the SCL3300 device, SPI2 32-bit transfers
-#define BMA400 // Bosch devices, SPI2 8-bit transfers
+#define SCA3300 // this includes the SCL3300 device, SPI2 32-bit transfers
+	//#define BMA400 // Bosch devices, SPI2 8-bit transfers
 
 #ifdef SCA3300
 #define	SPI2_32BIT
@@ -52,7 +52,7 @@ extern "C" {
 #define LCD_CS 0
 
 #define BMA_LOG_TIMEOUT 150
-#define SCA_LOG_TIMEOUT 8 // 3
+#define SCA_LOG_TIMEOUT 10 // 3
 
 	//#define SHOW_LOG
 #define SHOW_LCD
