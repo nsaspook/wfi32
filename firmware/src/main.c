@@ -315,6 +315,10 @@ int main(void)
 		 * convert the SPI XYZ response to standard floating point acceleration values and rolling integer time-stamps per measurement
 		 */
 		if (imu0.update || TimerDone(TMR_LOG)) {
+			if (TimerDone(TMR_LOG)) {
+				LED_GREEN_Toggle();
+			}
+			StartTimer(TMR_LOG, imu0.log_timeout);
 
 #ifdef SHOW_LCD   
 			OledClearBuffer();
@@ -404,9 +408,6 @@ int main(void)
 #endif 
 			OledUpdate();
 #endif
-			if (TimerDone(TMR_LOG)) {
-				LED_GREEN_Toggle();
-			}
 
 #ifdef __32MK0512MCJ048__
 #ifdef SHOW_LCD
@@ -475,7 +476,7 @@ int main(void)
 				break;
 			}
 #endif
-			StartTimer(TMR_LOG, imu0.log_timeout);
+
 		}
 	}
 
