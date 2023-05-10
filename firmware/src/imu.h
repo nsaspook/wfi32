@@ -26,6 +26,39 @@ extern "C" {
 #define IMU_DATA_RAW_LEN  30
 #define IMU_DATA_BUFFER_INDEX  1
 
+	typedef struct Quaternion {
+		double w; /**< Scalar part */
+		double v[3]; /**< Vector part */
+	} Quaternion;
+
+	typedef struct sh2_Quaternion {
+		double x;
+		double y;
+		double z;
+		double w;
+	} sh2_Quaternion_t;
+
+	
+#define QUAT_HOST
+	
+#ifdef QUAT_HOST
+	typedef struct _sSensorData_t {
+		const uint16_t id;
+		sh2_Quaternion_t fusion;
+		double x; /**< X-axis sensor data */
+		double y; /**< Y-axis sensor data */
+		double z; /**< Z-axis sensor data */
+		float xa; /**< X-angle sensor data */
+		float ya; /**< Y-angle sensor data */
+		float za; /**< Z-angle sensor data */
+		float xerr;
+		float yerr;
+		float zerr;
+		uint32_t sensortime; /**< sensor time */
+		float sensortemp;
+		uint8_t buffer[64]; // can-fd frame buffer space
+	} sSensorData_t;
+#else
 	typedef struct _sSensorData_t {
 		const uint16_t id;
 		double x; /**< X-axis sensor data */
@@ -41,6 +74,7 @@ extern "C" {
 		float sensortemp;
 		uint8_t buffer[64]; // can-fd frame buffer space
 	} sSensorData_t;
+#endif
 
 	/*
 	 * function pointer templates structure

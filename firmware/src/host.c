@@ -367,8 +367,13 @@ int host_sm(void)
 				if (*mtype == CAN_IMU_DATA) {
 					accel = (sSensorData_t *) rx_message;
 					length++;
+#ifdef QUAT_HOST
+					snprintf(uart_buffer, max_buf, "%3d,%7X,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.1f,%s\r\n",
+						accel->id, rx_messageID, accel->fusion.x, accel->fusion.y, accel->fusion.z, accel->fusion.w, accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->xerr, accel->yerr, accel->zerr, (double) accel->sensortime, IMU_ALIAS);
+#else
 					snprintf(uart_buffer, max_buf, "%3d,%7X,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.4f,%7.1f,%s\r\n",
 						accel->id, rx_messageID, accel->x, accel->y, accel->z, accel->xa, accel->ya, accel->za, accel->xerr, accel->yerr, accel->zerr, (double) accel->sensortime, IMU_ALIAS);
+#endif
 				}
 				if (*mtype == CAN_IMU_INFO) {
 					imu = (imu_cmd_t *) rx_message;
@@ -478,12 +483,12 @@ double approxRollingAverage(double avg, double new_sample)
 void fh_start_AT(void *a_data)
 {
 	snprintf(cmd_buffer, max_buf, "Start AT commands            ");
-//	UART_SERIAL_SETUP setup = {
-//		.baudRate = 115200,
-//		.parity = UART_PARITY_NONE,
-//		.dataWidth = UART_DATA_8_BIT,
-//		.stopBits = UART_STOP_1_BIT,
-//	};
+	//	UART_SERIAL_SETUP setup = {
+	//		.baudRate = 115200,
+	//		.parity = UART_PARITY_NONE,
+	//		.dataWidth = UART_DATA_8_BIT,
+	//		.stopBits = UART_STOP_1_BIT,
+	//	};
 
 	// wait for send uart buffer to finish
 	uint32_t contention = 0;
@@ -491,7 +496,7 @@ void fh_start_AT(void *a_data)
 		if (contention++ == uart_wait) {
 		}
 	};
-//	UART1_SerialSetup(&setup, 60000000);
+	//	UART1_SerialSetup(&setup, 60000000);
 
 	// put the ETH module in config mode
 	U1MODECLR = _U1MODE_ON_MASK; // turn off UART
