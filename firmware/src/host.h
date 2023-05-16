@@ -30,7 +30,8 @@ extern "C" {
 #define HOST_MAGIC_ID	0x101957
 #define HOST_SECRET	0xBD6FDC7BC925CD3E // 64-bit random number for unlocking machine control functions
 
-#define host_lcd_update	100
+#define host_lcd_update		100
+#define host_canfd_update	500
 
 #ifdef XPRJ_nsensor
 #define HOST_BOARD

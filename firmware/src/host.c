@@ -274,7 +274,7 @@ int host_sm(void)
 	UART1_ErrorGet(); // clear UART junk
 	scmd_init(); // start command parser
 
-	StartTimer(TMR_HOST, host_lcd_update);
+	StartTimer(TMR_HOST, host_canfd_update);
 	StartTimer(TMR_REPLY, host_xmit_wait);
 
 	while (true) {
@@ -430,7 +430,7 @@ int host_sm(void)
 
 
 		if (TimerDone(TMR_HOST)) {
-			StartTimer(TMR_HOST, host_lcd_update);
+			StartTimer(TMR_HOST, host_canfd_update);
 			if (rec_message) {
 				rec_message = false;
 				if (CAN1_InterruptGet(1, CANFD_FIFO_INTERRUPT_TFNRFNIF_MASK)) {
