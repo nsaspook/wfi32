@@ -25,6 +25,8 @@ extern "C" {
 	 * and hardware specific functions
 	 */
 
+#define QUAT_HOST
+	
 	/*
 	 * what type of Ethernet TCP adapter are we using
 	 */
