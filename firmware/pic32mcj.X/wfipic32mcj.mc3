@@ -1,4 +1,4 @@
-<config configName="mcj" projectName="wfipic32mcj" configVersion="1.1" device="PIC32MK0512MCJ048" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.5.0">
+<config configName="mcj" projectName="wfipic32mcj" configVersion="1.1" device="PIC32MK0512MCJ048" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.5.7">
    <usedPackages class="java.util.ArrayList"/>
    <usedClasses class="java.util.TreeMap">
       <entry>
@@ -9390,11 +9390,11 @@
   &lt;spi2 dnOrder=&quot;0&quot; id=&quot;SPI_DUMMY_DATA&quot;&gt;
     &lt;Attributes dnOrder=&quot;0&quot;&gt;
       &lt;Long dnOrder=&quot;0&quot; id=&quot;max&quot;&gt;
-        &lt;Value dnOrder=&quot;0&quot;&gt;255&lt;/Value&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;4294967295&lt;/Value&gt;
       &lt;/Long&gt;
     &lt;/Attributes&gt;
     &lt;Values dnOrder=&quot;1&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;spi2&quot; value=&quot;255&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;spi2&quot; value=&quot;4294967295&quot;/&gt;
     &lt;/Values&gt;
   &lt;/spi2&gt;
 &lt;/spi2&gt;
@@ -9416,7 +9416,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;spi2&gt;
   &lt;spi2 dnOrder=&quot;0&quot; id=&quot;SPI_SPICON_MODE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;3&quot;/&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;0&quot;/&gt;
     &lt;/Values&gt;
   &lt;/spi2&gt;
 &lt;/spi2&gt;
@@ -9968,7 +9968,7 @@
       </entry>
       <entry>
          <file>../src/config/bma400/definitions.h</file>
-         <hash>3cc1766959c0b72ad8ccbaeda286c2798bb654ba945d85765492e36c7c4bee93</hash>
+         <hash>bf6a9e474ea603f0cf1e85ee51fca16d975575ec549e0a6ddd32fcb76b4f5780</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/gpio/plib_gpio.h</file>
@@ -10060,7 +10060,7 @@
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/spi/spi_master/plib_spi2_master.c</file>
-         <hash>4ce5b0b2fc703a78b1939ed5ac1fdcb2686d9413061c5674cddf18fb8d349692</hash>
+         <hash>13bf9cf6c9be5eb2f2e5102f8c7203712574c7804516f118dc0e581bd5469f7f</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/stdio/xc32_monitor.c</file>
@@ -10088,7 +10088,7 @@
       </entry>
       <entry>
          <file>../src/config/bma400/initialization.c</file>
-         <hash>3962900c832f1157992c95bd5c4bbf86000a295d2672749f6fbece35fd5669b1</hash>
+         <hash>5d17cd26f11e93fa30f2b39df7af8c6ca11b7e9d910470fd25a689ad37b9d12a</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/qei/plib_qei2.h</file>
