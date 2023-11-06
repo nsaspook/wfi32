@@ -87,8 +87,8 @@ void SPI1_Initialize_internal(void)
 	SPI1CONSET = 0x00000005;
 
 	/* Initialize global variables */
-	spi1Obj.transferIsBusy = false;
-	spi1Obj.callback = NULL;
+//	spi1Obj.transferIsBusy = false;
+//	spi1Obj.callback = NULL;
 
 	/* Enable SPI1 */
 	SPI1CONSET = _SPI1CON_ON_MASK;
