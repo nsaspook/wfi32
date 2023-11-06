@@ -34,7 +34,7 @@ build/nsensor/production/_ext/1360937237/host.o: ../src/host.c \
  ../src/../../firmware/lcd_drv/OledChar.h \
  ../src/../../firmware/lcd_drv/OledGrph.h ../src/remote_cmd.h \
  ../src/cmd_scanner.h ../src/mqtt_pub.h ../src/mqtt.h ../src/mqtt_pal.h \
- ../src/endian.h
+ ../src/endian.h ../src/cJSON.h
 
 ../src/imupic32mcj.h:
 
@@ -125,3 +125,5 @@ build/nsensor/production/_ext/1360937237/host.o: ../src/host.c \
 ../src/mqtt_pal.h:
 
 ../src/endian.h:
+
+../src/cJSON.h:

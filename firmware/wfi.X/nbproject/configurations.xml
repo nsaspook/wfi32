@@ -85,6 +85,7 @@
       <itemPath>../src/mqtt_pub.h</itemPath>
       <itemPath>../src/mqtt.h</itemPath>
       <itemPath>../src/mqtt_pal.h</itemPath>
+      <itemPath>../src/cJSON.h</itemPath>
     </logicalFolder>
     <logicalFolder name="lcd_drv" displayName="lcd_drv" projectFiles="true">
       <itemPath>../lcd_drv/ChrFont0.c</itemPath>
@@ -198,6 +199,7 @@
       <itemPath>../src/mqtt_pub.c</itemPath>
       <itemPath>../src/mqtt.c</itemPath>
       <itemPath>../src/mqtt_pal.c</itemPath>
+      <itemPath>../src/cJSON.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -468,7 +470,7 @@
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="false"/>
         <property key="make-warnings-into-errors" value="false"/>
-        <property key="optimization-level" value=""/>
+        <property key="optimization-level" value="-O2"/>
         <property key="place-data-into-section" value="false"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
@@ -529,7 +531,7 @@
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-cross-reference-file" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
-        <property key="heap-size" value=""/>
+        <property key="heap-size" value="4096"/>
         <property key="input-libraries" value=""/>
         <property key="kseg-length" value=""/>
         <property key="kseg-origin" value=""/>

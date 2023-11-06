@@ -1,6 +1,7 @@
 #include "imupic32mcj.h"
 #include "host.h"
 #include "mqtt_pub.h"
+#include "cJSON.h"
 
 /*
  * Sensor network host
@@ -57,6 +58,8 @@ static char buffer[RBUFFER_SIZE];
 char cmd_buffer[RBUFFER_SIZE] = "Waiting for commands";
 char response_buffer[RBUFFER_SIZE] = " ";
 
+cJSON *json;
+
 imu_host_t host0 = {
 	.id = CAN_MISC,
 	.cmd = CMD_IDLE,
@@ -92,6 +95,8 @@ static volatile bool uart1_dma_busy = false, uart2_dma_busy = false, rec_message
 	send_wait = false, recv_error = false;
 char uart_buffer[256];
 extern t_cli_ctx cli_ctx; // command buffer
+double benergy;
+char *json_str;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -440,7 +445,7 @@ int host_sm(void)
 		if (TimerDone(TMR_REPLY)) {
 			StartTimer(TMR_REPLY, host_xmit_wait);
 #ifdef HOST_MQTT
-			mqtt_work();
+			mqtt_work(); // process tx/rx mqtt messages
 #endif
 		}
 
@@ -471,7 +476,19 @@ int host_sm(void)
 #endif
 			OledUpdate();
 #ifdef HOST_MQTT
-			mqtt_check(buffer);
+			benergy = benergy + 1.0f;
+			json = cJSON_CreateObject();
+			cJSON_AddStringToObject(json, "name", "mateq84");
+			cJSON_AddNumberToObject(json, "benergy", benergy);
+			cJSON_AddStringToObject(json, "system", "FM80 solar monitor");
+			// convert the cJSON object to a JSON string 
+			json_str = cJSON_Print(json);
+
+			mqtt_check(json_str);
+
+			cJSON_free(json_str);
+			cJSON_Delete(json);
+			mqtt_check(json_str); // send test mqtt message
 #endif
 		}
 	}
