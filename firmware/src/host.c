@@ -1,5 +1,6 @@
 #include "imupic32mcj.h"
 #include "host.h"
+#include "mqtt_pub.h"
 
 /*
  * Sensor network host
@@ -277,6 +278,12 @@ int host_sm(void)
 	StartTimer(TMR_HOST, host_canfd_update);
 	StartTimer(TMR_REPLY, host_xmit_wait);
 
+#ifdef HOST_MQTT
+	mqtt_socket();
+	snprintf(buffer, max_buf, "Configuration %s", "MQTT node");
+	eaDogM_WriteStringAtPos(13, 0, buffer);
+#endif
+
 	while (true) {
 
 		/* Maintain state machines of all polled MPLAB Harmony modules. */
@@ -293,10 +300,13 @@ int host_sm(void)
 			fh_start_AT(&cli_ctx);
 		}
 
+#ifndef HOST_MQTT
 		/*
 		 * read serial port 1 for command data
 		 */
 		cli_read(&cli_ctx);
+#else
+#endif
 
 		snprintf(buffer, max_buf, "Processing CAN-FD %4i  %4i", wait_count++, state);
 		eaDogM_WriteStringAtPos(12, 0, buffer);
@@ -394,7 +404,10 @@ int host_sm(void)
 				if (*mtype == CAN_NULL) {
 					snprintf(uart_buffer, max_buf, "0,NULL Message with 0 ID code\r\n");
 				}
+#ifndef HOST_MQTT
 				UART1DmaWrite(uart_buffer, strlen(uart_buffer)); // send data to the ETH module
+#else
+#endif
 			} else if ((APP_STATES) xferContext == APP_STATE_CAN_TRANSMIT) {
 			}
 			state = APP_STATE_CAN_IDLE;
@@ -426,11 +439,18 @@ int host_sm(void)
 		 */
 		if (TimerDone(TMR_REPLY)) {
 			StartTimer(TMR_REPLY, host_xmit_wait);
+#ifdef HOST_MQTT
+			mqtt_work();
+#endif
 		}
 
 
 		if (TimerDone(TMR_HOST)) {
+#ifndef HOST_MQTT		
 			StartTimer(TMR_HOST, host_canfd_update);
+#else
+			StartTimer(TMR_HOST, host_mqtt_update);
+#endif
 			if (rec_message) {
 				rec_message = false;
 				if (CAN1_InterruptGet(1, CANFD_FIFO_INTERRUPT_TFNRFNIF_MASK)) {
@@ -442,9 +462,17 @@ int host_sm(void)
 			}
 			eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
 			eaDogM_WriteStringAtPos(7, 0, response_buffer);
+#ifndef HOST_MQTT
 			snprintf(buffer, max_buf, "Tx CAN-FD %8X   %6i", messageID, tx_num);
 			eaDogM_WriteStringAtPos(11, 0, buffer);
+#else
+			snprintf(buffer, max_buf, " Tx MQTT %8X   %6i ", messageID, tx_num++);
+			eaDogM_WriteStringAtPos(11, 0, buffer);
+#endif
 			OledUpdate();
+#ifdef HOST_MQTT
+			mqtt_check(buffer);
+#endif
 		}
 	}
 

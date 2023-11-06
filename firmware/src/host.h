@@ -25,6 +25,7 @@ extern "C" {
 
 #define HOST_DRIVER "V1.701" 
 #define HOST_ALIAS "HOST"
+#define HOST_MQTT
 
 #define HOST_MAGIC	0x1957
 #define HOST_MAGIC_ID	0x101957
@@ -32,6 +33,7 @@ extern "C" {
 
 #define host_lcd_update		100
 #define host_canfd_update	500
+#define host_mqtt_update	2000
 
 #ifdef XPRJ_nsensor
 #define HOST_BOARD
@@ -64,7 +66,7 @@ extern "C" {
 
 #define avg_samples	10000.0
 #define uart_wait	32300
-#define host_xmit_wait	10000
+#define host_xmit_wait	100
 
 	/*
 	 * CAN-FD vibration sensor host to network state machine

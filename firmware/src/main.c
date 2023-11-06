@@ -38,7 +38,7 @@
  * PCB CPU
  * https://ww1.microchip.com/downloads/aemDocuments/documents/MCU32/ProductDocuments/DataSheets/PIC32MK-General-Purpose-and-Motor-Control-With-CAN-FD-Family-DataSheet-DS60001570D.pdf
  * 
- * upgraded to 460800 uart speed and ttl serial to Ethernet TDP server module
+ * upgraded to 460800 uart speed and ttl serial to Ethernet TCP server module
  * 32ms IMU updates when in sensor mode sent over 4 CAN packet durations of 3ms 0.5ms 0.5ms 1ms
  * The Max sensor count is ~6 because of the serial ttl speed bottleneck
  */
@@ -55,6 +55,7 @@
 #include "timers.h"
 #include "../../firmware/lcd_drv/lcd_drv.h"
 #include "gfx.h"
+#include "mqtt_pub.h"
 
 #ifdef __32MK0512MCJ048__
 #include "canfd.h"

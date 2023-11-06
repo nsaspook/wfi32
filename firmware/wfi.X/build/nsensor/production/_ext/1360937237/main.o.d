@@ -34,7 +34,8 @@ build/nsensor/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/../../firmware/lcd_drv/OledDriver.h \
  ../src/../../firmware/lcd_drv/OledChar.h \
  ../src/../../firmware/lcd_drv/OledGrph.h ../src/gfx.h \
- ../src/../../firmware/lcd_drv/OledGrph.h ../src/pid.h ../src/do_fft.h \
+ ../src/../../firmware/lcd_drv/OledGrph.h ../src/mqtt_pub.h ../src/mqtt.h \
+ ../src/mqtt_pal.h ../src/endian.h ../src/pid.h ../src/do_fft.h \
  ../src/fft.h ../src/host.h ../src/remote_cmd.h ../src/cmd_scanner.h
 
 ../src/imupic32mcj.h:
@@ -124,6 +125,14 @@ build/nsensor/production/_ext/1360937237/main.o: ../src/main.c \
 ../src/gfx.h:
 
 ../src/../../firmware/lcd_drv/OledGrph.h:
+
+../src/mqtt_pub.h:
+
+../src/mqtt.h:
+
+../src/mqtt_pal.h:
+
+../src/endian.h:
 
 ../src/pid.h:
 
