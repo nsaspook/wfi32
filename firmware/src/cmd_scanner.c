@@ -17,7 +17,7 @@ void scmd_init(void)
 
 uint8_t linux_getc(uint8_t *a_data)
 {
-	if (UART1_ReceiverIsReady()) {
+	if (UART1_ReadCountGet()) {
 		UART1_Read(a_data, 1);
 		return 1;
 	} else {
@@ -65,8 +65,8 @@ void cli_read(t_cli_ctx *a_ctx)
 	uint8_t i = 0x00;
 
 	// if no character available - then exit
-	if (UART1_ReceiverIsReady()) {
-		i = UART1_ReadByte();
+	if (UART1_ReadCountGet()) {
+		UART1_Read(&i, 1);;
 	} else {
 		return;
 	}
@@ -96,7 +96,8 @@ void cli_read(t_cli_ctx *a_ctx)
 
 void dump_uart(void)
 {
-	while (UART1_ReceiverIsReady()) {
-		UART1_ReadByte();
+	uint8_t junk;
+	while (UART1_ReadCountGet()) {
+		UART1_Read(&junk, 1);
 	}
 }

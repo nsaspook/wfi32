@@ -1,4 +1,5 @@
 #include "bma490l.h"
+#include <stdio.h>
 
 static uint8_t R_ID_CMD[BMA490_ID_LEN + 1] = {CHIP_ID | RBIT};
 static uint8_t R_IS_CMD[BMA490_ID_LEN + 1] = {CHIP_IS | RBIT};

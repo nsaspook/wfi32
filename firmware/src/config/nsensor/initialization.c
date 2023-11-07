@@ -146,7 +146,6 @@
 // *****************************************************************************
 // *****************************************************************************
 
-
 /* MISRAC 2012 deviation block end */
 
 /*******************************************************************************
@@ -169,7 +168,6 @@ void SYS_Initialize ( void* data )
     (void)__builtin_disable_interrupts();
 
 
-  
     CLK_Initialize();
 
     /* Configure CP0.K0 for optimal performance (cached instruction pre-fetch) */
@@ -187,14 +185,14 @@ void SYS_Initialize ( void* data )
 
     DMAC_Initialize();
 
+    CORETIMER_Initialize();
     TMR6_Initialize();
 
-    CORETIMER_Initialize();
     ADCHS_Initialize();
 
-    QEI2_Initialize();
-
 	UART1_Initialize();
+
+    QEI2_Initialize();
 
     TMR5_Initialize();
 

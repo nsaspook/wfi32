@@ -29,7 +29,7 @@ SOFTWARE.
 extern "C" {
 #endif
 
-#define __unix__
+#define __unix__ // use this as the basis for a PIC32MK config
 
 	/**
 	 * @file
@@ -93,6 +93,9 @@ extern "C" {
 	typedef time_t mqtt_pal_time_t;
 	//    typedef pthread_mutex_t mqtt_pal_mutex_t;
 
+	/*
+	 * No threads so no use for a MUTEX
+	 */
 #define MQTT_PAL_MUTEX_INIT(mtx_ptr) 0
 #define MQTT_PAL_MUTEX_LOCK(mtx_ptr) 0
 #define MQTT_PAL_MUTEX_UNLOCK(mtx_ptr) 0

@@ -380,7 +380,7 @@ int32_t linux_getc_mqtt(uint8_t *);
 
 int32_t linux_getc_mqtt(uint8_t *a_data)
 {
-	if (UART1_ReceiverIsReady()) {
+	if (UART1_ReadCountGet()) {
 		UART1_Read(a_data, 1);
 		return 1;
 	} else {

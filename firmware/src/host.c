@@ -565,10 +565,10 @@ void fh_start_AT(void *a_data)
 	WaitMs(20);
 	UART1DmaWrite("a", 1); // send data to the ETH module
 	WaitMs(20);
-	if (UART1_ReceiverIsReady()) { // check to see if we have a response
+	if (UART1_ReadCountGet()) { // check to see if we have a response
 		// send a Ethernet connection query
 		UART1DmaWrite("AT+WANN\r", 8); // send data to the ETH module
-		UART1_Read(&response_buffer, 30); // read serial response from module
+		UART1_Read((uint8_t*) & response_buffer, 30); // read serial response from module
 	} else { // nothing
 		snprintf(response_buffer, max_buf, "AT command failed           ");
 		ETH_RESET_Clear();

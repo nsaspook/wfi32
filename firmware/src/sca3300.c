@@ -1,4 +1,5 @@
 #include "sca3300.h"
+#include <stdio.h>
 
 static const char *build_date = __DATE__, *build_time = __TIME__;
 

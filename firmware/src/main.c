@@ -511,7 +511,7 @@ static void fh_start_AT_nodma(void *a_data)
 	WaitMs(20);
 	UART1_Write("a", 1); // send data to the ETH module
 	WaitMs(20);
-	if (UART1_ReceiverIsReady()) { // check to see if we have a response
+	if (UART1_ReadCountGet()) { // check to see if we have a response
 		// send a Ethernet connection query
 		UART1_Write("AT+WANN\r", 8); // send data to the ETH module
 		// put the result in a buffer for the GLCD to display
