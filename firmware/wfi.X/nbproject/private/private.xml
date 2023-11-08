@@ -8,11 +8,7 @@
             <file>file:/public/wfi32/firmware/src/host.c</file>
             <file>file:/public/wfi32/firmware/src/main.c</file>
             <file>file:/public/wfi32/firmware/src/host.h</file>
-            <file>file:/public/wfi32/firmware/src/mqtt.c</file>
-            <file>file:/public/wfi32/firmware/src/mqtt_pal.c</file>
             <file>file:/public/wfi32/firmware/src/mqtt_pub.h</file>
-            <file>file:/public/wfi32/firmware/src/mqtt.h</file>
-            <file>file:/public/wfi32/firmware/src/mqtt_pal.h</file>
         </group>
     </open-files>
 </project-private>

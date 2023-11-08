@@ -4,7 +4,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-//#include <pthread.h>
 #include "templates/posix_sockets.h"
 #include "mqtt_pub.h"
 
@@ -18,21 +17,19 @@ uint8_t sendbuf[2048]; /* sendbuf should be large enough to hold multiple whole 
 uint8_t recvbuf[1024]; /* recvbuf should be large enough any whole mqtt message expected to be received */
 const char* client_id;
 uint8_t connect_flags;
-//pthread_t client_daemon;
 
 /*
  * init the socket connection to the broker server and start client daemon
  */
 int mqtt_socket(void)
 {
-	//	addr = "hp8.sma2.rain.com"; // internal house server/broker
 
-	addr = ADDR_MQTT; // cloud testing server
-	port = "1883";
+	addr = ADDR_MQTT; // cloud testing server, set in Ethernet module
+	port = "1883"; // MQTT port, set in Ethernet module
 	topic = DATA_MQTT_SOLAR;
 
 	/* open the non-blocking TCP socket (connecting to the broker) */
-	sockfd = open_nb_socket_mqtt(addr, port);
+	sockfd = open_nb_socket_mqtt(addr, port); // returns a dummy socket handle
 
 	if (sockfd == -1) {
 		return sockfd;
@@ -51,18 +48,12 @@ int mqtt_socket(void)
 	if (client.error != MQTT_OK) {
 		return client.error;
 	}
-
-	/* start a thread to refresh the client (handle egress and ingree client traffic) */
-	//	if (pthread_create(&client_daemon, NULL, client_refresher, &client)) {
-	//		return 1;
-	//	}
-
 	return 0;
-
 }
 
 /*
  * send client data to the broker server
+ * runs in the main loop when data is ready to be published to the broker
  */
 int mqtt_check(uint8_t * application_message)
 {
@@ -84,28 +75,25 @@ int mqtt_check(uint8_t * application_message)
  */
 void mqtt_exit(void)
 {
-	/* exit */
-	//	exit_example(EXIT_SUCCESS, sockfd, &client_daemon);
 }
-
-//void exit_example(int status, int sockfd, pthread_t *client_daemon)
-//{
-//	if (sockfd != -1) close(sockfd);
-//	if (client_daemon != NULL) pthread_cancel(*client_daemon);
-//	exit(status);
-//}
 
 void publish_callback(void** unused, struct mqtt_response_publish *published)
 {
 	/* not used in this example */
 }
-
+/*
+ * send and receive network socket data
+ */
 void* client_refresher(void* client)
 {
 	mqtt_sync((struct mqtt_client*) client);
 	return NULL;
 }
 
+/*
+ * main loop network socket I/O 
+ * TCP I/O task, needs periodic runs from the main loop 10 to 100ms between runs
+ */
 void* mqtt_work(void)
 {
 	client_refresher(&client);

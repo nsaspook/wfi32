@@ -70,7 +70,7 @@ extern "C" {
 	 */
 
 
-	/* UNIX-like platform support */
+	/* UNIX-like platform support for PIC32MK XC32 */
 #if defined(__unix__) || defined(__APPLE__) || defined(__NuttX__)
 #include <limits.h>
 #include <string.h>
@@ -79,11 +79,8 @@ extern "C" {
 #include <stdint.h>
 #include "endian.h"
 #include "definitions.h"                // SYS function prototypes
-	
+
 #define ssize_t		int32_t
-	
-	//    #include <arpa/inet.h>
-	//    #include <pthread.h>
 
 #define MQTT_PAL_HTONS(s) htons(s)
 #define MQTT_PAL_NTOHS(s) ntohs(s)
@@ -91,10 +88,10 @@ extern "C" {
 #define MQTT_PAL_TIME() time(NULL)
 
 	typedef time_t mqtt_pal_time_t;
-	//    typedef pthread_mutex_t mqtt_pal_mutex_t;
 
 	/*
 	 * No threads so no use for a MUTEX
+	 * set to zero
 	 */
 #define MQTT_PAL_MUTEX_INIT(mtx_ptr) 0
 #define MQTT_PAL_MUTEX_LOCK(mtx_ptr) 0

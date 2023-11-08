@@ -14,15 +14,19 @@
 
 /*
     A template for opening a non-blocking POSIX socket.
-*/
+ */
 int open_nb_socket_mqtt(const char* addr, const char* port);
 
-int open_nb_socket_mqtt(const char* addr, const char* port) {
+/*
+ * dummy socket interface for TTL to Ethernet module
+ */
+int open_nb_socket_mqtt(const char* addr, const char* port)
+{
+	static int sockfd = 0;
 
-    int sockfd = 1;
-
-    /* return the new socket fd */
-    return sockfd;
+	sockfd++;
+	/* return the new socket fd */
+	return sockfd;
 }
 
 #endif

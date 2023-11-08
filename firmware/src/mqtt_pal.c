@@ -347,6 +347,10 @@ ssize_t mqtt_pal_recvall(mqtt_pal_socket_handle fd, void* buf, size_t bufsz, int
 
 void UART1DmaWrite(const char *, uint32_t);
 
+/*
+ * modified to use TTL serial to Ethernet module
+ * uses DMA on UART1 to speed 460,800bps serial transfers in background
+ */
 ssize_t mqtt_pal_sendall(mqtt_pal_socket_handle fd, const void* buf, size_t len, int flags)
 {
 	enum MQTTErrors error = 0;
@@ -354,7 +358,6 @@ ssize_t mqtt_pal_sendall(mqtt_pal_socket_handle fd, const void* buf, size_t len,
 	while (sent < len) {
 		UART1DmaWrite((const char *) buf, len);
 		ssize_t rv = len;
-		//		ssize_t rv = send(fd, (const char*) buf + sent, len - sent, flags);
 		if (rv < 0) {
 			if (errno == EAGAIN) {
 				/* should call send later again */
@@ -378,6 +381,9 @@ ssize_t mqtt_pal_sendall(mqtt_pal_socket_handle fd, const void* buf, size_t len,
 
 int32_t linux_getc_mqtt(uint8_t *);
 
+/*
+ * read one byte from UART1 receiver buffer if there is data
+ */
 int32_t linux_getc_mqtt(uint8_t *a_data)
 {
 	if (UART1_ReadCountGet()) {
@@ -388,15 +394,17 @@ int32_t linux_getc_mqtt(uint8_t *a_data)
 	}
 }
 
+/*
+ * modified to use TTL serial to Ethernet module
+ * uses interrupts on UART1 receive buffer to capture 460,800bps serial transfers in background
+ */
 ssize_t mqtt_pal_recvall(mqtt_pal_socket_handle fd, void* buf, size_t bufsz, int flags)
 {
 	const void *const start = buf;
 	enum MQTTErrors error = 0;
 	ssize_t rv;
 	do {
-		LED_RED_Off();
-		//rv = recv(fd, buf, bufsz, flags);
-
+		LED_RED_Off(); // some visual indications of data comms from the broker
 		rv = linux_getc_mqtt(buf);
 		if (rv == 0) {
 			/*

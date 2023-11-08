@@ -24,11 +24,11 @@ SOFTWARE.
 
 #include "mqtt.h"
 
-/** 
- * @file 
+/**
+ * @file
  * @brief Implements the functionality of MQTT-C.
  * @note The only files that are included are mqtt.h and mqtt_pal.h.
- * 
+ *
  * @cond Doxygen_Suppress
  */
 
@@ -198,7 +198,7 @@ void mqtt_reinit(struct mqtt_client* client,
 	client->recv_buffer.curr_sz = client->recv_buffer.mem_size;
 }
 
-/** 
+/**
  * A macro function that:
  *      1) Checks that the client isn't in an error state.
  *      2) Attempts to pack to client's message queue.
@@ -544,7 +544,7 @@ ssize_t __mqtt_send(struct mqtt_client *client)
 
 		/* only send QoS 2 message if there are no inflight QoS 2 PUBLISH messages */
 		if (msg->control_type == MQTT_CONTROL_PUBLISH
-			&& (msg->state == MQTT_QUEUED_UNSENT || msg->state == MQTT_QUEUED_AWAITING_ACK)) {
+		&& (msg->state == MQTT_QUEUED_UNSENT || msg->state == MQTT_QUEUED_AWAITING_ACK)) {
 			inspected = 0x03 & ((msg->start[0]) >> 1); /* qos */
 			if (inspected == 2) {
 				if (inflight_qos2) {
@@ -584,7 +584,7 @@ ssize_t __mqtt_send(struct mqtt_client *client)
 		client->time_of_last_send = MQTT_PAL_TIME();
 		msg->time_sent = client->time_of_last_send;
 
-		/* 
+		/*
 		Determine the state to put the message in.
 		Control Types:
 		MQTT_CONTROL_CONNECT     -> awaiting
@@ -1705,7 +1705,7 @@ struct mqtt_queued_message* mqtt_mq_find(const struct mqtt_message_queue *mq, en
 	for (curr = mqtt_mq_get(mq, 0); curr >= mq->queue_tail; --curr) {
 		if (curr->control_type == control_type) {
 			if ((packet_id == NULL && curr->state != MQTT_QUEUED_COMPLETE) ||
-				(packet_id != NULL && *packet_id == curr->packet_id)) {
+			(packet_id != NULL && *packet_id == curr->packet_id)) {
 				return curr;
 			}
 		}
