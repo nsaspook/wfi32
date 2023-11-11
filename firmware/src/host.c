@@ -143,8 +143,8 @@ void APP_CAN_Callback_h(uintptr_t context)
 #endif
 
 	if ((status & (CANFD_ERROR_TX_RX_WARNING_STATE | CANFD_ERROR_RX_WARNING_STATE |
-		CANFD_ERROR_TX_WARNING_STATE | CANFD_ERROR_RX_BUS_PASSIVE_STATE |
-		CANFD_ERROR_TX_BUS_PASSIVE_STATE | CANFD_ERROR_TX_BUS_OFF_STATE)) == CANFD_ERROR_NONE) {
+	CANFD_ERROR_TX_WARNING_STATE | CANFD_ERROR_RX_BUS_PASSIVE_STATE |
+	CANFD_ERROR_TX_BUS_PASSIVE_STATE | CANFD_ERROR_TX_BUS_OFF_STATE)) == CANFD_ERROR_NONE) {
 		switch ((APP_STATES) context) {
 		case APP_STATE_CAN_RECEIVE:
 		{
@@ -235,14 +235,14 @@ int host_sm(void)
 	uint64_t * hcid = (uint64_t *) & DEVSN2; // set pointer to 64-bit cpu serial number
 	uint32_t wait_count = 0, recv_count = 0, msg_error = 0;
 
-	ETH_RESET_Clear();
-
 	/* 
 	 * Start system tick timer 
 	 * ms tick-timer
 	 * set cpu serial ID numbers
 	 */
 	start_tick();
+
+	ETH_RESET_Clear();
 
 	host_cpu_serial_id = *hcid; // get the CPU device 64-bit serial number and use that as a HOST ID
 

@@ -60,7 +60,7 @@ ssize_t mqtt_pal_sendall(mqtt_pal_socket_handle fd, const void* buf, size_t len,
 		int rv = mbedtls_ssl_write(fd, (const unsigned char*) buf + sent, len - sent);
 		if (rv < 0) {
 			if (rv == MBEDTLS_ERR_SSL_WANT_READ ||
-				rv == MBEDTLS_ERR_SSL_WANT_WRITE
+			rv == MBEDTLS_ERR_SSL_WANT_WRITE
 #if defined(MBEDTLS_ERR_SSL_ASYNC_IN_PROGRESS)
 				|| rv == MBEDTLS_ERR_SSL_ASYNC_IN_PROGRESS
 #endif
@@ -107,7 +107,7 @@ ssize_t mqtt_pal_recvall(mqtt_pal_socket_handle fd, void* buf, size_t bufsz, int
 		}
 		if (rv < 0) {
 			if (rv == MBEDTLS_ERR_SSL_WANT_READ ||
-				rv == MBEDTLS_ERR_SSL_WANT_WRITE
+			rv == MBEDTLS_ERR_SSL_WANT_WRITE
 #if defined(MBEDTLS_ERR_SSL_ASYNC_IN_PROGRESS)
 				|| rv == MBEDTLS_ERR_SSL_ASYNC_IN_PROGRESS
 #endif
@@ -386,8 +386,17 @@ int32_t linux_getc_mqtt(uint8_t *);
  */
 int32_t linux_getc_mqtt(uint8_t *a_data)
 {
+	static uint32_t online = 0;
+
+	if (online++ > 300) {
+		LED_RED_On();
+		online = 0;
+		return 0;
+	}
+
 	if (UART1_ReadCountGet()) {
 		UART1_Read(a_data, 1);
+		online = 0;
 		return 1;
 	} else {
 		return -1;

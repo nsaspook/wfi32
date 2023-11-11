@@ -7,6 +7,11 @@
 #include "templates/posix_sockets.h"
 #include "mqtt_pub.h"
 
+#ifndef  LED_RED_On
+#define LED_RED_On() LED_RED_Set()
+#define LED_RED_Off() LED_RED_Clear()
+#endif 
+
 const char* addr;
 const char* port;
 const char* topic;
@@ -57,11 +62,16 @@ int mqtt_socket(void)
  */
 int mqtt_check(uint8_t * application_message)
 {
+	enum MQTTErrors conn_ok = MQTT_OK;
+
 	if (strlen(application_message) < 3) {
 		return -1;
 	}
 	/* publish the logging data */
-	mqtt_publish(&client, topic, application_message, strlen(application_message), MQTT_PUBLISH_QOS_1);
+	conn_ok = mqtt_publish(&client, topic, application_message, strlen(application_message), MQTT_PUBLISH_QOS_1);
+	if (conn_ok != MQTT_OK) {
+		LED_RED_Set();
+	}
 
 	/* check for errors */
 	if (client.error != MQTT_OK) {
@@ -81,6 +91,7 @@ void publish_callback(void** unused, struct mqtt_response_publish *published)
 {
 	/* not used in this example */
 }
+
 /*
  * send and receive network socket data
  */

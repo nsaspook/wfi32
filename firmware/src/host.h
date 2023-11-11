@@ -33,7 +33,7 @@ extern "C" {
 
 #define host_lcd_update		100
 #define host_canfd_update	500
-#define host_mqtt_update	250
+#define host_mqtt_update	100
 
 #ifdef XPRJ_nsensor
 #define HOST_BOARD
