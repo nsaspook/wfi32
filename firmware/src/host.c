@@ -529,20 +529,19 @@ int host_sm(void)
 
 			benergy = benergy + 1.0f;
 			json = cJSON_CreateObject();
-			cJSON_AddStringToObject(json, "name", "mateq84");
-			cJSON_AddNumberToObject(json, "benergy", benergy);
+			cJSON_AddStringToObject(json, "name", "MQTT sensor board");
+			cJSON_AddNumberToObject(json, "sequence", benergy);
 			cJSON_AddNumberToObject(json, "X", q0);
 			cJSON_AddNumberToObject(json, "Y", q1);
-			cJSON_AddNumberToObject(json, "Z", q2);
-			cJSON_AddStringToObject(json, "system", "FM80 solar monitor");
+			cJSON_AddNumberToObject(json, "Z", q2 * -1.0f); // flip Z
+			cJSON_AddStringToObject(json, "system", "PIC32MK");
 			// convert the cJSON object to a JSON string 
 			json_str = cJSON_Print(json);
 
-			mqtt_check((uint8_t *) json_str);
+			mqtt_check((uint8_t *) json_str); // transmit the string
 
-			cJSON_free(json_str);
+			cJSON_free(json_str); // free internal data structure memory
 			cJSON_Delete(json);
-			mqtt_check((uint8_t *) json_str); // send test mqtt message
 #endif
 		}
 	}
