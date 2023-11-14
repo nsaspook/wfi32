@@ -2,6 +2,8 @@
 #include "host.h"
 #include "mqtt_pub.h"
 #include "cJSON.h"
+#include "imu.h"
+#include "gfx.h"
 
 /*
  * Sensor network host
@@ -97,6 +99,7 @@ char uart_buffer[256];
 extern t_cli_ctx cli_ctx; // command buffer
 double benergy;
 char *json_str;
+sSensorData_t h_accel;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -234,6 +237,7 @@ int host_sm(void)
 	bool msg_ready = false;
 	uint64_t * hcid = (uint64_t *) & DEVSN2; // set pointer to 64-bit cpu serial number
 	uint32_t wait_count = 0, recv_count = 0, msg_error = 0;
+	bool wait = true;
 
 	/* 
 	 * Start system tick timer 
@@ -256,11 +260,15 @@ int host_sm(void)
 	}
 	ETH_RESET_Set();
 
+	imu0.op.imu_set_spimode(&imu0); // setup the IMU chip for SPI comms, X updates per second @ selected G range
+
 	/*
 	 * start the graphic LCD driver
 	 */
 	init_lcd_drv(D_INIT);
 	OledClearBuffer();
+	imu0.op.info_ptr();
+	eaDogM_WriteStringAtPos(10, 0, imu_buffer);
 	snprintf(buffer, max_buf, "%s Driver %s %s %s", LCD_ALIAS, LCD_DRIVER, build_date, build_time);
 	eaDogM_WriteStringAtPos(0, 0, buffer);
 	snprintf(buffer, max_buf, "%s Controller %s %llX", HOST_ALIAS, HOST_DRIVER, host_cpu_serial_id);
@@ -273,6 +281,34 @@ int host_sm(void)
 	eaDogM_WriteStringAtPos(14, 0, buffer);
 	OledUpdate();
 
+	/*
+	 * check to see if we actually have a working IMU
+	 */
+	StartTimer(TMR_IMU, IMU_ID_DELAY);
+	while (!imu0.op.imu_getid(&imu0)) {
+		LED_RED_Toggle();
+		LED_GREEN_Toggle();
+		if (TimerDone(TMR_IMU)) {
+
+			while (wait) {
+				if (TimerDone(TMR_IMU)) {
+					LED_RED_Toggle();
+					LED_GREEN_Toggle();
+					snprintf(buffer, max_buf, "IMU NO ID, %d %d ", ADCHS_ChannelResultGet(ADCHS_CH0), ADCHS_ChannelResultGet(ADCHS_CH1));
+					eaDogM_WriteStringAtPos(13, 0, buffer);
+					eaDogM_WriteStringAtPos(9, 0, imu_buffer);
+					OledUpdate();
+					StartTimer(TMR_IMU, 200);
+					if (imu0.op.imu_getid(&imu0)) {
+						wait = false;
+						break;
+					};
+				}
+			}
+		}
+	};
+
+	LED_GREEN_Off();
 	LED_RED_Off();
 	TP1_Set();
 	WaitMs(500);
@@ -465,9 +501,10 @@ int host_sm(void)
 					};
 				}
 			}
+#ifndef HOST_MQTT
 			eaDogM_WriteStringAtPos(6, 0, cmd_buffer);
 			eaDogM_WriteStringAtPos(7, 0, response_buffer);
-#ifndef HOST_MQTT
+
 			snprintf(buffer, max_buf, "Tx CAN-FD %8X   %6i", messageID, tx_num);
 			eaDogM_WriteStringAtPos(11, 0, buffer);
 #else
@@ -476,19 +513,36 @@ int host_sm(void)
 #endif
 			OledUpdate();
 #ifdef HOST_MQTT
+#ifdef SHOW_LCD   
+			OledClearBuffer();
+#endif
+			imu0.op.imu_getdata(&imu0); // read data from the chip
+			imu0.update = false;
+			getAllData(&h_accel, &imu0); // convert data from the chip
+#ifdef SHOW_VG
+			q0 = h_accel.x;
+			q1 = h_accel.y;
+			q2 = h_accel.z;
+			q3 = h_accel.x;
+			vector_graph();
+#endif
+
 			benergy = benergy + 1.0f;
 			json = cJSON_CreateObject();
 			cJSON_AddStringToObject(json, "name", "mateq84");
 			cJSON_AddNumberToObject(json, "benergy", benergy);
+			cJSON_AddNumberToObject(json, "X", q0);
+			cJSON_AddNumberToObject(json, "Y", q1);
+			cJSON_AddNumberToObject(json, "Z", q2);
 			cJSON_AddStringToObject(json, "system", "FM80 solar monitor");
 			// convert the cJSON object to a JSON string 
 			json_str = cJSON_Print(json);
 
-			mqtt_check(json_str);
+			mqtt_check((uint8_t *) json_str);
 
 			cJSON_free(json_str);
 			cJSON_Delete(json);
-			mqtt_check(json_str); // send test mqtt message
+			mqtt_check((uint8_t *) json_str); // send test mqtt message
 #endif
 		}
 	}
@@ -528,12 +582,6 @@ double approxRollingAverage(double avg, double new_sample)
 void fh_start_AT(void *a_data)
 {
 	snprintf(cmd_buffer, max_buf, "Start AT commands            ");
-	//	UART_SERIAL_SETUP setup = {
-	//		.baudRate = 115200,
-	//		.parity = UART_PARITY_NONE,
-	//		.dataWidth = UART_DATA_8_BIT,
-	//		.stopBits = UART_STOP_1_BIT,
-	//	};
 
 	// wait for send uart buffer to finish
 	uint32_t contention = 0;

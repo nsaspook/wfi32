@@ -9268,11 +9268,11 @@
   &lt;spi2 dnOrder=&quot;0&quot; id=&quot;SPI_DUMMY_DATA&quot;&gt;
     &lt;Attributes dnOrder=&quot;0&quot;&gt;
       &lt;Long dnOrder=&quot;0&quot; id=&quot;max&quot;&gt;
-        &lt;Value dnOrder=&quot;0&quot;&gt;4294967295&lt;/Value&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;255&lt;/Value&gt;
       &lt;/Long&gt;
     &lt;/Attributes&gt;
     &lt;Values dnOrder=&quot;1&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;spi2&quot; value=&quot;4294967295&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;spi2&quot; value=&quot;255&quot;/&gt;
     &lt;/Values&gt;
   &lt;/spi2&gt;
 &lt;/spi2&gt;
@@ -9294,7 +9294,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;spi2&gt;
   &lt;spi2 dnOrder=&quot;0&quot; id=&quot;SPI_SPICON_MODE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;0&quot;/&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;3&quot;/&gt;
     &lt;/Values&gt;
   &lt;/spi2&gt;
 &lt;/spi2&gt;
@@ -9896,7 +9896,7 @@
       </entry>
       <entry>
          <file>../src/config/nsensor/peripheral/spi/spi_master/plib_spi2_master.c</file>
-         <hash>8858ede3239869699c3e659df64fb1d7c780d191b6f47427909737038a9318e6</hash>
+         <hash>f8e6285595cbfe4f7d035b97e7ad01296d9a75b9f2c119a1da4ee54f478d01c1</hash>
       </entry>
       <entry>
          <file>../src/config/nsensor/interrupts.h</file>

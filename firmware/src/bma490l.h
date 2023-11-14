@@ -26,7 +26,7 @@ extern "C" {
 #define BMA490_DRIVER	"V1.100" 
 #define BMA490_ALIAS	"BMA490L  "
 #define BMA400_DRIVER	"V1.604" 
-#define BMA400_ALIAS	"BMA400   "
+#define BMA400_ALIAS	"BMA400"
 
 #define RBIT		0x80
 #define WBIT            0x7f

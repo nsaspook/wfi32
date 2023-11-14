@@ -42,10 +42,6 @@
          <string>class com.microchip.mcc.harmony.HarmonyModule</string>
       </entry>
       <entry>
-         <string>stdio</string>
-         <string>class com.microchip.mcc.harmony.HarmonyModule</string>
-      </entry>
-      <entry>
          <string>tmr5</string>
          <string>class com.microchip.mcc.harmony.HarmonyModule</string>
       </entry>
@@ -1385,11 +1381,10 @@
         &lt;ElementPosition dnOrder=&quot;7&quot; id=&quot;rtcc&quot; x=&quot;493&quot; y=&quot;248&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;8&quot; id=&quot;spi1&quot; x=&quot;366&quot; y=&quot;43&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;9&quot; id=&quot;spi2&quot; x=&quot;371&quot; y=&quot;119&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;10&quot; id=&quot;stdio&quot; x=&quot;246&quot; y=&quot;315&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;11&quot; id=&quot;tmr5&quot; x=&quot;346&quot; y=&quot;377&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;12&quot; id=&quot;tmr6&quot; x=&quot;81&quot; y=&quot;184&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;13&quot; id=&quot;tmr9&quot; x=&quot;30&quot; y=&quot;60&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;14&quot; id=&quot;uart1&quot; x=&quot;373&quot; y=&quot;246&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;10&quot; id=&quot;tmr5&quot; x=&quot;346&quot; y=&quot;377&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;11&quot; id=&quot;tmr6&quot; x=&quot;81&quot; y=&quot;184&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;12&quot; id=&quot;tmr9&quot; x=&quot;30&quot; y=&quot;60&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;13&quot; id=&quot;uart1&quot; x=&quot;373&quot; y=&quot;246&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
   &lt;/UserData&gt;
@@ -5062,7 +5057,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;EVIC_38_ENABLE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;false&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -5073,7 +5068,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;EVIC_38_HANDLER_LOCK&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;false&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -5084,7 +5079,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;EVIC_38_INTERRUPT_HANDLER&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;UART1_FAULT_Handler&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;UART1_FAULT_InterruptHandler&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -5095,7 +5090,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;EVIC_39_ENABLE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;false&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -5106,7 +5101,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;EVIC_39_HANDLER_LOCK&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;false&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -5117,7 +5112,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;EVIC_39_INTERRUPT_HANDLER&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;UART1_RX_Handler&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;UART1_RX_InterruptHandler&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -5128,7 +5123,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;EVIC_40_ENABLE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;false&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -5139,7 +5134,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;EVIC_40_HANDLER_LOCK&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;false&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -5150,7 +5145,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;EVIC_40_INTERRUPT_HANDLER&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;UART1_TX_Handler&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;UART1_TX_InterruptHandler&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -7737,7 +7732,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;UART1_FAULT_INTERRUPT_ENABLE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;false&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -7748,7 +7743,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;UART1_FAULT_INTERRUPT_ENABLE_UPDATE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;true&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;false&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -7759,7 +7754,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;UART1_FAULT_INTERRUPT_HANDLER&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;UART1_FAULT_Handler&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;UART1_FAULT_InterruptHandler&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -7770,7 +7765,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;UART1_FAULT_INTERRUPT_HANDLER_LOCK&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;false&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -7781,7 +7776,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;UART1_RX_INTERRUPT_ENABLE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;false&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -7792,7 +7787,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;UART1_RX_INTERRUPT_ENABLE_UPDATE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;true&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;false&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -7803,7 +7798,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;UART1_RX_INTERRUPT_HANDLER&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;UART1_RX_Handler&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;UART1_RX_InterruptHandler&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -7814,7 +7809,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;UART1_RX_INTERRUPT_HANDLER_LOCK&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;false&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -7825,7 +7820,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;UART1_TX_INTERRUPT_ENABLE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;false&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -7836,7 +7831,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;UART1_TX_INTERRUPT_ENABLE_UPDATE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;true&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;false&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -7847,7 +7842,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;UART1_TX_INTERRUPT_HANDLER&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;UART1_TX_Handler&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;UART1_TX_InterruptHandler&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -7858,7 +7853,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;core&gt;
   &lt;core dnOrder=&quot;0&quot; id=&quot;UART1_TX_INTERRUPT_HANDLER_LOCK&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;false&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -9390,11 +9385,11 @@
   &lt;spi2 dnOrder=&quot;0&quot; id=&quot;SPI_DUMMY_DATA&quot;&gt;
     &lt;Attributes dnOrder=&quot;0&quot;&gt;
       &lt;Long dnOrder=&quot;0&quot; id=&quot;max&quot;&gt;
-        &lt;Value dnOrder=&quot;0&quot;&gt;4294967295&lt;/Value&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;255&lt;/Value&gt;
       &lt;/Long&gt;
     &lt;/Attributes&gt;
     &lt;Values dnOrder=&quot;1&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;spi2&quot; value=&quot;4294967295&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;spi2&quot; value=&quot;255&quot;/&gt;
     &lt;/Values&gt;
   &lt;/spi2&gt;
 &lt;/spi2&gt;
@@ -9416,7 +9411,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;spi2&gt;
   &lt;spi2 dnOrder=&quot;0&quot; id=&quot;SPI_SPICON_MODE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;0&quot;/&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;3&quot;/&gt;
     &lt;/Values&gt;
   &lt;/spi2&gt;
 &lt;/spi2&gt;
@@ -9431,63 +9426,6 @@
     &lt;/Values&gt;
   &lt;/spi2&gt;
 &lt;/spi2&gt;
-</value>
-      </entry>
-      <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="stdio" name="!@#harmonyAttachmentState"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;stdio&gt;
-  &lt;stdio dnOrder=&quot;0&quot;&gt;
-    &lt;Attachments dnOrder=&quot;0&quot;&gt;
-      &lt;DirectDependency dnOrder=&quot;0&quot; id=&quot;UART&quot;&gt;
-        &lt;Attributes dnOrder=&quot;0&quot;&gt;
-          &lt;String dnOrder=&quot;0&quot; id=&quot;targetComponentID&quot;&gt;
-            &lt;Value dnOrder=&quot;0&quot;&gt;uart1&lt;/Value&gt;
-          &lt;/String&gt;
-          &lt;String dnOrder=&quot;1&quot; id=&quot;targetAttachmentID&quot;&gt;
-            &lt;Value dnOrder=&quot;0&quot;&gt;UART1_UART&lt;/Value&gt;
-          &lt;/String&gt;
-        &lt;/Attributes&gt;
-      &lt;/DirectDependency&gt;
-    &lt;/Attachments&gt;
-  &lt;/stdio&gt;
-&lt;/stdio&gt;
-</value>
-      </entry>
-      <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="stdio" name="#&amp;__MCC_Group_Parrent_id"/>
-         <value>__ROOTVIEW</value>
-      </entry>
-      <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="stdio" name="DEBUG_PERIPHERAL"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;stdio&gt;
-  &lt;stdio dnOrder=&quot;0&quot; id=&quot;DEBUG_PERIPHERAL&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;stdio&quot; value=&quot;uart1&quot;/&gt;
-    &lt;/Values&gt;
-  &lt;/stdio&gt;
-&lt;/stdio&gt;
-</value>
-      </entry>
-      <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="stdio" name="STDIN_BUFF_MODE"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;stdio&gt;
-  &lt;stdio dnOrder=&quot;0&quot; id=&quot;STDIN_BUFF_MODE&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;true&quot;/&gt;
-    &lt;/Values&gt;
-  &lt;/stdio&gt;
-&lt;/stdio&gt;
-</value>
-      </entry>
-      <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="stdio" name="STDOUT_BUFF_MODE"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;stdio&gt;
-  &lt;stdio dnOrder=&quot;0&quot; id=&quot;STDOUT_BUFF_MODE&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;true&quot;/&gt;
-    &lt;/Values&gt;
-  &lt;/stdio&gt;
-&lt;/stdio&gt;
 </value>
       </entry>
       <entry>
@@ -9833,20 +9771,7 @@
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="uart1" name="!@#harmonyAttachmentState"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;uart1&gt;
-  &lt;uart1 dnOrder=&quot;0&quot;&gt;
-    &lt;Attachments dnOrder=&quot;0&quot;&gt;
-      &lt;DirectCapability dnOrder=&quot;0&quot; id=&quot;UART1_UART&quot;&gt;
-        &lt;Attributes dnOrder=&quot;0&quot;&gt;
-          &lt;String dnOrder=&quot;0&quot; id=&quot;targetComponentID&quot;&gt;
-            &lt;Value dnOrder=&quot;0&quot;&gt;stdio&lt;/Value&gt;
-          &lt;/String&gt;
-          &lt;String dnOrder=&quot;1&quot; id=&quot;targetAttachmentID&quot;&gt;
-            &lt;Value dnOrder=&quot;0&quot;&gt;UART&lt;/Value&gt;
-          &lt;/String&gt;
-        &lt;/Attributes&gt;
-      &lt;/DirectCapability&gt;
-    &lt;/Attachments&gt;
-  &lt;/uart1&gt;
+  &lt;uart1 dnOrder=&quot;0&quot;/&gt;
 &lt;/uart1&gt;
 </value>
       </entry>
@@ -9900,11 +9825,24 @@
 </value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="uart1" name="UART_HEADER"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;uart1&gt;
+  &lt;uart1 dnOrder=&quot;0&quot; id=&quot;UART_HEADER&quot;&gt;
+    &lt;Attributes dnOrder=&quot;0&quot;&gt;
+      &lt;String dnOrder=&quot;0&quot; id=&quot;source&quot;&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;../peripheral/uart_02478/templates/plib_uart_ring_buffer.h.ftl&lt;/Value&gt;
+      &lt;/String&gt;
+    &lt;/Attributes&gt;
+  &lt;/uart1&gt;
+&lt;/uart1&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="uart1" name="UART_INTERRUPT_MODE_ENABLE"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;uart1&gt;
   &lt;uart1 dnOrder=&quot;0&quot; id=&quot;UART_INTERRUPT_MODE_ENABLE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;false&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
   &lt;/uart1&gt;
 &lt;/uart1&gt;
@@ -9916,11 +9854,12 @@
   &lt;uart1 dnOrder=&quot;0&quot; id=&quot;UART_OPERATING_MODE&quot;&gt;
     &lt;Attributes dnOrder=&quot;0&quot;&gt;
       &lt;Boolean dnOrder=&quot;0&quot; id=&quot;readOnly&quot;&gt;
-        &lt;Value dnOrder=&quot;0&quot;&gt;true&lt;/Value&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;false&lt;/Value&gt;
       &lt;/Boolean&gt;
     &lt;/Attributes&gt;
     &lt;Values dnOrder=&quot;1&quot;&gt;
       &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;0&quot;/&gt;
+      &lt;User dnOrder=&quot;1&quot; value=&quot;2&quot;/&gt;
     &lt;/Values&gt;
   &lt;/uart1&gt;
 &lt;/uart1&gt;
@@ -9931,8 +9870,21 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;uart1&gt;
   &lt;uart1 dnOrder=&quot;0&quot; id=&quot;UART_RING_BUFFER_MODE_ENABLE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;false&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;true&quot;/&gt;
     &lt;/Values&gt;
+  &lt;/uart1&gt;
+&lt;/uart1&gt;
+</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="uart1" name="UART_SOURCE"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;uart1&gt;
+  &lt;uart1 dnOrder=&quot;0&quot; id=&quot;UART_SOURCE&quot;&gt;
+    &lt;Attributes dnOrder=&quot;0&quot;&gt;
+      &lt;String dnOrder=&quot;0&quot; id=&quot;source&quot;&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;../peripheral/uart_02478/templates/plib_uart_ring_buffer.c.ftl&lt;/Value&gt;
+      &lt;/String&gt;
+    &lt;/Attributes&gt;
   &lt;/uart1&gt;
 &lt;/uart1&gt;
 </value>
@@ -9952,7 +9904,7 @@
    <generatedFileHashHistoryMap class="java.util.HashMap">
       <entry>
          <file>../src/config/bma400/peripheral/mcpwm/plib_mcpwm.c</file>
-         <hash>4861270b4618182f10678a6c4af023d69d86e87718ccc2a633a3759467bc11f2</hash>
+         <hash>398956768abeb61d0b385bcecc0a45f673e1cc84df6a13a40cd3e142e21fd1a9</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/rtcc/plib_rtcc.h</file>
@@ -9960,15 +9912,15 @@
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/uart/plib_uart_common.h</file>
-         <hash>90d1791d0855caa86d5d529a0ba209330f20cd0da2436950a7e71b38ef8da02b</hash>
+         <hash>70213cd740b3ff9a591d93ad6aac9493335851db084dd862275effacdebf710d</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/rtcc/plib_rtcc.c</file>
-         <hash>fc2d12de522615c0d6475cf813328f5c0b286525ed7d38d007c9c5e21b374c49</hash>
+         <hash>e023634af52140e04ab4e7b363238172a002bd783127025ed864fda46fed8c12</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/definitions.h</file>
-         <hash>bf6a9e474ea603f0cf1e85ee51fca16d975575ec549e0a6ddd32fcb76b4f5780</hash>
+         <hash>b4d11b0f901148584821136f5e4bd1394611d526dbe6e230f85954b944e00768</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/gpio/plib_gpio.h</file>
@@ -9976,27 +9928,27 @@
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/gpio/plib_gpio.c</file>
-         <hash>6946c61f0b94ec393761ee7943e7bf254b893f36271933e40b01f756fecd83c8</hash>
+         <hash>571b31cec4f14f33db383b95bb3ed1c50501a29c025fb37f835833bcb6906bf7</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/evic/plib_evic.c</file>
-         <hash>423e61894c8180fc9ed15aa06e682e13304a4d2331567be7439e74303add5801</hash>
+         <hash>b4e0786bb37168e0e7bf44a9d2b1ce3e2b9bff9993439197b06a36e7a964d221</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/mcpwm/plib_mcpwm_common.h</file>
-         <hash>92097067525e006e027efa54d1c6a97066c4870f41eac3b57dd02b6a9bb4cc2b</hash>
+         <hash>e1a7024335a9f1a1678aa24a8b52c02021dc9848a4e9c4fad36291e7375937f4</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/mcpwm/plib_mcpwm.h</file>
-         <hash>bcd46f45b3b2e8bf6f48002edc8ae381b25de602627153dac37269c2680c6269</hash>
+         <hash>fe315bf2bcba7ad56b08d0be1fcfd1ab7230542fc98b1b2726f73d49e2a26c87</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/adchs/plib_adchs_common.h</file>
-         <hash>1a4c2059bdc6e2b0bc68496e4dbf798280a7d236652655ac138b97ace6147bcb</hash>
+         <hash>0a3ed23aee80cb9b469014d86ff35186abcfbeaa16f98921f950fcf43b9cc3db</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/interrupts.h</file>
-         <hash>91abdb8d191ae865fc6082f30783c3d6cca8aa8d5aca823a7fb2cc65e3a57d24</hash>
+         <hash>290121926581fc020733836509b05ae0de1573d090a9a8ae0d3e1d9888b73ad9</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/device.h</file>
@@ -10008,15 +9960,15 @@
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/canfd/plib_canfd_common.h</file>
-         <hash>85c035049f7cdd738e11d547cea98940329249529ba267c6a338f6caaaf5f9e3</hash>
+         <hash>fbf5091541d361f023f2c1fa3f04173ed84db75e64f475d14e1919856f1bf620</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/tmr/plib_tmr6.c</file>
-         <hash>d80270d36578b780adde1c49f8e211992d2146ab922028a81964b1de4a76c976</hash>
+         <hash>5630831e13330191aee51c0e8d3e51bf2ef0306627f5c87b800ff1b13d46e1ac</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/interrupts.c</file>
-         <hash>0b0c663e369add2abec2d8330731171b902bf3c95b94abc4367824dc314e8238</hash>
+         <hash>db743b14a77c1f8bb5215902610dd12df45ffd04abd7cc9720154426111abcab</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/spi/spi_master/plib_spi1_master.h</file>
@@ -10024,7 +9976,7 @@
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/spi/spi_master/plib_spi1_master.c</file>
-         <hash>8d4429b1be522e9c0cc7eb2fa67feae3bc3ac8e57ca537745d6a60a299a9b671</hash>
+         <hash>70dd824718eb4f0640ddaf90de5a899484a6720039b10194ab34391d38813345</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/tmr/plib_tmr_common.h</file>
@@ -10032,23 +9984,23 @@
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/tmr/plib_tmr6.h</file>
-         <hash>10b7394a78b0a49cd652e852d9347108c00f6e39e59c43b3e5c87b8e82a40414</hash>
+         <hash>d559ab3f5f17c84eeb67f2da2a8b0b91770fb182bec53357d20317a2fc65d7a8</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/canfd/plib_canfd1.c</file>
-         <hash>485667714c366ae6adbc1d406ebc62ac3fb13a9e3d851f1eb4741e2fc6d7f657</hash>
+         <hash>165cf5e4f88d851ee0a2193be06712e87f8c0491e48e7cfe68f3961dbd017c20</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/dmac/plib_dmac.h</file>
-         <hash>23017fe3fc9a89674736de1d7c9f8f14b7334f1e9df251120de1397731ab7299</hash>
+         <hash>78b9533671371600d12031eb6280ef51c292677cc636c809bb1b16ab772a4f8d</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/canfd/plib_canfd1.h</file>
-         <hash>b75d9f762de983263e9c6dc009d2b74a1504e2d4695402535a576fc3f5deabb7</hash>
+         <hash>ffe6ae38e8992247fbc90680be6ac780b48adf67007f11063cc54381f567995b</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/toolchain_specifics.h</file>
-         <hash>9dfc75809b6eb23cee342231de51f6b382f8f7eabf8a939539cf44c0da32acbc</hash>
+         <hash>b4de6e02e3e48c62f7ba233405ffdf6ef31bb971d1a7b49efa1676f45cabc1ac</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/spi/spi_master/plib_spi2_master.h</file>
@@ -10056,19 +10008,19 @@
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/qei/plib_qei2.c</file>
-         <hash>cd8d159c68d5be2106b93c1b7e50741b4490ff18a385fc060a43841fdd04665d</hash>
+         <hash>463bdf86e1fcd05c0aec748a62f975431b38dad9899dee8bc2906b985cbd661e</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/spi/spi_master/plib_spi2_master.c</file>
-         <hash>13bf9cf6c9be5eb2f2e5102f8c7203712574c7804516f118dc0e581bd5469f7f</hash>
+         <hash>f8e6285595cbfe4f7d035b97e7ad01296d9a75b9f2c119a1da4ee54f478d01c1</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/stdio/xc32_monitor.c</file>
-         <hash>34c7efa285dd6778faf01a0097bf7bebc131e7a8a0ed97bb737ff3e0a39895d2</hash>
+         <hash>858f8710d4287200a5ee7f3b3ad7c24f505aed9c05c16956ab0ff9f7bb162a6a</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/dmac/plib_dmac.c</file>
-         <hash>db8c8528eb01baa1b7c4c8a6bb6feaf608ffea566b05026bd76ab4e4b0f59048</hash>
+         <hash>714a6aacd25bc42acc92f08f1ff265121bd55d3a03f4f47530d5611a08736717</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/adchs/plib_adchs.h</file>
@@ -10076,35 +10028,35 @@
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/uart/plib_uart1.c</file>
-         <hash>b699c0915d87ba370a61fc60405224729ef2f5ea7d5390967ef0a2a66b67fd2b</hash>
+         <hash>eb2903b702d272093030e57daff70f3555e75ab5752881fbf9b27ba87754125a</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/uart/plib_uart1.h</file>
-         <hash>7a1eb131a20e49ee5e46ba34845ec01b77fdcea9750992bbebccd3dec805b35a</hash>
+         <hash>1a0bafa88e6cdfd4f373b50fd2dd921b537c572d2318efe27f3dbc212dcfe05a</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/adchs/plib_adchs.c</file>
-         <hash>04d4c40d3d3b7c07615878a44209822111e04f9ddf120960df7e60b6df7cc981</hash>
+         <hash>ea0d907abfd34a138dabd04183eb8f6812501a69e99ab7c5252c1d313cf75c95</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/initialization.c</file>
-         <hash>5d17cd26f11e93fa30f2b39df7af8c6ca11b7e9d910470fd25a689ad37b9d12a</hash>
+         <hash>552b7c5c9fe38d99ea01a2a34775b71f1629940e3e824bd10ff62276766630db</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/qei/plib_qei2.h</file>
-         <hash>16de90513f0f63cbba24f121841c22b7f7ad20028a4776871d5508cfe0069ab5</hash>
+         <hash>0fcefc4012b9b9d168136aea7073993ce2e7ee0669bbbe5e38ccc825beefecb2</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/evic/plib_evic.h</file>
-         <hash>e92944d182b8c03b8839d1ba8f65627b4cd4f8fe40aed2fc30b397096b4c529c</hash>
+         <hash>c5bcab89a2dac87ef5cc54e2f03b06e0f8802eab732743227d531689026fe025</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/tmr/plib_tmr9.h</file>
-         <hash>5f927916b534a7995ade50cdf8da6d6a4046207285665302113a559a06e35314</hash>
+         <hash>a92367e78c6eed9679e741fb70c63340611b83e0869fa81ce568f7d5e9043c89</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/coretimer/plib_coretimer.h</file>
-         <hash>b4803baa11440eb8b100ddfccdcbb61bde17bf7b68cc78685c858d2a33fee12b</hash>
+         <hash>43587ec200ec41310d6b78e1a9ac504b1314c3a8d48c961a5a3411b7f807fd25</hash>
       </entry>
       <entry>
          <file>../src/main.c</file>
@@ -10116,35 +10068,35 @@
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/tmr/plib_tmr5.c</file>
-         <hash>d739eca1f54b691ea558023107a95a1a9383ce3816533a88ae82413099e16b62</hash>
+         <hash>2c134bded72a6afd222376db98a84ba9c988800dba0c1092d8dde66392ffb109</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/clk/plib_clk.h</file>
-         <hash>aeb73e24e5a518024b1c3f7dce953a5cbacead08f55e80ae465fc8d2e522e477</hash>
+         <hash>35384f2e13e59b7190bf77f6996baf3ea2377ec42df94979a6f793326def5255</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/tmr/plib_tmr5.h</file>
-         <hash>712a32bdde271364fb406e66908e62408bf51ab62268ce29f1d7829e569bc3a7</hash>
+         <hash>143ab36fd0f9b7755efb5ba29db0488c43f1fc1270098a70afe142a09f72f1fe</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/tmr/plib_tmr9.c</file>
-         <hash>7a797dd12b048facf453b5d74ea6242050c633f3ccd74b5c9a0f12a2fd28b047</hash>
+         <hash>d08dae6b6cc2d4a6d91b466fe62b9b09b17a584c9e083c18ef536affdec923d7</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/clk/plib_clk.c</file>
-         <hash>88d5bfc82ed63cae051907d04897727801e3295f8a0094982ef09592e65b3dd1</hash>
+         <hash>cf1a7574e93d0890ffc3d07c76203f0a3e435bf9095fd62f6e206c0825801785</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/qei/plib_qei_common.h</file>
-         <hash>9ea3b4f643d5ca367a1e9a98b6e2fe8f9d16f5b6ab36f65e27ca41b52f2bfcd5</hash>
+         <hash>63f1cbf111841acd9bf226772787e71a176289defa26b5611cab6df28115187d</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/exceptions.c</file>
-         <hash>bacd9060af8add5471ec3170808fe766dbd651e25104b5ecc8a7ebc02935e727</hash>
+         <hash>51869a2069933bd13284df52f5f993f4e8b83ae6097dda36c4b1fc6e818df86d</hash>
       </entry>
       <entry>
          <file>../src/config/bma400/peripheral/coretimer/plib_coretimer.c</file>
-         <hash>9d6acf01226eb43c1db60b4b6fba498114ee1980a8693a3acfc41326583ba8e1</hash>
+         <hash>b94670443f50120747ee844a4ea7c5f1aa5ade95cd485887bb887497fd730b2f</hash>
       </entry>
    </generatedFileHashHistoryMap>
 </config>

@@ -23,7 +23,7 @@ extern "C" {
 #include "../../firmware/lcd_drv/lcd_drv.h"
 #include "remote_cmd.h"
 
-#define HOST_DRIVER "V1.702" 
+#define HOST_DRIVER "V1.705" 
 #define HOST_ALIAS "HOST"
 #define HOST_MQTT
 
