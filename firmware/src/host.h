@@ -23,7 +23,7 @@ extern "C" {
 #include "../../firmware/lcd_drv/lcd_drv.h"
 #include "remote_cmd.h"
 
-#define HOST_DRIVER "V1.706" 
+#define HOST_DRIVER "V1.708" 
 #define HOST_ALIAS "HOST"
 #define HOST_MQTT
 
@@ -31,16 +31,21 @@ extern "C" {
 #define HOST_MAGIC_ID	0x101957
 #define HOST_SECRET	0xBD6FDC7BC925CD3E // 64-bit random number for unlocking machine control functions
 
-#define host_lcd_update		100
-#define host_canfd_update	500
-#define host_mqtt_update	100
+#define HOST_LCD_UPDATE		100
+#define HOST_CANFD_UPDATE	500
+	/*
+	 * MQTT message and processing timer ticks in ms
+	 * QoS set to 1, limits to 20 messages per second per connection
+	 */
+#define HOST_MQTT_UPDATE		100 // 50ms is the lower limit for reliable operation
+#define HOST_MQTT_JOB_WAIT		20
 
 #ifdef XPRJ_nsensor
 #define HOST_BOARD
 #define INT_BOARD
-#define debounce_delay 7000 // a few seconds in host mode
+#define DEBOUNCE_DELAY 7000 // a few seconds in host mode
 #else
-#define debounce_delay 3000000 // a few seconds in sensor mode
+#define DEBOUNCE_DELAY 3000000 // a few seconds in sensor mode
 #endif
 
 #ifdef XPRJ_mcj
@@ -64,9 +69,8 @@ extern "C" {
 	//#define DEBUG_can_callback
 	//#define DEBUG_can_callback1
 
-#define avg_samples	10000.0
-#define uart_wait	32300
-#define host_xmit_wait	50
+#define AVG_SAMPLES	10000.0
+#define UART_WAIT	32300
 
 	/*
 	 * CAN-FD vibration sensor host to network state machine

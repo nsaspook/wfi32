@@ -316,8 +316,8 @@ int host_sm(void)
 	UART1_ErrorGet(); // clear UART junk
 	scmd_init(); // start command parser
 
-	StartTimer(TMR_HOST, host_canfd_update);
-	StartTimer(TMR_REPLY, host_xmit_wait);
+	StartTimer(TMR_HOST, HOST_CANFD_UPDATE);
+	StartTimer(TMR_REPLY, HOST_MQTT_JOB_WAIT);
 
 #ifdef HOST_MQTT
 	mqtt_socket();
@@ -405,7 +405,7 @@ int host_sm(void)
 			uint32_t contention = 0;
 			LED_RED_Off();
 			while (uart1_dma_busy || U1STAbits.UTXBF) { // uart flow-control RED led
-				if (contention++ == uart_wait) {
+				if (contention++ == UART_WAIT) {
 					LED_RED_Toggle();
 				}
 			};
@@ -475,22 +475,24 @@ int host_sm(void)
 		}
 
 		/*
-		 * not currently used
+		 * MQTT processing function
 		 * host to sensor messages happen at screen updates
 		 */
 		if (TimerDone(TMR_REPLY)) {
-			StartTimer(TMR_REPLY, host_xmit_wait);
+			StartTimer(TMR_REPLY, HOST_MQTT_JOB_WAIT);
 #ifdef HOST_MQTT
+			TP3_Set();
 			mqtt_work(); // process tx/rx mqtt messages
+			TP3_Clear();
 #endif
 		}
 
 
 		if (TimerDone(TMR_HOST)) {
 #ifndef HOST_MQTT		
-			StartTimer(TMR_HOST, host_canfd_update);
+			StartTimer(TMR_HOST, HOST_CANFD_UPDATE);
 #else
-			StartTimer(TMR_HOST, host_mqtt_update);
+			StartTimer(TMR_HOST, HOST_MQTT_UPDATE);
 #endif
 			if (rec_message) {
 				rec_message = false;
@@ -538,10 +540,18 @@ int host_sm(void)
 			// convert the cJSON object to a JSON string 
 			json_str = cJSON_Print(json);
 
-			mqtt_check((uint8_t *) json_str); // transmit the string
+			TP3_Set();
+			mqtt_check((uint8_t *) json_str); // prepare MQTT message from the string
+			TP3_Clear();
+			TP3_Set(); // thicker line to ID this pulse from the other pulse
+			TP3_Clear();
 
 			cJSON_free(json_str); // free internal data structure memory
 			cJSON_Delete(json);
+			TP3_Set();
+			mqtt_work(); // process tx/rx mqtt messages
+			TP3_Clear();
+			StartTimer(TMR_REPLY, HOST_MQTT_JOB_WAIT);
 #endif
 		}
 	}
@@ -568,8 +578,8 @@ uint32_t fft_bin_total(sFFTData_t * fftt, uint32_t trim)
 double approxRollingAverage(double avg, double new_sample)
 {
 
-	avg -= avg / avg_samples;
-	avg += new_sample / avg_samples;
+	avg -= avg / AVG_SAMPLES;
+	avg += new_sample / AVG_SAMPLES;
 
 	return avg;
 }
@@ -585,7 +595,7 @@ void fh_start_AT(void *a_data)
 	// wait for send uart buffer to finish
 	uint32_t contention = 0;
 	while (uart1_dma_busy || U1STAbits.UTXBF) { // uart flow-control RED led
-		if (contention++ == uart_wait) {
+		if (contention++ == UART_WAIT) {
 		}
 	};
 	//	UART1_SerialSetup(&setup, 60000000);
@@ -635,8 +645,8 @@ bool TP1_check(void)
 
 	if (TP1_Get() == 0) {
 		debounce++;
-		if (debounce >= debounce_delay) {
-			debounce = debounce_delay + 1;
+		if (debounce >= DEBOUNCE_DELAY) {
+			debounce = DEBOUNCE_DELAY + 1;
 			return true;
 		} else {
 			return false;

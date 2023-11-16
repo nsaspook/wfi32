@@ -382,7 +382,7 @@ ssize_t mqtt_pal_sendall(mqtt_pal_socket_handle fd, const void* buf, size_t len,
 int32_t linux_getc_mqtt(uint8_t *);
 
 /*
- * read one byte from UART1 receiver buffer if there is data
+ * read bytes from UART1 receiver buffer if there is data
  */
 int32_t linux_getc_mqtt(uint8_t *a_data)
 {
@@ -395,9 +395,8 @@ int32_t linux_getc_mqtt(uint8_t *a_data)
 	}
 
 	if (UART1_ReadCountGet()) {
-		UART1_Read(a_data, 1);
 		online = 0;
-		return 1;
+		return UART1_Read(a_data, SERIAL_BUF_SIZ); // bytes transfered from buffer
 	} else {
 		return -1;
 	}

@@ -81,6 +81,7 @@ extern "C" {
 #include "definitions.h"                // SYS function prototypes
 
 #define ssize_t		int32_t
+#define SERIAL_BUF_SIZ	64
 
 #define MQTT_PAL_HTONS(s) htons(s)
 #define MQTT_PAL_NTOHS(s) ntohs(s)
