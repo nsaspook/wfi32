@@ -37,7 +37,7 @@ extern "C" {
 	 * MQTT message and processing timer ticks in ms
 	 * QoS set to 1, limits to 20 messages per second per connection
 	 */
-#define HOST_MQTT_UPDATE		100 // 50ms is the lower limit for reliable operation
+#define HOST_MQTT_UPDATE		300 // 50ms is the lower limit for reliable operation
 #define HOST_MQTT_JOB_WAIT		20
 
 #ifdef XPRJ_nsensor

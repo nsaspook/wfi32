@@ -421,7 +421,7 @@
         <targetDevice>PIC32MK0512MCJ048</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>PK5Tool</platformTool>
+        <platformTool>ICD5Tool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.35</languageToolchainVersion>
         <platform>2</platform>
@@ -768,8 +768,7 @@
         <property key="UART1" value="true"/>
         <property key="UART2" value="true"/>
         <property key="communication.activationmode" value="nohv"/>
-        <property key="communication.interface"
-                  value="${communication.interface.default}"/>
+        <property key="communication.interface" value=""/>
         <property key="communication.interface.jtag" value="2wire"/>
         <property key="communication.speed" value="${communication.speed.default}"/>
         <property key="debugoptions.debug-startup" value="Use system settings"/>
@@ -817,9 +816,8 @@
         <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
         <property key="toolpack.updateoptions"
                   value="toolpack.updateoptions.uselatestoolpack"/>
-        <property key="toolpack.updateoptions.packversion"
-                  value="Press to select which tool pack to use"/>
-        <property key="voltagevalue" value="3.25"/>
+        <property key="toolpack.updateoptions.packversion" value="2.0.188"/>
+        <property key="voltagevalue" value="3.55"/>
       </ICD5Tool>
       <PK5Tool>
         <property key="ADC" value="true"/>
@@ -1046,8 +1044,7 @@
         <property key="ptgSendImage" value="true"/>
         <property key="toolpack.updateoptions"
                   value="toolpack.updateoptions.uselatestoolpack"/>
-        <property key="toolpack.updateoptions.packversion"
-                  value="Press to select which tool pack to use"/>
+        <property key="toolpack.updateoptions.packversion" value="2.0.188"/>
         <property key="voltagevalue" value="3.55"/>
       </Tool>
       <pk4hybrid>

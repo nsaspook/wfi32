@@ -167,7 +167,7 @@ void SYS_Initialize ( void* data )
     /* Start out with interrupts disabled before configuring any modules */
     (void)__builtin_disable_interrupts();
 
-
+  
     CLK_Initialize();
 
     /* Configure CP0.K0 for optimal performance (cached instruction pre-fetch) */
@@ -185,14 +185,14 @@ void SYS_Initialize ( void* data )
 
     DMAC_Initialize();
 
-    CORETIMER_Initialize();
     TMR6_Initialize();
 
+    CORETIMER_Initialize();
     ADCHS_Initialize();
 
-	UART1_Initialize();
-
     QEI2_Initialize();
+
+	UART1_Initialize();
 
     TMR5_Initialize();
 

@@ -43,6 +43,9 @@
  * The Max sensor count is ~6 because of the serial ttl speed bottleneck
  */
 
+/*
+ * Testing example:  mosquitto_sub -t "mateq84/data/solar" -h 10.1.1.172
+ */
 #include <stddef.h>                     // Defines NULL
 #include <stdbool.h>                    // Defines true
 #include <stdlib.h>                     // Defines EXIT_FAILURE

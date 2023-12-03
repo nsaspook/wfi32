@@ -379,12 +379,12 @@ ssize_t mqtt_pal_sendall(mqtt_pal_socket_handle fd, const void* buf, size_t len,
 	return(ssize_t) sent;
 }
 
-int32_t linux_getc_mqtt(uint8_t *);
+int32_t pic32mk_getc_mqtt(uint8_t *);
 
 /*
  * read bytes from UART1 receiver buffer if there is data
  */
-int32_t linux_getc_mqtt(uint8_t *a_data)
+int32_t pic32mk_getc_mqtt(uint8_t *a_data)
 {
 	static uint32_t online = 0;
 
@@ -413,7 +413,7 @@ ssize_t mqtt_pal_recvall(mqtt_pal_socket_handle fd, void* buf, size_t bufsz, int
 	ssize_t rv;
 	do {
 		LED_RED_Off(); // some visual indications of data comms from the broker
-		rv = linux_getc_mqtt(buf);
+		rv = pic32mk_getc_mqtt(buf);
 		if (rv == 0) {
 			/*
 			 * recv returns 0 when the socket is (half) closed by the peer.
