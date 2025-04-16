@@ -24,6 +24,11 @@ extern "C" {
 	 * Board hardware configurations
 	 * and hardware specific functions
 	 */
+	
+	/*
+	 * AN1 Misc, AN10 panel1 Volts, AN26 panel2 Volts
+	 * AN50 IVref 1.2, AN53 CTMU Temp Sensor, scanned
+	 */
 
 #define QUAT_HOST
 

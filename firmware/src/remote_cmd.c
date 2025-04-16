@@ -86,9 +86,7 @@ void remote_cmd_decode(imu_host_t * host_ptr)
 	case CMD_IDLE:
 		break;
 	case CMD_SPIN_DOWN: // vibration action triggered
-		PWM1EN_Set();
 		if (!imu0.locked) {
-			PWM4EN_Set();
 			imu0.down = true;
 			imu0.locked = true; // auto relock
 		}
@@ -106,16 +104,12 @@ void remote_cmd_decode(imu_host_t * host_ptr)
 		}
 		break;
 	case CMD_WARN_ON: // vibration warning triggered
-		PWM1EN_Set();
 		imu0.warn = true;
 		break;
 	case CMD_WARN_OFF:
-		PWM1EN_Clear();
 		imu0.warn = false;
 		break;
 	case CMD_SAFE:
-		PWM1EN_Clear();
-		PWM4EN_Clear();
 		imu0.warn = false;
 		imu0.down = false;
 		break;

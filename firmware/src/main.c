@@ -276,13 +276,12 @@ int main(void)
 	WaitMs(2500);
 #ifdef __32MK0512MCJ048__
 #ifdef XPRJ_mcj
-	MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024);
+
 #endif
 #ifdef XPRJ_bma400
-	MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024);
+
 #endif	
-	MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024);
-	MCPWM_Start();
+
 #endif
 	TP1_Set(); // ETH modules display trigger
 
@@ -332,12 +331,12 @@ int main(void)
 			getAllData(&accel, &imu0); // convert data from the chip
 #ifdef __32MK0512MCJ048__
 #ifdef XPRJ_mcj
-			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024 + (uint32_t) (10.0 * accel.xa));
+
 #endif
 #ifdef XPRJ_bma400
-			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024 + (uint32_t) (10.0 * accel.xa));
+
 #endif			
-			MCPWM_ChannelPrimaryDutySet(MCPWM_CH_4, 1024 + (uint32_t) (10.0 * accel.ya));
+
 #endif
 			accel.xerr = UpdatePI(&xpid, (double) accel.xa);
 			accel.yerr = UpdatePI(&ypid, (double) accel.ya);

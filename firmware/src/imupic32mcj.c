@@ -2,18 +2,6 @@
 
 static uint32_t delay_freq = 0;
 
-#ifdef __32MK0512MCJ048__
-void qei_index_cb(QEI_STATUS, uintptr_t);
-
-/*
- * on QEI index trigger function
- */
-void qei_index_cb(QEI_STATUS status, uintptr_t context)
-{
-
-}
-#endif
-
 /*
  * configure the SPI port bit size for data transfers
  */
@@ -106,8 +94,6 @@ void start_tick(void)
 
 #ifdef __32MK0512MCJ048__
 	TMR9_Start(); // IMU time-stamp counter
-	QEI2_CallbackRegister(qei_index_cb, 0);
-	QEI2_Start();
 #endif
 #ifdef __32MZ1025W104132__
 	TMR2_Start(); // IMU time-stamp counter

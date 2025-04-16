@@ -72,7 +72,6 @@ void DMA1_InterruptHandler( void );
 void DMA2_InterruptHandler( void );
 void TIMER_6_InterruptHandler( void );
 void CAN1_InterruptHandler( void );
-void QEI2_InterruptHandler( void );
 void DMA7_InterruptHandler( void );
 
 

@@ -63,13 +63,13 @@ void GPIO_Initialize ( void )
     /* PORTA Initialization */
     LATA = 0x810U; /* Initial Latch Value */
     TRISACLR = 0x810U; /* Direction Control */
-    ANSELACLR = 0x1911U; /* Digital Mode Enable */
-    CNPUASET = 0x1900U; /* Pull-Up Enable */
+    ANSELACLR = 0x1811U; /* Digital Mode Enable */
+    CNPUASET = 0x1800U; /* Pull-Up Enable */
     /* PORTB Initialization */
-    LATB = 0xca40U; /* Initial Latch Value */
-    TRISBCLR = 0xca41U; /* Direction Control */
+    LATB = 0xc241U; /* Initial Latch Value */
+    TRISBCLR = 0xc241U; /* Direction Control */
     ANSELBCLR = 0x28dU; /* Digital Mode Enable */
-    CNPUBSET = 0xff4cU; /* Pull-Up Enable */
+    CNPUBSET = 0xc34cU; /* Pull-Up Enable */
     SRCON0BSET = 0xbcU; /* Slew Rate Control */
     /* PORTC Initialization */
     LATC = 0x9200U; /* Initial Latch Value */
@@ -78,9 +78,6 @@ void GPIO_Initialize ( void )
     CNPUCSET = 0xa06U; /* Pull-Up Enable */
     SRCON0CSET = 0x1c3U; /* Slew Rate Control */
     /* PORTD Initialization */
-    LATD = 0x100U; /* Initial Latch Value */
-    TRISDCLR = 0x100U; /* Direction Control */
-    CNPUDSET = 0x100U; /* Pull-Up Enable */
 
     /* Unlock system for PPS configuration */
     SYSKEY = 0x00000000U;
@@ -94,9 +91,6 @@ void GPIO_Initialize ( void )
     INT2R = 9;
     U1RXR = 6;
     SDI1R = 2;
-    QEA2R = 3;
-    QEB2R = 3;
-    INDX2R = 7;
     C1RXR = 4;
 
     /* PPS Output Remapping */

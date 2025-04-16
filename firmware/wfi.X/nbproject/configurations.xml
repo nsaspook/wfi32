@@ -30,14 +30,6 @@
             <logicalFolder name="gpio" displayName="gpio" projectFiles="true">
               <itemPath>../src/config/nsensor/peripheral/gpio/plib_gpio.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="mcpwm" displayName="mcpwm" projectFiles="true">
-              <itemPath>../src/config/nsensor/peripheral/mcpwm/plib_mcpwm.h</itemPath>
-              <itemPath>../src/config/nsensor/peripheral/mcpwm/plib_mcpwm_common.h</itemPath>
-            </logicalFolder>
-            <logicalFolder name="qei" displayName="qei" projectFiles="true">
-              <itemPath>../src/config/nsensor/peripheral/qei/plib_qei2.h</itemPath>
-              <itemPath>../src/config/nsensor/peripheral/qei/plib_qei_common.h</itemPath>
-            </logicalFolder>
             <logicalFolder name="rtcc" displayName="rtcc" projectFiles="true">
               <itemPath>../src/config/nsensor/peripheral/rtcc/plib_rtcc.h</itemPath>
             </logicalFolder>
@@ -176,12 +168,6 @@
             </logicalFolder>
             <logicalFolder name="gpio" displayName="gpio" projectFiles="true">
               <itemPath>../src/config/nsensor/peripheral/gpio/plib_gpio.c</itemPath>
-            </logicalFolder>
-            <logicalFolder name="mcpwm" displayName="mcpwm" projectFiles="true">
-              <itemPath>../src/config/nsensor/peripheral/mcpwm/plib_mcpwm.c</itemPath>
-            </logicalFolder>
-            <logicalFolder name="qei" displayName="qei" projectFiles="true">
-              <itemPath>../src/config/nsensor/peripheral/qei/plib_qei2.c</itemPath>
             </logicalFolder>
             <logicalFolder name="rtcc" displayName="rtcc" projectFiles="true">
               <itemPath>../src/config/nsensor/peripheral/rtcc/plib_rtcc.c</itemPath>
@@ -609,7 +595,7 @@
         <property key="report-memory-usage" value="false"/>
         <property key="serial-length" value=""/>
         <property key="serial-origin" value=""/>
-        <property key="stack-size" value="2048"/>
+        <property key="stack-size" value="4096"/>
         <property key="symbol-stripping" value=""/>
         <property key="trace-symbols" value=""/>
         <property key="warn-section-align" value="false"/>

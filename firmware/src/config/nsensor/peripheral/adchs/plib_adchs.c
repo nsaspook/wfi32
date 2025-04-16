@@ -57,24 +57,23 @@
 void ADCHS_Initialize(void)
 {
     ADCCON1bits.ON = 0;
-ADC0CFG = DEVADC0;
-    ADC0TIME = 0x3010001U;
-ADC1CFG = DEVADC1;
+    ADC1CFG = DEVADC1;
     ADC1TIME = 0x3010001U;
 
+    ADC7CFG = DEVADC7;
 
-    ADCCON1 = 0x600000U;
-    ADCCON2 = 0x0U;
+    ADCCON1 = 0x630000U;
+    ADCCON2 = 0x20001U;
     ADCCON3 = 0x1000000U;
 
     ADCTRGMODE = 0x0U;
-    
+
     ADCTRG1 = 0x0U; 
     ADCTRG2 = 0x0U; 
     ADCTRG3 = 0x0U; 
     
     
-
+    
     ADCTRG7 = 0x0U; 
 
     ADCTRGSNS = 0x0U;
@@ -86,7 +85,7 @@ ADC1CFG = DEVADC1;
 
     /* Input scan */
     ADCCSS1 = 0x0U;
-    ADCCSS2 = 0x0U; 
+    ADCCSS2 = 0x240000U; 
 
 
 
@@ -106,14 +105,6 @@ ADC1CFG = DEVADC1;
         /* Nothing to do */
     }
 
-    /* ADC 0 */
-    ADCANCONbits.ANEN0 = 1;      // Enable the clock to analog bias
-    while(ADCANCONbits.WKRDY0 == 0U) // Wait until ADC is ready
-    {
-        /* Nothing to do */
-    }
-    ADCCON3bits.DIGEN0 = 1;      // Enable ADC
-
     /* ADC 1 */
     ADCANCONbits.ANEN1 = 1;      // Enable the clock to analog bias
     while(ADCANCONbits.WKRDY1 == 0U) // Wait until ADC is ready
@@ -122,6 +113,13 @@ ADC1CFG = DEVADC1;
     }
     ADCCON3bits.DIGEN1 = 1;      // Enable ADC
 
+    /* ADC 7 */
+    ADCANCONbits.ANEN7 = 1;      // Enable the clock to analog bias
+    while(ADCANCONbits.WKRDY7 == 0U) // Wait until ADC is ready
+    {
+        /* Nothing to do */
+    }
+    ADCCON3bits.DIGEN7 = 1;      // Enable ADC
 
 
 }

@@ -181,10 +181,6 @@ void SYS_Initialize ( void* data )
 
 	GPIO_Initialize();
 
-    CAN1_Initialize();
-
-    DMAC_Initialize();
-
     TMR6_Initialize();
 
     CORETIMER_Initialize();
@@ -192,11 +188,11 @@ void SYS_Initialize ( void* data )
 
 	UART1_Initialize();
 
-    QEI2_Initialize();
-
     TMR5_Initialize();
 
-    MCPWM_Initialize();
+    CAN1_Initialize();
+
+    DMAC_Initialize();
 
 	SPI2_Initialize();
 

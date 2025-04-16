@@ -72,7 +72,6 @@ void EVIC_Initialize( void )
     IPC18SET = 0x40000U | 0x0U;  /* DMA2:  Priority 1 / Subpriority 0 */
     IPC19SET = 0x8U | 0x0U;  /* TIMER_6:  Priority 2 / Subpriority 0 */
     IPC41SET = 0x10000000U | 0x0U;  /* CAN1:  Priority 4 / Subpriority 0 */
-    IPC42SET = 0x40000U | 0x0U;  /* QEI2:  Priority 1 / Subpriority 0 */
     IPC46SET = 0x1400U | 0x0U;  /* DMA7:  Priority 5 / Subpriority 0 */
 
     /* Initialize External interrupt 2 callback object */
