@@ -186,6 +186,7 @@ bool sca3300_getid(void * imup)
 						imu->device = IMU_SCL3300;
 						imu->acc_range = imu->acc_range_scl; // set to SCL ranges
 						sca3300_imu_transfer(imu, SCL3300_ANGLE); // enable angle data
+						sca3300_imu_transfer(imu, SCL3300_ANGLE); // enable angle data
 						delay_us(SCA3300_CHIP_MODE_DELAY);
 					}
 					imu->online = true;

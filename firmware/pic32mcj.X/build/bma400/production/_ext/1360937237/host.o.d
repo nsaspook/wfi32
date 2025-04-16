@@ -33,7 +33,8 @@ build/bma400/production/_ext/1360937237/host.o: ../src/host.c \
  ../src/../../firmware/lcd_drv/OledChar.h \
  ../src/../../firmware/lcd_drv/OledGrph.h ../src/remote_cmd.h \
  ../src/cmd_scanner.h ../src/mqtt_pub.h ../src/mqtt.h ../src/mqtt_pal.h \
- ../src/endian.h ../src/cJSON.h \
+ ../src/endian.h ../src/cJSON.h ../src/gfx.h \
+ ../src/../../firmware/lcd_drv/OledGrph.h \
  ../src/config/bma400/peripheral/dmac/plib_dmac.h
 
 ../src/imupic32mcj.h:
@@ -127,5 +128,9 @@ build/bma400/production/_ext/1360937237/host.o: ../src/host.c \
 ../src/endian.h:
 
 ../src/cJSON.h:
+
+../src/gfx.h:
+
+../src/../../firmware/lcd_drv/OledGrph.h:
 
 ../src/config/bma400/peripheral/dmac/plib_dmac.h:

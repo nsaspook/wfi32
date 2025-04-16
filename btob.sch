@@ -344,10 +344,11 @@ W = angled&lt;p&gt;
 <busses>
 </busses>
 <nets>
-<net name="N$1" class="0">
+<net name="P9" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="9"/>
 <wire x1="17.78" y1="76.2" x2="7.62" y2="76.2" width="0.1524" layer="91"/>
+<label x="2.54" y="76.2" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="45.72" y1="40.64" x2="35.56" y2="40.64" width="0.1524" layer="91"/>
@@ -362,10 +363,11 @@ W = angled&lt;p&gt;
 <pinref part="J3" gate="G$1" pin="9"/>
 </segment>
 </net>
-<net name="N$2" class="0">
+<net name="P7" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="7"/>
 <wire x1="17.78" y1="73.66" x2="7.62" y2="73.66" width="0.1524" layer="91"/>
+<label x="2.54" y="73.66" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="45.72" y1="38.1" x2="35.56" y2="38.1" width="0.1524" layer="91"/>
@@ -380,10 +382,11 @@ W = angled&lt;p&gt;
 <pinref part="J3" gate="G$1" pin="7"/>
 </segment>
 </net>
-<net name="N$3" class="0">
+<net name="P5" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="5"/>
 <wire x1="17.78" y1="71.12" x2="7.62" y2="71.12" width="0.1524" layer="91"/>
+<label x="2.54" y="71.12" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="45.72" y1="35.56" x2="35.56" y2="35.56" width="0.1524" layer="91"/>
@@ -398,10 +401,11 @@ W = angled&lt;p&gt;
 <pinref part="J3" gate="G$1" pin="5"/>
 </segment>
 </net>
-<net name="N$4" class="0">
+<net name="P3" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="3"/>
 <wire x1="17.78" y1="68.58" x2="7.62" y2="68.58" width="0.1524" layer="91"/>
+<label x="2.54" y="68.58" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="45.72" y1="33.02" x2="35.56" y2="33.02" width="0.1524" layer="91"/>
@@ -416,10 +420,11 @@ W = angled&lt;p&gt;
 <pinref part="J3" gate="G$1" pin="3"/>
 </segment>
 </net>
-<net name="N$5" class="0">
+<net name="P1" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="1"/>
 <wire x1="17.78" y1="66.04" x2="7.62" y2="66.04" width="0.1524" layer="91"/>
+<label x="2.54" y="66.04" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="45.72" y1="30.48" x2="35.56" y2="30.48" width="0.1524" layer="91"/>
@@ -434,10 +439,11 @@ W = angled&lt;p&gt;
 <pinref part="J3" gate="G$1" pin="1"/>
 </segment>
 </net>
-<net name="N$6" class="0">
+<net name="P10" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="10"/>
 <wire x1="40.64" y1="76.2" x2="55.88" y2="76.2" width="0.1524" layer="91"/>
+<label x="58.42" y="76.2" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="5.08" y1="40.64" x2="20.32" y2="40.64" width="0.1524" layer="91"/>
@@ -452,10 +458,11 @@ W = angled&lt;p&gt;
 <pinref part="J3" gate="G$1" pin="10"/>
 </segment>
 </net>
-<net name="N$7" class="0">
+<net name="P8" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="8"/>
 <wire x1="40.64" y1="73.66" x2="55.88" y2="73.66" width="0.1524" layer="91"/>
+<label x="58.42" y="73.66" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="5.08" y1="38.1" x2="20.32" y2="38.1" width="0.1524" layer="91"/>
@@ -470,10 +477,11 @@ W = angled&lt;p&gt;
 <pinref part="J3" gate="G$1" pin="8"/>
 </segment>
 </net>
-<net name="N$8" class="0">
+<net name="P6" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="6"/>
 <wire x1="40.64" y1="71.12" x2="55.88" y2="71.12" width="0.1524" layer="91"/>
+<label x="58.42" y="71.12" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="5.08" y1="35.56" x2="20.32" y2="35.56" width="0.1524" layer="91"/>
@@ -488,10 +496,11 @@ W = angled&lt;p&gt;
 <pinref part="J3" gate="G$1" pin="6"/>
 </segment>
 </net>
-<net name="N$9" class="0">
+<net name="P4" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="4"/>
 <wire x1="40.64" y1="68.58" x2="55.88" y2="68.58" width="0.1524" layer="91"/>
+<label x="58.42" y="68.58" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="5.08" y1="33.02" x2="20.32" y2="33.02" width="0.1524" layer="91"/>
@@ -506,10 +515,11 @@ W = angled&lt;p&gt;
 <pinref part="J3" gate="G$1" pin="4"/>
 </segment>
 </net>
-<net name="N$10" class="0">
+<net name="P2" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="2"/>
 <wire x1="40.64" y1="66.04" x2="55.88" y2="66.04" width="0.1524" layer="91"/>
+<label x="58.42" y="66.04" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="5.08" y1="30.48" x2="20.32" y2="30.48" width="0.1524" layer="91"/>
