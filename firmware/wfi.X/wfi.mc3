@@ -1,4 +1,4 @@
-<config configName="mcj" projectName="wfipic32mcj" configVersion="1.1" device="PIC32MK0512MCJ048" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.6.1">
+<config configName="mcj" projectName="wfipic32mcj" configVersion="1.1" device="PIC32MK0512MCJ048" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.7.1">
    <usedPackages class="java.util.ArrayList"/>
    <usedClasses class="java.util.TreeMap">
       <entry>
@@ -9803,7 +9803,7 @@
    <generatedFileHashHistoryMap class="java.util.TreeMap">
       <entry>
          <file>../src/config/nsensor/definitions.h</file>
-         <hash>6133b2fffb7f479add1ceab1188a6462dad92f3e9d4369510d7ed80c31fc9588</hash>
+         <hash>9d6873b2b92200af9b628cb348a8bb4e2e67d7c6898e879c39bee680b3aed5b8</hash>
       </entry>
       <entry>
          <file>../src/config/nsensor/device.h</file>
@@ -9815,7 +9815,7 @@
       </entry>
       <entry>
          <file>../src/config/nsensor/initialization.c</file>
-         <hash>d6008f0c2df420a848dd7c611f8b14c70a198929f51a24004cc1b2f5ab1770d8</hash>
+         <hash>c5ca0b05069ca1ea7ed69ef2d951994e257e05e3e1b7210423c81dadae1b2482</hash>
       </entry>
       <entry>
          <file>../src/config/nsensor/interrupts.c</file>
