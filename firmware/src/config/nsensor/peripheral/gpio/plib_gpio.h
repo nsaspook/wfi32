@@ -80,14 +80,14 @@
 #define ETH_RESET_Get()               ((PORTB >> 15) & 0x1U)
 #define ETH_RESET_PIN                  GPIO_PIN_RB15
 
-/*** Macros for EXT_SW2 pin ***/
-#define EXT_SW2_Set()               (LATASET = (1U<<12))
-#define EXT_SW2_Clear()             (LATACLR = (1U<<12))
-#define EXT_SW2_Toggle()            (LATAINV= (1U<<12))
-#define EXT_SW2_OutputEnable()      (TRISACLR = (1U<<12))
-#define EXT_SW2_InputEnable()       (TRISASET = (1U<<12))
-#define EXT_SW2_Get()               ((PORTA >> 12) & 0x1U)
-#define EXT_SW2_PIN                  GPIO_PIN_RA12
+/*** Macros for GPIO_RA12 pin ***/
+#define GPIO_RA12_Set()               (LATASET = (1U<<12))
+#define GPIO_RA12_Clear()             (LATACLR = (1U<<12))
+#define GPIO_RA12_Toggle()            (LATAINV= (1U<<12))
+#define GPIO_RA12_OutputEnable()      (TRISACLR = (1U<<12))
+#define GPIO_RA12_InputEnable()       (TRISASET = (1U<<12))
+#define GPIO_RA12_Get()               ((PORTA >> 12) & 0x1U)
+#define GPIO_RA12_PIN                  GPIO_PIN_RA12
 
 /*** Macros for DIS_CS pin ***/
 #define DIS_CS_Set()               (LATASET = (1U<<11))

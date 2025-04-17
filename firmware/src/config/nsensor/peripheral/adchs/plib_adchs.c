@@ -64,7 +64,7 @@ void ADCHS_Initialize(void)
 
     ADCCON1 = 0x630000U;
     ADCCON2 = 0x20001U;
-    ADCCON3 = 0x1000000U;
+    ADCCON3 = 0x1002000U;
 
     ADCTRGMODE = 0x0U;
 
