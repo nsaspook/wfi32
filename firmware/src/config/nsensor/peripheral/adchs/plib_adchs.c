@@ -85,7 +85,7 @@ void ADCHS_Initialize(void)
 
     /* Input scan */
     ADCCSS1 = 0x0U;
-    ADCCSS2 = 0x240000U; 
+    ADCCSS2 = 0x0U; 
 
 
 

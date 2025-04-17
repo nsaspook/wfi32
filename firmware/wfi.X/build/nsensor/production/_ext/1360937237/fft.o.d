@@ -1,10 +1,10 @@
 build/nsensor/production/_ext/1360937237/fft.o: ../src/fft.c ../src/fft.h \
  ../src/imupic32mcj.h ../src/config/nsensor/definitions.h \
+ ../src/config/nsensor/peripheral/coretimer/plib_coretimer.h \
  ../src/config/nsensor/peripheral/tmr/plib_tmr6.h \
  ../src/config/nsensor/device.h \
  ../src/config/nsensor/toolchain_specifics.h \
  ../src/config/nsensor/peripheral/tmr/plib_tmr_common.h \
- ../src/config/nsensor/peripheral/coretimer/plib_coretimer.h \
  ../src/config/nsensor/peripheral/adchs/plib_adchs.h \
  ../src/config/nsensor/peripheral/adchs/plib_adchs_common.h \
  ../src/config/nsensor/peripheral/uart/plib_uart1.h \
@@ -29,6 +29,8 @@ build/nsensor/production/_ext/1360937237/fft.o: ../src/fft.c ../src/fft.h \
 
 ../src/config/nsensor/definitions.h:
 
+../src/config/nsensor/peripheral/coretimer/plib_coretimer.h:
+
 ../src/config/nsensor/peripheral/tmr/plib_tmr6.h:
 
 ../src/config/nsensor/device.h:
@@ -36,8 +38,6 @@ build/nsensor/production/_ext/1360937237/fft.o: ../src/fft.c ../src/fft.h \
 ../src/config/nsensor/toolchain_specifics.h:
 
 ../src/config/nsensor/peripheral/tmr/plib_tmr_common.h:
-
-../src/config/nsensor/peripheral/coretimer/plib_coretimer.h:
 
 ../src/config/nsensor/peripheral/adchs/plib_adchs.h:
 
