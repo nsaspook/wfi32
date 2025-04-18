@@ -71,6 +71,8 @@ imu_host_t host0 = {
 uint32_t fft_bin_total(sFFTData_t *, uint32_t);
 double approxRollingAverage(double avg, double new_sample);
 
+double adc_val[4];
+
 /* Variable to save application state */
 static volatile APP_STATES state = APP_STATE_CAN_IDLE;
 /* Variable to save Tx/Rx transfer status and context */
@@ -330,6 +332,20 @@ int host_sm(void)
 		/* Maintain state machines of all polled MPLAB Harmony modules. */
 		SYS_Tasks();
 
+		/*
+		 * adc stuff
+		 */
+		ADCHS_ChannelConversionStart(ADCHS_CH1);
+		while (!ADCHS_ChannelResultIsReady(ADCHS_CH1));
+		adc_val[0] = (double) ADCHS_ChannelResultGet(ADCHS_CH1);
+		ADCHS_ChannelConversionStart(ADCHS_CH26);
+		while (!ADCHS_ChannelResultIsReady(ADCHS_CH26));
+		adc_val[1] = (double) ADCHS_ChannelResultGet(ADCHS_CH26);
+		ADCHS_ChannelConversionStart(ADCHS_CH48);
+		while (!ADCHS_ChannelResultIsReady(ADCHS_CH48));
+		adc_val[2] = (double) ADCHS_ChannelResultGet(ADCHS_CH48);
+
+
 		LED_GREEN_Toggle();
 		/*
 		 * Short TP1 to ground for at least 5 seconds to trigger a IP query to the ETH module
@@ -536,6 +552,9 @@ int host_sm(void)
 			cJSON_AddNumberToObject(json, "X", q0);
 			cJSON_AddNumberToObject(json, "Y", q1);
 			cJSON_AddNumberToObject(json, "Z", q2 * -1.0f); // flip Z
+			cJSON_AddNumberToObject(json, "CHAN 0", adc_val[0]);
+			cJSON_AddNumberToObject(json, "CHAN 1", adc_val[1]);
+			cJSON_AddNumberToObject(json, "CHAN 2", adc_val[2]);
 			cJSON_AddStringToObject(json, "system", "PIC32MK");
 			// convert the cJSON object to a JSON string 
 			json_str = cJSON_Print(json);
