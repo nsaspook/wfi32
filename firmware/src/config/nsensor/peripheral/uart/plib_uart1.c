@@ -103,7 +103,7 @@ void static UART1_ErrorClear( void )
 void UART1_Initialize( void )
 {
     /* Set up UxMODE bits */
-    /* STSEL  = 0*/
+    /* STSEL  = 1*/
     /* PDSEL = 0 */
     /* BRGH = 1 */
     /* RXINV = 0 */
@@ -114,13 +114,13 @@ void UART1_Initialize( void )
     /* RUNOVF = 0 */
     /* CLKSEL = 0 */
     /* SLPEN = 0 */
-    U1MODE = 0x8;
+    U1MODE = 0x9;
 
     /* Enable UART1 Receiver, Transmitter and TX Interrupt selection */
     U1STASET = (_U1STA_UTXEN_MASK | _U1STA_URXEN_MASK | _U1STA_UTXISEL1_MASK );
 
     /* BAUD Rate register Setup */
-    U1BRG = 32;
+    U1BRG = 64;
 
     IEC1CLR = _IEC1_U1TXIE_MASK;
 

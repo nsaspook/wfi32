@@ -104,6 +104,10 @@ void start_tick(void)
 #else
 	cpu_serial_id = DEVSN0 & 0x1fffffff; // get CPU device 32-bit serial number and convert that to 29 - bit ID for CAN - FD
 #endif
+	/*
+	 * needed for the slow to boot Ethernet modules
+	 */
+	WaitMs(5000);
 }
 
 void canfd_set_filter(uint32_t fil0, uint32_t fil1)

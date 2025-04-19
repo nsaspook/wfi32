@@ -8934,7 +8934,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;uart1&gt;
   &lt;uart1 dnOrder=&quot;0&quot; id=&quot;BAUD_RATE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;460800&quot;/&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;230400&quot;/&gt;
     &lt;/Values&gt;
   &lt;/uart1&gt;
 &lt;/uart1&gt;
@@ -8945,7 +8945,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;uart1&gt;
   &lt;uart1 dnOrder=&quot;0&quot; id=&quot;BRG_VALUE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;32&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;64&quot;/&gt;
     &lt;/Values&gt;
   &lt;/uart1&gt;
 &lt;/uart1&gt;
@@ -9053,11 +9053,22 @@
 </value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="uart1" name="UART_STSEL"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;uart1&gt;
+  &lt;uart1 dnOrder=&quot;0&quot; id=&quot;UART_STSEL&quot;&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;0&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/uart1&gt;
+&lt;/uart1&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="uart1" name="UMODE_VALUE"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;uart1&gt;
   &lt;uart1 dnOrder=&quot;0&quot; id=&quot;UMODE_VALUE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;8&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;uart1&quot; value=&quot;9&quot;/&gt;
     &lt;/Values&gt;
   &lt;/uart1&gt;
 &lt;/uart1&gt;
@@ -9067,7 +9078,7 @@
    <generatedFileHashHistoryMap class="java.util.TreeMap">
       <entry>
          <file>../src/config/nsensor/definitions.h</file>
-         <hash>82d314de56939841fcd8d607f7c966afa525dda6dde62a8802d6dc76fdff4847</hash>
+         <hash>be2d918e249482e977114ad5ef7f41766a11633452932cc8c84eb001163d5c2b</hash>
       </entry>
       <entry>
          <file>../src/config/nsensor/device.h</file>
@@ -9079,7 +9090,7 @@
       </entry>
       <entry>
          <file>../src/config/nsensor/initialization.c</file>
-         <hash>631eca8c6ac49648e62a59628a8c04ef60041b8c01b3b91830600d6c045c43e6</hash>
+         <hash>1f01f3dbe334d5eaefc44c206c4e499c9b9dfd786d8c5f1ff69c6b63e2c34a78</hash>
       </entry>
       <entry>
          <file>../src/config/nsensor/interrupts.c</file>
@@ -9215,7 +9226,7 @@
       </entry>
       <entry>
          <file>../src/config/nsensor/peripheral/uart/plib_uart1.c</file>
-         <hash>eb2903b702d272093030e57daff70f3555e75ab5752881fbf9b27ba87754125a</hash>
+         <hash>1ba699b888c227ad572a6eb3ff93b7683561966ed8a7e9dd0f37d173d12ae202</hash>
       </entry>
       <entry>
          <file>../src/config/nsensor/peripheral/uart/plib_uart1.h</file>

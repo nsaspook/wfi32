@@ -173,6 +173,7 @@ const uint32_t update_delay = 5;
 uint32_t board_serial_id = 0x35A, cpu_serial_id = 0x1957;
 
 static void fh_start_AT_nodma(void *);
+void boot_uart1_clean(void);
 
 // *****************************************************************************
 // *****************************************************************************
@@ -194,6 +195,8 @@ int main(void)
 
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
+
+	boot_uart1_clean();
 
 #ifdef XPRJ_mcj
 	//	setup the reset and command pins for the Ethernet adapter
@@ -508,6 +511,8 @@ static void fh_start_AT_nodma(void *a_data)
 	WaitMs(4500); // wait until the module is back online
 #endif
 
+	boot_uart1_clean();
+
 	// AT command mode
 	UART1_Write("+++", 3); // send data to the ETH module
 	WaitMs(20);
@@ -530,6 +535,38 @@ static void fh_start_AT_nodma(void *a_data)
 	WaitMs(500);
 	UART1_ErrorGet(); // clear UART junk
 }
+
+void boot_uart1_clean(void)
+{
+	uint8_t dummyData = 0u;
+	/* If it's a overrun error then clear it to flush FIFO */
+
+	U1STACLR = _U1STA_OERR_MASK;
+
+	/* Read existing error bytes from FIFO to clear parity and framing error flags */
+	while (UART1_Read(&dummyData, 1)) {
+	};
+
+	/* Clear error interrupt flag */
+	IFS1CLR = _IFS1_U1EIF_MASK;
+
+	/* Clear up the receive interrupt flag so that RX interrupt is not
+	 * triggered for error bytes */
+	IFS1CLR = _IFS1_U1RXIF_MASK;
+
+	/* Enable UART1_FAULT Interrupt */
+	IEC1SET = _IEC1_U1EIE_MASK;
+
+	/* Enable UART1_RX Interrupt */
+	IEC1SET = _IEC1_U1RXIE_MASK;
+
+	/* Read existing error bytes from FIFO to clear parity and framing error flags */
+	while (UART1_Read(&dummyData, 1)) {
+	};
+	// Ignore the warning
+	(void) dummyData;
+}
+
 /*******************************************************************************
  End of File
  */

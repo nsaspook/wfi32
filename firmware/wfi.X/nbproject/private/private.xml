@@ -6,8 +6,11 @@
             <file>file:/public/wfi32/firmware/src/host.c</file>
             <file>file:/public/wfi32/firmware/src/main.c</file>
             <file>file:/public/wfi32/firmware/src/bma490l.h</file>
+            <file>file:/public/wfi32/firmware/src/config/nsensor/peripheral/uart/plib_uart1.c</file>
             <file>file:/public/wfi32/firmware/src/host.h</file>
             <file>file:/public/wfi32/firmware/src/imupic32mcj.h</file>
+            <file>file:/public/wfi32/firmware/src/imupic32mcj.c</file>
+            <file>file:/public/wfi32/firmware/src/timers.c</file>
             <file>file:/public/wfi32/firmware/src/imu.h</file>
             <file>file:/public/wfi32/firmware/src/mqtt_pub.h</file>
         </group>
