@@ -213,6 +213,8 @@ void UART1DmaWrite(const char *, uint32_t);
 void UART1DmaChannelHandler_State(DMAC_TRANSFER_EVENT event, uintptr_t contextHandle)
 {
 	uart1_dma_busy = false;
+	LATACLR = 0x80;
+
 }
 
 /*
@@ -221,10 +223,11 @@ void UART1DmaChannelHandler_State(DMAC_TRANSFER_EVENT event, uintptr_t contextHa
  */
 void UART1DmaWrite(const char * buffer, uint32_t len)
 {
-	while (uart1_dma_busy || U1STAbits.UTXBF) { // should never wait in normal operation
+	while (LATA & 0x80 || U1STAbits.UTXBF) { // should never wait in normal operation
 	};
 
 	uart1_dma_busy = true; // in process flag
+	LATASET = 0x80;
 	DMAC_ChannelTransfer(DMAC_CHANNEL_7, (const void *) buffer, (size_t) len, (const void*) &U1TXREG, (size_t) 1, (size_t) 1);
 }
 #endif
@@ -320,6 +323,7 @@ int host_sm(void)
 
 	StartTimer(TMR_HOST, HOST_CANFD_UPDATE);
 	StartTimer(TMR_REPLY, HOST_MQTT_JOB_WAIT);
+	StartTimer(RED_LED, REDLED_TIME);
 
 #ifdef HOST_MQTT
 	mqtt_socket();
@@ -419,10 +423,12 @@ int host_sm(void)
 			 * signal uart contention
 			 */
 			uint32_t contention = 0;
-			LED_RED_Off();
-			while (uart1_dma_busy || U1STAbits.UTXBF) { // uart flow-control RED led
+			//			LED_RED_Off();
+			while (LATA & 0x80 || U1STAbits.UTXBF) { // uart flow-control RED led
 				if (contention++ == UART_WAIT) {
-					LED_RED_Toggle();
+					LED_RED_On();
+				} else {
+					//					LED_RED_Off();
 				}
 			};
 
@@ -571,7 +577,12 @@ int host_sm(void)
 			mqtt_work(); // process tx/rx mqtt messages
 			TP3_Clear();
 			StartTimer(TMR_REPLY, HOST_MQTT_JOB_WAIT);
+
 #endif
+		}
+		if (TimerDone(RED_LED)) {
+			StartTimer(RED_LED, REDLED_TIME);
+			LED_RED_Off();
 		}
 	}
 
@@ -613,11 +624,11 @@ void fh_start_AT(void *a_data)
 
 	// wait for send uart buffer to finish
 	uint32_t contention = 0;
-	while (uart1_dma_busy || U1STAbits.UTXBF) { // uart flow-control RED led
+	while (LATA & 0x80 || U1STAbits.UTXBF) { // uart flow-control RED led
 		if (contention++ == UART_WAIT) {
+			LED_RED_On();
 		}
 	};
-	//	UART1_SerialSetup(&setup, 60000000);
 
 	// put the ETH module in config mode
 	U1MODECLR = _U1MODE_ON_MASK; // turn off UART
@@ -697,7 +708,6 @@ void send_from_host(uint32_t hostid)
 		TP2_Set();
 		if (CAN1_MessageTransmit(messageID, messageLength, (void *) &host0, 1, CANFD_MODE_FD_WITH_BRS, CANFD_MSG_TX_DATA_FRAME) == false) {
 		}
-		LED_RED_Clear();
 		LED_GREEN_Toggle();
 	} else {
 	}

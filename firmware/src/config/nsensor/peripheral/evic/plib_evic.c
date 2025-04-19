@@ -58,20 +58,20 @@ void EVIC_Initialize( void )
 
     /* Set up priority and subpriority of enabled interrupts */
     IPC0SET = 0x4U | 0x0U;  /* CORE_TIMER:  Priority 1 / Subpriority 0 */
-    IPC3SET = 0x400U | 0x0U;  /* EXTERNAL_2:  Priority 1 / Subpriority 0 */
+    IPC3SET = 0x800U | 0x0U;  /* EXTERNAL_2:  Priority 2 / Subpriority 0 */
     IPC6SET = 0x4U | 0x0U;  /* TIMER_5:  Priority 1 / Subpriority 0 */
     IPC7SET = 0x40000U | 0x0U;  /* RTCC:  Priority 1 / Subpriority 0 */
     IPC9SET = 0x8U | 0x0U;  /* SPI1_RX:  Priority 2 / Subpriority 0 */
     IPC9SET = 0x800U | 0x0U;  /* SPI1_TX:  Priority 2 / Subpriority 0 */
     IPC9SET = 0x40000U | 0x0U;  /* UART1_FAULT:  Priority 1 / Subpriority 0 */
-    IPC9SET = 0x4000000U | 0x0U;  /* UART1_RX:  Priority 1 / Subpriority 0 */
+    IPC9SET = 0x1c000000U | 0x0U;  /* UART1_RX:  Priority 7 / Subpriority 0 */
     IPC13SET = 0xc0000U | 0x0U;  /* SPI2_RX:  Priority 3 / Subpriority 0 */
     IPC13SET = 0xc000000U | 0x0U;  /* SPI2_TX:  Priority 3 / Subpriority 0 */
-    IPC18SET = 0x4U | 0x0U;  /* DMA0:  Priority 1 / Subpriority 0 */
-    IPC18SET = 0x400U | 0x0U;  /* DMA1:  Priority 1 / Subpriority 0 */
-    IPC18SET = 0x40000U | 0x0U;  /* DMA2:  Priority 1 / Subpriority 0 */
+    IPC18SET = 0x10U | 0x0U;  /* DMA0:  Priority 4 / Subpriority 0 */
+    IPC18SET = 0x1000U | 0x0U;  /* DMA1:  Priority 4 / Subpriority 0 */
+    IPC18SET = 0x100000U | 0x0U;  /* DMA2:  Priority 4 / Subpriority 0 */
     IPC19SET = 0x8U | 0x0U;  /* TIMER_6:  Priority 2 / Subpriority 0 */
-    IPC41SET = 0x10000000U | 0x0U;  /* CAN1:  Priority 4 / Subpriority 0 */
+    IPC41SET = 0x4000000U | 0x1000000U;  /* CAN1:  Priority 1 / Subpriority 1 */
     IPC46SET = 0x1400U | 0x0U;  /* DMA7:  Priority 5 / Subpriority 0 */
 
     /* Initialize External interrupt 2 callback object */

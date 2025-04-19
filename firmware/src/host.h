@@ -33,11 +33,12 @@ extern "C" {
 
 #define HOST_LCD_UPDATE		100
 #define HOST_CANFD_UPDATE	500
+#define REDLED_TIME		1000
 	/*
 	 * MQTT message and processing timer ticks in ms
 	 * QoS set to 1, limits to 20 messages per second per connection
 	 */
-#define HOST_MQTT_UPDATE		100 // 50ms is the lower limit for reliable operation
+#define HOST_MQTT_UPDATE		50 // 50ms is the lower limit for reliable operation
 #define HOST_MQTT_JOB_WAIT		20
 
 #ifdef XPRJ_nsensor

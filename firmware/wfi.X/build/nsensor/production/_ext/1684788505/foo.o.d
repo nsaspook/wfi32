@@ -1,10 +1,10 @@
 build/nsensor/production/_ext/1684788505/foo.o: ../lcd_drv/foo.c \
  ../lcd_drv/lcd_drv.h ../src/config/nsensor/definitions.h \
- ../src/config/nsensor/peripheral/coretimer/plib_coretimer.h \
  ../src/config/nsensor/peripheral/tmr/plib_tmr6.h \
  ../src/config/nsensor/device.h \
  ../src/config/nsensor/toolchain_specifics.h \
  ../src/config/nsensor/peripheral/tmr/plib_tmr_common.h \
+ ../src/config/nsensor/peripheral/coretimer/plib_coretimer.h \
  ../src/config/nsensor/peripheral/adchs/plib_adchs.h \
  ../src/config/nsensor/peripheral/adchs/plib_adchs_common.h \
  ../src/config/nsensor/peripheral/uart/plib_uart1.h \
@@ -29,8 +29,6 @@ build/nsensor/production/_ext/1684788505/foo.o: ../lcd_drv/foo.c \
 
 ../src/config/nsensor/definitions.h:
 
-../src/config/nsensor/peripheral/coretimer/plib_coretimer.h:
-
 ../src/config/nsensor/peripheral/tmr/plib_tmr6.h:
 
 ../src/config/nsensor/device.h:
@@ -38,6 +36,8 @@ build/nsensor/production/_ext/1684788505/foo.o: ../lcd_drv/foo.c \
 ../src/config/nsensor/toolchain_specifics.h:
 
 ../src/config/nsensor/peripheral/tmr/plib_tmr_common.h:
+
+../src/config/nsensor/peripheral/coretimer/plib_coretimer.h:
 
 ../src/config/nsensor/peripheral/adchs/plib_adchs.h:
 

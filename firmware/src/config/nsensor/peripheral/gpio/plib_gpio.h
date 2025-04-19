@@ -62,6 +62,15 @@
 // *****************************************************************************
 
 
+/*** Macros for ATOMIC_A7 pin ***/
+#define ATOMIC_A7_Set()               (LATASET = (1U<<7))
+#define ATOMIC_A7_Clear()             (LATACLR = (1U<<7))
+#define ATOMIC_A7_Toggle()            (LATAINV= (1U<<7))
+#define ATOMIC_A7_OutputEnable()      (TRISACLR = (1U<<7))
+#define ATOMIC_A7_InputEnable()       (TRISASET = (1U<<7))
+#define ATOMIC_A7_Get()               ((PORTA >> 7) & 0x1U)
+#define ATOMIC_A7_PIN                  GPIO_PIN_RA7
+
 /*** Macros for ETH_CFG pin ***/
 #define ETH_CFG_Set()               (LATBSET = (1U<<14))
 #define ETH_CFG_Clear()             (LATBCLR = (1U<<14))
@@ -97,15 +106,6 @@
 #define DIS_CS_InputEnable()       (TRISASET = (1U<<11))
 #define DIS_CS_Get()               ((PORTA >> 11) & 0x1U)
 #define DIS_CS_PIN                  GPIO_PIN_RA11
-
-/*** Macros for GPIO_RA0 pin ***/
-#define GPIO_RA0_Set()               (LATASET = (1U<<0))
-#define GPIO_RA0_Clear()             (LATACLR = (1U<<0))
-#define GPIO_RA0_Toggle()            (LATAINV= (1U<<0))
-#define GPIO_RA0_OutputEnable()      (TRISACLR = (1U<<0))
-#define GPIO_RA0_InputEnable()       (TRISASET = (1U<<0))
-#define GPIO_RA0_Get()               ((PORTA >> 0) & 0x1U)
-#define GPIO_RA0_PIN                  GPIO_PIN_RA0
 
 /*** Macros for TP3 pin ***/
 #define TP3_Set()               (LATBSET = (1U<<0))

@@ -94,7 +94,7 @@ void __ISR(_CORE_TIMER_VECTOR, ipl1SRS) CORE_TIMER_Handler (void)
     CORE_TIMER_InterruptHandler();
 }
 
-void __ISR(_EXTERNAL_2_VECTOR, ipl1SRS) EXTERNAL_2_Handler (void)
+void __ISR(_EXTERNAL_2_VECTOR, ipl2SRS) EXTERNAL_2_Handler (void)
 {
     EXTERNAL_2_InterruptHandler();
 }
@@ -124,7 +124,7 @@ void __ISR(_UART1_FAULT_VECTOR, ipl1SRS) UART1_FAULT_Handler (void)
     UART1_FAULT_InterruptHandler();
 }
 
-void __ISR(_UART1_RX_VECTOR, ipl1SRS) UART1_RX_Handler (void)
+void __ISR(_UART1_RX_VECTOR, ipl7SRS) UART1_RX_Handler (void)
 {
     UART1_RX_InterruptHandler();
 }
@@ -139,17 +139,17 @@ void __ISR(_SPI2_TX_VECTOR, ipl3SRS) SPI2_TX_Handler (void)
     SPI2_TX_InterruptHandler();
 }
 
-void __ISR(_DMA0_VECTOR, ipl1SRS) DMA0_Handler (void)
+void __ISR(_DMA0_VECTOR, ipl4SRS) DMA0_Handler (void)
 {
     DMA0_InterruptHandler();
 }
 
-void __ISR(_DMA1_VECTOR, ipl1SRS) DMA1_Handler (void)
+void __ISR(_DMA1_VECTOR, ipl4SRS) DMA1_Handler (void)
 {
     DMA1_InterruptHandler();
 }
 
-void __ISR(_DMA2_VECTOR, ipl1SRS) DMA2_Handler (void)
+void __ISR(_DMA2_VECTOR, ipl4SRS) DMA2_Handler (void)
 {
     DMA2_InterruptHandler();
 }
@@ -159,7 +159,7 @@ void __ISR(_TIMER_6_VECTOR, ipl2SRS) TIMER_6_Handler (void)
     TIMER_6_InterruptHandler();
 }
 
-void __ISR(_CAN1_VECTOR, ipl4SRS) CAN1_Handler (void)
+void __ISR(_CAN1_VECTOR, ipl1SRS) CAN1_Handler (void)
 {
     CAN1_InterruptHandler();
 }

@@ -6,12 +6,10 @@
             <file>file:/public/wfi32/firmware/src/host.c</file>
             <file>file:/public/wfi32/firmware/src/main.c</file>
             <file>file:/public/wfi32/firmware/src/bma490l.h</file>
-            <file>file:/public/wfi32/firmware/src/config/nsensor/peripheral/adchs/plib_adchs.h</file>
             <file>file:/public/wfi32/firmware/src/host.h</file>
             <file>file:/public/wfi32/firmware/src/imupic32mcj.h</file>
             <file>file:/public/wfi32/firmware/src/imu.h</file>
             <file>file:/public/wfi32/firmware/src/mqtt_pub.h</file>
-            <file>file:/public/wfi32/firmware/src/config/nsensor/peripheral/adchs/plib_adchs_common.h</file>
         </group>
     </open-files>
 </project-private>
