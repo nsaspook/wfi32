@@ -1,0 +1,457 @@
+configVersion: 1.0.0
+componentName: can1
+coreVersion: 5.8.4
+device: PIC32MK0512MCJ048
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: can1
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: csp
+  type: package
+  version: v3.25.0
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments: {}
+  elementPosition:
+    attributes:
+      id: __ROOTVIEW
+    children:
+    - children:
+      - attributes:
+          id: can1
+          x: '521'
+          y: '106'
+        type: ElementPosition
+      type: ElementPositions
+    type: ComponentGraph
+  symbols:
+    AUTO_DATA_BIT_TIMING_CALCULATION:
+      attributes:
+        id: AUTO_DATA_BIT_TIMING_CALCULATION
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    AUTO_NOMINAL_BIT_TIMING_CALCULATION:
+      attributes:
+        id: AUTO_NOMINAL_BIT_TIMING_CALCULATION
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    CALCULATED_DATA_BITRATE:
+      attributes:
+        id: CALCULATED_DATA_BITRATE
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: '2000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    CALCULATED_DATA_ERRORRATE:
+      attributes:
+        id: CALCULATED_DATA_ERRORRATE
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: '0.000'
+          type: Dynamic
+        type: Values
+      type: String
+    CALCULATED_NOMINAL_BITRATE:
+      attributes:
+        id: CALCULATED_NOMINAL_BITRATE
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: '1000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    CALCULATED_NOMINAL_ERRORRATE:
+      attributes:
+        id: CALCULATED_NOMINAL_ERRORRATE
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: '0.000'
+          type: Dynamic
+        type: Values
+      type: String
+    CAN1_FIFO1_SIZE:
+      attributes:
+        id: CAN1_FIFO1_SIZE
+      children:
+      - children:
+        - attributes:
+            value: '32'
+          type: User
+        type: Values
+      type: Integer
+    CAN1_FIFO2_SIZE:
+      attributes:
+        id: CAN1_FIFO2_SIZE
+      children:
+      - children:
+        - attributes:
+            value: '32'
+          type: User
+        type: Values
+      type: Integer
+    CAN_CORE_CLOCK_FREQ:
+      attributes:
+        id: CAN_CORE_CLOCK_FREQ
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: '40000000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    CAN_CORE_SELECT_CLOCK_SOURCE:
+      attributes:
+        id: CAN_CORE_SELECT_CLOCK_SOURCE
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    CAN_DATA_ERRORRATE_COMMENT:
+      attributes:
+        id: CAN_DATA_ERRORRATE_COMMENT
+      children:
+      - children:
+        - attributes:
+            id: text
+          children:
+          - type: Value
+            value: Warning!!! Error 5.211%
+          type: String
+        type: Attributes
+      type: Comment
+    CAN_INTERRUPT_MODE:
+      attributes:
+        id: CAN_INTERRUPT_MODE
+      children:
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
+    CAN_NOMINAL_ERRORRATE_COMMENT:
+      attributes:
+        id: CAN_NOMINAL_ERRORRATE_COMMENT
+      children:
+      - children:
+        - attributes:
+            id: text
+          children:
+          - type: Value
+            value: Warning!!! Error 1.064%
+          type: String
+        type: Attributes
+      type: Comment
+    CAN_TIMESTAMP_ENABLE:
+      attributes:
+        id: CAN_TIMESTAMP_ENABLE
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    CAN_TIMESTAMP_EOF:
+      attributes:
+        id: CAN_TIMESTAMP_EOF
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    CAN_TIMESTAMP_PRESCALER:
+      attributes:
+        id: CAN_TIMESTAMP_PRESCALER
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            value: '0'
+          type: User
+        type: Values
+      type: Integer
+    DATA_BITRATE:
+      attributes:
+        id: DATA_BITRATE
+      children:
+      - children:
+        - attributes:
+            value: '2000'
+          type: User
+        type: Values
+      type: Integer
+    DATA_SAMPLE_POINT:
+      attributes:
+        id: DATA_SAMPLE_POINT
+      children:
+      - children:
+        - attributes:
+            id: readOnly
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: can1
+            value: '95.0'
+          type: Dynamic
+        type: Values
+      type: Float
+    DATA_TIME_QUANTA_PERIOD:
+      attributes:
+        id: DATA_TIME_QUANTA_PERIOD
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: '25.000'
+          type: Dynamic
+        type: Values
+      type: String
+    DBT_BRP:
+      attributes:
+        id: DBT_BRP
+      children:
+      - children:
+        - attributes:
+            id: readOnly
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: can1
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    DBT_SJW:
+      attributes:
+        id: DBT_SJW
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: '1'
+          type: Dynamic
+        type: Values
+      type: Integer
+    DBT_TOTAL_TIME_QUANTA:
+      attributes:
+        id: DBT_TOTAL_TIME_QUANTA
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: '20'
+          type: Dynamic
+        type: Values
+      type: Integer
+    DBT_TSEG1:
+      attributes:
+        id: DBT_TSEG1
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: '18'
+          type: Dynamic
+        type: Values
+      type: Integer
+    DBT_TSEG2:
+      attributes:
+        id: DBT_TSEG2
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: '1'
+          type: Dynamic
+        type: Values
+      type: Integer
+    FIFO_OFFSET:
+      attributes:
+        id: FIFO_OFFSET
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: '0xc'
+          type: Dynamic
+        type: Values
+      type: String
+    FILTER_OBJ_MASK_OFFSET:
+      attributes:
+        id: FILTER_OBJ_MASK_OFFSET
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: '0x8'
+          type: Dynamic
+        type: Values
+      type: String
+    FILTER_OFFSET:
+      attributes:
+        id: FILTER_OFFSET
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: '0x4'
+          type: Dynamic
+        type: Values
+      type: String
+    NBT_BRP:
+      attributes:
+        id: NBT_BRP
+      children:
+      - children:
+        - attributes:
+            id: readOnly
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: can1
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    NBT_SJW:
+      attributes:
+        id: NBT_SJW
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: '1'
+          type: Dynamic
+        type: Values
+      type: Integer
+    NBT_TOTAL_TIME_QUANTA:
+      attributes:
+        id: NBT_TOTAL_TIME_QUANTA
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: '40'
+          type: Dynamic
+        type: Values
+      type: Integer
+    NBT_TSEG1:
+      attributes:
+        id: NBT_TSEG1
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: '38'
+          type: Dynamic
+        type: Values
+      type: Integer
+    NBT_TSEG2:
+      attributes:
+        id: NBT_TSEG2
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: '1'
+          type: Dynamic
+        type: Values
+      type: Integer
+    NOMINAL_BITRATE:
+      attributes:
+        id: NOMINAL_BITRATE
+      children:
+      - children:
+        - attributes:
+            value: '1000'
+          type: User
+        type: Values
+      type: Integer
+    NOMINAL_SAMPLE_POINT:
+      attributes:
+        id: NOMINAL_SAMPLE_POINT
+      children:
+      - children:
+        - attributes:
+            id: readOnly
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: can1
+            value: '97.5'
+          type: Dynamic
+        type: Values
+      type: Float
+    NOMINAL_TIME_QUANTA_PERIOD:
+      attributes:
+        id: NOMINAL_TIME_QUANTA_PERIOD
+      children:
+      - children:
+        - attributes:
+            id: can1
+            value: '25.000'
+          type: Dynamic
+        type: Values
+      type: String
+  userData: {}

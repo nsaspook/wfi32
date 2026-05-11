@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../lcd_drv/lcd_drv.c ../lcd_drv/ChrFont0.c ../lcd_drv/FillPat.c ../lcd_drv/OledChar.c ../lcd_drv/OledDriver.c ../lcd_drv/OledGrph.c ../lcd_drv/dogm-graphic.c ../lcd_drv/eadog.c ../lcd_drv/foo.c ../src/config/bma400/peripheral/adchs/plib_adchs.c ../src/config/bma400/peripheral/canfd/plib_canfd1.c ../src/config/bma400/peripheral/clk/plib_clk.c ../src/config/bma400/peripheral/coretimer/plib_coretimer.c ../src/config/bma400/peripheral/dmac/plib_dmac.c ../src/config/bma400/peripheral/evic/plib_evic.c ../src/config/bma400/peripheral/gpio/plib_gpio.c ../src/config/bma400/peripheral/mcpwm/plib_mcpwm.c ../src/config/bma400/peripheral/qei/plib_qei2.c ../src/config/bma400/peripheral/rtcc/plib_rtcc.c ../src/config/bma400/peripheral/spi/spi_master/plib_spi1_master.c ../src/config/bma400/peripheral/spi/spi_master/plib_spi2_master.c ../src/config/bma400/peripheral/tmr/plib_tmr9.c ../src/config/bma400/peripheral/tmr/plib_tmr5.c ../src/config/bma400/peripheral/tmr/plib_tmr6.c ../src/config/bma400/peripheral/uart/plib_uart1.c ../src/config/bma400/stdio/xc32_monitor.c ../src/config/bma400/initialization.c ../src/config/bma400/interrupts.c ../src/config/bma400/exceptions.c ../src/bma490l.c ../src/timers.c ../src/sca3300.c ../src/gfx.c ../src/imu.c ../src/canfd.c ../src/pid.c ../src/do_fft.c ../src/fft.c ../src/host.c ../src/main.c ../src/cmd_scanner.c ../src/remote_cmd.c ../src/imupic32mcj.c
+SOURCEFILES_QUOTED_IF_SPACED=../lcd_drv/lcd_drv.c ../lcd_drv/ChrFont0.c ../lcd_drv/FillPat.c ../lcd_drv/OledChar.c ../lcd_drv/OledDriver.c ../lcd_drv/OledGrph.c ../lcd_drv/dogm-graphic.c ../lcd_drv/eadog.c ../lcd_drv/foo.c ../src/bma490l.c ../src/timers.c ../src/sca3300.c ../src/gfx.c ../src/imu.c ../src/canfd.c ../src/pid.c ../src/do_fft.c ../src/fft.c ../src/host.c ../src/main.c ../src/cmd_scanner.c ../src/remote_cmd.c ../src/imupic32mcj.c ../src/config/mjc_remote/peripheral/canfd/plib_canfd1.c ../src/config/mjc_remote/initialization.c ../src/config/mjc_remote/interrupts.c ../src/config/mjc_remote/exceptions.c ../src/config/mjc_remote/stdio/xc32_monitor.c ../src/config/mjc_remote/peripheral/clk/plib_clk.c ../src/config/mjc_remote/peripheral/gpio/plib_gpio.c ../src/config/mjc_remote/peripheral/evic/plib_evic.c ../src/config/mjc_remote/peripheral/dmac/plib_dmac.c ../src/config/mjc_remote/peripheral/tmr/plib_tmr6.c ../src/config/mjc_remote/peripheral/coretimer/plib_coretimer.c ../src/config/mjc_remote/peripheral/adchs/plib_adchs.c ../src/config/mjc_remote/peripheral/qei/plib_qei2.c ../src/config/mjc_remote/peripheral/uart/plib_uart1.c ../src/config/mjc_remote/peripheral/tmr/plib_tmr5.c ../src/config/mjc_remote/peripheral/mcpwm/plib_mcpwm.c ../src/config/mjc_remote/peripheral/spi/spi_master/plib_spi2_master.c ../src/config/mjc_remote/peripheral/spi/spi_master/plib_spi1_master.c ../src/config/mjc_remote/peripheral/rtcc/plib_rtcc.c ../src/config/mjc_remote/peripheral/tmr/plib_tmr9.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1684788505/lcd_drv.o ${OBJECTDIR}/_ext/1684788505/ChrFont0.o ${OBJECTDIR}/_ext/1684788505/FillPat.o ${OBJECTDIR}/_ext/1684788505/OledChar.o ${OBJECTDIR}/_ext/1684788505/OledDriver.o ${OBJECTDIR}/_ext/1684788505/OledGrph.o ${OBJECTDIR}/_ext/1684788505/dogm-graphic.o ${OBJECTDIR}/_ext/1684788505/eadog.o ${OBJECTDIR}/_ext/1684788505/foo.o ${OBJECTDIR}/_ext/1932426826/plib_adchs.o ${OBJECTDIR}/_ext/1930658663/plib_canfd1.o ${OBJECTDIR}/_ext/896314349/plib_clk.o ${OBJECTDIR}/_ext/1811813999/plib_coretimer.o ${OBJECTDIR}/_ext/2015971584/plib_dmac.o ${OBJECTDIR}/_ext/2016010272/plib_evic.o ${OBJECTDIR}/_ext/2016064100/plib_gpio.o ${OBJECTDIR}/_ext/1921361413/plib_mcpwm.o ${OBJECTDIR}/_ext/896327584/plib_qei2.o ${OBJECTDIR}/_ext/2016395447/plib_rtcc.o ${OBJECTDIR}/_ext/305547027/plib_spi1_master.o ${OBJECTDIR}/_ext/305547027/plib_spi2_master.o ${OBJECTDIR}/_ext/896330724/plib_tmr9.o ${OBJECTDIR}/_ext/896330724/plib_tmr5.o ${OBJECTDIR}/_ext/896330724/plib_tmr6.o ${OBJECTDIR}/_ext/2016467043/plib_uart1.o ${OBJECTDIR}/_ext/1887586581/xc32_monitor.o ${OBJECTDIR}/_ext/1927388145/initialization.o ${OBJECTDIR}/_ext/1927388145/interrupts.o ${OBJECTDIR}/_ext/1927388145/exceptions.o ${OBJECTDIR}/_ext/1360937237/bma490l.o ${OBJECTDIR}/_ext/1360937237/timers.o ${OBJECTDIR}/_ext/1360937237/sca3300.o ${OBJECTDIR}/_ext/1360937237/gfx.o ${OBJECTDIR}/_ext/1360937237/imu.o ${OBJECTDIR}/_ext/1360937237/canfd.o ${OBJECTDIR}/_ext/1360937237/pid.o ${OBJECTDIR}/_ext/1360937237/do_fft.o ${OBJECTDIR}/_ext/1360937237/fft.o ${OBJECTDIR}/_ext/1360937237/host.o ${OBJECTDIR}/_ext/1360937237/main.o ${OBJECTDIR}/_ext/1360937237/cmd_scanner.o ${OBJECTDIR}/_ext/1360937237/remote_cmd.o ${OBJECTDIR}/_ext/1360937237/imupic32mcj.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1684788505/lcd_drv.o.d ${OBJECTDIR}/_ext/1684788505/ChrFont0.o.d ${OBJECTDIR}/_ext/1684788505/FillPat.o.d ${OBJECTDIR}/_ext/1684788505/OledChar.o.d ${OBJECTDIR}/_ext/1684788505/OledDriver.o.d ${OBJECTDIR}/_ext/1684788505/OledGrph.o.d ${OBJECTDIR}/_ext/1684788505/dogm-graphic.o.d ${OBJECTDIR}/_ext/1684788505/eadog.o.d ${OBJECTDIR}/_ext/1684788505/foo.o.d ${OBJECTDIR}/_ext/1932426826/plib_adchs.o.d ${OBJECTDIR}/_ext/1930658663/plib_canfd1.o.d ${OBJECTDIR}/_ext/896314349/plib_clk.o.d ${OBJECTDIR}/_ext/1811813999/plib_coretimer.o.d ${OBJECTDIR}/_ext/2015971584/plib_dmac.o.d ${OBJECTDIR}/_ext/2016010272/plib_evic.o.d ${OBJECTDIR}/_ext/2016064100/plib_gpio.o.d ${OBJECTDIR}/_ext/1921361413/plib_mcpwm.o.d ${OBJECTDIR}/_ext/896327584/plib_qei2.o.d ${OBJECTDIR}/_ext/2016395447/plib_rtcc.o.d ${OBJECTDIR}/_ext/305547027/plib_spi1_master.o.d ${OBJECTDIR}/_ext/305547027/plib_spi2_master.o.d ${OBJECTDIR}/_ext/896330724/plib_tmr9.o.d ${OBJECTDIR}/_ext/896330724/plib_tmr5.o.d ${OBJECTDIR}/_ext/896330724/plib_tmr6.o.d ${OBJECTDIR}/_ext/2016467043/plib_uart1.o.d ${OBJECTDIR}/_ext/1887586581/xc32_monitor.o.d ${OBJECTDIR}/_ext/1927388145/initialization.o.d ${OBJECTDIR}/_ext/1927388145/interrupts.o.d ${OBJECTDIR}/_ext/1927388145/exceptions.o.d ${OBJECTDIR}/_ext/1360937237/bma490l.o.d ${OBJECTDIR}/_ext/1360937237/timers.o.d ${OBJECTDIR}/_ext/1360937237/sca3300.o.d ${OBJECTDIR}/_ext/1360937237/gfx.o.d ${OBJECTDIR}/_ext/1360937237/imu.o.d ${OBJECTDIR}/_ext/1360937237/canfd.o.d ${OBJECTDIR}/_ext/1360937237/pid.o.d ${OBJECTDIR}/_ext/1360937237/do_fft.o.d ${OBJECTDIR}/_ext/1360937237/fft.o.d ${OBJECTDIR}/_ext/1360937237/host.o.d ${OBJECTDIR}/_ext/1360937237/main.o.d ${OBJECTDIR}/_ext/1360937237/cmd_scanner.o.d ${OBJECTDIR}/_ext/1360937237/remote_cmd.o.d ${OBJECTDIR}/_ext/1360937237/imupic32mcj.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1684788505/lcd_drv.o ${OBJECTDIR}/_ext/1684788505/ChrFont0.o ${OBJECTDIR}/_ext/1684788505/FillPat.o ${OBJECTDIR}/_ext/1684788505/OledChar.o ${OBJECTDIR}/_ext/1684788505/OledDriver.o ${OBJECTDIR}/_ext/1684788505/OledGrph.o ${OBJECTDIR}/_ext/1684788505/dogm-graphic.o ${OBJECTDIR}/_ext/1684788505/eadog.o ${OBJECTDIR}/_ext/1684788505/foo.o ${OBJECTDIR}/_ext/1360937237/bma490l.o ${OBJECTDIR}/_ext/1360937237/timers.o ${OBJECTDIR}/_ext/1360937237/sca3300.o ${OBJECTDIR}/_ext/1360937237/gfx.o ${OBJECTDIR}/_ext/1360937237/imu.o ${OBJECTDIR}/_ext/1360937237/canfd.o ${OBJECTDIR}/_ext/1360937237/pid.o ${OBJECTDIR}/_ext/1360937237/do_fft.o ${OBJECTDIR}/_ext/1360937237/fft.o ${OBJECTDIR}/_ext/1360937237/host.o ${OBJECTDIR}/_ext/1360937237/main.o ${OBJECTDIR}/_ext/1360937237/cmd_scanner.o ${OBJECTDIR}/_ext/1360937237/remote_cmd.o ${OBJECTDIR}/_ext/1360937237/imupic32mcj.o ${OBJECTDIR}/_ext/1663846392/plib_canfd1.o ${OBJECTDIR}/_ext/1738077518/initialization.o ${OBJECTDIR}/_ext/1738077518/interrupts.o ${OBJECTDIR}/_ext/1738077518/exceptions.o ${OBJECTDIR}/_ext/1941221140/xc32_monitor.o ${OBJECTDIR}/_ext/1905640204/plib_clk.o ${OBJECTDIR}/_ext/1054572763/plib_gpio.o ${OBJECTDIR}/_ext/1054626591/plib_evic.o ${OBJECTDIR}/_ext/1054665279/plib_dmac.o ${OBJECTDIR}/_ext/1905656579/plib_tmr6.o ${OBJECTDIR}/_ext/1688137072/plib_coretimer.o ${OBJECTDIR}/_ext/1662078229/plib_adchs.o ${OBJECTDIR}/_ext/1905653439/plib_qei2.o ${OBJECTDIR}/_ext/1054169820/plib_uart1.o ${OBJECTDIR}/_ext/1905656579/plib_tmr5.o ${OBJECTDIR}/_ext/1673143642/plib_mcpwm.o ${OBJECTDIR}/_ext/1839249298/plib_spi2_master.o ${OBJECTDIR}/_ext/1839249298/plib_spi1_master.o ${OBJECTDIR}/_ext/1054241416/plib_rtcc.o ${OBJECTDIR}/_ext/1905656579/plib_tmr9.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1684788505/lcd_drv.o.d ${OBJECTDIR}/_ext/1684788505/ChrFont0.o.d ${OBJECTDIR}/_ext/1684788505/FillPat.o.d ${OBJECTDIR}/_ext/1684788505/OledChar.o.d ${OBJECTDIR}/_ext/1684788505/OledDriver.o.d ${OBJECTDIR}/_ext/1684788505/OledGrph.o.d ${OBJECTDIR}/_ext/1684788505/dogm-graphic.o.d ${OBJECTDIR}/_ext/1684788505/eadog.o.d ${OBJECTDIR}/_ext/1684788505/foo.o.d ${OBJECTDIR}/_ext/1360937237/bma490l.o.d ${OBJECTDIR}/_ext/1360937237/timers.o.d ${OBJECTDIR}/_ext/1360937237/sca3300.o.d ${OBJECTDIR}/_ext/1360937237/gfx.o.d ${OBJECTDIR}/_ext/1360937237/imu.o.d ${OBJECTDIR}/_ext/1360937237/canfd.o.d ${OBJECTDIR}/_ext/1360937237/pid.o.d ${OBJECTDIR}/_ext/1360937237/do_fft.o.d ${OBJECTDIR}/_ext/1360937237/fft.o.d ${OBJECTDIR}/_ext/1360937237/host.o.d ${OBJECTDIR}/_ext/1360937237/main.o.d ${OBJECTDIR}/_ext/1360937237/cmd_scanner.o.d ${OBJECTDIR}/_ext/1360937237/remote_cmd.o.d ${OBJECTDIR}/_ext/1360937237/imupic32mcj.o.d ${OBJECTDIR}/_ext/1663846392/plib_canfd1.o.d ${OBJECTDIR}/_ext/1738077518/initialization.o.d ${OBJECTDIR}/_ext/1738077518/interrupts.o.d ${OBJECTDIR}/_ext/1738077518/exceptions.o.d ${OBJECTDIR}/_ext/1941221140/xc32_monitor.o.d ${OBJECTDIR}/_ext/1905640204/plib_clk.o.d ${OBJECTDIR}/_ext/1054572763/plib_gpio.o.d ${OBJECTDIR}/_ext/1054626591/plib_evic.o.d ${OBJECTDIR}/_ext/1054665279/plib_dmac.o.d ${OBJECTDIR}/_ext/1905656579/plib_tmr6.o.d ${OBJECTDIR}/_ext/1688137072/plib_coretimer.o.d ${OBJECTDIR}/_ext/1662078229/plib_adchs.o.d ${OBJECTDIR}/_ext/1905653439/plib_qei2.o.d ${OBJECTDIR}/_ext/1054169820/plib_uart1.o.d ${OBJECTDIR}/_ext/1905656579/plib_tmr5.o.d ${OBJECTDIR}/_ext/1673143642/plib_mcpwm.o.d ${OBJECTDIR}/_ext/1839249298/plib_spi2_master.o.d ${OBJECTDIR}/_ext/1839249298/plib_spi1_master.o.d ${OBJECTDIR}/_ext/1054241416/plib_rtcc.o.d ${OBJECTDIR}/_ext/1905656579/plib_tmr9.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1684788505/lcd_drv.o ${OBJECTDIR}/_ext/1684788505/ChrFont0.o ${OBJECTDIR}/_ext/1684788505/FillPat.o ${OBJECTDIR}/_ext/1684788505/OledChar.o ${OBJECTDIR}/_ext/1684788505/OledDriver.o ${OBJECTDIR}/_ext/1684788505/OledGrph.o ${OBJECTDIR}/_ext/1684788505/dogm-graphic.o ${OBJECTDIR}/_ext/1684788505/eadog.o ${OBJECTDIR}/_ext/1684788505/foo.o ${OBJECTDIR}/_ext/1932426826/plib_adchs.o ${OBJECTDIR}/_ext/1930658663/plib_canfd1.o ${OBJECTDIR}/_ext/896314349/plib_clk.o ${OBJECTDIR}/_ext/1811813999/plib_coretimer.o ${OBJECTDIR}/_ext/2015971584/plib_dmac.o ${OBJECTDIR}/_ext/2016010272/plib_evic.o ${OBJECTDIR}/_ext/2016064100/plib_gpio.o ${OBJECTDIR}/_ext/1921361413/plib_mcpwm.o ${OBJECTDIR}/_ext/896327584/plib_qei2.o ${OBJECTDIR}/_ext/2016395447/plib_rtcc.o ${OBJECTDIR}/_ext/305547027/plib_spi1_master.o ${OBJECTDIR}/_ext/305547027/plib_spi2_master.o ${OBJECTDIR}/_ext/896330724/plib_tmr9.o ${OBJECTDIR}/_ext/896330724/plib_tmr5.o ${OBJECTDIR}/_ext/896330724/plib_tmr6.o ${OBJECTDIR}/_ext/2016467043/plib_uart1.o ${OBJECTDIR}/_ext/1887586581/xc32_monitor.o ${OBJECTDIR}/_ext/1927388145/initialization.o ${OBJECTDIR}/_ext/1927388145/interrupts.o ${OBJECTDIR}/_ext/1927388145/exceptions.o ${OBJECTDIR}/_ext/1360937237/bma490l.o ${OBJECTDIR}/_ext/1360937237/timers.o ${OBJECTDIR}/_ext/1360937237/sca3300.o ${OBJECTDIR}/_ext/1360937237/gfx.o ${OBJECTDIR}/_ext/1360937237/imu.o ${OBJECTDIR}/_ext/1360937237/canfd.o ${OBJECTDIR}/_ext/1360937237/pid.o ${OBJECTDIR}/_ext/1360937237/do_fft.o ${OBJECTDIR}/_ext/1360937237/fft.o ${OBJECTDIR}/_ext/1360937237/host.o ${OBJECTDIR}/_ext/1360937237/main.o ${OBJECTDIR}/_ext/1360937237/cmd_scanner.o ${OBJECTDIR}/_ext/1360937237/remote_cmd.o ${OBJECTDIR}/_ext/1360937237/imupic32mcj.o
+OBJECTFILES=${OBJECTDIR}/_ext/1684788505/lcd_drv.o ${OBJECTDIR}/_ext/1684788505/ChrFont0.o ${OBJECTDIR}/_ext/1684788505/FillPat.o ${OBJECTDIR}/_ext/1684788505/OledChar.o ${OBJECTDIR}/_ext/1684788505/OledDriver.o ${OBJECTDIR}/_ext/1684788505/OledGrph.o ${OBJECTDIR}/_ext/1684788505/dogm-graphic.o ${OBJECTDIR}/_ext/1684788505/eadog.o ${OBJECTDIR}/_ext/1684788505/foo.o ${OBJECTDIR}/_ext/1360937237/bma490l.o ${OBJECTDIR}/_ext/1360937237/timers.o ${OBJECTDIR}/_ext/1360937237/sca3300.o ${OBJECTDIR}/_ext/1360937237/gfx.o ${OBJECTDIR}/_ext/1360937237/imu.o ${OBJECTDIR}/_ext/1360937237/canfd.o ${OBJECTDIR}/_ext/1360937237/pid.o ${OBJECTDIR}/_ext/1360937237/do_fft.o ${OBJECTDIR}/_ext/1360937237/fft.o ${OBJECTDIR}/_ext/1360937237/host.o ${OBJECTDIR}/_ext/1360937237/main.o ${OBJECTDIR}/_ext/1360937237/cmd_scanner.o ${OBJECTDIR}/_ext/1360937237/remote_cmd.o ${OBJECTDIR}/_ext/1360937237/imupic32mcj.o ${OBJECTDIR}/_ext/1663846392/plib_canfd1.o ${OBJECTDIR}/_ext/1738077518/initialization.o ${OBJECTDIR}/_ext/1738077518/interrupts.o ${OBJECTDIR}/_ext/1738077518/exceptions.o ${OBJECTDIR}/_ext/1941221140/xc32_monitor.o ${OBJECTDIR}/_ext/1905640204/plib_clk.o ${OBJECTDIR}/_ext/1054572763/plib_gpio.o ${OBJECTDIR}/_ext/1054626591/plib_evic.o ${OBJECTDIR}/_ext/1054665279/plib_dmac.o ${OBJECTDIR}/_ext/1905656579/plib_tmr6.o ${OBJECTDIR}/_ext/1688137072/plib_coretimer.o ${OBJECTDIR}/_ext/1662078229/plib_adchs.o ${OBJECTDIR}/_ext/1905653439/plib_qei2.o ${OBJECTDIR}/_ext/1054169820/plib_uart1.o ${OBJECTDIR}/_ext/1905656579/plib_tmr5.o ${OBJECTDIR}/_ext/1673143642/plib_mcpwm.o ${OBJECTDIR}/_ext/1839249298/plib_spi2_master.o ${OBJECTDIR}/_ext/1839249298/plib_spi1_master.o ${OBJECTDIR}/_ext/1054241416/plib_rtcc.o ${OBJECTDIR}/_ext/1905656579/plib_tmr9.o
 
 # Source Files
-SOURCEFILES=../lcd_drv/lcd_drv.c ../lcd_drv/ChrFont0.c ../lcd_drv/FillPat.c ../lcd_drv/OledChar.c ../lcd_drv/OledDriver.c ../lcd_drv/OledGrph.c ../lcd_drv/dogm-graphic.c ../lcd_drv/eadog.c ../lcd_drv/foo.c ../src/config/bma400/peripheral/adchs/plib_adchs.c ../src/config/bma400/peripheral/canfd/plib_canfd1.c ../src/config/bma400/peripheral/clk/plib_clk.c ../src/config/bma400/peripheral/coretimer/plib_coretimer.c ../src/config/bma400/peripheral/dmac/plib_dmac.c ../src/config/bma400/peripheral/evic/plib_evic.c ../src/config/bma400/peripheral/gpio/plib_gpio.c ../src/config/bma400/peripheral/mcpwm/plib_mcpwm.c ../src/config/bma400/peripheral/qei/plib_qei2.c ../src/config/bma400/peripheral/rtcc/plib_rtcc.c ../src/config/bma400/peripheral/spi/spi_master/plib_spi1_master.c ../src/config/bma400/peripheral/spi/spi_master/plib_spi2_master.c ../src/config/bma400/peripheral/tmr/plib_tmr9.c ../src/config/bma400/peripheral/tmr/plib_tmr5.c ../src/config/bma400/peripheral/tmr/plib_tmr6.c ../src/config/bma400/peripheral/uart/plib_uart1.c ../src/config/bma400/stdio/xc32_monitor.c ../src/config/bma400/initialization.c ../src/config/bma400/interrupts.c ../src/config/bma400/exceptions.c ../src/bma490l.c ../src/timers.c ../src/sca3300.c ../src/gfx.c ../src/imu.c ../src/canfd.c ../src/pid.c ../src/do_fft.c ../src/fft.c ../src/host.c ../src/main.c ../src/cmd_scanner.c ../src/remote_cmd.c ../src/imupic32mcj.c
+SOURCEFILES=../lcd_drv/lcd_drv.c ../lcd_drv/ChrFont0.c ../lcd_drv/FillPat.c ../lcd_drv/OledChar.c ../lcd_drv/OledDriver.c ../lcd_drv/OledGrph.c ../lcd_drv/dogm-graphic.c ../lcd_drv/eadog.c ../lcd_drv/foo.c ../src/bma490l.c ../src/timers.c ../src/sca3300.c ../src/gfx.c ../src/imu.c ../src/canfd.c ../src/pid.c ../src/do_fft.c ../src/fft.c ../src/host.c ../src/main.c ../src/cmd_scanner.c ../src/remote_cmd.c ../src/imupic32mcj.c ../src/config/mjc_remote/peripheral/canfd/plib_canfd1.c ../src/config/mjc_remote/initialization.c ../src/config/mjc_remote/interrupts.c ../src/config/mjc_remote/exceptions.c ../src/config/mjc_remote/stdio/xc32_monitor.c ../src/config/mjc_remote/peripheral/clk/plib_clk.c ../src/config/mjc_remote/peripheral/gpio/plib_gpio.c ../src/config/mjc_remote/peripheral/evic/plib_evic.c ../src/config/mjc_remote/peripheral/dmac/plib_dmac.c ../src/config/mjc_remote/peripheral/tmr/plib_tmr6.c ../src/config/mjc_remote/peripheral/coretimer/plib_coretimer.c ../src/config/mjc_remote/peripheral/adchs/plib_adchs.c ../src/config/mjc_remote/peripheral/qei/plib_qei2.c ../src/config/mjc_remote/peripheral/uart/plib_uart1.c ../src/config/mjc_remote/peripheral/tmr/plib_tmr5.c ../src/config/mjc_remote/peripheral/mcpwm/plib_mcpwm.c ../src/config/mjc_remote/peripheral/spi/spi_master/plib_spi2_master.c ../src/config/mjc_remote/peripheral/spi/spi_master/plib_spi1_master.c ../src/config/mjc_remote/peripheral/rtcc/plib_rtcc.c ../src/config/mjc_remote/peripheral/tmr/plib_tmr9.c
 
 
 
@@ -85,7 +85,7 @@ endif
 	${MAKE}  -f nbproject/Makefile-mjc_remote.mk ${DISTDIR}/pic32mcj.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 
 MP_PROCESSOR_OPTION=32MK0512MCJ048
-MP_LINKER_FILE_OPTION=,--script="../src/config/bma400/p32MK0512MCJ048.ld"
+MP_LINKER_FILE_OPTION=,--script="../src/config/mjc_remote/p32MK0512MCJ048.ld"
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
@@ -163,146 +163,6 @@ ${OBJECTDIR}/_ext/1684788505/foo.o: ../lcd_drv/foo.c  nbproject/Makefile-${CND_C
 	@${RM} ${OBJECTDIR}/_ext/1684788505/foo.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1684788505/foo.o.d" -o ${OBJECTDIR}/_ext/1684788505/foo.o ../lcd_drv/foo.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1684788505/foo.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1932426826/plib_adchs.o: ../src/config/bma400/peripheral/adchs/plib_adchs.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1932426826" 
-	@${RM} ${OBJECTDIR}/_ext/1932426826/plib_adchs.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1932426826/plib_adchs.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1932426826/plib_adchs.o.d" -o ${OBJECTDIR}/_ext/1932426826/plib_adchs.o ../src/config/bma400/peripheral/adchs/plib_adchs.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1932426826/plib_adchs.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1930658663/plib_canfd1.o: ../src/config/bma400/peripheral/canfd/plib_canfd1.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1930658663" 
-	@${RM} ${OBJECTDIR}/_ext/1930658663/plib_canfd1.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1930658663/plib_canfd1.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1930658663/plib_canfd1.o.d" -o ${OBJECTDIR}/_ext/1930658663/plib_canfd1.o ../src/config/bma400/peripheral/canfd/plib_canfd1.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1930658663/plib_canfd1.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/896314349/plib_clk.o: ../src/config/bma400/peripheral/clk/plib_clk.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/896314349" 
-	@${RM} ${OBJECTDIR}/_ext/896314349/plib_clk.o.d 
-	@${RM} ${OBJECTDIR}/_ext/896314349/plib_clk.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/896314349/plib_clk.o.d" -o ${OBJECTDIR}/_ext/896314349/plib_clk.o ../src/config/bma400/peripheral/clk/plib_clk.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/896314349/plib_clk.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1811813999/plib_coretimer.o: ../src/config/bma400/peripheral/coretimer/plib_coretimer.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1811813999" 
-	@${RM} ${OBJECTDIR}/_ext/1811813999/plib_coretimer.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1811813999/plib_coretimer.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1811813999/plib_coretimer.o.d" -o ${OBJECTDIR}/_ext/1811813999/plib_coretimer.o ../src/config/bma400/peripheral/coretimer/plib_coretimer.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1811813999/plib_coretimer.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/2015971584/plib_dmac.o: ../src/config/bma400/peripheral/dmac/plib_dmac.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/2015971584" 
-	@${RM} ${OBJECTDIR}/_ext/2015971584/plib_dmac.o.d 
-	@${RM} ${OBJECTDIR}/_ext/2015971584/plib_dmac.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/2015971584/plib_dmac.o.d" -o ${OBJECTDIR}/_ext/2015971584/plib_dmac.o ../src/config/bma400/peripheral/dmac/plib_dmac.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2015971584/plib_dmac.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/2016010272/plib_evic.o: ../src/config/bma400/peripheral/evic/plib_evic.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/2016010272" 
-	@${RM} ${OBJECTDIR}/_ext/2016010272/plib_evic.o.d 
-	@${RM} ${OBJECTDIR}/_ext/2016010272/plib_evic.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/2016010272/plib_evic.o.d" -o ${OBJECTDIR}/_ext/2016010272/plib_evic.o ../src/config/bma400/peripheral/evic/plib_evic.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2016010272/plib_evic.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/2016064100/plib_gpio.o: ../src/config/bma400/peripheral/gpio/plib_gpio.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/2016064100" 
-	@${RM} ${OBJECTDIR}/_ext/2016064100/plib_gpio.o.d 
-	@${RM} ${OBJECTDIR}/_ext/2016064100/plib_gpio.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/2016064100/plib_gpio.o.d" -o ${OBJECTDIR}/_ext/2016064100/plib_gpio.o ../src/config/bma400/peripheral/gpio/plib_gpio.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2016064100/plib_gpio.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1921361413/plib_mcpwm.o: ../src/config/bma400/peripheral/mcpwm/plib_mcpwm.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1921361413" 
-	@${RM} ${OBJECTDIR}/_ext/1921361413/plib_mcpwm.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1921361413/plib_mcpwm.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1921361413/plib_mcpwm.o.d" -o ${OBJECTDIR}/_ext/1921361413/plib_mcpwm.o ../src/config/bma400/peripheral/mcpwm/plib_mcpwm.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1921361413/plib_mcpwm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/896327584/plib_qei2.o: ../src/config/bma400/peripheral/qei/plib_qei2.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/896327584" 
-	@${RM} ${OBJECTDIR}/_ext/896327584/plib_qei2.o.d 
-	@${RM} ${OBJECTDIR}/_ext/896327584/plib_qei2.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/896327584/plib_qei2.o.d" -o ${OBJECTDIR}/_ext/896327584/plib_qei2.o ../src/config/bma400/peripheral/qei/plib_qei2.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/896327584/plib_qei2.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/2016395447/plib_rtcc.o: ../src/config/bma400/peripheral/rtcc/plib_rtcc.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/2016395447" 
-	@${RM} ${OBJECTDIR}/_ext/2016395447/plib_rtcc.o.d 
-	@${RM} ${OBJECTDIR}/_ext/2016395447/plib_rtcc.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/2016395447/plib_rtcc.o.d" -o ${OBJECTDIR}/_ext/2016395447/plib_rtcc.o ../src/config/bma400/peripheral/rtcc/plib_rtcc.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2016395447/plib_rtcc.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/305547027/plib_spi1_master.o: ../src/config/bma400/peripheral/spi/spi_master/plib_spi1_master.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/305547027" 
-	@${RM} ${OBJECTDIR}/_ext/305547027/plib_spi1_master.o.d 
-	@${RM} ${OBJECTDIR}/_ext/305547027/plib_spi1_master.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/305547027/plib_spi1_master.o.d" -o ${OBJECTDIR}/_ext/305547027/plib_spi1_master.o ../src/config/bma400/peripheral/spi/spi_master/plib_spi1_master.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/305547027/plib_spi1_master.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/305547027/plib_spi2_master.o: ../src/config/bma400/peripheral/spi/spi_master/plib_spi2_master.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/305547027" 
-	@${RM} ${OBJECTDIR}/_ext/305547027/plib_spi2_master.o.d 
-	@${RM} ${OBJECTDIR}/_ext/305547027/plib_spi2_master.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/305547027/plib_spi2_master.o.d" -o ${OBJECTDIR}/_ext/305547027/plib_spi2_master.o ../src/config/bma400/peripheral/spi/spi_master/plib_spi2_master.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/305547027/plib_spi2_master.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/896330724/plib_tmr9.o: ../src/config/bma400/peripheral/tmr/plib_tmr9.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/896330724" 
-	@${RM} ${OBJECTDIR}/_ext/896330724/plib_tmr9.o.d 
-	@${RM} ${OBJECTDIR}/_ext/896330724/plib_tmr9.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/896330724/plib_tmr9.o.d" -o ${OBJECTDIR}/_ext/896330724/plib_tmr9.o ../src/config/bma400/peripheral/tmr/plib_tmr9.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/896330724/plib_tmr9.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/896330724/plib_tmr5.o: ../src/config/bma400/peripheral/tmr/plib_tmr5.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/896330724" 
-	@${RM} ${OBJECTDIR}/_ext/896330724/plib_tmr5.o.d 
-	@${RM} ${OBJECTDIR}/_ext/896330724/plib_tmr5.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/896330724/plib_tmr5.o.d" -o ${OBJECTDIR}/_ext/896330724/plib_tmr5.o ../src/config/bma400/peripheral/tmr/plib_tmr5.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/896330724/plib_tmr5.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/896330724/plib_tmr6.o: ../src/config/bma400/peripheral/tmr/plib_tmr6.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/896330724" 
-	@${RM} ${OBJECTDIR}/_ext/896330724/plib_tmr6.o.d 
-	@${RM} ${OBJECTDIR}/_ext/896330724/plib_tmr6.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/896330724/plib_tmr6.o.d" -o ${OBJECTDIR}/_ext/896330724/plib_tmr6.o ../src/config/bma400/peripheral/tmr/plib_tmr6.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/896330724/plib_tmr6.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/2016467043/plib_uart1.o: ../src/config/bma400/peripheral/uart/plib_uart1.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/2016467043" 
-	@${RM} ${OBJECTDIR}/_ext/2016467043/plib_uart1.o.d 
-	@${RM} ${OBJECTDIR}/_ext/2016467043/plib_uart1.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/2016467043/plib_uart1.o.d" -o ${OBJECTDIR}/_ext/2016467043/plib_uart1.o ../src/config/bma400/peripheral/uart/plib_uart1.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2016467043/plib_uart1.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1887586581/xc32_monitor.o: ../src/config/bma400/stdio/xc32_monitor.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1887586581" 
-	@${RM} ${OBJECTDIR}/_ext/1887586581/xc32_monitor.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1887586581/xc32_monitor.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1887586581/xc32_monitor.o.d" -o ${OBJECTDIR}/_ext/1887586581/xc32_monitor.o ../src/config/bma400/stdio/xc32_monitor.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1887586581/xc32_monitor.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1927388145/initialization.o: ../src/config/bma400/initialization.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1927388145" 
-	@${RM} ${OBJECTDIR}/_ext/1927388145/initialization.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1927388145/initialization.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1927388145/initialization.o.d" -o ${OBJECTDIR}/_ext/1927388145/initialization.o ../src/config/bma400/initialization.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1927388145/initialization.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1927388145/interrupts.o: ../src/config/bma400/interrupts.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1927388145" 
-	@${RM} ${OBJECTDIR}/_ext/1927388145/interrupts.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1927388145/interrupts.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1927388145/interrupts.o.d" -o ${OBJECTDIR}/_ext/1927388145/interrupts.o ../src/config/bma400/interrupts.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1927388145/interrupts.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1927388145/exceptions.o: ../src/config/bma400/exceptions.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1927388145" 
-	@${RM} ${OBJECTDIR}/_ext/1927388145/exceptions.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1927388145/exceptions.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1927388145/exceptions.o.d" -o ${OBJECTDIR}/_ext/1927388145/exceptions.o ../src/config/bma400/exceptions.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1927388145/exceptions.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1360937237/bma490l.o: ../src/bma490l.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
@@ -402,6 +262,146 @@ ${OBJECTDIR}/_ext/1360937237/imupic32mcj.o: ../src/imupic32mcj.c  nbproject/Make
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1360937237/imupic32mcj.o.d" -o ${OBJECTDIR}/_ext/1360937237/imupic32mcj.o ../src/imupic32mcj.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/imupic32mcj.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/_ext/1663846392/plib_canfd1.o: ../src/config/mjc_remote/peripheral/canfd/plib_canfd1.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1663846392" 
+	@${RM} ${OBJECTDIR}/_ext/1663846392/plib_canfd1.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1663846392/plib_canfd1.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1663846392/plib_canfd1.o.d" -o ${OBJECTDIR}/_ext/1663846392/plib_canfd1.o ../src/config/mjc_remote/peripheral/canfd/plib_canfd1.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1663846392/plib_canfd1.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1738077518/initialization.o: ../src/config/mjc_remote/initialization.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1738077518" 
+	@${RM} ${OBJECTDIR}/_ext/1738077518/initialization.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1738077518/initialization.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1738077518/initialization.o.d" -o ${OBJECTDIR}/_ext/1738077518/initialization.o ../src/config/mjc_remote/initialization.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1738077518/initialization.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1738077518/interrupts.o: ../src/config/mjc_remote/interrupts.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1738077518" 
+	@${RM} ${OBJECTDIR}/_ext/1738077518/interrupts.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1738077518/interrupts.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1738077518/interrupts.o.d" -o ${OBJECTDIR}/_ext/1738077518/interrupts.o ../src/config/mjc_remote/interrupts.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1738077518/interrupts.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1738077518/exceptions.o: ../src/config/mjc_remote/exceptions.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1738077518" 
+	@${RM} ${OBJECTDIR}/_ext/1738077518/exceptions.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1738077518/exceptions.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1738077518/exceptions.o.d" -o ${OBJECTDIR}/_ext/1738077518/exceptions.o ../src/config/mjc_remote/exceptions.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1738077518/exceptions.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1941221140/xc32_monitor.o: ../src/config/mjc_remote/stdio/xc32_monitor.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1941221140" 
+	@${RM} ${OBJECTDIR}/_ext/1941221140/xc32_monitor.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1941221140/xc32_monitor.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1941221140/xc32_monitor.o.d" -o ${OBJECTDIR}/_ext/1941221140/xc32_monitor.o ../src/config/mjc_remote/stdio/xc32_monitor.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1941221140/xc32_monitor.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1905640204/plib_clk.o: ../src/config/mjc_remote/peripheral/clk/plib_clk.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1905640204" 
+	@${RM} ${OBJECTDIR}/_ext/1905640204/plib_clk.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1905640204/plib_clk.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1905640204/plib_clk.o.d" -o ${OBJECTDIR}/_ext/1905640204/plib_clk.o ../src/config/mjc_remote/peripheral/clk/plib_clk.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1905640204/plib_clk.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1054572763/plib_gpio.o: ../src/config/mjc_remote/peripheral/gpio/plib_gpio.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1054572763" 
+	@${RM} ${OBJECTDIR}/_ext/1054572763/plib_gpio.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1054572763/plib_gpio.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1054572763/plib_gpio.o.d" -o ${OBJECTDIR}/_ext/1054572763/plib_gpio.o ../src/config/mjc_remote/peripheral/gpio/plib_gpio.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1054572763/plib_gpio.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1054626591/plib_evic.o: ../src/config/mjc_remote/peripheral/evic/plib_evic.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1054626591" 
+	@${RM} ${OBJECTDIR}/_ext/1054626591/plib_evic.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1054626591/plib_evic.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1054626591/plib_evic.o.d" -o ${OBJECTDIR}/_ext/1054626591/plib_evic.o ../src/config/mjc_remote/peripheral/evic/plib_evic.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1054626591/plib_evic.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1054665279/plib_dmac.o: ../src/config/mjc_remote/peripheral/dmac/plib_dmac.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1054665279" 
+	@${RM} ${OBJECTDIR}/_ext/1054665279/plib_dmac.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1054665279/plib_dmac.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1054665279/plib_dmac.o.d" -o ${OBJECTDIR}/_ext/1054665279/plib_dmac.o ../src/config/mjc_remote/peripheral/dmac/plib_dmac.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1054665279/plib_dmac.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1905656579/plib_tmr6.o: ../src/config/mjc_remote/peripheral/tmr/plib_tmr6.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1905656579" 
+	@${RM} ${OBJECTDIR}/_ext/1905656579/plib_tmr6.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1905656579/plib_tmr6.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1905656579/plib_tmr6.o.d" -o ${OBJECTDIR}/_ext/1905656579/plib_tmr6.o ../src/config/mjc_remote/peripheral/tmr/plib_tmr6.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1905656579/plib_tmr6.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1688137072/plib_coretimer.o: ../src/config/mjc_remote/peripheral/coretimer/plib_coretimer.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1688137072" 
+	@${RM} ${OBJECTDIR}/_ext/1688137072/plib_coretimer.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1688137072/plib_coretimer.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1688137072/plib_coretimer.o.d" -o ${OBJECTDIR}/_ext/1688137072/plib_coretimer.o ../src/config/mjc_remote/peripheral/coretimer/plib_coretimer.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688137072/plib_coretimer.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1662078229/plib_adchs.o: ../src/config/mjc_remote/peripheral/adchs/plib_adchs.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1662078229" 
+	@${RM} ${OBJECTDIR}/_ext/1662078229/plib_adchs.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1662078229/plib_adchs.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1662078229/plib_adchs.o.d" -o ${OBJECTDIR}/_ext/1662078229/plib_adchs.o ../src/config/mjc_remote/peripheral/adchs/plib_adchs.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1662078229/plib_adchs.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1905653439/plib_qei2.o: ../src/config/mjc_remote/peripheral/qei/plib_qei2.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1905653439" 
+	@${RM} ${OBJECTDIR}/_ext/1905653439/plib_qei2.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1905653439/plib_qei2.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1905653439/plib_qei2.o.d" -o ${OBJECTDIR}/_ext/1905653439/plib_qei2.o ../src/config/mjc_remote/peripheral/qei/plib_qei2.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1905653439/plib_qei2.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1054169820/plib_uart1.o: ../src/config/mjc_remote/peripheral/uart/plib_uart1.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1054169820" 
+	@${RM} ${OBJECTDIR}/_ext/1054169820/plib_uart1.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1054169820/plib_uart1.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1054169820/plib_uart1.o.d" -o ${OBJECTDIR}/_ext/1054169820/plib_uart1.o ../src/config/mjc_remote/peripheral/uart/plib_uart1.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1054169820/plib_uart1.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1905656579/plib_tmr5.o: ../src/config/mjc_remote/peripheral/tmr/plib_tmr5.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1905656579" 
+	@${RM} ${OBJECTDIR}/_ext/1905656579/plib_tmr5.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1905656579/plib_tmr5.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1905656579/plib_tmr5.o.d" -o ${OBJECTDIR}/_ext/1905656579/plib_tmr5.o ../src/config/mjc_remote/peripheral/tmr/plib_tmr5.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1905656579/plib_tmr5.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1673143642/plib_mcpwm.o: ../src/config/mjc_remote/peripheral/mcpwm/plib_mcpwm.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1673143642" 
+	@${RM} ${OBJECTDIR}/_ext/1673143642/plib_mcpwm.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1673143642/plib_mcpwm.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1673143642/plib_mcpwm.o.d" -o ${OBJECTDIR}/_ext/1673143642/plib_mcpwm.o ../src/config/mjc_remote/peripheral/mcpwm/plib_mcpwm.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1673143642/plib_mcpwm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1839249298/plib_spi2_master.o: ../src/config/mjc_remote/peripheral/spi/spi_master/plib_spi2_master.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1839249298" 
+	@${RM} ${OBJECTDIR}/_ext/1839249298/plib_spi2_master.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1839249298/plib_spi2_master.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1839249298/plib_spi2_master.o.d" -o ${OBJECTDIR}/_ext/1839249298/plib_spi2_master.o ../src/config/mjc_remote/peripheral/spi/spi_master/plib_spi2_master.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1839249298/plib_spi2_master.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1839249298/plib_spi1_master.o: ../src/config/mjc_remote/peripheral/spi/spi_master/plib_spi1_master.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1839249298" 
+	@${RM} ${OBJECTDIR}/_ext/1839249298/plib_spi1_master.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1839249298/plib_spi1_master.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1839249298/plib_spi1_master.o.d" -o ${OBJECTDIR}/_ext/1839249298/plib_spi1_master.o ../src/config/mjc_remote/peripheral/spi/spi_master/plib_spi1_master.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1839249298/plib_spi1_master.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1054241416/plib_rtcc.o: ../src/config/mjc_remote/peripheral/rtcc/plib_rtcc.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1054241416" 
+	@${RM} ${OBJECTDIR}/_ext/1054241416/plib_rtcc.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1054241416/plib_rtcc.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1054241416/plib_rtcc.o.d" -o ${OBJECTDIR}/_ext/1054241416/plib_rtcc.o ../src/config/mjc_remote/peripheral/rtcc/plib_rtcc.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1054241416/plib_rtcc.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1905656579/plib_tmr9.o: ../src/config/mjc_remote/peripheral/tmr/plib_tmr9.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1905656579" 
+	@${RM} ${OBJECTDIR}/_ext/1905656579/plib_tmr9.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1905656579/plib_tmr9.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1905656579/plib_tmr9.o.d" -o ${OBJECTDIR}/_ext/1905656579/plib_tmr9.o ../src/config/mjc_remote/peripheral/tmr/plib_tmr9.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1905656579/plib_tmr9.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
 else
 ${OBJECTDIR}/_ext/1684788505/lcd_drv.o: ../lcd_drv/lcd_drv.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1684788505" 
@@ -465,146 +465,6 @@ ${OBJECTDIR}/_ext/1684788505/foo.o: ../lcd_drv/foo.c  nbproject/Makefile-${CND_C
 	@${RM} ${OBJECTDIR}/_ext/1684788505/foo.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1684788505/foo.o.d" -o ${OBJECTDIR}/_ext/1684788505/foo.o ../lcd_drv/foo.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1684788505/foo.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1932426826/plib_adchs.o: ../src/config/bma400/peripheral/adchs/plib_adchs.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1932426826" 
-	@${RM} ${OBJECTDIR}/_ext/1932426826/plib_adchs.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1932426826/plib_adchs.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1932426826/plib_adchs.o.d" -o ${OBJECTDIR}/_ext/1932426826/plib_adchs.o ../src/config/bma400/peripheral/adchs/plib_adchs.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1932426826/plib_adchs.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1930658663/plib_canfd1.o: ../src/config/bma400/peripheral/canfd/plib_canfd1.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1930658663" 
-	@${RM} ${OBJECTDIR}/_ext/1930658663/plib_canfd1.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1930658663/plib_canfd1.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1930658663/plib_canfd1.o.d" -o ${OBJECTDIR}/_ext/1930658663/plib_canfd1.o ../src/config/bma400/peripheral/canfd/plib_canfd1.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1930658663/plib_canfd1.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/896314349/plib_clk.o: ../src/config/bma400/peripheral/clk/plib_clk.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/896314349" 
-	@${RM} ${OBJECTDIR}/_ext/896314349/plib_clk.o.d 
-	@${RM} ${OBJECTDIR}/_ext/896314349/plib_clk.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/896314349/plib_clk.o.d" -o ${OBJECTDIR}/_ext/896314349/plib_clk.o ../src/config/bma400/peripheral/clk/plib_clk.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/896314349/plib_clk.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1811813999/plib_coretimer.o: ../src/config/bma400/peripheral/coretimer/plib_coretimer.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1811813999" 
-	@${RM} ${OBJECTDIR}/_ext/1811813999/plib_coretimer.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1811813999/plib_coretimer.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1811813999/plib_coretimer.o.d" -o ${OBJECTDIR}/_ext/1811813999/plib_coretimer.o ../src/config/bma400/peripheral/coretimer/plib_coretimer.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1811813999/plib_coretimer.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/2015971584/plib_dmac.o: ../src/config/bma400/peripheral/dmac/plib_dmac.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/2015971584" 
-	@${RM} ${OBJECTDIR}/_ext/2015971584/plib_dmac.o.d 
-	@${RM} ${OBJECTDIR}/_ext/2015971584/plib_dmac.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/2015971584/plib_dmac.o.d" -o ${OBJECTDIR}/_ext/2015971584/plib_dmac.o ../src/config/bma400/peripheral/dmac/plib_dmac.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2015971584/plib_dmac.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/2016010272/plib_evic.o: ../src/config/bma400/peripheral/evic/plib_evic.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/2016010272" 
-	@${RM} ${OBJECTDIR}/_ext/2016010272/plib_evic.o.d 
-	@${RM} ${OBJECTDIR}/_ext/2016010272/plib_evic.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/2016010272/plib_evic.o.d" -o ${OBJECTDIR}/_ext/2016010272/plib_evic.o ../src/config/bma400/peripheral/evic/plib_evic.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2016010272/plib_evic.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/2016064100/plib_gpio.o: ../src/config/bma400/peripheral/gpio/plib_gpio.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/2016064100" 
-	@${RM} ${OBJECTDIR}/_ext/2016064100/plib_gpio.o.d 
-	@${RM} ${OBJECTDIR}/_ext/2016064100/plib_gpio.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/2016064100/plib_gpio.o.d" -o ${OBJECTDIR}/_ext/2016064100/plib_gpio.o ../src/config/bma400/peripheral/gpio/plib_gpio.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2016064100/plib_gpio.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1921361413/plib_mcpwm.o: ../src/config/bma400/peripheral/mcpwm/plib_mcpwm.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1921361413" 
-	@${RM} ${OBJECTDIR}/_ext/1921361413/plib_mcpwm.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1921361413/plib_mcpwm.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1921361413/plib_mcpwm.o.d" -o ${OBJECTDIR}/_ext/1921361413/plib_mcpwm.o ../src/config/bma400/peripheral/mcpwm/plib_mcpwm.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1921361413/plib_mcpwm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/896327584/plib_qei2.o: ../src/config/bma400/peripheral/qei/plib_qei2.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/896327584" 
-	@${RM} ${OBJECTDIR}/_ext/896327584/plib_qei2.o.d 
-	@${RM} ${OBJECTDIR}/_ext/896327584/plib_qei2.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/896327584/plib_qei2.o.d" -o ${OBJECTDIR}/_ext/896327584/plib_qei2.o ../src/config/bma400/peripheral/qei/plib_qei2.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/896327584/plib_qei2.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/2016395447/plib_rtcc.o: ../src/config/bma400/peripheral/rtcc/plib_rtcc.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/2016395447" 
-	@${RM} ${OBJECTDIR}/_ext/2016395447/plib_rtcc.o.d 
-	@${RM} ${OBJECTDIR}/_ext/2016395447/plib_rtcc.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/2016395447/plib_rtcc.o.d" -o ${OBJECTDIR}/_ext/2016395447/plib_rtcc.o ../src/config/bma400/peripheral/rtcc/plib_rtcc.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2016395447/plib_rtcc.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/305547027/plib_spi1_master.o: ../src/config/bma400/peripheral/spi/spi_master/plib_spi1_master.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/305547027" 
-	@${RM} ${OBJECTDIR}/_ext/305547027/plib_spi1_master.o.d 
-	@${RM} ${OBJECTDIR}/_ext/305547027/plib_spi1_master.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/305547027/plib_spi1_master.o.d" -o ${OBJECTDIR}/_ext/305547027/plib_spi1_master.o ../src/config/bma400/peripheral/spi/spi_master/plib_spi1_master.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/305547027/plib_spi1_master.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/305547027/plib_spi2_master.o: ../src/config/bma400/peripheral/spi/spi_master/plib_spi2_master.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/305547027" 
-	@${RM} ${OBJECTDIR}/_ext/305547027/plib_spi2_master.o.d 
-	@${RM} ${OBJECTDIR}/_ext/305547027/plib_spi2_master.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/305547027/plib_spi2_master.o.d" -o ${OBJECTDIR}/_ext/305547027/plib_spi2_master.o ../src/config/bma400/peripheral/spi/spi_master/plib_spi2_master.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/305547027/plib_spi2_master.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/896330724/plib_tmr9.o: ../src/config/bma400/peripheral/tmr/plib_tmr9.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/896330724" 
-	@${RM} ${OBJECTDIR}/_ext/896330724/plib_tmr9.o.d 
-	@${RM} ${OBJECTDIR}/_ext/896330724/plib_tmr9.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/896330724/plib_tmr9.o.d" -o ${OBJECTDIR}/_ext/896330724/plib_tmr9.o ../src/config/bma400/peripheral/tmr/plib_tmr9.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/896330724/plib_tmr9.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/896330724/plib_tmr5.o: ../src/config/bma400/peripheral/tmr/plib_tmr5.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/896330724" 
-	@${RM} ${OBJECTDIR}/_ext/896330724/plib_tmr5.o.d 
-	@${RM} ${OBJECTDIR}/_ext/896330724/plib_tmr5.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/896330724/plib_tmr5.o.d" -o ${OBJECTDIR}/_ext/896330724/plib_tmr5.o ../src/config/bma400/peripheral/tmr/plib_tmr5.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/896330724/plib_tmr5.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/896330724/plib_tmr6.o: ../src/config/bma400/peripheral/tmr/plib_tmr6.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/896330724" 
-	@${RM} ${OBJECTDIR}/_ext/896330724/plib_tmr6.o.d 
-	@${RM} ${OBJECTDIR}/_ext/896330724/plib_tmr6.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/896330724/plib_tmr6.o.d" -o ${OBJECTDIR}/_ext/896330724/plib_tmr6.o ../src/config/bma400/peripheral/tmr/plib_tmr6.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/896330724/plib_tmr6.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/2016467043/plib_uart1.o: ../src/config/bma400/peripheral/uart/plib_uart1.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/2016467043" 
-	@${RM} ${OBJECTDIR}/_ext/2016467043/plib_uart1.o.d 
-	@${RM} ${OBJECTDIR}/_ext/2016467043/plib_uart1.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/2016467043/plib_uart1.o.d" -o ${OBJECTDIR}/_ext/2016467043/plib_uart1.o ../src/config/bma400/peripheral/uart/plib_uart1.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2016467043/plib_uart1.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1887586581/xc32_monitor.o: ../src/config/bma400/stdio/xc32_monitor.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1887586581" 
-	@${RM} ${OBJECTDIR}/_ext/1887586581/xc32_monitor.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1887586581/xc32_monitor.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1887586581/xc32_monitor.o.d" -o ${OBJECTDIR}/_ext/1887586581/xc32_monitor.o ../src/config/bma400/stdio/xc32_monitor.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1887586581/xc32_monitor.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1927388145/initialization.o: ../src/config/bma400/initialization.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1927388145" 
-	@${RM} ${OBJECTDIR}/_ext/1927388145/initialization.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1927388145/initialization.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1927388145/initialization.o.d" -o ${OBJECTDIR}/_ext/1927388145/initialization.o ../src/config/bma400/initialization.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1927388145/initialization.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1927388145/interrupts.o: ../src/config/bma400/interrupts.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1927388145" 
-	@${RM} ${OBJECTDIR}/_ext/1927388145/interrupts.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1927388145/interrupts.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1927388145/interrupts.o.d" -o ${OBJECTDIR}/_ext/1927388145/interrupts.o ../src/config/bma400/interrupts.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1927388145/interrupts.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1927388145/exceptions.o: ../src/config/bma400/exceptions.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1927388145" 
-	@${RM} ${OBJECTDIR}/_ext/1927388145/exceptions.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1927388145/exceptions.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1927388145/exceptions.o.d" -o ${OBJECTDIR}/_ext/1927388145/exceptions.o ../src/config/bma400/exceptions.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1927388145/exceptions.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1360937237/bma490l.o: ../src/bma490l.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
@@ -704,6 +564,146 @@ ${OBJECTDIR}/_ext/1360937237/imupic32mcj.o: ../src/imupic32mcj.c  nbproject/Make
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1360937237/imupic32mcj.o.d" -o ${OBJECTDIR}/_ext/1360937237/imupic32mcj.o ../src/imupic32mcj.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/imupic32mcj.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/_ext/1663846392/plib_canfd1.o: ../src/config/mjc_remote/peripheral/canfd/plib_canfd1.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1663846392" 
+	@${RM} ${OBJECTDIR}/_ext/1663846392/plib_canfd1.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1663846392/plib_canfd1.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1663846392/plib_canfd1.o.d" -o ${OBJECTDIR}/_ext/1663846392/plib_canfd1.o ../src/config/mjc_remote/peripheral/canfd/plib_canfd1.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1663846392/plib_canfd1.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1738077518/initialization.o: ../src/config/mjc_remote/initialization.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1738077518" 
+	@${RM} ${OBJECTDIR}/_ext/1738077518/initialization.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1738077518/initialization.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1738077518/initialization.o.d" -o ${OBJECTDIR}/_ext/1738077518/initialization.o ../src/config/mjc_remote/initialization.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1738077518/initialization.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1738077518/interrupts.o: ../src/config/mjc_remote/interrupts.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1738077518" 
+	@${RM} ${OBJECTDIR}/_ext/1738077518/interrupts.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1738077518/interrupts.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1738077518/interrupts.o.d" -o ${OBJECTDIR}/_ext/1738077518/interrupts.o ../src/config/mjc_remote/interrupts.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1738077518/interrupts.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1738077518/exceptions.o: ../src/config/mjc_remote/exceptions.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1738077518" 
+	@${RM} ${OBJECTDIR}/_ext/1738077518/exceptions.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1738077518/exceptions.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1738077518/exceptions.o.d" -o ${OBJECTDIR}/_ext/1738077518/exceptions.o ../src/config/mjc_remote/exceptions.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1738077518/exceptions.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1941221140/xc32_monitor.o: ../src/config/mjc_remote/stdio/xc32_monitor.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1941221140" 
+	@${RM} ${OBJECTDIR}/_ext/1941221140/xc32_monitor.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1941221140/xc32_monitor.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1941221140/xc32_monitor.o.d" -o ${OBJECTDIR}/_ext/1941221140/xc32_monitor.o ../src/config/mjc_remote/stdio/xc32_monitor.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1941221140/xc32_monitor.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1905640204/plib_clk.o: ../src/config/mjc_remote/peripheral/clk/plib_clk.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1905640204" 
+	@${RM} ${OBJECTDIR}/_ext/1905640204/plib_clk.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1905640204/plib_clk.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1905640204/plib_clk.o.d" -o ${OBJECTDIR}/_ext/1905640204/plib_clk.o ../src/config/mjc_remote/peripheral/clk/plib_clk.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1905640204/plib_clk.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1054572763/plib_gpio.o: ../src/config/mjc_remote/peripheral/gpio/plib_gpio.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1054572763" 
+	@${RM} ${OBJECTDIR}/_ext/1054572763/plib_gpio.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1054572763/plib_gpio.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1054572763/plib_gpio.o.d" -o ${OBJECTDIR}/_ext/1054572763/plib_gpio.o ../src/config/mjc_remote/peripheral/gpio/plib_gpio.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1054572763/plib_gpio.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1054626591/plib_evic.o: ../src/config/mjc_remote/peripheral/evic/plib_evic.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1054626591" 
+	@${RM} ${OBJECTDIR}/_ext/1054626591/plib_evic.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1054626591/plib_evic.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1054626591/plib_evic.o.d" -o ${OBJECTDIR}/_ext/1054626591/plib_evic.o ../src/config/mjc_remote/peripheral/evic/plib_evic.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1054626591/plib_evic.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1054665279/plib_dmac.o: ../src/config/mjc_remote/peripheral/dmac/plib_dmac.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1054665279" 
+	@${RM} ${OBJECTDIR}/_ext/1054665279/plib_dmac.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1054665279/plib_dmac.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1054665279/plib_dmac.o.d" -o ${OBJECTDIR}/_ext/1054665279/plib_dmac.o ../src/config/mjc_remote/peripheral/dmac/plib_dmac.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1054665279/plib_dmac.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1905656579/plib_tmr6.o: ../src/config/mjc_remote/peripheral/tmr/plib_tmr6.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1905656579" 
+	@${RM} ${OBJECTDIR}/_ext/1905656579/plib_tmr6.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1905656579/plib_tmr6.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1905656579/plib_tmr6.o.d" -o ${OBJECTDIR}/_ext/1905656579/plib_tmr6.o ../src/config/mjc_remote/peripheral/tmr/plib_tmr6.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1905656579/plib_tmr6.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1688137072/plib_coretimer.o: ../src/config/mjc_remote/peripheral/coretimer/plib_coretimer.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1688137072" 
+	@${RM} ${OBJECTDIR}/_ext/1688137072/plib_coretimer.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1688137072/plib_coretimer.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1688137072/plib_coretimer.o.d" -o ${OBJECTDIR}/_ext/1688137072/plib_coretimer.o ../src/config/mjc_remote/peripheral/coretimer/plib_coretimer.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688137072/plib_coretimer.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1662078229/plib_adchs.o: ../src/config/mjc_remote/peripheral/adchs/plib_adchs.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1662078229" 
+	@${RM} ${OBJECTDIR}/_ext/1662078229/plib_adchs.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1662078229/plib_adchs.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1662078229/plib_adchs.o.d" -o ${OBJECTDIR}/_ext/1662078229/plib_adchs.o ../src/config/mjc_remote/peripheral/adchs/plib_adchs.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1662078229/plib_adchs.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1905653439/plib_qei2.o: ../src/config/mjc_remote/peripheral/qei/plib_qei2.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1905653439" 
+	@${RM} ${OBJECTDIR}/_ext/1905653439/plib_qei2.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1905653439/plib_qei2.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1905653439/plib_qei2.o.d" -o ${OBJECTDIR}/_ext/1905653439/plib_qei2.o ../src/config/mjc_remote/peripheral/qei/plib_qei2.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1905653439/plib_qei2.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1054169820/plib_uart1.o: ../src/config/mjc_remote/peripheral/uart/plib_uart1.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1054169820" 
+	@${RM} ${OBJECTDIR}/_ext/1054169820/plib_uart1.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1054169820/plib_uart1.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1054169820/plib_uart1.o.d" -o ${OBJECTDIR}/_ext/1054169820/plib_uart1.o ../src/config/mjc_remote/peripheral/uart/plib_uart1.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1054169820/plib_uart1.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1905656579/plib_tmr5.o: ../src/config/mjc_remote/peripheral/tmr/plib_tmr5.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1905656579" 
+	@${RM} ${OBJECTDIR}/_ext/1905656579/plib_tmr5.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1905656579/plib_tmr5.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1905656579/plib_tmr5.o.d" -o ${OBJECTDIR}/_ext/1905656579/plib_tmr5.o ../src/config/mjc_remote/peripheral/tmr/plib_tmr5.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1905656579/plib_tmr5.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1673143642/plib_mcpwm.o: ../src/config/mjc_remote/peripheral/mcpwm/plib_mcpwm.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1673143642" 
+	@${RM} ${OBJECTDIR}/_ext/1673143642/plib_mcpwm.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1673143642/plib_mcpwm.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1673143642/plib_mcpwm.o.d" -o ${OBJECTDIR}/_ext/1673143642/plib_mcpwm.o ../src/config/mjc_remote/peripheral/mcpwm/plib_mcpwm.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1673143642/plib_mcpwm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1839249298/plib_spi2_master.o: ../src/config/mjc_remote/peripheral/spi/spi_master/plib_spi2_master.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1839249298" 
+	@${RM} ${OBJECTDIR}/_ext/1839249298/plib_spi2_master.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1839249298/plib_spi2_master.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1839249298/plib_spi2_master.o.d" -o ${OBJECTDIR}/_ext/1839249298/plib_spi2_master.o ../src/config/mjc_remote/peripheral/spi/spi_master/plib_spi2_master.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1839249298/plib_spi2_master.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1839249298/plib_spi1_master.o: ../src/config/mjc_remote/peripheral/spi/spi_master/plib_spi1_master.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1839249298" 
+	@${RM} ${OBJECTDIR}/_ext/1839249298/plib_spi1_master.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1839249298/plib_spi1_master.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1839249298/plib_spi1_master.o.d" -o ${OBJECTDIR}/_ext/1839249298/plib_spi1_master.o ../src/config/mjc_remote/peripheral/spi/spi_master/plib_spi1_master.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1839249298/plib_spi1_master.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1054241416/plib_rtcc.o: ../src/config/mjc_remote/peripheral/rtcc/plib_rtcc.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1054241416" 
+	@${RM} ${OBJECTDIR}/_ext/1054241416/plib_rtcc.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1054241416/plib_rtcc.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1054241416/plib_rtcc.o.d" -o ${OBJECTDIR}/_ext/1054241416/plib_rtcc.o ../src/config/mjc_remote/peripheral/rtcc/plib_rtcc.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1054241416/plib_rtcc.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1905656579/plib_tmr9.o: ../src/config/mjc_remote/peripheral/tmr/plib_tmr9.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1905656579" 
+	@${RM} ${OBJECTDIR}/_ext/1905656579/plib_tmr9.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1905656579/plib_tmr9.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O2 -fno-common -I"../src" -I"../src/config/mcj" -I"../src/config/mjc_remote" -Werror -Wall -MMD -MF "${OBJECTDIR}/_ext/1905656579/plib_tmr9.o.d" -o ${OBJECTDIR}/_ext/1905656579/plib_tmr9.o ../src/config/mjc_remote/peripheral/tmr/plib_tmr9.c    -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1905656579/plib_tmr9.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
 endif
 
 # ------------------------------------------------------------------------------------
@@ -715,12 +715,12 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: link
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${DISTDIR}/pic32mcj.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    ../src/config/bma400/p32MK0512MCJ048.ld
+${DISTDIR}/pic32mcj.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    ../src/config/mjc_remote/p32MK0512MCJ048.ld
 	@${MKDIR} ${DISTDIR} 
 	${MP_CC} $(MP_EXTRA_LD_PRE) -g   -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/pic32mcj.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)   -mreserve=data@0x0:0x36F   -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--defsym=_min_heap_size=512,--gc-sections,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
 	
 else
-${DISTDIR}/pic32mcj.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   ../src/config/bma400/p32MK0512MCJ048.ld
+${DISTDIR}/pic32mcj.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   ../src/config/mjc_remote/p32MK0512MCJ048.ld
 	@${MKDIR} ${DISTDIR} 
 	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/pic32mcj.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_mjc_remote=$(CND_CONF)    $(COMPARISON_BUILD)  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=_min_heap_size=512,--gc-sections,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
 	${MP_CC_DIR}/xc32-bin2hex ${DISTDIR}/pic32mcj.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 

@@ -1,0 +1,122 @@
+configVersion: 1.0.0
+coreVersion: 5.8.4
+spaHostVersion: 1.2.1
+device: PIC32MK0512MCJ048
+deviceLibrary:
+  className: com.microchip.mcc.harmony.Harmony3Library
+groupModules: []
+modules:
+- adchs
+- can1
+- core
+- core_timer
+- dfp
+- mcpwm
+- qei2
+- rtcc
+- spi1
+- spi2
+- stdio
+- tmr5
+- tmr6
+- tmr9
+- uart1
+generatedFileHashHistoryMap:
+- file: ../src/config/mcj/definitions.h
+  hash: 241ab65719a222cffeec9f325f49915a54219945c718e8cf6e6a12ecdb729715
+- file: ../src/config/mcj/device.h
+  hash: 10ec93c43a7b158a129ae05bd8f4a59ff5bcf3d0f3f062fdd64c374bc2d42099
+- file: ../src/config/mcj/exceptions.c
+  hash: bacd9060af8add5471ec3170808fe766dbd651e25104b5ecc8a7ebc02935e727
+- file: ../src/config/mcj/initialization.c
+  hash: 25e3a484e2583e02ae15c425329d9b8b8dc44b6af72e665ff4cb39790147717e
+- file: ../src/config/mcj/interrupts.c
+  hash: 0b0c663e369add2abec2d8330731171b902bf3c95b94abc4367824dc314e8238
+- file: ../src/config/mcj/interrupts.h
+  hash: 91abdb8d191ae865fc6082f30783c3d6cca8aa8d5aca823a7fb2cc65e3a57d24
+- file: ../src/config/mcj/p32MK0512MCJ048.ld
+  hash: 867f3091e166c08e8d0f0c637a837541623b375bf75b710151f59cfaa41beea5
+- file: ../src/config/mcj/peripheral/adchs/plib_adchs.c
+  hash: 04d4c40d3d3b7c07615878a44209822111e04f9ddf120960df7e60b6df7cc981
+- file: ../src/config/mcj/peripheral/adchs/plib_adchs.h
+  hash: 92e6af4a81b6f5ec626422a05fb890e0c5d536acd35a0b67ec71723a05832baa
+- file: ../src/config/mcj/peripheral/adchs/plib_adchs_common.h
+  hash: 1a4c2059bdc6e2b0bc68496e4dbf798280a7d236652655ac138b97ace6147bcb
+- file: ../src/config/mcj/peripheral/canfd/plib_canfd1.c
+  hash: 485667714c366ae6adbc1d406ebc62ac3fb13a9e3d851f1eb4741e2fc6d7f657
+- file: ../src/config/mcj/peripheral/canfd/plib_canfd1.h
+  hash: b75d9f762de983263e9c6dc009d2b74a1504e2d4695402535a576fc3f5deabb7
+- file: ../src/config/mcj/peripheral/canfd/plib_canfd_common.h
+  hash: 85c035049f7cdd738e11d547cea98940329249529ba267c6a338f6caaaf5f9e3
+- file: ../src/config/mcj/peripheral/clk/plib_clk.c
+  hash: 88d5bfc82ed63cae051907d04897727801e3295f8a0094982ef09592e65b3dd1
+- file: ../src/config/mcj/peripheral/clk/plib_clk.h
+  hash: aeb73e24e5a518024b1c3f7dce953a5cbacead08f55e80ae465fc8d2e522e477
+- file: ../src/config/mcj/peripheral/coretimer/plib_coretimer.c
+  hash: 9d6acf01226eb43c1db60b4b6fba498114ee1980a8693a3acfc41326583ba8e1
+- file: ../src/config/mcj/peripheral/coretimer/plib_coretimer.h
+  hash: b4803baa11440eb8b100ddfccdcbb61bde17bf7b68cc78685c858d2a33fee12b
+- file: ../src/config/mcj/peripheral/dmac/plib_dmac.c
+  hash: db8c8528eb01baa1b7c4c8a6bb6feaf608ffea566b05026bd76ab4e4b0f59048
+- file: ../src/config/mcj/peripheral/dmac/plib_dmac.h
+  hash: 23017fe3fc9a89674736de1d7c9f8f14b7334f1e9df251120de1397731ab7299
+- file: ../src/config/mcj/peripheral/evic/plib_evic.c
+  hash: 423e61894c8180fc9ed15aa06e682e13304a4d2331567be7439e74303add5801
+- file: ../src/config/mcj/peripheral/evic/plib_evic.h
+  hash: e92944d182b8c03b8839d1ba8f65627b4cd4f8fe40aed2fc30b397096b4c529c
+- file: ../src/config/mcj/peripheral/gpio/plib_gpio.c
+  hash: 6946c61f0b94ec393761ee7943e7bf254b893f36271933e40b01f756fecd83c8
+- file: ../src/config/mcj/peripheral/gpio/plib_gpio.h
+  hash: 94e8a089c32dea18079a6139afb33a34f861c379b070529f509d096400b23e00
+- file: ../src/config/mcj/peripheral/mcpwm/plib_mcpwm.c
+  hash: 4861270b4618182f10678a6c4af023d69d86e87718ccc2a633a3759467bc11f2
+- file: ../src/config/mcj/peripheral/mcpwm/plib_mcpwm.h
+  hash: bcd46f45b3b2e8bf6f48002edc8ae381b25de602627153dac37269c2680c6269
+- file: ../src/config/mcj/peripheral/mcpwm/plib_mcpwm_common.h
+  hash: 92097067525e006e027efa54d1c6a97066c4870f41eac3b57dd02b6a9bb4cc2b
+- file: ../src/config/mcj/peripheral/qei/plib_qei2.c
+  hash: cd8d159c68d5be2106b93c1b7e50741b4490ff18a385fc060a43841fdd04665d
+- file: ../src/config/mcj/peripheral/qei/plib_qei2.h
+  hash: 16de90513f0f63cbba24f121841c22b7f7ad20028a4776871d5508cfe0069ab5
+- file: ../src/config/mcj/peripheral/qei/plib_qei_common.h
+  hash: 9ea3b4f643d5ca367a1e9a98b6e2fe8f9d16f5b6ab36f65e27ca41b52f2bfcd5
+- file: ../src/config/mcj/peripheral/rtcc/plib_rtcc.c
+  hash: fc2d12de522615c0d6475cf813328f5c0b286525ed7d38d007c9c5e21b374c49
+- file: ../src/config/mcj/peripheral/rtcc/plib_rtcc.h
+  hash: f6e5f8ac90300fe16c18b0ef127a3aaf3b522ac36c87f64571f3cafabadf3e13
+- file: ../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.c
+  hash: 8d4429b1be522e9c0cc7eb2fa67feae3bc3ac8e57ca537745d6a60a299a9b671
+- file: ../src/config/mcj/peripheral/spi/spi_master/plib_spi1_master.h
+  hash: e022deaa6bc614442c072622acf6a7ebb292ba4db067510bd6e37af805bea226
+- file: ../src/config/mcj/peripheral/spi/spi_master/plib_spi2_master.c
+  hash: a3c9943b58980e5763db9f2a7f9b89213d21b1cc159e9f7385283a40927b1e41
+- file: ../src/config/mcj/peripheral/spi/spi_master/plib_spi2_master.h
+  hash: 5e78a42e59de34629f92f7916be364a44ed98f1fbaecd993eb121c485092d7d1
+- file: ../src/config/mcj/peripheral/spi/spi_master/plib_spi_master_common.h
+  hash: 844a71566e886cd1f28024000d440ac48841cdb4f4059f5feefac8e4334f12ef
+- file: ../src/config/mcj/peripheral/tmr/plib_tmr5.c
+  hash: d739eca1f54b691ea558023107a95a1a9383ce3816533a88ae82413099e16b62
+- file: ../src/config/mcj/peripheral/tmr/plib_tmr5.h
+  hash: 712a32bdde271364fb406e66908e62408bf51ab62268ce29f1d7829e569bc3a7
+- file: ../src/config/mcj/peripheral/tmr/plib_tmr6.c
+  hash: d80270d36578b780adde1c49f8e211992d2146ab922028a81964b1de4a76c976
+- file: ../src/config/mcj/peripheral/tmr/plib_tmr6.h
+  hash: 10b7394a78b0a49cd652e852d9347108c00f6e39e59c43b3e5c87b8e82a40414
+- file: ../src/config/mcj/peripheral/tmr/plib_tmr9.c
+  hash: 7a797dd12b048facf453b5d74ea6242050c633f3ccd74b5c9a0f12a2fd28b047
+- file: ../src/config/mcj/peripheral/tmr/plib_tmr9.h
+  hash: 5f927916b534a7995ade50cdf8da6d6a4046207285665302113a559a06e35314
+- file: ../src/config/mcj/peripheral/tmr/plib_tmr_common.h
+  hash: fe0f7e886eba99992a90f718b6aa9f2b438b8204094495f72a0d1e83418d3187
+- file: ../src/config/mcj/peripheral/uart/plib_uart1.c
+  hash: b699c0915d87ba370a61fc60405224729ef2f5ea7d5390967ef0a2a66b67fd2b
+- file: ../src/config/mcj/peripheral/uart/plib_uart1.h
+  hash: 7a1eb131a20e49ee5e46ba34845ec01b77fdcea9750992bbebccd3dec805b35a
+- file: ../src/config/mcj/peripheral/uart/plib_uart_common.h
+  hash: 90d1791d0855caa86d5d529a0ba209330f20cd0da2436950a7e71b38ef8da02b
+- file: ../src/config/mcj/stdio/xc32_monitor.c
+  hash: 0686d176910c03a71788eee4ae3b99492c26e6e03a4724c6a49fa76c0b2e6c3f
+- file: ../src/config/mcj/toolchain_specifics.h
+  hash: 9dfc75809b6eb23cee342231de51f6b382f8f7eabf8a939539cf44c0da32acbc
+- file: ../src/main.c
+  hash: d3c233d419e6304bfacbafc18cc68c0f5c26e365f23b20ea40ccfac458f664c5

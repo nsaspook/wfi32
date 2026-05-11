@@ -137,8 +137,8 @@ void APP_CAN_Callback_h(uintptr_t context)
 #endif
 
 	if ((status & (CANFD_ERROR_TX_RX_WARNING_STATE | CANFD_ERROR_RX_WARNING_STATE |
-		CANFD_ERROR_TX_WARNING_STATE | CANFD_ERROR_RX_BUS_PASSIVE_STATE |
-		CANFD_ERROR_TX_BUS_PASSIVE_STATE | CANFD_ERROR_TX_BUS_OFF_STATE)) == CANFD_ERROR_NONE) {
+	CANFD_ERROR_TX_WARNING_STATE | CANFD_ERROR_RX_BUS_PASSIVE_STATE |
+	CANFD_ERROR_TX_BUS_PASSIVE_STATE | CANFD_ERROR_TX_BUS_OFF_STATE)) == CANFD_ERROR_NONE) {
 		switch ((APP_STATES) context) {
 		case APP_STATE_CAN_RECEIVE:
 		{
@@ -229,7 +229,9 @@ int host_sm(void)
 	uint64_t * hcid = (uint64_t *) & DEVSN2; // set pointer to 64-bit cpu serial number
 	uint32_t wait_count = 0, recv_count = 0, msg_error = 0;
 
+#ifdef ETH_GPIO
 	ETH_RESET_Clear();
+#endif
 
 	/* 
 	 * Start system tick timer 
@@ -248,8 +250,9 @@ int host_sm(void)
 	for (count = 0; count < 64; count++) {
 		message[count] = count;
 	}
+#ifdef ETH_GPIO
 	ETH_RESET_Set();
-
+#endif
 	/*
 	 * start the graphic LCD driver
 	 */
@@ -500,7 +503,7 @@ void fh_start_AT(void *a_data)
 
 	// put the ETH module in config mode
 	U1MODECLR = _U1MODE_ON_MASK; // turn off UART
-
+#ifdef ETH_GPIO
 #ifdef USR_TCP
 	ETH_CFG_Clear();
 	WaitMs(30);
@@ -512,7 +515,7 @@ void fh_start_AT(void *a_data)
 	ETH_CFG_Set();
 	WaitMs(4500); // wait until the module is back online
 #endif
-
+#endif
 	U1MODESET = _U1MODE_ON_MASK; // re-enable UART
 
 	// AT command mode
@@ -526,9 +529,11 @@ void fh_start_AT(void *a_data)
 		UART1_Read(&response_buffer, 30); // read serial response from module
 	} else { // nothing
 		snprintf(response_buffer, max_buf, "AT command failed           ");
+#ifdef ETH_GPIO
 		ETH_RESET_Clear();
 		WaitMs(200);
 		ETH_RESET_Set();
+#endif
 	}
 	/*
 	 * AT mode will timeout after 30 seconds and go back to transparent data mode

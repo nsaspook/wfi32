@@ -167,8 +167,9 @@ static char buffer[FBUFFER_SIZE];
 static const char *build_date = __DATE__, *build_time = __TIME__;
 const uint32_t update_delay = 5;
 uint32_t board_serial_id = 0x35A, cpu_serial_id = 0x1957;
-
+#ifdef ETH_GPIO
 static void fh_start_AT_nodma(void *);
+#endif
 
 // *****************************************************************************
 // *****************************************************************************
@@ -190,6 +191,8 @@ int main(void)
 
 	/* Initialize all modules */
 	SYS_Initialize(NULL);
+	LED_RED_Off();
+	LED_GREEN_Off();
 
 #ifdef XPRJ_mcj
 	//	setup the reset and command pins for the Ethernet adapter
@@ -205,6 +208,10 @@ int main(void)
 	 * set cpu serial ID numbers
 	 */
 	start_tick();
+
+	LED_RED_Off();
+	LED_GREEN_Off();
+	WaitMs(500);
 
 	/*
 	 * print the driver version
@@ -235,6 +242,9 @@ int main(void)
 	snprintf(buffer, max_buf, "%s Driver %s", REMOTE_ALIAS, REMOTE_DRIVER);
 	eaDogM_WriteStringAtPos(4, 0, buffer);
 	OledUpdate();
+	LED_RED_On();
+	LED_GREEN_On();
+	WaitMs(500);
 
 	/*
 	 * check to see if we actually have a working IMU
@@ -246,7 +256,6 @@ int main(void)
 		LED_RED_Toggle();
 		LED_GREEN_Toggle();
 		if (TimerDone(TMR_IMU)) {
-
 			while (wait) {
 				if (TimerDone(TMR_IMU)) {
 					LED_RED_Toggle();
@@ -269,7 +278,7 @@ int main(void)
 
 	LED_RED_Off();
 	LED_GREEN_Off();
-	WaitMs(2500);
+	WaitMs(500);
 #ifdef __32MK0512MCJ048__
 #ifdef XPRJ_mcj
 	MCPWM_ChannelPrimaryDutySet(MCPWM_CH_1, 1024);
@@ -300,6 +309,7 @@ int main(void)
 		/* Maintain state machines of all polled MPLAB Harmony modules. */
 		SYS_Tasks();
 
+#ifdef ETH_GPIO
 		if (TP1_check()) {
 			LED_RED_On();
 			OledClearBuffer();
@@ -309,6 +319,7 @@ int main(void)
 			OledUpdate();
 			WaitMs(5000);
 		}
+#endif
 
 		/*
 		 * data logging routine
@@ -489,6 +500,8 @@ int main(void)
  * capture and display ETH module network IP address
  * none-DMA serial driver
  */
+#ifdef ETH_GPIO
+
 static void fh_start_AT_nodma(void *a_data)
 {
 	snprintf(cmd_buffer, max_buf, "Start AT commands            ");
@@ -499,10 +512,12 @@ static void fh_start_AT_nodma(void *a_data)
 	ETH_CFG_Set();
 	WaitMs(1500); // wait until the module is back online
 #else
+#ifdef ETH_GPIO
 	ETH_CFG_Clear();
 	WaitMs(500);
 	ETH_CFG_Set();
 	WaitMs(4500); // wait until the module is back online
+#endif
 #endif
 
 	// AT command mode
@@ -517,9 +532,11 @@ static void fh_start_AT_nodma(void *a_data)
 		UART1_Read(response_buffer, 30);
 	} else { // nothing
 		snprintf(response_buffer, max_buf, "AT command failed           ");
+#ifdef ETH_GPIO
 		ETH_RESET_Clear();
 		WaitMs(200);
 		ETH_RESET_Set();
+#endif
 	}
 	/*
 	 * AT mode will timeout after 30 seconds and go back to transparent data mode
@@ -527,6 +544,7 @@ static void fh_start_AT_nodma(void *a_data)
 	WaitMs(500);
 	UART1_ErrorGet(); // clear UART junk
 }
+#endif
 /*******************************************************************************
  End of File
  */
